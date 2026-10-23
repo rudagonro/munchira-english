@@ -12,7 +12,7 @@ stable
 security definer
 set search_path = ''
 as $$
-  select role from public.profiles where id = auth.uid()
+  select role::text from public.profiles where id = auth.uid()
 $$;
 
 create or replace function public.is_staff()
@@ -90,7 +90,7 @@ grant select on public.profiles, public.cycles, public.modules, public.lessons,
 -- A user may rename themselves; the role column is never writable from the API.
 grant update (full_name) on public.profiles to authenticated;
 
--- Content is managed by admins.
+-- Content is managed by staff (teachers and admins).
 grant insert, update, delete on public.cycles, public.modules, public.lessons,
   public.quiz_questions, public.vocab_items, public.checkpoints,
   public.teacher_students to authenticated;
@@ -105,7 +105,8 @@ create policy profiles_select on public.profiles
 create policy profiles_update_own on public.profiles
   for update to authenticated using (id = auth.uid()) with check (id = auth.uid());
 
--- Course content: cycles and checkpoints are readable by any signed-in user;
+-- Course content (staff = teacher or admin can edit, as in the existing project):
+-- cycles and checkpoints are readable by any signed-in user;
 -- modules (and everything inside them) only when published, except for staff.
 create policy cycles_read  on public.cycles         for select to authenticated using (true);
 create policy cp_read      on public.checkpoints    for select to authenticated using (true);
@@ -119,18 +120,18 @@ create policy quiz_read    on public.quiz_questions for select to authenticated
 create policy vocab_read   on public.vocab_items    for select to authenticated
   using (exists (select 1 from public.modules m where m.id = module_id));
 
-create policy cycles_admin  on public.cycles         for all to authenticated
-  using (public.app_role() = 'admin') with check (public.app_role() = 'admin');
-create policy modules_admin on public.modules        for all to authenticated
-  using (public.app_role() = 'admin') with check (public.app_role() = 'admin');
-create policy lessons_admin on public.lessons        for all to authenticated
-  using (public.app_role() = 'admin') with check (public.app_role() = 'admin');
-create policy quiz_admin    on public.quiz_questions for all to authenticated
-  using (public.app_role() = 'admin') with check (public.app_role() = 'admin');
-create policy vocab_admin   on public.vocab_items    for all to authenticated
-  using (public.app_role() = 'admin') with check (public.app_role() = 'admin');
-create policy cp_admin      on public.checkpoints    for all to authenticated
-  using (public.app_role() = 'admin') with check (public.app_role() = 'admin');
+create policy cycles_staff  on public.cycles         for all to authenticated
+  using (public.is_staff()) with check (public.is_staff());
+create policy modules_staff on public.modules        for all to authenticated
+  using (public.is_staff()) with check (public.is_staff());
+create policy lessons_staff on public.lessons        for all to authenticated
+  using (public.is_staff()) with check (public.is_staff());
+create policy quiz_staff    on public.quiz_questions for all to authenticated
+  using (public.is_staff()) with check (public.is_staff());
+create policy vocab_staff   on public.vocab_items    for all to authenticated
+  using (public.is_staff()) with check (public.is_staff());
+create policy cp_staff      on public.checkpoints    for all to authenticated
+  using (public.is_staff()) with check (public.is_staff());
 
 -- Student data.
 create policy diagnostics_select on public.diagnostics

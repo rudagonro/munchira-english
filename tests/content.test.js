@@ -78,5 +78,5 @@ test('generated SQL only includes ready modules and is safe against tag injectio
   const evil = a2()
   evil.modules[0].lessons[0].title = 'x $json$ y'
   assert.throws(() => buildCycleSql(evil), /no puede contener/)
-  assert.match(buildCycleSql({ ...a2(), duration_weeks: null }), /seed_cycle\('A2', \$txt\$A2 · Elemental\$txt\$, null, null,/)
+  assert.match(buildCycleSql({ ...a2(), duration_weeks: null }), /seed_cycle\('A2', \$txt\$Básico\$txt\$, null, null,/)
 })

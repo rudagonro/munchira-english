@@ -1,7 +1,10 @@
 {
   "level": "C2",
-  "title": "C2 · Maestría",
-  "duration_weeks": null,
+  "title": "Maestría",
+  "duration_weeks": [
+    18,
+    18
+  ],
   "modules": [
     {
       "order": 1,

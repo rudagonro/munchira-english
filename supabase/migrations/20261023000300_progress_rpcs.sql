@@ -98,19 +98,19 @@ begin
 
   perform pg_advisory_xact_lock(hashtext('nivelo:' || v_uid::text));
 
-  select id into v_cycle from public.cycles where cefr_level = p_level;
+  select id into v_cycle from public.cycles where cefr_level::text = p_level;
   if v_cycle is null then raise exception 'cycle_not_found' using errcode = 'P0002'; end if;
 
   v_score := round(p_gv_pct * 0.30 + p_reading_pct * 0.25 + p_listening_pct * 0.25 + p_writing_pct * 0.20, 2);
 
   insert into public.diagnostics (user_id, cefr_level, gv_pct, reading_pct, listening_pct, writing_pct, final_score)
-  values (v_uid, p_level, p_gv_pct, p_reading_pct, p_listening_pct, p_writing_pct, v_score);
+  values (v_uid, p_level::public.cefr_level, p_gv_pct, p_reading_pct, p_listening_pct, p_writing_pct, v_score);
 
   select id into v_enrollment from public.enrollments
    where user_id = v_uid and cycle_id = v_cycle and status = 'active';
 
   if v_enrollment is null then
-    update public.enrollments set status = 'abandoned'
+    update public.enrollments set status = 'paused'
      where user_id = v_uid and status = 'active';
     insert into public.enrollments (user_id, cycle_id) values (v_uid, v_cycle)
     returning id into v_enrollment;
@@ -216,11 +216,11 @@ begin
                           where a.enrollment_id = v_enrollment.id and a.checkpoint_id = cp.id and a.passed));
 
   if v_cycle_done then
-    select c.cefr_level into v_level from public.cycles c where c.id = v_enrollment.cycle_id;
+    select c.cefr_level::text into v_level from public.cycles c where c.id = v_enrollment.cycle_id;
     v_next_level := (array['A1', 'A2', 'B1', 'B2', 'C1', 'C2'])[
       array_position(array['A1', 'A2', 'B1', 'B2', 'C1', 'C2'], v_level) + 1];
     if v_next_level is not null then
-      select id into v_next_cycle from public.cycles where cefr_level = v_next_level;
+      select id into v_next_cycle from public.cycles where cefr_level::text = v_next_level;
     end if;
     -- Only close the enrollment when there is somewhere to go; otherwise the
     -- student keeps their active (finished) cycle instead of being stranded.

@@ -1,7 +1,8 @@
 // Validación de los archivos de contenido (content/cycles/*.json).
 // Los umbrales (MIN_*) son los mismos que aplica public.content_readiness() en SQL.
 export const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
-export const SKILLS = ['grammar', 'vocabulary', 'reading', 'listening', 'writing', 'speaking', 'pronunciation']
+// Debe coincidir con el enum public.skill_type de la base de datos.
+export const SKILLS = ['grammar', 'vocabulary', 'reading', 'listening', 'writing']
 export const VOICES = ['nova', 'onyx']
 export const MIN_MODULES = 4
 export const MIN_LESSONS = 4

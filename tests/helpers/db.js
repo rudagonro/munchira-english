@@ -23,8 +23,10 @@ const SUPABASE_STUBS = `
   );
   create function auth.uid() returns uuid language sql stable as
     $$ select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid $$;
+  create function auth.role() returns text language sql stable as
+    $$ select case when nullif(current_setting('request.jwt.claim.sub', true), '') is null then 'anon' else 'authenticated' end $$;
   grant usage on schema auth to anon, authenticated, service_role;
-  grant execute on function auth.uid() to anon, authenticated, service_role;
+  grant execute on function auth.uid(), auth.role() to anon, authenticated, service_role;
 
   create schema storage;
   create table storage.buckets (id text primary key, name text not null, public boolean not null default false);
@@ -34,9 +36,10 @@ export function migrationFiles() {
   return readdirSync(migrationsDir).filter((f) => f.endsWith('.sql')).sort()
 }
 
-export async function createDb({ migrate = true } = {}) {
+export async function createDb({ migrate = true, legacy = false } = {}) {
   const db = new PGlite()
   await db.exec(SUPABASE_STUBS)
+  if (legacy) await db.exec(readFileSync(new URL('./fixtures/legacy-schema.sql'.replace('./fixtures', '../fixtures'), import.meta.url), 'utf8'))
   if (migrate) {
     for (const file of migrationFiles()) {
       await db.exec(readFileSync(migrationsDir + file, 'utf8'))
@@ -89,7 +92,7 @@ export async function asServiceRole(db, fn) {
 /** One cycle with `modules` modules (3 quiz questions each, answer index 1). */
 export async function seedCycle(db, { level = 'A1', modules = 2, checkpointAfter = [], minScore = 70 } = {}) {
   const cycle = (await db.query(
-    'insert into public.cycles (cefr_level, title) values ($1, $2) returning id', [level, `Ciclo ${level}`],
+    'insert into public.cycles (cefr_level, title, duration_weeks_min, duration_weeks_max) values ($1, $2, 8, 10) returning id', [level, `Ciclo ${level}`],
   )).rows[0].id
   const moduleIds = []
   for (let i = 1; i <= modules; i++) {
@@ -99,7 +102,7 @@ export async function seedCycle(db, { level = 'A1', modules = 2, checkpointAfter
     )).rows[0].id
     moduleIds.push(m)
     await db.query(
-      "insert into public.lessons (module_id, order_index, title, practice_content) values ($1, 1, 'L1', $2)",
+      "insert into public.lessons (module_id, order_index, title, theory_content, practice_content) values ($1, 1, 'L1', 'Teoría', $2)",
       [m, `Listen: 'Good morning ${level}${i}'`],
     )
     for (let q = 1; q <= 3; q++) {

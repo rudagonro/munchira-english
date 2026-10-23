@@ -66,10 +66,10 @@ test('content is readable by students but only admins can change it', async () =
     const del = await c.query('delete from public.lessons returning id')
     assert.equal(del.rows.length, 0)
     await assert.rejects(() => c.query(
-      "insert into public.cycles (cefr_level, title) values ('A2', 'x')"))
+      "insert into public.cycles (cefr_level, title, duration_weeks_min, duration_weeks_max) values ('A2', 'x', 1, 2)"))
   })
   await asUser(db, admin, async (c) => {
-    await c.query("insert into public.cycles (cefr_level, title) values ('A2', 'Ciclo A2')")
+    await c.query("insert into public.cycles (cefr_level, title, duration_weeks_min, duration_weeks_max) values ('A2', 'Ciclo A2', 10, 12)")
   })
 })
 
@@ -167,8 +167,8 @@ test('retaking the diagnostic at another level replaces the active enrollment', 
   await asUser(db, student, async (c) => {
     await diagnose(c, 'A1')
     await diagnose(c, 'A2')
-    const { rows } = await c.query('select cycle_id, status from public.enrollments order by status')
-    assert.deepEqual(rows.map((r) => r.status), ['abandoned', 'active'])
+    const { rows } = await c.query('select cycle_id, status::text as status from public.enrollments order by status::text')
+    assert.deepEqual(rows.map((r) => r.status), ['active', 'paused'])
     assert.equal(rows.find((r) => r.status === 'active').cycle_id, a2.cycle)
   })
 })
@@ -463,7 +463,7 @@ function completeCycle(level = 'B1') {
     ...extra,
   })
   return {
-    level, title: `${level} · Prueba`, duration_weeks: [12, 14],
+    level, title: `${level} Prueba`, duration_weeks: [12, 14],
     modules: [
       { ...grammar, order: 1 },
       sibling(2, 'vocabulary', { vocab: Array.from({ length: 10 }, (_, i) => ({ english: `w${i}`, spanish: `p${i}`, example_sentence: `ex ${i}` })) }),

@@ -20,9 +20,9 @@ declare
   cp jsonb;
 begin
   insert into public.cycles (cefr_level, title, duration_weeks_min, duration_weeks_max)
-  values (p_level, p_title, p_weeks_min, p_weeks_max)
+  values (p_level::public.cefr_level, p_title, coalesce(p_weeks_min, 0), coalesce(p_weeks_max, 0))
   on conflict (cefr_level) do nothing;
-  select id into v_cycle from public.cycles where cefr_level = p_level;
+  select id into v_cycle from public.cycles where cefr_level::text = p_level;
 
   for cp in select * from jsonb_array_elements(coalesce(p_checkpoints, '[]'::jsonb)) loop
     insert into public.checkpoints (cycle_id, after_module_order, title, min_score_to_pass)
@@ -47,7 +47,7 @@ declare
   v_module uuid;
   v_published boolean;
 begin
-  select id into v_cycle from public.cycles where cefr_level = p_level;
+  select id into v_cycle from public.cycles where cefr_level::text = p_level;
   if v_cycle is null then raise exception 'cycle_not_found: %', p_level using errcode = 'P0002'; end if;
 
   select id, published into v_module, v_published
@@ -59,10 +59,10 @@ begin
 
   if v_module is null then
     insert into public.modules (cycle_id, order_index, title, skill_type, published)
-    values (v_cycle, p_order, p_module ->> 'title', p_module ->> 'skill_type', false)
+    values (v_cycle, p_order, p_module ->> 'title', (p_module ->> 'skill_type')::public.skill_type, false)
     returning id into v_module;
   else
-    update public.modules set title = p_module ->> 'title', skill_type = p_module ->> 'skill_type'
+    update public.modules set title = p_module ->> 'title', skill_type = (p_module ->> 'skill_type')::public.skill_type
      where id = v_module;
   end if;
 
@@ -110,7 +110,7 @@ begin
     raise exception 'forbidden' using errcode = '42501';
   end if;
 
-  select id into v_cycle from public.cycles where cefr_level = p_level;
+  select id into v_cycle from public.cycles where cefr_level::text = p_level;
   if v_cycle is null then
     return query select format('%s: el ciclo no existe', p_level);
     return;
@@ -187,10 +187,10 @@ begin
     raise exception 'forbidden' using errcode = '42501';
   end if;
   return query
-  select c.cefr_level, c.title,
+  select c.cefr_level::text, c.title,
          (select count(*)::integer from public.modules m where m.cycle_id = c.id),
          (select count(*)::integer from public.modules m where m.cycle_id = c.id and m.published),
-         coalesce(array(select r.problem from public.content_readiness(c.cefr_level) r), '{}'::text[])
+         coalesce(array(select r.problem from public.content_readiness(c.cefr_level::text) r), '{}'::text[])
     from public.cycles c
    order by c.cefr_level;
 end;
@@ -214,7 +214,7 @@ begin
     return jsonb_build_object('published', false, 'problems', to_jsonb(v_problems));
   end if;
   update public.modules set published = true
-   where cycle_id = (select id from public.cycles where cefr_level = p_level);
+   where cycle_id = (select id from public.cycles where cefr_level::text = p_level);
   return jsonb_build_object('published', true, 'problems', '[]'::jsonb);
 end;
 $$;
@@ -230,7 +230,7 @@ begin
     raise exception 'forbidden' using errcode = '42501';
   end if;
   update public.modules set published = false
-   where cycle_id = (select id from public.cycles where cefr_level = p_level);
+   where cycle_id = (select id from public.cycles where cefr_level::text = p_level);
 end;
 $$;
 

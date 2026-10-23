@@ -27,7 +27,7 @@ El backend vive en `supabase/` y se puede reproducir desde cero:
 
 | Ruta | Contenido |
 | --- | --- |
-| `supabase/migrations/` | Esquema, políticas RLS, trigger `handle_new_user` (todo registro público es `student`), bucket privado `audio-cache`, control de coste de TTS y funciones RPC de progreso. |
+| `supabase/migrations/` | `…050_security_hotfix.sql` (aplicable por sí sola y con urgencia), esquema, políticas RLS, trigger `handle_new_user` (todo registro público es `student`), bucket privado `audio-cache`, control de coste de TTS y funciones RPC de progreso. |
 | `supabase/functions/tts-generate/` | Función de audio: valida JWT, solo sintetiza texto del contenido del curso, usa caché en Storage y aplica un límite diario por usuario. |
 
 Las migraciones son idempotentes. Antes de aplicarlas a un proyecto con datos reales, revisa el SQL y haz una copia de seguridad. Orden recomendado: **migraciones primero, después la función, después el frontend** (el frontend consulta columnas que añaden las migraciones).
@@ -41,7 +41,7 @@ supabase functions deploy tts-generate
 
 Variables opcionales de la función: `TTS_DAILY_CHAR_LIMIT` (por defecto 20000 caracteres/usuario/día sin caché), `TTS_ALLOWED_ORIGIN` (CORS) y `TTS_ALLOW_ANY_TEXT=true` (solo para pruebas).
 
-`npm test` ejecuta las migraciones reales en un Postgres en memoria (PGlite) y comprueba RLS, roles y controles de coste. No sustituye una prueba con un proyecto Supabase real.
+`npm test` ejecuta las migraciones reales en un Postgres en memoria (PGlite), tanto sobre una base nueva como sobre una copia del esquema de producción (`tests/fixtures/legacy-schema.sql`, con enums, columnas `NOT NULL` y políticas antiguas), y comprueba RLS, roles y controles de coste. No sustituye una prueba con un proyecto Supabase real.
 
 Para promover a un usuario a `teacher` o `admin`, ejecuta SQL con acceso directo a la base: `update public.profiles set role = 'teacher' where id = '<uuid>';`. Asigna estudiantes a un docente en `public.teacher_students`.
 

@@ -36,15 +36,15 @@ begin
     p.id,
     p.full_name,
     p.created_at,
-    c.cefr_level,
+    c.cefr_level::text,
     coalesce(prog.done, 0)::integer,
     coalesce(tot.n, 0)::integer,
     scores.avg_score,
-    weak.skill_type,
+    weak.skill_type::text,
     coalesce(words.studied, 0)::integer,
     coalesce(words.due, 0)::integer,
     coalesce(blocked.is_blocked, false),
-    diag.cefr_level,
+    diag.cefr_level::text,
     nullif(greatest(
       prog.last_at, words.last_at, lessons.last_at, diag.taken_at
     ), '-infinity'::timestamptz)
@@ -158,7 +158,7 @@ begin
     'modules', coalesce((
       select jsonb_agg(jsonb_build_object(
         'id', m.id, 'order_index', m.order_index, 'title', m.title, 'skill_type', m.skill_type,
-        'status', coalesce(mp.status, 'pending'), 'quiz_score', mp.quiz_score,
+        'status', coalesce(mp.status::text, 'pending'), 'quiz_score', mp.quiz_score,
         'completed_at', mp.completed_at) order by m.order_index)
       from public.modules m
       left join public.module_progress mp on mp.module_id = m.id and mp.enrollment_id = v_enrollment.id
