@@ -2,10 +2,19 @@ import { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
-import { computeModuleAvailability, getCheckpointForModule } from '../data/moduleAvailability'
+import { computeModuleAvailability } from '../data/moduleAvailability'
 import VocabFlashcard from '../components/VocabFlashcard'
 import ExerciseBlock from '../components/ExerciseBlock'
 import { getLessonAudioTurns } from '../data/lessonAudio'
+
+function quizErrorMessage(error) {
+  const text = error?.message ?? ''
+  if (text.includes('module_locked')) return 'Este módulo está bloqueado. Completa antes el módulo o checkpoint anterior.'
+  if (text.includes('no_active_enrollment') || text.includes('module_not_in_cycle')) {
+    return 'Este módulo ya no pertenece a tu ciclo activo. Vuelve a tus módulos.'
+  }
+  return 'No se pudo guardar tu progreso. Intenta de nuevo.'
+}
 
 export default function ModuleView() {
   const { moduleId } = useParams()
@@ -15,14 +24,12 @@ export default function ModuleView() {
 function ModuleContent() {
   const { moduleId } = useParams()
   const navigate = useNavigate()
-  const { getModuleContent, completeModule, submitCheckpointAttempt, advanceToNextCycle, getActiveCycleData } = useAuth()
+  const { getModuleContent, submitModuleQuiz, getActiveCycleData } = useAuth()
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [content, setContent] = useState(null)
   const [enrollmentInfo, setEnrollmentInfo] = useState(null)
-  const [allCheckpoints, setAllCheckpoints] = useState([])
-  const [allModules, setAllModules] = useState([])
 
   const [stage, setStage] = useState('lessons') // vocab? -> lessons -> quiz -> result
   const [lessonIdx, setLessonIdx] = useState(0)
@@ -30,6 +37,7 @@ function ModuleContent() {
   const [audioLoading, setAudioLoading] = useState(false)
   const [audioError, setAudioError] = useState('')
   const [saving, setSaving] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [quizResult, setQuizResult] = useState(null)
   const [checkpointResult, setCheckpointResult] = useState(null)
   const [cycleAdvanced, setCycleAdvanced] = useState(null)
@@ -59,8 +67,6 @@ function ModuleContent() {
         setContent(data)
         setStage(data.module.skill_type === 'vocabulary' && data.vocabItems.length ? 'vocab' : 'lessons')
         setEnrollmentInfo(cycle.enrollment)
-        setAllCheckpoints(cycle.checkpoints)
-        setAllModules(cycle.modules)
       } catch (error) {
         if (active) setError(error.message || 'No se pudo cargar el módulo.')
       } finally {
@@ -139,52 +145,27 @@ function ModuleContent() {
 
   async function handleSubmitQuiz() {
     if (saving || !enrollmentInfo || !content.questions.length) return
-    const total = content.questions.length
-    let correct = 0
-    content.questions.forEach((q) => {
-      if (answers[q.id] === q.correct_idx) correct++
-    })
-    const scorePct = total > 0 ? (correct / total) * 100 : 100
-
     setSaving(true)
-    const { error: completeError } = await completeModule(enrollmentInfo.id, moduleId, scorePct)
-    if (completeError) {
-      setError('No se pudo guardar tu progreso. Intenta de nuevo.')
-      setSaving(false)
+    setSubmitError('')
+    const { data, error: rpcError } = await submitModuleQuiz(moduleId, answers)
+    setSaving(false)
+    if (rpcError || !data) {
+      console.error(rpcError)
+      setSubmitError(quizErrorMessage(rpcError))
       return
     }
-
-    setQuizResult({ correct, total, scorePct })
-
-    // ¿Hay un checkpoint justo después de este módulo?
-    const checkpoint = getCheckpointForModule(allCheckpoints, content.module.order_index)
-    if (checkpoint) {
-      const passed = scorePct >= checkpoint.min_score_to_pass
-      const { error: checkpointError } = await submitCheckpointAttempt(enrollmentInfo.id, checkpoint.id, scorePct, passed)
-      if (checkpointError) {
-        setError('Tu módulo se guardó, pero el checkpoint no pudo guardarse. Vuelve al módulo para reintentarlo.')
-        setSaving(false)
-        return
-      }
-      setCheckpointResult({ checkpoint, passed, scorePct })
-
-      // Si pasó el checkpoint final del ciclo (after_module_order = último módulo), avanza de nivel.
-      const isFinalCheckpoint = checkpoint.after_module_order === Math.max(...allModules.map((m) => m.order_index))
-      if (passed && isFinalCheckpoint) {
-        const { nextLevel, error: advanceError } = await advanceToNextCycle(
-          enrollmentInfo.id,
-          enrollmentInfo.cycles.cefr_level
-        )
-        if (advanceError) {
-          setError('Tu progreso se guardó, pero no se pudo avanzar de nivel. Vuelve al módulo para reintentarlo.')
-          setSaving(false)
-          return
-        }
-        setCycleAdvanced(nextLevel)
-      }
-    }
-
-    setSaving(false)
+    setQuizResult({
+      correct: data.correct,
+      total: data.total,
+      scorePct: Number(data.score_pct),
+      review: Object.fromEntries(data.review.map((r) => [r.question_id, r])),
+    })
+    setCheckpointResult(data.checkpoint && {
+      checkpoint: { title: data.checkpoint.title, min_score_to_pass: data.checkpoint.min_score_to_pass },
+      passed: data.checkpoint.passed,
+      scorePct: Number(data.score_pct),
+    })
+    setCycleAdvanced(data.advanced ? data.next_level : null)
     setStage('result')
   }
 
@@ -377,6 +358,7 @@ function ModuleContent() {
           </div>
         ))}
 
+        {submitError && <div className="error-banner" role="alert" style={{ marginBottom: 16 }}>{submitError}</div>}
         <button
           className="btn-primary"
           style={{ maxWidth: 280 }}
@@ -401,7 +383,8 @@ function ModuleContent() {
         <div style={{ textAlign: 'left', marginBottom: 24 }}>
           {questions.map((q, i) => {
             const userIdx = answers[q.id]
-            const isCorrect = userIdx === q.correct_idx
+            const correctIdx = quizResult.review[q.id]?.correct_idx
+            const isCorrect = userIdx === correctIdx
             return (
               <div key={q.id} style={{ marginBottom: 16, opacity: 0.9 }}>
                 <div className="diag-tag">Pregunta {i + 1}</div>
@@ -410,7 +393,7 @@ function ModuleContent() {
                   {isCorrect ? '✓ Correcto' : `✗ Tu respuesta: "${q.options[userIdx]}"`}
                 </p>
                 {!isCorrect && (
-                  <p style={{ margin: 0 }}>Respuesta correcta: "{q.options[q.correct_idx]}"</p>
+                  <p style={{ margin: 0 }}>Respuesta correcta: "{q.options[correctIdx]}"</p>
                 )}
               </div>
             )
