@@ -180,7 +180,7 @@ function ModuleContent() {
   if (error) {
     return (
       <div className="app-shell">
-        <div className="error-banner">{error}</div>
+        <div className="error-banner" role="alert">{error}</div>
         <button className="logout-btn" onClick={() => navigate('/cycle')}>Volver a mis módulos</button>
       </div>
     )
@@ -278,6 +278,7 @@ function ModuleContent() {
                 onClick={() => { setAudioError(''); playLessonAudio(lesson) }}
                 disabled={audioLoading}
                 type="button"
+                aria-label={audioLoading ? 'Generando audio' : 'Reproducir el diálogo'}
               >
                 {audioLoading ? '⌛' : '▶'}
               </button>
@@ -286,7 +287,7 @@ function ModuleContent() {
               </div>
             </div>
             {audioError && (
-              <p className="lesson-audio-error">{audioError}</p>
+              <p className="lesson-audio-error" role="alert">{audioError}</p>
             )}
           </div>
         )}
@@ -343,13 +344,15 @@ function ModuleContent() {
           <div key={q.id} style={{ marginBottom: 28 }}>
             <div className="diag-tag">Pregunta {i + 1} de {questions.length}</div>
             <h2 className="diag-question" style={{ fontSize: '1.15rem' }}>{q.question}</h2>
-            <div className="diag-options">
+            <div className="diag-options" role="radiogroup" aria-label={`Respuestas a la pregunta ${i + 1}`}>
               {q.options.map((opt, idx) => (
                 <button
                   key={idx}
                   className={`diag-opt ${answers[q.id] === idx ? 'selected' : ''}`}
                   onClick={() => selectAnswer(q.id, idx)}
                   type="button"
+                  role="radio"
+                  aria-checked={answers[q.id] === idx}
                 >
                   {opt}
                 </button>

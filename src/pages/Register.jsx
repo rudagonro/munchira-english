@@ -83,7 +83,7 @@ export default function Register() {
         <div className="auth-brand">Nivelo</div>
         <p className="auth-subtitle">Crea tu cuenta para tomar tu diagnóstico.</p>
 
-        {error && <div className="error-banner">{error}</div>}
+        {error && <div className="error-banner" role="alert">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="field-group">

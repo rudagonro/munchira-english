@@ -45,7 +45,7 @@ export default function Login() {
         <div className="auth-brand">Nivelo</div>
         <p className="auth-subtitle">Inicia sesión para continuar tu camino.</p>
 
-        {error && <div className="error-banner">{error}</div>}
+        {error && <div className="error-banner" role="alert">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="field-group">

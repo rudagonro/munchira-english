@@ -113,7 +113,7 @@ export default function Diagnostic() {
         </div>
 
         {saving && <p className="loading-text" style={{ marginTop: 16 }}>Guardando resultado...</p>}
-        {saveError && <div className="error-banner" style={{ marginTop: 16 }}>{saveError}</div>}
+        {saveError && <div className="error-banner" role="alert" style={{ marginTop: 16 }}>{saveError}</div>}
         {!saving && !saveError && (
           <p className="success-banner" style={{ marginTop: 16, display: 'inline-block' }}>
             Resultado guardado. Ya quedaste inscrito en tu ciclo.
@@ -233,13 +233,15 @@ function DiagShell({ stageLabel, children }) {
 
 function OptionsList({ options, selectedIdx, onSelect }) {
   return (
-    <div className="diag-options">
+    <div className="diag-options" role="radiogroup" aria-label="Opciones de respuesta">
       {options.map((opt, i) => (
         <button
           key={i}
           className={`diag-opt ${selectedIdx === i ? 'selected' : ''}`}
           onClick={() => onSelect(i)}
           type="button"
+          role="radio"
+          aria-checked={selectedIdx === i}
         >
           {opt}
         </button>
@@ -259,7 +261,7 @@ function NextButton({ disabled, onClick, label = 'Siguiente →' }) {
 function AudioBox({ transcript, onPlay }) {
   return (
     <div className="diag-audio-box">
-      <button className="diag-play-btn" onClick={() => onPlay(transcript)} type="button">▶</button>
+      <button className="diag-play-btn" onClick={() => onPlay(transcript)} type="button" aria-label="Reproducir audio">▶</button>
       <div className="diag-audio-meta">Pulsa play para escuchar el audio.</div>
     </div>
   )
@@ -269,7 +271,7 @@ function SkillBar({ label, pct }) {
   return (
     <div className="diag-skill-row">
       <span className="diag-skill-name">{label}</span>
-      <div className="diag-skill-track">
+      <div className="diag-skill-track" role="progressbar" aria-label={label} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(pct)}>
         <div className="diag-skill-fill" style={{ width: `${pct}%` }} />
       </div>
       <span className="diag-skill-pct">{pct.toFixed(0)}%</span>
