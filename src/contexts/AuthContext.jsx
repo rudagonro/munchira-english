@@ -211,7 +211,7 @@ export function AuthProvider({ children }) {
 
     const { data: lessons, error: lessonsError } = await supabase
       .from('lessons')
-      .select('id, order_index, title, theory_content, theory_table, image_url, practice_content, dialogue_turns')
+      .select('id, order_index, title, theory_content, theory_table, image_url, practice_content, dialogue_turns, audio_text, exercises')
       .eq('module_id', moduleId)
       .order('order_index')
 

@@ -21,13 +21,29 @@ npm run build
 npm run preview
 ```
 
-## Backend necesario
+## Backend (Supabase)
 
-El frontend consulta `profiles`, `diagnostics`, `cycles`, `modules`, `lessons`, `quiz_questions`, `vocab_items`, `enrollments`, `module_progress`, `checkpoints` y `checkpoint_attempts`. El esquema SQL, las migraciones, las políticas RLS, los datos de los cursos y la función de audio `tts-generate` no están incluidos en este repositorio. Copiar las variables de entorno no crea ese backend.
+El backend vive en `supabase/` y se puede reproducir desde cero:
 
-La función de audio recibe `{ text, voice }` mediante POST autenticado y debe devolver audio. Las claves del proveedor de audio deben permanecer en el servidor.
+| Ruta | Contenido |
+| --- | --- |
+| `supabase/migrations/` | Esquema, políticas RLS, trigger `handle_new_user` (todo registro público es `student`), bucket privado `audio-cache`, control de coste de TTS y funciones RPC de progreso. |
+| `supabase/functions/tts-generate/` | Función de audio: valida JWT, solo sintetiza texto del contenido del curso, usa caché en Storage y aplica un límite diario por usuario. |
 
-Todo registro público debe recibir el rol `student` mediante un trigger o política del servidor. La protección de rutas del navegador no sustituye RLS. Los roles, la propiedad de las inscripciones, las notas y los desbloqueos deben validarse en Supabase.
+Las migraciones son idempotentes. Antes de aplicarlas a un proyecto con datos reales, revisa el SQL y haz una copia de seguridad. Orden recomendado: **migraciones primero, después la función, después el frontend** (el frontend consulta columnas que añaden las migraciones).
+
+```sh
+supabase link --project-ref <ref>
+supabase db push
+supabase secrets set OPENAI_API_KEY=... TTS_DAILY_CHAR_LIMIT=20000
+supabase functions deploy tts-generate
+```
+
+Variables opcionales de la función: `TTS_DAILY_CHAR_LIMIT` (por defecto 20000 caracteres/usuario/día sin caché), `TTS_ALLOWED_ORIGIN` (CORS) y `TTS_ALLOW_ANY_TEXT=true` (solo para pruebas).
+
+`npm test` ejecuta las migraciones reales en un Postgres en memoria (PGlite) y comprueba RLS, roles y controles de coste. No sustituye una prueba con un proyecto Supabase real.
+
+Para promover a un usuario a `teacher` o `admin`, ejecuta SQL con acceso directo a la base: `update public.profiles set role = 'teacher' where id = '<uuid>';`. Asigna estudiantes a un docente en `public.teacher_students`.
 
 ## Despliegue
 

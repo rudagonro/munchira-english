@@ -5,17 +5,7 @@ import { supabase } from '../lib/supabase'
 import { computeModuleAvailability, getCheckpointForModule } from '../data/moduleAvailability'
 import VocabFlashcard from '../components/VocabFlashcard'
 import ExerciseBlock from '../components/ExerciseBlock'
-
-// Mapea cada combinación módulo/lección a su texto de audio, si aplica.
-// En A1, solo el módulo de Listening (skill_type='listening') tiene audio.
-// Se identifica por contenido de la práctica (heurística simple para A1;
-// en una v2 esto podría vivir como columna en la tabla lessons).
-function extractListeningText(practiceContent) {
-  const match = (practiceContent ?? '').match(/'([^']+)'/g)
-  if (!match) return null
-  // Toma la cita más larga, que suele ser el texto a escuchar.
-  return match.reduce((longest, m) => (m.length > longest.length ? m : longest), '').replace(/'/g, '')
-}
+import { getLessonAudioTurns } from '../data/lessonAudio'
 
 export default function ModuleView() {
   const { moduleId } = useParams()
@@ -109,8 +99,8 @@ function ModuleContent() {
       const { data: sessionData } = await supabase.auth.getSession()
       const token = sessionData.session?.access_token
       if (!token) throw new Error('No hay sesión activa')
-      const turns = lesson.dialogue_turns?.length ? lesson.dialogue_turns
-        : [{ text: extractListeningText(lesson.practice_content), voice: 'nova' }]
+      const turns = getLessonAudioTurns(lesson)
+      if (!turns.length) throw new Error('No hay texto de audio')
       const urls = []
       for (const turn of turns) {
         if (!turn.text) throw new Error('No hay texto de audio')
@@ -241,8 +231,7 @@ function ModuleContent() {
     const lesson = lessons[lessonIdx]
     const isLastLesson = lessonIdx === lessons.length - 1
     const isListening = module.skill_type === 'listening'
-    const listeningText = isListening ? extractListeningText(lesson.practice_content) : null
-    const hasAudio = isListening && (lesson.dialogue_turns?.length > 0 || listeningText)
+    const hasAudio = isListening && getLessonAudioTurns(lesson).length > 0
 
     return (
       <div className="lesson-view">
