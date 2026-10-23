@@ -1,0 +1,80 @@
+{
+  "level": "C1",
+  "title": "C1 · Avanzado",
+  "duration_weeks": [
+    16,
+    18
+  ],
+  "modules": [
+    {
+      "order": 1,
+      "skill_type": "grammar",
+      "title": "Matices, registro y lenguaje idiomático",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Inversión y énfasis",
+          "Subjuntivo y construcciones formales",
+          "Registro formal e informal",
+          "Expresiones idiomáticas",
+          "Cleft sentences"
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "skill_type": "vocabulary",
+      "title": "Vocabulario de especialización",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Negocios y finanzas",
+          "Academia y investigación",
+          "Derecho y política",
+          "Collocations avanzadas"
+        ],
+        "target_words": 100
+      }
+    },
+    {
+      "order": 3,
+      "skill_type": "listening",
+      "title": "Debates y conferencias",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Debate de actualidad",
+          "Conferencia académica",
+          "Entrevista de trabajo",
+          "Podcast especializado"
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "skill_type": "writing",
+      "title": "Informes y análisis crítico",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Informe estructurado",
+          "Resumen y paráfrasis",
+          "Análisis crítico",
+          "Propuesta formal"
+        ]
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "after_module_order": 2,
+      "title": "Checkpoint intermedio",
+      "min_score_to_pass": 70
+    },
+    {
+      "after_module_order": 4,
+      "title": "Checkpoint final",
+      "min_score_to_pass": 70
+    }
+  ]
+}

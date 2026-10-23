@@ -1,0 +1,239 @@
+{
+  "_guia": "Cada lección necesita audio_text (una voz) o dialogue_turns (varias voces). Usa dialogue_turns para diálogos: [{speaker, voice: 'nova'|'onyx', text}]. El texto debe aparecer tal cual en la lección: el servidor solo sintetiza texto del curso.",
+  "order": 1,
+  "skill_type": "listening",
+  "title": "Título del módulo de listening",
+  "status": "ready",
+  "lessons": [
+    {
+      "order": 1,
+      "title": "Lección 1",
+      "theory_content": "Explicación en español, 3-6 frases, con ejemplos en inglés.",
+      "theory_table": [
+        {
+          "label": "Estructura",
+          "value": "ejemplo en inglés"
+        }
+      ],
+      "practice_content": "Tarea corta para el estudiante (1-2 frases).",
+      "exercises": [
+        {
+          "type": "fill",
+          "instruction": "Completa la frase.",
+          "sentence": "She ___ (work) here.",
+          "answer": "works",
+          "hint": "Pista breve."
+        },
+        {
+          "type": "choice",
+          "q": "Pregunta",
+          "opts": [
+            "opción A",
+            "opción B",
+            "opción C"
+          ],
+          "correct": 0,
+          "why": "Por qué es correcta."
+        },
+        {
+          "type": "order",
+          "words": [
+            "palabra",
+            "otra",
+            "más"
+          ],
+          "answer": "palabra otra más",
+          "hint": "Pista breve."
+        }
+      ],
+      "dialogue_turns": [
+        {
+          "speaker": "A",
+          "voice": "nova",
+          "text": "Hello! How are you?"
+        },
+        {
+          "speaker": "B",
+          "voice": "onyx",
+          "text": "I'm fine, thanks. And you?"
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Lección 2",
+      "theory_content": "Explicación en español, 3-6 frases, con ejemplos en inglés.",
+      "theory_table": [
+        {
+          "label": "Estructura",
+          "value": "ejemplo en inglés"
+        }
+      ],
+      "practice_content": "Tarea corta para el estudiante (1-2 frases).",
+      "exercises": [
+        {
+          "type": "fill",
+          "instruction": "Completa la frase.",
+          "sentence": "She ___ (work) here.",
+          "answer": "works",
+          "hint": "Pista breve."
+        },
+        {
+          "type": "choice",
+          "q": "Pregunta",
+          "opts": [
+            "opción A",
+            "opción B",
+            "opción C"
+          ],
+          "correct": 0,
+          "why": "Por qué es correcta."
+        },
+        {
+          "type": "order",
+          "words": [
+            "palabra",
+            "otra",
+            "más"
+          ],
+          "answer": "palabra otra más",
+          "hint": "Pista breve."
+        }
+      ],
+      "audio_text": "Texto a reproducir con una sola voz (máx. 1000 caracteres)."
+    },
+    {
+      "order": 3,
+      "title": "Lección 3",
+      "theory_content": "Explicación en español, 3-6 frases, con ejemplos en inglés.",
+      "theory_table": [
+        {
+          "label": "Estructura",
+          "value": "ejemplo en inglés"
+        }
+      ],
+      "practice_content": "Tarea corta para el estudiante (1-2 frases).",
+      "exercises": [
+        {
+          "type": "fill",
+          "instruction": "Completa la frase.",
+          "sentence": "She ___ (work) here.",
+          "answer": "works",
+          "hint": "Pista breve."
+        },
+        {
+          "type": "choice",
+          "q": "Pregunta",
+          "opts": [
+            "opción A",
+            "opción B",
+            "opción C"
+          ],
+          "correct": 0,
+          "why": "Por qué es correcta."
+        },
+        {
+          "type": "order",
+          "words": [
+            "palabra",
+            "otra",
+            "más"
+          ],
+          "answer": "palabra otra más",
+          "hint": "Pista breve."
+        }
+      ],
+      "audio_text": "Texto a reproducir con una sola voz (máx. 1000 caracteres)."
+    },
+    {
+      "order": 4,
+      "title": "Lección 4",
+      "theory_content": "Explicación en español, 3-6 frases, con ejemplos en inglés.",
+      "theory_table": [
+        {
+          "label": "Estructura",
+          "value": "ejemplo en inglés"
+        }
+      ],
+      "practice_content": "Tarea corta para el estudiante (1-2 frases).",
+      "exercises": [
+        {
+          "type": "fill",
+          "instruction": "Completa la frase.",
+          "sentence": "She ___ (work) here.",
+          "answer": "works",
+          "hint": "Pista breve."
+        },
+        {
+          "type": "choice",
+          "q": "Pregunta",
+          "opts": [
+            "opción A",
+            "opción B",
+            "opción C"
+          ],
+          "correct": 0,
+          "why": "Por qué es correcta."
+        },
+        {
+          "type": "order",
+          "words": [
+            "palabra",
+            "otra",
+            "más"
+          ],
+          "answer": "palabra otra más",
+          "hint": "Pista breve."
+        }
+      ],
+      "audio_text": "Texto a reproducir con una sola voz (máx. 1000 caracteres)."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Pregunta 1",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    },
+    {
+      "question": "Pregunta 2",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    },
+    {
+      "question": "Pregunta 3",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    },
+    {
+      "question": "Pregunta 4",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    },
+    {
+      "question": "Pregunta 5",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    }
+  ]
+}

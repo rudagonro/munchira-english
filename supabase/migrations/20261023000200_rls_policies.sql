@@ -105,13 +105,19 @@ create policy profiles_select on public.profiles
 create policy profiles_update_own on public.profiles
   for update to authenticated using (id = auth.uid()) with check (id = auth.uid());
 
--- Course content: readable by any signed-in user, editable by admins.
+-- Course content: cycles and checkpoints are readable by any signed-in user;
+-- modules (and everything inside them) only when published, except for staff.
 create policy cycles_read  on public.cycles         for select to authenticated using (true);
-create policy modules_read on public.modules        for select to authenticated using (true);
-create policy lessons_read on public.lessons        for select to authenticated using (true);
-create policy quiz_read    on public.quiz_questions for select to authenticated using (true);
-create policy vocab_read   on public.vocab_items    for select to authenticated using (true);
 create policy cp_read      on public.checkpoints    for select to authenticated using (true);
+create policy modules_read on public.modules        for select to authenticated
+  using (published or public.is_staff());
+-- The sub-select is itself filtered by modules_read, so drafts stay hidden.
+create policy lessons_read on public.lessons        for select to authenticated
+  using (exists (select 1 from public.modules m where m.id = module_id));
+create policy quiz_read    on public.quiz_questions for select to authenticated
+  using (exists (select 1 from public.modules m where m.id = module_id));
+create policy vocab_read   on public.vocab_items    for select to authenticated
+  using (exists (select 1 from public.modules m where m.id = module_id));
 
 create policy cycles_admin  on public.cycles         for all to authenticated
   using (public.app_role() = 'admin') with check (public.app_role() = 'admin');

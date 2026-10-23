@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useAuth } from '../contexts/auth-context'
-import { fetchStudentDetail, fetchTeacherOverview } from '../services/teacherService'
+import { fetchContentStatus, fetchStudentDetail, fetchTeacherOverview } from '../services/teacherService'
 import {
   INACTIVE_DAYS, LEVELS, NO_LEVEL, SKILL_LABELS, STATUS, STATUS_HELP, STATUS_LABELS,
   computeKpis, filterRows, formatLastActivity, levelDistribution, progressPct, scoreBand,
@@ -253,6 +253,8 @@ export default function TeacherPanel() {
         </>
       )}
 
+      <ContentStatus />
+
       {selected && (
         <StudentDetail
           key={selected.id}
@@ -414,5 +416,52 @@ function MiniBar({ label, pct }) {
       </span>
       <span className="tp-mini-pct">{Math.round(pct)}%</span>
     </div>
+  )
+}
+
+// Estado del contenido por nivel: qué está publicado y qué falta para publicar.
+function ContentStatus() {
+  const [state, setState] = useState({ loading: true, error: false, rows: [] })
+
+  useEffect(() => {
+    let active = true
+    void fetchContentStatus().then(({ data, error }) => {
+      if (active) setState({ loading: false, error: Boolean(error), rows: data })
+    })
+    return () => { active = false }
+  }, [])
+
+  if (state.loading || state.error || state.rows.length === 0) {
+    return state.error ? <div className="error-banner" role="alert">No se pudo cargar el estado del contenido.</div> : null
+  }
+
+  return (
+    <section className="tp-card" aria-labelledby="tp-content-title">
+      <h2 id="tp-content-title" className="tp-h2">Estado del contenido</h2>
+      <p className="tp-hint">Un nivel se publica completo cuando cumple los mínimos (ver <code>content/README.md</code>).</p>
+      <ul className="tp-content">
+        {state.rows.map((row) => {
+          const live = row.total_modules > 0 && row.published_modules === row.total_modules
+          const ready = !live && row.problems.length === 0
+          const label = live ? 'Publicado' : ready ? 'Listo para publicar' : 'Incompleto'
+          const tone = live ? 'active' : ready ? 'checkpoint_blocked' : 'no_diagnostic'
+          return (
+            <li key={row.cefr_level}>
+              <div className="tp-content-row">
+                <strong>{row.cefr_level}</strong>
+                <span className="tp-hint">{row.published_modules} de {row.total_modules} módulos publicados</span>
+                <span className={`tp-badge ${tone}`}>{label}</span>
+              </div>
+              {!live && row.problems.length > 0 && (
+                <details>
+                  <summary>{row.problems.length} pendiente(s)</summary>
+                  <ul className="tp-problems">{row.problems.map((p) => <li key={p}>{p}</li>)}</ul>
+                </details>
+              )}
+            </li>
+          )
+        })}
+      </ul>
+    </section>
   )
 }

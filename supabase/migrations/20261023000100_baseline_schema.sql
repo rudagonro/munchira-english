@@ -30,6 +30,9 @@ create table if not exists public.modules (
                 ('grammar', 'vocabulary', 'reading', 'listening', 'writing', 'speaking', 'pronunciation')),
   unique (cycle_id, order_index)
 );
+-- Draft/publish: students only see published modules. Existing modules stay
+-- visible (default true); new content is seeded as draft and published per cycle.
+alter table public.modules add column if not exists published boolean not null default true;
 
 create table if not exists public.lessons (
   id               uuid primary key default gen_random_uuid(),

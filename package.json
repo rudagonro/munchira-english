@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "node --test"
+    "test": "node --test",
+    "content:validate": "node scripts/content.mjs validate",
+    "content:sql": "node scripts/content.mjs sql"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",

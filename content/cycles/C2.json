@@ -1,0 +1,77 @@
+{
+  "level": "C2",
+  "title": "C2 · Maestría",
+  "duration_weeks": null,
+  "modules": [
+    {
+      "order": 1,
+      "skill_type": "grammar",
+      "title": "Refinamiento estilístico y retórico",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Estilo y variación sintáctica",
+          "Recursos retóricos",
+          "Ambigüedad y matiz",
+          "Registro literario",
+          "Corrección de estilo"
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "skill_type": "vocabulary",
+      "title": "Dominio de matices culturales y humor",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Humor e ironía",
+          "Referencias culturales",
+          "Variedades del inglés",
+          "Lenguaje figurado"
+        ],
+        "target_words": 120
+      }
+    },
+    {
+      "order": 3,
+      "skill_type": "listening",
+      "title": "Listening sin restricciones (medios nativos)",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Medios de comunicación",
+          "Cine y series",
+          "Conversación rápida con acentos",
+          "Discursos y ponencias"
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "skill_type": "writing",
+      "title": "Publicación y persuasión de alto nivel",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Artículo de opinión",
+          "Discurso persuasivo",
+          "Texto creativo",
+          "Edición profesional"
+        ]
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "after_module_order": 2,
+      "title": "Checkpoint intermedio",
+      "min_score_to_pass": 70
+    },
+    {
+      "after_module_order": 4,
+      "title": "Checkpoint final",
+      "min_score_to_pass": 70
+    }
+  ]
+}

@@ -45,6 +45,19 @@ Variables opcionales de la función: `TTS_DAILY_CHAR_LIMIT` (por defecto 20000 c
 
 Para promover a un usuario a `teacher` o `admin`, ejecuta SQL con acceso directo a la base: `update public.profiles set role = 'teacher' where id = '<uuid>';`. Asigna estudiantes a un docente en `public.teacher_students`.
 
+## Contenido (A2–C2)
+
+El contenido de cada nivel se escribe en `content/cycles/<NIVEL>.json`, se valida (`npm run content:validate`), se convierte en SQL (`npm run content:sql -- A2 supabase/seed/A2.sql`) y se carga como **borrador**. Un nivel se publica completo con `select public.publish_cycle('A2');` solo si cumple los mínimos. Guía completa, plantillas por habilidad y requisitos: `content/README.md`.
+
+Estado actual: A2 tiene un módulo de gramática completo (4 lecciones, 6 preguntas) como referencia; el resto de módulos A2–C2 están definidos como esquema (temas por lección) y falta redactarlos. El contenido de A1 sigue solo en la base de datos.
+
+## Flujos nuevos de esta rama
+
+- Progreso atómico: `save_diagnostic` y `submit_module_quiz` (calificación, checkpoint, desbloqueo y avance de ciclo en una transacción; el cliente no escribe tablas de progreso ni ve las respuestas correctas).
+- Vocabulario con repaso espaciado persistente (`/review`) y progreso por lección.
+- Panel docente con KPIs, filtros, detalle por estudiante, estado del contenido y exportación CSV.
+- Accesibilidad (teclado, lector de pantalla, móvil 320 px) y `ErrorBoundary` por ruta.
+
 ## Despliegue
 
 Ejecuta `npm run build` y publica `dist/`. Configura las dos variables de entorno antes de compilar. Para Vercel se incluye `vercel.json` con la reescritura de rutas de la SPA. En otros proveedores configura el fallback a `index.html`.

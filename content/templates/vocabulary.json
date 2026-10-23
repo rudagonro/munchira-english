@@ -1,0 +1,276 @@
+{
+  "_guia": "≥10 palabras (english único, spanish, example_sentence). Las lecciones practican las palabras en contexto. Las palabras aparecen como tarjetas y entran al repaso espaciado.",
+  "order": 1,
+  "skill_type": "vocabulary",
+  "title": "Título del módulo de vocabulario",
+  "status": "ready",
+  "lessons": [
+    {
+      "order": 1,
+      "title": "Lección 1",
+      "theory_content": "Explicación en español, 3-6 frases, con ejemplos en inglés.",
+      "theory_table": [
+        {
+          "label": "Estructura",
+          "value": "ejemplo en inglés"
+        }
+      ],
+      "practice_content": "Tarea corta para el estudiante (1-2 frases).",
+      "exercises": [
+        {
+          "type": "fill",
+          "instruction": "Completa la frase.",
+          "sentence": "She ___ (work) here.",
+          "answer": "works",
+          "hint": "Pista breve."
+        },
+        {
+          "type": "choice",
+          "q": "Pregunta",
+          "opts": [
+            "opción A",
+            "opción B",
+            "opción C"
+          ],
+          "correct": 0,
+          "why": "Por qué es correcta."
+        },
+        {
+          "type": "order",
+          "words": [
+            "palabra",
+            "otra",
+            "más"
+          ],
+          "answer": "palabra otra más",
+          "hint": "Pista breve."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Lección 2",
+      "theory_content": "Explicación en español, 3-6 frases, con ejemplos en inglés.",
+      "theory_table": [
+        {
+          "label": "Estructura",
+          "value": "ejemplo en inglés"
+        }
+      ],
+      "practice_content": "Tarea corta para el estudiante (1-2 frases).",
+      "exercises": [
+        {
+          "type": "fill",
+          "instruction": "Completa la frase.",
+          "sentence": "She ___ (work) here.",
+          "answer": "works",
+          "hint": "Pista breve."
+        },
+        {
+          "type": "choice",
+          "q": "Pregunta",
+          "opts": [
+            "opción A",
+            "opción B",
+            "opción C"
+          ],
+          "correct": 0,
+          "why": "Por qué es correcta."
+        },
+        {
+          "type": "order",
+          "words": [
+            "palabra",
+            "otra",
+            "más"
+          ],
+          "answer": "palabra otra más",
+          "hint": "Pista breve."
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Lección 3",
+      "theory_content": "Explicación en español, 3-6 frases, con ejemplos en inglés.",
+      "theory_table": [
+        {
+          "label": "Estructura",
+          "value": "ejemplo en inglés"
+        }
+      ],
+      "practice_content": "Tarea corta para el estudiante (1-2 frases).",
+      "exercises": [
+        {
+          "type": "fill",
+          "instruction": "Completa la frase.",
+          "sentence": "She ___ (work) here.",
+          "answer": "works",
+          "hint": "Pista breve."
+        },
+        {
+          "type": "choice",
+          "q": "Pregunta",
+          "opts": [
+            "opción A",
+            "opción B",
+            "opción C"
+          ],
+          "correct": 0,
+          "why": "Por qué es correcta."
+        },
+        {
+          "type": "order",
+          "words": [
+            "palabra",
+            "otra",
+            "más"
+          ],
+          "answer": "palabra otra más",
+          "hint": "Pista breve."
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Lección 4",
+      "theory_content": "Explicación en español, 3-6 frases, con ejemplos en inglés.",
+      "theory_table": [
+        {
+          "label": "Estructura",
+          "value": "ejemplo en inglés"
+        }
+      ],
+      "practice_content": "Tarea corta para el estudiante (1-2 frases).",
+      "exercises": [
+        {
+          "type": "fill",
+          "instruction": "Completa la frase.",
+          "sentence": "She ___ (work) here.",
+          "answer": "works",
+          "hint": "Pista breve."
+        },
+        {
+          "type": "choice",
+          "q": "Pregunta",
+          "opts": [
+            "opción A",
+            "opción B",
+            "opción C"
+          ],
+          "correct": 0,
+          "why": "Por qué es correcta."
+        },
+        {
+          "type": "order",
+          "words": [
+            "palabra",
+            "otra",
+            "más"
+          ],
+          "answer": "palabra otra más",
+          "hint": "Pista breve."
+        }
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Pregunta 1",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    },
+    {
+      "question": "Pregunta 2",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    },
+    {
+      "question": "Pregunta 3",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    },
+    {
+      "question": "Pregunta 4",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    },
+    {
+      "question": "Pregunta 5",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    }
+  ],
+  "vocab": [
+    {
+      "english": "word1",
+      "spanish": "palabra1",
+      "example_sentence": "Example sentence with word1."
+    },
+    {
+      "english": "word2",
+      "spanish": "palabra2",
+      "example_sentence": "Example sentence with word2."
+    },
+    {
+      "english": "word3",
+      "spanish": "palabra3",
+      "example_sentence": "Example sentence with word3."
+    },
+    {
+      "english": "word4",
+      "spanish": "palabra4",
+      "example_sentence": "Example sentence with word4."
+    },
+    {
+      "english": "word5",
+      "spanish": "palabra5",
+      "example_sentence": "Example sentence with word5."
+    },
+    {
+      "english": "word6",
+      "spanish": "palabra6",
+      "example_sentence": "Example sentence with word6."
+    },
+    {
+      "english": "word7",
+      "spanish": "palabra7",
+      "example_sentence": "Example sentence with word7."
+    },
+    {
+      "english": "word8",
+      "spanish": "palabra8",
+      "example_sentence": "Example sentence with word8."
+    },
+    {
+      "english": "word9",
+      "spanish": "palabra9",
+      "example_sentence": "Example sentence with word9."
+    },
+    {
+      "english": "word10",
+      "spanish": "palabra10",
+      "example_sentence": "Example sentence with word10."
+    }
+  ]
+}

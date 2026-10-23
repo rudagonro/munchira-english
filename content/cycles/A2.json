@@ -1,0 +1,438 @@
+{
+  "level": "A2",
+  "title": "A2 · Elemental",
+  "duration_weeks": [
+    10,
+    12
+  ],
+  "modules": [
+    {
+      "order": 1,
+      "skill_type": "grammar",
+      "title": "Pasado simple y futuro con going to",
+      "status": "ready",
+      "outline": {
+        "topics": [
+          "Pasado simple: verbos regulares",
+          "Pasado simple: verbos irregulares",
+          "Negativas y preguntas con did",
+          "Futuro con going to"
+        ]
+      },
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Pasado simple: verbos regulares (-ed)",
+          "theory_content": "Usamos el pasado simple (past simple) para hablar de acciones terminadas en un momento del pasado: yesterday, last week, two days ago. En los verbos regulares se añade -ed al verbo base. Si el verbo termina en -e, solo se añade -d. Si termina en consonante + y, la y cambia a -ied. Si es un verbo corto terminado en consonante-vocal-consonante, se duplica la última consonante.",
+          "theory_table": [
+            {
+              "label": "Regla general",
+              "value": "work → worked, play → played"
+            },
+            {
+              "label": "Termina en -e",
+              "value": "live → lived, like → liked"
+            },
+            {
+              "label": "Consonante + y",
+              "value": "study → studied, try → tried"
+            },
+            {
+              "label": "Consonante-vocal-consonante",
+              "value": "stop → stopped, plan → planned"
+            }
+          ],
+          "practice_content": "Escribe tres frases sobre lo que hiciste ayer usando verbos regulares, por ejemplo: 'I walked to work and I studied English in the evening.'",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Escribe el verbo en pasado simple.",
+              "sentence": "Yesterday I ___ (walk) to school.",
+              "answer": "walked",
+              "hint": "walk es regular: walk + ed."
+            },
+            {
+              "type": "fill",
+              "instruction": "Escribe el verbo en pasado simple.",
+              "sentence": "She ___ (study) for the exam last night.",
+              "answer": "studied",
+              "hint": "Consonante + y → -ied."
+            },
+            {
+              "type": "choice",
+              "q": "They ___ football last Sunday.",
+              "opts": [
+                "play",
+                "played",
+                "plays"
+              ],
+              "correct": 1,
+              "why": "Last Sunday indica pasado, así que usamos played."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "We",
+                "watched",
+                "a",
+                "film",
+                "yesterday"
+              ],
+              "answer": "We watched a film yesterday",
+              "hint": "Sujeto + verbo en pasado + resto."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Pasado simple: verbos irregulares",
+          "theory_content": "Los verbos irregulares no siguen la regla -ed: cambian de forma y hay que memorizarlos. La forma del pasado es la misma para todos los sujetos (I went, she went, they went). Algunos de los más frecuentes en A2 aparecen en la tabla.",
+          "theory_table": [
+            {
+              "label": "go",
+              "value": "went"
+            },
+            {
+              "label": "have",
+              "value": "had"
+            },
+            {
+              "label": "see",
+              "value": "saw"
+            },
+            {
+              "label": "eat",
+              "value": "ate"
+            },
+            {
+              "label": "buy",
+              "value": "bought"
+            },
+            {
+              "label": "make",
+              "value": "made"
+            },
+            {
+              "label": "come",
+              "value": "came"
+            },
+            {
+              "label": "take",
+              "value": "took"
+            }
+          ],
+          "practice_content": "Cuenta tu último fin de semana con cuatro verbos irregulares de la tabla, por ejemplo: 'On Saturday I went to the market and I bought fruit.'",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Escribe el pasado del verbo.",
+              "sentence": "Last summer we ___ (go) to the beach.",
+              "answer": "went",
+              "hint": "go es irregular: went."
+            },
+            {
+              "type": "fill",
+              "instruction": "Escribe el pasado del verbo.",
+              "sentence": "He ___ (buy) a new phone yesterday.",
+              "answer": "bought",
+              "hint": "buy → bought."
+            },
+            {
+              "type": "choice",
+              "q": "I ___ a great film last night.",
+              "opts": [
+                "seen",
+                "saw",
+                "see"
+              ],
+              "correct": 1,
+              "why": "El pasado simple de see es saw; seen es participio."
+            },
+            {
+              "type": "order",
+              "words": [
+                "She",
+                "took",
+                "the",
+                "bus",
+                "to",
+                "work"
+              ],
+              "answer": "She took the bus to work",
+              "hint": "take → took."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Negativas y preguntas con did",
+          "theory_content": "Para negar y preguntar en pasado simple usamos el auxiliar did. Con did o didn't el verbo principal vuelve a su forma base, sin -ed y sin forma irregular. Negativa: sujeto + didn't + verbo base. Pregunta: Did + sujeto + verbo base? Respuesta corta: Yes, I did. / No, I didn't. La excepción es el verbo be (was/were), que no usa did.",
+          "theory_table": [
+            {
+              "label": "Afirmativa",
+              "value": "She worked yesterday."
+            },
+            {
+              "label": "Negativa",
+              "value": "She didn't work yesterday."
+            },
+            {
+              "label": "Pregunta",
+              "value": "Did she work yesterday?"
+            },
+            {
+              "label": "Respuesta corta",
+              "value": "Yes, she did. / No, she didn't."
+            }
+          ],
+          "practice_content": "Escribe una pregunta con Did para un compañero (por ejemplo: 'Did you watch TV last night?') y respóndela con una respuesta corta.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la negativa.",
+              "sentence": "I didn't ___ (see) him at the party.",
+              "answer": "see",
+              "hint": "Después de didn't va el verbo base: see, no saw."
+            },
+            {
+              "type": "choice",
+              "q": "___ you call your mother yesterday?",
+              "opts": [
+                "Do",
+                "Did",
+                "Were"
+              ],
+              "correct": 1,
+              "why": "Las preguntas en pasado simple empiezan con Did."
+            },
+            {
+              "type": "choice",
+              "q": "They didn't ___ the homework.",
+              "opts": [
+                "did",
+                "do",
+                "done"
+              ],
+              "correct": 1,
+              "why": "Tras didn't se usa el verbo base: do."
+            },
+            {
+              "type": "order",
+              "words": [
+                "Did",
+                "you",
+                "finish",
+                "the",
+                "report"
+              ],
+              "answer": "Did you finish the report",
+              "hint": "Did + sujeto + verbo base."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Futuro con going to",
+          "theory_content": "Usamos be + going to + verbo base para planes e intenciones, y para predicciones basadas en lo que vemos ahora. El verbo be cambia con el sujeto: am, is, are. Negativa: am not / isn't / aren't going to. Pregunta: Are you going to ...? Se suele usar con tomorrow, next week, this weekend.",
+          "theory_table": [
+            {
+              "label": "I",
+              "value": "I am going to travel next month."
+            },
+            {
+              "label": "He / She / It",
+              "value": "She is going to study tonight."
+            },
+            {
+              "label": "We / You / They",
+              "value": "They are going to move house."
+            },
+            {
+              "label": "Negativa",
+              "value": "He isn't going to come."
+            },
+            {
+              "label": "Pregunta",
+              "value": "Are you going to cook dinner?"
+            }
+          ],
+          "practice_content": "Escribe tres planes para este fin de semana con going to, por ejemplo: 'I am going to visit my grandparents.'",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa con am, is o are.",
+              "sentence": "We ___ going to have a picnic tomorrow.",
+              "answer": "are",
+              "hint": "We → are."
+            },
+            {
+              "type": "choice",
+              "q": "Look at those clouds! It ___ rain.",
+              "opts": [
+                "is going to",
+                "goes to",
+                "did"
+              ],
+              "correct": 0,
+              "why": "Predicción basada en evidencia presente: is going to."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa con la forma negativa.",
+              "sentence": "I ___ going to work on Saturday.",
+              "answer": "am not",
+              "hint": "I + am not."
+            },
+            {
+              "type": "order",
+              "words": [
+                "Are",
+                "you",
+                "going",
+                "to",
+                "study",
+                "tonight"
+              ],
+              "answer": "Are you going to study tonight",
+              "hint": "Are + sujeto + going to + verbo base."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "Yesterday I ___ to the supermarket.",
+          "options": [
+            "go",
+            "went",
+            "goed"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "She ___ her homework last night.",
+          "options": [
+            "finished",
+            "finish",
+            "finishing"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "___ they watch the match last Sunday?",
+          "options": [
+            "Do",
+            "Did",
+            "Does"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "We didn't ___ the news this morning.",
+          "options": [
+            "saw",
+            "see",
+            "seen"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "Tomorrow he ___ visit his cousins.",
+          "options": [
+            "is going to",
+            "going to",
+            "does going to"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "Which sentence is correct?",
+          "options": [
+            "He studyed all night.",
+            "He studied all night.",
+            "He studies all night yesterday."
+          ],
+          "correct_idx": 1
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "skill_type": "vocabulary",
+      "title": "Rutinas, compras y viajes",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Rutina diaria y horarios",
+          "Tiendas, precios y ropa",
+          "Transporte y direcciones",
+          "Familia y tiempo libre"
+        ],
+        "vocab_themes": [
+          "daily routines",
+          "shopping",
+          "travel",
+          "family",
+          "time"
+        ],
+        "target_words": 40
+      }
+    },
+    {
+      "order": 3,
+      "skill_type": "listening",
+      "title": "Conversaciones cotidianas",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "En la tienda",
+          "Preguntando direcciones",
+          "Reservando un viaje",
+          "Hablando de planes"
+        ],
+        "scenarios": [
+          "shop assistant & customer",
+          "tourist & local",
+          "travel agent & client",
+          "two friends making plans"
+        ],
+        "voices": [
+          "nova",
+          "onyx"
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "skill_type": "writing",
+      "title": "Emails y mensajes simples",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Mensaje corto a un amigo",
+          "Email para pedir información",
+          "Describir tu fin de semana",
+          "Invitación y respuesta"
+        ],
+        "writing_tasks": [
+          "60-80 words email",
+          "text message",
+          "short diary entry"
+        ]
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "after_module_order": 2,
+      "title": "Checkpoint intermedio",
+      "min_score_to_pass": 70
+    },
+    {
+      "after_module_order": 4,
+      "title": "Checkpoint final",
+      "min_score_to_pass": 70
+    }
+  ]
+}

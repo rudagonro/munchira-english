@@ -12,3 +12,8 @@ export async function fetchStudentDetail(studentId) {
   const { data, error } = await supabase.rpc('teacher_student_detail', { p_student: studentId })
   return { data, error }
 }
+
+export async function fetchContentStatus() {
+  const { data, error } = await supabase.rpc('content_status')
+  return { data: data ?? [], error }
+}

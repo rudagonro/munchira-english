@@ -1,0 +1,80 @@
+{
+  "level": "B2",
+  "title": "B2 · Intermedio alto",
+  "duration_weeks": [
+    14,
+    16
+  ],
+  "modules": [
+    {
+      "order": 1,
+      "skill_type": "grammar",
+      "title": "Estructuras complejas y conectores avanzados",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Condicionales segundo y tercero",
+          "Estilo indirecto",
+          "Cláusulas de relativo",
+          "Wish e if only",
+          "Conectores avanzados"
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "skill_type": "vocabulary",
+      "title": "Vocabulario académico y profesional",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Negocios y reuniones",
+          "Tecnología y sociedad",
+          "Medio ambiente",
+          "Collocations académicas"
+        ],
+        "target_words": 80
+      }
+    },
+    {
+      "order": 3,
+      "skill_type": "reading",
+      "title": "Reading crítico de artículos de opinión",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Idea principal y tesis",
+          "Inferencias y tono",
+          "Argumentos y evidencia",
+          "Sesgo y fuentes"
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "skill_type": "writing",
+      "title": "Ensayos argumentativos",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Estructura del ensayo",
+          "Tesis y párrafos",
+          "Contraargumentos",
+          "Revisión y edición"
+        ]
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "after_module_order": 2,
+      "title": "Checkpoint intermedio",
+      "min_score_to_pass": 70
+    },
+    {
+      "after_module_order": 4,
+      "title": "Checkpoint final",
+      "min_score_to_pass": 70
+    }
+  ]
+}

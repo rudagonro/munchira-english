@@ -1547,3 +1547,11 @@ button.tp-kpi:hover, .tp-kpi.on { border-color: var(--purple); background: var(-
   .tp-mini { grid-template-columns: 1fr 40px; }
   .tp-mini-label { grid-column: 1 / -1; }
 }
+
+.tp-content { list-style: none; display: grid; gap: 10px; margin-top: 12px; }
+.tp-content > li { border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; }
+.tp-content-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.tp-content-row .tp-badge { margin-left: auto; }
+.tp-content details { margin-top: 8px; font-size: 0.85rem; }
+.tp-content summary { cursor: pointer; color: var(--purple); font-weight: 600; min-height: 32px; }
+.tp-problems { margin: 6px 0 0 18px; display: grid; gap: 4px; color: var(--text-muted); }

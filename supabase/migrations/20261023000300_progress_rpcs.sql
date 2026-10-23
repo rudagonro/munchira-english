@@ -198,9 +198,11 @@ begin
       'min_score_to_pass', v_cp.min_score_to_pass, 'passed', v_cp_passed);
   end if;
 
-  -- Cycle is done when every module is completed and every checkpoint passed.
+  -- Cycle is done when it has no draft modules, every module is completed and
+  -- every checkpoint passed.
   v_cycle_done :=
     exists (select 1 from public.modules where cycle_id = v_enrollment.cycle_id)
+    and not exists (select 1 from public.modules where cycle_id = v_enrollment.cycle_id and not published)
     and not exists (
       select 1 from public.modules m
        where m.cycle_id = v_enrollment.cycle_id

@@ -1,0 +1,80 @@
+{
+  "level": "B1",
+  "title": "B1 · Intermedio",
+  "duration_weeks": [
+    12,
+    14
+  ],
+  "modules": [
+    {
+      "order": 1,
+      "skill_type": "grammar",
+      "title": "Condicionales y voz pasiva",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Present perfect vs past simple",
+          "Condicionales cero y primero",
+          "Voz pasiva en presente y pasado",
+          "Verbos modales de obligación y consejo",
+          "Comparativos y superlativos avanzados"
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "skill_type": "vocabulary",
+      "title": "Vocabulario abstracto e idiomático básico",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Trabajo y carrera",
+          "Salud y bienestar",
+          "Opiniones y sentimientos",
+          "Phrasal verbs frecuentes"
+        ],
+        "target_words": 60
+      }
+    },
+    {
+      "order": 3,
+      "skill_type": "listening",
+      "title": "Noticias y podcasts breves",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Noticias locales",
+          "Entrevistas cortas",
+          "Podcast sobre hábitos",
+          "Anuncios y mensajes de voz"
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "skill_type": "writing",
+      "title": "Opinión estructurada",
+      "status": "outline",
+      "outline": {
+        "topics": [
+          "Conectores de contraste y causa",
+          "Párrafo de opinión",
+          "Email formal básico",
+          "Reseña breve"
+        ]
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "after_module_order": 2,
+      "title": "Checkpoint intermedio",
+      "min_score_to_pass": 70
+    },
+    {
+      "after_module_order": 4,
+      "title": "Checkpoint final",
+      "min_score_to_pass": 70
+    }
+  ]
+}

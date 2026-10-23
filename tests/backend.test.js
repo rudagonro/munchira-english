@@ -444,3 +444,147 @@ test('teacher_student_detail returns the drill-down and enforces assignment', as
     await assert.rejects(() => c.query('select public.teacher_student_detail($1)', [teacher]), /student_not_found/)
   })
 })
+
+// ------------------------------------------------------------- content pipeline
+import { buildCycleSql } from '../content/lib/sql.js'
+
+const a2File = JSON.parse(readFileSync(new URL('../content/cycles/A2.json', import.meta.url), 'utf8'))
+
+/** A complete, publishable cycle built from the real A2 module + minimal siblings. */
+function completeCycle(level = 'B1') {
+  const grammar = structuredClone(a2File.modules[0])
+  const sibling = (order, skill, extra = {}) => ({
+    order, skill_type: skill, title: `Módulo ${order}`, status: 'ready',
+    lessons: [1, 2, 3, 4].map((n) => ({
+      order: n, title: `L${n}`, theory_content: 't', practice_content: 'p',
+      ...(skill === 'listening' ? { dialogue_turns: [{ speaker: 'A', voice: 'nova', text: 'Hello there' }] } : {}),
+    })),
+    quiz: [1, 2, 3, 4, 5].map((n) => ({ question: `Q${n}`, options: ['a', 'b'], correct_idx: 0 })),
+    ...extra,
+  })
+  return {
+    level, title: `${level} · Prueba`, duration_weeks: [12, 14],
+    modules: [
+      { ...grammar, order: 1 },
+      sibling(2, 'vocabulary', { vocab: Array.from({ length: 10 }, (_, i) => ({ english: `w${i}`, spanish: `p${i}`, example_sentence: `ex ${i}` })) }),
+      sibling(3, 'listening'),
+      sibling(4, 'writing'),
+    ],
+    checkpoints: [{ after_module_order: 4, title: 'Final', min_score_to_pass: 70 }],
+  }
+}
+
+test('seeded content is a draft: invisible to students, visible to staff', async () => {
+  const db = await createDb()
+  const student = await addUser(db, { email: 's@example.com' })
+  const teacher = await addUser(db, { email: 't@example.com', role: 'teacher' })
+  await db.exec(buildCycleSql(a2File))
+  const seeded = (await db.query("select published from public.modules where order_index = 1")).rows
+  assert.deepEqual(seeded, [{ published: false }])
+  assert.equal((await db.query('select count(*)::int as n from public.lessons')).rows[0].n, 4)
+  assert.equal((await db.query('select count(*)::int as n from public.quiz_questions')).rows[0].n, 6)
+
+  await asUser(db, student, async (c) => {
+    for (const t of ['modules', 'lessons']) assert.equal((await c.query(`select id from public.${t}`)).rows.length, 0, t)
+    assert.equal((await c.query('select id from public.quiz_questions')).rows.length, 0)
+    assert.equal((await c.query('select id from public.cycles')).rows.length, 1)
+  })
+  await asUser(db, teacher, async (c) => {
+    assert.equal((await c.query('select id from public.modules')).rows.length, 1)
+    assert.equal((await c.query('select id from public.lessons')).rows.length, 4)
+  })
+})
+
+test('seeding is idempotent for drafts and refuses to overwrite published modules', async () => {
+  const db = await createDb()
+  await db.exec(buildCycleSql(a2File))
+  await db.exec(buildCycleSql(a2File))
+  assert.equal((await db.query('select count(*)::int as n from public.lessons')).rows[0].n, 4)
+  assert.equal((await db.query('select count(*)::int as n from public.modules')).rows[0].n, 1)
+  await db.query('update public.modules set published = true')
+  await assert.rejects(() => db.exec(buildCycleSql(a2File)), /module_published/)
+  await db.exec('rollback') // the script's own begin; stays open after an error, like in psql
+  assert.equal((await db.query('select count(*)::int as n from public.lessons')).rows[0].n, 4)
+})
+
+test('readiness lists exactly what is missing and publishing is all-or-nothing', async () => {
+  const db = await createDb()
+  const admin = await addUser(db, { email: 'a@example.com', role: 'admin' })
+  const teacher = await addUser(db, { email: 't@example.com', role: 'teacher' })
+  const student = await addUser(db, { email: 's@example.com' })
+  await db.exec(buildCycleSql(a2File))
+
+  const problems = (await db.query("select problem from public.content_readiness('A2')")).rows.map((r) => r.problem)
+  assert.ok(problems.some((p) => p.includes('faltan módulos')))
+  assert.ok(problems.some((p) => p.includes('falta el checkpoint final')), 'only module 1 exists and has no checkpoint after it')
+
+  await asUser(db, admin, async (c) => {
+    const result = (await c.query("select public.publish_cycle('A2') as r")).rows[0].r
+    assert.equal(result.published, false)
+    assert.ok(result.problems.length > 0)
+  })
+  assert.equal((await db.query('select count(*)::int as n from public.modules where published')).rows[0].n, 0)
+
+  await asUser(db, teacher, async (c) => {
+    const rows = (await c.query('select * from public.content_status()')).rows
+    assert.equal(rows[0].total_modules, 1)
+    await assert.rejects(() => c.query("select public.publish_cycle('A2')"), /forbidden/)
+  })
+  await asUser(db, student, async (c) => {
+    await assert.rejects(() => c.query('select * from public.content_status()'), /forbidden/)
+    await assert.rejects(() => c.query("select * from public.content_readiness('A2')"), /forbidden/)
+  })
+})
+
+test('a complete cycle publishes, becomes visible, and can be taken back', async () => {
+  const db = await createDb()
+  const admin = await addUser(db, { email: 'a@example.com', role: 'admin' })
+  const student = await addUser(db, { email: 's@example.com' })
+  await db.exec(buildCycleSql(completeCycle('B1')))
+  assert.deepEqual((await db.query("select problem from public.content_readiness('B1')")).rows, [])
+
+  await asUser(db, admin, async (c) => {
+    assert.equal((await c.query("select public.publish_cycle('B1') as r")).rows[0].r.published, true)
+  })
+  await asUser(db, student, async (c) => {
+    assert.equal((await c.query('select id from public.modules')).rows.length, 4)
+    assert.equal((await c.query('select id from public.lessons')).rows.length, 16)
+  })
+  await asUser(db, admin, async (c) => { await c.query("select public.unpublish_cycle('B1')") })
+  await asUser(db, student, async (c) => {
+    assert.equal((await c.query('select id from public.modules')).rows.length, 0)
+  })
+})
+
+test('readiness catches broken quizzes, short vocab and silent listening lessons', async () => {
+  const db = await createDb()
+  const cycle = completeCycle('B2')
+  cycle.modules[1].vocab = cycle.modules[1].vocab.slice(0, 3)
+  cycle.modules[2].lessons[0].dialogue_turns = undefined
+  cycle.modules[3].quiz[0].correct_idx = 5
+  cycle.checkpoints = []
+  // seed through SQL directly: the JS validator would reject this content earlier
+  await db.query("select public.seed_cycle('B2', 'B2', 14, 16, '[]'::jsonb)")
+  for (const m of cycle.modules) {
+    await db.query('select public.seed_module($1, $2, $3::jsonb)', ['B2', m.order, JSON.stringify(m)])
+  }
+  const problems = (await db.query("select problem from public.content_readiness('B2')")).rows.map((r) => r.problem)
+  assert.ok(problems.some((p) => p.includes('faltan palabras')), problems.join('\n'))
+  assert.ok(problems.some((p) => p.includes('sin audio_text ni dialogue_turns')))
+  assert.ok(problems.some((p) => p.includes('inválidas')))
+  assert.ok(problems.some((p) => p.includes('falta el checkpoint final')))
+})
+
+test('a cycle with draft modules never completes, even if the visible ones are done', async () => {
+  const db = await createDb()
+  const student = await addUser(db, { email: 's@example.com' })
+  const a1 = await seedCycle(db, { level: 'A1', modules: 2 })
+  await seedCycle(db, { level: 'A2', modules: 1 })
+  await db.query('update public.modules set published = false where id = $1', [a1.moduleIds[1]])
+  await asUser(db, student, async (c) => {
+    await diagnose(c)
+    const r = await submit(c, a1.moduleIds[0], await answers(db, a1.moduleIds[0], { correct: 3 }))
+    assert.equal(r.cycle_completed, false)
+    assert.equal(r.advanced, false)
+  })
+})
