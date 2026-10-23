@@ -354,3 +354,93 @@ test('complete_lesson records progress once, only for unlocked lessons of the ac
     await assert.rejects(() => c.query('insert into public.lesson_progress (user_id, lesson_id) values ($1, $2)', [student, l2]))
   })
 })
+
+// ------------------------------------------------------------ teacher dashboard
+async function teacherSetup() {
+  const ctx = await setup({ modules: 2, checkpointAfter: [1] })
+  const teacher = await addUser(ctx.db, { email: 't@example.com', role: 'teacher', metadata: { full_name: 'Prof T' } })
+  const admin = await addUser(ctx.db, { email: 'a@example.com', role: 'admin' })
+  const mine = ctx.student
+  const unassigned = await addUser(ctx.db, { email: 'u@example.com', metadata: { full_name: 'Unassigned' } })
+  await ctx.db.query('insert into public.teacher_students values ($1, $2)', [teacher, mine])
+  return { ...ctx, teacher, admin, unassigned }
+}
+
+test('teacher_overview is limited to assigned students (admins see all, students are refused)', async () => {
+  const { db, student, teacher, admin, unassigned } = await teacherSetup()
+  const ids = (uid) => asUser(db, uid, async (c) =>
+    (await c.query('select student_id from public.teacher_overview()')).rows.map((r) => r.student_id).sort())
+  assert.deepEqual(await ids(teacher), [student])
+  assert.deepEqual(await ids(admin), [student, unassigned].sort())
+  await asUser(db, student, async (c) => {
+    await assert.rejects(() => c.query('select * from public.teacher_overview()'), /forbidden/)
+  })
+  await asAnon(db, async (c) => {
+    await assert.rejects(() => c.query('select * from public.teacher_overview()'))
+  })
+})
+
+test('teacher_overview aggregates progress, scores, vocabulary and blocked checkpoints', async () => {
+  const { db, student, teacher, a1 } = await teacherSetup()
+  await db.query("insert into public.vocab_items (module_id, order_index, english, spanish) values ($1, 1, 'cat', 'gato'), ($1, 2, 'dog', 'perro')", [a1.moduleIds[0]])
+  const words = (await db.query('select id from public.vocab_items order by english')).rows.map((r) => r.id)
+  await asUser(db, student, async (c) => {
+    await diagnose(c)
+    await submit(c, a1.moduleIds[0], await answers(db, a1.moduleIds[0], { correct: 1 }))   // 33.33% -> checkpoint fails
+    await c.query('select * from public.record_vocab_review($1, true)', [words[0]])
+    await c.query('select * from public.record_vocab_review($1, false)', [words[1]])
+  })
+  await db.query("update public.word_progress set next_review = now() - interval '1 hour' where vocab_item_id = $1", [words[1]])
+
+  const row = await asUser(db, teacher, async (c) => (await c.query('select * from public.teacher_overview()')).rows[0])
+  assert.equal(row.cefr_level, 'A1')
+  assert.equal(row.modules_completed, 1)
+  assert.equal(row.modules_total, 2)
+  assert.equal(Number(row.avg_quiz_score), 33.3)
+  assert.equal(row.weakest_skill, 'grammar')
+  assert.equal(row.words_studied, 2)
+  assert.equal(row.words_due, 1)
+  assert.equal(row.checkpoint_blocked, true)
+  assert.equal(row.last_diagnostic_level, 'A1')
+  assert.ok(row.last_activity)
+})
+
+test('students without any activity show up with empty metrics, not errors', async () => {
+  const { db, student, teacher } = await teacherSetup()
+  const row = await asUser(db, teacher, async (c) => (await c.query('select * from public.teacher_overview()')).rows[0])
+  assert.equal(row.student_id, student)
+  assert.equal(row.cefr_level, null)
+  assert.equal(row.modules_completed, 0)
+  assert.equal(row.checkpoint_blocked, false)
+  assert.equal(row.last_activity, null)
+})
+
+test('teacher_student_detail returns the drill-down and enforces assignment', async () => {
+  const { db, student, teacher, admin, unassigned, a1 } = await teacherSetup()
+  await asUser(db, student, async (c) => {
+    await diagnose(c)
+    await submit(c, a1.moduleIds[0], await answers(db, a1.moduleIds[0], { correct: 3 }))
+  })
+  const detail = await asUser(db, teacher, async (c) =>
+    (await c.query('select public.teacher_student_detail($1) as d', [student])).rows[0].d)
+  assert.equal(detail.student.id, student)
+  assert.equal(detail.enrollment.cefr_level, 'A1')
+  assert.equal(detail.modules.length, 2)
+  assert.deepEqual(detail.modules.map((m) => m.status), ['completed', 'pending'])
+  assert.equal(detail.checkpoints.length, 1)
+  assert.equal(detail.checkpoints[0].attempts[0].passed, true)
+  assert.equal(detail.diagnostics.length, 1)
+  assert.equal(detail.skills[0].skill_type, 'grammar')
+  assert.ok(detail.recent.some((r) => r.kind === 'module'))
+
+  await asUser(db, teacher, async (c) => {
+    await assert.rejects(() => c.query('select public.teacher_student_detail($1)', [unassigned]), /forbidden/)
+  })
+  await asUser(db, student, async (c) => {
+    await assert.rejects(() => c.query('select public.teacher_student_detail($1)', [student]), /forbidden/)
+  })
+  await asUser(db, admin, async (c) => {
+    assert.ok((await c.query('select public.teacher_student_detail($1)', [unassigned])).rows[0].teacher_student_detail)
+    await assert.rejects(() => c.query('select public.teacher_student_detail($1)', [teacher]), /student_not_found/)
+  })
+})

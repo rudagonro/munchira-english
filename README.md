@@ -59,4 +59,4 @@ Configura Site URL y las Redirect URLs permitidas en Supabase Auth para desarrol
 - `src/data`: banco diagnóstico y reglas de desbloqueo.
 - `tests`: regresiones del diagnóstico y la progresión.
 
-El panel docente es un placeholder. La evaluación de escritura es heurística y el resultado CEFR es orientativo. Consulta `REVIEW_2026-10-22.md` para los hallazgos y límites de la revisión actual. Los informes anteriores se conservan como contexto histórico y no prueban el estado actual de la infraestructura.
+El panel docente (`/teacher`) muestra KPIs, filtros, ordenación, distribución por nivel, detalle por estudiante y exportación CSV; solo ve a los estudiantes asignados en `teacher_students` (los admins ven a todos). La evaluación de escritura es heurística y el resultado CEFR es orientativo. Consulta `REVIEW_2026-10-22.md` para los hallazgos y límites de la revisión actual. Los informes anteriores se conservan como contexto histórico y no prueban el estado actual de la infraestructura.
