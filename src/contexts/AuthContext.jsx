@@ -197,8 +197,31 @@ export function AuthProvider({ children }) {
 
     if (vocabError) return { data: null, error: vocabError }
 
-    return { data: { module: moduleRow, lessons, questions, vocabItems }, error: null }
-  }, [])
+    // Progreso propio (el filtro por usuario es necesario: docentes y admins
+    // también pueden leer filas de otros estudiantes por RLS).
+    const userId = session?.user?.id
+    const lessonIds = lessons.map((l) => l.id)
+    const vocabIds = vocabItems.map((v) => v.id)
+    const [lessonProgressRes, wordProgressRes] = await Promise.all([
+      lessonIds.length
+        ? supabase.from('lesson_progress').select('lesson_id').eq('user_id', userId).in('lesson_id', lessonIds)
+        : { data: [], error: null },
+      vocabIds.length
+        ? supabase.from('word_progress').select('vocab_item_id, next_review').eq('user_id', userId).in('vocab_item_id', vocabIds)
+        : { data: [], error: null },
+    ])
+    if (lessonProgressRes.error) return { data: null, error: lessonProgressRes.error }
+    if (wordProgressRes.error) return { data: null, error: wordProgressRes.error }
+
+    return {
+      data: {
+        module: moduleRow, lessons, questions, vocabItems,
+        completedLessonIds: lessonProgressRes.data.map((r) => r.lesson_id),
+        wordProgress: Object.fromEntries(wordProgressRes.data.map((r) => [r.vocab_item_id, r.next_review])),
+      },
+      error: null,
+    }
+  }, [session?.user?.id])
 
   /**
    * Envía las respuestas del quiz al servidor (RPC submit_module_quiz). El
@@ -215,6 +238,27 @@ export function AuthProvider({ children }) {
     return { data, error }
   }
 
+  /** Registra un repaso de vocabulario; el servidor calcula la próxima fecha (SM-2 simplificado). */
+  async function recordVocabReview(vocabItemId, known) {
+    const { data, error } = await supabase.rpc('record_vocab_review', {
+      p_vocab_item_id: vocabItemId,
+      p_known: known,
+    })
+    return { data, error }
+  }
+
+  /** Palabras ya estudiadas cuyo repaso toca hoy. */
+  const getDueVocab = useCallback(async (limit = 20) => {
+    const { data, error } = await supabase.rpc('get_due_vocab', { p_limit: limit })
+    return { data: data ?? [], error }
+  }, [])
+
+  /** Marca una lección como vista; el servidor valida que esté desbloqueada. */
+  async function completeLesson(lessonId) {
+    const { error } = await supabase.rpc('complete_lesson', { p_lesson_id: lessonId })
+    return { error }
+  }
+
   const value = {
     session,
     user: session?.user ?? null,
@@ -229,6 +273,9 @@ export function AuthProvider({ children }) {
     getActiveCycleData,
     getModuleContent,
     submitModuleQuiz,
+    recordVocabReview,
+    getDueVocab,
+    completeLesson,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from 'react'
 
-export default function VocabFlashcard({ vocabItems, onComplete }) {
+export default function VocabFlashcard({ vocabItems, onComplete, onReview, doneLabel = 'Empezar las lecciones →' }) {
   const [queue, setQueue] = useState(() => vocabItems.map((v, i) => ({ ...v, _key: i })))
   const [repeatQueue, setRepeatQueue] = useState([])
   const [currentIdx, setCurrentIdx] = useState(0)
@@ -9,6 +9,7 @@ export default function VocabFlashcard({ vocabItems, onComplete }) {
   const [known, setKnown] = useState(0)
   const [animating, setAnimating] = useState(false)
   const [exitDir, setExitDir] = useState(null) // 'right' | 'left'
+  const [saveWarning, setSaveWarning] = useState(false)
   const total = vocabItems.length
   const cardRef = useRef(null)
 
@@ -19,6 +20,12 @@ export default function VocabFlashcard({ vocabItems, onComplete }) {
     if (animating) return
     setAnimating(true)
     setExitDir(dir)
+    // El repaso se guarda en segundo plano: un fallo de red no interrumpe la práctica.
+    if (onReview) {
+      Promise.resolve(onReview(current, wasCorrect))
+        .then((res) => { if (res?.error) throw res.error })
+        .catch(() => setSaveWarning(true))
+    }
 
     setTimeout(() => {
       const nextRepeat = wasCorrect ? repeatQueue : [...repeatQueue, current]
@@ -43,7 +50,7 @@ export default function VocabFlashcard({ vocabItems, onComplete }) {
       setAnimating(false)
       cardRef.current?.focus()
     }, 320)
-  }, [animating, currentIdx, queue, repeatQueue, current])
+  }, [animating, currentIdx, queue, repeatQueue, current, onReview])
 
   function handleKeyDown(e) {
     if (!flipped || animating) return
@@ -60,7 +67,7 @@ export default function VocabFlashcard({ vocabItems, onComplete }) {
           {total} {total === 1 ? 'palabra' : 'palabras'} en {round} {round === 1 ? 'ronda' : 'rondas'}.
         </p>
         <button className="btn-primary fc-done-btn" onClick={onComplete}>
-          Empezar las lecciones →
+          {doneLabel}
         </button>
       </div>
     )
@@ -137,6 +144,11 @@ export default function VocabFlashcard({ vocabItems, onComplete }) {
         <p className="fc-flip-hint">Toca la tarjeta para revelar la traducción (teclado: Enter o Espacio)</p>
       )}
       {flipped && <p className="fc-flip-hint">Teclado: ← repasar · → ¡lo sé!</p>}
+      {saveWarning && (
+        <p className="fc-flip-hint" role="status">
+          No se pudo guardar parte de tu repaso. Sigue practicando; se reintentará la próxima vez.
+        </p>
+      )}
       <p className="sr-only" aria-live="polite">{known} de {total} palabras dominadas.</p>
     </div>
   )

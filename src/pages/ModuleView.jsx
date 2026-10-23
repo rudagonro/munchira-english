@@ -24,7 +24,7 @@ export default function ModuleView() {
 function ModuleContent() {
   const { moduleId } = useParams()
   const navigate = useNavigate()
-  const { getModuleContent, submitModuleQuiz, getActiveCycleData } = useAuth()
+  const { getModuleContent, submitModuleQuiz, getActiveCycleData, recordVocabReview, completeLesson } = useAuth()
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -33,6 +33,8 @@ function ModuleContent() {
 
   const [stage, setStage] = useState('lessons') // vocab? -> lessons -> quiz -> result
   const [lessonIdx, setLessonIdx] = useState(0)
+  const [completedLessons, setCompletedLessons] = useState(() => new Set())
+  const [dueVocab, setDueVocab] = useState([])
   const [answers, setAnswers] = useState({})
   const [audioLoading, setAudioLoading] = useState(false)
   const [audioError, setAudioError] = useState('')
@@ -64,8 +66,16 @@ function ModuleContent() {
         if (!data.lessons.length || !data.questions.length) {
           throw new Error('El contenido de este módulo todavía no está disponible.')
         }
+        const now = Date.now()
+        // Solo se practican las palabras nuevas o cuya fecha de repaso ya llegó.
+        const due = data.vocabItems.filter((v) => !data.wordProgress[v.id] || new Date(data.wordProgress[v.id]).getTime() <= now)
+        const done = new Set(data.completedLessonIds)
+        const firstPending = data.lessons.findIndex((l) => !done.has(l.id))
         setContent(data)
-        setStage(data.module.skill_type === 'vocabulary' && data.vocabItems.length ? 'vocab' : 'lessons')
+        setDueVocab(due)
+        setCompletedLessons(done)
+        setLessonIdx(firstPending === -1 ? 0 : firstPending)
+        setStage(data.module.skill_type === 'vocabulary' && due.length ? 'vocab' : 'lessons')
         setEnrollmentInfo(cycle.enrollment)
       } catch (error) {
         if (active) setError(error.message || 'No se pudo cargar el módulo.')
@@ -139,6 +149,14 @@ function ModuleContent() {
     }
   }
 
+  function markLessonDone(lessonId) {
+    if (completedLessons.has(lessonId)) return
+    setCompletedLessons((prev) => new Set(prev).add(lessonId))
+    void completeLesson(lessonId).then(({ error }) => {
+      if (error) console.warn('No se pudo guardar el progreso de la lección:', error.message)
+    })
+  }
+
   function selectAnswer(questionId, idx) {
     setAnswers((prev) => ({ ...prev, [questionId]: idx }))
   }
@@ -199,10 +217,17 @@ function ModuleContent() {
           <div className="lesson-module-chip">{module.title}</div>
           <h1 className="lesson-title" style={{ fontSize: '1.5rem' }}>Vocabulario del módulo</h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: 8 }}>
-            Aprende estas {vocabItems.length} palabras antes de las lecciones. Toca cada tarjeta para verla.
+            {dueVocab.length === vocabItems.length
+              ? `Aprende estas ${vocabItems.length} palabras antes de las lecciones.`
+              : `Repasa estas ${dueVocab.length} de ${vocabItems.length} palabras: el resto ya está al día.`}
+            {' '}Toca cada tarjeta para verla.
           </p>
         </div>
-        <VocabFlashcard vocabItems={vocabItems} onComplete={() => setStage('lessons')} />
+        <VocabFlashcard
+          vocabItems={dueVocab}
+          onReview={(item, known) => recordVocabReview(item.id, known)}
+          onComplete={() => setStage('lessons')}
+        />
       </div>
     )
   }
@@ -231,7 +256,7 @@ function ModuleContent() {
               {lessons.map((_, i) => (
                 <div
                   key={i}
-                  className={`lesson-dot ${i === lessonIdx ? 'active' : i < lessonIdx ? 'done' : ''}`}
+                  className={`lesson-dot ${i === lessonIdx ? 'active' : completedLessons.has(lessons[i].id) ? 'done' : ''}`}
                 />
               ))}
             </div>
@@ -320,6 +345,7 @@ function ModuleContent() {
           <button
             className="btn-primary lesson-nav-next"
             onClick={() => {
+              markLessonDone(lesson.id)
               if (isLastLesson) setStage('quiz')
               else setLessonIdx(lessonIdx + 1)
             }}

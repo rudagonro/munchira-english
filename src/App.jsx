@@ -10,6 +10,7 @@ import TeacherPanel from './pages/TeacherPanel'
 import Diagnostic from './pages/Diagnostic'
 import CycleModules from './pages/CycleModules'
 import ModuleView from './pages/ModuleView'
+import Review from './pages/Review'
 
 function AppRoutes() {
   const location = useLocation()
@@ -52,6 +53,15 @@ function AppRoutes() {
           element={
             <ProtectedRoute>
               <Layout><ModuleView /></Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/review"
+          element={
+            <ProtectedRoute>
+              <Layout><Review /></Layout>
             </ProtectedRoute>
           }
         />

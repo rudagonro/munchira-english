@@ -262,3 +262,95 @@ test('students only see their own progress rows', async () => {
     }
   })
 })
+
+// ------------------------------------------------- vocabulary review + lessons
+async function vocabSetup() {
+  const ctx = await setup()
+  const [word] = (await ctx.db.query(
+    "insert into public.vocab_items (module_id, order_index, english, spanish, example_sentence) values ($1, 1, 'hello', 'hola', 'Hello, Ana.') returning id",
+    [ctx.a1.moduleIds[0]])).rows
+  return { ...ctx, word: word.id }
+}
+const review = (c, word, known) =>
+  c.query('select * from public.record_vocab_review($1, $2)', [word, known]).then((r) => r.rows[0])
+
+test('spaced repetition: intervals grow on success and reset on failure', async () => {
+  const { db, student, word } = await vocabSetup()
+  await asUser(db, student, async (c) => {
+    const r1 = await review(c, word, true)
+    assert.deepEqual([r1.repetitions, r1.interval_days], [1, 1])
+    const r2 = await review(c, word, true)
+    assert.deepEqual([r2.repetitions, r2.interval_days], [2, 6])
+    const r3 = await review(c, word, true)
+    assert.equal(r3.repetitions, 3)
+    assert.equal(r3.interval_days, Math.round(6 * Number(r2.ease_factor)))
+    assert.ok(Number(r3.ease_factor) > 2.5)
+    const lapse = await review(c, word, false)
+    assert.deepEqual([lapse.repetitions, lapse.interval_days, lapse.incorrect_count], [0, 0, 1])
+    assert.ok(Number(lapse.ease_factor) < Number(r3.ease_factor))
+    const again = await review(c, word, true)
+    assert.deepEqual([again.repetitions, again.interval_days], [1, 1])
+    assert.equal(again.correct_count, 4)
+  })
+})
+
+test('ease factor stays within SM-2 bounds', async () => {
+  const { db, student, word } = await vocabSetup()
+  await asUser(db, student, async (c) => {
+    let last
+    for (let i = 0; i < 12; i++) last = await review(c, word, false)
+    assert.equal(Number(last.ease_factor), 1.3)
+    for (let i = 0; i < 60; i++) last = await review(c, word, true)
+    assert.equal(Number(last.ease_factor), 3)
+    assert.equal(last.interval_days, 365)
+  })
+})
+
+test('due list contains only studied words that are due, for the caller only', async () => {
+  const { db, student, word } = await vocabSetup()
+  const other = await addUser(db, { email: 'o@example.com' })
+  await asUser(db, student, async (c) => {
+    assert.equal((await c.query('select * from public.get_due_vocab()')).rows.length, 0)
+    await review(c, word, true)                       // due in a day
+    assert.equal((await c.query('select * from public.get_due_vocab()')).rows.length, 0)
+    await review(c, word, false)                      // lapse: due in 10 minutes
+    assert.equal((await c.query('select * from public.get_due_vocab()')).rows.length, 0)
+  })
+  await db.query("update public.word_progress set next_review = now() - interval '1 minute'")
+  await asUser(db, student, async (c) => {
+    const due = (await c.query('select * from public.get_due_vocab(5)')).rows
+    assert.deepEqual(due.map((d) => d.english), ['hello'])
+  })
+  await asUser(db, other, async (c) => {
+    assert.equal((await c.query('select * from public.get_due_vocab()')).rows.length, 0)
+    assert.equal((await c.query('select * from public.word_progress')).rows.length, 0)
+  })
+})
+
+test('vocabulary progress cannot be written directly or for unknown words', async () => {
+  const { db, student, word } = await vocabSetup()
+  await asUser(db, student, async (c) => {
+    await assert.rejects(() => c.query(
+      "insert into public.word_progress (user_id, vocab_item_id, interval_days) values ($1, $2, 999)", [student, word]))
+    await assert.rejects(() => c.query(
+      "select * from public.record_vocab_review('00000000-0000-0000-0000-000000000000', true)"), /vocab_item_not_found/)
+    await assert.rejects(() => c.query('select * from public.record_vocab_review($1, null)', [word]), /invalid_grade/)
+  })
+})
+
+test('complete_lesson records progress once, only for unlocked lessons of the active cycle', async () => {
+  const { db, student, a1, a2 } = await setup()
+  const lessonOf = async (moduleId) =>
+    (await db.query('select id from public.lessons where module_id = $1', [moduleId])).rows[0].id
+  const [l1, l2, lA2] = [await lessonOf(a1.moduleIds[0]), await lessonOf(a1.moduleIds[1]), await lessonOf(a2.moduleIds[0])]
+  await asUser(db, student, async (c) => {
+    await assert.rejects(() => c.query('select public.complete_lesson($1)', [l1]), /lesson_not_in_cycle/)
+    await diagnose(c)
+    await c.query('select public.complete_lesson($1)', [l1])
+    await c.query('select public.complete_lesson($1)', [l1])
+    assert.equal((await c.query('select * from public.lesson_progress')).rows.length, 1)
+    await assert.rejects(() => c.query('select public.complete_lesson($1)', [l2]), /module_locked/)
+    await assert.rejects(() => c.query('select public.complete_lesson($1)', [lA2]), /lesson_not_in_cycle/)
+    await assert.rejects(() => c.query('insert into public.lesson_progress (user_id, lesson_id) values ($1, $2)', [student, l2]))
+  })
+})

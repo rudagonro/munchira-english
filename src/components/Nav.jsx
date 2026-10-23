@@ -18,6 +18,7 @@ export default function Nav() {
         </Link>
         <nav className="nav-links" aria-label="Principal">
           <NavLink to="/cycle">Mis módulos</NavLink>
+          <NavLink to="/review">Repaso</NavLink>
           {(role === 'teacher' || role === 'admin') && (
             <NavLink to="/teacher">Panel docente</NavLink>
           )}
