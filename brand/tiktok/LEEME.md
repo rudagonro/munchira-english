@@ -22,3 +22,9 @@ Concepto: tres barras que suben = **nivel** (A1 → C2). La barra ámbar es la m
 - Fondo oscuro o video: versión `dark` (NIV lila + elo blanco). Fondo claro: versión `light`.
 - Mínimo 24 px de ancho para el ícono; la marca de agua nunca a más de 92 % de opacidad ni a menos de 80 %.
 - No estirar, no girar, no cambiar el color de la barra ámbar.
+
+## Video de bienvenida (`video-bienvenida/`)
+- `bienvenida-v1-limpio.mp4`: el clip de Gemini sin el logo inventado (recortado), a 1080×1920, 30 fps y audio a −14 LUFS aprox. Úsalo si vas a montar tú en CapCut.
+- `bienvenida-v1-completo.mp4`: lo anterior + marca de agua NIVelo arriba a la izquierda + cierre animado con llamada a la acción.
+- Limitaciones: Gemini grabó subtítulos en inglés dentro del video y no se pueden quitar sin dañar la imagen. Para una versión sin ellos, hay que volver a generar el clip pidiendo "sin subtítulos".
+- Recuerda etiquetar el video como contenido generado por IA al publicarlo en TikTok.
