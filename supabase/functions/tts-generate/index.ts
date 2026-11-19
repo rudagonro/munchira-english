@@ -3,13 +3,12 @@
 // POST { text, voice } -> audio/mpeg
 //
 // Flow: validate -> course-content check -> cache lookup -> daily cap ->
-// OpenAI -> cache write. Cache hits are free and never count against the cap.
-// Secrets (OPENAI_API_KEY) stay on the server.
+// provider (ElevenLabs, see tts.ts) -> cache write. Cache hits are free and never
+// count against the cap. Secrets (ELEVENLABS_API_KEY) stay on the server.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
+import { cacheKey, configFromEnv, normalizeVoice, synthesize, TtsProviderError } from "./tts.ts";
 
-const ALLOWED_VOICES = ["nova", "onyx"];
-const MODEL = "tts-1-hd";
 const BUCKET = "audio-cache";
 const MAX_CHARS = 1000;
 const DAILY_CHAR_CAP = Number(Deno.env.get("TTS_DAILY_CHAR_LIMIT") ?? "20000");
@@ -40,21 +39,14 @@ function audio(body: BodyInit, cache: "hit" | "miss"): Response {
   });
 }
 
-async function cacheKey(voice: string, text: string): Promise<string> {
-  const data = new TextEncoder().encode(`${MODEL}|${voice}|${text}`);
-  const digest = await crypto.subtle.digest("SHA-256", data);
-  const hex = [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
-  return `${voice}/${hex}.mp3`;
-}
-
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: corsHeaders });
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
 
   const supabaseUrl = Deno.env.get("SUPABASE_URL");
   const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-  const openaiKey = Deno.env.get("OPENAI_API_KEY");
-  if (!supabaseUrl || !serviceKey || !openaiKey) return json({ error: "Server misconfigured" }, 500);
+  const tts = configFromEnv((key) => Deno.env.get(key));
+  if (!supabaseUrl || !serviceKey || !tts) return json({ error: "Server misconfigured" }, 500);
 
   const admin = createClient(supabaseUrl, serviceKey, { auth: { persistSession: false } });
 
@@ -74,7 +66,7 @@ Deno.serve(async (req: Request) => {
   const text = typeof body.text === "string" ? body.text.trim() : "";
   if (!text) return json({ error: "Missing or invalid 'text'" }, 400);
   if (text.length > MAX_CHARS) return json({ error: `Text too long (max ${MAX_CHARS} chars)` }, 400);
-  const voice = typeof body.voice === "string" && ALLOWED_VOICES.includes(body.voice) ? body.voice : "nova";
+  const voice = normalizeVoice(body.voice);
 
   if (!ALLOW_ANY_TEXT) {
     const { data: allowed, error } = await admin.rpc("tts_text_allowed", { p_text: text });
@@ -85,7 +77,7 @@ Deno.serve(async (req: Request) => {
     if (!allowed) return json({ error: "Text is not part of the course content" }, 403);
   }
 
-  const path = await cacheKey(voice, text);
+  const path = await cacheKey(tts, voice, text);
   const cached = await admin.storage.from(BUCKET).download(path);
   if (!cached.error && cached.data) return audio(cached.data, "hit");
 
@@ -101,16 +93,7 @@ Deno.serve(async (req: Request) => {
   if (!withinCap) return json({ error: "Daily audio limit reached" }, 429);
 
   try {
-    const res = await fetch("https://api.openai.com/v1/audio/speech", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${openaiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ model: MODEL, input: text, voice }),
-    });
-    if (!res.ok) {
-      console.error("OpenAI TTS error:", res.status, await res.text());
-      return json({ error: "TTS generation failed" }, 502);
-    }
-    const bytes = new Uint8Array(await res.arrayBuffer());
+    const bytes = await synthesize(fetch, tts, voice, text);
 
     // A failed cache write must not fail the request.
     const { error: uploadError } = await admin.storage
@@ -121,6 +104,11 @@ Deno.serve(async (req: Request) => {
     }
     return audio(bytes, "miss");
   } catch (err) {
+    if (err instanceof TtsProviderError) {
+      console.error("TTS provider error:", err.message);
+      // 429 del proveedor = demasiadas peticiones; el resto es un fallo nuestro o de la clave.
+      return err.status === 429 ? json({ error: "TTS busy, try again" }, 503) : json({ error: "TTS generation failed" }, 502);
+    }
     console.error("Unexpected error:", err);
     return json({ error: "Internal server error" }, 500);
   }

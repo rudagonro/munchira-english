@@ -6,6 +6,7 @@ import { computeModuleAvailability } from '../data/moduleAvailability'
 import VocabFlashcard from '../components/VocabFlashcard'
 import ExerciseBlock from '../components/ExerciseBlock'
 import { getLessonAudioTurns } from '../data/lessonAudio'
+import { canSpeak, cancelSpeech, speakTurns } from '../lib/browserSpeech'
 
 function quizErrorMessage(error) {
   const text = error?.message ?? ''
@@ -38,6 +39,7 @@ function ModuleContent() {
   const [answers, setAnswers] = useState({})
   const [audioLoading, setAudioLoading] = useState(false)
   const [audioError, setAudioError] = useState('')
+  const [audioNotice, setAudioNotice] = useState('')
   const [saving, setSaving] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [quizResult, setQuizResult] = useState(null)
@@ -45,6 +47,7 @@ function ModuleContent() {
   const [cycleAdvanced, setCycleAdvanced] = useState(null)
 
   const audioRef = useRef(null)
+  const stopSpeech = useRef(null)
   const audioUrls = useRef([])
   const audioRequest = useRef(0)
 
@@ -90,6 +93,8 @@ function ModuleContent() {
   useEffect(() => () => {
     audioRequest.current++
     audioRef.current?.pause()
+    stopSpeech.current?.()
+    cancelSpeech()
     audioUrls.current.forEach((url) => URL.revokeObjectURL(url))
     audioUrls.current = []
   }, [lessonIdx, stage])
@@ -108,14 +113,16 @@ function ModuleContent() {
   async function playLessonAudio(lesson) {
     const request = ++audioRequest.current
     audioRef.current?.pause()
+    stopSpeech.current?.()
     audioUrls.current.forEach((url) => URL.revokeObjectURL(url))
     audioUrls.current = []
+    setAudioNotice('')
     setAudioLoading(true)
+    const turns = getLessonAudioTurns(lesson)
     try {
       const { data: sessionData } = await supabase.auth.getSession()
       const token = sessionData.session?.access_token
       if (!token) throw new Error('No hay sesión activa')
-      const turns = getLessonAudioTurns(lesson)
       if (!turns.length) throw new Error('No hay texto de audio')
       const urls = []
       for (const turn of turns) {
@@ -142,7 +149,15 @@ function ModuleContent() {
     } catch (err) {
       if (request === audioRequest.current) {
         console.error(err)
-        setAudioError('No se pudo generar el audio. Intenta de nuevo.')
+        // Sin audio en línea: se lee con la voz del dispositivo (gratis).
+        if (turns.length && canSpeak()) {
+          setAudioNotice('Reproduciendo con la voz de tu dispositivo.')
+          stopSpeech.current = speakTurns(turns, {
+            onError: () => { setAudioNotice(''); setAudioError('No se pudo reproducir el audio.') },
+          })
+        } else {
+          setAudioError('No se pudo generar el audio. Intenta de nuevo.')
+        }
       }
     } finally {
       if (request === audioRequest.current) setAudioLoading(false)
@@ -300,7 +315,7 @@ function ModuleContent() {
             <div className="diag-audio-box" style={{ marginBottom: 0 }}>
               <button
                 className="diag-play-btn"
-                onClick={() => { setAudioError(''); playLessonAudio(lesson) }}
+                onClick={() => { setAudioError(''); setAudioNotice(''); playLessonAudio(lesson) }}
                 disabled={audioLoading}
                 type="button"
                 aria-label={audioLoading ? 'Generando audio' : 'Reproducir el diálogo'}
@@ -311,6 +326,9 @@ function ModuleContent() {
                 {audioLoading ? 'Generando audio...' : 'Pulsa play para escuchar el diálogo.'}
               </div>
             </div>
+            {audioNotice && !audioError && (
+              <p className="lesson-audio-note" role="status">{audioNotice}</p>
+            )}
             {audioError && (
               <p className="lesson-audio-error" role="alert">{audioError}</p>
             )}

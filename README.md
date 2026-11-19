@@ -35,11 +35,13 @@ Las migraciones son idempotentes. Antes de aplicarlas a un proyecto con datos re
 ```sh
 supabase link --project-ref <ref>
 supabase db push
-supabase secrets set OPENAI_API_KEY=... TTS_DAILY_CHAR_LIMIT=20000
+supabase secrets set ELEVENLABS_API_KEY=... TTS_DAILY_CHAR_LIMIT=20000
 supabase functions deploy tts-generate
 ```
 
-Variables opcionales de la función: `TTS_DAILY_CHAR_LIMIT` (por defecto 20000 caracteres/usuario/día sin caché), `TTS_ALLOWED_ORIGIN` (CORS) y `TTS_ALLOW_ANY_TEXT=true` (solo para pruebas).
+El audio usa ElevenLabs (`ELEVENLABS_API_KEY`). Si el servicio falla o no hay clave, la app lee la lección con la voz del dispositivo, sin coste. La clave se guarda solo como secreto de Supabase, nunca en el navegador ni en el repo. Cambiar de proveedor solo toca `supabase/functions/tts-generate/tts.ts`.
+
+Variables opcionales de la función: `ELEVENLABS_TTS_MODEL` (por defecto `eleven_flash_v2_5`), `ELEVENLABS_VOICE_NOVA` y `ELEVENLABS_VOICE_ONYX` (voces femenina y masculina), `TTS_DAILY_CHAR_LIMIT` (por defecto 20000 caracteres/usuario/día sin caché), `TTS_ALLOWED_ORIGIN` (CORS) y `TTS_ALLOW_ANY_TEXT=true` (solo para pruebas).
 
 `npm test` ejecuta las migraciones reales en un Postgres en memoria (PGlite), tanto sobre una base nueva como sobre una copia del esquema de producción (`tests/fixtures/legacy-schema.sql`, con enums, columnas `NOT NULL` y políticas antiguas), y comprueba RLS, roles y controles de coste. No sustituye una prueba con un proyecto Supabase real.
 
