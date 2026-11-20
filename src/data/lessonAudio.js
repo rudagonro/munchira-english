@@ -10,11 +10,14 @@ export function extractListeningText(practiceContent) {
 /**
  * Turnos de audio de una lección, por orden de preferencia:
  * dialogue_turns (varias voces) > audio_text (una voz) > cita de la práctica.
+ * Cada turno trae `audioUrl` si su audio ya está guardado como archivo fijo.
  */
 export function getLessonAudioTurns(lesson) {
   if (Array.isArray(lesson?.dialogue_turns) && lesson.dialogue_turns.length) {
-    return lesson.dialogue_turns.map((t) => ({ text: t.text, voice: t.voice ?? 'nova' }))
+    return lesson.dialogue_turns.map((t) => ({
+      text: t.text, voice: t.voice ?? 'nova', speaker: t.speaker ?? '', audioUrl: t.audio_url ?? null,
+    }))
   }
   const text = lesson?.audio_text?.trim() || extractListeningText(lesson?.practice_content)
-  return text ? [{ text, voice: 'nova' }] : []
+  return text ? [{ text, voice: 'nova', speaker: '', audioUrl: lesson?.audio_text ? (lesson.audio_url ?? null) : null }] : []
 }

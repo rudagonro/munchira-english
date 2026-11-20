@@ -670,336 +670,440 @@
       "lessons": [
         {
           "order": 1,
-          "title": "Debate de actualidad",
-          "theory_content": "En un debate hay posturas enfrentadas. Identifica a cada interlocutor y su posición. Fíjate en los marcadores de desacuerdo (I see your point, but...) y acuerdo parcial (That's partly true). Anota los argumentos clave de cada lado.",
+          "title": "Debate: ¿semana laboral de cuatro días?",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Acuerdo parcial",
-              "value": "That's partly true."
+              "label": "Situación",
+              "value": "En un programa de radio, un moderador y dos invitadas debaten si las empresas deberían adoptar la semana de cuatro días."
             },
             {
-              "label": "Desacuerdo",
-              "value": "I see your point, but..."
+              "label": "Antes de escuchar",
+              "value": "Identifica la postura de cada invitada y los marcadores de acuerdo parcial y de condición."
             },
             {
-              "label": "Resumen",
-              "value": "To sum up..."
+              "label": "Frases clave",
+              "value": "That's partly true, but... · I'm not convinced... · provided that..."
             }
           ],
-          "practice_content": "Escucha el debate y resume la postura de cada persona.",
+          "practice_content": "Resume en dos frases la postura de cada invitada y escribe cuál te convence más y por qué.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Qué opina el segundo hablante?",
+              "q": "¿Cuál es la postura de la Dra. Hayes?",
               "opts": [
-                "Offices should close.",
-                "Remote work is perfect.",
-                "Remote work harms teamwork."
+                "she has no opinion",
+                "she rejects it",
+                "she supports the four-day week"
               ],
               "correct": 2,
-              "why": "Dice que perjudica el trabajo en equipo (teamwork)."
+              "why": "Dice 'Absolutely' y defiende la medida."
             },
             {
               "type": "choice",
-              "q": "¿Qué admite la primera hablante?",
+              "q": "¿Qué preocupa a la señora Clarke?",
               "opts": [
-                "It reduces commuting time.",
-                "It is cheaper for everyone.",
-                "It is illegal."
+                "salaries will fall",
+                "workers will be bored",
+                "hospitals and factories can't simply close"
               ],
-              "correct": 0,
-              "why": "Reconoce que ahorra tiempo de desplazamiento."
+              "correct": 2,
+              "why": "Menciona hospitales y fábricas."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "The second speaker says it harms ___.",
-              "answer": "teamwork",
-              "hint": "Palabra clave de su argumento."
+              "sentence": "Ms Clarke would support a trial, provided results are ___ carefully.",
+              "answer": "measured",
+              "hint": "Es su condición."
+            },
+            {
+              "type": "choice",
+              "q": "'That's partly true, but...' expresa...",
+              "opts": [
+                "acuerdo parcial",
+                "desacuerdo total",
+                "una pregunta"
+              ],
+              "correct": 0,
+              "why": "Reconoce algo del argumento y matiza."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "I believe remote work boosts productivity. It also reduces commuting time and stress."
+              "speaker": "David",
+              "voice": "man_uk",
+              "text": "Tonight's question: should companies adopt a four-day working week? Dr Hayes, you first."
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "I see your point, but I think it harms teamwork. Spontaneous ideas rarely appear on a video call."
+              "speaker": "Dr Hayes",
+              "voice": "woman_us2",
+              "text": "Absolutely. Pilot studies show that productivity rises, and employees report lower stress and fewer sick days."
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "That's partly true, but good tools can fix that."
+              "speaker": "Ms Clarke",
+              "voice": "woman_uk",
+              "text": "I see the appeal, but I'm not convinced it works everywhere. A hospital or a factory can't simply close for a day."
+            },
+            {
+              "speaker": "Dr Hayes",
+              "voice": "woman_us2",
+              "text": "That's partly true, but the model can be adapted. Staff can work in shifts across the week."
+            },
+            {
+              "speaker": "Ms Clarke",
+              "voice": "woman_uk",
+              "text": "Even so, costs could rise if companies hire extra staff to cover."
+            },
+            {
+              "speaker": "David",
+              "voice": "man_uk",
+              "text": "A fair point. Let's hear a final thought from each of you."
+            },
+            {
+              "speaker": "Dr Hayes",
+              "voice": "woman_us2",
+              "text": "Flexibility benefits everyone in the long run."
+            },
+            {
+              "speaker": "Ms Clarke",
+              "voice": "woman_uk",
+              "text": "I'd support a trial, provided the results are measured carefully."
             }
           ]
         },
         {
           "order": 2,
-          "title": "Conferencia académica",
-          "theory_content": "En una conferencia el orador estructura el discurso: introduction, main points, conclusion. Escucha marcadores como Let me turn to..., This brings me to..., In summary. Toma notas con esquemas y palabras clave. Presta atención a las cifras y los ejemplos.",
+          "title": "Conferencia: el cerebro bilingüe",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Estructura",
-              "value": "Let me turn to the second point."
+              "label": "Situación",
+              "value": "Un profesor da una clase magistral sobre cómo aprender un segundo idioma afecta al cerebro."
             },
             {
-              "label": "Transición",
-              "value": "This brings me to..."
+              "label": "Antes de escuchar",
+              "value": "Sigue la estructura: tema, primer punto, segundo punto y conclusión. Los marcadores te guían."
             },
             {
-              "label": "Cierre",
-              "value": "In summary..."
+              "label": "Frases clave",
+              "value": "Firstly... · Let me turn to... · To sum up..."
             }
           ],
-          "practice_content": "Escucha y completa un esquema con tres puntos principales.",
+          "practice_content": "Haz un esquema de tres líneas con los puntos principales de la conferencia.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Cuál es el tema de la conferencia?",
+              "q": "¿De qué trata la conferencia?",
               "opts": [
-                "cooking",
-                "sleep and memory",
-                "football"
+                "how a second language affects the brain",
+                "the history of English",
+                "how to teach grammar"
               ],
-              "correct": 1,
-              "why": "Habla de sueño y memoria."
+              "correct": 0,
+              "why": "Lo anuncia al principio."
             },
             {
               "type": "choice",
-              "q": "¿Qué efecto tiene dormir mal?",
+              "q": "¿Qué observó el estudio con adultos de sesenta años?",
               "opts": [
+                "better attention",
                 "worse memory",
-                "no effect",
-                "better memory"
+                "no change"
               ],
               "correct": 0,
-              "why": "Empeora la memoria."
+              "why": "Mostraron mejor atención."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "The speaker says adults need ___ hours of sleep.",
-              "answer": "seven",
-              "hint": "Escucha la cifra."
+              "sentence": "The effect did not depend on the ___ chosen.",
+              "answer": "language",
+              "hint": "Lo dice el profesor como matiz."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuál es la conclusión?",
+              "opts": [
+                "only children benefit",
+                "language learning is mental training at any age",
+                "bilinguals are born, not made"
+              ],
+              "correct": 1,
+              "why": "Cierra con 'mental training at any age'."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Today I will talk about sleep and memory. Firstly, sleep helps the brain store information."
+              "speaker": "Professor",
+              "voice": "senior_man",
+              "text": "Good afternoon. Today I'd like to explore how learning a second language affects the brain. Firstly, research suggests that bilingual people switch between tasks more easily."
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Let me turn to the second point. Studies show that adults need seven hours of sleep, and a lack of sleep leads to worse memory."
+              "speaker": "Professor",
+              "voice": "senior_man",
+              "text": "Let me turn to the second point. In one study, adults who began a language in their sixties showed better attention than a control group. Notably, the effect did not depend on the language chosen."
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "In summary, good sleep is essential for learning."
+              "speaker": "Professor",
+              "voice": "senior_man",
+              "text": "To sum up: learning a language is not only a skill; it is a form of mental training at any age."
             }
           ]
         },
         {
           "order": 3,
           "title": "Entrevista de trabajo",
-          "theory_content": "En una entrevista, escucha las preguntas con atención. Suelen ser: Tell me about yourself, Why do you want this job?, Where do you see yourself in five years? Las respuestas fuertes usan ejemplos concretos y verbos de logro: led, improved, achieved.",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Pregunta abierta",
-              "value": "Tell me about yourself."
+              "label": "Situación",
+              "value": "Una directora de recursos humanos entrevista a Mark para un puesto de gestión de proyectos."
             },
             {
-              "label": "Motivación",
-              "value": "Why do you want this job?"
+              "label": "Antes de escuchar",
+              "value": "Escucha la pregunta y el ejemplo concreto de cada respuesta: años, resultado, dificultad y objetivo."
             },
             {
-              "label": "Logro",
-              "value": "I improved sales by 20%."
+              "label": "Frases clave",
+              "value": "Could you tell me about...? · What was the biggest challenge? · Where do you see yourself...?"
             }
           ],
-          "practice_content": "Escucha y anota un logro del candidato.",
+          "practice_content": "Prepara tu propia respuesta a 'Tell me about your experience' con un resultado medible.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Qué logró el candidato?",
+              "q": "¿Cuántos años lleva Mark dirigiendo equipos internacionales?",
               "opts": [
-                "improved sales by 20%",
-                "won a prize",
-                "opened a school"
+                "three",
+                "ten",
+                "six"
               ],
-              "correct": 0,
-              "why": "Mejoró las ventas un 20%."
+              "correct": 2,
+              "why": "For the past six years."
             },
             {
               "type": "choice",
-              "q": "¿Por qué quiere el puesto?",
+              "q": "¿Qué logró el año pasado?",
               "opts": [
-                "it is close to home",
-                "it pays more",
-                "it offers growth"
+                "cut delivery times by twenty percent",
+                "doubled sales",
+                "opened an office"
               ],
-              "correct": 2,
-              "why": "Menciona crecimiento profesional."
+              "correct": 0,
+              "why": "Cut delivery times by twenty percent."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "He led a team of ___ people.",
-              "answer": "ten",
-              "hint": "Escucha el número."
+              "sentence": "The biggest challenge was communication across time ___.",
+              "answer": "zones",
+              "hint": "Es la dificultad que menciona."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuándo contactarán con él?",
+              "opts": [
+                "by Friday",
+                "next month",
+                "tomorrow"
+              ],
+              "correct": 0,
+              "why": "Ms Patel: We'll contact you by Friday."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Tell me about your experience."
+              "speaker": "Ms Patel",
+              "voice": "woman_uk",
+              "text": "Thank you for coming, Mark. Could you tell me about your experience in project management?"
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "I led a team of ten people and improved sales by twenty percent."
+              "speaker": "Mark",
+              "voice": "man_us2",
+              "text": "Certainly. For the past six years I've managed international teams, and last year I led a project that cut delivery times by twenty percent."
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Why do you want this job?"
+              "speaker": "Ms Patel",
+              "voice": "woman_uk",
+              "text": "Impressive. What was the biggest challenge?"
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "Because it offers real opportunities for growth."
+              "speaker": "Mark",
+              "voice": "man_us2",
+              "text": "Communication across time zones. We solved it by agreeing on two overlapping hours every day."
+            },
+            {
+              "speaker": "Ms Patel",
+              "voice": "woman_uk",
+              "text": "And where do you see yourself in five years?"
+            },
+            {
+              "speaker": "Mark",
+              "voice": "man_us2",
+              "text": "Ideally in a leadership role, helping teams grow while delivering results."
+            },
+            {
+              "speaker": "Ms Patel",
+              "voice": "woman_uk",
+              "text": "Thank you. We'll contact you by Friday."
             }
           ]
         },
         {
           "order": 4,
-          "title": "Podcast especializado",
-          "theory_content": "Un podcast especializado usa jerga del sector. No necesitas entender cada palabra: deduce el significado del contexto. Presta atención a la tesis del episodio y a las ideas que se repiten. Si hay un invitado, nota cómo introduce sus ejemplos.",
+          "title": "Podcast: datos y privacidad",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Deducir",
-              "value": "Use context to guess meaning."
+              "label": "Situación",
+              "value": "Una presentadora conversa con un investigador sobre lo que revelan nuestros clics."
             },
             {
-              "label": "Repetición",
-              "value": "Repeated ideas are key."
+              "label": "Antes de escuchar",
+              "value": "Busca la tesis del episodio y las tres recomendaciones finales."
             },
             {
-              "label": "Invitado",
-              "value": "Our guest today is..."
+              "label": "Frases clave",
+              "value": "Is that a problem? · What should users do? · Small steps add up"
             }
           ],
-          "practice_content": "Escucha el podcast y anota la tesis del episodio.",
+          "practice_content": "Escribe tres hábitos de privacidad que tú podrías adoptar esta semana.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Cuál es la tesis del episodio?",
+              "q": "¿Qué hacen la mayoría de las personas con las cookies?",
               "opts": [
-                "Companies hate numbers.",
-                "Data is boring.",
-                "Data helps companies make better decisions."
+                "reject them all",
+                "accept them without reading",
+                "read every word"
               ],
-              "correct": 2,
-              "why": "La tesis es sobre decisiones con datos."
+              "correct": 1,
+              "why": "Accept cookies without reading anything."
             },
             {
               "type": "choice",
-              "q": "¿Qué ejemplo menciona el invitado?",
+              "q": "Según el Dr. Ellis, cada clic puede revelar...",
               "opts": [
-                "a retail company",
-                "a school",
-                "a hospital"
+                "habits, location and even mood",
+                "only our name",
+                "nothing important"
               ],
               "correct": 0,
-              "why": "Habla de una empresa de retail."
+              "why": "Habits, location and even mood."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "He says data should be used with ___.",
-              "answer": "caution",
-              "hint": "Escucha el consejo final."
+              "sentence": "Dr Ellis gives three recommendations: read the settings, share less and use strong ___.",
+              "answer": "passwords",
+              "hint": "Es la tercera."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuál es el mensaje final?",
+              "opts": [
+                "small steps add up",
+                "avoid the internet",
+                "privacy is impossible"
+              ],
+              "correct": 0,
+              "why": "Small steps add up."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Our guest today is a data analyst. Welcome."
+              "speaker": "Host",
+              "voice": "woman_us2",
+              "text": "Welcome to Tech Talk. Today's guest is privacy researcher Dr Ellis."
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "Thanks. My thesis is simple: data helps companies make better decisions."
+              "speaker": "Dr Ellis",
+              "voice": "man_uk",
+              "text": "Thanks for having me."
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "For example, a retail company used sales data to improve stock levels. But we should use data with caution."
+              "speaker": "Host",
+              "voice": "woman_us2",
+              "text": "Most people accept cookies without reading anything. Is that a problem?"
+            },
+            {
+              "speaker": "Dr Ellis",
+              "voice": "man_uk",
+              "text": "It is. Every click can reveal more than we imagine: our habits, our location, even our mood."
+            },
+            {
+              "speaker": "Host",
+              "voice": "woman_us2",
+              "text": "So what should users do?"
+            },
+            {
+              "speaker": "Dr Ellis",
+              "voice": "man_uk",
+              "text": "Three things: read the settings, share less, and use strong passwords. Small steps add up."
+            },
+            {
+              "speaker": "Host",
+              "voice": "woman_us2",
+              "text": "Dr Ellis, thank you."
             }
           ]
         }
       ],
       "quiz": [
         {
-          "question": "In the debate, the second speaker thinks remote work harms ___.",
+          "question": "In the debate, Ms Clarke supports a trial ___.",
           "options": [
-            "transport",
-            "teamwork",
-            "salaries"
+            "provided results are measured",
+            "without conditions",
+            "only in hospitals"
           ],
-          "correct_idx": 1
+          "correct_idx": 0
         },
         {
-          "question": "In a lecture, 'Let me turn to...' introduces ___.",
+          "question": "In the lecture, the second point is about ___.",
           "options": [
-            "the ending",
-            "a joke",
-            "a new point"
+            "teaching methods",
+            "children and grammar",
+            "older adults and attention"
           ],
           "correct_idx": 2
         },
         {
-          "question": "In the interview, the candidate improved sales by ___.",
+          "question": "Mark says the biggest challenge was ___.",
           "options": [
-            "20%",
-            "50%",
-            "10%"
+            "too many meetings",
+            "lack of budget",
+            "communication across time zones"
           ],
-          "correct_idx": 0
+          "correct_idx": 2
         },
         {
-          "question": "A good strategy for jargon is to ___.",
+          "question": "According to the podcast, most people ___ cookies without reading.",
           "options": [
-            "guess meaning from context",
-            "read the transcript only",
-            "stop listening"
+            "delete",
+            "accept",
+            "block"
           ],
-          "correct_idx": 0
+          "correct_idx": 1
         },
         {
-          "question": "'I see your point, but...' expresses ___.",
+          "question": "'I see the appeal, but I'm not convinced' expresses ___.",
           "options": [
-            "polite disagreement",
+            "polite reservation",
             "full agreement",
             "a question"
           ],
           "correct_idx": 0
         },
         {
-          "question": "The podcast guest says data should be used with ___.",
+          "question": "A good strategy for a lecture is to follow ___.",
           "options": [
-            "joy",
-            "caution",
-            "speed"
+            "the markers: firstly, let me turn to, to sum up",
+            "background noise",
+            "only the first sentence"
           ],
-          "correct_idx": 1
+          "correct_idx": 0
         }
       ]
     },

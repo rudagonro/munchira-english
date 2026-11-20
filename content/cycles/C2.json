@@ -665,290 +665,399 @@
       "lessons": [
         {
           "order": 1,
-          "title": "Medios de comunicación",
-          "theory_content": "Los medios nativos usan habla rápida, elisiones (gonna, wanna) y referencias culturales. No intentes entender cada palabra: capta la idea general y los detalles clave. Escucha primero sin pausar, después revisa los fragmentos difíciles. Fíjate en el tono del presentador.",
+          "title": "Informativo: impuestos y coches eléctricos",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Elisión",
-              "value": "gonna = going to"
+              "label": "Situación",
+              "value": "Un presentador y una corresponsal comentan una reforma fiscal. Ritmo rápido, estilo de informativo británico."
             },
             {
-              "label": "Idea general",
-              "value": "listen without pausing"
+              "label": "Antes de escuchar",
+              "value": "No busques entenderlo todo: capta la idea, la fecha clave y las reacciones de críticos y partidarios."
             },
             {
-              "label": "Tono",
-              "value": "serious or humorous?"
+              "label": "Frases clave",
+              "value": "unveiled sweeping changes · a step in the right direction · falls short of..."
             }
           ],
-          "practice_content": "Escucha el titular y resume la noticia con tus palabras.",
+          "practice_content": "Resume la noticia en 30 palabras, como en un titular ampliado.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Cuál es la noticia?",
+              "q": "¿Qué ha anunciado el gobierno?",
               "opts": [
-                "a football match",
-                "new rules for electric cars",
-                "a storm"
+                "a ban on petrol cars",
+                "free charging for everyone",
+                "changes to how electric cars are taxed"
               ],
-              "correct": 1,
-              "why": "Habla de coches eléctricos."
+              "correct": 2,
+              "why": "Sweeping changes to electric car taxation."
             },
             {
               "type": "choice",
-              "q": "¿Qué pasará el próximo año?",
+              "q": "¿Qué pagarán los conductores desde abril?",
               "opts": [
-                "fees will disappear",
-                "fees will fall",
-                "fees will rise"
+                "nothing",
+                "a flat annual fee",
+                "a fee per mile"
               ],
-              "correct": 2,
-              "why": "Las tasas subirán."
+              "correct": 1,
+              "why": "A flat annual fee."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "The new rules start next ___.",
-              "answer": "year",
-              "hint": "Escucha el plazo."
+              "sentence": "Existing drivers will get a grace period of twelve ___.",
+              "answer": "months",
+              "hint": "Lo dice la corresponsal."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué opinan los partidarios?",
+              "opts": [
+                "it is irrelevant",
+                "it is a disaster",
+                "it is a step in the right direction"
+              ],
+              "correct": 2,
+              "why": "A step in the right direction, though it falls short."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Breaking news: the government has announced new rules for electric cars."
+              "speaker": "Tom",
+              "voice": "man_uk",
+              "text": "Breaking news this hour: the government has unveiled sweeping changes to how electric cars are taxed."
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "Drivers will pay higher fees next year, but charging stations will be cheaper."
+              "speaker": "Rachel",
+              "voice": "woman_us2",
+              "text": "That's right, Tom. From next April, drivers will pay a flat annual fee, while public charging points will get cheaper."
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Critics say the plan is too slow, while supporters call it a step forward."
+              "speaker": "Tom",
+              "voice": "man_uk",
+              "text": "Critics say it penalises early adopters."
+            },
+            {
+              "speaker": "Rachel",
+              "voice": "woman_us2",
+              "text": "Some do. The Treasury insists it's a fair trade-off. Supporters call it a step in the right direction, even if it falls short of what campaigners wanted."
+            },
+            {
+              "speaker": "Tom",
+              "voice": "man_uk",
+              "text": "And what happens to existing drivers?"
+            },
+            {
+              "speaker": "Rachel",
+              "voice": "woman_us2",
+              "text": "They'll get a grace period of twelve months."
             }
           ]
         },
         {
           "order": 2,
-          "title": "Cine y series",
-          "theory_content": "En cine y series se mezcla slang, humor y referencias. Los subtítulos ayudan, pero intenta primero sin ellos. Los personajes cambian de registro según la situación. Fíjate en cómo se usan los phrasal verbs y expresiones coloquiales: I'm done with this, Let's wrap it up.",
+          "title": "Escena familiar con humor seco",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Coloquial",
-              "value": "I'm done with this."
+              "label": "Situación",
+              "value": "Una madre, su padre y su hijo adolescente discuten sobre darle comida al perro. Humor inglés, ironía y entonación."
             },
             {
-              "label": "Cierre",
-              "value": "Let's wrap it up."
+              "label": "Antes de escuchar",
+              "value": "Cuando alguien dice lo contrario de lo que piensa, o juega con las palabras, fíjate en la entonación."
             },
             {
-              "label": "Humor",
-              "value": "dry humour"
+              "label": "Frases clave",
+              "value": "I did no such thing · Technically... · Whose side are you on?"
             }
           ],
-          "practice_content": "Escucha la escena y describe el estado de ánimo de cada personaje.",
+          "practice_content": "Escribe un breve diálogo familiar con un toque de humor usando 'Technically...'.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Cómo se siente la primera persona?",
+              "q": "¿Qué prometió el abuelo?",
               "opts": [
-                "happy",
-                "afraid",
-                "tired and annoyed"
+                "he refused",
+                "he said he would try",
+                "he promised to stop"
               ],
-              "correct": 2,
-              "why": "Está cansada y molesta."
+              "correct": 1,
+              "why": "Dice: I said I'd try. There's a difference."
             },
             {
               "type": "choice",
-              "q": "¿Qué propone la segunda?",
+              "q": "¿Qué efecto cómico tiene 'Technically, he's right, Mum'?",
               "opts": [
-                "to wrap it up",
-                "to start again",
-                "to go home"
+                "el nieto se pone del lado del abuelo con ironía",
+                "el nieto se enfada",
+                "el nieto cambia de tema"
               ],
               "correct": 0,
-              "why": "Propone cerrar el tema."
+              "why": "Apoya al abuelo con un tono burlón."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "The second speaker says: Let's ___ it up.",
-              "answer": "wrap",
-              "hint": "Wrap it up = cerrar."
+              "sentence": "The boy is on the side of whoever has the ___.",
+              "answer": "biscuits",
+              "hint": "Es su chiste final."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cómo termina la escena?",
+              "opts": [
+                "everyone argues",
+                "the grandfather says she loves them anyway",
+                "the dog leaves"
+              ],
+              "correct": 1,
+              "why": "And yet you love us."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "I'm done with this meeting. We've been here for three hours."
+              "speaker": "Mother",
+              "voice": "woman_uk",
+              "text": "Dad, you promised you'd stop feeding the dog under the table."
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "I know, I know. Let's wrap it up and finish tomorrow."
+              "speaker": "Grandpa",
+              "voice": "senior_man",
+              "text": "I did no such thing. I said I'd try. There's a difference."
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Finally! Some sense at last."
+              "speaker": "Oliver",
+              "voice": "young_man",
+              "text": "Technically, he's right, Mum."
+            },
+            {
+              "speaker": "Mother",
+              "voice": "woman_uk",
+              "text": "Whose side are you on?"
+            },
+            {
+              "speaker": "Grandpa",
+              "voice": "senior_man",
+              "text": "He's on the winning side. Aren't you, lad?"
+            },
+            {
+              "speaker": "Oliver",
+              "voice": "young_man",
+              "text": "I'm on the side of whoever has the biscuits."
+            },
+            {
+              "speaker": "Mother",
+              "voice": "woman_uk",
+              "text": "Honestly, you two are impossible."
+            },
+            {
+              "speaker": "Grandpa",
+              "voice": "senior_man",
+              "text": "And yet you love us."
             }
           ]
         },
         {
           "order": 3,
-          "title": "Conversación rápida con acentos",
-          "theory_content": "En una conversación real los hablantes se interrumpen, usan acentos variados y hablan rápido. Entrena el oído con distintos acentos (British, American, Australian). Concéntrate en las palabras de contenido (sustantivos, verbos) y no te alarmes por las de función. Los rellenos como you know, well, I mean dan tiempo a pensar.",
+          "title": "Conversación rápida entre amigos",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Rellenos",
-              "value": "you know, well, I mean"
+              "label": "Situación",
+              "value": "Jess (estadounidense) y Oliver (británico) se encuentran por la calle. Rellenos, abreviaturas y acentos distintos."
             },
             {
-              "label": "Interrupción",
-              "value": "Sorry to interrupt, but..."
+              "label": "Antes de escuchar",
+              "value": "Concéntrate en las palabras de contenido: planes, tiempo y reacciones. Los rellenos te dan tiempo para pensar."
             },
             {
-              "label": "Acento",
-              "value": "listen to several accents"
+              "label": "Frases clave",
+              "value": "Long time no see · I was gonna... · Count me in"
             }
           ],
-          "practice_content": "Escucha la conversación y anota las palabras de contenido principales.",
+          "practice_content": "Reescribe el diálogo sin abreviaturas ('going to', 'I was going to...').",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿De qué hablan?",
+              "q": "¿Cómo está Oliver en el trabajo?",
               "opts": [
-                "a job interview",
-                "politics",
-                "weekend plans"
+                "relaxed",
+                "very busy",
+                "unemployed"
               ],
-              "correct": 2,
-              "why": "Hablan de sus planes de fin de semana."
+              "correct": 1,
+              "why": "Dice 'Bit mad at work'."
             },
             {
               "type": "choice",
-              "q": "¿Qué dice la segunda persona?",
+              "q": "¿Qué tiene Jess el domingo?",
               "opts": [
-                "it might rain",
-                "it will snow",
-                "it will be sunny"
+                "a concert",
+                "an exam",
+                "a barbecue"
               ],
-              "correct": 0,
-              "why": "Cree que podría llover."
+              "correct": 2,
+              "why": "Barbecue on Sunday."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "The first speaker wants to go ___.",
-              "answer": "hiking",
-              "hint": "Escucha la actividad."
+              "sentence": "Oliver says to count him in, unless the weather is ___.",
+              "answer": "rubbish",
+              "hint": "Palabra coloquial británica."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué significa 'gonna'?",
+              "opts": [
+                "gone to",
+                "going to",
+                "got no"
+              ],
+              "correct": 1,
+              "why": "Es la forma coloquial de going to."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Well, I mean, I'd love to go hiking this weekend, you know?"
+              "speaker": "Jess",
+              "voice": "young_woman",
+              "text": "Oh, hey! Long time no see. How've you been?"
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "Sorry to interrupt, but it might rain on Saturday."
+              "speaker": "Oliver",
+              "voice": "man_uk",
+              "text": "Not bad, not bad. Bit mad at work, to be honest. You?"
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Right, so maybe Sunday then."
+              "speaker": "Jess",
+              "voice": "young_woman",
+              "text": "Same, same. I was gonna text you, actually. Are you around this weekend?"
+            },
+            {
+              "speaker": "Oliver",
+              "voice": "man_uk",
+              "text": "Possibly. I'm meant to be visiting my gran, but she's, er, rather unpredictable."
+            },
+            {
+              "speaker": "Jess",
+              "voice": "young_woman",
+              "text": "Ha! Well, if that falls through, we're having a barbecue on Sunday. Nothing fancy."
+            },
+            {
+              "speaker": "Oliver",
+              "voice": "man_uk",
+              "text": "Brilliant. Count me in, unless the weather's rubbish."
+            },
+            {
+              "speaker": "Jess",
+              "voice": "young_woman",
+              "text": "It's supposed to be sunny. Fingers crossed!"
             }
           ]
         },
         {
           "order": 4,
-          "title": "Discursos y ponencias",
-          "theory_content": "Un discurso persuasivo usa estructura retórica: apertura potente, tres ideas y cierre memorable. Identifica el recurso principal: repetición, pregunta retórica o historia personal. Un buen oyente anota la idea central y el llamado a la acción.",
+          "title": "Discurso de graduación",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Apertura",
-              "value": "Imagine a world without..."
+              "label": "Situación",
+              "value": "Una oradora mayor se dirige a los recién graduados con repetición y preguntas retóricas."
             },
             {
-              "label": "Tres ideas",
-              "value": "tricolon"
+              "label": "Antes de escuchar",
+              "value": "Identifica el recurso principal (repetición) y la idea final que quiere dejar."
             },
             {
-              "label": "Cierre",
-              "value": "Together, we can change it."
+              "label": "Frases clave",
+              "value": "Who told you...? · And yet... · The future is yours to write"
             }
           ],
-          "practice_content": "Escucha el discurso y anota el recurso retórico principal.",
+          "practice_content": "Escribe un cierre de discurso de tres frases con repetición.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Qué recurso se usa?",
+              "q": "¿Qué recurso retórico repite la oradora?",
               "opts": [
-                "irony",
-                "repetition",
-                "slang"
+                "the word 'impossible'",
+                "the word 'money'",
+                "the word 'tomorrow'"
               ],
-              "correct": 1,
-              "why": "Repite 'we can'."
+              "correct": 0,
+              "why": "Repite impossible varias veces."
             },
             {
               "type": "choice",
-              "q": "¿Cuál es el mensaje final?",
+              "q": "¿Para qué sirve la pregunta retórica?",
               "opts": [
-                "together we can change it",
-                "do nothing",
-                "stay at home"
+                "to get an answer",
+                "to make the audience reflect",
+                "to change the topic"
               ],
-              "correct": 0,
-              "why": "Cierra con 'Together, we can change it.'"
+              "correct": 1,
+              "why": "No espera respuesta: invita a reflexionar."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "The speaker repeats the phrase 'we ___'.",
-              "answer": "can",
-              "hint": "Repetición clave."
+              "sentence": "The speaker says the future is yours to ___.",
+              "answer": "write",
+              "hint": "Es el cierre."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuál es el tono del discurso?",
+              "opts": [
+                "encouraging",
+                "angry",
+                "neutral"
+              ],
+              "correct": 0,
+              "why": "Es motivador."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "We can build a cleaner city. We can protect our rivers. We can leave a better world."
+              "speaker": "Speaker",
+              "voice": "senior_woman",
+              "text": "Graduates, friends, families. When I was your age, I was told many things were impossible. Impossible for a woman. Impossible for someone from a small town. Impossible without money."
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Together, we can change it."
+              "speaker": "Speaker",
+              "voice": "senior_woman",
+              "text": "And who told you what you can't do? Who decided where your limits are? Not you. Not today."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "senior_woman",
+              "text": "The future is yours to write. Make it brave, make it kind, and make it count."
             }
           ]
         }
       ],
       "quiz": [
         {
-          "question": "In the news report, fees will ___ next year.",
+          "question": "In the news item, from next April drivers will pay ___.",
           "options": [
-            "fall",
-            "rise",
-            "stay"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "'Let's wrap it up' means ___.",
-          "options": [
-            "let's finish",
-            "let's start",
-            "let's pack"
+            "a flat annual fee",
+            "nothing",
+            "a fee per mile"
           ],
           "correct_idx": 0
+        },
+        {
+          "question": "'Technically, he's right' in the family scene is said ___.",
+          "options": [
+            "in a whisper",
+            "ironically",
+            "angrily"
+          ],
+          "correct_idx": 1
         },
         {
           "question": "In fast speech, 'gonna' means ___.",
@@ -960,29 +1069,29 @@
           "correct_idx": 2
         },
         {
-          "question": "Rhetorical repetition is ___.",
+          "question": "In the speech, repeating 'impossible' is ___.",
           "options": [
+            "a rhetorical device",
             "a mistake",
-            "repeating a phrase for effect",
-            "a quote"
+            "a quotation"
           ],
-          "correct_idx": 1
+          "correct_idx": 0
         },
         {
-          "question": "Fillers like 'you know' help speakers ___.",
+          "question": "'Count me in' means ___.",
           "options": [
-            "ask for help",
-            "gain time to think",
-            "end the talk"
+            "I'll join you",
+            "I'll pay",
+            "I'll be late"
           ],
-          "correct_idx": 1
+          "correct_idx": 0
         },
         {
-          "question": "To train your ear, you should listen to ___.",
+          "question": "To train your ear for native speed, you should listen to ___.",
           "options": [
-            "different accents",
-            "no audio",
-            "only one accent"
+            "different accents and registers",
+            "only slow audio",
+            "no audio"
           ],
           "correct_idx": 0
         }

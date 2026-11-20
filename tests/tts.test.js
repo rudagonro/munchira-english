@@ -14,7 +14,18 @@ test('config needs the ElevenLabs key and falls back to default model and voices
   const custom = configFromEnv(env({
     ELEVENLABS_API_KEY: 'k', ELEVENLABS_TTS_MODEL: 'eleven_multilingual_v2', ELEVENLABS_VOICE_NOVA: 'v-f', ELEVENLABS_VOICE_ONYX: 'v-m',
   }))
-  assert.deepEqual(custom, { apiKey: 'k', model: 'eleven_multilingual_v2', voices: { nova: 'v-f', onyx: 'v-m' } })
+  assert.deepEqual(custom, { apiKey: 'k', model: 'eleven_multilingual_v2', voices: { ...DEFAULT_VOICES, nova: 'v-f', onyx: 'v-m' } })
+  const young = configFromEnv(env({ ELEVENLABS_API_KEY: 'k', ELEVENLABS_VOICE_YOUNG_WOMAN: 'kid-voice' }))
+  assert.equal(young.voices.young_woman, 'kid-voice')
+  assert.equal(young.voices.young_man, DEFAULT_VOICES.young_man)
+})
+
+test('every voice alias has its own voice id and the content validator knows them all', async () => {
+  const { VOICE_ALIASES } = await import('../supabase/functions/tts-generate/tts.ts')
+  const { VOICES } = await import('../content/lib/validate.js')
+  assert.deepEqual([...VOICES].sort(), [...VOICE_ALIASES].sort())
+  assert.equal(new Set(Object.values(DEFAULT_VOICES)).size, VOICE_ALIASES.length, 'no two characters share a voice')
+  assert.deepEqual(VOICE_ALIASES.map(normalizeVoice), [...VOICE_ALIASES])
 })
 
 test('unknown or missing voices become nova', () => {

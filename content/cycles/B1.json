@@ -670,302 +670,415 @@
       "lessons": [
         {
           "order": 1,
-          "title": "Noticias locales",
-          "theory_content": "Las noticias suelen empezar por lo más importante (headline) y luego dan detalles: dónde, cuándo y por qué. Escucha primero el titular para captar el tema general. Después busca números, lugares y horas. Fíjate también en el pasado: will be closed, was damaged.",
+          "title": "Noticias locales en la radio",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Titular",
-              "value": "Bridge closed for repairs"
+              "label": "Situación",
+              "value": "Un boletín de radio local informa de inundaciones tras una noche de lluvia: presentadora, reportero y un vecino."
             },
             {
-              "label": "Dónde y cuándo",
-              "value": "in the city centre on Monday"
+              "label": "Antes de escuchar",
+              "value": "Escucha primero el titular y después los detalles: causa, calles cerradas y consejo para los conductores."
             },
             {
-              "label": "Motivo",
-              "value": "because of heavy rain"
+              "label": "Frases clave",
+              "value": "Our top story... · The council says... · Drivers should avoid..."
             }
           ],
-          "practice_content": "Escucha la noticia y resume en una frase qué ocurrió.",
+          "practice_content": "Resume la noticia en dos frases con 'because' y 'should'.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Por qué cierran el puente?",
+              "q": "¿Qué causó las inundaciones?",
               "opts": [
-                "a festival",
-                "repairs",
-                "an accident"
+                "heavy rain",
+                "a broken pipe",
+                "a storm at sea"
               ],
-              "correct": 1,
-              "why": "Cierran por reparaciones."
+              "correct": 0,
+              "why": "El titular: heavy rain."
             },
             {
               "type": "choice",
-              "q": "¿Cuántos días estará cerrado?",
+              "q": "¿Cuántas calles están cerradas?",
               "opts": [
+                "two",
                 "three",
-                "five",
-                "ten"
+                "five"
               ],
               "correct": 0,
-              "why": "Estará cerrado three days."
+              "why": "El reportero dice two streets are closed."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "The bridge will reopen on ___.",
-              "answer": "Thursday",
-              "hint": "Escucha el día."
+              "sentence": "Mr Walker has lived there for ___ years.",
+              "answer": "forty",
+              "hint": "Lo dice el vecino."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué calle deben evitar los conductores?",
+              "opts": [
+                "North Road",
+                "High Street",
+                "Mill Street"
+              ],
+              "correct": 2,
+              "why": "Avoid Mill Street."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Here is the local news. The Central Bridge will be closed for repairs from Monday."
+              "speaker": "Emily",
+              "voice": "woman_uk",
+              "text": "Good morning, this is Radio Riverside. Our top story: heavy rain has caused flooding in the town centre."
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "The work will take three days, and the bridge will reopen on Thursday morning."
+              "speaker": "Emily",
+              "voice": "woman_uk",
+              "text": "Our reporter Daniel is live at the scene. Daniel, what's happening?"
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Drivers should use the north road. Buses will run as usual."
+              "speaker": "Daniel",
+              "voice": "man_uk",
+              "text": "Thanks, Emily. The river rose overnight, and two streets are closed. The council says the water should go down by this afternoon."
+            },
+            {
+              "speaker": "Emily",
+              "voice": "woman_uk",
+              "text": "Have people been affected?"
+            },
+            {
+              "speaker": "Daniel",
+              "voice": "man_uk",
+              "text": "Yes. I'm here with Mr Walker, who lives nearby. Mr Walker, what did you see?"
+            },
+            {
+              "speaker": "Mr Walker",
+              "voice": "senior_man",
+              "text": "I've lived here for forty years and I've never seen so much water. But the neighbours helped each other, and everyone is safe."
+            },
+            {
+              "speaker": "Daniel",
+              "voice": "man_uk",
+              "text": "That's good news. Drivers should avoid Mill Street and use the north road."
+            },
+            {
+              "speaker": "Emily",
+              "voice": "woman_uk",
+              "text": "Thank you, Daniel. Stay with us for the weather forecast."
             }
           ]
         },
         {
           "order": 2,
-          "title": "Una entrevista corta",
-          "theory_content": "En una entrevista hay dos voces: quien pregunta y quien responde. Identifica quién habla en cada turno y fíjate en las respuestas largas: contienen la información principal. Las preguntas suelen empezar por What, Why o How long. Las respuestas dan razones con because.",
+          "title": "Podcast: aprender inglés más rápido",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Pregunta",
-              "value": "How long have you worked here?"
+              "label": "Situación",
+              "value": "Mia y Leo presentan un podcast de consejos de estudio. Dan tres consejos y una anécdota personal."
             },
             {
-              "label": "Respuesta",
-              "value": "For about six years."
+              "label": "Antes de escuchar",
+              "value": "Escucha las palabras que ordenan: 'tip number one', 'tip number two'. Anota cada consejo con dos o tres palabras."
             },
             {
-              "label": "Razón",
-              "value": "because I love teaching"
+              "label": "Frases clave",
+              "value": "Tip number one... · I agree · little and often"
             }
           ],
-          "practice_content": "Escucha y anota dos datos sobre la persona entrevistada.",
+          "practice_content": "Elige uno de los tres consejos y escribe cómo lo aplicarías esta semana.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Cuál es el trabajo de la persona entrevistada?",
+              "q": "¿Cuál es el primer consejo?",
               "opts": [
-                "driver",
-                "doctor",
-                "teacher"
+                "study a little every day",
+                "study only on Sundays",
+                "read one long book"
               ],
-              "correct": 2,
-              "why": "Es profesora."
+              "correct": 0,
+              "why": "Primer consejo: a little every day."
             },
             {
               "type": "choice",
-              "q": "¿Cuánto tiempo lleva trabajando allí?",
+              "q": "¿Qué recomienda Leo mientras caminas o viajas?",
               "opts": [
-                "six years",
-                "ten years",
-                "two years"
+                "do grammar tests",
+                "write emails",
+                "listen to podcasts or songs"
               ],
-              "correct": 0,
-              "why": "Lleva six years."
+              "correct": 2,
+              "why": "Listen to podcasts or songs in English."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "She loves her job ___ she helps people learn.",
-              "answer": "because",
-              "hint": "Conector de causa."
+              "sentence": "Last year Leo was too ___ to speak.",
+              "answer": "shy",
+              "hint": "Lo cuenta como anécdota."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuál es la idea final?",
+              "opts": [
+                "fast and hard",
+                "little and often",
+                "once a week"
+              ],
+              "correct": 1,
+              "why": "Mia cierra con: little and often."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Thank you for joining us. What do you do?"
+              "speaker": "Mia",
+              "voice": "young_woman",
+              "text": "Welcome to Study Smart! I'm Mia."
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "I'm an English teacher at a language school."
+              "speaker": "Leo",
+              "voice": "young_man",
+              "text": "And I'm Leo. Today we're talking about how to learn English faster."
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "How long have you worked there?"
+              "speaker": "Mia",
+              "voice": "young_woman",
+              "text": "Tip number one: study a little every day. Twenty minutes is better than two hours on Sunday."
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "For six years now. I love my job because I help people learn something new."
+              "speaker": "Leo",
+              "voice": "young_man",
+              "text": "I agree. Tip number two: listen to podcasts or songs in English while you walk or travel."
+            },
+            {
+              "speaker": "Mia",
+              "voice": "young_woman",
+              "text": "And number three: don't be afraid of mistakes. If you make a mistake, you learn something new."
+            },
+            {
+              "speaker": "Leo",
+              "voice": "young_man",
+              "text": "Exactly. Last year I was too shy to speak, but now I practise with my friends every week."
+            },
+            {
+              "speaker": "Mia",
+              "voice": "young_woman",
+              "text": "That's inspiring! So remember: little and often."
             }
           ]
         },
         {
           "order": 3,
-          "title": "Podcast sobre hábitos saludables",
-          "theory_content": "Un podcast de divulgación mezcla datos y consejos. Escucha las palabras que organizan la información: first, then, finally. Los consejos suelen ir con should o need to. Toma notas con palabras clave, no con frases completas.",
+          "title": "Entrevista a una profesora jubilada",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Orden",
-              "value": "First, drink water. Then, walk."
+              "label": "Situación",
+              "value": "Anna entrevista a la señora Collins, profesora durante treinta y cinco años."
             },
             {
-              "label": "Consejo",
-              "value": "You should sleep eight hours."
+              "label": "Antes de escuchar",
+              "value": "En una entrevista, las respuestas largas contienen la información principal. Fíjate en lo que más disfrutó y en su consejo."
             },
             {
-              "label": "Cierre",
-              "value": "Finally, relax before bed."
+              "label": "Frases clave",
+              "value": "What did you enjoy most? · Has it changed? · What advice would you give...?"
             }
           ],
-          "practice_content": "Escucha y escribe los tres consejos que se mencionan.",
+          "practice_content": "Escribe qué consejo le darías tú a alguien que empieza en tu profesión.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Qué consejo da primero?",
+              "q": "¿Cuántos años enseñó la señora Collins?",
               "opts": [
-                "do yoga",
-                "drink water",
-                "eat fruit"
+                "thirty-five",
+                "forty-five",
+                "twenty-five"
               ],
-              "correct": 1,
-              "why": "Primero: beber agua."
+              "correct": 0,
+              "why": "Taught for thirty-five years."
             },
             {
               "type": "choice",
-              "q": "¿Cuántas horas recomienda dormir?",
+              "q": "¿Qué disfrutaba más?",
               "opts": [
-                "ten",
-                "eight",
-                "five"
+                "marking exams",
+                "planning holidays",
+                "seeing students discover something new"
               ],
-              "correct": 1,
-              "why": "Recomienda eight hours."
+              "correct": 2,
+              "why": "Seeing students discover something new."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "He says you should walk for thirty ___ every day.",
-              "answer": "minutes",
-              "hint": "Escucha la unidad de tiempo."
+              "sentence": "Her advice: be kind, be curious, and never stop ___.",
+              "answer": "learning",
+              "hint": "Es la última frase de su consejo."
+            },
+            {
+              "type": "choice",
+              "q": "Según ella, ¿qué sigue siendo clave en un buen profesor?",
+              "opts": [
+                "using tablets",
+                "giving more homework",
+                "patience and listening"
+              ],
+              "correct": 2,
+              "why": "Patience and listening."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Welcome to Healthy Habits. Today: three easy tips for a better week."
+              "speaker": "Anna",
+              "voice": "woman_us2",
+              "text": "Mrs Collins, you taught for thirty-five years. What did you enjoy most?"
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "First, drink water when you wake up. Then, walk for thirty minutes every day."
+              "speaker": "Mrs Collins",
+              "voice": "senior_woman",
+              "text": "Seeing students discover something new. A shy child learns to read, and suddenly her eyes light up."
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "And finally, you should sleep eight hours every night."
+              "speaker": "Anna",
+              "voice": "woman_us2",
+              "text": "Has teaching changed?"
+            },
+            {
+              "speaker": "Mrs Collins",
+              "voice": "senior_woman",
+              "text": "A lot. Today students use tablets, but good teaching is still about patience and listening."
+            },
+            {
+              "speaker": "Anna",
+              "voice": "woman_us2",
+              "text": "What advice would you give to young teachers?"
+            },
+            {
+              "speaker": "Mrs Collins",
+              "voice": "senior_woman",
+              "text": "Be kind, be curious, and never stop learning yourself."
+            },
+            {
+              "speaker": "Anna",
+              "voice": "woman_us2",
+              "text": "Thank you for sharing your experience."
             }
           ]
         },
         {
           "order": 4,
-          "title": "Mensajes de voz y anuncios",
-          "theory_content": "Los anuncios y mensajes de voz son breves y llenos de datos: nombres, números de teléfono y horarios. Escucha con papel y lápiz. Los números de teléfono se dicen dígito a dígito. Y recuerda: oh significa 0 en muchos acentos.",
+          "title": "Mensaje de voz y aviso de estación",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Horario",
-              "value": "Open from nine to five."
+              "label": "Situación",
+              "value": "Dos mensajes cortos: el aviso de una clínica dental y un anuncio de estación de tren."
             },
             {
-              "label": "Contacto",
-              "value": "Call us on five five five, two one."
+              "label": "Antes de escuchar",
+              "value": "Escucha con papel y lápiz: hora nueva, número de teléfono, retraso y andén."
             },
             {
-              "label": "Petición",
-              "value": "Please leave a message."
+              "label": "Frases clave",
+              "value": "Please call us... · is delayed by... · We apologise for..."
             }
           ],
-          "practice_content": "Escucha el mensaje y anota nombre, hora y teléfono.",
+          "practice_content": "Escribe un mensaje de voz de 3 frases cambiando una cita médica.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿A qué hora abre la tienda?",
+              "q": "¿A qué hora es ahora la cita?",
               "opts": [
-                "ten",
-                "eight",
-                "nine"
+                "ten o'clock",
+                "twelve thirty",
+                "eleven thirty"
               ],
               "correct": 2,
-              "why": "Abre a las nine."
+              "why": "Pasa de las diez a las eleven thirty."
             },
             {
               "type": "choice",
-              "q": "¿Qué se pide al final?",
+              "q": "¿Qué debe hacer el señor Evans?",
               "opts": [
-                "come tomorrow",
-                "leave a message",
-                "send an email"
+                "send an email",
+                "call to confirm",
+                "come earlier"
               ],
               "correct": 1,
-              "why": "Piden que dejes un mensaje."
+              "why": "Please call us to confirm."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "The shop closes at ___ in the afternoon.",
-              "answer": "five",
-              "hint": "Escucha el cierre."
+              "sentence": "The train to Manchester is delayed by ___ minutes.",
+              "answer": "fifteen",
+              "hint": "Escucha el aviso de la estación."
+            },
+            {
+              "type": "choice",
+              "q": "¿De qué andén sale?",
+              "opts": [
+                "platform four",
+                "platform two",
+                "platform nine"
+              ],
+              "correct": 0,
+              "why": "Platform four."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Thank you for calling Green Books. We are open from nine to five, Monday to Saturday."
+              "speaker": "Clinic",
+              "voice": "woman_uk",
+              "text": "Hello, this is the Parkside Dental Clinic. This message is for Mr Evans. Your appointment tomorrow has moved from ten o'clock to eleven thirty. Please call us on five five five, zero one four two to confirm. Thank you."
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "If you want to speak to someone, call five five five, two one. Please leave a message after the tone."
+              "speaker": "Station",
+              "voice": "man_uk",
+              "text": "Attention, please. The train to Manchester, platform four, is delayed by fifteen minutes. We apologise for the inconvenience. Passengers should check the screens for updates."
             }
           ]
         }
       ],
       "quiz": [
         {
-          "question": "In the news report, the bridge will reopen on ___.",
+          "question": "The flooding in the news report was caused by ___.",
           "options": [
-            "Sunday",
-            "Monday",
-            "Thursday"
+            "a broken pipe",
+            "a river festival",
+            "heavy rain"
           ],
           "correct_idx": 2
         },
         {
-          "question": "The teacher says she loves her job ___.",
+          "question": "Tip number one in the podcast is to ___.",
           "options": [
-            "because it is easy",
-            "because she helps people learn",
-            "because the pay is high"
+            "avoid speaking",
+            "study a little every day",
+            "study for two hours on Sunday"
           ],
           "correct_idx": 1
         },
         {
-          "question": "In the podcast, the first tip is to ___.",
+          "question": "Mrs Collins says good teaching is about ___.",
           "options": [
-            "drink water",
-            "walk",
-            "sleep"
+            "patience and listening",
+            "long lessons",
+            "technology"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "In the dentist's message, the appointment has moved to ___.",
+          "options": [
+            "eleven thirty",
+            "ten o'clock",
+            "twelve"
           ],
           "correct_idx": 0
         },
@@ -974,27 +1087,18 @@
           "options": [
             "only the greeting",
             "names, times and numbers",
-            "the music"
+            "the background music"
           ],
           "correct_idx": 1
         },
         {
-          "question": "'Finally' in a podcast usually introduces ___.",
+          "question": "'We apologise for the inconvenience' is typical of ___.",
           "options": [
-            "the first point",
-            "a question",
-            "the last point"
+            "a casual chat",
+            "a public announcement",
+            "a text to a friend"
           ],
-          "correct_idx": 2
-        },
-        {
-          "question": "Telephone numbers are normally said ___.",
-          "options": [
-            "in letters",
-            "as one big number",
-            "digit by digit"
-          ],
-          "correct_idx": 2
+          "correct_idx": 1
         }
       ]
     },

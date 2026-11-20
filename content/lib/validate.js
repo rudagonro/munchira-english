@@ -3,7 +3,11 @@
 export const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
 // Debe coincidir con el enum public.skill_type de la base de datos.
 export const SKILLS = ['grammar', 'vocabulary', 'reading', 'listening', 'writing']
-export const VOICES = ['nova', 'onyx']
+// Debe coincidir con VOICE_ALIASES de supabase/functions/tts-generate/tts.ts
+export const VOICES = [
+  'nova', 'onyx', 'woman_uk', 'man_uk', 'young_woman', 'young_man',
+  'woman_us2', 'man_us2', 'senior_woman', 'senior_man',
+]
 export const MIN_MODULES = 4
 export const MIN_LESSONS = 4
 export const MIN_QUIZ = 5
