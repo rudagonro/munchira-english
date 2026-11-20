@@ -12,6 +12,10 @@ import { cacheKey, configFromEnv, normalizeVoice, synthesize, TtsProviderError }
 const BUCKET = "audio-cache";
 const MAX_CHARS = 1000;
 const DAILY_CHAR_CAP = Number(Deno.env.get("TTS_DAILY_CHAR_LIMIT") ?? "20000");
+// Techo para TODA la plataforma (caracteres nuevos generados por día, UTC). Los audios ya
+// guardados en caché no cuentan. 0 o un valor inválido desactiva el tope global.
+const GLOBAL_CAP_RAW = Number(Deno.env.get("TTS_GLOBAL_DAILY_CHAR_LIMIT") ?? "30000");
+const GLOBAL_DAILY_CAP = Number.isFinite(GLOBAL_CAP_RAW) && GLOBAL_CAP_RAW > 0 ? GLOBAL_CAP_RAW : null;
 const ALLOW_ANY_TEXT = Deno.env.get("TTS_ALLOW_ANY_TEXT") === "true";
 
 const corsHeaders = {
@@ -85,6 +89,7 @@ Deno.serve(async (req: Request) => {
     p_user: userId,
     p_chars: text.length,
     p_daily_cap: DAILY_CHAR_CAP,
+    p_global_cap: GLOBAL_DAILY_CAP,
   });
   if (capError) {
     console.error("tts_consume failed:", capError.message);
