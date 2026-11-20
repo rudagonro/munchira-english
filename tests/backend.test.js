@@ -101,6 +101,27 @@ test('tts guard: daily cap and course-content allowlist, service role only', asy
   })
 })
 
+test('tts global cap limits the whole platform, not just one user', async () => {
+  const db = await createDb()
+  const a = await addUser(db, { email: 'a@example.com' })
+  const b = await addUser(db, { email: 'b@example.com' })
+  await asServiceRole(db, async (c) => {
+    const consume = async (user, n) => (await c.query('select public.tts_consume($1, $2, 1000, 100) as ok', [user, n])).rows[0].ok
+    assert.equal(await consume(a, 60), true)
+    assert.equal(await consume(b, 30), true)
+    assert.equal(await consume(a, 11), false, 'global total would be 101')
+    assert.equal(await consume(b, 10), true, 'exactly at the cap is allowed')
+    assert.equal(await consume(b, 1), false, 'cap reached for everyone')
+    // sin tope global (null) solo cuenta el límite por usuario
+    assert.equal((await c.query('select public.tts_consume($1, 5, 1000) as ok', [a])).rows[0].ok, true)
+  })
+  const { rows } = await db.query('select sum(chars)::int n from public.tts_usage')
+  assert.equal(rows[0].n, 105, 'rejected requests reserve nothing')
+  await asUser(db, a, async (c) => {
+    await assert.rejects(() => c.query('select public.tts_consume($1, 1, 1000, 100)', [a]))
+  })
+})
+
 // ---------------------------------------------------------------- progress RPCs
 async function setup({ modules = 2, checkpointAfter = [], withA2 = true } = {}) {
   const db = await createDb()
