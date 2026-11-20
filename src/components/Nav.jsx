@@ -22,6 +22,10 @@ export default function Nav() {
           {(role === 'teacher' || role === 'admin') && (
             <NavLink to="/teacher">Panel docente</NavLink>
           )}
+          {(role === 'teacher' || role === 'admin') && (
+            <NavLink to="/revisor">Modo revisor</NavLink>
+          )}
+          {role === 'admin' && <NavLink to="/usuarios">Usuarios</NavLink>}
         </nav>
         <div className="nav-user">
           {profile?.full_name && (

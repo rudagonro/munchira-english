@@ -591,3 +591,74 @@ test('a cycle with draft modules never completes, even if the visible ones are d
     assert.equal(r.advanced, false)
   })
 })
+
+// ------------------------------------------------------------- modo revisor
+test('staff can read quiz answers for any module, draft included; students cannot', async () => {
+  const db = await createDb()
+  const teacher = await addUser(db, { email: 't@example.com', role: 'teacher' })
+  const student = await addUser(db, { email: 's@example.com' })
+  await db.exec(buildCycleSql(a2Single))
+  const moduleId = (await db.query('select id from public.modules')).rows[0].id
+  assert.equal((await db.query('select published from public.modules')).rows[0].published, false)
+
+  await asUser(db, teacher, async (c) => {
+    const rows = (await c.query('select * from public.staff_quiz_answers($1)', [moduleId])).rows
+    assert.equal(rows.length, 6)
+    assert.ok(rows.every((r) => Number.isInteger(r.correct_idx)))
+  })
+  await asUser(db, student, async (c) => {
+    await assert.rejects(() => c.query('select * from public.staff_quiz_answers($1)', [moduleId]), /forbidden/)
+    await assert.rejects(() => c.query('select correct_idx from public.quiz_questions'), /permission denied/)
+  })
+  await asAnon(db, async (c) => {
+    await assert.rejects(() => c.query('select * from public.staff_quiz_answers($1)', [moduleId]))
+  })
+})
+
+// ------------------------------------------------------------- gestión de usuarios (admin)
+test('only admins manage roles and assignments; nobody can change their own role', async () => {
+  const db = await createDb()
+  const admin = await addUser(db, { email: 'admin@example.com', role: 'admin' })
+  const teacher = await addUser(db, { email: 'teacher@example.com', role: 'teacher' })
+  const student = await addUser(db, { email: 'student@example.com' })
+  const other = await addUser(db, { email: 'other@example.com' })
+
+  await asUser(db, admin, async (c) => {
+    const list = (await c.query('select * from public.admin_list_users()')).rows
+    assert.equal(list.length, 4)
+    assert.ok(list.every((u) => u.email), 'admin sees every email')
+    await c.query('select public.admin_set_role($1, $2)', [other, 'teacher'])
+    await assert.rejects(() => c.query('select public.admin_set_role($1, $2)', [admin, 'student']), /cannot_change_own_role/)
+    await assert.rejects(() => c.query('select public.admin_set_role($1, $2)', [other, 'superuser']), /invalid_role/)
+    await assert.rejects(() => c.query('select public.admin_set_role($1, $2)', ['00000000-0000-0000-0000-000000000000', 'student']), /user_not_found/)
+    await c.query('select public.admin_assign_student($1, $2)', [student, teacher])
+    await assert.rejects(() => c.query('select public.admin_assign_student($1, $2)', [student, student]), /teacher_not_found/)
+    await assert.rejects(() => c.query('select public.admin_assign_student($1, $2)', [teacher, teacher]), /student_not_found/)
+  })
+  assert.equal((await db.query('select role::text r from public.profiles where id = $1', [other])).rows[0].r, 'teacher')
+  assert.equal((await db.query('select teacher_id from public.teacher_students where student_id = $1', [student])).rows[0].teacher_id, teacher)
+
+  // reasignar y quitar
+  await asUser(db, admin, async (c) => {
+    await c.query('select public.admin_assign_student($1, $2)', [student, other])
+    await c.query('select public.admin_assign_student($1, null)', [student])
+  })
+  assert.equal((await db.query('select count(*)::int n from public.teacher_students where student_id = $1', [student])).rows[0].n, 0)
+
+  // degradar a un docente le quita sus alumnos
+  await db.query('insert into public.teacher_students (teacher_id, student_id) values ($1, $2)', [other, student])
+  await asUser(db, admin, async (c) => { await c.query('select public.admin_set_role($1, $2)', [other, 'student']) })
+  assert.equal((await db.query('select count(*)::int n from public.teacher_students')).rows[0].n, 0)
+
+  // docentes y alumnos no pueden
+  for (const user of [teacher, student]) {
+    await asUser(db, user, async (c) => {
+      await assert.rejects(() => c.query('select * from public.admin_list_users()'), /forbidden/)
+      await assert.rejects(() => c.query('select public.admin_set_role($1, $2)', [user, 'admin']), /forbidden/)
+      await assert.rejects(() => c.query('select public.admin_assign_student($1, $2)', [student, teacher]), /forbidden/)
+    })
+  }
+  await asAnon(db, async (c) => {
+    await assert.rejects(() => c.query('select * from public.admin_list_users()'))
+  })
+})

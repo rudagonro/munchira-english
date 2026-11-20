@@ -17,15 +17,51 @@ function quizErrorMessage(error) {
   return 'No se pudo guardar tu progreso. Intenta de nuevo.'
 }
 
-export default function ModuleView() {
+export default function ModuleView({ preview = false }) {
   const { moduleId } = useParams()
-  return <ModuleContent key={moduleId} />
+  return <ModuleContent key={moduleId} preview={preview} />
 }
 
-function ModuleContent() {
+// Barra del modo revisor: salta a cualquier parte del módulo sin guardar nada.
+function PreviewBar({ stage, lessonIdx, lessons, hasVocab, showAnswers, onShowAnswers, onGo, backPath, navigate }) {
+  return (
+    <div className="rv-bar" role="region" aria-label="Controles del modo revisor">
+      <div className="rv-bar-top">
+        <span><strong>Modo revisor</strong> · no se guarda nada</span>
+        <button className="rv-chip" type="button" onClick={() => navigate(backPath)}>← Revisor</button>
+      </div>
+      <div className="rv-chips">
+        {hasVocab && (
+          <button className={`rv-chip ${stage === 'vocab' ? 'active' : ''}`} type="button" onClick={() => onGo('vocab', 0)}>Vocabulario</button>
+        )}
+        {lessons.map((l, i) => (
+          <button
+            key={l.id}
+            className={`rv-chip ${stage === 'lessons' && lessonIdx === i ? 'active' : ''}`}
+            type="button"
+            aria-label={`Lección ${i + 1}: ${l.title}`}
+            onClick={() => onGo('lessons', i)}
+          >L{i + 1}</button>
+        ))}
+        <button className={`rv-chip ${stage === 'quiz' || stage === 'result' ? 'active' : ''}`} type="button" onClick={() => onGo('quiz', 0)}>Quiz</button>
+      </div>
+      <label className="rv-toggle">
+        <input type="checkbox" checked={showAnswers} onChange={(e) => onShowAnswers(e.target.checked)} />
+        Mostrar respuestas correctas del quiz
+      </label>
+    </div>
+  )
+}
+
+function ModuleContent({ preview }) {
   const { moduleId } = useParams()
   const navigate = useNavigate()
-  const { getModuleContent, submitModuleQuiz, getActiveCycleData, recordVocabReview, completeLesson } = useAuth()
+  const {
+    getModuleContent, submitModuleQuiz, getActiveCycleData, recordVocabReview, completeLesson, getStaffQuizAnswers,
+  } = useAuth()
+  const backPath = preview ? '/revisor' : '/cycle'
+  const [showAnswers, setShowAnswers] = useState(false)
+  const [staffAnswers, setStaffAnswers] = useState({})
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -55,19 +91,33 @@ function ModuleContent() {
     let active = true
     async function load() {
       try {
-        const cycleRes = await getActiveCycleData()
-        if (!active) return
-        if (cycleRes.error) throw cycleRes.error
-        const cycle = cycleRes.data
-        const available = cycle && computeModuleAvailability(
-          cycle.modules, cycle.progress, cycle.checkpoints, cycle.checkpointAttempts
-        ).find((mod) => mod.id === moduleId && mod.available)
-        if (!available) throw new Error('Este módulo está bloqueado o no pertenece a tu ciclo activo.')
+        let cycle = null
+        if (!preview) {
+          const cycleRes = await getActiveCycleData()
+          if (!active) return
+          if (cycleRes.error) throw cycleRes.error
+          cycle = cycleRes.data
+          const available = cycle && computeModuleAvailability(
+            cycle.modules, cycle.progress, cycle.checkpoints, cycle.checkpointAttempts
+          ).find((mod) => mod.id === moduleId && mod.available)
+          if (!available) throw new Error('Este módulo está bloqueado o no pertenece a tu ciclo activo.')
+        }
         const { data, error } = await getModuleContent(moduleId)
         if (!active) return
         if (error || !data) throw new Error('No se pudo cargar el módulo.')
-        if (!data.lessons.length || !data.questions.length) {
+        if (!data.lessons.length || (!preview && !data.questions.length)) {
           throw new Error('El contenido de este módulo todavía no está disponible.')
+        }
+        if (preview) {
+          const answersRes = await getStaffQuizAnswers(moduleId)
+          if (!active) return
+          setStaffAnswers(Object.fromEntries(answersRes.data.map((a) => [a.question_id, a.correct_idx])))
+          setContent(data)
+          setDueVocab(data.vocabItems)
+          setCompletedLessons(new Set())
+          setLessonIdx(0)
+          setStage('lessons')
+          return
         }
         const now = Date.now()
         // Solo se practican las palabras nuevas o cuya fecha de repaso ya llegó.
@@ -88,7 +138,7 @@ function ModuleContent() {
     }
     void load()
     return () => { active = false }
-  }, [moduleId, getActiveCycleData, getModuleContent])
+  }, [moduleId, preview, getActiveCycleData, getModuleContent, getStaffQuizAnswers])
 
   useEffect(() => () => {
     audioRequest.current++
@@ -165,7 +215,7 @@ function ModuleContent() {
   }
 
   function markLessonDone(lessonId) {
-    if (completedLessons.has(lessonId)) return
+    if (preview || completedLessons.has(lessonId)) return
     setCompletedLessons((prev) => new Set(prev).add(lessonId))
     void completeLesson(lessonId).then(({ error }) => {
       if (error) console.warn('No se pudo guardar el progreso de la lección:', error.message)
@@ -177,6 +227,23 @@ function ModuleContent() {
   }
 
   async function handleSubmitQuiz() {
+    if (preview) {
+      // Se califica en el navegador con las respuestas del revisor; no se llama a submit_module_quiz.
+      const review = {}
+      let correct = 0
+      for (const q of content.questions) {
+        const correctIdx = staffAnswers[q.id]
+        const isCorrect = answers[q.id] === correctIdx
+        if (isCorrect) correct++
+        review[q.id] = { question_id: q.id, chosen_idx: answers[q.id] ?? null, correct_idx: correctIdx, is_correct: isCorrect }
+      }
+      const total = content.questions.length
+      setQuizResult({ correct, total, scorePct: total ? (100 * correct) / total : 0, review })
+      setCheckpointResult(null)
+      setCycleAdvanced(null)
+      setStage('result')
+      return
+    }
     if (saving || !enrollmentInfo || !content.questions.length) return
     setSaving(true)
     setSubmitError('')
@@ -214,20 +281,36 @@ function ModuleContent() {
     return (
       <div className="app-shell">
         <div className="error-banner" role="alert">{error}</div>
-        <button className="logout-btn" onClick={() => navigate('/cycle')}>Volver a mis módulos</button>
+        <button className="logout-btn" onClick={() => navigate(backPath)}>{preview ? 'Volver al revisor' : 'Volver a mis módulos'}</button>
       </div>
     )
   }
 
   const { module, lessons, questions, vocabItems } = content
 
+  function goTo(nextStage, idx) {
+    setStage(nextStage)
+    if (nextStage === 'lessons') setLessonIdx(idx)
+    if (nextStage === 'quiz') { setAnswers({}); setQuizResult(null) }
+    window.scrollTo?.({ top: 0 })
+  }
+  const bar = preview ? (
+    <PreviewBar
+      stage={stage} lessonIdx={lessonIdx} lessons={lessons} hasVocab={vocabItems.length > 0}
+      showAnswers={showAnswers} onShowAnswers={setShowAnswers} onGo={goTo} backPath={backPath} navigate={navigate}
+    />
+  ) : null
+
   // --- ETAPA: flashcards de vocabulario ---
   if (stage === 'vocab') {
     return (
       <div className="lesson-view">
-        <button className="lesson-back" onClick={() => navigate('/cycle')} type="button">
-          ← Mis módulos
-        </button>
+        {bar}
+        {!preview && (
+          <button className="lesson-back" onClick={() => navigate('/cycle')} type="button">
+            ← Mis módulos
+          </button>
+        )}
         <div className="lesson-header">
           <div className="lesson-module-chip">{module.title}</div>
           <h1 className="lesson-title" style={{ fontSize: '1.5rem' }}>Vocabulario del módulo</h1>
@@ -240,7 +323,7 @@ function ModuleContent() {
         </div>
         <VocabFlashcard
           vocabItems={dueVocab}
-          onReview={(item, known) => recordVocabReview(item.id, known)}
+          onReview={(item, known) => (preview ? undefined : recordVocabReview(item.id, known))}
           onComplete={() => setStage('lessons')}
         />
       </div>
@@ -256,11 +339,14 @@ function ModuleContent() {
 
     return (
       <div className="lesson-view">
+        {bar}
 
         {/* Breadcrumb */}
-        <button className="lesson-back" onClick={() => navigate('/cycle')} type="button">
-          ← Mis módulos
-        </button>
+        {!preview && (
+          <button className="lesson-back" onClick={() => navigate('/cycle')} type="button">
+            ← Mis módulos
+          </button>
+        )}
 
         {/* Header */}
         <div className="lesson-header">
@@ -377,9 +463,10 @@ function ModuleContent() {
 
   // --- ETAPA: quiz ---
   if (stage === 'quiz') {
-    const allAnswered = questions.every((q) => answers[q.id] !== undefined)
+    const allAnswered = preview || questions.every((q) => answers[q.id] !== undefined)
     return (
       <div className="app-shell">
+        {bar}
         <span className="role-tag">{module.title}</span>
         <h1>Quiz del módulo</h1>
         <p style={{ opacity: 0.7, marginBottom: 24 }}>Responde todas las preguntas para terminar el módulo.</p>
@@ -392,19 +479,20 @@ function ModuleContent() {
               {q.options.map((opt, idx) => (
                 <button
                   key={idx}
-                  className={`diag-opt ${answers[q.id] === idx ? 'selected' : ''}`}
+                  className={`diag-opt ${answers[q.id] === idx ? 'selected' : ''} ${preview && showAnswers && staffAnswers[q.id] === idx ? 'rv-correct' : ''}`}
                   onClick={() => selectAnswer(q.id, idx)}
                   type="button"
                   role="radio"
                   aria-checked={answers[q.id] === idx}
                 >
-                  {opt}
+                  {preview && showAnswers && staffAnswers[q.id] === idx ? `✓ ${opt}` : opt}
                 </button>
               ))}
             </div>
           </div>
         ))}
 
+        {questions.length === 0 && <p className="rv-empty">Este módulo no tiene preguntas de quiz todavía.</p>}
         {submitError && <div className="error-banner" role="alert" style={{ marginBottom: 16 }}>{submitError}</div>}
         <button
           className="btn-primary"
@@ -412,7 +500,7 @@ function ModuleContent() {
           disabled={!allAnswered || saving}
           onClick={handleSubmitQuiz}
         >
-          {saving ? 'Guardando...' : 'Finalizar módulo →'}
+          {saving ? 'Guardando...' : preview ? 'Ver resultado de prueba →' : 'Finalizar módulo →'}
         </button>
       </div>
     )
@@ -422,7 +510,8 @@ function ModuleContent() {
   if (stage === 'result') {
     return (
       <div className="app-shell" style={{ textAlign: 'center' }}>
-        <h1>Módulo completado</h1>
+        {bar}
+        <h1>{preview ? 'Resultado de prueba' : 'Módulo completado'}</h1>
         <p style={{ fontSize: '1.2rem', margin: '16px 0' }}>
           Acertaste {quizResult.correct} de {quizResult.total} ({quizResult.scorePct.toFixed(0)}%)
         </p>
@@ -461,8 +550,8 @@ function ModuleContent() {
           </div>
         )}
 
-        <button className="btn-primary" style={{ maxWidth: 280, margin: '0 auto', display: 'block' }} onClick={() => navigate('/cycle')}>
-          Volver a mis módulos
+        <button className="btn-primary" style={{ maxWidth: 280, margin: '0 auto', display: 'block' }} onClick={() => navigate(backPath)}>
+          {preview ? 'Volver al revisor' : 'Volver a mis módulos'}
         </button>
       </div>
     )
