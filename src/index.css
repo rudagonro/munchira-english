@@ -1640,3 +1640,5 @@ button.tp-kpi:hover, .tp-kpi.on { border-color: var(--purple); background: var(-
   .nav-links a { flex: none; white-space: nowrap; }
   .nav-user { flex: none; }
 }
+.rv-warm { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.rv-warm-text { font-size: 0.82rem; color: #78350F; }

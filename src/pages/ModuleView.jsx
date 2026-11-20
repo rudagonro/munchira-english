@@ -23,7 +23,7 @@ export default function ModuleView({ preview = false }) {
 }
 
 // Barra del modo revisor: salta a cualquier parte del módulo sin guardar nada.
-function PreviewBar({ stage, lessonIdx, lessons, hasVocab, showAnswers, onShowAnswers, onGo, backPath, navigate }) {
+function PreviewBar({ stage, lessonIdx, lessons, hasVocab, showAnswers, onShowAnswers, onGo, backPath, navigate, hasAudio, warm, onWarm }) {
   return (
     <div className="rv-bar" role="region" aria-label="Controles del modo revisor">
       <div className="rv-bar-top">
@@ -49,6 +49,20 @@ function PreviewBar({ stage, lessonIdx, lessons, hasVocab, showAnswers, onShowAn
         <input type="checkbox" checked={showAnswers} onChange={(e) => onShowAnswers(e.target.checked)} />
         Mostrar respuestas correctas del quiz
       </label>
+      {hasAudio && (
+        <div className="rv-warm">
+          <button className="rv-chip" type="button" onClick={onWarm} disabled={warm?.running}>
+            {warm?.running ? 'Preparando audio…' : 'Preparar el audio de este módulo'}
+          </button>
+          {warm && (
+            <span role="status" className="rv-warm-text">
+              {warm.running ? `${warm.done + warm.failed} de ${warm.total}` : warm.failed
+                ? `Listo: ${warm.done} de ${warm.total}. ${warm.failed} fallaron; vuelve a intentarlo.`
+                : `Listo: ${warm.total} audios guardados. Los alumnos los oirán al instante.`}
+            </span>
+          )}
+        </div>
+      )}
     </div>
   )
 }
@@ -61,6 +75,7 @@ function ModuleContent({ preview }) {
   } = useAuth()
   const backPath = preview ? '/revisor' : '/cycle'
   const [showAnswers, setShowAnswers] = useState(false)
+  const [warm, setWarm] = useState(null)
   const [staffAnswers, setStaffAnswers] = useState({})
 
   const [loading, setLoading] = useState(true)
@@ -174,20 +189,26 @@ function ModuleContent({ preview }) {
       const token = sessionData.session?.access_token
       if (!token) throw new Error('No hay sesión activa')
       if (!turns.length) throw new Error('No hay texto de audio')
-      const urls = []
-      for (const turn of turns) {
-        if (!turn.text) throw new Error('No hay texto de audio')
-        const url = await fetchTurnAudio(turn.text, turn.voice, token)
-        if (request !== audioRequest.current) {
-          URL.revokeObjectURL(url)
-          return
-        }
-        urls.push(url)
-        audioUrls.current.push(url)
-      }
+      if (turns.some((turn) => !turn.text)) throw new Error('No hay texto de audio')
+      // Las frases se piden por adelantado en 2 carriles (ElevenLabs limita las peticiones simultáneas)
+      // y se reproducen en orden: suena la primera en cuanto está lista, sin esperar a las demás.
+      const lanes = [Promise.resolve(), Promise.resolve()]
+      const jobs = turns.map((turn, i) => {
+        const lane = i % 2
+        const job = lanes[lane].then(() => fetchTurnAudio(turn.text, turn.voice, token)).then((url) => {
+          if (request !== audioRequest.current) { URL.revokeObjectURL(url); return null }
+          audioUrls.current.push(url)
+          return url
+        })
+        lanes[lane] = job.catch(() => {})
+        job.catch(() => {})
+        return job
+      })
       async function play(idx) {
-        if (request !== audioRequest.current || idx >= urls.length) return
-        const audio = new Audio(urls[idx])
+        if (request !== audioRequest.current || idx >= jobs.length) return
+        const url = await jobs[idx]
+        if (!url || request !== audioRequest.current) return
+        const audio = new Audio(url)
         audioRef.current = audio
         audio.onended = () => { void play(idx + 1) }
         audio.onerror = () => setAudioError('No se pudo reproducir el audio.')
@@ -212,6 +233,30 @@ function ModuleContent({ preview }) {
     } finally {
       if (request === audioRequest.current) setAudioLoading(false)
     }
+  }
+
+  // Modo revisor: genera y deja en caché todo el audio del módulo para que los alumnos no esperen.
+  async function warmModuleAudio() {
+    const seen = new Set()
+    const turns = content.lessons.flatMap((l) => getLessonAudioTurns(l))
+      .filter((t) => t.text && !seen.has(`${t.voice}|${t.text}`) && seen.add(`${t.voice}|${t.text}`))
+    setWarm({ running: true, done: 0, failed: 0, total: turns.length })
+    const { data: sessionData } = await supabase.auth.getSession()
+    const token = sessionData.session?.access_token
+    if (!token) { setWarm({ running: false, done: 0, failed: turns.length, total: turns.length }); return }
+    let done = 0
+    let failed = 0
+    const lanes = [0, 1].map((lane) => (async () => {
+      for (let i = lane; i < turns.length; i += 2) {
+        try {
+          URL.revokeObjectURL(await fetchTurnAudio(turns[i].text, turns[i].voice, token))
+          done++
+        } catch { failed++ }
+        setWarm({ running: true, done, failed, total: turns.length })
+      }
+    })())
+    await Promise.all(lanes)
+    setWarm({ running: false, done, failed, total: turns.length })
   }
 
   function markLessonDone(lessonId) {
@@ -298,6 +343,7 @@ function ModuleContent({ preview }) {
     <PreviewBar
       stage={stage} lessonIdx={lessonIdx} lessons={lessons} hasVocab={vocabItems.length > 0}
       showAnswers={showAnswers} onShowAnswers={setShowAnswers} onGo={goTo} backPath={backPath} navigate={navigate}
+      hasAudio={lessons.some((l) => getLessonAudioTurns(l).length > 0)} warm={warm} onWarm={warmModuleAudio}
     />
   ) : null
 
