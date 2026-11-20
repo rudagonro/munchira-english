@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
+import LegalLinks from '../components/LegalLinks'
 
 export default function Login() {
   const { signInWithEmail, signInWithGoogle } = useAuth()
@@ -42,7 +43,7 @@ export default function Login() {
   return (
     <div className="screen-center">
       <div className="auth-card">
-        <div className="auth-brand">Nivelo</div>
+        <div className="auth-brand"><span>NIV</span>elo English</div>
         <p className="auth-subtitle">Inicia sesión para continuar tu camino.</p>
 
         {error && <div className="error-banner" role="alert">{error}</div>}
@@ -86,6 +87,7 @@ export default function Login() {
         <p className="auth-footer">
           ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
         </p>
+        <LegalLinks />
       </div>
     </div>
   )

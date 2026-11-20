@@ -1557,3 +1557,21 @@ button.tp-kpi:hover, .tp-kpi.on { border-color: var(--purple); background: var(-
 .tp-problems { margin: 6px 0 0 18px; display: grid; gap: 4px; color: var(--text-muted); }
 
 .lesson-audio-note { margin-top: 10px; font-size: 0.85rem; color: var(--text-muted); }
+
+/* Marca y textos legales */
+.nav-logo-sub { font-weight: 500; font-size: 0.72em; color: var(--text-muted); letter-spacing: 0.02em; }
+@media (max-width: 420px) { .nav-logo-sub { display: none; } }
+.consent { display: flex; gap: 10px; align-items: flex-start; font-size: 0.85rem; color: var(--text-muted); margin: 4px 0 14px; line-height: 1.4; }
+.consent input { width: 20px; height: 20px; margin-top: 1px; flex: none; accent-color: var(--purple); }
+.consent a, .legal-links a, .legal a { color: var(--purple); font-weight: 600; }
+.auth-legal { margin-top: 10px; font-size: 0.78rem; color: var(--text-muted); text-align: center; }
+.legal-links { margin-top: 10px; font-size: 0.78rem; text-align: center; color: var(--text-muted); }
+.legal { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; line-height: 1.65; }
+.legal h1 { font-size: 1.8rem; margin-bottom: 4px; }
+.legal h2 { font-size: 1.15rem; margin: 28px 0 8px; }
+.legal p, .legal li { font-size: 0.95rem; }
+.legal ul { margin: 6px 0 6px 20px; display: grid; gap: 4px; }
+.legal .legal-meta { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
+.legal table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 8px 0; }
+.legal th, .legal td { text-align: left; border-bottom: 1px solid var(--border); padding: 8px 6px; vertical-align: top; }
+.legal-back { display: inline-block; margin-bottom: 16px; font-size: 0.9rem; }

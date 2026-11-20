@@ -13,8 +13,8 @@ export default function Nav() {
   return (
     <header className="nav-header">
       <div className="nav-inner">
-        <Link className="nav-logo" to="/cycle" aria-label="NIVelo, ir a mis módulos">
-          <span>NIV</span>elo
+        <Link className="nav-logo" to="/cycle" aria-label="NIVelo English, ir a mis módulos">
+          <span>NIV</span>elo <span className="nav-logo-sub">English</span>
         </Link>
         <nav className="nav-links" aria-label="Principal">
           <NavLink to="/cycle">Mis módulos</NavLink>

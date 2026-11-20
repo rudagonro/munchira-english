@@ -11,6 +11,7 @@ import Diagnostic from './pages/Diagnostic'
 import CycleModules from './pages/CycleModules'
 import ModuleView from './pages/ModuleView'
 import Review from './pages/Review'
+import { Privacy, Terms } from './pages/Legal'
 
 function AppRoutes() {
   const location = useLocation()
@@ -20,6 +21,8 @@ function AppRoutes() {
         <Route path="/" element={<Navigate to="/cycle" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/privacidad" element={<Privacy />} />
+        <Route path="/terminos" element={<Terms />} />
 
         <Route
           path="/app"

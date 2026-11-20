@@ -67,7 +67,7 @@ export default function Diagnostic() {
     return (
       <div className="diag-intro">
         <div className="diag-mark">Examen de Ubicación · CEFR</div>
-        <h1>Diagnóstico <span>Nivelo</span></h1>
+        <h1>Diagnóstico <span>NIVelo English</span></h1>
         <p>
           Antes de empezar tu camino, necesitamos saber dónde estás parado. Mide
           gramática, vocabulario, lectura, escucha y escritura para ubicarte en

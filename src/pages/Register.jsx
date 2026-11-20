@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
+import LegalLinks from '../components/LegalLinks'
 
 export default function Register() {
   const { signUpWithEmail, signInWithGoogle } = useAuth()
@@ -11,6 +12,7 @@ export default function Register() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
+  const [accepted, setAccepted] = useState(false)
   const [loading, setLoading] = useState(false)
 
   // NOTA DE SEGURIDAD: este formulario NUNCA debe incluir un campo para elegir
@@ -26,6 +28,11 @@ export default function Register() {
   async function handleSubmit(e) {
     e.preventDefault()
     setError('')
+
+    if (!accepted) {
+      setError('Debes aceptar los Términos y la Política de privacidad para crear tu cuenta.')
+      return
+    }
 
     const pwError = validatePassword(password)
     if (pwError) {
@@ -65,7 +72,7 @@ export default function Register() {
     return (
       <div className="screen-center">
         <div className="auth-card">
-          <div className="auth-brand">Nivelo</div>
+          <div className="auth-brand"><span>NIV</span>elo English</div>
           <div className="success-banner">
             Cuenta creada. Revisa tu correo para confirmar tu cuenta antes de iniciar sesión.
           </div>
@@ -80,7 +87,7 @@ export default function Register() {
   return (
     <div className="screen-center">
       <div className="auth-card">
-        <div className="auth-brand">Nivelo</div>
+        <div className="auth-brand"><span>NIV</span>elo English</div>
         <p className="auth-subtitle">Crea tu cuenta para tomar tu diagnóstico.</p>
 
         {error && <div className="error-banner" role="alert">{error}</div>}
@@ -123,6 +130,19 @@ export default function Register() {
             />
           </div>
 
+          <label className="consent" htmlFor="accept">
+            <input
+              id="accept"
+              type="checkbox"
+              checked={accepted}
+              onChange={(e) => setAccepted(e.target.checked)}
+            />
+            <span>
+              He leído y acepto los <Link to="/terminos" target="_blank">Términos de uso</Link> y la{' '}
+              <Link to="/privacidad" target="_blank">Política de privacidad</Link>.
+            </span>
+          </label>
+
           <button className="btn-primary" type="submit" disabled={loading}>
             {loading ? 'Creando cuenta...' : 'Crear cuenta'}
           </button>
@@ -134,9 +154,12 @@ export default function Register() {
           Continuar con Google
         </button>
 
+        <p className="auth-legal">Al continuar con Google también aceptas los Términos y la Política de privacidad.</p>
+
         <p className="auth-footer">
           ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
         </p>
+        <LegalLinks />
       </div>
     </div>
   )
