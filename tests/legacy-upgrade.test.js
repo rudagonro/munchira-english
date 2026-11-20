@@ -108,6 +108,7 @@ test('staff features work on enum columns (teacher dashboard, content pipeline)'
   // content seeding on top of the existing, already-created A2 cycle
   const { buildCycleSql } = await import('../content/lib/sql.js')
   const a2 = JSON.parse(readFileSync(new URL('../content/cycles/A2.json', import.meta.url), 'utf8'))
+  a2.modules.slice(1).forEach((m) => { m.status = 'outline'; m.outline = { topics: ['a', 'b', 'c', 'd'] } })
   await ctx.db.exec(buildCycleSql(a2))
   const seeded = (await ctx.db.query("select m.published, m.skill_type::text s from public.modules m join public.cycles c on c.id = m.cycle_id where c.cefr_level = 'A2'")).rows
   assert.deepEqual(seeded, [{ published: false, s: 'grammar' }])

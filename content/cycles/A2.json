@@ -361,66 +361,1007 @@
       "order": 2,
       "skill_type": "vocabulary",
       "title": "Rutinas, compras y viajes",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Rutina diaria y horarios",
-          "Tiendas, precios y ropa",
-          "Transporte y direcciones",
-          "Familia y tiempo libre"
-        ],
-        "vocab_themes": [
-          "daily routines",
-          "shopping",
-          "travel",
-          "family",
-          "time"
-        ],
-        "target_words": 40
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Rutinas diarias y adverbios de frecuencia",
+          "theory_content": "Para hablar de rutinas usamos el presente simple: I get up, she has breakfast. Los adverbios de frecuencia (always, usually, sometimes, never) van antes del verbo principal: I usually walk to work. Con el verbo to be van después: He is always late. En tercera persona singular el verbo añade -s (has, goes, wakes).",
+          "theory_table": [
+            {
+              "label": "always (100%)",
+              "value": "I always brush my teeth."
+            },
+            {
+              "label": "usually (80%)",
+              "value": "She usually has breakfast at home."
+            },
+            {
+              "label": "sometimes (40%)",
+              "value": "We sometimes eat out."
+            },
+            {
+              "label": "never (0%)",
+              "value": "He never wakes up late."
+            }
+          ],
+          "practice_content": "Escribe tres frases sobre tu mañana usando always, usually y never.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "She ___ (have) breakfast at seven every day.",
+              "answer": "has",
+              "hint": "Tercera persona: have → has."
+            },
+            {
+              "type": "choice",
+              "q": "Elige la frase correcta.",
+              "opts": [
+                "I go to usually work by bus.",
+                "I usually go to work by bus.",
+                "I go usually to work by bus."
+              ],
+              "correct": 1,
+              "why": "El adverbio va antes del verbo principal."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "up",
+                "late",
+                "He",
+                "never",
+                "wakes"
+              ],
+              "answer": "He never wakes up late",
+              "hint": "Sujeto + adverbio + verbo + resto."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "De compras: precios y tallas",
+          "theory_content": "En una tienda necesitas preguntar precios y pedir cosas con cortesía. Para el precio: How much is this jacket? (singular) y How much are these shoes? (plural). Para pedir: I'd like a medium T-shirt, please. Para probar algo: Can I try it on? Al pagar: Can I pay by card? Recuerda que cheap es barato y expensive es caro.",
+          "theory_table": [
+            {
+              "label": "Precio (singular)",
+              "value": "How much is this bag?"
+            },
+            {
+              "label": "Precio (plural)",
+              "value": "How much are these shoes?"
+            },
+            {
+              "label": "Pedir algo",
+              "value": "I'd like a small coffee, please."
+            },
+            {
+              "label": "Probar",
+              "value": "Can I try it on?"
+            }
+          ],
+          "practice_content": "Imagina que compras una chaqueta. Escribe una pregunta por el precio y otra para pagar con tarjeta.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "How much ___ these jeans?",
+              "answer": "are",
+              "hint": "Jeans es plural: are."
+            },
+            {
+              "type": "choice",
+              "q": "Quieres saber si puedes probarte una camisa. ¿Qué dices?",
+              "opts": [
+                "Can I wear it off?",
+                "Do I try it on?",
+                "Can I try it on?"
+              ],
+              "correct": 2,
+              "why": "Can I try it on? es la forma natural."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "pay",
+                "I",
+                "card",
+                "by",
+                "Can"
+              ],
+              "answer": "Can I pay by card",
+              "hint": "Can I + verbo base."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Viajes y transporte",
+          "theory_content": "En una estación o aeropuerto escucharás palabras como ticket, platform, luggage y delay. Para comprar un billete: I'd like a return ticket to Boston. Para preguntar por el andén: Which platform does the train leave from? Si un transporte llega tarde, decimos that it is delayed. Para reservar alojamiento usamos book a room.",
+          "theory_table": [
+            {
+              "label": "Billete de ida y vuelta",
+              "value": "a return ticket"
+            },
+            {
+              "label": "Andén",
+              "value": "Platform 3"
+            },
+            {
+              "label": "Equipaje",
+              "value": "I have two bags of luggage."
+            },
+            {
+              "label": "Retraso",
+              "value": "The flight is delayed."
+            }
+          ],
+          "practice_content": "Escribe una frase pidiendo un billete de tren a una ciudad y otra preguntando por el andén.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The train is ___ by twenty minutes.",
+              "answer": "delayed",
+              "hint": "Delayed = con retraso."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué significa luggage?",
+              "opts": [
+                "equipaje",
+                "andén",
+                "billete"
+              ],
+              "correct": 0,
+              "why": "Luggage es el equipaje."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "Which",
+                "it",
+                "does",
+                "leave",
+                "platform",
+                "from"
+              ],
+              "answer": "Which platform does it leave from",
+              "hint": "Pregunta con does + sujeto + verbo base."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "En el restaurante",
+          "theory_content": "En un restaurante usamos expresiones corteses. Para pedir: Could I have the menu, please? o I'll have the soup. Para pedir la cuenta: Could we have the bill, please? La persona que atiende es the waiter o the waitress. En muchos países se deja una tip (propina) si el servicio fue bueno.",
+          "theory_table": [
+            {
+              "label": "Pedir la carta",
+              "value": "Could I have the menu, please?"
+            },
+            {
+              "label": "Elegir plato",
+              "value": "I'll have the chicken salad."
+            },
+            {
+              "label": "Pedir la cuenta",
+              "value": "Could we have the bill, please?"
+            },
+            {
+              "label": "Propina",
+              "value": "We left a tip."
+            }
+          ],
+          "practice_content": "Escribe un pequeño diálogo de tres líneas entre un cliente y un camarero.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Could we have the ___, please? (cuenta)",
+              "answer": "bill",
+              "hint": "En inglés británico: the bill."
+            },
+            {
+              "type": "choice",
+              "q": "¿Quién te atiende en un restaurante?",
+              "opts": [
+                "the receipt",
+                "the luggage",
+                "the waiter"
+              ],
+              "correct": 2,
+              "why": "Waiter = camarero."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "have",
+                "will",
+                "the",
+                "I",
+                "soup"
+              ],
+              "answer": "I will have the soup",
+              "hint": "Sujeto + will have + plato."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "I ___ get up at six, but on Sundays I sleep late.",
+          "options": [
+            "use",
+            "usually",
+            "usual"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "How much ___ this T-shirt?",
+          "options": [
+            "do",
+            "are",
+            "is"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "A ticket for going and coming back is a ___ ticket.",
+          "options": [
+            "single",
+            "luggage",
+            "return"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "'The train is delayed' means that the train is ___.",
+          "options": [
+            "late",
+            "empty",
+            "cheap"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "Which sentence is polite in a restaurant?",
+          "options": [
+            "I want the bill now.",
+            "Could we have the bill, please?",
+            "Give me the bill."
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "He ___ eats meat. He is vegetarian.",
+          "options": [
+            "always",
+            "never",
+            "usually"
+          ],
+          "correct_idx": 1
+        }
+      ],
+      "vocab": [
+        {
+          "english": "wake up",
+          "spanish": "despertarse",
+          "example_sentence": "I wake up at seven."
+        },
+        {
+          "english": "breakfast",
+          "spanish": "desayuno",
+          "example_sentence": "We have breakfast together."
+        },
+        {
+          "english": "receipt",
+          "spanish": "recibo / ticket de compra",
+          "example_sentence": "Keep the receipt, please."
+        },
+        {
+          "english": "cheap",
+          "spanish": "barato",
+          "example_sentence": "This bag is cheap."
+        },
+        {
+          "english": "expensive",
+          "spanish": "caro",
+          "example_sentence": "That hotel is too expensive."
+        },
+        {
+          "english": "discount",
+          "spanish": "descuento",
+          "example_sentence": "There is a ten percent discount."
+        },
+        {
+          "english": "ticket",
+          "spanish": "billete / entrada",
+          "example_sentence": "I bought a ticket online."
+        },
+        {
+          "english": "platform",
+          "spanish": "andén",
+          "example_sentence": "The train leaves from platform two."
+        },
+        {
+          "english": "luggage",
+          "spanish": "equipaje",
+          "example_sentence": "My luggage is heavy."
+        },
+        {
+          "english": "delay",
+          "spanish": "retraso",
+          "example_sentence": "There is a delay of one hour."
+        },
+        {
+          "english": "bill",
+          "spanish": "cuenta (restaurante)",
+          "example_sentence": "Can we have the bill, please?"
+        },
+        {
+          "english": "waiter",
+          "spanish": "camarero",
+          "example_sentence": "The waiter is very friendly."
+        }
+      ]
     },
     {
       "order": 3,
       "skill_type": "listening",
       "title": "Conversaciones cotidianas",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "En la tienda",
-          "Preguntando direcciones",
-          "Reservando un viaje",
-          "Hablando de planes"
-        ],
-        "scenarios": [
-          "shop assistant & customer",
-          "tourist & local",
-          "travel agent & client",
-          "two friends making plans"
-        ],
-        "voices": [
-          "nova",
-          "onyx"
-        ]
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "En la cafetería",
+          "theory_content": "Antes de escuchar, lee las preguntas: así sabes qué información buscar. En una cafetería escucharás pedidos (I'd like...), tamaños (small, medium, large) y el total a pagar. Escucha el diálogo dos veces: la primera para la idea general y la segunda para los detalles, como el precio.",
+          "theory_table": [
+            {
+              "label": "Pedir",
+              "value": "I'd like a large latte."
+            },
+            {
+              "label": "Preguntar el total",
+              "value": "How much is that?"
+            },
+            {
+              "label": "Pagar",
+              "value": "Can I pay by card?"
+            }
+          ],
+          "practice_content": "Escucha el diálogo y apunta qué pide el cliente y cuánto paga.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Qué pide el cliente para beber?",
+              "opts": [
+                "a large latte",
+                "an orange juice",
+                "a small tea"
+              ],
+              "correct": 0,
+              "why": "Pide un large latte."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuánto paga en total?",
+              "opts": [
+                "six dollars",
+                "eight dollars",
+                "four dollars"
+              ],
+              "correct": 0,
+              "why": "El total es six dollars."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The customer pays by ___.",
+              "answer": "card",
+              "hint": "Lo dice al final del diálogo."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Good morning! What can I get you?"
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "Hi. I'd like a large latte and a blueberry muffin, please."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Sure. That's six dollars."
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "Can I pay by card?"
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Of course. Here you are. Enjoy!"
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Pidiendo direcciones",
+          "theory_content": "Al escuchar direcciones fíjate en las palabras clave: turn left, turn right, go straight, next to, opposite. Suelen venir en orden, así que ve imaginando el camino. Si no entiendes, puedes decir: Could you repeat that, please?",
+          "theory_table": [
+            {
+              "label": "Girar",
+              "value": "Turn left at the bank."
+            },
+            {
+              "label": "Seguir recto",
+              "value": "Go straight for two blocks."
+            },
+            {
+              "label": "Ubicación",
+              "value": "It's next to the pharmacy."
+            }
+          ],
+          "practice_content": "Escucha y dibuja el recorrido en un papel con flechas.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Qué hay que hacer en el banco?",
+              "opts": [
+                "turn left",
+                "turn right",
+                "go back"
+              ],
+              "correct": 0,
+              "why": "Dice turn left at the bank."
+            },
+            {
+              "type": "choice",
+              "q": "¿Dónde está la farmacia?",
+              "opts": [
+                "next to the post office",
+                "opposite the park",
+                "behind the school"
+              ],
+              "correct": 0,
+              "why": "Está next to the post office."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The pharmacy is two ___ away.",
+              "answer": "blocks",
+              "hint": "Escucha la distancia."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Excuse me, is there a pharmacy near here?"
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "Yes. Go straight for two blocks and turn left at the bank."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Turn left at the bank. Then?"
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "The pharmacy is next to the post office. You can't miss it."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Thank you very much!"
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Reservar una mesa por teléfono",
+          "theory_content": "Por teléfono no ves la cara de la otra persona, así que atiende a números, días y horas. Las frases típicas son: I'd like to book a table for four y What time? En inglés las horas se dicen como seven thirty o half past seven. Si algo no queda claro, pide que lo repitan.",
+          "theory_table": [
+            {
+              "label": "Reservar",
+              "value": "I'd like to book a table for two."
+            },
+            {
+              "label": "Hora",
+              "value": "At seven thirty."
+            },
+            {
+              "label": "Confirmar",
+              "value": "Could you spell your name?"
+            }
+          ],
+          "practice_content": "Escucha y escribe el día, la hora y el número de personas.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Para cuántas personas es la reserva?",
+              "opts": [
+                "four",
+                "two",
+                "six"
+              ],
+              "correct": 0,
+              "why": "Es para four people."
+            },
+            {
+              "type": "choice",
+              "q": "¿A qué hora es?",
+              "opts": [
+                "8:30",
+                "6:30",
+                "7:30"
+              ],
+              "correct": 2,
+              "why": "La hora es seven thirty."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The reservation is for ___ night.",
+              "answer": "Friday",
+              "hint": "Escucha el día."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Good evening, Bella Vista restaurant."
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "Hello. I'd like to book a table for four people on Friday night."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "What time would you like?"
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "At seven thirty, please."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Perfect. Could I have your name?"
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "It's Daniel Ortiz."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Planes para el fin de semana",
+          "theory_content": "En conversaciones informales se usa going to para planes: I'm going to visit my parents. Escucha también las razones (because) y los conectores (and, but). Entre amigos es normal oír contracciones como gonna, pero tú escribe going to.",
+          "theory_table": [
+            {
+              "label": "Plan",
+              "value": "I'm going to visit my parents."
+            },
+            {
+              "label": "Razón",
+              "value": "because I miss them."
+            },
+            {
+              "label": "Contraste",
+              "value": "but it might rain."
+            }
+          ],
+          "practice_content": "Escucha y anota los planes de cada persona.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Qué va a hacer el chico el sábado?",
+              "opts": [
+                "go to the cinema",
+                "stay at home",
+                "play football"
+              ],
+              "correct": 2,
+              "why": "Va a jugar fútbol."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué va a hacer ella el domingo?",
+              "opts": [
+                "go shopping",
+                "study",
+                "visit her grandmother"
+              ],
+              "correct": 2,
+              "why": "Visita a su abuela."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "It might ___ on Saturday.",
+              "answer": "rain",
+              "hint": "Lo dice el chico."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "What are you going to do this weekend?"
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "On Saturday I'm going to play football, but it might rain."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "That's too bad. I'm going to visit my grandmother on Sunday."
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "That sounds nice. Say hello from me!"
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "In the café dialogue, the customer pays ___.",
+          "options": [
+            "with a voucher",
+            "in cash",
+            "by card"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "'Turn left at the bank' is an instruction to ___.",
+          "options": [
+            "go home",
+            "stop walking",
+            "change direction"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "'Half past seven' means ___.",
+          "options": [
+            "7:30",
+            "6:30",
+            "7:15"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'I'm going to visit my grandmother' is a ___.",
+          "options": [
+            "plan",
+            "habit",
+            "past event"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "To ask someone to say something again you say: ___",
+          "options": [
+            "Do you repeat that?",
+            "Repeat you that?",
+            "Could you repeat that, please?"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "When you listen to a phone call, you should pay attention to ___.",
+          "options": [
+            "background noise",
+            "numbers and times",
+            "only the first word"
+          ],
+          "correct_idx": 1
+        }
+      ]
     },
     {
       "order": 4,
       "skill_type": "writing",
       "title": "Emails y mensajes simples",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Mensaje corto a un amigo",
-          "Email para pedir información",
-          "Describir tu fin de semana",
-          "Invitación y respuesta"
-        ],
-        "writing_tasks": [
-          "60-80 words email",
-          "text message",
-          "short diary entry"
-        ]
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Un mensaje informal a un amigo",
+          "theory_content": "Los mensajes informales son cortos y cercanos. Empiezan con Hi o Hey y terminan con See you soon! o Take care. Usamos contracciones (I'm, can't) y frases simples. Para quedar con alguien: Are you free on Saturday? Para proponer: Let's meet at six.",
+          "theory_table": [
+            {
+              "label": "Saludo",
+              "value": "Hi Anna,"
+            },
+            {
+              "label": "Proponer",
+              "value": "Let's meet at six."
+            },
+            {
+              "label": "Despedida",
+              "value": "See you soon!"
+            }
+          ],
+          "practice_content": "Escribe un mensaje de 3 líneas invitando a un amigo al cine.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Are you ___ on Saturday? (libre)",
+              "answer": "free",
+              "hint": "Free = libre/disponible."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué despedida es informal?",
+              "opts": [
+                "See you soon!",
+                "Yours faithfully,",
+                "Dear Sir or Madam,"
+              ],
+              "correct": 0,
+              "why": "See you soon! es informal."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "at",
+                "Let",
+                "us",
+                "meet",
+                "six"
+              ],
+              "answer": "Let us meet at six",
+              "hint": "Let us + verbo base + hora."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Un email para pedir información",
+          "theory_content": "Un email más formal tiene tres partes: saludo, petición clara y despedida. Saludo: Dear Mr Brown, o Dear Sir or Madam, si no conoces a la persona. Petición: I would like to know... o Could you tell me...? Cierre: Thank you for your help. Best regards, y tu nombre.",
+          "theory_table": [
+            {
+              "label": "Saludo",
+              "value": "Dear Mr Brown,"
+            },
+            {
+              "label": "Petición",
+              "value": "Could you tell me the price?"
+            },
+            {
+              "label": "Cierre",
+              "value": "Best regards, Laura"
+            }
+          ],
+          "practice_content": "Escribe un email corto a una escuela preguntando el precio y el horario de un curso de inglés.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Dear Sir or Madam, I ___ like to know the price.",
+              "answer": "would",
+              "hint": "I would like = Me gustaría."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué cierre es adecuado para un email formal?",
+              "opts": [
+                "Bye bye!",
+                "Kisses,",
+                "Best regards,"
+              ],
+              "correct": 2,
+              "why": "Best regards es formal."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "price",
+                "you",
+                "tell",
+                "me",
+                "Could",
+                "the"
+              ],
+              "answer": "Could you tell me the price",
+              "hint": "Could you + verbo + objeto."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Reservar una habitación",
+          "theory_content": "Para reservar un alojamiento por escrito, indica fechas, número de personas y tipo de habitación. Usa preposiciones de fecha: from the 10th to the 14th of May. Frases útiles: I would like to book a double room y Is breakfast included? Termina pidiendo confirmación: Please confirm the reservation.",
+          "theory_table": [
+            {
+              "label": "Reservar",
+              "value": "I would like to book a double room."
+            },
+            {
+              "label": "Fechas",
+              "value": "from the 10th to the 14th of May"
+            },
+            {
+              "label": "Pregunta",
+              "value": "Is breakfast included?"
+            }
+          ],
+          "practice_content": "Escribe un email reservando una habitación para dos personas durante tres noches.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "I would like to ___ a single room for two nights.",
+              "answer": "book",
+              "hint": "Book = reservar."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué pregunta es correcta?",
+              "opts": [
+                "Breakfast is included you?",
+                "Does breakfast included?",
+                "Is breakfast included?"
+              ],
+              "correct": 2,
+              "why": "Is + sujeto + participio."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "confirm",
+                "the",
+                "reservation",
+                "Please"
+              ],
+              "answer": "Please confirm the reservation",
+              "hint": "Verbo en imperativo + objeto."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Una nota de agradecimiento",
+          "theory_content": "Una nota de agradecimiento es breve y sincera. Estructura: agradece, menciona algo concreto y cierra con cariño. Frases: Thank you so much for... y It was very kind of you. Para dar un motivo usa because. Cierra con Thanks again o With love.",
+          "theory_table": [
+            {
+              "label": "Agradecer",
+              "value": "Thank you so much for the gift."
+            },
+            {
+              "label": "Concreto",
+              "value": "I love the book you chose."
+            },
+            {
+              "label": "Cierre",
+              "value": "Thanks again!"
+            }
+          ],
+          "practice_content": "Escribe una nota agradeciendo una invitación a cenar.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Thank you so much ___ the dinner.",
+              "answer": "for",
+              "hint": "Thank you for + nombre."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuál es una frase de agradecimiento?",
+              "opts": [
+                "It was very kind of you.",
+                "It was very late of you.",
+                "It was very hungry."
+              ],
+              "correct": 0,
+              "why": "Kind = amable."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "Thanks",
+                "for",
+                "everything",
+                "again"
+              ],
+              "answer": "Thanks again for everything",
+              "hint": "Frase breve de cierre."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "A formal email to someone you don't know starts with ___.",
+          "options": [
+            "Dear Sir or Madam,",
+            "Hi mate,",
+            "Hey!"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'Best regards' is used ___.",
+          "options": [
+            "only in speech",
+            "at the end of a formal email",
+            "at the start of an email"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "I would like to book a room.",
+            "I would liking to book a room.",
+            "I would like book a room."
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "An informal message usually ends with ___.",
+          "options": [
+            "Yours faithfully,",
+            "See you soon!",
+            "Respectfully,"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "'Is breakfast included?' is ___.",
+          "options": [
+            "a complaint",
+            "a question about the price",
+            "a thank-you note"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "To ask for confirmation you can write: ___",
+          "options": [
+            "Please confirm the reservation.",
+            "You are confirming?",
+            "Reservation you confirm."
+          ],
+          "correct_idx": 0
+        }
+      ]
     }
   ],
   "checkpoints": [

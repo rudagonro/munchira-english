@@ -10,59 +10,1293 @@
       "order": 1,
       "skill_type": "grammar",
       "title": "Matices, registro y lenguaje idiomático",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Inversión y énfasis",
-          "Subjuntivo y construcciones formales",
-          "Registro formal e informal",
-          "Expresiones idiomáticas",
-          "Cleft sentences"
-        ]
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Inversión y énfasis",
+          "theory_content": "En inglés formal o literario se invierte el orden sujeto-auxiliar después de adverbios negativos o restrictivos: Never have I seen such a view. Rarely does he complain. Not only did she win, but she also broke the record. Under no circumstances should you open the door. Se usa para dar énfasis y suena muy formal.",
+          "theory_table": [
+            {
+              "label": "Never",
+              "value": "Never have I felt so proud."
+            },
+            {
+              "label": "Rarely",
+              "value": "Rarely does he arrive late."
+            },
+            {
+              "label": "Not only",
+              "value": "Not only did she win, but she also broke a record."
+            },
+            {
+              "label": "Under no circumstances",
+              "value": "Under no circumstances should you share it."
+            }
+          ],
+          "practice_content": "Reescribe con inversión: 'I have never seen such a beautiful place.'",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Never ___ I seen such a beautiful place.",
+              "answer": "have",
+              "hint": "Inversión: Never + have + sujeto."
+            },
+            {
+              "type": "choice",
+              "q": "Elige la frase con inversión correcta.",
+              "opts": [
+                "Rarely complains he.",
+                "Rarely he complains.",
+                "Rarely does he complain."
+              ],
+              "correct": 2,
+              "why": "Auxiliar delante del sujeto."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "also",
+                "the",
+                "only",
+                "she",
+                "but",
+                "Not",
+                "record",
+                "broke",
+                "she",
+                "did",
+                "win"
+              ],
+              "answer": "Not only did she win but she also broke the record",
+              "hint": "Not only + did + sujeto + verbo."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Cleft sentences y estructuras formales",
+          "theory_content": "Las cleft sentences ponen el foco en un elemento: It was John who broke the window. What I need is a holiday. En registro formal se usa el subjuntivo con verbos de sugerencia o exigencia: The committee recommended that he resign. It is essential that she be present. Nota que el verbo va en forma base, sin -s.",
+          "theory_table": [
+            {
+              "label": "It-cleft",
+              "value": "It was Maria who called."
+            },
+            {
+              "label": "What-cleft",
+              "value": "What I need is some sleep."
+            },
+            {
+              "label": "Subjuntivo",
+              "value": "I suggest that he go home."
+            },
+            {
+              "label": "Formal",
+              "value": "It is vital that she be informed."
+            }
+          ],
+          "practice_content": "Reformula con cleft: 'John broke the window.' → 'It was ___'.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "It was Maria ___ called me. (quien)",
+              "answer": "who",
+              "hint": "It was + persona + who."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuál usa subjuntivo correctamente?",
+              "opts": [
+                "I suggest that he goes home.",
+                "I suggest that he going home.",
+                "I suggest that he go home."
+              ],
+              "correct": 2,
+              "why": "Subjuntivo = forma base."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "I",
+                "a",
+                "What",
+                "need",
+                "is",
+                "holiday",
+                "long"
+              ],
+              "answer": "What I need is a long holiday",
+              "hint": "What + frase + be + complemento."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Registro formal e informal",
+          "theory_content": "El registro es el nivel de formalidad. Informal: contracciones, phrasal verbs, vocabulario cotidiano (get, kids, ask for). Formal: palabras de origen latino, voz pasiva, ausencia de contracciones (obtain, children, request). Compara: Can you tell me if there's a problem? vs Could you please inform me whether there is a problem? Adapta el tono a tu lector.",
+          "theory_table": [
+            {
+              "label": "Informal",
+              "value": "Tell me what you need."
+            },
+            {
+              "label": "Formal",
+              "value": "Please inform me of your requirements."
+            },
+            {
+              "label": "Phrasal verb → verbo formal",
+              "value": "find out → ascertain"
+            },
+            {
+              "label": "Contracciones",
+              "value": "don't → do not"
+            }
+          ],
+          "practice_content": "Reescribe en registro formal: 'Can you send me the info ASAP?'",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Could you ___ me whether there is a problem? (informar)",
+              "answer": "inform",
+              "hint": "Inform = informar."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuál es más formal?",
+              "opts": [
+                "I would be grateful if you could confirm.",
+                "Gimme a sec.",
+                "Can you tell me?"
+              ],
+              "correct": 0,
+              "why": "Tono formal."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "your",
+                "assistance",
+                "for",
+                "be",
+                "I",
+                "would",
+                "grateful"
+              ],
+              "answer": "I would be grateful for your assistance",
+              "hint": "Fórmula formal."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Expresiones idiomáticas",
+          "theory_content": "Los idioms tienen un significado que no se deduce de cada palabra. It's a piece of cake = es muy fácil. To break the ice = romper el hielo. Once in a blue moon = muy rara vez. To hit the nail on the head = dar en el clavo. Aprende cada idiom en contexto y úsalo con moderación: demasiados suenan forzados.",
+          "theory_table": [
+            {
+              "label": "piece of cake",
+              "value": "The test was a piece of cake."
+            },
+            {
+              "label": "break the ice",
+              "value": "A joke can break the ice."
+            },
+            {
+              "label": "once in a blue moon",
+              "value": "We meet once in a blue moon."
+            },
+            {
+              "label": "hit the nail on the head",
+              "value": "You hit the nail on the head!"
+            }
+          ],
+          "practice_content": "Escribe una frase con cada idiom de la tabla.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The exam was a piece of ___. (muy fácil)",
+              "answer": "cake",
+              "hint": "Idiom: a piece of cake."
+            },
+            {
+              "type": "choice",
+              "q": "'Once in a blue moon' significa ___.",
+              "opts": [
+                "muy raramente",
+                "por la mañana",
+                "cada noche"
+              ],
+              "correct": 0,
+              "why": "Muy raramente."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "head",
+                "hit",
+                "the",
+                "on",
+                "the",
+                "nail",
+                "You"
+              ],
+              "answer": "You hit the nail on the head",
+              "hint": "Idiom completo."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "Not only ___ she win, but she also broke the record.",
+          "options": [
+            "did",
+            "had",
+            "does"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "I recommend that he ___ the project.",
+          "options": [
+            "reviews",
+            "review",
+            "reviewing"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "'It was Anna who ...' is a ___ sentence.",
+          "options": [
+            "conditional",
+            "passive",
+            "cleft"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "Which sentence is the most formal?",
+          "options": [
+            "I would be grateful if you could reply.",
+            "Write back soon.",
+            "Reply ASAP."
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'To break the ice' means ___.",
+          "options": [
+            "melt snow",
+            "start a conversation in a tense situation",
+            "stop a meeting"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "Rarely ___ he complain about work.",
+          "options": [
+            "do",
+            "does",
+            "did he"
+          ],
+          "correct_idx": 1
+        }
+      ]
     },
     {
       "order": 2,
       "skill_type": "vocabulary",
       "title": "Vocabulario de especialización",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Negocios y finanzas",
-          "Academia y investigación",
-          "Derecho y política",
-          "Collocations avanzadas"
-        ],
-        "target_words": 100
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Negocios y finanzas",
+          "theory_content": "En el mundo financiero aparecen términos como revenue (ingresos), overheads (gastos generales), shareholder (accionista), merger (fusión), budget (presupuesto) y cash flow (flujo de caja). Verbos útiles: to invest, to forecast, to downsize. Frase típica: The company's revenue exceeded forecasts.",
+          "theory_table": [
+            {
+              "label": "revenue",
+              "value": "Revenue rose by 5%."
+            },
+            {
+              "label": "merger",
+              "value": "The merger created a giant."
+            },
+            {
+              "label": "shareholder",
+              "value": "Shareholders approved the plan."
+            },
+            {
+              "label": "forecast",
+              "value": "The forecast is positive."
+            }
+          ],
+          "practice_content": "Redacta dos frases sobre el estado financiero de una empresa.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The company's ___ rose by five percent. (ingresos)",
+              "answer": "revenue",
+              "hint": "Revenue = ingresos."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué es a merger?",
+              "opts": [
+                "un préstamo",
+                "un contrato laboral",
+                "una fusión"
+              ],
+              "correct": 2,
+              "why": "Merger = fusión de empresas."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "approved",
+                "the",
+                "Shareholders",
+                "budget"
+              ],
+              "answer": "Shareholders approved the budget",
+              "hint": "Sujeto + verbo + objeto."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Academia e investigación",
+          "theory_content": "El lenguaje académico usa términos como hypothesis, methodology, peer-reviewed, literature review, findings y limitations. Verbos: to hypothesise, to validate, to cite. Collocations: carry out a study, publish a paper, draw upon sources.",
+          "theory_table": [
+            {
+              "label": "hypothesis",
+              "value": "The hypothesis was confirmed."
+            },
+            {
+              "label": "peer-reviewed",
+              "value": "a peer-reviewed journal"
+            },
+            {
+              "label": "findings",
+              "value": "The findings are significant."
+            },
+            {
+              "label": "cite",
+              "value": "Always cite your sources."
+            }
+          ],
+          "practice_content": "Describe en tres frases cómo sería una investigación sobre el sueño.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The study's ___ were published last year. (hallazgos)",
+              "answer": "findings",
+              "hint": "Findings = hallazgos."
+            },
+            {
+              "type": "choice",
+              "q": "Una revista peer-reviewed es ___.",
+              "opts": [
+                "muy antigua",
+                "gratuita",
+                "evaluada por expertos"
+              ],
+              "correct": 2,
+              "why": "Peer-reviewed = revisada por pares."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "Always",
+                "your",
+                "cite",
+                "sources"
+              ],
+              "answer": "Always cite your sources",
+              "hint": "Imperativo + objeto."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Derecho y política",
+          "theory_content": "Vocabulario de ley y política: legislation (legislación), court, verdict (veredicto), plaintiff, defendant, policy, parliament, election. Frases: The court ruled in favour of the defendant. The government introduced new legislation. Cuidado con sentence: puede ser frase o condena.",
+          "theory_table": [
+            {
+              "label": "verdict",
+              "value": "The jury reached a verdict."
+            },
+            {
+              "label": "legislation",
+              "value": "New legislation was passed."
+            },
+            {
+              "label": "policy",
+              "value": "foreign policy"
+            },
+            {
+              "label": "sentence",
+              "value": "He received a two-year sentence."
+            }
+          ],
+          "practice_content": "Escribe una frase sobre una ley reciente de tu país usando legislation.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The jury reached a ___. (veredicto)",
+              "answer": "verdict",
+              "hint": "Verdict = veredicto."
+            },
+            {
+              "type": "choice",
+              "q": "'The defendant' es ___.",
+              "opts": [
+                "el acusado",
+                "el juez",
+                "el testigo"
+              ],
+              "correct": 0,
+              "why": "Defendant = acusado/demandado."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "new",
+                "introduced",
+                "The",
+                "government",
+                "legislation"
+              ],
+              "answer": "The government introduced new legislation",
+              "hint": "Sujeto + verbo + objeto."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Collocations avanzadas",
+          "theory_content": "Las collocations de nivel C1 suenan muy naturales: gain a deeper understanding, pose a threat, bear in mind, strike a balance, meet the requirements. Son combinaciones fijas: no cambies el verbo por un sinónimo (make progress ✓ / do progress ✗).",
+          "theory_table": [
+            {
+              "label": "pose a threat",
+              "value": "It poses a threat to health."
+            },
+            {
+              "label": "strike a balance",
+              "value": "Strike a balance between work and life."
+            },
+            {
+              "label": "bear in mind",
+              "value": "Bear in mind the deadline."
+            },
+            {
+              "label": "meet requirements",
+              "value": "She meets the requirements."
+            }
+          ],
+          "practice_content": "Escribe cuatro frases con las collocations de la tabla.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "It is hard to strike a ___ between work and life. (equilibrio)",
+              "answer": "balance",
+              "hint": "Strike a balance."
+            },
+            {
+              "type": "choice",
+              "q": "Elige la collocation correcta.",
+              "opts": [
+                "make a threat pose",
+                "pose a threat",
+                "do a threat"
+              ],
+              "correct": 1,
+              "why": "Pose a threat."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "in",
+                "the",
+                "Bear",
+                "mind",
+                "deadline"
+              ],
+              "answer": "Bear in mind the deadline",
+              "hint": "Bear in mind + sustantivo."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "A company's income from sales is its ___.",
+          "options": [
+            "hypothesis",
+            "verdict",
+            "revenue"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "A scientific idea to be tested is a ___.",
+          "options": [
+            "hypothesis",
+            "merger",
+            "legislation"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "The decision of a jury is the ___.",
+          "options": [
+            "verdict",
+            "budget",
+            "policy"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "Which collocation is correct?",
+          "options": [
+            "strike a balance",
+            "do a balance strike",
+            "make a balance"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'Peer-reviewed' means ___.",
+          "options": [
+            "checked by other experts",
+            "free to read",
+            "very popular"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'Bear in mind' means ___.",
+          "options": [
+            "forget",
+            "carry",
+            "remember"
+          ],
+          "correct_idx": 2
+        }
+      ],
+      "vocab": [
+        {
+          "english": "revenue",
+          "spanish": "ingresos",
+          "example_sentence": "Revenue grew this quarter."
+        },
+        {
+          "english": "merger",
+          "spanish": "fusión",
+          "example_sentence": "The merger was announced today."
+        },
+        {
+          "english": "shareholder",
+          "spanish": "accionista",
+          "example_sentence": "Shareholders attended the meeting."
+        },
+        {
+          "english": "forecast",
+          "spanish": "previsión",
+          "example_sentence": "The forecast was optimistic."
+        },
+        {
+          "english": "hypothesis",
+          "spanish": "hipótesis",
+          "example_sentence": "We tested the hypothesis."
+        },
+        {
+          "english": "findings",
+          "spanish": "hallazgos",
+          "example_sentence": "The findings surprised everyone."
+        },
+        {
+          "english": "verdict",
+          "spanish": "veredicto",
+          "example_sentence": "The verdict was unanimous."
+        },
+        {
+          "english": "legislation",
+          "spanish": "legislación",
+          "example_sentence": "Legislation changes slowly."
+        },
+        {
+          "english": "defendant",
+          "spanish": "acusado",
+          "example_sentence": "The defendant pleaded not guilty."
+        },
+        {
+          "english": "policy",
+          "spanish": "política / normativa",
+          "example_sentence": "The policy changed last year."
+        },
+        {
+          "english": "threat",
+          "spanish": "amenaza",
+          "example_sentence": "Climate change is a threat."
+        },
+        {
+          "english": "balance",
+          "spanish": "equilibrio",
+          "example_sentence": "Find a balance between work and rest."
+        }
+      ]
     },
     {
       "order": 3,
       "skill_type": "listening",
       "title": "Debates y conferencias",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Debate de actualidad",
-          "Conferencia académica",
-          "Entrevista de trabajo",
-          "Podcast especializado"
-        ]
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Debate de actualidad",
+          "theory_content": "En un debate hay posturas enfrentadas. Identifica a cada interlocutor y su posición. Fíjate en los marcadores de desacuerdo (I see your point, but...) y acuerdo parcial (That's partly true). Anota los argumentos clave de cada lado.",
+          "theory_table": [
+            {
+              "label": "Acuerdo parcial",
+              "value": "That's partly true."
+            },
+            {
+              "label": "Desacuerdo",
+              "value": "I see your point, but..."
+            },
+            {
+              "label": "Resumen",
+              "value": "To sum up..."
+            }
+          ],
+          "practice_content": "Escucha el debate y resume la postura de cada persona.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Qué opina el segundo hablante?",
+              "opts": [
+                "Offices should close.",
+                "Remote work is perfect.",
+                "Remote work harms teamwork."
+              ],
+              "correct": 2,
+              "why": "Dice que perjudica el trabajo en equipo (teamwork)."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué admite la primera hablante?",
+              "opts": [
+                "It reduces commuting time.",
+                "It is cheaper for everyone.",
+                "It is illegal."
+              ],
+              "correct": 0,
+              "why": "Reconoce que ahorra tiempo de desplazamiento."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The second speaker says it harms ___.",
+              "answer": "teamwork",
+              "hint": "Palabra clave de su argumento."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "I believe remote work boosts productivity. It also reduces commuting time and stress."
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "I see your point, but I think it harms teamwork. Spontaneous ideas rarely appear on a video call."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "That's partly true, but good tools can fix that."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Conferencia académica",
+          "theory_content": "En una conferencia el orador estructura el discurso: introduction, main points, conclusion. Escucha marcadores como Let me turn to..., This brings me to..., In summary. Toma notas con esquemas y palabras clave. Presta atención a las cifras y los ejemplos.",
+          "theory_table": [
+            {
+              "label": "Estructura",
+              "value": "Let me turn to the second point."
+            },
+            {
+              "label": "Transición",
+              "value": "This brings me to..."
+            },
+            {
+              "label": "Cierre",
+              "value": "In summary..."
+            }
+          ],
+          "practice_content": "Escucha y completa un esquema con tres puntos principales.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Cuál es el tema de la conferencia?",
+              "opts": [
+                "cooking",
+                "sleep and memory",
+                "football"
+              ],
+              "correct": 1,
+              "why": "Habla de sueño y memoria."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué efecto tiene dormir mal?",
+              "opts": [
+                "worse memory",
+                "no effect",
+                "better memory"
+              ],
+              "correct": 0,
+              "why": "Empeora la memoria."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The speaker says adults need ___ hours of sleep.",
+              "answer": "seven",
+              "hint": "Escucha la cifra."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Today I will talk about sleep and memory. Firstly, sleep helps the brain store information."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Let me turn to the second point. Studies show that adults need seven hours of sleep, and a lack of sleep leads to worse memory."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "In summary, good sleep is essential for learning."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Entrevista de trabajo",
+          "theory_content": "En una entrevista, escucha las preguntas con atención. Suelen ser: Tell me about yourself, Why do you want this job?, Where do you see yourself in five years? Las respuestas fuertes usan ejemplos concretos y verbos de logro: led, improved, achieved.",
+          "theory_table": [
+            {
+              "label": "Pregunta abierta",
+              "value": "Tell me about yourself."
+            },
+            {
+              "label": "Motivación",
+              "value": "Why do you want this job?"
+            },
+            {
+              "label": "Logro",
+              "value": "I improved sales by 20%."
+            }
+          ],
+          "practice_content": "Escucha y anota un logro del candidato.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Qué logró el candidato?",
+              "opts": [
+                "improved sales by 20%",
+                "won a prize",
+                "opened a school"
+              ],
+              "correct": 0,
+              "why": "Mejoró las ventas un 20%."
+            },
+            {
+              "type": "choice",
+              "q": "¿Por qué quiere el puesto?",
+              "opts": [
+                "it is close to home",
+                "it pays more",
+                "it offers growth"
+              ],
+              "correct": 2,
+              "why": "Menciona crecimiento profesional."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "He led a team of ___ people.",
+              "answer": "ten",
+              "hint": "Escucha el número."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Tell me about your experience."
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "I led a team of ten people and improved sales by twenty percent."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Why do you want this job?"
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "Because it offers real opportunities for growth."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Podcast especializado",
+          "theory_content": "Un podcast especializado usa jerga del sector. No necesitas entender cada palabra: deduce el significado del contexto. Presta atención a la tesis del episodio y a las ideas que se repiten. Si hay un invitado, nota cómo introduce sus ejemplos.",
+          "theory_table": [
+            {
+              "label": "Deducir",
+              "value": "Use context to guess meaning."
+            },
+            {
+              "label": "Repetición",
+              "value": "Repeated ideas are key."
+            },
+            {
+              "label": "Invitado",
+              "value": "Our guest today is..."
+            }
+          ],
+          "practice_content": "Escucha el podcast y anota la tesis del episodio.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Cuál es la tesis del episodio?",
+              "opts": [
+                "Companies hate numbers.",
+                "Data is boring.",
+                "Data helps companies make better decisions."
+              ],
+              "correct": 2,
+              "why": "La tesis es sobre decisiones con datos."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué ejemplo menciona el invitado?",
+              "opts": [
+                "a retail company",
+                "a school",
+                "a hospital"
+              ],
+              "correct": 0,
+              "why": "Habla de una empresa de retail."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "He says data should be used with ___.",
+              "answer": "caution",
+              "hint": "Escucha el consejo final."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Our guest today is a data analyst. Welcome."
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "Thanks. My thesis is simple: data helps companies make better decisions."
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "For example, a retail company used sales data to improve stock levels. But we should use data with caution."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "In the debate, the second speaker thinks remote work harms ___.",
+          "options": [
+            "transport",
+            "teamwork",
+            "salaries"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "In a lecture, 'Let me turn to...' introduces ___.",
+          "options": [
+            "the ending",
+            "a joke",
+            "a new point"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "In the interview, the candidate improved sales by ___.",
+          "options": [
+            "20%",
+            "50%",
+            "10%"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "A good strategy for jargon is to ___.",
+          "options": [
+            "guess meaning from context",
+            "read the transcript only",
+            "stop listening"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'I see your point, but...' expresses ___.",
+          "options": [
+            "polite disagreement",
+            "full agreement",
+            "a question"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "The podcast guest says data should be used with ___.",
+          "options": [
+            "joy",
+            "caution",
+            "speed"
+          ],
+          "correct_idx": 1
+        }
+      ]
     },
     {
       "order": 4,
       "skill_type": "writing",
       "title": "Informes y análisis crítico",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Informe estructurado",
-          "Resumen y paráfrasis",
-          "Análisis crítico",
-          "Propuesta formal"
-        ]
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Informe estructurado",
+          "theory_content": "Un informe (report) tiene secciones claras: Introduction, Findings, Conclusions y Recommendations. Usa títulos y viñetas cuando ayuden. El lenguaje es objetivo y formal: The survey revealed that..., It is recommended that... Evita opiniones personales sin datos.",
+          "theory_table": [
+            {
+              "label": "Introducción",
+              "value": "The purpose of this report is..."
+            },
+            {
+              "label": "Hallazgos",
+              "value": "The survey revealed that..."
+            },
+            {
+              "label": "Conclusión",
+              "value": "It can be concluded that..."
+            },
+            {
+              "label": "Recomendación",
+              "value": "It is recommended that..."
+            }
+          ],
+          "practice_content": "Redacta la introducción y las recomendaciones de un informe sobre el uso del transporte público.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The ___ of this report is to analyse customer feedback.",
+              "answer": "purpose",
+              "hint": "Purpose = finalidad."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué sección propone acciones?",
+              "opts": [
+                "Findings",
+                "Recommendations",
+                "Introduction"
+              ],
+              "correct": 1,
+              "why": "Recommendations."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "is",
+                "costs",
+                "that",
+                "we",
+                "reduce",
+                "It",
+                "recommended"
+              ],
+              "answer": "It is recommended that we reduce costs",
+              "hint": "It is recommended that + frase."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Resumen y paráfrasis",
+          "theory_content": "Resumir es reducir un texto a sus ideas principales con tus propias palabras. Parafrasear es reformular una idea con otra estructura y vocabulario, conservando el sentido. Técnicas: cambia la categoría gramatical (She is a fast runner → She runs quickly), usa sinónimos y reorganiza la frase. Siempre cita la fuente.",
+          "theory_table": [
+            {
+              "label": "Original",
+              "value": "She is a fast runner."
+            },
+            {
+              "label": "Paráfrasis",
+              "value": "She runs quickly."
+            },
+            {
+              "label": "Sinónimo",
+              "value": "important → crucial"
+            },
+            {
+              "label": "Cita",
+              "value": "According to Smith (2023)..."
+            }
+          ],
+          "practice_content": "Parafrasea: 'The company's profits increased dramatically last year.'",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "According ___ Smith (2023), sleep is crucial.",
+              "answer": "to",
+              "hint": "According to + autor."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué es parafrasear?",
+              "opts": [
+                "reformular con tus palabras",
+                "copiar tal cual",
+                "traducir literalmente"
+              ],
+              "correct": 0,
+              "why": "Parafrasear conserva el sentido."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "runs",
+                "She",
+                "quickly",
+                "very"
+              ],
+              "answer": "She runs very quickly",
+              "hint": "Sujeto + verbo + adverbio."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Análisis crítico",
+          "theory_content": "El análisis crítico evalúa argumentos con criterios: claridad, evidencia, coherencia y sesgo. Estructura: resume brevemente, evalúa fortalezas y debilidades y concluye con tu valoración. Frases útiles: The author convincingly argues..., However, the evidence is limited. No basta con describir: debes juzgar con razones.",
+          "theory_table": [
+            {
+              "label": "Fortaleza",
+              "value": "The author convincingly argues..."
+            },
+            {
+              "label": "Debilidad",
+              "value": "However, the evidence is limited."
+            },
+            {
+              "label": "Valoración",
+              "value": "Overall, the argument is persuasive."
+            },
+            {
+              "label": "Criterios",
+              "value": "clarity, evidence, bias"
+            }
+          ],
+          "practice_content": "Escribe una crítica de 6 líneas a un artículo que hayas leído.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The author ___ argues that cities need more parks. (de forma convincente)",
+              "answer": "convincingly",
+              "hint": "Convincingly = de forma convincente."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué debe hacer un análisis crítico?",
+              "opts": [
+                "evaluar con razones",
+                "copiar el texto",
+                "contar la trama"
+              ],
+              "correct": 0,
+              "why": "Evaluar con criterios."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "the",
+                "is",
+                "evidence",
+                "limited",
+                "However"
+              ],
+              "answer": "However the evidence is limited",
+              "hint": "However + coma + frase."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Propuesta formal",
+          "theory_content": "Una propuesta (proposal) convence a un lector de aceptar una idea. Incluye: objetivo, descripción del plan, beneficios, coste y calendario. Usa lenguaje persuasivo pero profesional: We propose to..., This initiative would..., The estimated cost is... Termina con una llamada a la acción: We look forward to discussing this further.",
+          "theory_table": [
+            {
+              "label": "Objetivo",
+              "value": "The aim of this proposal is..."
+            },
+            {
+              "label": "Plan",
+              "value": "We propose to introduce..."
+            },
+            {
+              "label": "Beneficios",
+              "value": "This would reduce costs."
+            },
+            {
+              "label": "Cierre",
+              "value": "We look forward to discussing this further."
+            }
+          ],
+          "practice_content": "Escribe una propuesta de 8 líneas para mejorar la comunicación en tu empresa.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "We ___ to introduce a new training programme.",
+              "answer": "propose",
+              "hint": "Propose = proponer."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué debe incluir una propuesta?",
+              "opts": [
+                "una canción",
+                "un cuento",
+                "beneficios y coste"
+              ],
+              "correct": 2,
+              "why": "Beneficios y coste."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "forward",
+                "look",
+                "further",
+                "discussing",
+                "We",
+                "to",
+                "this"
+              ],
+              "answer": "We look forward to discussing this further",
+              "hint": "Cierre formal."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "The section that lists actions is called ___.",
+          "options": [
+            "Recommendations",
+            "Introduction",
+            "Findings"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "To paraphrase means to ___.",
+          "options": [
+            "copy exactly",
+            "translate word by word",
+            "restate in your own words"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "A critical analysis should ___.",
+          "options": [
+            "evaluate with reasons",
+            "ignore evidence",
+            "only describe"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'We propose to...' is typical of a ___.",
+          "options": [
+            "poem",
+            "diary",
+            "proposal"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "In reports, the language should be ___.",
+          "options": [
+            "emotional",
+            "slang",
+            "objective and formal"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "A proposal ends with ___.",
+          "options": [
+            "a call to action",
+            "a weather forecast",
+            "a recipe"
+          ],
+          "correct_idx": 0
+        }
+      ]
     }
   ],
   "checkpoints": [

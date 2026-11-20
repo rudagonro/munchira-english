@@ -449,6 +449,9 @@ test('teacher_student_detail returns the drill-down and enforces assignment', as
 import { buildCycleSql } from '../content/lib/sql.js'
 
 const a2File = JSON.parse(readFileSync(new URL('../content/cycles/A2.json', import.meta.url), 'utf8'))
+/** A2 with only its first module ready: the fixture for "incomplete cycle" scenarios. */
+const a2Single = structuredClone(a2File)
+a2Single.modules.slice(1).forEach((m) => { m.status = 'outline'; m.outline = { topics: ['a', 'b', 'c', 'd'] } })
 
 /** A complete, publishable cycle built from the real A2 module + minimal siblings. */
 function completeCycle(level = 'B1') {
@@ -478,7 +481,7 @@ test('seeded content is a draft: invisible to students, visible to staff', async
   const db = await createDb()
   const student = await addUser(db, { email: 's@example.com' })
   const teacher = await addUser(db, { email: 't@example.com', role: 'teacher' })
-  await db.exec(buildCycleSql(a2File))
+  await db.exec(buildCycleSql(a2Single))
   const seeded = (await db.query("select published from public.modules where order_index = 1")).rows
   assert.deepEqual(seeded, [{ published: false }])
   assert.equal((await db.query('select count(*)::int as n from public.lessons')).rows[0].n, 4)
@@ -497,12 +500,12 @@ test('seeded content is a draft: invisible to students, visible to staff', async
 
 test('seeding is idempotent for drafts and refuses to overwrite published modules', async () => {
   const db = await createDb()
-  await db.exec(buildCycleSql(a2File))
-  await db.exec(buildCycleSql(a2File))
+  await db.exec(buildCycleSql(a2Single))
+  await db.exec(buildCycleSql(a2Single))
   assert.equal((await db.query('select count(*)::int as n from public.lessons')).rows[0].n, 4)
   assert.equal((await db.query('select count(*)::int as n from public.modules')).rows[0].n, 1)
   await db.query('update public.modules set published = true')
-  await assert.rejects(() => db.exec(buildCycleSql(a2File)), /module_published/)
+  await assert.rejects(() => db.exec(buildCycleSql(a2Single)), /module_published/)
   await db.exec('rollback') // the script's own begin; stays open after an error, like in psql
   assert.equal((await db.query('select count(*)::int as n from public.lessons')).rows[0].n, 4)
 })
@@ -512,7 +515,7 @@ test('readiness lists exactly what is missing and publishing is all-or-nothing',
   const admin = await addUser(db, { email: 'a@example.com', role: 'admin' })
   const teacher = await addUser(db, { email: 't@example.com', role: 'teacher' })
   const student = await addUser(db, { email: 's@example.com' })
-  await db.exec(buildCycleSql(a2File))
+  await db.exec(buildCycleSql(a2Single))
 
   const problems = (await db.query("select problem from public.content_readiness('A2')")).rows.map((r) => r.problem)
   assert.ok(problems.some((p) => p.includes('faltan módulos')))

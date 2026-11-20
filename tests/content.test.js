@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { readdirSync, readFileSync } from 'node:fs'
 import { validateCycleFile, validateReadyModule } from '../content/lib/validate.js'
 import { buildCycleSql } from '../content/lib/sql.js'
+import { createDb } from './helpers/db.js'
 
 const dir = new URL('../content/cycles/', import.meta.url)
 const cycles = Object.fromEntries(readdirSync(dir).filter((f) => f.endsWith('.json'))
@@ -63,7 +64,8 @@ test('listening and vocabulary modules enforce their own requirements', () => {
 
 test('outline modules need at least four topics; unknown status is rejected', () => {
   const cycle = a2()
-  cycle.modules[1].outline.topics = ['solo uno']
+  cycle.modules[1].status = 'outline'
+  cycle.modules[1].outline = { topics: ['solo uno'] }
   cycle.modules[2].status = 'draft'
   const errors = validateCycleFile(cycle, 'A2.json').join('\n')
   assert.match(errors, /outline\.topics con al menos 4 temas/)
@@ -71,7 +73,9 @@ test('outline modules need at least four topics; unknown status is rejected', ()
 })
 
 test('generated SQL only includes ready modules and is safe against tag injection', () => {
-  const sql = buildCycleSql(a2())
+  const partial = a2()
+  partial.modules.slice(1).forEach((m) => { m.status = 'outline'; m.outline = { topics: ['a', 'b', 'c', 'd'] } })
+  const sql = buildCycleSql(partial)
   assert.equal(sql.match(/seed_module/g).length, 1)
   assert.match(sql, /^begin;/m)
   assert.match(sql, /commit;\n$/)
@@ -79,4 +83,28 @@ test('generated SQL only includes ready modules and is safe against tag injectio
   evil.modules[0].lessons[0].title = 'x $json$ y'
   assert.throws(() => buildCycleSql(evil), /no puede contener/)
   assert.match(buildCycleSql({ ...a2(), duration_weeks: null }), /seed_cycle\('A2', \$txt\$Básico\$txt\$, null, null,/)
+})
+
+test('every committed cycle loads in Postgres and passes the publish checks', async () => {
+  const db = await createDb()
+  for (const cycle of Object.values(cycles)) {
+    assert.ok(cycle.modules.every((m) => m.status === 'ready'), `${cycle.level}: quedan módulos en esquema`)
+    await db.exec(buildCycleSql(cycle))
+    const { rows } = await db.query('select problem from public.content_readiness($1)', [cycle.level])
+    assert.deepEqual(rows, [], `${cycle.level}: ${rows.map((r) => r.problem).join(' | ')}`)
+    const { rows: counts } = await db.query(
+      'select count(*)::int as modules, bool_and(not published) as all_drafts from public.modules m join public.cycles c on c.id = m.cycle_id where c.cefr_level::text = $1',
+      [cycle.level])
+    assert.equal(counts[0].modules, 4)
+    assert.equal(counts[0].all_drafts, true, 'el contenido se carga como borrador')
+  }
+  // Todo el audio de listening debe estar permitido para el servicio de voz.
+  const { rows: turns } = await db.query(
+    "select t ->> 'text' as text from public.lessons l, jsonb_array_elements(l.dialogue_turns) t")
+  assert.ok(turns.length >= 40)
+  for (const { text } of turns) {
+    const { rows } = await db.query('select public.tts_text_allowed($1) as ok', [text])
+    assert.equal(rows[0].ok, true, text)
+  }
+  await db.close()
 })

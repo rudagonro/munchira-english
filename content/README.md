@@ -50,6 +50,15 @@ El contenido de cada nivel vive en `content/cycles/<NIVEL>.json` y se carga en S
 
 Un módulo `"status": "outline"` solo necesita `title`, `skill_type` y `outline.topics` (≥4 temas). No se carga a la base de datos.
 
+## Estado del contenido
+
+| Ciclo | Módulos | Estado |
+| --- | --- | --- |
+| A1 | 4 | En producción (cargado antes directamente en Supabase) |
+| A2, B1, B2, C1, C2 | 4 cada uno (gramática, vocabulario, listening/reading, writing) | Completos en este repositorio; pasan `npm run content:validate` y la prueba de carga en Postgres. Se cargan como **borrador** y se publican con `publish_cycle` tras la revisión de un docente |
+
+Cada módulo tiene 4 lecciones, 6 preguntas de quiz y, en vocabulario, 12 palabras; los de listening incluyen diálogos con voces `nova`/`onyx`. El contenido se generó como primera versión: conviene que un docente lo revise antes de publicarlo.
+
 ## Lo que NO está aquí
 
 El contenido de A1 (cargado antes directamente en Supabase) no está versionado en este repositorio. Para versionarlo hay que exportarlo desde la base de datos al mismo formato.

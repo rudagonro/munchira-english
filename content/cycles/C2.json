@@ -10,59 +10,1281 @@
       "order": 1,
       "skill_type": "grammar",
       "title": "Refinamiento estilístico y retórico",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Estilo y variación sintáctica",
-          "Recursos retóricos",
-          "Ambigüedad y matiz",
-          "Registro literario",
-          "Corrección de estilo"
-        ]
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Estilo y variación sintáctica",
+          "theory_content": "El estilo avanzado combina frases cortas y largas para crear ritmo. Una frase corta enfatiza (He stopped.) y una larga desarrolla ideas con subordinadas. Varía el comienzo de las frases: no empieces todas con el sujeto. Usa participios y cláusulas de gerundio para condensar: Having finished the report, she left.",
+          "theory_table": [
+            {
+              "label": "Corta",
+              "value": "He stopped. Silence."
+            },
+            {
+              "label": "Con participio",
+              "value": "Having finished, she left."
+            },
+            {
+              "label": "Con gerundio",
+              "value": "Walking home, I thought of you."
+            },
+            {
+              "label": "Inversión",
+              "value": "Seldom had he felt so calm."
+            }
+          ],
+          "practice_content": "Reescribe tres frases seguidas con distintos comienzos y longitudes.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "___ finished the report, she left the office.",
+              "answer": "Having",
+              "hint": "Having + participio."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué frase varía mejor el ritmo?",
+              "opts": [
+                "He stopped. Silence filled the room.",
+                "He he stopped.",
+                "He stopped and he was silent and he looked around and he sat."
+              ],
+              "correct": 0,
+              "why": "Corta + continuación."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "thought",
+                "I",
+                "of",
+                "Walking",
+                "home",
+                "you"
+              ],
+              "answer": "Walking home I thought of you",
+              "hint": "Gerundio + coma + sujeto + verbo."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Recursos retóricos",
+          "theory_content": "Los recursos retóricos dan fuerza al discurso: metaphor (Time is a thief), simile (as brave as a lion), tricolon (veni, vidi, vici: tres elementos), repetition (We shall fight on the beaches...) y rhetorical question (Who among us has not failed?). Úsalos con intención, no como adorno.",
+          "theory_table": [
+            {
+              "label": "Metáfora",
+              "value": "Time is a thief."
+            },
+            {
+              "label": "Símil",
+              "value": "as brave as a lion"
+            },
+            {
+              "label": "Tricolon",
+              "value": "veni, vidi, vici"
+            },
+            {
+              "label": "Pregunta retórica",
+              "value": "Who has not failed?"
+            }
+          ],
+          "practice_content": "Escribe una frase con metáfora y otra con tricolon sobre tu ciudad.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "'Time is a thief' is an example of a ___. (metáfora)",
+              "answer": "metaphor",
+              "hint": "Metaphor = metáfora."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué es un tricolon?",
+              "opts": [
+                "una comparación con like",
+                "una pregunta",
+                "tres elementos en serie"
+              ],
+              "correct": 2,
+              "why": "Serie de tres."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "failed",
+                "among",
+                "has",
+                "Who",
+                "not",
+                "us"
+              ],
+              "answer": "Who among us has not failed",
+              "hint": "Pregunta retórica."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Ambigüedad y matiz",
+          "theory_content": "Los matices cambian el significado: hedging (suavizar afirmaciones) como seems, tends to, arguably; y énfasis como undoubtedly, clearly. Un texto C2 gestiona ambos: The results arguably suggest... frente a The results clearly show... Cuidado con la ambigüedad no deseada: Visiting relatives can be boring (¿visitar o los familiares que visitan?).",
+          "theory_table": [
+            {
+              "label": "Hedging",
+              "value": "It tends to rain in April."
+            },
+            {
+              "label": "Énfasis",
+              "value": "This is undoubtedly true."
+            },
+            {
+              "label": "Ambigüedad",
+              "value": "Visiting relatives can be boring."
+            },
+            {
+              "label": "Matiz",
+              "value": "arguably the best"
+            }
+          ],
+          "practice_content": "Reescribe una afirmación tajante con hedging.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The results ___ suggest a link. (posiblemente)",
+              "answer": "arguably",
+              "hint": "Arguably = posiblemente."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué frase suaviza mejor?",
+              "opts": [
+                "It never fails.",
+                "It is obviously perfect.",
+                "It seems to be effective."
+              ],
+              "correct": 2,
+              "why": "Seems to suaviza."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "a",
+                "This",
+                "is",
+                "great",
+                "undoubtedly",
+                "success"
+              ],
+              "answer": "This is undoubtedly a great success",
+              "hint": "Adverbio de énfasis."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Registro literario y corrección de estilo",
+          "theory_content": "El registro literario usa imágenes, vocabulario evocador y sintaxis elaborada: The sun bled into the horizon. Para corregir estilo: elimina redundancias (revert back → revert), cambia verbos débiles (make a decision → decide), prefiere voz activa y suprime muletillas (very, really). Lee en voz alta para notar el ritmo.",
+          "theory_table": [
+            {
+              "label": "Redundancia",
+              "value": "revert back → revert"
+            },
+            {
+              "label": "Verbo fuerte",
+              "value": "make a decision → decide"
+            },
+            {
+              "label": "Voz activa",
+              "value": "Mistakes were made → We made mistakes."
+            },
+            {
+              "label": "Imagen",
+              "value": "The sun bled into the horizon."
+            }
+          ],
+          "practice_content": "Edita este fragmento eliminando tres redundancias y reforzando verbos.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "'Make a decision' is more concise as '___'.",
+              "answer": "decide",
+              "hint": "Verbo fuerte."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuál es una redundancia?",
+              "opts": [
+                "go back",
+                "revert",
+                "revert back"
+              ],
+              "correct": 2,
+              "why": "Revert ya implica back."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "us",
+                "made",
+                "by",
+                "Mistakes",
+                "were"
+              ],
+              "answer": "Mistakes were made by us",
+              "hint": "Ordena la frase en voz pasiva."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "'Having finished the report, she left.' uses a ___.",
+          "options": [
+            "relative clause",
+            "question",
+            "participle clause"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "A series of three parallel elements is a ___.",
+          "options": [
+            "tricolon",
+            "simile",
+            "idiom"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'The results arguably suggest...' is an example of ___.",
+          "options": [
+            "hedging",
+            "emphasis",
+            "repetition"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "Which is the most concise?",
+          "options": [
+            "decide",
+            "come to a decision",
+            "make a decision"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "A rhetorical question is asked ___.",
+          "options": [
+            "to end the text",
+            "for effect, not for an answer",
+            "to get information"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "'Time is a thief' is a ___.",
+          "options": [
+            "simile",
+            "pun",
+            "metaphor"
+          ],
+          "correct_idx": 2
+        }
+      ]
     },
     {
       "order": 2,
       "skill_type": "vocabulary",
       "title": "Dominio de matices culturales y humor",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Humor e ironía",
-          "Referencias culturales",
-          "Variedades del inglés",
-          "Lenguaje figurado"
-        ],
-        "target_words": 120
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Humor e ironía",
+          "theory_content": "El humor británico y estadounidense usa ironía, sarcasmo y understatement. La ironía dice lo contrario de lo que se piensa: What lovely weather! (bajo la lluvia). El sarcasmo es una ironía con intención hiriente. El understatement minimiza algo grande: It's a bit chilly (a −20 °C). Para detectarlos, mira el tono y el contexto.",
+          "theory_table": [
+            {
+              "label": "Ironía",
+              "value": "What lovely weather! (raining)"
+            },
+            {
+              "label": "Sarcasmo",
+              "value": "Oh, great job. (error enorme)"
+            },
+            {
+              "label": "Understatement",
+              "value": "It's a bit chilly. (−20 °C)"
+            },
+            {
+              "label": "Juego de palabras",
+              "value": "pun"
+            }
+          ],
+          "practice_content": "Escribe un ejemplo de cada: ironía, sarcasmo y understatement.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "'It's a bit chilly' at -20°C is an ___. (atenuación)",
+              "answer": "understatement",
+              "hint": "Understatement = atenuación."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué dice la frase irónica?",
+              "opts": [
+                "I am cold.",
+                "What lovely weather!",
+                "It is raining."
+              ],
+              "correct": 1,
+              "why": "Elogia el tiempo malo."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "great",
+                "job",
+                "well",
+                "done",
+                "Oh"
+              ],
+              "answer": "Oh great job well done",
+              "hint": "Frase sarcástica."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Referencias culturales",
+          "theory_content": "El inglés está lleno de referencias culturales: nursery rhymes, Shakespeare, la Biblia, el cine. Frases como a Romeo and Juliet situation o Catch-22 se entienden por contexto cultural. No siempre se explican; conocerlas mejora la comprensión. Cuando no las conozcas, deduce el sentido y búscalas después.",
+          "theory_table": [
+            {
+              "label": "Shakespeare",
+              "value": "All that glitters is not gold."
+            },
+            {
+              "label": "Catch-22",
+              "value": "a no-win situation"
+            },
+            {
+              "label": "Cine",
+              "value": "May the force be with you."
+            },
+            {
+              "label": "Bíblico",
+              "value": "a good Samaritan"
+            }
+          ],
+          "practice_content": "Busca el origen de tres expresiones de la tabla y escríbelo en una frase.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "A ___ is a person who helps strangers. (Samaritano)",
+              "answer": "Samaritan",
+              "hint": "Good Samaritan."
+            },
+            {
+              "type": "choice",
+              "q": "'Catch-22' describe ___.",
+              "opts": [
+                "una situación sin salida",
+                "una victoria fácil",
+                "un viaje"
+              ],
+              "correct": 0,
+              "why": "Paradoja sin salida."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "is",
+                "that",
+                "glitters",
+                "All",
+                "not",
+                "gold"
+              ],
+              "answer": "All that glitters is not gold",
+              "hint": "Proverbio de Shakespeare."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Variedades del inglés",
+          "theory_content": "El inglés varía por región: British, American, Australian, Indian… Hay diferencias de vocabulario (lift/elevator, flat/apartment), ortografía (colour/color) y pronunciación. Ninguna variedad es 'incorrecta': elige una y sé coherente. Escuchar muchos acentos mejora tu comprensión.",
+          "theory_table": [
+            {
+              "label": "Vocabulario",
+              "value": "lift (UK) / elevator (US)"
+            },
+            {
+              "label": "Ortografía",
+              "value": "colour (UK) / color (US)"
+            },
+            {
+              "label": "Pronunciación",
+              "value": "can't /kɑːnt/ vs /kænt/"
+            },
+            {
+              "label": "Coherencia",
+              "value": "choose one variety"
+            }
+          ],
+          "practice_content": "Haz una lista de 6 diferencias UK/US y úsalas en frases.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "In the US, a 'lift' is called an ___.",
+              "answer": "elevator",
+              "hint": "Elevator = ascensor (US)."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuál es ortografía británica?",
+              "opts": [
+                "colur",
+                "color",
+                "colour"
+              ],
+              "correct": 2,
+              "why": "Colour en UK."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "lift",
+                "flat",
+                "has",
+                "The",
+                "a"
+              ],
+              "answer": "The flat has a lift",
+              "hint": "Vocabulario UK."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Lenguaje figurado",
+          "theory_content": "El lenguaje figurado va más allá del sentido literal: metaphors, idioms, hyperbole (I've told you a million times) y personification (The wind whispered). Aprende a distinguir qué es literal y qué figurado según el contexto. Úsalo para dar color a tu escritura.",
+          "theory_table": [
+            {
+              "label": "Hipérbole",
+              "value": "I'm so hungry I could eat a horse."
+            },
+            {
+              "label": "Personificación",
+              "value": "The wind whispered."
+            },
+            {
+              "label": "Metáfora",
+              "value": "Life is a journey."
+            },
+            {
+              "label": "Literal",
+              "value": "I walked to the store."
+            }
+          ],
+          "practice_content": "Escribe una frase con hipérbole y otra con personificación.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "'The wind whispered' uses ___. (personificación)",
+              "answer": "personification",
+              "hint": "Atribuye cualidad humana."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué frase es una hipérbole?",
+              "opts": [
+                "I've told you a million times.",
+                "It is Monday.",
+                "I told you once."
+              ],
+              "correct": 0,
+              "why": "Exagera para enfatizar."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "whispered",
+                "through",
+                "wind",
+                "trees",
+                "the",
+                "The"
+              ],
+              "answer": "The wind whispered through the trees",
+              "hint": "Personificación."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "'It's a bit chilly' at -20°C is ___.",
+          "options": [
+            "understatement",
+            "hyperbole",
+            "metaphor"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'Elevator' is the ___ English word for 'lift'.",
+          "options": [
+            "Australian",
+            "British",
+            "American"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "'I could eat a horse' is a ___.",
+          "options": [
+            "literal statement",
+            "simile",
+            "hyperbole"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "A 'Catch-22' is ___.",
+          "options": [
+            "a secret code",
+            "a no-win situation",
+            "a lucky win"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "Which sentence uses personification?",
+          "options": [
+            "The wind whispered.",
+            "It is windy.",
+            "The wind is strong."
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "Why should you listen to different accents?",
+          "options": [
+            "to avoid English",
+            "to speak faster",
+            "to improve comprehension"
+          ],
+          "correct_idx": 2
+        }
+      ],
+      "vocab": [
+        {
+          "english": "understatement",
+          "spanish": "atenuación",
+          "example_sentence": "That's quite an understatement."
+        },
+        {
+          "english": "irony",
+          "spanish": "ironía",
+          "example_sentence": "There is irony in his words."
+        },
+        {
+          "english": "sarcasm",
+          "spanish": "sarcasmo",
+          "example_sentence": "Her sarcasm was obvious."
+        },
+        {
+          "english": "pun",
+          "spanish": "juego de palabras",
+          "example_sentence": "That was a good pun."
+        },
+        {
+          "english": "hyperbole",
+          "spanish": "hipérbole",
+          "example_sentence": "It's just hyperbole."
+        },
+        {
+          "english": "personification",
+          "spanish": "personificación",
+          "example_sentence": "The poem uses personification."
+        },
+        {
+          "english": "allusion",
+          "spanish": "alusión",
+          "example_sentence": "It is an allusion to Shakespeare."
+        },
+        {
+          "english": "idiom",
+          "spanish": "modismo",
+          "example_sentence": "Learn one idiom a day."
+        },
+        {
+          "english": "dialect",
+          "spanish": "dialecto",
+          "example_sentence": "He speaks a regional dialect."
+        },
+        {
+          "english": "accent",
+          "spanish": "acento",
+          "example_sentence": "She has a Scottish accent."
+        },
+        {
+          "english": "nuance",
+          "spanish": "matiz",
+          "example_sentence": "Notice the nuance of meaning."
+        },
+        {
+          "english": "figurative",
+          "spanish": "figurado",
+          "example_sentence": "The phrase is figurative."
+        }
+      ]
     },
     {
       "order": 3,
       "skill_type": "listening",
       "title": "Listening sin restricciones (medios nativos)",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Medios de comunicación",
-          "Cine y series",
-          "Conversación rápida con acentos",
-          "Discursos y ponencias"
-        ]
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Medios de comunicación",
+          "theory_content": "Los medios nativos usan habla rápida, elisiones (gonna, wanna) y referencias culturales. No intentes entender cada palabra: capta la idea general y los detalles clave. Escucha primero sin pausar, después revisa los fragmentos difíciles. Fíjate en el tono del presentador.",
+          "theory_table": [
+            {
+              "label": "Elisión",
+              "value": "gonna = going to"
+            },
+            {
+              "label": "Idea general",
+              "value": "listen without pausing"
+            },
+            {
+              "label": "Tono",
+              "value": "serious or humorous?"
+            }
+          ],
+          "practice_content": "Escucha el titular y resume la noticia con tus palabras.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Cuál es la noticia?",
+              "opts": [
+                "a football match",
+                "new rules for electric cars",
+                "a storm"
+              ],
+              "correct": 1,
+              "why": "Habla de coches eléctricos."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué pasará el próximo año?",
+              "opts": [
+                "fees will disappear",
+                "fees will fall",
+                "fees will rise"
+              ],
+              "correct": 2,
+              "why": "Las tasas subirán."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The new rules start next ___.",
+              "answer": "year",
+              "hint": "Escucha el plazo."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Breaking news: the government has announced new rules for electric cars."
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "Drivers will pay higher fees next year, but charging stations will be cheaper."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Critics say the plan is too slow, while supporters call it a step forward."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Cine y series",
+          "theory_content": "En cine y series se mezcla slang, humor y referencias. Los subtítulos ayudan, pero intenta primero sin ellos. Los personajes cambian de registro según la situación. Fíjate en cómo se usan los phrasal verbs y expresiones coloquiales: I'm done with this, Let's wrap it up.",
+          "theory_table": [
+            {
+              "label": "Coloquial",
+              "value": "I'm done with this."
+            },
+            {
+              "label": "Cierre",
+              "value": "Let's wrap it up."
+            },
+            {
+              "label": "Humor",
+              "value": "dry humour"
+            }
+          ],
+          "practice_content": "Escucha la escena y describe el estado de ánimo de cada personaje.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Cómo se siente la primera persona?",
+              "opts": [
+                "happy",
+                "afraid",
+                "tired and annoyed"
+              ],
+              "correct": 2,
+              "why": "Está cansada y molesta."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué propone la segunda?",
+              "opts": [
+                "to wrap it up",
+                "to start again",
+                "to go home"
+              ],
+              "correct": 0,
+              "why": "Propone cerrar el tema."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The second speaker says: Let's ___ it up.",
+              "answer": "wrap",
+              "hint": "Wrap it up = cerrar."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "I'm done with this meeting. We've been here for three hours."
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "I know, I know. Let's wrap it up and finish tomorrow."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Finally! Some sense at last."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Conversación rápida con acentos",
+          "theory_content": "En una conversación real los hablantes se interrumpen, usan acentos variados y hablan rápido. Entrena el oído con distintos acentos (British, American, Australian). Concéntrate en las palabras de contenido (sustantivos, verbos) y no te alarmes por las de función. Los rellenos como you know, well, I mean dan tiempo a pensar.",
+          "theory_table": [
+            {
+              "label": "Rellenos",
+              "value": "you know, well, I mean"
+            },
+            {
+              "label": "Interrupción",
+              "value": "Sorry to interrupt, but..."
+            },
+            {
+              "label": "Acento",
+              "value": "listen to several accents"
+            }
+          ],
+          "practice_content": "Escucha la conversación y anota las palabras de contenido principales.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿De qué hablan?",
+              "opts": [
+                "a job interview",
+                "politics",
+                "weekend plans"
+              ],
+              "correct": 2,
+              "why": "Hablan de sus planes de fin de semana."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué dice la segunda persona?",
+              "opts": [
+                "it might rain",
+                "it will snow",
+                "it will be sunny"
+              ],
+              "correct": 0,
+              "why": "Cree que podría llover."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The first speaker wants to go ___.",
+              "answer": "hiking",
+              "hint": "Escucha la actividad."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Well, I mean, I'd love to go hiking this weekend, you know?"
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "Sorry to interrupt, but it might rain on Saturday."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Right, so maybe Sunday then."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Discursos y ponencias",
+          "theory_content": "Un discurso persuasivo usa estructura retórica: apertura potente, tres ideas y cierre memorable. Identifica el recurso principal: repetición, pregunta retórica o historia personal. Un buen oyente anota la idea central y el llamado a la acción.",
+          "theory_table": [
+            {
+              "label": "Apertura",
+              "value": "Imagine a world without..."
+            },
+            {
+              "label": "Tres ideas",
+              "value": "tricolon"
+            },
+            {
+              "label": "Cierre",
+              "value": "Together, we can change it."
+            }
+          ],
+          "practice_content": "Escucha el discurso y anota el recurso retórico principal.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Qué recurso se usa?",
+              "opts": [
+                "irony",
+                "repetition",
+                "slang"
+              ],
+              "correct": 1,
+              "why": "Repite 'we can'."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuál es el mensaje final?",
+              "opts": [
+                "together we can change it",
+                "do nothing",
+                "stay at home"
+              ],
+              "correct": 0,
+              "why": "Cierra con 'Together, we can change it.'"
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The speaker repeats the phrase 'we ___'.",
+              "answer": "can",
+              "hint": "Repetición clave."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "We can build a cleaner city. We can protect our rivers. We can leave a better world."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Together, we can change it."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "In the news report, fees will ___ next year.",
+          "options": [
+            "fall",
+            "rise",
+            "stay"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "'Let's wrap it up' means ___.",
+          "options": [
+            "let's finish",
+            "let's start",
+            "let's pack"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "In fast speech, 'gonna' means ___.",
+          "options": [
+            "gone to",
+            "got no",
+            "going to"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "Rhetorical repetition is ___.",
+          "options": [
+            "a mistake",
+            "repeating a phrase for effect",
+            "a quote"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "Fillers like 'you know' help speakers ___.",
+          "options": [
+            "ask for help",
+            "gain time to think",
+            "end the talk"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "To train your ear, you should listen to ___.",
+          "options": [
+            "different accents",
+            "no audio",
+            "only one accent"
+          ],
+          "correct_idx": 0
+        }
+      ]
     },
     {
       "order": 4,
       "skill_type": "writing",
       "title": "Publicación y persuasión de alto nivel",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Artículo de opinión",
-          "Discurso persuasivo",
-          "Texto creativo",
-          "Edición profesional"
-        ]
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Artículo de opinión",
+          "theory_content": "Un artículo de opinión tiene un gancho, una postura clara, argumentos con evidencia, un contraargumento y un cierre memorable. El tono es personal pero riguroso. Usa la primera persona con moderación y apoya cada afirmación con datos o ejemplos. El titular debe despertar curiosidad.",
+          "theory_table": [
+            {
+              "label": "Gancho",
+              "value": "Imagine a city with no cars."
+            },
+            {
+              "label": "Postura",
+              "value": "I believe cities must change."
+            },
+            {
+              "label": "Contra",
+              "value": "Critics argue it is unrealistic."
+            },
+            {
+              "label": "Cierre",
+              "value": "The future is ours to design."
+            }
+          ],
+          "practice_content": "Escribe un artículo de 200 palabras sobre un tema local.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Critics ___ that the plan is unrealistic.",
+              "answer": "argue",
+              "hint": "argue that + frase."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué es un buen gancho?",
+              "opts": [
+                "Imagine a city with no cars.",
+                "The end.",
+                "Hello my name is."
+              ],
+              "correct": 0,
+              "why": "Despierta interés."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "design",
+                "future",
+                "is",
+                "to",
+                "The",
+                "ours"
+              ],
+              "answer": "The future is ours to design",
+              "hint": "Cierre memorable."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Discurso persuasivo",
+          "theory_content": "Para persuadir, combina ethos (credibilidad), pathos (emoción) y logos (lógica). Estructura el discurso con apertura, tres puntos y cierre. Usa pausas, repetición y preguntas retóricas. Ejemplo de cierre: So the question is not whether we can, but whether we will.",
+          "theory_table": [
+            {
+              "label": "Ethos",
+              "value": "As a teacher for 20 years..."
+            },
+            {
+              "label": "Pathos",
+              "value": "Imagine your child..."
+            },
+            {
+              "label": "Logos",
+              "value": "Studies show that..."
+            },
+            {
+              "label": "Cierre",
+              "value": "Not whether we can, but whether we will."
+            }
+          ],
+          "practice_content": "Escribe un discurso de 2 minutos para convencer a tu comunidad de reciclar.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Studies show that recycling ___ costs. (reduce)",
+              "answer": "reduces",
+              "hint": "Tercera persona: reduces."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué apela a la emoción?",
+              "opts": [
+                "logos",
+                "pathos",
+                "ethos"
+              ],
+              "correct": 1,
+              "why": "Pathos = emoción."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "not",
+                "whether",
+                "is",
+                "question",
+                "we",
+                "can",
+                "The"
+              ],
+              "answer": "The question is not whether we can",
+              "hint": "Estructura de contraste."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Texto creativo",
+          "theory_content": "En un texto creativo importan la voz, las imágenes y los detalles sensoriales. Muestra, no cuentes: en lugar de She was sad, escribe Her shoulders dropped and she stared at the floor. Varía la sintaxis, evita clichés y cuida el final. Practica con descripciones, microrrelatos y diálogos breves.",
+          "theory_table": [
+            {
+              "label": "Show don't tell",
+              "value": "Her shoulders dropped."
+            },
+            {
+              "label": "Imagen sensorial",
+              "value": "the smell of rain"
+            },
+            {
+              "label": "Cliché a evitar",
+              "value": "as white as snow"
+            },
+            {
+              "label": "Final",
+              "value": "end with an image"
+            }
+          ],
+          "practice_content": "Escribe un microrrelato de 100 palabras sobre un reencuentro.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Instead of 'She was sad', write 'Her ___ dropped'. (hombros)",
+              "answer": "shoulders",
+              "hint": "Detalle físico."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué significa 'show, don't tell'?",
+              "opts": [
+                "escribir solo diálogos",
+                "no usar adjetivos",
+                "usar detalles en lugar de etiquetas"
+              ],
+              "correct": 2,
+              "why": "Mostrar con detalles."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "smell",
+                "rain",
+                "of",
+                "The",
+                "the",
+                "filled",
+                "room"
+              ],
+              "answer": "The smell of rain filled the room",
+              "hint": "Imagen sensorial."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Edición profesional",
+          "theory_content": "La edición profesional mejora claridad, concisión y coherencia. Pasos: revisión estructural, edición de línea (frases), corrección (gramática y ortografía) y revisión final en voz alta. Usa guías de estilo, evita jerga innecesaria y compara versiones. Pide una lectura externa.",
+          "theory_table": [
+            {
+              "label": "Estructura",
+              "value": "does the order make sense?"
+            },
+            {
+              "label": "Línea",
+              "value": "tighten sentences"
+            },
+            {
+              "label": "Corrección",
+              "value": "spelling and grammar"
+            },
+            {
+              "label": "Final",
+              "value": "read aloud"
+            }
+          ],
+          "practice_content": "Edita un texto tuyo con las cuatro pasadas de arriba.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Line editing is about improving individual ___. (frases)",
+              "answer": "sentences",
+              "hint": "Sentences = frases."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué se hace en la corrección?",
+              "opts": [
+                "borrar todo",
+                "cambiar el tema",
+                "arreglar gramática y ortografía"
+              ],
+              "correct": 2,
+              "why": "Proofreading."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "Tighten",
+                "and",
+                "cut",
+                "repetition",
+                "your",
+                "sentences"
+              ],
+              "answer": "Tighten your sentences and cut repetition",
+              "hint": "Imperativo."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "A strong opinion article starts with ___.",
+          "options": [
+            "a bibliography",
+            "a table of contents",
+            "a hook"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "Pathos appeals to ___.",
+          "options": [
+            "authority",
+            "logic",
+            "emotion"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "'Show, don't tell' means ___.",
+          "options": [
+            "write only dialogue",
+            "use details instead of labels",
+            "avoid adjectives"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "A persuasive speech usually has ___.",
+          "options": [
+            "no structure",
+            "ten sections",
+            "an opening, three points and a close"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "Line editing improves ___.",
+          "options": [
+            "the thesis only",
+            "the font",
+            "individual sentences"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "Proofreading checks ___.",
+          "options": [
+            "the structure only",
+            "spelling and grammar",
+            "the title only"
+          ],
+          "correct_idx": 1
+        }
+      ]
     }
   ],
   "checkpoints": [

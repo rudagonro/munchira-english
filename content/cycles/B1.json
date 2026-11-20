@@ -10,59 +10,1288 @@
       "order": 1,
       "skill_type": "grammar",
       "title": "Condicionales y voz pasiva",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Present perfect vs past simple",
-          "Condicionales cero y primero",
-          "Voz pasiva en presente y pasado",
-          "Verbos modales de obligación y consejo",
-          "Comparativos y superlativos avanzados"
-        ]
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Present perfect vs past simple",
+          "theory_content": "Usamos el past simple para acciones terminadas en un momento concreto del pasado: I visited Rome in 2019. Usamos el present perfect (have/has + participio) cuando no importa cuándo ocurrió o cuando la acción conecta con el presente: I have visited Rome three times. Con for (duración) y since (punto de inicio) usamos present perfect: I have lived here for five years / since 2020.",
+          "theory_table": [
+            {
+              "label": "Past simple",
+              "value": "I lost my keys yesterday."
+            },
+            {
+              "label": "Present perfect",
+              "value": "I have lost my keys. (no los encuentro)"
+            },
+            {
+              "label": "for + duración",
+              "value": "She has worked here for two years."
+            },
+            {
+              "label": "since + inicio",
+              "value": "She has worked here since 2023."
+            }
+          ],
+          "practice_content": "Escribe dos frases sobre tu vida: una con present perfect y otra con past simple.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "I ___ (live) in this city since 2018.",
+              "answer": "have lived",
+              "hint": "since pide present perfect."
+            },
+            {
+              "type": "choice",
+              "q": "Elige la frase correcta.",
+              "opts": [
+                "I have saw that film last night.",
+                "I saw that film last night.",
+                "I have seen that film last night."
+              ],
+              "correct": 1,
+              "why": "Con last night, tiempo terminado, usamos past simple."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "for",
+                "worked",
+                "two",
+                "She",
+                "years",
+                "here",
+                "has"
+              ],
+              "answer": "She has worked here for two years",
+              "hint": "Sujeto + has + participio + for + duración."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Condicionales cero y primero",
+          "theory_content": "El condicional cero expresa verdades generales: If you heat ice, it melts (If + presente, presente). El primer condicional expresa posibilidades reales en el futuro: If it rains tomorrow, we will stay at home (If + presente, will + verbo base). No uses will en la parte del if: If you study, you will pass, no If you will study.",
+          "theory_table": [
+            {
+              "label": "Cero",
+              "value": "If you mix red and blue, you get purple."
+            },
+            {
+              "label": "Primero",
+              "value": "If I have time, I will call you."
+            },
+            {
+              "label": "Con unless",
+              "value": "Unless you hurry, you will be late."
+            },
+            {
+              "label": "Error típico",
+              "value": "If it will rain ✗ → If it rains ✓"
+            }
+          ],
+          "practice_content": "Escribe una frase de condicional cero y otra de primer condicional sobre tu semana.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "If it ___ (rain) tomorrow, we will stay at home.",
+              "answer": "rains",
+              "hint": "Después de if usamos presente."
+            },
+            {
+              "type": "choice",
+              "q": "Completa: If you study hard, you ___ the exam.",
+              "opts": [
+                "passed",
+                "would pass",
+                "will pass"
+              ],
+              "correct": 2,
+              "why": "Primer condicional: will + verbo base."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "will",
+                "you",
+                "call",
+                "have",
+                "I",
+                "I",
+                "time",
+                "If"
+              ],
+              "answer": "If I have time I will call you",
+              "hint": "If + presente, will + verbo."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Voz pasiva en presente y pasado",
+          "theory_content": "En la voz pasiva el foco está en la acción o en quien la recibe, no en quien la hace. Se forma con to be + participio. Presente: English is spoken in many countries. Pasado: The bridge was built in 1990. Si necesitas decir quién lo hizo, añade by: The song was written by Adele.",
+          "theory_table": [
+            {
+              "label": "Presente pasivo",
+              "value": "Rice is grown in Asia."
+            },
+            {
+              "label": "Pasado pasivo",
+              "value": "The window was broken yesterday."
+            },
+            {
+              "label": "Con agente",
+              "value": "The book was written by Orwell."
+            },
+            {
+              "label": "Plural",
+              "value": "The rooms are cleaned every day."
+            }
+          ],
+          "practice_content": "Convierte a pasiva: 'They build many houses here.'",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The Eiffel Tower ___ (build) in 1889.",
+              "answer": "was built",
+              "hint": "Pasado pasivo: was + participio."
+            },
+            {
+              "type": "choice",
+              "q": "Elige la frase pasiva correcta.",
+              "opts": [
+                "The cars is made in Spain.",
+                "The cars make in Spain.",
+                "The cars are made in Spain."
+              ],
+              "correct": 2,
+              "why": "Plural: are + participio."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "letter",
+                "was",
+                "by",
+                "written",
+                "Anna",
+                "The"
+              ],
+              "answer": "The letter was written by Anna",
+              "hint": "Sujeto + was + participio + by + agente."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Obligación y consejo: must, have to, should",
+          "theory_content": "Should expresa consejo: You should drink more water. Must y have to expresan obligación: You must wear a seatbelt. Have to suele hablar de reglas externas: I have to work on Saturday. La forma negativa cambia el significado: mustn't es prohibido (You mustn't smoke here) y don't have to significa que no es necesario (You don't have to come).",
+          "theory_table": [
+            {
+              "label": "Consejo",
+              "value": "You should rest more."
+            },
+            {
+              "label": "Obligación",
+              "value": "You must show your passport."
+            },
+            {
+              "label": "Prohibido",
+              "value": "You mustn't park here."
+            },
+            {
+              "label": "No necesario",
+              "value": "You don't have to pay."
+            }
+          ],
+          "practice_content": "Escribe un consejo, una obligación y una prohibición para un viajero.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "You ___ smoke in the hospital. It's forbidden.",
+              "answer": "mustn't",
+              "hint": "Prohibido = mustn't."
+            },
+            {
+              "type": "choice",
+              "q": "Es domingo y no hace falta ir a la oficina. ¿Qué dices?",
+              "opts": [
+                "I mustn't go.",
+                "I don't have to go.",
+                "I should not to go."
+              ],
+              "correct": 1,
+              "why": "No es necesario = don't have to."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "You",
+                "drink",
+                "water",
+                "should",
+                "more"
+              ],
+              "answer": "You should drink more water",
+              "hint": "should + verbo base."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "I ___ in London since 2020.",
+          "options": [
+            "have lived",
+            "lived",
+            "was living"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "If it ___ tomorrow, we'll cancel the picnic.",
+          "options": [
+            "rained",
+            "rains",
+            "will rain"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "The Mona Lisa ___ by Leonardo da Vinci.",
+          "options": [
+            "is painting",
+            "was painted",
+            "painted"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "You ___ wear a helmet. It's the law.",
+          "options": [
+            "don't have to",
+            "mustn't",
+            "must"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "Which sentence is a general truth (zero conditional)?",
+          "options": [
+            "If it rains, I will stay home.",
+            "If you heat water to 100°C, it boils.",
+            "If I were rich, I would travel."
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "'You don't have to come' means ___.",
+          "options": [
+            "it is not necessary",
+            "it is dangerous",
+            "it is forbidden"
+          ],
+          "correct_idx": 0
+        }
+      ]
     },
     {
       "order": 2,
       "skill_type": "vocabulary",
       "title": "Vocabulario abstracto e idiomático básico",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Trabajo y carrera",
-          "Salud y bienestar",
-          "Opiniones y sentimientos",
-          "Phrasal verbs frecuentes"
-        ],
-        "target_words": 60
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Trabajo y carrera",
+          "theory_content": "Hablar del trabajo es esencial en B1. Un job es un empleo concreto y career es la trayectoria profesional. Para pedir trabajo hacemos una application y enviamos un CV. En una entrevista (interview) hablamos de experience y skills. Si ganas más dinero, te dan a raise; si dejas el empleo, resign.",
+          "theory_table": [
+            {
+              "label": "job / career",
+              "value": "a job today, a career for life"
+            },
+            {
+              "label": "apply for",
+              "value": "I applied for a job in a bank."
+            },
+            {
+              "label": "experience",
+              "value": "She has five years of experience."
+            },
+            {
+              "label": "raise",
+              "value": "He asked for a raise."
+            }
+          ],
+          "practice_content": "Escribe tres frases sobre tu trabajo ideal usando career, skills y experience.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "She has a lot of work ___. (experiencia)",
+              "answer": "experience",
+              "hint": "Sustantivo incontable."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué envías cuando pides trabajo?",
+              "opts": [
+                "a ticket",
+                "a bill",
+                "a CV"
+              ],
+              "correct": 2,
+              "why": "CV = currículum."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "asked",
+                "a",
+                "He",
+                "for",
+                "raise"
+              ],
+              "answer": "He asked for a raise",
+              "hint": "Sujeto + verbo + for + sustantivo."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Salud y bienestar",
+          "theory_content": "Para hablar de salud usamos palabras como healthy, symptoms, medicine y exercise. Para consejos médicos: You should get some rest. Para síntomas: I have a headache o I feel dizzy. Para decir que te sientes mejor: I'm feeling better. Evita traducir 'estoy constipado' como constipated; en inglés es I have a cold.",
+          "theory_table": [
+            {
+              "label": "Síntomas",
+              "value": "I have a sore throat."
+            },
+            {
+              "label": "Consejo",
+              "value": "You should see a doctor."
+            },
+            {
+              "label": "Hábitos",
+              "value": "healthy diet, regular exercise"
+            },
+            {
+              "label": "Resfriado",
+              "value": "I have a cold."
+            }
+          ],
+          "practice_content": "Escribe qué consejos darías a un amigo con dolor de cabeza.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "I have a sore ___. (garganta)",
+              "answer": "throat",
+              "hint": "Throat = garganta."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cómo se dice 'tengo un resfriado'?",
+              "opts": [
+                "I have a cold.",
+                "I have a cool.",
+                "I am constipated."
+              ],
+              "correct": 0,
+              "why": "Cold = resfriado."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "some",
+                "get",
+                "should",
+                "rest",
+                "You"
+              ],
+              "answer": "You should get some rest",
+              "hint": "should + verbo base."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Opiniones y sentimientos",
+          "theory_content": "Para dar tu opinión usa I think, In my opinion y I believe. Para estar de acuerdo: I agree o That's true. Para no estarlo: I'm not sure about that o I disagree. Los adjetivos en -ed describen cómo te sientes (bored, excited) y los -ing describen lo que causa ese sentimiento (boring, exciting).",
+          "theory_table": [
+            {
+              "label": "Opinión",
+              "value": "In my opinion, it's a good idea."
+            },
+            {
+              "label": "Acuerdo",
+              "value": "I totally agree."
+            },
+            {
+              "label": "-ed",
+              "value": "I'm bored. (yo me siento)"
+            },
+            {
+              "label": "-ing",
+              "value": "The film is boring. (la película)"
+            }
+          ],
+          "practice_content": "Da tu opinión sobre el transporte público en tu ciudad usando In my opinion y because.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The lesson was really ___. I fell asleep. (aburrida)",
+              "answer": "boring",
+              "hint": "La lección causa el sentimiento: -ing."
+            },
+            {
+              "type": "choice",
+              "q": "Elige la frase correcta.",
+              "opts": [
+                "I'm excite about the trip.",
+                "I'm excited about the trip.",
+                "I'm exciting about the trip."
+              ],
+              "correct": 1,
+              "why": "Sentimiento de la persona: -ed."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "a",
+                "my",
+                "opinion",
+                "great",
+                "idea",
+                "In",
+                "it",
+                "is"
+              ],
+              "answer": "In my opinion it is a great idea",
+              "hint": "In my opinion + frase completa."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Phrasal verbs frecuentes",
+          "theory_content": "Un phrasal verb es un verbo + partícula con significado propio: look for (buscar), give up (rendirse), find out (descubrir), turn on (encender). Algunos se pueden separar con el objeto: turn the light on. Con pronombres, siempre se separan: turn it on. Apréndelos en frases completas, no sueltos.",
+          "theory_table": [
+            {
+              "label": "look for",
+              "value": "I'm looking for my keys."
+            },
+            {
+              "label": "give up",
+              "value": "Don't give up!"
+            },
+            {
+              "label": "find out",
+              "value": "I found out the truth."
+            },
+            {
+              "label": "turn on / off",
+              "value": "Turn the TV off, please."
+            }
+          ],
+          "practice_content": "Escribe cuatro frases con look for, give up, find out y turn off.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Please ___ the lights off when you leave. (apagar)",
+              "answer": "turn",
+              "hint": "turn off = apagar."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué significa give up?",
+              "opts": [
+                "rendirse",
+                "subir",
+                "regalar"
+              ],
+              "correct": 0,
+              "why": "Give up = rendirse / abandonar."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "looking",
+                "for",
+                "my",
+                "I",
+                "am",
+                "keys"
+              ],
+              "answer": "I am looking for my keys",
+              "hint": "be + looking for + objeto."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "A person's path in a profession is called a ___.",
+          "options": [
+            "habit",
+            "receipt",
+            "career"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "'I have a sore throat' means ___.",
+          "options": [
+            "estoy cansado",
+            "tengo hambre",
+            "me duele la garganta"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "The film was ___. I was really interested.",
+          "options": [
+            "fascinating",
+            "fascinated",
+            "fascinate"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'Turn it off' means ___.",
+          "options": [
+            "tíralo",
+            "enciéndelo",
+            "apágalo"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "Which expression gives an opinion?",
+          "options": [
+            "At my age,",
+            "In my opinion,",
+            "On my way,"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "To discover a fact is to ___.",
+          "options": [
+            "find out",
+            "give up",
+            "look for"
+          ],
+          "correct_idx": 0
+        }
+      ],
+      "vocab": [
+        {
+          "english": "career",
+          "spanish": "carrera profesional",
+          "example_sentence": "She has a successful career."
+        },
+        {
+          "english": "experience",
+          "spanish": "experiencia",
+          "example_sentence": "He has ten years of experience."
+        },
+        {
+          "english": "apply for",
+          "spanish": "solicitar (un empleo)",
+          "example_sentence": "I will apply for that job."
+        },
+        {
+          "english": "raise",
+          "spanish": "aumento de sueldo",
+          "example_sentence": "She got a raise last month."
+        },
+        {
+          "english": "healthy",
+          "spanish": "saludable",
+          "example_sentence": "A healthy diet includes fruit."
+        },
+        {
+          "english": "symptom",
+          "spanish": "síntoma",
+          "example_sentence": "A cough is a symptom of a cold."
+        },
+        {
+          "english": "rest",
+          "spanish": "descanso",
+          "example_sentence": "You need some rest."
+        },
+        {
+          "english": "opinion",
+          "spanish": "opinión",
+          "example_sentence": "What's your opinion?"
+        },
+        {
+          "english": "disagree",
+          "spanish": "no estar de acuerdo",
+          "example_sentence": "I disagree with you."
+        },
+        {
+          "english": "give up",
+          "spanish": "rendirse",
+          "example_sentence": "Never give up."
+        },
+        {
+          "english": "find out",
+          "spanish": "descubrir",
+          "example_sentence": "I need to find out the price."
+        },
+        {
+          "english": "look for",
+          "spanish": "buscar",
+          "example_sentence": "I'm looking for a flat."
+        }
+      ]
     },
     {
       "order": 3,
       "skill_type": "listening",
       "title": "Noticias y podcasts breves",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Noticias locales",
-          "Entrevistas cortas",
-          "Podcast sobre hábitos",
-          "Anuncios y mensajes de voz"
-        ]
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Noticias locales",
+          "theory_content": "Las noticias suelen empezar por lo más importante (headline) y luego dan detalles: dónde, cuándo y por qué. Escucha primero el titular para captar el tema general. Después busca números, lugares y horas. Fíjate también en el pasado: will be closed, was damaged.",
+          "theory_table": [
+            {
+              "label": "Titular",
+              "value": "Bridge closed for repairs"
+            },
+            {
+              "label": "Dónde y cuándo",
+              "value": "in the city centre on Monday"
+            },
+            {
+              "label": "Motivo",
+              "value": "because of heavy rain"
+            }
+          ],
+          "practice_content": "Escucha la noticia y resume en una frase qué ocurrió.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Por qué cierran el puente?",
+              "opts": [
+                "a festival",
+                "repairs",
+                "an accident"
+              ],
+              "correct": 1,
+              "why": "Cierran por reparaciones."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuántos días estará cerrado?",
+              "opts": [
+                "three",
+                "five",
+                "ten"
+              ],
+              "correct": 0,
+              "why": "Estará cerrado three days."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The bridge will reopen on ___.",
+              "answer": "Thursday",
+              "hint": "Escucha el día."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Here is the local news. The Central Bridge will be closed for repairs from Monday."
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "The work will take three days, and the bridge will reopen on Thursday morning."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Drivers should use the north road. Buses will run as usual."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Una entrevista corta",
+          "theory_content": "En una entrevista hay dos voces: quien pregunta y quien responde. Identifica quién habla en cada turno y fíjate en las respuestas largas: contienen la información principal. Las preguntas suelen empezar por What, Why o How long. Las respuestas dan razones con because.",
+          "theory_table": [
+            {
+              "label": "Pregunta",
+              "value": "How long have you worked here?"
+            },
+            {
+              "label": "Respuesta",
+              "value": "For about six years."
+            },
+            {
+              "label": "Razón",
+              "value": "because I love teaching"
+            }
+          ],
+          "practice_content": "Escucha y anota dos datos sobre la persona entrevistada.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Cuál es el trabajo de la persona entrevistada?",
+              "opts": [
+                "driver",
+                "doctor",
+                "teacher"
+              ],
+              "correct": 2,
+              "why": "Es profesora."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuánto tiempo lleva trabajando allí?",
+              "opts": [
+                "six years",
+                "ten years",
+                "two years"
+              ],
+              "correct": 0,
+              "why": "Lleva six years."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "She loves her job ___ she helps people learn.",
+              "answer": "because",
+              "hint": "Conector de causa."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Thank you for joining us. What do you do?"
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "I'm an English teacher at a language school."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "How long have you worked there?"
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "For six years now. I love my job because I help people learn something new."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Podcast sobre hábitos saludables",
+          "theory_content": "Un podcast de divulgación mezcla datos y consejos. Escucha las palabras que organizan la información: first, then, finally. Los consejos suelen ir con should o need to. Toma notas con palabras clave, no con frases completas.",
+          "theory_table": [
+            {
+              "label": "Orden",
+              "value": "First, drink water. Then, walk."
+            },
+            {
+              "label": "Consejo",
+              "value": "You should sleep eight hours."
+            },
+            {
+              "label": "Cierre",
+              "value": "Finally, relax before bed."
+            }
+          ],
+          "practice_content": "Escucha y escribe los tres consejos que se mencionan.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Qué consejo da primero?",
+              "opts": [
+                "do yoga",
+                "drink water",
+                "eat fruit"
+              ],
+              "correct": 1,
+              "why": "Primero: beber agua."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuántas horas recomienda dormir?",
+              "opts": [
+                "ten",
+                "eight",
+                "five"
+              ],
+              "correct": 1,
+              "why": "Recomienda eight hours."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "He says you should walk for thirty ___ every day.",
+              "answer": "minutes",
+              "hint": "Escucha la unidad de tiempo."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Welcome to Healthy Habits. Today: three easy tips for a better week."
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "First, drink water when you wake up. Then, walk for thirty minutes every day."
+            },
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "And finally, you should sleep eight hours every night."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Mensajes de voz y anuncios",
+          "theory_content": "Los anuncios y mensajes de voz son breves y llenos de datos: nombres, números de teléfono y horarios. Escucha con papel y lápiz. Los números de teléfono se dicen dígito a dígito. Y recuerda: oh significa 0 en muchos acentos.",
+          "theory_table": [
+            {
+              "label": "Horario",
+              "value": "Open from nine to five."
+            },
+            {
+              "label": "Contacto",
+              "value": "Call us on five five five, two one."
+            },
+            {
+              "label": "Petición",
+              "value": "Please leave a message."
+            }
+          ],
+          "practice_content": "Escucha el mensaje y anota nombre, hora y teléfono.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿A qué hora abre la tienda?",
+              "opts": [
+                "ten",
+                "eight",
+                "nine"
+              ],
+              "correct": 2,
+              "why": "Abre a las nine."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué se pide al final?",
+              "opts": [
+                "come tomorrow",
+                "leave a message",
+                "send an email"
+              ],
+              "correct": 1,
+              "why": "Piden que dejes un mensaje."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The shop closes at ___ in the afternoon.",
+              "answer": "five",
+              "hint": "Escucha el cierre."
+            }
+          ],
+          "dialogue_turns": [
+            {
+              "speaker": "A",
+              "voice": "nova",
+              "text": "Thank you for calling Green Books. We are open from nine to five, Monday to Saturday."
+            },
+            {
+              "speaker": "B",
+              "voice": "onyx",
+              "text": "If you want to speak to someone, call five five five, two one. Please leave a message after the tone."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "In the news report, the bridge will reopen on ___.",
+          "options": [
+            "Sunday",
+            "Monday",
+            "Thursday"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "The teacher says she loves her job ___.",
+          "options": [
+            "because it is easy",
+            "because she helps people learn",
+            "because the pay is high"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "In the podcast, the first tip is to ___.",
+          "options": [
+            "drink water",
+            "walk",
+            "sleep"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "When you listen to a voicemail, you should write down ___.",
+          "options": [
+            "only the greeting",
+            "names, times and numbers",
+            "the music"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "'Finally' in a podcast usually introduces ___.",
+          "options": [
+            "the first point",
+            "a question",
+            "the last point"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "Telephone numbers are normally said ___.",
+          "options": [
+            "in letters",
+            "as one big number",
+            "digit by digit"
+          ],
+          "correct_idx": 2
+        }
+      ]
     },
     {
       "order": 4,
       "skill_type": "writing",
       "title": "Opinión estructurada",
-      "status": "outline",
-      "outline": {
-        "topics": [
-          "Conectores de contraste y causa",
-          "Párrafo de opinión",
-          "Email formal básico",
-          "Reseña breve"
-        ]
-      }
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Conectores de contraste y causa",
+          "theory_content": "Los conectores unen ideas y hacen tu texto más claro. Causa: because (+ frase), because of (+ sustantivo), so (resultado). Contraste: but, although (+ frase), however (al inicio de la frase, seguido de coma). Ejemplo: Although it was raining, we went out. However, we got wet.",
+          "theory_table": [
+            {
+              "label": "because / so",
+              "value": "I was tired, so I went to bed."
+            },
+            {
+              "label": "although",
+              "value": "Although it was cold, we swam."
+            },
+            {
+              "label": "however",
+              "value": "It was cheap. However, it was bad."
+            },
+            {
+              "label": "because of",
+              "value": "because of the noise"
+            }
+          ],
+          "practice_content": "Une dos frases con although y otras dos con so.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "___ it was raining, we went for a walk.",
+              "answer": "Although",
+              "hint": "Contraste dentro de la misma frase."
+            },
+            {
+              "type": "choice",
+              "q": "Elige el conector correcto: I was ill, ___ I stayed at home.",
+              "opts": [
+                "however",
+                "although",
+                "so"
+              ],
+              "correct": 2,
+              "why": "So introduce un resultado."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "the",
+                "food",
+                "expensive",
+                "was",
+                "very",
+                "However"
+              ],
+              "answer": "However the food was very expensive",
+              "hint": "However + coma + frase."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Un párrafo de opinión",
+          "theory_content": "Un buen párrafo de opinión tiene una frase principal (topic sentence), dos razones con ejemplos y una frase final. Empieza con In my opinion o I believe that. Introduce razones con First y Second. Termina con In conclusion. Escribe 5-7 frases claras, no párrafos larguísimos.",
+          "theory_table": [
+            {
+              "label": "Frase principal",
+              "value": "I believe that cities need more parks."
+            },
+            {
+              "label": "Razón 1",
+              "value": "First, parks improve air quality."
+            },
+            {
+              "label": "Razón 2",
+              "value": "Second, people can relax there."
+            },
+            {
+              "label": "Cierre",
+              "value": "In conclusion, parks are essential."
+            }
+          ],
+          "practice_content": "Escribe un párrafo de 5 frases sobre si los estudiantes deben usar el móvil en clase.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "___ conclusion, parks make cities better.",
+              "answer": "In",
+              "hint": "Expresión fija: In conclusion."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué frase es la mejor frase principal?",
+              "opts": [
+                "Parks green.",
+                "Yesterday I walked.",
+                "I believe that cities need more parks."
+              ],
+              "correct": 2,
+              "why": "Expresa una opinión clara."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "quality",
+                "parks",
+                "air",
+                "First",
+                "improve"
+              ],
+              "answer": "First parks improve air quality",
+              "hint": "First + sujeto + verbo."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Email formal básico",
+          "theory_content": "Un email formal es claro y educado. Usa Dear Ms Smith, y no contracciones. Presenta tu motivo en la primera frase: I am writing to ask about... Describe lo que necesitas en un par de frases y cierra con I look forward to hearing from you. Despídete con Yours sincerely, si sabes el nombre.",
+          "theory_table": [
+            {
+              "label": "Motivo",
+              "value": "I am writing to ask about the course."
+            },
+            {
+              "label": "Petición",
+              "value": "Could you send me more details?"
+            },
+            {
+              "label": "Cierre",
+              "value": "I look forward to hearing from you."
+            },
+            {
+              "label": "Despedida",
+              "value": "Yours sincerely,"
+            }
+          ],
+          "practice_content": "Escribe un email formal a una empresa pidiendo información sobre un puesto de trabajo.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "I am ___ to ask about the course. (escribiendo)",
+              "answer": "writing",
+              "hint": "I am writing to..."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué cierre es formal?",
+              "opts": [
+                "Write me soon.",
+                "Bye!",
+                "I look forward to hearing from you."
+              ],
+              "correct": 2,
+              "why": "Cierre formal estándar."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "me",
+                "Could",
+                "more",
+                "send",
+                "details",
+                "you"
+              ],
+              "answer": "Could you send me more details",
+              "hint": "Could you + verbo + objeto."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Una reseña breve",
+          "theory_content": "Una reseña (review) da tu opinión sobre un producto, un lugar o una película. Incluye: qué es, qué te gustó, qué mejorarías y una recomendación con puntuación. Usa adjetivos concretos (delicious, comfortable, noisy). Cierra con I would recommend it o I wouldn't recommend it.",
+          "theory_table": [
+            {
+              "label": "Qué es",
+              "value": "I stayed at the Sea Hotel."
+            },
+            {
+              "label": "Positivo",
+              "value": "The room was comfortable."
+            },
+            {
+              "label": "Negativo",
+              "value": "However, the street was noisy."
+            },
+            {
+              "label": "Recomendación",
+              "value": "I would recommend it."
+            }
+          ],
+          "practice_content": "Escribe una reseña de 5 líneas sobre un restaurante o película que conozcas.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The room was clean and ___. (cómoda)",
+              "answer": "comfortable",
+              "hint": "Adjetivo positivo."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cómo termina una reseña positiva?",
+              "opts": [
+                "I cannot remember.",
+                "I would recommend it.",
+                "It was a Tuesday."
+              ],
+              "correct": 1,
+              "why": "Recomendación final."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "was",
+                "delicious",
+                "expensive",
+                "The",
+                "but",
+                "food"
+              ],
+              "answer": "The food was delicious but expensive",
+              "hint": "Dos ideas unidas con but."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "Choose the correct connector: ___ it was late, we kept working.",
+          "options": [
+            "Although",
+            "So",
+            "Because"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'However' is usually followed by ___.",
+          "options": [
+            "a question mark",
+            "a comma",
+            "a hyphen"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "A good opinion paragraph begins with ___.",
+          "options": [
+            "a clear topic sentence",
+            "a list of dates",
+            "a quote only"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "A formal email should avoid ___.",
+          "options": [
+            "greetings",
+            "a closing",
+            "contractions"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "'I am writing to ask about...' states the ___ of the email.",
+          "options": [
+            "purpose",
+            "date",
+            "signature"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "A review usually ends with ___.",
+          "options": [
+            "a recommendation",
+            "a weather report",
+            "a joke only"
+          ],
+          "correct_idx": 0
+        }
+      ]
     }
   ],
   "checkpoints": [
