@@ -271,6 +271,12 @@ export function AuthProvider({ children }) {
     return { data: data ?? [], error }
   }, [])
 
+  /** Modo revisor: guarda las URLs de los audios fijos de una lección (el servidor exige rol docente o admin). */
+  async function staffSaveLessonAudio(lessonId, urls) {
+    const { error } = await supabase.rpc('staff_save_lesson_audio', { p_lesson: lessonId, p_urls: urls })
+    return { error }
+  }
+
   /** Administración (solo admin; el servidor lo exige): usuarios, roles y docentes asignados. */
   const adminListUsers = useCallback(async () => {
     const { data, error } = await supabase.rpc('admin_list_users')
@@ -310,6 +316,7 @@ export function AuthProvider({ children }) {
     completeLesson,
     getContentTree,
     getStaffQuizAnswers,
+    staffSaveLessonAudio,
     adminListUsers,
     adminSetRole,
     adminAssignStudent,

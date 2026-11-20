@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { LEVELS, LEVEL_NAMES, bankGV, bankReading, bankListening, bankWriting } from '../data/diagnosticBank'
+import { lessonAudioStatus, prepareLessonsAudio } from '../lib/audioPublisher'
 
 const SKILL_LABELS = {
   grammar: 'Gramática', vocabulary: 'Vocabulario', reading: 'Reading', listening: 'Listening', writing: 'Writing',
@@ -9,10 +10,11 @@ const SKILL_LABELS = {
 const SKILL_ICONS = { grammar: '📝', vocabulary: '📖', listening: '🎧', reading: '📚', writing: '✍️' }
 
 export default function ReviewerMode() {
-  const { getContentTree } = useAuth()
+  const { getContentTree, getModuleContent, staffSaveLessonAudio } = useAuth()
   const [tree, setTree] = useState(null)
   const [error, setError] = useState('')
   const [showBank, setShowBank] = useState(false)
+  const [bulk, setBulk] = useState(null)
 
   useEffect(() => {
     let active = true
@@ -23,6 +25,27 @@ export default function ReviewerMode() {
     })
     return () => { active = false }
   }, [getContentTree])
+
+  // Genera una sola vez el audio de todos los módulos con diálogos y lo deja como archivo fijo.
+  async function prepareAllAudio() {
+    const listening = (tree ?? []).flatMap((c) => c.modules.filter((m) => m.skill_type === 'listening').map((m) => ({ ...m, level: c.cefr_level })))
+    const totals = { running: true, module: 0, modules: listening.length, done: 0, failed: 0, saved: 0, pending: 0 }
+    setBulk({ ...totals })
+    for (const m of listening) {
+      totals.module++
+      const { data } = await getModuleContent(m.id)
+      if (!data) { totals.failed++; continue }
+      const before = lessonAudioStatus(data.lessons)
+      totals.pending += before.total - before.ready
+      setBulk({ ...totals })
+      const base = { done: totals.done, failed: totals.failed, saved: totals.saved }
+      await prepareLessonsAudio(data.lessons, {
+        saveLessonAudio: staffSaveLessonAudio,
+        onProgress: (p) => setBulk({ ...totals, done: base.done + p.done, failed: base.failed + p.failed, saved: base.saved + p.savedLessons }),
+      }).then((p) => { totals.done = base.done + p.done; totals.failed = base.failed + p.failed; totals.saved = base.saved + p.savedLessons })
+    }
+    setBulk({ ...totals, running: false })
+  }
 
   return (
     <div className="page-shell rv-page">
@@ -42,6 +65,26 @@ export default function ReviewerMode() {
           </button>
         </div>
         {showBank && <DiagnosticBank />}
+      </section>
+
+      <section className="rv-section" aria-labelledby="rv-audio">
+        <h2 id="rv-audio">Audio de los diálogos</h2>
+        <p className="au-help">
+          Genera el audio una sola vez y lo guarda como archivo fijo. Después los alumnos lo oyen al instante, sin esperar y sin gastar
+          créditos de ElevenLabs. Hazlo cuando el texto de los diálogos esté definitivo; si cambias una frase, solo esa se vuelve a generar.
+        </p>
+        <button className="rv-btn-secondary" type="button" onClick={prepareAllAudio} disabled={!tree || bulk?.running}>
+          {bulk?.running ? 'Preparando audio…' : 'Preparar el audio de todos los módulos'}
+        </button>
+        {bulk && (
+          <p role="status" className="rv-warm-text" style={{ marginTop: 10 }}>
+            {bulk.running
+              ? `Módulo ${bulk.module} de ${bulk.modules} · ${bulk.done} audios generados`
+              : bulk.failed
+                ? `Terminó con ${bulk.failed} fallos (${bulk.done} audios generados). Vuelve a pulsar el botón: solo reintenta lo que falta.`
+                : bulk.pending === 0 ? 'Todo el audio ya estaba preparado.' : `Listo: ${bulk.done} audios nuevos en ${bulk.saved} lecciones. Los alumnos los oyen al instante.`}
+          </p>
+        )}
       </section>
 
       <section className="rv-section" aria-labelledby="rv-mod">

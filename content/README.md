@@ -50,6 +50,31 @@ El contenido de cada nivel vive en `content/cycles/<NIVEL>.json` y se carga en S
 
 Un módulo `"status": "outline"` solo necesita `title`, `skill_type` y `outline.topics` (≥4 temas). No se carga a la base de datos.
 
+## Voces de los diálogos
+
+En `dialogue_turns` cada turno lleva `speaker` (el nombre que ve el alumno: "Mom", "Emma", "Mr Walker") y `voice` (la voz que suena):
+
+| voice | Personaje | Voz de ElevenLabs |
+| --- | --- | --- |
+| `nova` | Mujer adulta (EE. UU.) | Rachel |
+| `onyx` | Hombre adulto (EE. UU.) | Adam |
+| `woman_uk` | Mujer adulta (Reino Unido) | Alice |
+| `man_uk` | Hombre adulto (Reino Unido) | Daniel |
+| `woman_us2` | Otra mujer adulta | Matilda |
+| `man_us2` | Otro hombre adulto | Chris |
+| `young_woman` | Chica / adolescente | Jessica |
+| `young_man` | Chico / adolescente | Will |
+| `senior_woman` | Mujer mayor | Lily |
+| `senior_man` | Hombre mayor | George |
+
+Son voces incluidas en la cuenta de ElevenLabs. Para añadir voces infantiles propias: diseña la voz en ElevenLabs, copia su ID y guárdalo como secreto de la función (`ELEVENLABS_VOICE_YOUNG_WOMAN`, etc.) sin tocar código. Los alias nuevos deben añadirse en `tts.ts`, en `content/lib/validate.js` y en `src/data/voices.js` (la prueba `tests/tts.test.js` avisa si no coinciden).
+
+Un diálogo didáctico tiene entre 6 y 9 turnos, una situación cotidiana creíble y, en `theory_table`, las filas **Situación**, **Antes de escuchar** y **Frases clave**.
+
+## Audio: se genera una sola vez
+
+Cada frase se genera con ElevenLabs **una vez** y se guarda como archivo público (`lesson-audio`, ruta = hash del texto y la voz). Los alumnos lo descargan directo: sin esperas y sin gasto. Cómo prepararlo: Modo revisor → **Preparar el audio de todos los módulos** (o el botón de cada módulo). Cuando termine, `dialogue_turns[].audio_url` queda guardado. Si recargas un módulo con `seed_module` (solo borradores) hay que volver a preparar su audio; si cambias el texto de una frase, solo esa se vuelve a generar.
+
 ## Estado del contenido
 
 | Ciclo | Módulos | Estado |

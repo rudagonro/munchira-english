@@ -683,3 +683,36 @@ test('only admins manage roles and assignments; nobody can change their own role
     await assert.rejects(() => c.query('select * from public.admin_list_users()'))
   })
 })
+
+// ------------------------------------------------------------- audios como archivos fijos
+test('staff save audio URLs on dialogue turns; the bucket is public; students cannot write', async () => {
+  const db = await createDb()
+  const teacher = await addUser(db, { email: 't@example.com', role: 'teacher' })
+  const student = await addUser(db, { email: 's@example.com' })
+  const listening = structuredClone(a2File.modules[0])
+  listening.skill_type = 'listening'
+  listening.lessons[0].dialogue_turns = [
+    { speaker: 'Mom', voice: 'nova', text: 'Breakfast is ready.' },
+    { speaker: 'Emma', voice: 'young_woman', text: 'Coming, Mom!' },
+  ]
+  await db.query("select public.seed_cycle('A2', 'Básico', 10, 12, '[]'::jsonb)")
+  await db.query("select public.seed_module('A2', 1, $1::jsonb)", [JSON.stringify(listening)])
+  const lesson = (await db.query('select id from public.lessons where order_index = 1')).rows[0].id
+  const url = (n) => `https://abc.supabase.co/storage/v1/object/public/lesson-audio/nova/${String(n).repeat(64)}.mp3`
+
+  assert.equal((await db.query("select public from storage.buckets where id = 'lesson-audio'")).rows[0].public, true)
+
+  await asUser(db, teacher, async (c) => {
+    assert.equal((await c.query('select public.staff_save_lesson_audio($1, $2::jsonb) as n', [lesson, JSON.stringify([url('a'), url('b')])])).rows[0].n, 2)
+    await assert.rejects(() => c.query('select public.staff_save_lesson_audio($1, $2::jsonb)', [lesson, JSON.stringify([url('a')])]), /urls_do_not_match_turns/)
+    await assert.rejects(() => c.query('select public.staff_save_lesson_audio($1, $2::jsonb)', [lesson, JSON.stringify(['https://evil.example/a.mp3', url('b')])]), /invalid_urls/)
+    await assert.rejects(() => c.query('select public.staff_save_lesson_audio($1, $2::jsonb)', [lesson, '[]']), /invalid_urls/)
+    await assert.rejects(() => c.query('select public.staff_save_lesson_audio($1, $2::jsonb)', ['00000000-0000-0000-0000-000000000000', JSON.stringify([url('a')])]), /lesson_not_found/)
+  })
+  const turns = (await db.query('select dialogue_turns from public.lessons where id = $1', [lesson])).rows[0].dialogue_turns
+  assert.deepEqual(turns.map((t) => [t.speaker, t.voice, t.audio_url]), [['Mom', 'nova', url('a')], ['Emma', 'young_woman', url('b')]])
+
+  await asUser(db, student, async (c) => {
+    await assert.rejects(() => c.query('select public.staff_save_lesson_audio($1, $2::jsonb)', [lesson, JSON.stringify([url('a'), url('b')])]), /forbidden/)
+  })
+})

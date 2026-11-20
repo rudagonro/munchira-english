@@ -1,7 +1,16 @@
 // Proveedor de voz de tts-generate. Lógica pura (sin Deno ni jsr) para poder
 // probarla con Node. Hoy usa ElevenLabs; cambiar de proveedor solo toca este archivo.
 
-export const VOICE_ALIASES = ["nova", "onyx"] as const;
+// Reparto de voces. Cada alias es un "personaje" que el contenido puede pedir en sus
+// diálogos. `nova` y `onyx` se mantienen por compatibilidad con el contenido anterior.
+// Todas son voces "premade" de ElevenLabs: vienen incluidas en la cuenta, sin plan extra.
+export const VOICE_ALIASES = [
+  "nova", "onyx",
+  "woman_uk", "man_uk",
+  "young_woman", "young_man",
+  "woman_us2", "man_us2",
+  "senior_woman", "senior_man",
+] as const;
 export type Voice = (typeof VOICE_ALIASES)[number];
 
 export interface TtsConfig {
@@ -12,11 +21,19 @@ export interface TtsConfig {
 
 export const PROVIDER = "elevenlabs";
 export const DEFAULT_MODEL = "eleven_flash_v2_5";
-// Voces "premade" de ElevenLabs (nova = femenina, onyx = masculina). Se pueden
-// cambiar con ELEVENLABS_VOICE_NOVA / ELEVENLABS_VOICE_ONYX sin tocar el código.
+// Cada voz se puede cambiar con ELEVENLABS_VOICE_<ALIAS> (p. ej. ELEVENLABS_VOICE_YOUNG_WOMAN)
+// sin tocar el código; así se añadirían voces infantiles propias.
 export const DEFAULT_VOICES: Record<Voice, string> = {
-  nova: "21m00Tcm4TlvDq8ikWAM",
-  onyx: "pNInz6obpgDQGcFmaJgB",
+  nova: "21m00Tcm4TlvDq8ikWAM", // mujer adulta, EE. UU. (Rachel)
+  onyx: "pNInz6obpgDQGcFmaJgB", // hombre adulto, EE. UU. (Adam)
+  woman_uk: "Xb7hH8MSUJpSbSDYk0k2", // mujer, Reino Unido (Alice)
+  man_uk: "onwK4e9ZLuTAKqWW03F9", // hombre, Reino Unido (Daniel)
+  young_woman: "cgSgspJ2msm6clMCkdW9", // mujer joven / adolescente (Jessica)
+  young_man: "bIHbv24MWmeRgasZH58o", // hombre joven / adolescente (Will)
+  woman_us2: "XrExE9yKIg1WjnnlVkGX", // mujer adulta, otra voz (Matilda)
+  man_us2: "iP95p4xoKVk53GoZ742B", // hombre adulto, otra voz (Chris)
+  senior_woman: "pFZP5JQG7iQjIQuC4Bku", // mujer mayor (Lily)
+  senior_man: "JBFqnCBsd6RMkjVDRZzb", // hombre mayor (George)
 };
 
 export class TtsProviderError extends Error {
@@ -32,14 +49,11 @@ export class TtsProviderError extends Error {
 export function configFromEnv(get: (key: string) => string | undefined): TtsConfig | null {
   const apiKey = get("ELEVENLABS_API_KEY")?.trim();
   if (!apiKey) return null;
-  return {
-    apiKey,
-    model: get("ELEVENLABS_TTS_MODEL")?.trim() || DEFAULT_MODEL,
-    voices: {
-      nova: get("ELEVENLABS_VOICE_NOVA")?.trim() || DEFAULT_VOICES.nova,
-      onyx: get("ELEVENLABS_VOICE_ONYX")?.trim() || DEFAULT_VOICES.onyx,
-    },
-  };
+  const voices = {} as Record<Voice, string>;
+  for (const alias of VOICE_ALIASES) {
+    voices[alias] = get(`ELEVENLABS_VOICE_${alias.toUpperCase()}`)?.trim() || DEFAULT_VOICES[alias];
+  }
+  return { apiKey, model: get("ELEVENLABS_TTS_MODEL")?.trim() || DEFAULT_MODEL, voices };
 }
 
 export function normalizeVoice(value: unknown): Voice {

@@ -720,371 +720,490 @@
       "lessons": [
         {
           "order": 1,
-          "title": "En la cafetería",
-          "theory_content": "Antes de escuchar, lee las preguntas: así sabes qué información buscar. En una cafetería escucharás pedidos (I'd like...), tamaños (small, medium, large) y el total a pagar. Escucha el diálogo dos veces: la primera para la idea general y la segunda para los detalles, como el precio.",
+          "title": "Desayuno en familia",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Pedir",
-              "value": "I'd like a large latte."
+              "label": "Situación",
+              "value": "Una familia desayuna antes de ir al trabajo y al colegio: mamá, papá y Emma, la hija adolescente."
             },
             {
-              "label": "Preguntar el total",
-              "value": "How much is that?"
+              "label": "Antes de escuchar",
+              "value": "Fíjate en qué pide Emma, qué debe recordar y a qué hora sale cada uno."
             },
             {
-              "label": "Pagar",
-              "value": "Can I pay by card?"
+              "label": "Frases clave",
+              "value": "Can I have...? · Don't forget... · I'm going to..."
             }
           ],
-          "practice_content": "Escucha el diálogo y apunta qué pide el cliente y cuánto paga.",
+          "practice_content": "Escucha dos veces. Después cuenta en tu cuaderno cómo es tu desayuno usando 'I usually have...'.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Qué pide el cliente para beber?",
+              "q": "¿Qué quiere beber Emma?",
               "opts": [
-                "a large latte",
-                "an orange juice",
-                "a small tea"
+                "orange juice",
+                "milk",
+                "coffee"
               ],
               "correct": 0,
-              "why": "Pide un large latte."
+              "why": "Pide orange juice."
             },
             {
               "type": "choice",
-              "q": "¿Cuánto paga en total?",
+              "q": "¿Qué examen tiene Emma hoy?",
               "opts": [
-                "six dollars",
-                "eight dollars",
-                "four dollars"
+                "a maths test",
+                "a history test",
+                "an English test"
               ],
               "correct": 0,
-              "why": "El total es six dollars."
+              "why": "Su padre le recuerda el examen de maths."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "The customer pays by ___.",
-              "answer": "card",
-              "hint": "Lo dice al final del diálogo."
+              "sentence": "Dad is going to drive Emma to school at ___ o'clock.",
+              "answer": "eight",
+              "hint": "Lo dice el padre casi al final."
+            },
+            {
+              "type": "choice",
+              "q": "¿Quién va a recoger a Emma?",
+              "opts": [
+                "Grandma",
+                "Mom",
+                "Dad"
+              ],
+              "correct": 1,
+              "why": "Mom dice: I'm going to pick you up at four."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
+              "speaker": "Mom",
               "voice": "nova",
-              "text": "Good morning! What can I get you?"
+              "text": "Good morning, everyone! Breakfast is ready."
             },
             {
-              "speaker": "B",
+              "speaker": "Emma",
+              "voice": "young_woman",
+              "text": "Morning, Mom. Can I have some orange juice, please?"
+            },
+            {
+              "speaker": "Mom",
+              "voice": "nova",
+              "text": "Of course, sweetheart. Do you want toast or cereal?"
+            },
+            {
+              "speaker": "Emma",
+              "voice": "young_woman",
+              "text": "Toast, please. And can I take an apple for school?"
+            },
+            {
+              "speaker": "Dad",
               "voice": "onyx",
-              "text": "Hi. I'd like a large latte and a blueberry muffin, please."
+              "text": "Emma, don't forget your homework. You have a maths test today."
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Sure. That's six dollars."
+              "speaker": "Emma",
+              "voice": "young_woman",
+              "text": "I know, Dad. I studied last night."
             },
             {
-              "speaker": "B",
+              "speaker": "Dad",
               "voice": "onyx",
-              "text": "Can I pay by card?"
+              "text": "Good. I'm going to drive you to school at eight o'clock."
             },
             {
-              "speaker": "A",
+              "speaker": "Mom",
               "voice": "nova",
-              "text": "Of course. Here you are. Enjoy!"
+              "text": "And I'm going to pick you up at four. Have a great day, Emma!"
             }
           ]
         },
         {
           "order": 2,
-          "title": "Pidiendo direcciones",
-          "theory_content": "Al escuchar direcciones fíjate en las palabras clave: turn left, turn right, go straight, next to, opposite. Suelen venir en orden, así que ve imaginando el camino. Si no entiendes, puedes decir: Could you repeat that, please?",
+          "title": "De compras entre amigas",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Girar",
-              "value": "Turn left at the bank."
+              "label": "Situación",
+              "value": "Chloe y Sara compran una chaqueta. Hablan con un dependiente sobre talla, color y precio."
             },
             {
-              "label": "Seguir recto",
-              "value": "Go straight for two blocks."
+              "label": "Antes de escuchar",
+              "value": "Anota el precio original, el descuento y cuánto paga Chloe al final."
             },
             {
-              "label": "Ubicación",
-              "value": "It's next to the pharmacy."
+              "label": "Frases clave",
+              "value": "Do you have it in...? · Can I try it on? · Can I pay by card?"
             }
           ],
-          "practice_content": "Escucha y dibuja el recorrido en un papel con flechas.",
+          "practice_content": "Escucha otra vez y escribe el diálogo de Chloe con el dependiente cambiando la prenda y el color.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Qué hay que hacer en el banco?",
+              "q": "¿Qué descuento hay hoy?",
               "opts": [
-                "turn left",
-                "turn right",
-                "go back"
+                "fifty percent",
+                "ten percent",
+                "twenty percent"
               ],
-              "correct": 0,
-              "why": "Dice turn left at the bank."
+              "correct": 1,
+              "why": "Hay ten percent off."
             },
             {
               "type": "choice",
-              "q": "¿Dónde está la farmacia?",
+              "q": "¿En qué color y talla piden la chaqueta?",
               "opts": [
-                "next to the post office",
-                "opposite the park",
-                "behind the school"
+                "black, small",
+                "red, large",
+                "blue, medium"
               ],
-              "correct": 0,
-              "why": "Está next to the post office."
+              "correct": 2,
+              "why": "Piden blue, size medium."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "The pharmacy is two ___ away.",
-              "answer": "blocks",
-              "hint": "Escucha la distancia."
+              "sentence": "The total is ___ pounds.",
+              "answer": "fifty-four",
+              "hint": "Sesenta libras menos el diez por ciento."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cómo paga Chloe?",
+              "opts": [
+                "online",
+                "by card",
+                "in cash"
+              ],
+              "correct": 1,
+              "why": "Pregunta: Can I pay by card?"
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Excuse me, is there a pharmacy near here?"
+              "speaker": "Chloe",
+              "voice": "woman_uk",
+              "text": "Sara, look at this jacket! Do you like it?"
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "Yes. Go straight for two blocks and turn left at the bank."
+              "speaker": "Sara",
+              "voice": "woman_us2",
+              "text": "It's lovely, but is it expensive?"
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Turn left at the bank. Then?"
+              "speaker": "Chloe",
+              "voice": "woman_uk",
+              "text": "It's sixty pounds. But there's a discount today, ten percent off."
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "The pharmacy is next to the post office. You can't miss it."
+              "speaker": "Sara",
+              "voice": "woman_us2",
+              "text": "Oh, nice. Do they have it in blue?"
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Thank you very much!"
+              "speaker": "Chloe",
+              "voice": "woman_uk",
+              "text": "Let me ask. Excuse me, do you have this jacket in blue, size medium?"
+            },
+            {
+              "speaker": "Assistant",
+              "voice": "man_uk",
+              "text": "Yes, we do. The fitting rooms are over there."
+            },
+            {
+              "speaker": "Sara",
+              "voice": "woman_us2",
+              "text": "Go on, Chloe. Try it on!"
+            },
+            {
+              "speaker": "Chloe",
+              "voice": "woman_uk",
+              "text": "It fits perfectly! I'll take it. Can I pay by card?"
+            },
+            {
+              "speaker": "Assistant",
+              "voice": "man_uk",
+              "text": "Of course. That's fifty-four pounds, please."
             }
           ]
         },
         {
           "order": 3,
-          "title": "Reservar una mesa por teléfono",
-          "theory_content": "Por teléfono no ves la cara de la otra persona, así que atiende a números, días y horas. Las frases típicas son: I'd like to book a table for four y What time? En inglés las horas se dicen como seven thirty o half past seven. Si algo no queda claro, pide que lo repitan.",
+          "title": "Planes entre amigos",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Reservar",
-              "value": "I'd like to book a table for two."
+              "label": "Situación",
+              "value": "Jake y Tom, dos amigos, organizan el sábado: un partido de fútbol y luego pizza."
             },
             {
-              "label": "Hora",
-              "value": "At seven thirty."
+              "label": "Antes de escuchar",
+              "value": "Escucha las horas y qué debe llevar cada uno. Los planes usan 'going to' y 'let's'."
             },
             {
-              "label": "Confirmar",
-              "value": "Could you spell your name?"
+              "label": "Frases clave",
+              "value": "What are you doing on...? · Sounds great! · Let's get..."
             }
           ],
-          "practice_content": "Escucha y escribe el día, la hora y el número de personas.",
+          "practice_content": "Escribe un mensaje a un amigo proponiéndole un plan para el sábado con 'Do you want to...?'.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Para cuántas personas es la reserva?",
+              "q": "¿A qué hora es el partido?",
               "opts": [
-                "four",
-                "two",
-                "six"
+                "at three",
+                "at four",
+                "at two thirty"
               ],
               "correct": 0,
-              "why": "Es para four people."
+              "why": "El partido es a las tres."
             },
             {
               "type": "choice",
-              "q": "¿A qué hora es?",
+              "q": "¿A qué hora quedan?",
               "opts": [
-                "8:30",
-                "6:30",
-                "7:30"
+                "three",
+                "two",
+                "two thirty"
               ],
               "correct": 2,
-              "why": "La hora es seven thirty."
+              "why": "Quedan at two thirty."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "The reservation is for ___ night.",
-              "answer": "Friday",
-              "hint": "Escucha el día."
+              "sentence": "Tom should bring ___.",
+              "answer": "water",
+              "hint": "Jake ya tiene el balón."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué harán después del partido?",
+              "opts": [
+                "go home",
+                "watch a film",
+                "eat pizza"
+              ],
+              "correct": 2,
+              "why": "Dice: let's get pizza."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Good evening, Bella Vista restaurant."
+              "speaker": "Jake",
+              "voice": "young_man",
+              "text": "Hey, Tom! What are you doing on Saturday?"
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "Hello. I'd like to book a table for four people on Friday night."
+              "speaker": "Tom",
+              "voice": "man_us2",
+              "text": "Nothing special. Why?"
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "What time would you like?"
+              "speaker": "Jake",
+              "voice": "young_man",
+              "text": "There's a football match at the park at three. Do you want to play?"
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "At seven thirty, please."
+              "speaker": "Tom",
+              "voice": "man_us2",
+              "text": "Sounds great! But I have to help my dad in the morning."
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "Perfect. Could I have your name?"
+              "speaker": "Jake",
+              "voice": "young_man",
+              "text": "No problem. We can meet at two thirty."
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "It's Daniel Ortiz."
+              "speaker": "Tom",
+              "voice": "man_us2",
+              "text": "Perfect. Should I bring a ball?"
+            },
+            {
+              "speaker": "Jake",
+              "voice": "young_man",
+              "text": "No, I have one. Just bring water. It's going to be hot."
+            },
+            {
+              "speaker": "Tom",
+              "voice": "man_us2",
+              "text": "OK. And after the match, let's get pizza."
+            },
+            {
+              "speaker": "Jake",
+              "voice": "young_man",
+              "text": "Great idea! I know a good place near the station."
             }
           ]
         },
         {
           "order": 4,
-          "title": "Planes para el fin de semana",
-          "theory_content": "En conversaciones informales se usa going to para planes: I'm going to visit my parents. Escucha también las razones (because) y los conectores (and, but). Entre amigos es normal oír contracciones como gonna, pero tú escribe going to.",
+          "title": "Llamada con la abuela",
+          "theory_content": "Antes de escuchar, lee la situación y decide qué información vas a buscar. Escucha el diálogo las veces que necesites; la transcripción es opcional y mejor al final.",
           "theory_table": [
             {
-              "label": "Plan",
-              "value": "I'm going to visit my parents."
+              "label": "Situación",
+              "value": "Lucy llama a su abuela para contarle una buena noticia y hablar de su próxima visita."
             },
             {
-              "label": "Razón",
-              "value": "because I miss them."
+              "label": "Antes de escuchar",
+              "value": "Escucha las fechas, el medio de transporte y qué quiere la abuela."
             },
             {
-              "label": "Contraste",
-              "value": "but it might rain."
+              "label": "Frases clave",
+              "value": "I'm so proud of you · I'm going to... · See you soon"
             }
           ],
-          "practice_content": "Escucha y anota los planes de cada persona.",
+          "practice_content": "Escribe cómo termina tu llamada ideal con un familiar usando 'I'm going to visit you...'.",
           "exercises": [
             {
               "type": "choice",
-              "q": "¿Qué va a hacer el chico el sábado?",
+              "q": "¿Qué aprobó Lucy?",
               "opts": [
-                "go to the cinema",
-                "stay at home",
-                "play football"
+                "her maths test",
+                "her driving test",
+                "her English exam"
               ],
               "correct": 2,
-              "why": "Va a jugar fútbol."
+              "why": "Lucy dice: I passed my English exam."
             },
             {
               "type": "choice",
-              "q": "¿Qué va a hacer ella el domingo?",
+              "q": "¿Cómo viajará la abuela?",
               "opts": [
-                "go shopping",
-                "study",
-                "visit her grandmother"
+                "by train",
+                "by plane",
+                "by car"
               ],
-              "correct": 2,
-              "why": "Visita a su abuela."
+              "correct": 0,
+              "why": "Va a coger el tren."
             },
             {
               "type": "fill",
               "instruction": "Completa la frase.",
-              "sentence": "It might ___ on Saturday.",
-              "answer": "rain",
-              "hint": "Lo dice el chico."
+              "sentence": "Grandma is coming on the tenth of ___.",
+              "answer": "March",
+              "hint": "Escucha el mes."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué pastel quiere la abuela?",
+              "opts": [
+                "a chocolate one",
+                "an apple one",
+                "a lemon one"
+              ],
+              "correct": 0,
+              "why": "Su favorito es el de chocolate."
             }
           ],
           "dialogue_turns": [
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "What are you going to do this weekend?"
+              "speaker": "Grandma",
+              "voice": "senior_woman",
+              "text": "Hello, sweetie! How are you?"
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "On Saturday I'm going to play football, but it might rain."
+              "speaker": "Lucy",
+              "voice": "young_woman",
+              "text": "Hi, Grandma! I'm fine. I passed my English exam!"
             },
             {
-              "speaker": "A",
-              "voice": "nova",
-              "text": "That's too bad. I'm going to visit my grandmother on Sunday."
+              "speaker": "Grandma",
+              "voice": "senior_woman",
+              "text": "Wonderful! I'm so proud of you."
             },
             {
-              "speaker": "B",
-              "voice": "onyx",
-              "text": "That sounds nice. Say hello from me!"
+              "speaker": "Lucy",
+              "voice": "young_woman",
+              "text": "Thanks. Are you still coming to visit us next month?"
+            },
+            {
+              "speaker": "Grandma",
+              "voice": "senior_woman",
+              "text": "Yes, I'm going to take the train on the tenth of March."
+            },
+            {
+              "speaker": "Lucy",
+              "voice": "young_woman",
+              "text": "Great! I'm going to make you a cake."
+            },
+            {
+              "speaker": "Grandma",
+              "voice": "senior_woman",
+              "text": "Oh, you're so kind. Could you make a chocolate one? That's my favourite."
+            },
+            {
+              "speaker": "Lucy",
+              "voice": "young_woman",
+              "text": "Of course. See you soon, Grandma. I love you."
+            },
+            {
+              "speaker": "Grandma",
+              "voice": "senior_woman",
+              "text": "I love you too, dear. Bye bye!"
             }
           ]
         }
       ],
       "quiz": [
         {
-          "question": "In the café dialogue, the customer pays ___.",
+          "question": "At breakfast, Emma asks to take ___ to school.",
           "options": [
-            "with a voucher",
-            "in cash",
-            "by card"
-          ],
-          "correct_idx": 2
-        },
-        {
-          "question": "'Turn left at the bank' is an instruction to ___.",
-          "options": [
-            "go home",
-            "stop walking",
-            "change direction"
-          ],
-          "correct_idx": 2
-        },
-        {
-          "question": "'Half past seven' means ___.",
-          "options": [
-            "7:30",
-            "6:30",
-            "7:15"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "'I'm going to visit my grandmother' is a ___.",
-          "options": [
-            "plan",
-            "habit",
-            "past event"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "To ask someone to say something again you say: ___",
-          "options": [
-            "Do you repeat that?",
-            "Repeat you that?",
-            "Could you repeat that, please?"
-          ],
-          "correct_idx": 2
-        },
-        {
-          "question": "When you listen to a phone call, you should pay attention to ___.",
-          "options": [
-            "background noise",
-            "numbers and times",
-            "only the first word"
+            "a sandwich",
+            "an apple",
+            "a banana"
           ],
           "correct_idx": 1
+        },
+        {
+          "question": "In the shop, the jacket costs ___ after the discount.",
+          "options": [
+            "fifty-four pounds",
+            "sixty pounds",
+            "forty pounds"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "Jake and Tom decide to meet at ___.",
+          "options": [
+            "three thirty",
+            "two thirty",
+            "two"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "Lucy's grandmother is going to travel ___.",
+          "options": [
+            "by train",
+            "by car",
+            "by bus"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'I'm going to pick you up at four' expresses ___.",
+          "options": [
+            "a past event",
+            "a plan",
+            "a habit"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "Which phrase do you use to ask for a different size or colour?",
+          "options": [
+            "Do you have it in blue?",
+            "You have blue?",
+            "Is it blue yesterday?"
+          ],
+          "correct_idx": 0
         }
       ]
     },

@@ -58,6 +58,10 @@ Para promover a un usuario a `teacher` o `admin`, ejecuta SQL con acceso directo
   ```
 - **Modo revisor** (`/revisor`, docentes y admin): abre cualquier módulo de cualquier nivel (también borradores), salta entre vocabulario, lecciones y quiz, muestra las respuestas correctas, prueba el diagnóstico completo y consulta su banco de preguntas. **No guarda nada**: no escribe progreso, notas ni diagnósticos. Las respuestas correctas solo llegan por la función `staff_quiz_answers`, reservada a docentes y admin.
 
+## Audio de los diálogos
+
+`tts-generate` usa ElevenLabs con 10 voces (ver `content/README.md`). Dos caminos: (1) **audio fijo** — docentes/admin lo generan una vez desde el Modo revisor y queda en el bucket público `lesson-audio`; los alumnos lo descargan directo, sin función ni coste; (2) **al vuelo** — si una frase aún no tiene archivo, se pide a la función (caché en `audio-cache`) y, si falla, se lee con la voz del dispositivo. Secretos opcionales: `ELEVENLABS_VOICE_<ALIAS>` para cambiar cualquier voz, `TTS_GLOBAL_DAILY_CHAR_LIMIT` (por defecto 30000) y `TTS_DAILY_CHAR_LIMIT` (por usuario).
+
 ## Contenido (A2–C2)
 
 El contenido de cada nivel se escribe en `content/cycles/<NIVEL>.json`, se valida (`npm run content:validate`), se convierte en SQL (`npm run content:sql -- A2 supabase/seed/A2.sql`) y se carga como **borrador**. Un nivel se publica completo con `select public.publish_cycle('A2');` solo si cumple los mínimos. Guía completa, plantillas por habilidad y requisitos: `content/README.md`.
