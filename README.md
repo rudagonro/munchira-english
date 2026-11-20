@@ -21,13 +21,44 @@ npm run build
 npm run preview
 ```
 
-## Backend necesario
+## Backend (Supabase)
 
-El frontend consulta `profiles`, `diagnostics`, `cycles`, `modules`, `lessons`, `quiz_questions`, `vocab_items`, `enrollments`, `module_progress`, `checkpoints` y `checkpoint_attempts`. El esquema SQL, las migraciones, las políticas RLS, los datos de los cursos y la función de audio `tts-generate` no están incluidos en este repositorio. Copiar las variables de entorno no crea ese backend.
+El backend vive en `supabase/` y se puede reproducir desde cero:
 
-La función de audio recibe `{ text, voice }` mediante POST autenticado y debe devolver audio. Las claves del proveedor de audio deben permanecer en el servidor.
+| Ruta | Contenido |
+| --- | --- |
+| `supabase/migrations/` | `…050_security_hotfix.sql` (aplicable por sí sola y con urgencia), esquema, políticas RLS, trigger `handle_new_user` (todo registro público es `student`), bucket privado `audio-cache`, control de coste de TTS y funciones RPC de progreso. |
+| `supabase/functions/tts-generate/` | Función de audio: valida JWT, solo sintetiza texto del contenido del curso, usa caché en Storage y aplica un límite diario por usuario. |
 
-Todo registro público debe recibir el rol `student` mediante un trigger o política del servidor. La protección de rutas del navegador no sustituye RLS. Los roles, la propiedad de las inscripciones, las notas y los desbloqueos deben validarse en Supabase.
+Las migraciones son idempotentes. Antes de aplicarlas a un proyecto con datos reales, revisa el SQL y haz una copia de seguridad. Orden recomendado: **migraciones primero, después la función, después el frontend** (el frontend consulta columnas que añaden las migraciones).
+
+```sh
+supabase link --project-ref <ref>
+supabase db push
+supabase secrets set ELEVENLABS_API_KEY=... TTS_DAILY_CHAR_LIMIT=20000
+supabase functions deploy tts-generate
+```
+
+El audio usa ElevenLabs (`ELEVENLABS_API_KEY`). Si el servicio falla o no hay clave, la app lee la lección con la voz del dispositivo, sin coste. La clave se guarda solo como secreto de Supabase, nunca en el navegador ni en el repo. Cambiar de proveedor solo toca `supabase/functions/tts-generate/tts.ts`.
+
+Variables opcionales de la función: `ELEVENLABS_TTS_MODEL` (por defecto `eleven_flash_v2_5`), `ELEVENLABS_VOICE_NOVA` y `ELEVENLABS_VOICE_ONYX` (voces femenina y masculina), `TTS_DAILY_CHAR_LIMIT` (por defecto 20000 caracteres/usuario/día sin caché), `TTS_ALLOWED_ORIGIN` (CORS) y `TTS_ALLOW_ANY_TEXT=true` (solo para pruebas).
+
+`npm test` ejecuta las migraciones reales en un Postgres en memoria (PGlite), tanto sobre una base nueva como sobre una copia del esquema de producción (`tests/fixtures/legacy-schema.sql`, con enums, columnas `NOT NULL` y políticas antiguas), y comprueba RLS, roles y controles de coste. No sustituye una prueba con un proyecto Supabase real.
+
+Para promover a un usuario a `teacher` o `admin`, ejecuta SQL con acceso directo a la base: `update public.profiles set role = 'teacher' where id = '<uuid>';`. Asigna estudiantes a un docente en `public.teacher_students`.
+
+## Contenido (A2–C2)
+
+El contenido de cada nivel se escribe en `content/cycles/<NIVEL>.json`, se valida (`npm run content:validate`), se convierte en SQL (`npm run content:sql -- A2 supabase/seed/A2.sql`) y se carga como **borrador**. Un nivel se publica completo con `select public.publish_cycle('A2');` solo si cumple los mínimos. Guía completa, plantillas por habilidad y requisitos: `content/README.md`.
+
+Estado actual: A2 tiene un módulo de gramática completo (4 lecciones, 6 preguntas) como referencia; el resto de módulos A2–C2 están definidos como esquema (temas por lección) y falta redactarlos. El contenido de A1 sigue solo en la base de datos.
+
+## Flujos nuevos de esta rama
+
+- Progreso atómico: `save_diagnostic` y `submit_module_quiz` (calificación, checkpoint, desbloqueo y avance de ciclo en una transacción; el cliente no escribe tablas de progreso ni ve las respuestas correctas).
+- Vocabulario con repaso espaciado persistente (`/review`) y progreso por lección.
+- Panel docente con KPIs, filtros, detalle por estudiante, estado del contenido y exportación CSV.
+- Accesibilidad (teclado, lector de pantalla, móvil 320 px) y `ErrorBoundary` por ruta.
 
 ## Despliegue
 
@@ -43,4 +74,4 @@ Configura Site URL y las Redirect URLs permitidas en Supabase Auth para desarrol
 - `src/data`: banco diagnóstico y reglas de desbloqueo.
 - `tests`: regresiones del diagnóstico y la progresión.
 
-El panel docente es un placeholder. La evaluación de escritura es heurística y el resultado CEFR es orientativo. Consulta `REVIEW_2026-10-22.md` para los hallazgos y límites de la revisión actual. Los informes anteriores se conservan como contexto histórico y no prueban el estado actual de la infraestructura.
+El panel docente (`/teacher`) muestra KPIs, filtros, ordenación, distribución por nivel, detalle por estudiante y exportación CSV; solo ve a los estudiantes asignados en `teacher_students` (los admins ven a todos). La evaluación de escritura es heurística y el resultado CEFR es orientativo. Consulta `REVIEW_2026-10-22.md` para los hallazgos y límites de la revisión actual. Los informes anteriores se conservan como contexto histórico y no prueban el estado actual de la infraestructura.

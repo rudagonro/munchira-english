@@ -8,6 +8,7 @@ export default function AppHome() {
   const { profile, role, signOut, user } = useAuth()
   const [latestDiagnostic, setLatestDiagnostic] = useState(null)
   const [loadingDiag, setLoadingDiag] = useState(true)
+  const [loadError, setLoadError] = useState('')
 
   useEffect(() => {
     if (!user) return
@@ -18,8 +19,13 @@ export default function AppHome() {
       .order('taken_at', { ascending: false })
       .limit(1)
       .maybeSingle()
-      .then(({ data }) => {
-        setLatestDiagnostic(data)
+      .then(({ data, error }) => {
+        if (error) setLoadError('No se pudo cargar tu progreso. Intenta de nuevo más tarde.')
+        else setLatestDiagnostic(data)
+        setLoadingDiag(false)
+      })
+      .catch(() => {
+        setLoadError('No se pudo cargar tu progreso. Intenta de nuevo más tarde.')
         setLoadingDiag(false)
       })
   }, [user])
@@ -29,6 +35,7 @@ export default function AppHome() {
       <span className="role-tag">{role}</span>
       <h1>Hola, {profile?.full_name || 'estudiante'}</h1>
 
+      {loadError && <div className="error-banner" role="alert">{loadError}</div>}
       {loadingDiag ? (
         <p style={{ opacity: 0.6 }}>Cargando tu progreso...</p>
       ) : latestDiagnostic ? (

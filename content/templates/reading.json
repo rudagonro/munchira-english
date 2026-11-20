@@ -1,0 +1,224 @@
+{
+  "_guia": "Pega el texto en theory_content o practice_content (entre comillas simples si es una cita) y pregunta por idea principal, detalle e inferencia en el quiz.",
+  "order": 1,
+  "skill_type": "reading",
+  "title": "Título del módulo de reading",
+  "status": "ready",
+  "lessons": [
+    {
+      "order": 1,
+      "title": "Lección 1",
+      "theory_content": "Explicación en español, 3-6 frases, con ejemplos en inglés.",
+      "theory_table": [
+        {
+          "label": "Estructura",
+          "value": "ejemplo en inglés"
+        }
+      ],
+      "practice_content": "Tarea corta para el estudiante (1-2 frases).",
+      "exercises": [
+        {
+          "type": "fill",
+          "instruction": "Completa la frase.",
+          "sentence": "She ___ (work) here.",
+          "answer": "works",
+          "hint": "Pista breve."
+        },
+        {
+          "type": "choice",
+          "q": "Pregunta",
+          "opts": [
+            "opción A",
+            "opción B",
+            "opción C"
+          ],
+          "correct": 0,
+          "why": "Por qué es correcta."
+        },
+        {
+          "type": "order",
+          "words": [
+            "palabra",
+            "otra",
+            "más"
+          ],
+          "answer": "palabra otra más",
+          "hint": "Pista breve."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Lección 2",
+      "theory_content": "Explicación en español, 3-6 frases, con ejemplos en inglés.",
+      "theory_table": [
+        {
+          "label": "Estructura",
+          "value": "ejemplo en inglés"
+        }
+      ],
+      "practice_content": "Tarea corta para el estudiante (1-2 frases).",
+      "exercises": [
+        {
+          "type": "fill",
+          "instruction": "Completa la frase.",
+          "sentence": "She ___ (work) here.",
+          "answer": "works",
+          "hint": "Pista breve."
+        },
+        {
+          "type": "choice",
+          "q": "Pregunta",
+          "opts": [
+            "opción A",
+            "opción B",
+            "opción C"
+          ],
+          "correct": 0,
+          "why": "Por qué es correcta."
+        },
+        {
+          "type": "order",
+          "words": [
+            "palabra",
+            "otra",
+            "más"
+          ],
+          "answer": "palabra otra más",
+          "hint": "Pista breve."
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Lección 3",
+      "theory_content": "Explicación en español, 3-6 frases, con ejemplos en inglés.",
+      "theory_table": [
+        {
+          "label": "Estructura",
+          "value": "ejemplo en inglés"
+        }
+      ],
+      "practice_content": "Tarea corta para el estudiante (1-2 frases).",
+      "exercises": [
+        {
+          "type": "fill",
+          "instruction": "Completa la frase.",
+          "sentence": "She ___ (work) here.",
+          "answer": "works",
+          "hint": "Pista breve."
+        },
+        {
+          "type": "choice",
+          "q": "Pregunta",
+          "opts": [
+            "opción A",
+            "opción B",
+            "opción C"
+          ],
+          "correct": 0,
+          "why": "Por qué es correcta."
+        },
+        {
+          "type": "order",
+          "words": [
+            "palabra",
+            "otra",
+            "más"
+          ],
+          "answer": "palabra otra más",
+          "hint": "Pista breve."
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Lección 4",
+      "theory_content": "Explicación en español, 3-6 frases, con ejemplos en inglés.",
+      "theory_table": [
+        {
+          "label": "Estructura",
+          "value": "ejemplo en inglés"
+        }
+      ],
+      "practice_content": "Tarea corta para el estudiante (1-2 frases).",
+      "exercises": [
+        {
+          "type": "fill",
+          "instruction": "Completa la frase.",
+          "sentence": "She ___ (work) here.",
+          "answer": "works",
+          "hint": "Pista breve."
+        },
+        {
+          "type": "choice",
+          "q": "Pregunta",
+          "opts": [
+            "opción A",
+            "opción B",
+            "opción C"
+          ],
+          "correct": 0,
+          "why": "Por qué es correcta."
+        },
+        {
+          "type": "order",
+          "words": [
+            "palabra",
+            "otra",
+            "más"
+          ],
+          "answer": "palabra otra más",
+          "hint": "Pista breve."
+        }
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Pregunta 1",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    },
+    {
+      "question": "Pregunta 2",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    },
+    {
+      "question": "Pregunta 3",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    },
+    {
+      "question": "Pregunta 4",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    },
+    {
+      "question": "Pregunta 5",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correct_idx": 0
+    }
+  ]
+}

@@ -1,10 +1,9 @@
-import { useNavigate, useLocation } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 
 export default function Nav() {
   const { profile, role, signOut } = useAuth()
   const navigate = useNavigate()
-  const location = useLocation()
 
   async function handleSignOut() {
     await signOut()
@@ -14,23 +13,14 @@ export default function Nav() {
   return (
     <header className="nav-header">
       <div className="nav-inner">
-        <div className="nav-logo" onClick={() => navigate('/cycle')}>
-          <span>NIV</span>elo
-        </div>
-        <nav className="nav-links">
-          <a
-            className={location.pathname === '/cycle' ? 'active' : ''}
-            onClick={() => navigate('/cycle')}
-          >
-            Mis módulos
-          </a>
+        <Link className="nav-logo" to="/cycle" aria-label="NIVelo English, ir a mis módulos">
+          <span>NIV</span>elo <span className="nav-logo-sub">English</span>
+        </Link>
+        <nav className="nav-links" aria-label="Principal">
+          <NavLink to="/cycle">Mis módulos</NavLink>
+          <NavLink to="/review">Repaso</NavLink>
           {(role === 'teacher' || role === 'admin') && (
-            <a
-              className={location.pathname === '/teacher' ? 'active' : ''}
-              onClick={() => navigate('/teacher')}
-            >
-              Panel docente
-            </a>
+            <NavLink to="/teacher">Panel docente</NavLink>
           )}
         </nav>
         <div className="nav-user">
@@ -39,7 +29,7 @@ export default function Nav() {
               {profile.full_name.split(' ')[0]}
             </span>
           )}
-          <button className="nav-logout" onClick={handleSignOut}>
+          <button className="nav-logout" type="button" onClick={handleSignOut}>
             Salir
           </button>
         </div>

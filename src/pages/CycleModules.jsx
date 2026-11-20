@@ -64,7 +64,7 @@ export default function CycleModules() {
   if (error) {
     return (
       <div className="page-shell">
-        <div className="error-banner">{error}</div>
+        <div className="error-banner" role="alert">{error}</div>
       </div>
     )
   }

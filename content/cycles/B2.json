@@ -1,0 +1,1321 @@
+{
+  "level": "B2",
+  "title": "Intermedio-Alto",
+  "duration_weeks": [
+    14,
+    16
+  ],
+  "modules": [
+    {
+      "order": 1,
+      "skill_type": "grammar",
+      "title": "Estructuras complejas y conectores avanzados",
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Segundo y tercer condicional",
+          "theory_content": "El segundo condicional habla de situaciones irreales o poco probables en el presente o futuro: If I won the lottery, I would travel the world (If + past simple, would + verbo base). El tercer condicional habla de situaciones imposibles porque ya pasaron: If I had studied, I would have passed (If + past perfect, would have + participio). Con el verbo be usamos were en todas las personas en lenguaje formal: If I were you, I would apologise.",
+          "theory_table": [
+            {
+              "label": "Segundo",
+              "value": "If I had more time, I would learn Italian."
+            },
+            {
+              "label": "Tercero",
+              "value": "If she had left earlier, she would have caught the train."
+            },
+            {
+              "label": "Consejo",
+              "value": "If I were you, I would call him."
+            },
+            {
+              "label": "Contraste",
+              "value": "If I win (real) / If I won (irreal)"
+            }
+          ],
+          "practice_content": "Escribe una frase de segundo condicional sobre tu vida ideal y otra de tercero sobre algo que lamentas.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "If I ___ (be) you, I would talk to her.",
+              "answer": "were",
+              "hint": "En if irreales usamos were."
+            },
+            {
+              "type": "choice",
+              "q": "Completa: If he had called, I ___ him.",
+              "opts": [
+                "would help",
+                "will help",
+                "would have helped"
+              ],
+              "correct": 2,
+              "why": "Tercer condicional: would have + participio."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "had",
+                "I",
+                "If",
+                "would",
+                "travel",
+                "time",
+                "more",
+                "I"
+              ],
+              "answer": "If I had more time I would travel",
+              "hint": "If + past simple, would + verbo."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Estilo indirecto",
+          "theory_content": "Usamos el estilo indirecto (reported speech) para contar lo que alguien dijo. Normalmente el tiempo verbal retrocede un paso: present simple → past simple (I am tired → He said he was tired), present perfect → past perfect, will → would. Los pronombres y las marcas de tiempo también cambian: today → that day, tomorrow → the next day. Con preguntas usamos if/whether o la palabra interrogativa sin inversión: She asked if I was ready.",
+          "theory_table": [
+            {
+              "label": "Afirmación",
+              "value": "'I'm busy' → He said he was busy."
+            },
+            {
+              "label": "Futuro",
+              "value": "'I will call' → She said she would call."
+            },
+            {
+              "label": "Pregunta sí/no",
+              "value": "'Are you ready?' → She asked if I was ready."
+            },
+            {
+              "label": "Tiempo",
+              "value": "tomorrow → the next day"
+            }
+          ],
+          "practice_content": "Transforma a estilo indirecto: 'I will visit you tomorrow,' said Mark.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "She said she ___ (be) very tired.",
+              "answer": "was",
+              "hint": "am/is retrocede a was."
+            },
+            {
+              "type": "choice",
+              "q": "'Where do you live?' → He asked me ___.",
+              "opts": [
+                "where do I live",
+                "where I lived",
+                "where did I live"
+              ],
+              "correct": 1,
+              "why": "Sin inversión y con retroceso de tiempo."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "call",
+                "me",
+                "he",
+                "said",
+                "He",
+                "would"
+              ],
+              "answer": "He said he would call me",
+              "hint": "said + sujeto + would + verbo."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Cláusulas de relativo",
+          "theory_content": "Las cláusulas de relativo añaden información sobre un nombre. Who se usa para personas, which para cosas, that para ambos en las defining, y whose indica posesión. Las non-defining van entre comas y no pueden usar that: My brother, who lives in Spain, is a chef. Las defining no llevan comas: The man who called is my uncle.",
+          "theory_table": [
+            {
+              "label": "Personas",
+              "value": "The woman who works here is kind."
+            },
+            {
+              "label": "Cosas",
+              "value": "The book which I read was long."
+            },
+            {
+              "label": "Posesión",
+              "value": "The man whose car was stolen called the police."
+            },
+            {
+              "label": "Non-defining",
+              "value": "My phone, which is new, is great."
+            }
+          ],
+          "practice_content": "Une con who/which: 'I met a man. He speaks five languages.'",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "This is the girl ___ sister is a doctor.",
+              "answer": "whose",
+              "hint": "Posesión = whose."
+            },
+            {
+              "type": "choice",
+              "q": "Elige la frase correcta.",
+              "opts": [
+                "My car, who is red, is new.",
+                "My car, that is red, is new.",
+                "My car, which is red, is new."
+              ],
+              "correct": 2,
+              "why": "En non-defining no se usa that."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "who",
+                "is",
+                "my",
+                "called",
+                "The",
+                "uncle",
+                "man"
+              ],
+              "answer": "The man who called is my uncle",
+              "hint": "Defining: sin comas."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Wish e if only",
+          "theory_content": "Usamos wish e if only para expresar deseos y lamentos. Presente (deseo irreal): I wish I had a car (past simple). Pasado (lamento): I wish I had studied (past perfect). Quejas sobre hábitos o futuro: I wish you would stop shouting. If only es más enfático: If only I knew the answer!",
+          "theory_table": [
+            {
+              "label": "Presente",
+              "value": "I wish I lived by the sea."
+            },
+            {
+              "label": "Pasado",
+              "value": "I wish I had gone to the party."
+            },
+            {
+              "label": "Queja",
+              "value": "I wish you would listen."
+            },
+            {
+              "label": "Énfasis",
+              "value": "If only it were summer!"
+            }
+          ],
+          "practice_content": "Escribe tres frases con I wish sobre tu vida actual.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "I wish I ___ (have) more free time.",
+              "answer": "had",
+              "hint": "Deseo presente: past simple."
+            },
+            {
+              "type": "choice",
+              "q": "Lamento por algo que no hiciste: I wish I ___ harder.",
+              "opts": [
+                "had studied",
+                "would study",
+                "studied"
+              ],
+              "correct": 0,
+              "why": "Lamento pasado: past perfect."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "the",
+                "knew",
+                "If",
+                "answer",
+                "only",
+                "I"
+              ],
+              "answer": "If only I knew the answer",
+              "hint": "If only + past simple."
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "title": "Conectores avanzados",
+          "theory_content": "En B2 enlazamos ideas con conectores más precisos. Contraste: nevertheless, whereas, in spite of (+ sustantivo/-ing). Causa y consecuencia: therefore, as a result, due to. Adición: moreover, furthermore. Ejemplo: In spite of the rain, we went out. The tickets were sold out; therefore, we stayed home.",
+          "theory_table": [
+            {
+              "label": "Contraste",
+              "value": "Whereas I love coffee, he prefers tea."
+            },
+            {
+              "label": "Consecuencia",
+              "value": "It rained; as a result, the match was cancelled."
+            },
+            {
+              "label": "Adición",
+              "value": "Moreover, the price is low."
+            },
+            {
+              "label": "In spite of",
+              "value": "In spite of the cold, we swam."
+            }
+          ],
+          "practice_content": "Escribe dos frases con therefore y in spite of sobre tu semana.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "___ the heavy traffic, we arrived on time.",
+              "answer": "In spite of",
+              "hint": "Seguido de sustantivo."
+            },
+            {
+              "type": "choice",
+              "q": "Elige el mejor conector: The company grew; ___, it hired more staff.",
+              "opts": [
+                "whereas",
+                "unless",
+                "as a result"
+              ],
+              "correct": 2,
+              "why": "Resultado/consecuencia."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "is",
+                "price",
+                "the",
+                "very",
+                "Moreover",
+                "low"
+              ],
+              "answer": "Moreover the price is very low",
+              "hint": "Moreover + coma + frase."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "If I ___ rich, I would buy a boat.",
+          "options": [
+            "were",
+            "will be",
+            "had been"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'I will help you,' she said. → She said she ___ help me.",
+          "options": [
+            "will",
+            "has",
+            "would"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "The man ___ car was stolen called the police.",
+          "options": [
+            "who",
+            "whose",
+            "which"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "I wish I ___ the answer now.",
+          "options": [
+            "knew",
+            "had known",
+            "know"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "___ the rain, we enjoyed the trip.",
+          "options": [
+            "In spite of",
+            "Although of",
+            "Despite that"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "If she had studied, she ___ the exam.",
+          "options": [
+            "would have passed",
+            "would pass",
+            "passed"
+          ],
+          "correct_idx": 0
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "skill_type": "vocabulary",
+      "title": "Vocabulario académico y profesional",
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Negocios y reuniones",
+          "theory_content": "En el ámbito profesional se utilizan términos específicos. Una meeting tiene un agenda y se levantan minutes (acta). Para cumplir plazos hay un deadline. Una empresa busca clients, signs a contract y mide su profit (beneficio). Para ser breve y claro: Let's move on to the next point.",
+          "theory_table": [
+            {
+              "label": "agenda",
+              "value": "The agenda has five items."
+            },
+            {
+              "label": "deadline",
+              "value": "The deadline is Friday."
+            },
+            {
+              "label": "profit",
+              "value": "Profit rose by ten percent."
+            },
+            {
+              "label": "minutes",
+              "value": "Who will take the minutes?"
+            }
+          ],
+          "practice_content": "Escribe un breve resumen de una reunión usando agenda, deadline y profit.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "We must finish before the ___. (fecha límite)",
+              "answer": "deadline",
+              "hint": "Plazo de entrega."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué es the minutes de una reunión?",
+              "opts": [
+                "la hora",
+                "el acta",
+                "los minutos"
+              ],
+              "correct": 1,
+              "why": "Minutes = acta."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "next",
+                "to",
+                "move",
+                "us",
+                "on",
+                "Let",
+                "point",
+                "the"
+              ],
+              "answer": "Let us move on to the next point",
+              "hint": "Frase útil de reunión."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Tecnología y sociedad",
+          "theory_content": "El vocabulario tecnológico es clave: artificial intelligence, privacy, data, algorithm, online platform. Se usa para debatir impacto social: Technology has changed the way we communicate. Verbos útiles: to automate, to track, to share, to protect. Cuidado con el falso amigo: actually significa en realidad, no actualmente.",
+          "theory_table": [
+            {
+              "label": "data",
+              "value": "Companies collect personal data."
+            },
+            {
+              "label": "privacy",
+              "value": "Privacy is a human right."
+            },
+            {
+              "label": "automate",
+              "value": "Robots automate repetitive tasks."
+            },
+            {
+              "label": "actually",
+              "value": "Actually, I disagree. (en realidad)"
+            }
+          ],
+          "practice_content": "Escribe dos ventajas y dos riesgos de las redes sociales.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Online ___ is an important issue. (privacidad)",
+              "answer": "privacy",
+              "hint": "Privacy = privacidad."
+            },
+            {
+              "type": "choice",
+              "q": "'Actually' en inglés significa ___.",
+              "opts": [
+                "ahora mismo",
+                "en realidad",
+                "actualmente"
+              ],
+              "correct": 1,
+              "why": "Es un falso amigo."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "Companies",
+                "data",
+                "lot",
+                "a",
+                "of",
+                "collect"
+              ],
+              "answer": "Companies collect a lot of data",
+              "hint": "Sujeto + verbo + objeto."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Medio ambiente",
+          "theory_content": "Para hablar de ecología usamos climate change, renewable energy, pollution, recycling y sustainable. Frases típicas: We need to reduce our carbon footprint. Los verbos reduce, protect y waste son frecuentes. Las collocations ayudan: reduce waste, protect the environment, global warming.",
+          "theory_table": [
+            {
+              "label": "renewable",
+              "value": "renewable energy"
+            },
+            {
+              "label": "reduce",
+              "value": "reduce plastic waste"
+            },
+            {
+              "label": "footprint",
+              "value": "carbon footprint"
+            },
+            {
+              "label": "sustainable",
+              "value": "sustainable transport"
+            }
+          ],
+          "practice_content": "Escribe tres acciones personales para reducir tu huella de carbono.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "We must reduce plastic ___. (residuos)",
+              "answer": "waste",
+              "hint": "Waste = residuos."
+            },
+            {
+              "type": "choice",
+              "q": "¿Cuál es una energía renovable?",
+              "opts": [
+                "coal",
+                "oil",
+                "solar power"
+              ],
+              "correct": 2,
+              "why": "La solar es renovable."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "We",
+                "need",
+                "to",
+                "the",
+                "protect",
+                "environment"
+              ],
+              "answer": "We need to protect the environment",
+              "hint": "need to + verbo base."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Collocations académicas",
+          "theory_content": "Las collocations son combinaciones naturales de palabras que usan los nativos. En inglés académico: conduct research, draw a conclusion, make an assumption, raise awareness, reach an agreement. Aprenderlas en bloque mejora tu fluidez y tu escritura. Evita traducir literalmente (do research ✗ → conduct research ✓).",
+          "theory_table": [
+            {
+              "label": "research",
+              "value": "conduct research"
+            },
+            {
+              "label": "conclusion",
+              "value": "draw a conclusion"
+            },
+            {
+              "label": "awareness",
+              "value": "raise awareness"
+            },
+            {
+              "label": "agreement",
+              "value": "reach an agreement"
+            }
+          ],
+          "practice_content": "Escribe cuatro frases con las collocations de la tabla.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The team will ___ research next year. (realizar)",
+              "answer": "conduct",
+              "hint": "conduct research."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué collocation es correcta?",
+              "opts": [
+                "do a conclusion",
+                "make a conclusion draw",
+                "draw a conclusion"
+              ],
+              "correct": 2,
+              "why": "Draw a conclusion es la fija."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "They",
+                "yesterday",
+                "an",
+                "agreement",
+                "reached"
+              ],
+              "answer": "They reached an agreement yesterday",
+              "hint": "Sujeto + reached + an agreement."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "The final date for completing a task is the ___.",
+          "options": [
+            "deadline",
+            "agenda",
+            "profit"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "In English, 'actually' means ___.",
+          "options": [
+            "currently",
+            "in fact",
+            "recently"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "Solar and wind power are ___ energy sources.",
+          "options": [
+            "polluting",
+            "renewable",
+            "expensive"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "Choose the correct collocation.",
+          "options": [
+            "make research",
+            "do a research of",
+            "conduct research"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "The written record of a meeting is called the ___.",
+          "options": [
+            "minutes",
+            "agenda",
+            "deadline"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'Carbon footprint' refers to ___.",
+          "options": [
+            "a trail in the forest",
+            "the CO₂ we produce",
+            "a type of shoe"
+          ],
+          "correct_idx": 1
+        }
+      ],
+      "vocab": [
+        {
+          "english": "agenda",
+          "spanish": "orden del día",
+          "example_sentence": "Please read the agenda."
+        },
+        {
+          "english": "deadline",
+          "spanish": "fecha límite",
+          "example_sentence": "We have a deadline on Friday."
+        },
+        {
+          "english": "profit",
+          "spanish": "beneficio",
+          "example_sentence": "The company made a profit."
+        },
+        {
+          "english": "contract",
+          "spanish": "contrato",
+          "example_sentence": "He signed the contract."
+        },
+        {
+          "english": "privacy",
+          "spanish": "privacidad",
+          "example_sentence": "Privacy matters online."
+        },
+        {
+          "english": "algorithm",
+          "spanish": "algoritmo",
+          "example_sentence": "The algorithm suggests videos."
+        },
+        {
+          "english": "pollution",
+          "spanish": "contaminación",
+          "example_sentence": "Pollution affects our health."
+        },
+        {
+          "english": "renewable",
+          "spanish": "renovable",
+          "example_sentence": "Wind is a renewable source."
+        },
+        {
+          "english": "sustainable",
+          "spanish": "sostenible",
+          "example_sentence": "We need sustainable growth."
+        },
+        {
+          "english": "research",
+          "spanish": "investigación",
+          "example_sentence": "She does medical research."
+        },
+        {
+          "english": "conclusion",
+          "spanish": "conclusión",
+          "example_sentence": "The conclusion was clear."
+        },
+        {
+          "english": "assumption",
+          "spanish": "suposición",
+          "example_sentence": "That is a false assumption."
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "skill_type": "reading",
+      "title": "Reading crítico de artículos de opinión",
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Idea principal y tesis",
+          "theory_content": "La tesis es la idea central que el autor defiende. Suele aparecer al final del primer párrafo. Para identificarla, pregúntate: ¿qué quiere que yo crea? Lee el título, la primera frase de cada párrafo y la conclusión. Ejemplo de tesis: Cities should ban cars from their centres because air quality is falling.",
+          "theory_table": [
+            {
+              "label": "Tesis",
+              "value": "Cities should ban cars from centres."
+            },
+            {
+              "label": "Apoyo",
+              "value": "Air quality is falling."
+            },
+            {
+              "label": "Conclusión",
+              "value": "Therefore, action is urgent."
+            }
+          ],
+          "practice_content": "Lee el texto y subraya la tesis en una frase.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "Lee: 'Cities should ban cars from their centres because air quality is falling.' ¿Cuál es la tesis?",
+              "opts": [
+                "Air is a gas.",
+                "Cars are red.",
+                "Cities should ban cars from centres."
+              ],
+              "correct": 2,
+              "why": "La tesis es la posición que defiende."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "The author's main ___ appears in the first paragraph. (tesis)",
+              "answer": "argument",
+              "hint": "Argument = argumento/tesis."
+            },
+            {
+              "type": "choice",
+              "q": "¿Dónde suele estar la tesis?",
+              "opts": [
+                "en el título del periódico",
+                "en la última línea del texto",
+                "al final del primer párrafo"
+              ],
+              "correct": 2,
+              "why": "Es lo habitual en artículos de opinión."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Inferencias y tono",
+          "theory_content": "Una inferencia es una conclusión que sacas de pistas del texto aunque no esté escrita. El tono es la actitud del autor: critical, humorous, neutral, concerned. Pistas del tono: adjetivos (disastrous, hopeful), adverbios (sadly, fortunately) y ironía. Ejemplo: Sadly, the council ignored the warning → tono crítico.",
+          "theory_table": [
+            {
+              "label": "Inferencia",
+              "value": "He left early → maybe he was ill."
+            },
+            {
+              "label": "Tono crítico",
+              "value": "Sadly, the council ignored the warning."
+            },
+            {
+              "label": "Tono positivo",
+              "value": "Fortunately, the plan worked."
+            },
+            {
+              "label": "Ironía",
+              "value": "Great, another meeting!"
+            }
+          ],
+          "practice_content": "Lee un artículo corto y anota el tono con dos pistas.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "'Sadly, the council ignored the warning.' El tono es ___.",
+              "opts": [
+                "joyful",
+                "neutral",
+                "critical"
+              ],
+              "correct": 2,
+              "why": "Sadly + ignored = crítica."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "An ___ is a conclusion based on clues. (inferencia)",
+              "answer": "inference",
+              "hint": "Inference = inferencia."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "is",
+                "of",
+                "tone",
+                "critical",
+                "The",
+                "article",
+                "the"
+              ],
+              "answer": "The tone of the article is critical",
+              "hint": "Frase completa."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Argumentos y evidencia",
+          "theory_content": "Un argumento fuerte tiene una afirmación (claim) y evidencia: datos, estudios o ejemplos. Evalúa la evidencia: ¿viene de una fuente fiable?, ¿es reciente?, ¿hay números concretos? Frases típicas: According to a recent study, research shows that, for instance. Un argumento sin evidencia es solo una opinión.",
+          "theory_table": [
+            {
+              "label": "Claim",
+              "value": "Remote work boosts productivity."
+            },
+            {
+              "label": "Evidencia",
+              "value": "According to a 2023 study, output rose 13%."
+            },
+            {
+              "label": "Ejemplo",
+              "value": "For instance, many firms saved on rent."
+            },
+            {
+              "label": "Fiabilidad",
+              "value": "Who published the study?"
+            }
+          ],
+          "practice_content": "Lee un artículo y separa una afirmación y dos evidencias.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Qué es evidencia?",
+              "opts": [
+                "a study with data",
+                "a title",
+                "a feeling"
+              ],
+              "correct": 0,
+              "why": "Los datos de un estudio son evidencia."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "According ___ a recent study, sales fell.",
+              "answer": "to",
+              "hint": "According to + fuente."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "work",
+                "helps",
+                "Research",
+                "remote",
+                "that",
+                "shows"
+              ],
+              "answer": "Research shows that remote work helps",
+              "hint": "Research shows that + frase."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Sesgo y fuentes",
+          "theory_content": "El sesgo (bias) es una inclinación que afecta la objetividad. Detéctalo observando lenguaje cargado (always, never, obviously), omisiones y fuentes únicas. Contrasta con otras fuentes y revisa quién financia el texto. Ejemplo: A company-funded study says its product is the best; probablemente tiene sesgo.",
+          "theory_table": [
+            {
+              "label": "Lenguaje cargado",
+              "value": "obviously, never, disaster"
+            },
+            {
+              "label": "Fuente única",
+              "value": "only one expert quoted"
+            },
+            {
+              "label": "Financiación",
+              "value": "funded by the company"
+            },
+            {
+              "label": "Contraste",
+              "value": "check other sources"
+            }
+          ],
+          "practice_content": "Lee dos artículos sobre el mismo tema y compara el sesgo.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Qué señal sugiere sesgo?",
+              "opts": [
+                "a clear date",
+                "a study funded by the company",
+                "a long title"
+              ],
+              "correct": 1,
+              "why": "El interés económico afecta la objetividad."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "An article using words like 'obviously' may show ___. (sesgo)",
+              "answer": "bias",
+              "hint": "Bias = sesgo."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "other",
+                "We",
+                "sources",
+                "check",
+                "should"
+              ],
+              "answer": "We should check other sources",
+              "hint": "should + verbo."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "The thesis of an opinion article is its ___.",
+          "options": [
+            "headline font",
+            "date",
+            "main argument"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "'Great, another meeting!' is probably ___.",
+          "options": [
+            "enthusiastic",
+            "ironic",
+            "neutral"
+          ],
+          "correct_idx": 1
+        },
+        {
+          "question": "Strong evidence usually includes ___.",
+          "options": [
+            "data from a reliable source",
+            "personal feelings only",
+            "rumours"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "To detect bias you should ___.",
+          "options": [
+            "compare several sources",
+            "trust one source",
+            "ignore the author"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'According to a recent study...' introduces ___.",
+          "options": [
+            "a title",
+            "a joke",
+            "evidence"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "An inference is ___.",
+          "options": [
+            "a conclusion drawn from clues",
+            "a direct quote",
+            "a headline"
+          ],
+          "correct_idx": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "skill_type": "writing",
+      "title": "Ensayos argumentativos",
+      "status": "ready",
+      "lessons": [
+        {
+          "order": 1,
+          "title": "Estructura del ensayo",
+          "theory_content": "Un ensayo argumentativo tiene introducción (gancho + tesis), desarrollo (2-3 párrafos con argumentos y evidencia) y conclusión (resumen + reflexión final). Cada párrafo trata una sola idea con una frase principal. Usa conectores entre párrafos: Firstly, In addition, On the other hand, To sum up.",
+          "theory_table": [
+            {
+              "label": "Introducción",
+              "value": "hook + thesis"
+            },
+            {
+              "label": "Desarrollo",
+              "value": "claim + evidence + example"
+            },
+            {
+              "label": "Conclusión",
+              "value": "summary + final thought"
+            },
+            {
+              "label": "Conectores",
+              "value": "Firstly, Moreover, To sum up"
+            }
+          ],
+          "practice_content": "Esquematiza un ensayo sobre si el trabajo remoto es mejor que el presencial.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "___ sum up, remote work has many benefits.",
+              "answer": "To",
+              "hint": "Expresión fija: To sum up."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué parte contiene la tesis?",
+              "opts": [
+                "la introducción",
+                "el título del autor",
+                "la conclusión"
+              ],
+              "correct": 0,
+              "why": "La tesis se presenta al inicio."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "remote",
+                "saves",
+                "time",
+                "work",
+                "Firstly"
+              ],
+              "answer": "Firstly remote work saves time",
+              "hint": "Firstly + coma + frase."
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "title": "Tesis y párrafos",
+          "theory_content": "Una buena tesis es específica, debatible y breve. Evita: Social media is bad. Mejor: Social media harms teenagers' sleep and concentration, so schools should limit its use. Cada párrafo empieza con una frase temática que apoya la tesis, seguida de evidencia y comentario.",
+          "theory_table": [
+            {
+              "label": "Tesis débil",
+              "value": "Social media is bad."
+            },
+            {
+              "label": "Tesis fuerte",
+              "value": "Schools should limit social media because it harms sleep."
+            },
+            {
+              "label": "Frase temática",
+              "value": "One major problem is lack of sleep."
+            },
+            {
+              "label": "Comentario",
+              "value": "This shows that..."
+            }
+          ],
+          "practice_content": "Reescribe una tesis débil sobre las redes sociales para hacerla específica y debatible.",
+          "exercises": [
+            {
+              "type": "choice",
+              "q": "¿Qué tesis es mejor?",
+              "opts": [
+                "I like phones.",
+                "Schools should ban phones in class because they reduce concentration.",
+                "Phones exist."
+              ],
+              "correct": 1,
+              "why": "Es específica y defendible."
+            },
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "This ___ that sleep is essential. (muestra)",
+              "answer": "shows",
+              "hint": "This shows that..."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "is",
+                "of",
+                "sleep",
+                "problem",
+                "lack",
+                "major",
+                "One"
+              ],
+              "answer": "One major problem is lack of sleep",
+              "hint": "Frase temática clara."
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "title": "Contraargumentos",
+          "theory_content": "Un contraargumento reconoce la postura contraria y la refuta. Fórmula: reconoce, contradice y demuestra. Frases: Some people argue that..., However, this view ignores... Ejemplo: Some argue that cars are necessary. However, this ignores the growth of public transport. Muestra que has considerado otras ideas.",
+          "theory_table": [
+            {
+              "label": "Reconocer",
+              "value": "Some people argue that..."
+            },
+            {
+              "label": "Refutar",
+              "value": "However, this view ignores..."
+            },
+            {
+              "label": "Evidencia",
+              "value": "Studies show that..."
+            },
+            {
+              "label": "Cerrar",
+              "value": "Therefore, my position remains."
+            }
+          ],
+          "practice_content": "Escribe un contraargumento a: 'Online classes are always worse than in-person classes.'",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Some people ___ that cars are necessary.",
+              "answer": "argue",
+              "hint": "argue that + frase."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué hace un contraargumento?",
+              "opts": [
+                "cambia de tema",
+                "considera la postura contraria y la refuta",
+                "repite la tesis"
+              ],
+              "correct": 1,
+              "why": "Reconoce y responde a la objeción."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "public",
+                "However",
+                "this",
+                "transport",
+                "view",
+                "ignores"
+              ],
+              "answer": "However this view ignores public transport",
+              "hint": "However + coma + frase."
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "title": "Revisión y edición",
+          "theory_content": "Revisar es mejorar el contenido; editar es corregir la forma. Revisa: ¿hay tesis clara?, ¿cada párrafo tiene una idea?, ¿la evidencia apoya el argumento? Edita: ortografía, puntuación, repetición de palabras, conectores. Lee en voz alta y pide a alguien que lo lea. Reduce frases largas y evita palabras vacías.",
+          "theory_table": [
+            {
+              "label": "Revisar",
+              "value": "Is my thesis clear?"
+            },
+            {
+              "label": "Editar",
+              "value": "Check spelling and punctuation."
+            },
+            {
+              "label": "Repetición",
+              "value": "replace 'good' with 'effective'"
+            },
+            {
+              "label": "Voz alta",
+              "value": "read your essay aloud"
+            }
+          ],
+          "practice_content": "Revisa tu último ensayo con la lista de revisión de arriba.",
+          "exercises": [
+            {
+              "type": "fill",
+              "instruction": "Completa la frase.",
+              "sentence": "Proofread your essay to fix spelling and ___. (puntuación)",
+              "answer": "punctuation",
+              "hint": "Punctuation = puntuación."
+            },
+            {
+              "type": "choice",
+              "q": "¿Qué es editar?",
+              "opts": [
+                "corregir la forma",
+                "buscar fuentes",
+                "escribir la primera idea"
+              ],
+              "correct": 0,
+              "why": "Editar mejora forma y claridad."
+            },
+            {
+              "type": "order",
+              "instruction": "Ordena las palabras para formar la oración.",
+              "words": [
+                "aloud",
+                "Read",
+                "essay",
+                "your"
+              ],
+              "answer": "Read your essay aloud",
+              "hint": "Imperativo + objeto + adverbio."
+            }
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "question": "A strong thesis is ___.",
+          "options": [
+            "a question only",
+            "very general",
+            "specific and debatable"
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "Which phrase introduces a counterargument?",
+          "options": [
+            "Last summer...",
+            "In my house...",
+            "Some people argue that..."
+          ],
+          "correct_idx": 2
+        },
+        {
+          "question": "Each paragraph should have ___.",
+          "options": [
+            "one main idea",
+            "five unrelated ideas",
+            "no topic sentence"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "'To sum up' is used in the ___.",
+          "options": [
+            "conclusion",
+            "title",
+            "reference list"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "Editing means checking ___.",
+          "options": [
+            "spelling, punctuation and style",
+            "the author's age",
+            "only the title"
+          ],
+          "correct_idx": 0
+        },
+        {
+          "question": "Why include evidence?",
+          "options": [
+            "to support the argument",
+            "to confuse the reader",
+            "to fill space"
+          ],
+          "correct_idx": 0
+        }
+      ]
+    }
+  ],
+  "checkpoints": [
+    {
+      "after_module_order": 2,
+      "title": "Checkpoint intermedio",
+      "min_score_to_pass": 70
+    },
+    {
+      "after_module_order": 4,
+      "title": "Checkpoint final",
+      "min_score_to_pass": 70
+    }
+  ]
+}

@@ -88,55 +88,20 @@ export function AuthProvider({ children }) {
   }
 
   /**
-   * Guarda el resultado del diagnóstico en la base de datos y crea (o renueva)
-   * la inscripción del estudiante al ciclo correspondiente a su nivel CEFR.
-   * Esto es lo que la versión HTML original NO podía hacer: el resultado
-   * vivía solo en memoria del navegador y se perdía al cerrarlo.
+   * Guarda el diagnóstico e inscribe al estudiante en el ciclo de su nivel en
+   * una sola transacción del servidor (RPC save_diagnostic). El servidor
+   * recalcula el puntaje global; el cliente solo envía porcentajes por área.
    */
   async function saveDiagnosticResult(result) {
-    const currentUser = session?.user
-    if (!currentUser) return { error: new Error('No hay sesión activa') }
-
-    const { error: diagError } = await supabase.from('diagnostics').insert({
-      user_id: currentUser.id,
-      cefr_level: result.finalLevel,
-      gv_pct: result.gvPct,
-      reading_pct: result.readingPct,
-      listening_pct: result.listeningPct,
-      writing_pct: result.writingPct,
-      final_score: result.finalScore,
+    if (!session?.user) return { error: new Error('No hay sesión activa') }
+    const { data, error } = await supabase.rpc('save_diagnostic', {
+      p_level: result.finalLevel,
+      p_gv_pct: result.gvPct,
+      p_reading_pct: result.readingPct,
+      p_listening_pct: result.listeningPct,
+      p_writing_pct: result.writingPct,
     })
-
-    if (diagError) return { error: diagError }
-
-    // Busca el ciclo correspondiente al nivel detectado.
-    const { data: cycle, error: cycleError } = await supabase
-      .from('cycles')
-      .select('id')
-      .eq('cefr_level', result.finalLevel)
-      .single()
-
-    if (cycleError) return { error: cycleError }
-
-    // Evita duplicar inscripciones si el estudiante repite el diagnóstico
-    // y queda en el mismo ciclo que ya tenía activo.
-    const { data: existing } = await supabase
-      .from('enrollments')
-      .select('id')
-      .eq('user_id', currentUser.id)
-      .eq('cycle_id', cycle.id)
-      .eq('status', 'active')
-      .maybeSingle()
-
-    if (!existing) {
-      const { error: enrollError } = await supabase.from('enrollments').insert({
-        user_id: currentUser.id,
-        cycle_id: cycle.id,
-      })
-      if (enrollError) return { error: enrollError }
-    }
-
-    return { error: null }
+    return { data, error }
   }
 
   /**
@@ -211,7 +176,7 @@ export function AuthProvider({ children }) {
 
     const { data: lessons, error: lessonsError } = await supabase
       .from('lessons')
-      .select('id, order_index, title, theory_content, theory_table, image_url, practice_content, dialogue_turns')
+      .select('id, order_index, title, theory_content, theory_table, image_url, practice_content, dialogue_turns, audio_text, exercises')
       .eq('module_id', moduleId)
       .order('order_index')
 
@@ -219,7 +184,7 @@ export function AuthProvider({ children }) {
 
     const { data: questions, error: questionsError } = await supabase
       .from('quiz_questions')
-      .select('id, question, options, correct_idx')
+      .select('id, question, options')
       .eq('module_id', moduleId)
 
     if (questionsError) return { data: null, error: questionsError }
@@ -232,83 +197,66 @@ export function AuthProvider({ children }) {
 
     if (vocabError) return { data: null, error: vocabError }
 
-    return { data: { module: moduleRow, lessons, questions, vocabItems }, error: null }
+    // Progreso propio (el filtro por usuario es necesario: docentes y admins
+    // también pueden leer filas de otros estudiantes por RLS).
+    const userId = session?.user?.id
+    const lessonIds = lessons.map((l) => l.id)
+    const vocabIds = vocabItems.map((v) => v.id)
+    const [lessonProgressRes, wordProgressRes] = await Promise.all([
+      lessonIds.length
+        ? supabase.from('lesson_progress').select('lesson_id').eq('user_id', userId).in('lesson_id', lessonIds)
+        : { data: [], error: null },
+      vocabIds.length
+        ? supabase.from('word_progress').select('vocab_item_id, next_review').eq('user_id', userId).in('vocab_item_id', vocabIds)
+        : { data: [], error: null },
+    ])
+    if (lessonProgressRes.error) return { data: null, error: lessonProgressRes.error }
+    if (wordProgressRes.error) return { data: null, error: wordProgressRes.error }
+
+    return {
+      data: {
+        module: moduleRow, lessons, questions, vocabItems,
+        completedLessonIds: lessonProgressRes.data.map((r) => r.lesson_id),
+        wordProgress: Object.fromEntries(wordProgressRes.data.map((r) => [r.vocab_item_id, r.next_review])),
+      },
+      error: null,
+    }
+  }, [session?.user?.id])
+
+  /**
+   * Envía las respuestas del quiz al servidor (RPC submit_module_quiz). El
+   * servidor califica, guarda el progreso, evalúa el checkpoint posterior y,
+   * si el ciclo queda completo, inscribe al siguiente nivel, todo en una
+   * transacción. Devuelve { correct, total, score_pct, review, checkpoint,
+   * cycle_completed, advanced, next_level }.
+   */
+  async function submitModuleQuiz(moduleId, answers) {
+    const { data, error } = await supabase.rpc('submit_module_quiz', {
+      p_module_id: moduleId,
+      p_answers: answers,
+    })
+    return { data, error }
+  }
+
+  /** Registra un repaso de vocabulario; el servidor calcula la próxima fecha (SM-2 simplificado). */
+  async function recordVocabReview(vocabItemId, known) {
+    const { data, error } = await supabase.rpc('record_vocab_review', {
+      p_vocab_item_id: vocabItemId,
+      p_known: known,
+    })
+    return { data, error }
+  }
+
+  /** Palabras ya estudiadas cuyo repaso toca hoy. */
+  const getDueVocab = useCallback(async (limit = 20) => {
+    const { data, error } = await supabase.rpc('get_due_vocab', { p_limit: limit })
+    return { data: data ?? [], error }
   }, [])
 
-  /**
-   * Registra el resultado del quiz de un módulo: marca el módulo como
-   * 'completed' con su quiz_score. Usa upsert porque el estudiante puede
-   * repetir un módulo (module_progress tiene unique(enrollment_id, module_id)).
-   */
-  async function completeModule(enrollmentId, moduleId, quizScore) {
-    const { error } = await supabase
-      .from('module_progress')
-      .upsert(
-        {
-          enrollment_id: enrollmentId,
-          module_id: moduleId,
-          status: 'completed',
-          quiz_score: quizScore,
-          completed_at: new Date().toISOString(),
-        },
-        { onConflict: 'enrollment_id,module_id' }
-      )
+  /** Marca una lección como vista; el servidor valida que esté desbloqueada. */
+  async function completeLesson(lessonId) {
+    const { error } = await supabase.rpc('complete_lesson', { p_lesson_id: lessonId })
     return { error }
-  }
-
-  /**
-   * Registra un intento de checkpoint. passed se determina comparando
-   * el score contra min_score_to_pass (la comparación vive en el componente
-   * para poder mostrar feedback inmediato sin esperar un round-trip).
-   */
-  async function submitCheckpointAttempt(enrollmentId, checkpointId, score, passed) {
-    const { error } = await supabase.from('checkpoint_attempts').insert({
-      enrollment_id: enrollmentId,
-      checkpoint_id: checkpointId,
-      score,
-      passed,
-    })
-    return { error }
-  }
-
-  /**
-   * Marca la inscripción como completada y crea la siguiente inscripción
-   * automáticamente en el ciclo del nivel inmediatamente superior, si existe.
-   * Esto es el "desbloqueo automático de A2 al completar A1" pedido.
-   */
-  async function advanceToNextCycle(enrollmentId, currentCefrLevel) {
-    const CEFR_ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
-    const currentIdx = CEFR_ORDER.indexOf(currentCefrLevel)
-
-    const { error: updateError } = await supabase
-      .from('enrollments')
-      .update({ status: 'completed', completed_at: new Date().toISOString() })
-      .eq('id', enrollmentId)
-
-    if (updateError) return { error: updateError, nextLevel: null }
-
-    if (currentIdx === -1 || currentIdx === CEFR_ORDER.length - 1) {
-      return { error: null, nextLevel: null } // ya es el nivel máximo (C2)
-    }
-
-    const nextLevel = CEFR_ORDER[currentIdx + 1]
-    const { data: nextCycle, error: cycleError } = await supabase
-      .from('cycles')
-      .select('id')
-      .eq('cefr_level', nextLevel)
-      .single()
-
-    if (cycleError) return { error: cycleError, nextLevel: null }
-
-    const currentUser = session?.user
-    const { error: enrollError } = await supabase.from('enrollments').insert({
-      user_id: currentUser.id,
-      cycle_id: nextCycle.id,
-    })
-
-    if (enrollError) return { error: enrollError, nextLevel: null }
-
-    return { error: null, nextLevel }
   }
 
   const value = {
@@ -324,9 +272,10 @@ export function AuthProvider({ children }) {
     saveDiagnosticResult,
     getActiveCycleData,
     getModuleContent,
-    completeModule,
-    submitCheckpointAttempt,
-    advanceToNextCycle,
+    submitModuleQuiz,
+    recordVocabReview,
+    getDueVocab,
+    completeLesson,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
