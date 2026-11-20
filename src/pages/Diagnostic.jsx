@@ -13,7 +13,7 @@ const CYCLE_PLANS = {
   C2: { duration: 'Programa abierto', modules: ['Refinamiento estilístico y retórico', 'Dominio de matices culturales y humor', 'Listening sin restricciones (medios nativos)', 'Writing: publicación y persuasión de alto nivel'] },
 }
 
-export default function Diagnostic() {
+export default function Diagnostic({ preview = false }) {
   const { saveDiagnosticResult } = useAuth()
   const navigate = useNavigate()
   const diag = useDiagnostic()
@@ -42,6 +42,7 @@ export default function Diagnostic() {
 
   async function handleFinish() {
     const result = diag.finishDiagnostic()
+    if (preview) return // modo revisor: se muestra el resultado pero no se guarda nada
     setSaving(true)
     setSaveError('')
     const { error } = await saveDiagnosticResult(result)
@@ -62,10 +63,21 @@ export default function Diagnostic() {
     }
   }
 
+  const exitPath = preview ? '/revisor' : '/app'
+  const previewBanner = preview ? (
+    <div className="rv-bar" role="note">
+      <div className="rv-bar-top">
+        <span><strong>Modo revisor</strong> · el diagnóstico no se guarda. Puedes avanzar sin responder.</span>
+        <button className="rv-chip" type="button" onClick={() => navigate('/revisor')}>← Revisor</button>
+      </div>
+    </div>
+  ) : null
+
   // --- Pantalla de intro ---
   if (diag.block === 0 || (diag.block === 1 && !diag.gvCurrentQ)) {
     return (
       <div className="diag-intro">
+        {previewBanner}
         <div className="diag-mark">Examen de Ubicación · CEFR</div>
         <h1>Diagnóstico <span>NIVelo English</span></h1>
         <p>
@@ -90,6 +102,7 @@ export default function Diagnostic() {
     const plan = CYCLE_PLANS[r.finalLevel]
     return (
       <div className="diag-results">
+        {previewBanner}
         <div className="diag-eyebrow">Tu nivel CEFR es</div>
         <div className="diag-level-big">{r.finalLevel}</div>
         <div className="diag-level-name">{LEVEL_NAMES[r.finalLevel]}</div>
@@ -122,10 +135,10 @@ export default function Diagnostic() {
 
         <button
           className="btn-primary diag-continue-btn"
-          onClick={() => navigate('/app')}
+          onClick={() => navigate(exitPath)}
           disabled={saving}
         >
-          {saving ? 'Guardando...' : 'Ir a mi panel'}
+          {saving ? 'Guardando...' : preview ? 'Volver al revisor' : 'Ir a mi panel'}
         </button>
       </div>
     )
@@ -135,11 +148,11 @@ export default function Diagnostic() {
   if (diag.block === 1) {
     const q = diag.gvCurrentQ
     return (
-      <DiagShell stageLabel={`Bloque 1 · Gramática & Vocabulario — calibrando: ${diag.gvCurrentLevel}`}>
+      <DiagShell banner={previewBanner} stageLabel={`Bloque 1 · Gramática & Vocabulario — calibrando: ${diag.gvCurrentLevel}`}>
         <div className="diag-tag">Pregunta {diag.gvQuestionNumber} de hasta 15</div>
         <h1 className="diag-question">{q.q}</h1>
         <OptionsList options={q.opts} selectedIdx={selectedIdx} onSelect={handleSelect} />
-        <NextButton disabled={selectedIdx === null} onClick={handleNext} />
+        <NextButton disabled={!preview && selectedIdx === null} onClick={handleNext} />
       </DiagShell>
     )
   }
@@ -149,7 +162,7 @@ export default function Diagnostic() {
     const data = bankReading[diag.readingLevel]
     if (diag.readingStep === 0) {
       return (
-        <DiagShell stageLabel={`Bloque 2 · Reading — nivel ${diag.readingLevel}`}>
+        <DiagShell banner={previewBanner} stageLabel={`Bloque 2 · Reading — nivel ${diag.readingLevel}`}>
           <div className="diag-tag">Comprensión de lectura</div>
           <div className="diag-passage">{data.passage}</div>
           <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>
@@ -161,12 +174,12 @@ export default function Diagnostic() {
     }
     const q = data.questions[diag.readingStep - 1]
     return (
-      <DiagShell stageLabel={`Bloque 2 · Reading — nivel ${diag.readingLevel}`}>
+      <DiagShell banner={previewBanner} stageLabel={`Bloque 2 · Reading — nivel ${diag.readingLevel}`}>
         <div className="diag-tag">Pregunta {diag.readingStep} de {data.questions.length}</div>
         <div className="diag-passage diag-passage-small">{data.passage}</div>
         <h1 className="diag-question">{q.q}</h1>
         <OptionsList options={q.opts} selectedIdx={selectedIdx} onSelect={handleSelect} />
-        <NextButton disabled={selectedIdx === null} onClick={handleNext} />
+        <NextButton disabled={!preview && selectedIdx === null} onClick={handleNext} />
       </DiagShell>
     )
   }
@@ -176,7 +189,7 @@ export default function Diagnostic() {
     const data = bankListening[diag.listeningLevel]
     if (diag.listeningStep === 0) {
       return (
-        <DiagShell stageLabel={`Bloque 3 · Listening — nivel ${diag.listeningLevel}`}>
+        <DiagShell banner={previewBanner} stageLabel={`Bloque 3 · Listening — nivel ${diag.listeningLevel}`}>
           <div className="diag-tag">Comprensión auditiva</div>
           <AudioBox transcript={data.transcript} onPlay={playAudio} />
           <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>
@@ -188,12 +201,12 @@ export default function Diagnostic() {
     }
     const q = data.questions[diag.listeningStep - 1]
     return (
-      <DiagShell stageLabel={`Bloque 3 · Listening — nivel ${diag.listeningLevel}`}>
+      <DiagShell banner={previewBanner} stageLabel={`Bloque 3 · Listening — nivel ${diag.listeningLevel}`}>
         <div className="diag-tag">Pregunta {diag.listeningStep} de {data.questions.length}</div>
         <AudioBox transcript={data.transcript} onPlay={playAudio} />
         <h1 className="diag-question">{q.q}</h1>
         <OptionsList options={q.opts} selectedIdx={selectedIdx} onSelect={handleSelect} />
-        <NextButton disabled={selectedIdx === null} onClick={handleNext} />
+        <NextButton disabled={!preview && selectedIdx === null} onClick={handleNext} />
       </DiagShell>
     )
   }
@@ -204,7 +217,7 @@ export default function Diagnostic() {
     const words = diag.writingText.trim().split(/\s+/).filter((w) => w.length > 0).length
     const ok = words >= 40
     return (
-      <DiagShell stageLabel={`Bloque 4 · Writing — nivel ${diag.writingLevel}`}>
+      <DiagShell banner={previewBanner} stageLabel={`Bloque 4 · Writing — nivel ${diag.writingLevel}`}>
         <div className="diag-tag">Expresión escrita</div>
         <p className="diag-writing-prompt">{prompt}</p>
         <textarea
@@ -214,7 +227,7 @@ export default function Diagnostic() {
           onChange={(e) => diag.setWritingText(e.target.value)}
         />
         <div className={`diag-word-count ${ok ? 'ok' : ''}`}>{words} palabras</div>
-        <NextButton disabled={!ok} onClick={handleNext} label="Finalizar diagnóstico →" />
+        <NextButton disabled={!preview && !ok} onClick={handleNext} label="Finalizar diagnóstico →" />
       </DiagShell>
     )
   }
@@ -222,9 +235,10 @@ export default function Diagnostic() {
   return null
 }
 
-function DiagShell({ stageLabel, children }) {
+function DiagShell({ stageLabel, banner, children }) {
   return (
     <div className="diag-shell">
+      {banner}
       <div className="diag-stage-label">{stageLabel}</div>
       <div className="diag-main">{children}</div>
     </div>

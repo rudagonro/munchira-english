@@ -253,6 +253,38 @@ export function AuthProvider({ children }) {
     return { data: data ?? [], error }
   }, [])
 
+  /** Modo revisor (solo docentes/admin): todos los ciclos con sus módulos, borradores incluidos. */
+  const getContentTree = useCallback(async () => {
+    const [cyclesRes, modulesRes] = await Promise.all([
+      supabase.from('cycles').select('id, cefr_level, title').order('cefr_level'),
+      supabase.from('modules').select('id, cycle_id, order_index, title, skill_type, published').order('order_index'),
+    ])
+    if (cyclesRes.error) return { data: null, error: cyclesRes.error }
+    if (modulesRes.error) return { data: null, error: modulesRes.error }
+    const data = cyclesRes.data.map((c) => ({ ...c, modules: modulesRes.data.filter((m) => m.cycle_id === c.id) }))
+    return { data, error: null }
+  }, [])
+
+  /** Modo revisor: respuestas correctas de un módulo. El servidor exige rol docente o admin. */
+  const getStaffQuizAnswers = useCallback(async (moduleId) => {
+    const { data, error } = await supabase.rpc('staff_quiz_answers', { p_module: moduleId })
+    return { data: data ?? [], error }
+  }, [])
+
+  /** Administración (solo admin; el servidor lo exige): usuarios, roles y docentes asignados. */
+  const adminListUsers = useCallback(async () => {
+    const { data, error } = await supabase.rpc('admin_list_users')
+    return { data: data ?? [], error }
+  }, [])
+  async function adminSetRole(userId, role) {
+    const { error } = await supabase.rpc('admin_set_role', { p_user: userId, p_role: role })
+    return { error }
+  }
+  async function adminAssignStudent(studentId, teacherId) {
+    const { error } = await supabase.rpc('admin_assign_student', { p_student: studentId, p_teacher: teacherId })
+    return { error }
+  }
+
   /** Marca una lección como vista; el servidor valida que esté desbloqueada. */
   async function completeLesson(lessonId) {
     const { error } = await supabase.rpc('complete_lesson', { p_lesson_id: lessonId })
@@ -276,6 +308,11 @@ export function AuthProvider({ children }) {
     recordVocabReview,
     getDueVocab,
     completeLesson,
+    getContentTree,
+    getStaffQuizAnswers,
+    adminListUsers,
+    adminSetRole,
+    adminAssignStudent,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

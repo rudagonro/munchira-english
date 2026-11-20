@@ -12,6 +12,8 @@ import CycleModules from './pages/CycleModules'
 import ModuleView from './pages/ModuleView'
 import Review from './pages/Review'
 import { Privacy, Terms } from './pages/Legal'
+import ReviewerMode from './pages/ReviewerMode'
+import AdminUsers from './pages/AdminUsers'
 
 function AppRoutes() {
   const location = useLocation()
@@ -74,6 +76,39 @@ function AppRoutes() {
           element={
             <ProtectedRoute allowedRoles={['teacher', 'admin']}>
               <Layout><TeacherPanel /></Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/usuarios"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Layout><AdminUsers /></Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/revisor"
+          element={
+            <ProtectedRoute allowedRoles={['teacher', 'admin']}>
+              <Layout><ReviewerMode /></Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/revisor/modulo/:moduleId"
+          element={
+            <ProtectedRoute allowedRoles={['teacher', 'admin']}>
+              <Layout><ModuleView preview /></Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/revisor/diagnostico"
+          element={
+            <ProtectedRoute allowedRoles={['teacher', 'admin']}>
+              <Diagnostic preview />
             </ProtectedRoute>
           }
         />

@@ -47,6 +47,17 @@ Variables opcionales de la función: `ELEVENLABS_TTS_MODEL` (por defecto `eleven
 
 Para promover a un usuario a `teacher` o `admin`, ejecuta SQL con acceso directo a la base: `update public.profiles set role = 'teacher' where id = '<uuid>';`. Asigna estudiantes a un docente en `public.teacher_students`.
 
+## Roles, administración y modo revisor
+
+- **Quien se registra es alumno** (el servidor ignora cualquier rol que envíe el cliente) y estudia sin intervención del admin.
+- **El admin gestiona roles desde la app**: pantalla **Usuarios** (`/usuarios`, solo admin). Cambia un usuario entre Alumno / Docente / Administrador y asigna alumnos a un docente. El servidor valida el rol en cada llamada (`admin_list_users`, `admin_set_role`, `admin_assign_student`); nadie puede cambiar su propio rol, así que nunca se queda la plataforma sin administrador. El cambio se ve cuando la persona vuelve a iniciar sesión.
+- **Alternativa sin la app** (SQL Editor de Supabase):
+  ```sql
+  update public.profiles set role = 'teacher'  -- 'student' | 'teacher' | 'admin'
+   where id = (select id from auth.users where lower(email) = lower('correo@ejemplo.com'));
+  ```
+- **Modo revisor** (`/revisor`, docentes y admin): abre cualquier módulo de cualquier nivel (también borradores), salta entre vocabulario, lecciones y quiz, muestra las respuestas correctas, prueba el diagnóstico completo y consulta su banco de preguntas. **No guarda nada**: no escribe progreso, notas ni diagnósticos. Las respuestas correctas solo llegan por la función `staff_quiz_answers`, reservada a docentes y admin.
+
 ## Contenido (A2–C2)
 
 El contenido de cada nivel se escribe en `content/cycles/<NIVEL>.json`, se valida (`npm run content:validate`), se convierte en SQL (`npm run content:sql -- A2 supabase/seed/A2.sql`) y se carga como **borrador**. Un nivel se publica completo con `select public.publish_cycle('A2');` solo si cumple los mínimos. Guía completa, plantillas por habilidad y requisitos: `content/README.md`.
