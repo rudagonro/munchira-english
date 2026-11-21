@@ -26,7 +26,7 @@ No migrar la aplicación ni crear otro backend para un cambio de marca. Leer `AG
 
 Se actualizaron navegación, acceso, registro (también confirmación de cuenta), diagnóstico, modo revisor, documentos legales y metadatos. Se añade el logo original aprobado con ENGLISH debajo en acceso y registro, un recorte de la oruga para navegación y favicon, y estilos aislados en `src/brand.css`. Los archivos se sirven desde `public/brand` en Vercel, sin dependencia de Lovable. No redibujar, recolorear ni añadir marcos al diseño aprobado. El texto de la marca permanece accesible.
 
-Se conservan el correo real `nivelo.english@gmail.com`, los identificadores internos, el nombre histórico del CSV y los recursos/informes antiguos. No inventar un correo con el dominio nuevo. Los documentos `NIVELO_*.md` y PDF son antecedentes; no prueban el estado actual de producción.
+El correo público de contacto es **`english@munchira.com`** (en Privacidad y Términos). Cloudflare Email Routing lo reenvía a `munchira.english@gmail.com` mediante la regla `english@munchira.com → munchira.english@gmail.com`; la recepción se comprobó el 21 de noviembre de 2026 con mensajes desde Gmail y Hotmail. No quitar esa regla ni el destino verificado, y no tocar los registros MX/SPF/DKIM. Se conservan los identificadores internos, el nombre histórico del CSV y los recursos/informes antiguos. Los documentos `NIVELO_*.md` y PDF son antecedentes; no prueban el estado actual de producción.
 
 ## Hallazgo importante: corregir la suposición de contenido vacío
 
