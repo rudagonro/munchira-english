@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const CONTACT = 'nivelo.english@gmail.com'
+const CONTACT = 'english@munchira.com'
 const UPDATED = '21 de noviembre de 2026'
 
 function Page({ title, children }) {

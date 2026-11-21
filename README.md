@@ -6,26 +6,29 @@ Aplicación web para aprender inglés con diagnóstico adaptativo CEFR, ciclos d
 
 La aplicación antes se llamaba **NIVelo English**. El propietario decidió cambiarla a **Munchira English** porque encontró otra app llamada NIVelo en la App Store y quiere evitar confusión de marca. Esto no constituye una comprobación legal de disponibilidad de Munchira.
 
-**Los dominios ya fueron comprados por el propietario en Cloudflare:**
+**Dominios (estado a 21 de noviembre de 2026):** comprados por el propietario en Cloudflare y ya conectados a la app en producción.
 
-- **munchira.com**: dominio principal previsto.
-- **munchira.app**: dominio secundario previsto, que debe redirigir al .com.
+| Dominio | Estado |
+| --- | --- |
+| **https://munchira.com** | Principal de Production en el proyecto Vercel `nivelo-english`. Responde 200 con HTTPS (certificado Let's Encrypt). |
+| `www.munchira.com`, `munchira.app`, `www.munchira.app` | Redirigen con 308 a `https://munchira.com`, conservando ruta y parámetros. |
+| https://nivelo-english.vercel.app | URL de transición; sigue activa. No retirarla hasta ajustar Supabase Auth. |
 
-Ambas zonas se comprobaron activas en Cloudflare. El .com tiene únicamente registros de correo (MX/SPF/DKIM), sin registros web; el .app no tiene registros DNS. No se modificó ninguno. Falta obtener los valores exactos del proyecto Vercel existente para conectar la app. No volver a proponer la compra.
+DNS en Cloudflare (todos en «DNS only», sin proxy, para que Vercel emita el certificado): en `munchira.com` y `munchira.app`, dos registros A en la raíz (`216.198.79.1` y `64.29.17.1`) y un CNAME `www` → `ba067c59dc46a2c2.vercel-dns-017.com`. Son los valores específicos que Vercel indicó para este proyecto. Los registros de correo de `munchira.com` (3 MX de Cloudflare Email Routing, SPF y DKIM) no se tocaron y no deben modificarse. No volver a proponer la compra.
 
 Se mantiene la infraestructura existente: **GitHub para el código, Vercel para publicar y Supabase para base de datos, autenticación y almacenamiento**. No se ha migrado nada a Lovable Cloud.
 
-El cambio actualiza el nombre en navegación, acceso, registro, diagnóstico, modo revisor, textos legales y metadatos. La continuación incorpora el logo original aprobado con ENGLISH debajo en acceso/registro y la oruga en navegación/favicon, mediante `public/brand` y `src/brand.css`. No se recolorea, redibuja ni añade un marco al logo. No cambia ejercicios, calificación, roles, usuarios, progreso, tablas ni funciones. El correo `nivelo.english@gmail.com` se conserva hasta confirmar reemplazo, así como identificadores técnicos, repositorio, CSV e informes históricos.
+El cambio actualiza el nombre en navegación, acceso, registro, diagnóstico, modo revisor, textos legales y metadatos. La continuación incorpora el logo original aprobado con ENGLISH debajo en acceso/registro y la oruga en navegación/favicon, mediante `public/brand` y `src/brand.css`. No se recolorea, redibuja ni añade un marco al logo. No cambia ejercicios, calificación, roles, usuarios, progreso, tablas ni funciones. El correo público de contacto es **`english@munchira.com`** (Privacidad y Términos), reenviado por Cloudflare Email Routing a `munchira.english@gmail.com`; la recepción se probó con mensajes desde Gmail y Hotmail (21 de noviembre de 2026). Se conservan los identificadores técnicos, el repositorio, el CSV e informes históricos.
 
 **Para Claude y otros asistentes:** leer primero [CLAUDE.md](CLAUDE.md), [AGENTS.md](AGENTS.md) y [MUNCHIRA_NEXT_STEPS.md](MUNCHIRA_NEXT_STEPS.md). Este último contiene el inventario de 81 lecciones A2–C2, prioridades, propuestas de unidad modelo y bloqueos. Los informes/PDF NIVelo son antecedentes, no la marca vigente ni prueba del estado actual.
 
-### Pendiente para activar los dominios
+### Pendiente tras conectar los dominios
 
-1. Añadir o comprobar ambos dominios en el proyecto existente en Vercel y elegir `munchira.com` como principal.
-2. Crear en Cloudflare los registros exactos que indique Vercel; no adivinar valores ni modificar los registros de correo existentes.
-3. Configurar redirección permanente de `munchira.app` a `https://munchira.com`, conservando rutas y parámetros.
-4. Ajustar Site URL y Redirect URLs en Supabase Auth; revisar Google OAuth y `TTS_ALLOWED_ORIGIN` si usa el dominio antiguo. Conservar temporalmente las URLs antiguas en uso.
-5. Comprobar HTTPS, correo y Google, retorno de autenticación, diagnóstico, módulos y audio en el dominio principal antes de retirar accesos antiguos. Revisar también recuperación de contraseña: el acceso actual no tiene enlace visible y no se implementó un flujo nuevo en esta entrega.
+1. **Supabase Auth** (no verificado ni modificado todavía): poner Site URL = `https://munchira.com` y añadir a Redirect URLs `https://munchira.com/**`, `https://www.munchira.com/**` y `https://munchira.app/**`, conservando `https://nivelo-english.vercel.app/**`. Revisar Google OAuth (orígenes y URIs de redirección autorizados). Sin esto el acceso con Google puede devolver a la URL antigua.
+2. El código no tiene URLs fijas del dominio antiguo: el acceso con Google usa `window.location.origin` y `TTS_ALLOWED_ORIGIN` no está definido (la función de audio acepta cualquier origen). Si se define, debe ser `https://munchira.com`.
+3. Probar en `https://munchira.com/login` el acceso con correo y con Google, el diagnóstico, los módulos y el audio antes de retirar accesos antiguos.
+4. Revisar recuperación de contraseña: el acceso actual no tiene enlace visible y no se implementó un flujo nuevo.
+5. Retirar o recortar el token de Cloudflare usado para esta configuración (permitía ver zonas ajenas a Munchira) y el token de Vercel.
 
 URL de transición: https://nivelo-english.vercel.app. No renombrar/eliminar Vercel o GitHub solo para cambiar la marca.
 
