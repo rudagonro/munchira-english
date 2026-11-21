@@ -12,7 +12,7 @@ La aplicación antes se llamaba **NIVelo English**. El propietario decidió camb
 | --- | --- |
 | **https://munchira.com** | Principal de Production en el proyecto Vercel `nivelo-english`. Responde 200 con HTTPS (certificado Let's Encrypt). |
 | `www.munchira.com`, `munchira.app`, `www.munchira.app` | Redirigen con 308 a `https://munchira.com`, conservando ruta y parámetros. |
-| https://nivelo-english.vercel.app | URL de transición; sigue activa. No retirarla hasta ajustar Supabase Auth. |
+| https://nivelo-english.vercel.app | URL de transición; sigue activa. No retirarla hasta comprobar el acceso con Google en `munchira.com`. |
 
 DNS en Cloudflare (todos en «DNS only», sin proxy, para que Vercel emita el certificado): en `munchira.com` y `munchira.app`, dos registros A en la raíz (`216.198.79.1` y `64.29.17.1`) y un CNAME `www` → `ba067c59dc46a2c2.vercel-dns-017.com`. Son los valores específicos que Vercel indicó para este proyecto. Los registros de correo de `munchira.com` (3 MX de Cloudflare Email Routing, SPF y DKIM) no se tocaron y no deben modificarse. No volver a proponer la compra.
 
@@ -24,7 +24,7 @@ El cambio actualiza el nombre en navegación, acceso, registro, diagnóstico, mo
 
 ### Pendiente tras conectar los dominios
 
-1. **Supabase Auth** (no verificado ni modificado todavía): poner Site URL = `https://munchira.com` y añadir a Redirect URLs `https://munchira.com/**`, `https://www.munchira.com/**` y `https://munchira.app/**`, conservando `https://nivelo-english.vercel.app/**`. Revisar Google OAuth (orígenes y URIs de redirección autorizados). Sin esto el acceso con Google puede devolver a la URL antigua.
+1. **Supabase Auth** (aplicado el 21 de noviembre de 2026): Site URL = `https://munchira.com` y Redirect URLs = `https://munchira.com/**`, `https://www.munchira.com/**`, `https://munchira.app/**` y `https://nivelo-english.vercel.app/**` (la antigua se conserva). Comprobado: el inicio de sesión con correo y contraseña funciona y rechaza credenciales incorrectas. **No verificado:** el retorno real de Google a `munchira.com` (requiere un inicio de sesión con Google en el navegador), las URI autorizadas y la pantalla de consentimiento de Google Cloud, y los correos de confirmación (las plantillas de Supabase siguen con el texto por defecto en inglés).
 2. El código no tiene URLs fijas del dominio antiguo: el acceso con Google usa `window.location.origin` y `TTS_ALLOWED_ORIGIN` no está definido (la función de audio acepta cualquier origen). Si se define, debe ser `https://munchira.com`.
 3. Probar en `https://munchira.com/login` el acceso con correo y con Google, el diagnóstico, los módulos y el audio antes de retirar accesos antiguos.
 4. Revisar recuperación de contraseña: el acceso actual no tiene enlace visible y no se implementó un flujo nuevo.

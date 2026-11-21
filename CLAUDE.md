@@ -10,7 +10,7 @@ Los dominios **munchira.com** y **munchira.app** están comprados en **Cloudflar
 
 DNS (Cloudflare, «DNS only», sin proxy): en ambas zonas, A `@` → `216.198.79.1` y `64.29.17.1`, y CNAME `www` → `ba067c59dc46a2c2.vercel-dns-017.com` (valores específicos del proyecto que dio Vercel). Los registros de correo de munchira.com (MX, SPF, DKIM) no se tocaron y **no deben modificarse**.
 
-**Pendiente: Supabase Auth.** Site URL y Redirect URLs no se han cambiado ni verificado; hay que poner Site URL = `https://munchira.com` y añadir `https://munchira.com/**`, `https://www.munchira.com/**` y `https://munchira.app/**` conservando la URL antigua de Vercel, y revisar Google OAuth. El código no tiene URLs fijas del dominio antiguo (el acceso con Google usa `window.location.origin`).
+**Supabase Auth (aplicado el 21 de noviembre de 2026).** Site URL = `https://munchira.com`; Redirect URLs = `https://munchira.com/**`, `https://www.munchira.com/**`, `https://munchira.app/**` y `https://nivelo-english.vercel.app/**` (se conserva la antigua). Comprobado: login con correo y contraseña OK y credenciales incorrectas rechazadas. Sin verificar: retorno real de Google, consola de Google Cloud (URI autorizadas y pantalla de consentimiento) y plantillas de correo (siguen por defecto). El código no tiene URLs fijas del dominio antiguo (el acceso con Google usa `window.location.origin`).
 
 ## Infraestructura que se conserva
 
@@ -39,7 +39,7 @@ Ya existen repaso espaciado de vocabulario, progreso por lección, quizzes, chec
 ## Lo que falta y qué requiere intervención
 
 - Dominios hechos (ver arriba). No tocar MX/SPF/DKIM ni activar el proxy de Cloudflare sin comprobar que Vercel sigue emitiendo el certificado.
-- Revisar Supabase Auth (Site URL y Redirect URLs), Google OAuth y CORS de audio sin retirar acceso antiguo prematuramente. La configuración alojada no está verificada.
+- Probar el acceso con Google en `munchira.com`, revisar la consola de Google Cloud y el CORS de audio (hoy `*`), sin retirar el acceso antiguo prematuramente.
 - Revisar recuperación de contraseña: no hay enlace visible en el acceso actual; no se añadió un flujo nuevo en la entrega de identidad.
 - Verificar el despliegue final de esta entrega. Guardar un commit no prueba que Vercel haya desplegado.
 - Leer producción con una cuenta de prueba autorizada, exportar A1 e inventariar sus lecciones, completar un recorrido de lección y recuperar el progreso.
