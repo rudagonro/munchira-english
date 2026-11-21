@@ -1,12 +1,16 @@
 # Contexto para Claude — Munchira English
 
-Última actualización: 21 de noviembre de 2026.
+Última actualización: 21 de noviembre de 2026 (dominios conectados).
 
 ## Qué pasó y por qué
 
 El propietario, Rubén González, eligió **Munchira English** como nueva marca de la app antes llamada **NIVelo English**, porque encontró otra app llamada NIVelo en la App Store. No volver a usar NIVelo como nombre comercial. El cambio no es una validación legal de marca.
 
-Los dominios **munchira.com** y **munchira.app** ya están comprados en **Cloudflare**, según confirmó el propietario. El .com será el principal y el .app redirigirá al .com. No recomendar comprarlos de nuevo. Se comprobaron ambas zonas activas: el .com tiene solo registros de correo y el .app no tiene registros. No se modificó DNS. Falta obtener la configuración exacta del proyecto Vercel existente.
+Los dominios **munchira.com** y **munchira.app** están comprados en **Cloudflare** y **ya están conectados a la app** (21 de noviembre de 2026): `https://munchira.com` es el principal de Production en el proyecto Vercel `nivelo-english` y responde 200 con HTTPS; `www.munchira.com`, `munchira.app` y `www.munchira.app` redirigen con 308 a `https://munchira.com` conservando ruta y parámetros. `nivelo-english.vercel.app` sigue activa como URL de transición. No recomendar comprarlos de nuevo.
+
+DNS (Cloudflare, «DNS only», sin proxy): en ambas zonas, A `@` → `216.198.79.1` y `64.29.17.1`, y CNAME `www` → `ba067c59dc46a2c2.vercel-dns-017.com` (valores específicos del proyecto que dio Vercel). Los registros de correo de munchira.com (MX, SPF, DKIM) no se tocaron y **no deben modificarse**.
+
+**Pendiente: Supabase Auth.** Site URL y Redirect URLs no se han cambiado ni verificado; hay que poner Site URL = `https://munchira.com` y añadir `https://munchira.com/**`, `https://www.munchira.com/**` y `https://munchira.app/**` conservando la URL antigua de Vercel, y revisar Google OAuth. El código no tiene URLs fijas del dominio antiguo (el acceso con Google usa `window.location.origin`).
 
 ## Infraestructura que se conserva
 
@@ -34,7 +38,7 @@ Ya existen repaso espaciado de vocabulario, progreso por lección, quizzes, chec
 
 ## Lo que falta y qué requiere intervención
 
-- Obtener los registros exactos de Vercel para ambos dominios; configurar luego .app → .com conservando rutas y parámetros. No adivinar IPs ni tocar MX/SPF/DKIM.
+- Dominios hechos (ver arriba). No tocar MX/SPF/DKIM ni activar el proxy de Cloudflare sin comprobar que Vercel sigue emitiendo el certificado.
 - Revisar Supabase Auth (Site URL y Redirect URLs), Google OAuth y CORS de audio sin retirar acceso antiguo prematuramente. La configuración alojada no está verificada.
 - Revisar recuperación de contraseña: no hay enlace visible en el acceso actual; no se añadió un flujo nuevo en la entrega de identidad.
 - Verificar el despliegue final de esta entrega. Guardar un commit no prueba que Vercel haya desplegado.
