@@ -39,6 +39,7 @@ Ya existen repaso espaciado de vocabulario, progreso por lección, quizzes, chec
 ## Lo que falta y qué requiere intervención
 
 - Dominios hechos (ver arriba). No tocar MX/SPF/DKIM ni activar el proxy de Cloudflare sin comprobar que Vercel sigue emitiendo el certificado.
+- Correo de Auth: las plantillas en español están en `supabase/auth-email-templates/` sin aplicar. Supabase las bloquea en el plan gratuito con su correo por defecto (que además solo envía 2 correos por hora); hace falta SMTP propio (plan: Resend con `english@munchira.com`, sin tocar MX/SPF/DKIM existentes). Está en curso, pendiente de la cuenta y la clave de Resend.
 - Probar el acceso con Google en `munchira.com`, revisar la consola de Google Cloud y el CORS de audio (hoy `*`), sin retirar el acceso antiguo prematuramente.
 - Revisar recuperación de contraseña: no hay enlace visible en el acceso actual; no se añadió un flujo nuevo en la entrega de identidad.
 - Verificar el despliegue final de esta entrega. Guardar un commit no prueba que Vercel haya desplegado.
