@@ -6,34 +6,44 @@
 
 El propietario, Rubén González, eligió **Munchira English** como nueva marca de la app antes llamada **NIVelo English**, porque encontró otra app llamada NIVelo en la App Store. No volver a usar NIVelo como nombre comercial. El cambio no es una validación legal de marca.
 
-Los dominios **munchira.com** y **munchira.app** ya están comprados en **Cloudflare**, según confirmó el propietario. El .com será el principal y el .app redirigirá al .com. No recomendar comprarlos de nuevo. La configuración de DNS y redirección todavía no está verificada.
+Los dominios **munchira.com** y **munchira.app** ya están comprados en **Cloudflare**, según confirmó el propietario. El .com será el principal y el .app redirigirá al .com. No recomendar comprarlos de nuevo. Se comprobaron ambas zonas activas: el .com tiene solo registros de correo y el .app no tiene registros. No se modificó DNS. Falta obtener la configuración exacta del proyecto Vercel existente.
 
 ## Infraestructura que se conserva
 
-- Repositorio existente: `rudagonro/NIVELO-ENGLISH` en GitHub. El nombre técnico del repositorio no se cambia en este trabajo.
+- Repositorio existente: `rudagonro/NIVELO-ENGLISH` en GitHub. No cambiar su nombre técnico en este trabajo.
 - Publicación: proyecto existente de Vercel; URL de transición `https://nivelo-english.vercel.app`.
 - Datos, acceso de usuarios y archivos: proyecto existente de Supabase.
 - Registro de dominios y DNS: Cloudflare.
-- Código existente: React 19, Vite y React Router; ver `package.json` para las versiones. No confundir con el proyecto de portada independiente en Lovable.
+- Código existente: React 19, Vite y React Router; ver `package.json`. No confundir con la portada independiente en Lovable.
 
-No migrar la aplicación a otra infraestructura ni crear otro backend para un cambio de marca. Consultar `AGENTS.md` para las reglas técnicas y `README.md` para desarrollo y despliegue.
+No migrar la aplicación ni crear otro backend para un cambio de marca. Leer `AGENTS.md`, `README.md` y ahora **`MUNCHIRA_NEXT_STEPS.md`**, que contiene inventario, prioridades y unidades modelo para revisión.
 
-## Alcance de este cambio
+## Cambios de identidad
 
-Se actualizan navegación, acceso, registro (también confirmación de cuenta), diagnóstico, modo revisor, política de privacidad, términos y título/descripción web. Se conserva la lógica existente y la apariencia general; no se modifica el contenido académico, el progreso ni los permisos.
+Se actualizaron navegación, acceso, registro (también confirmación de cuenta), diagnóstico, modo revisor, documentos legales y metadatos. Se añade el logo original aprobado con ENGLISH debajo en acceso y registro, un recorte de la oruga para navegación y favicon, y estilos aislados en `src/brand.css`. Los archivos se sirven desde `public/brand` en Vercel, sin dependencia de Lovable. No redibujar, recolorear ni añadir marcos al diseño aprobado. El texto de la marca permanece accesible.
 
-Se conservan por ahora el correo real de contacto `nivelo.english@gmail.com`, los identificadores internos de paquetes, el nombre histórico del CSV y los recursos/informes antiguos. No inventar un correo con el dominio nuevo. Los documentos `NIVELO_*.md` y los PDF antiguos son antecedentes; no prueban el estado actual de producción.
+Se conservan el correo real `nivelo.english@gmail.com`, los identificadores internos, el nombre histórico del CSV y los recursos/informes antiguos. No inventar un correo con el dominio nuevo. Los documentos `NIVELO_*.md` y PDF son antecedentes; no prueban el estado actual de producción.
 
-## Lo que falta
+## Hallazgo importante: corregir la suposición de contenido vacío
 
-- Incorporar en esta aplicación el logo de la oruga aprobado por Rubén y su favicon. Respetar el diseño original; no redibujar, recolorear ni enmarcarlo sin aprobación. Los archivos gráficos antiguos todavía no representan la marca nueva.
-- Conectar ambos dominios en Vercel/Cloudflare y configurar la redirección conservando rutas y parámetros.
-- Revisar Supabase Auth (Site URL y Redirect URLs), Google OAuth y CORS de audio para los dominios nuevos, sin retirar prematuramente el acceso antiguo.
-- Confirmar el despliegue de este commit y probar la app publicada. Guardar código en GitHub no prueba que Vercel haya desplegado correctamente.
-- Revisar el contenido real de A2–C2 antes de ampliar/publicar niveles: el código contiene esquemas y en la revisión visual de hoy el panel mostraba A1 4/4 publicado, A2–C2 0/4 y «Listo para publicar». No confundir esa etiqueta con una auditoría pedagógica completa.
+Los cinco JSON A2–C2 tienen 20 módulos ready, **81 lecciones**, 263 ejercicios, 120 preguntas de quiz, 60 palabras en vocab y 10 checkpoints. Todos pasan el validador existente. No son solo esquemas. A2/B1/C1/C2 tienen listening; B2 tiene reading, sin módulo de listening.
+
+ready significa estructura válida, no publicación ni revisión pedagógica completa. La revisión visual anterior mostraba A1 4/4 publicado y A2–C2 0/4. No se publicó ningún nivel ni se exportó A1 en esta entrega. A1 no tiene archivo fuente de contenido en GitHub; no deducir por ello que esté vacío.
+
+Ya existen repaso espaciado de vocabulario, progreso por lección, quizzes, checkpoints y diagnóstico. No duplicarlos. La propuesta es ampliar unidades contextualizadas y variedad de práctica después de validar una unidad modelo A1/A2 con Rubén. No cargar ni reemplazar contenido publicado sin preservar identificadores y avances.
+
+## Lo que falta y qué requiere intervención
+
+- Obtener los registros exactos de Vercel para ambos dominios; configurar luego .app → .com conservando rutas y parámetros. No adivinar IPs ni tocar MX/SPF/DKIM.
+- Revisar Supabase Auth (Site URL y Redirect URLs), Google OAuth y CORS de audio sin retirar acceso antiguo prematuramente. La configuración alojada no está verificada.
+- Revisar recuperación de contraseña: no hay enlace visible en el acceso actual; no se añadió un flujo nuevo en la entrega de identidad.
+- Verificar el despliegue final de esta entrega. Guardar un commit no prueba que Vercel haya desplegado.
+- Leer producción con una cuenta de prueba autorizada, exportar A1 e inventariar sus lecciones, completar un recorrido de lección y recuperar el progreso.
+- Revisar y aprobar las unidades modelo de `MUNCHIRA_NEXT_STEPS.md` antes de producir o publicar contenido masivo.
+- Antes de conversación/pronunciación: acordar costes, proveedor, límites y privacidad. No activar servicios de pago ni enviar grabaciones sin acordarlo.
 
 ## Seguridad y verificaciones
 
-Nunca guardar contraseñas de prueba, sesiones ni claves privadas en documentación, código o commits. Usar las variables existentes; una clave `service_role` nunca debe estar en el navegador. Este cambio no aplica migraciones ni modifica usuarios.
+Nunca guardar contraseñas, sesiones ni claves privadas en documentación, código o commits. Una clave service_role nunca debe estar en el navegador. Esta entrega no aplica migraciones ni cambia usuarios, permisos, progreso, calificación ni publicación.
 
-Se ejecutaron las pruebas existentes `tests/learning.test.js` y `tests/teacher.test.js`: 13 pruebas aprobadas en una copia temporal del código. Esto no sustituye `npm test`, `npm run lint`, `npm run build` ni una comprobación posterior del despliegue real. No declarar comprobado un flujo o servicio que no se haya probado.
+Las 13 pruebas existentes learning y teacher pasan en una copia temporal; los cinco archivos de contenido validan sin errores. Se revisó la vista del logo sobre el acceso público en ordenador y móvil antes del commit, sin desbordamiento horizontal. Eso no sustituye `npm test`, lint, build, una comprobación del despliegue ni un recorrido autenticado. No declarar comprobado lo que no se probó.

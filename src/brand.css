@@ -1,0 +1,30 @@
+/* Approved original artwork; branding only, no authentication changes. */
+.auth-brand {
+  font-size: 0;
+  letter-spacing: 0;
+  height: 144px;
+  margin-bottom: 12px;
+  background-image: url('/brand/munchira-english.avif');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.auth-brand span { font-size: 0; }
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0;
+}
+.nav-logo::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  background: url('/brand/munchira-icon.webp') center / contain no-repeat;
+}
+@media (max-width: 400px) {
+  .nav-logo::before { width: 32px; height: 32px; }
+  .nav-logo { gap: 4px; }
+}
