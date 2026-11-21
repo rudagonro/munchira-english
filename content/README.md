@@ -1,4 +1,4 @@
-# Contenido de NIVelo
+# Contenido de Munchira
 
 El contenido de cada nivel vive en `content/cycles/<NIVEL>.json` y se carga en Supabase como **borrador**. Los estudiantes solo ven módulos publicados.
 

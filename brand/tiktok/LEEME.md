@@ -1,4 +1,4 @@
-# Logo NIVelo para TikTok
+# Logo Munchira para TikTok
 
 Concepto: tres barras que suben = **nivel** (A1 → C2). La barra ámbar es la meta. La palabra **NIV**elo usa la misma tipografía de la app (Inter ExtraBold, tracking −0,04 em): "NIV" en morado/lila y "elo" en tinta/blanco.
 
@@ -26,5 +26,6 @@ Concepto: tres barras que suben = **nivel** (A1 → C2). La barra ámbar es la m
 ## Video de bienvenida (`video-bienvenida/`)
 - `bienvenida-v1-limpio.mp4`: el clip de Gemini sin el logo inventado (recortado), a 1080×1920, 30 fps y audio a −14 LUFS aprox. Úsalo si vas a montar tú en CapCut.
 - `bienvenida-v1-completo.mp4`: lo anterior + marca de agua NIVelo arriba a la izquierda + cierre animado con llamada a la acción.
+- **Nota de marca:** los MP4 ya renderizados (marca de agua, cierre y voz) siguen con el nombre antiguo; hay que volver a renderizarlos con Munchira antes de publicarlos.
 - Limitaciones: Gemini grabó subtítulos en inglés dentro del video y no se pueden quitar sin dañar la imagen. Para una versión sin ellos, hay que volver a generar el clip pidiendo "sin subtítulos".
 - Recuerda etiquetar el video como contenido generado por IA al publicarlo en TikTok.

@@ -1,4 +1,4 @@
-# NIVELO OPEN SOURCE AUDIT
+# MUNCHIRA OPEN SOURCE AUDIT
 _Generated: 2026-07-15_
 
 ---
@@ -16,8 +16,8 @@ _Generated: 2026-07-15_
 | **Useful features** | YAML-based course structure, spaced repetition concept, cross-device sync via PouchDB |
 | **Potential reusable components** | YAML course schema concept (adapt to JSON/DB); spaced repetition scheduling logic |
 | **Integration complexity** | High — Svelte is incompatible with our React stack; Python backend incompatible with Supabase Edge Functions |
-| **Compatibility with NIVelo** | Low — different stack, archived, AGPL incompatible with commercial product |
-| **License implications** | AGPL-3.0 requires releasing all modifications as open source. Incompatible if NIVelo is a closed/commercial product. Do NOT copy code. |
+| **Compatibility with Munchira** | Low — different stack, archived, AGPL incompatible with commercial product |
+| **License implications** | AGPL-3.0 requires releasing all modifications as open source. Incompatible if Munchira is a closed/commercial product. Do NOT copy code. |
 | **Recommendation** | **REFERENCE** — Conceptual reference for course content structure. Do not use code. |
 
 ---
@@ -33,7 +33,7 @@ _Generated: 2026-07-15_
 | **Useful features** | Multi-voice TTS, Whisper STT, SM-2 spaced repetition, AI tutor (GPT-4o-mini), 9 exercise types, audio caching in R2, CEFR classification, 15+ languages |
 | **Potential reusable components** | SM-2 algorithm implementation, TTSProvider pattern, STT transcription pattern, AI conversation system prompt design, exercise component architecture |
 | **Integration complexity** | Medium — different framework (Next.js vs React+Vite) but same language (JS/React), same AI provider (OpenAI), similar DB pattern (PostgreSQL) |
-| **Compatibility with NIVelo** | High — same AI provider, same frontend language, same database paradigm. Patterns directly applicable. |
+| **Compatibility with Munchira** | High — same AI provider, same frontend language, same database paradigm. Patterns directly applicable. |
 | **License implications** | MIT — permissive. Can read, adapt, and reimplement patterns. Attribution appreciated but not required. Can use in commercial product. |
 | **Recommendation** | **ADAPT** — Primary reference for audio architecture, SM-2 SRS, STT integration, and AI conversation system. Reimplement patterns (not copy code) to fit Supabase Edge Functions instead of Next.js API routes. |
 
@@ -57,8 +57,8 @@ _Generated: 2026-07-15_
 | **Useful features** | Reading-based vocabulary acquisition, flashcard spaced repetition, vocabulary tracking per word, 27 languages, dictionary integration |
 | **Potential reusable components** | Vocabulary tracking data model, flashcard UI pattern, reading comprehension flow |
 | **Integration complexity** | Very High — PHP/Vue vs React/Supabase; completely different stack |
-| **Compatibility with NIVelo** | Low — tech stack incompatible; self-hosted single-user app vs multi-tenant SaaS |
-| **License implications** | GPL-3.0 (copyleft) — any code derived from GPL must also be GPL. **Do NOT copy code** if NIVelo is commercial or closed source. Use only as conceptual reference. |
+| **Compatibility with Munchira** | Low — tech stack incompatible; self-hosted single-user app vs multi-tenant SaaS |
+| **License implications** | GPL-3.0 (copyleft) — any code derived from GPL must also be GPL. **Do NOT copy code** if Munchira is commercial or closed source. Use only as conceptual reference. |
 | **Recommendation** | **REFERENCE** — Study vocabulary tracking data model and flashcard UX patterns. Do not use any code. |
 
 ---
@@ -74,7 +74,7 @@ _Generated: 2026-07-15_
 | **Useful features** | Reading-based learning, vocabulary management per word, spaced repetition, TTS integration, progress tracking |
 | **Potential reusable components** | Vocabulary status model (new/learning/known), reading text annotation concept, word-level progress tracking |
 | **Integration complexity** | High — Python/Flask vs React/Supabase; backend incompatible |
-| **Compatibility with NIVelo** | Medium — MIT license is compatible; vocabulary tracking concepts directly applicable to `word_progress` table design |
+| **Compatibility with Munchira** | Medium — MIT license is compatible; vocabulary tracking concepts directly applicable to `word_progress` table design |
 | **License implications** | MIT — permissive. Can study and adapt patterns freely, including in commercial products. |
 | **Recommendation** | **REFERENCE** — Vocabulary status model (5 states: new/learning/familiar/known/ignored) is excellent reference for `word_progress` table design. Do not port backend code. |
 
@@ -93,7 +93,7 @@ _Generated: 2026-07-15_
 
 ## Feature Matrix
 
-| NIVelo Feature | Existing NIVelo Implementation | Open Source Reference | Recommended Action |
+| Munchira Feature | Existing Munchira Implementation | Open Source Reference | Recommended Action |
 |---|---|---|---|
 | CEFR diagnostic | ✅ Full (4 blocks, adaptive) | None comparable | **KEEP** |
 | Module unlock logic | ✅ Full (checkpoints, sequential) | None comparable | **KEEP** |
@@ -140,6 +140,6 @@ _Generated: 2026-07-15_
 
 3. **LinguaCafe and LibreLingo** — conceptual reference only. Do not use their code.
 
-4. **LUTE vocabulary status model** (new/learning/familiar/known) is a well-tested UX pattern worth adapting for NIVelo's flashcard system.
+4. **LUTE vocabulary status model** (new/learning/familiar/known) is a well-tested UX pattern worth adapting for Munchira's flashcard system.
 
-5. **NIVelo's core (diagnostic, module unlock, CEFR structure, Supabase integration)** has no comparable open source equivalent — it is original and should be preserved as our competitive advantage.
+5. **Munchira's core (diagnostic, module unlock, CEFR structure, Supabase integration)** has no comparable open source equivalent — it is original and should be preserved as our competitive advantage.

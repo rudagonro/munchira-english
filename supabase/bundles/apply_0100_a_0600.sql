@@ -1,10 +1,10 @@
--- NIVelo · migraciones 0100 a 0600 en un solo archivo (para pegar en el SQL Editor de Supabase).
+-- Munchira · migraciones 0100 a 0600 en un solo archivo (para pegar en el SQL Editor de Supabase).
 -- Equivale a ejecutar, en orden, los archivos de supabase/migrations (el hotfix 0050 ya está aplicado).
 -- Corre en UNA transacción: si algo falla, no se aplica nada. Haz una copia de seguridad antes.
 begin;
 
 -- ===================== 20261023000100_baseline_schema.sql =====================
--- NIVelo · baseline schema
+-- Munchira · baseline schema
 --
 -- Mirrors the production schema (enum types, NOT NULL columns) and is
 -- idempotent: on the existing project it only adds what is missing, on a fresh
@@ -211,7 +211,7 @@ create trigger on_auth_user_created
 
 
 -- ===================== 20261023000200_rls_policies.sql =====================
--- NIVelo · row level security
+-- Munchira · row level security
 --
 -- Replaces every existing policy on the app tables with the set below so the
 -- result does not depend on what the project had before. Legacy permissive
@@ -394,7 +394,7 @@ on conflict (id) do update set public = false;
 
 
 -- ===================== 20261023000250_tts_guard.sql =====================
--- NIVelo · cost guard for the tts-generate edge function
+-- Munchira · cost guard for the tts-generate edge function
 --
 -- The function runs with the service role. These helpers are callable only by
 -- it, so a browser can neither read usage nor bypass the daily cap.
@@ -467,7 +467,7 @@ grant execute on function public.tts_consume(uuid, integer, integer), public.tts
 
 
 -- ===================== 20261023000300_progress_rpcs.sql =====================
--- NIVelo · atomic, server-validated progress
+-- Munchira · atomic, server-validated progress
 --
 -- Quiz scoring, checkpoint results, unlocking and cycle advancement now run in
 -- one transaction on the server. The browser can no longer write progress
@@ -716,7 +716,7 @@ grant execute on function public.module_is_available(uuid, uuid), public.save_di
 
 
 -- ===================== 20261023000400_vocab_and_lesson_progress.sql =====================
--- NIVelo · persistent vocabulary review (spaced repetition) and lesson progress
+-- Munchira · persistent vocabulary review (spaced repetition) and lesson progress
 --
 -- Both tables are written only through the functions below, which derive the
 -- user from the session. Reading is limited to the owner, an assigned teacher
@@ -868,7 +868,7 @@ grant execute on function public.record_vocab_review(uuid, boolean), public.get_
 
 
 -- ===================== 20261023000500_teacher_dashboard.sql =====================
--- NIVelo · teacher dashboard
+-- Munchira · teacher dashboard
 --
 -- Read-only aggregates for the teacher panel. Teachers see only the students
 -- assigned to them in public.teacher_students; admins see every student.
@@ -1109,7 +1109,7 @@ grant execute on function public.teacher_overview(), public.teacher_student_deta
 
 
 -- ===================== 20261023000600_content_pipeline.sql =====================
--- NIVelo · content pipeline (seed, readiness gate, publish)
+-- Munchira · content pipeline (seed, readiness gate, publish)
 --
 -- Course content lives in the repository (content/*.json) and is loaded with
 -- seed_cycle / seed_module. New modules are drafts; publish_cycle only flips a

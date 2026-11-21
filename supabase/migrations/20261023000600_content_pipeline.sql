@@ -1,4 +1,4 @@
--- NIVelo · content pipeline (seed, readiness gate, publish)
+-- Munchira · content pipeline (seed, readiness gate, publish)
 --
 -- Course content lives in the repository (content/*.json) and is loaded with
 -- seed_cycle / seed_module. New modules are drafts; publish_cycle only flips a

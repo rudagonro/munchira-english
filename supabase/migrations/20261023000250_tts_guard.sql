@@ -1,4 +1,4 @@
--- NIVelo · cost guard for the tts-generate edge function
+-- Munchira · cost guard for the tts-generate edge function
 --
 -- The function runs with the service role. These helpers are callable only by
 -- it, so a browser can neither read usage nor bypass the daily cap.

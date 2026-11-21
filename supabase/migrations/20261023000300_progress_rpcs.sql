@@ -1,4 +1,4 @@
--- NIVelo · atomic, server-validated progress
+-- Munchira · atomic, server-validated progress
 --
 -- Quiz scoring, checkpoint results, unlocking and cycle advancement now run in
 -- one transaction on the server. The browser can no longer write progress

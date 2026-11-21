@@ -1,4 +1,4 @@
--- NIVelo · baseline schema
+-- Munchira · baseline schema
 --
 -- Mirrors the production schema (enum types, NOT NULL columns) and is
 -- idempotent: on the existing project it only adds what is missing, on a fresh
