@@ -1,4 +1,4 @@
-# Guion de bienvenida NIVelo (EN) · 23,5 s
+# Guion de bienvenida Munchira (EN) · 23,5 s
 
 Voz: Mira – Bright & Friendly Narrator (ElevenLabs, modelo eleven_v4).
 Video: Creatify Aurora (retrato + audio), 720p, escalado a 1080×1920.
@@ -8,6 +8,6 @@ Video: Creatify Aurora (retrato + audio), 720p, escalado a 1080×1920.
 Archivos:
 - `bienvenida-presentadora-limpio-1080x1920.mp4`: solo la presentadora, sin logo ni texto. Añade tu logo al editar.
 - `bienvenida-presentadora-con-cierre-1080x1920.mp4`: lo anterior + cierre animado con logo y llamada a la acción (3,2 s).
-- `presentadora-nivelo-retrato.jpg`: retrato base. Reutilízalo como imagen de entrada para futuros videos con la misma presentadora.
+- `presentadora-munchira-retrato.jpg`: retrato base. Reutilízalo como imagen de entrada para futuros videos con la misma presentadora.
 
 Recuerda marcar el video como contenido generado por IA al publicarlo en TikTok.

@@ -1,4 +1,4 @@
--- NIVelo · SECURITY HOTFIX (safe to apply on its own, ahead of everything else)
+-- Munchira · SECURITY HOTFIX (safe to apply on its own, ahead of everything else)
 --
 -- Two holes let anyone become an administrator of the production project:
 --   1. handle_new_user() copied `role` from the sign-up metadata, which the

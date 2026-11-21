@@ -1,4 +1,4 @@
--- NIVelo · persistent vocabulary review (spaced repetition) and lesson progress
+-- Munchira · persistent vocabulary review (spaced repetition) and lesson progress
 --
 -- Both tables are written only through the functions below, which derive the
 -- user from the session. Reading is limited to the owner, an assigned teacher

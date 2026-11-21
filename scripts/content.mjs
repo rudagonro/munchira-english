@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Herramienta de contenido de NIVelo.
+// Herramienta de contenido de Munchira.
 //   node scripts/content.mjs validate [archivo.json ...]   valida (por defecto, todos los ciclos)
 //   node scripts/content.mjs sql <NIVEL> [salida.sql]      genera el SQL de carga como borrador
 import { readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'

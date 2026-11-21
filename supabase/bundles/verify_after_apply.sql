@@ -1,4 +1,4 @@
--- NIVelo · comprobaciones DESPUÉS de aplicar apply_0100_a_0600.sql.
+-- Munchira · comprobaciones DESPUÉS de aplicar apply_0100_a_0600.sql.
 -- Solo lee datos. Cada fila debe decir ok = true.
 select 'rol_nunca_viene_del_cliente' as comprobacion,
        pg_get_functiondef('public.handle_new_user'::regproc) not ilike '%raw_user_meta_data%''role''%' as ok

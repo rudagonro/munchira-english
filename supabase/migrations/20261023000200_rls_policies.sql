@@ -1,4 +1,4 @@
--- NIVelo · row level security
+-- Munchira · row level security
 --
 -- Replaces every existing policy on the app tables with the set below so the
 -- result does not depend on what the project had before. Legacy permissive

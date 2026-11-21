@@ -1,4 +1,4 @@
-# NIVELO DEVELOPMENT AUDIT
+# MUNCHIRA DEVELOPMENT AUDIT
 _Generated: 2026-07-15_
 
 ---
@@ -155,10 +155,10 @@ src/
 
 ## 7. OPEN SOURCE REFERENCES
 
-See `NIVELO_OPEN_SOURCE_AUDIT.md` for full analysis.
+See `MUNCHIRA_OPEN_SOURCE_AUDIT.md` for full analysis.
 
 **Summary of most useful references:**
-- **OpenLingo (MIT)** — closest match to NIVelo's vision; multi-voice TTS, Whisper STT, SM-2 SRS, AI tutor. Architecture patterns directly applicable.
+- **OpenLingo (MIT)** — closest match to Munchira's vision; multi-voice TTS, Whisper STT, SM-2 SRS, AI tutor. Architecture patterns directly applicable.
 - **LUTE (MIT)** — vocabulary tracking patterns and reading comprehension approach.
 - **LibreLingo** — ARCHIVED. Conceptual reference only for exercise structure (AGPL + archived).
 - **LinguaCafe** — GPL-3.0 (copyleft). Reference only; no code reuse for commercial product.

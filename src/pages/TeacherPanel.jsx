@@ -70,7 +70,7 @@ export default function TeacherPanel() {
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url
-    link.download = `estudiantes-nivelo-${now.toISOString().slice(0, 10)}.csv`
+    link.download = `estudiantes-munchira-${now.toISOString().slice(0, 10)}.csv`
     link.click()
     URL.revokeObjectURL(url)
   }

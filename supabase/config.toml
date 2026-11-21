@@ -1,5 +1,5 @@
 # Local Supabase CLI configuration. Production settings live in the dashboard.
-project_id = "nivelo"
+project_id = "munchira"
 
 [functions.tts-generate]
 verify_jwt = true

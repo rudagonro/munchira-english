@@ -1,4 +1,4 @@
--- NIVelo · teacher dashboard
+-- Munchira · teacher dashboard
 --
 -- Read-only aggregates for the teacher panel. Teachers see only the students
 -- assigned to them in public.teacher_students; admins see every student.
