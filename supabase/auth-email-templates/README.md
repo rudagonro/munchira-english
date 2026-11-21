@@ -1,6 +1,6 @@
 # Plantillas de correo de Supabase Auth (Munchira English)
 
-Textos en español para los correos de acceso. **Aún no están aplicadas en producción**:
+Textos en español para los correos de acceso. **Aplicadas en producción el 21 de noviembre de 2026** con SMTP propio (Resend). Antes estaban bloqueadas:
 Supabase bloquea el cambio de plantillas en el plan gratuito mientras se use su correo por
 defecto (error `entitlement_required`, 21 de noviembre de 2026). Ese correo por defecto además
 solo envía 2 correos por hora, así que antes de abrir el registro a más gente hace falta un SMTP propio.
