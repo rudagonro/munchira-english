@@ -10,7 +10,7 @@ Los dominios **munchira.com** y **munchira.app** están comprados en **Cloudflar
 
 DNS (Cloudflare, «DNS only», sin proxy): en ambas zonas, A `@` → `216.198.79.1` y `64.29.17.1`, y CNAME `www` → `ba067c59dc46a2c2.vercel-dns-017.com` (valores específicos del proyecto que dio Vercel). Los registros de correo de munchira.com (MX, SPF, DKIM) no se tocaron y **no deben modificarse**.
 
-**Supabase Auth (aplicado el 21 de noviembre de 2026).** Site URL = `https://munchira.com`; Redirect URLs = `https://munchira.com/**`, `https://www.munchira.com/**`, `https://munchira.app/**` y `https://nivelo-english.vercel.app/**` (se conserva la antigua). Comprobado: login con correo y contraseña OK y credenciales incorrectas rechazadas. Sin verificar: retorno real de Google, consola de Google Cloud (URI autorizadas y pantalla de consentimiento) y plantillas de correo (siguen por defecto). El código no tiene URLs fijas del dominio antiguo (el acceso con Google usa `window.location.origin`).
+**Supabase Auth (aplicado el 21 de noviembre de 2026).** Site URL = `https://munchira.com`; Redirect URLs = `https://munchira.com/**`, `https://www.munchira.com/**`, `https://munchira.app/**` y `https://nivelo-english.vercel.app/**` (se conserva la antigua). Comprobado: login con correo y contraseña OK y credenciales incorrectas rechazadas. Sin verificar: retorno real de Google, consola de Google Cloud (URI autorizadas y pantalla de consentimiento) . El código no tiene URLs fijas del dominio antiguo (el acceso con Google usa `window.location.origin`).
 
 ## Infraestructura que se conserva
 
@@ -39,7 +39,7 @@ Ya existen repaso espaciado de vocabulario, progreso por lección, quizzes, chec
 ## Lo que falta y qué requiere intervención
 
 - Dominios hechos (ver arriba). No tocar MX/SPF/DKIM ni activar el proxy de Cloudflare sin comprobar que Vercel sigue emitiendo el certificado.
-- Correo de Auth: las plantillas en español están en `supabase/auth-email-templates/` sin aplicar. Supabase las bloquea en el plan gratuito con su correo por defecto (que además solo envía 2 correos por hora); hace falta SMTP propio (plan: Resend con `english@munchira.com`, sin tocar MX/SPF/DKIM existentes). Está en curso, pendiente de la cuenta y la clave de Resend.
+- Correo de Auth (aplicado el 21 de noviembre de 2026): SMTP propio con Resend (`smtp.resend.com:465`, remitente `english@munchira.com`, nombre `Munchira English`); la clave de API vive solo en Supabase y Resend, nunca en el código. Dominio verificado en Resend con DKIM `resend._domainkey`, y MX/SPF en el subdominio `send` y CNAME `rsend`; los registros MX/SPF/DKIM de Cloudflare Email Routing no se tocaron. Plantillas y asuntos en español aplicados desde `supabase/auth-email-templates/`. Límite de correos de Auth: 30 por hora. Se comprobó la entrega de un correo de prueba a `munchira.english@gmail.com`; no se probó aún un registro real ni la entrega a Hotmail/Outlook.
 - Probar el acceso con Google en `munchira.com`, revisar la consola de Google Cloud y el CORS de audio (hoy `*`), sin retirar el acceso antiguo prematuramente.
 - Revisar recuperación de contraseña: no hay enlace visible en el acceso actual; no se añadió un flujo nuevo en la entrega de identidad.
 - Verificar el despliegue final de esta entrega. Guardar un commit no prueba que Vercel haya desplegado.
