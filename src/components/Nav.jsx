@@ -14,7 +14,10 @@ export default function Nav() {
     <header className="nav-header">
       <div className="nav-inner">
         <Link className="nav-logo" to="/cycle" aria-label="Munchira English, ir a mis módulos">
-          <span>Munch</span>ira <span className="nav-logo-sub">English</span>
+          <span className="nav-logo-text">
+            <span className="nav-logo-name">Munchira</span>
+            <span className="nav-logo-sub">English</span>
+          </span>
         </Link>
         <nav className="nav-links" aria-label="Principal">
           <NavLink to="/cycle">Mis módulos</NavLink>
