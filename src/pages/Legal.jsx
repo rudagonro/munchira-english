@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom'
 
 const CONTACT = 'nivelo.english@gmail.com'
-const UPDATED = '20 de noviembre de 2026'
+const UPDATED = '21 de noviembre de 2026'
 
 function Page({ title, children }) {
   return (
     <div className="legal">
       <Link className="legal-back" to="/login">← Volver</Link>
       <h1>{title}</h1>
-      <p className="legal-meta">NIVelo English · Última actualización: {UPDATED}</p>
+      <p className="legal-meta">Munchira English · Última actualización: {UPDATED}</p>
       {children}
       <h2>Contacto</h2>
       <p>
@@ -23,7 +23,7 @@ export function Privacy() {
   return (
     <Page title="Política de privacidad">
       <p>
-        En NIVelo English (“NIVelo”, “nosotros”) tratamos tus datos solo para que puedas aprender inglés y
+        En Munchira English (“Munchira”, “nosotros”) tratamos tus datos solo para que puedas aprender inglés y
         para que tu docente, si tienes uno asignado, pueda acompañar tu progreso. Esta política explica
         qué datos recogemos, para qué, con quién los compartimos y qué derechos tienes.
       </p>
@@ -41,7 +41,7 @@ export function Privacy() {
       <ul>
         <li>Crear y mantener tu cuenta e iniciar tu sesión.</li>
         <li>Calcular tu nivel, guardar tu progreso y programar tus repasos.</li>
-        <li>Mostrar tu avance a tu docente asignado o a la administración de NIVelo.</li>
+        <li>Mostrar tu avance a tu docente asignado o a la administración de Munchira.</li>
         <li>Proteger el servicio frente a abusos y mejorar los contenidos con estadísticas agregadas.</li>
       </ul>
       <p>No vendemos tus datos ni los usamos para publicidad ni para perfilarte con fines comerciales.</p>
@@ -50,7 +50,7 @@ export function Privacy() {
       <ul>
         <li><strong>Tú</strong>, siempre.</li>
         <li><strong>Tu docente</strong>, solo si te ha sido asignado: ve tu nivel, notas, vocabulario y actividad reciente.</li>
-        <li><strong>Administración de NIVelo</strong>, para dar soporte y gestionar el servicio.</li>
+        <li><strong>Administración de Munchira</strong>, para dar soporte y gestionar el servicio.</li>
         <li><strong>Otros estudiantes: no.</strong> Las reglas de la base de datos impiden que un estudiante lea datos de otro.</li>
       </ul>
 
@@ -94,7 +94,7 @@ export function Privacy() {
 
       <h2>8. Menores de edad</h2>
       <p>
-        NIVelo está pensado para personas de 14 años o más. Si eres menor de edad, usa la aplicación con
+        Munchira está pensado para personas de 14 años o más. Si eres menor de edad, usa la aplicación con
         permiso y supervisión de tu madre, padre o tutor. Si sabemos que una persona menor de 14 años
         creó una cuenta sin autorización, la eliminaremos.
       </p>
@@ -118,11 +118,11 @@ export function Terms() {
   return (
     <Page title="Términos de uso">
       <p>
-        Al crear una cuenta o usar NIVelo English aceptas estos términos. Si no estás de acuerdo, no uses el
+        Al crear una cuenta o usar Munchira English aceptas estos términos. Si no estás de acuerdo, no uses el
         servicio.
       </p>
 
-      <h2>1. Qué es NIVelo English</h2>
+      <h2>1. Qué es Munchira English</h2>
       <p>
         Una plataforma para aprender inglés por niveles (A1 a C2 del Marco Común Europeo) con diagnóstico,
         módulos, quizzes, audio y repaso de vocabulario. El diagnóstico y los resultados son
@@ -149,7 +149,7 @@ export function Terms() {
 
       <h2>4. Contenidos y propiedad intelectual</h2>
       <p>
-        Las lecciones, ejercicios, quizzes, audios, diseño y marca de NIVelo English son de sus titulares.
+        Las lecciones, ejercicios, quizzes, audios, diseño y marca de Munchira English son de sus titulares.
         Te damos una licencia personal, no exclusiva e intransferible para usarlos con fines de estudio
         mientras tu cuenta esté activa.
       </p>
@@ -170,13 +170,13 @@ export function Terms() {
 
       <h2>7. Suspensión y cierre de la cuenta</h2>
       <p>
-        Puedes dejar de usar NIVelo y pedir la eliminación de tu cuenta cuando quieras. Podemos suspender
+        Puedes dejar de usar Munchira y pedir la eliminación de tu cuenta cuando quieras. Podemos suspender
         o cerrar cuentas que incumplan estos términos o pongan en riesgo la seguridad del servicio.
       </p>
 
       <h2>8. Limitación de responsabilidad</h2>
       <p>
-        NIVelo se ofrece “tal cual”, con fines educativos. No garantizamos un resultado concreto de
+        Munchira se ofrece “tal cual”, con fines educativos. No garantizamos un resultado concreto de
         aprendizaje ni que el servicio esté libre de errores. En la medida permitida por la ley, no
         respondemos por daños indirectos derivados del uso o la imposibilidad de uso del servicio. Esto no
         limita los derechos que la ley te reconoce como consumidor.
@@ -190,7 +190,7 @@ export function Terms() {
       <h2>10. Cambios en los términos</h2>
       <p>
         Podemos actualizar estos términos. Si el cambio es importante, lo avisaremos en la aplicación. Si
-        sigues usando NIVelo después, entendemos que aceptas la versión actualizada.
+        sigues usando Munchira después, entendemos que aceptas la versión actualizada.
       </p>
     </Page>
   )

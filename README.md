@@ -1,6 +1,33 @@
-# NIVelo English
+# Munchira English
 
 Aplicación web para aprender inglés con diagnóstico adaptativo CEFR, ciclos de módulos, vocabulario, lecciones, quizzes y checkpoints. Interfaz en español.
+
+## Cambio de marca — 21 de noviembre de 2026
+
+La aplicación antes se llamaba **NIVelo English**. El propietario decidió cambiarla a **Munchira English** porque encontró otra app llamada NIVelo en la App Store y quiere evitar confusión de marca. Esto no constituye una comprobación legal de disponibilidad de Munchira.
+
+**Los dominios ya fueron comprados por el propietario en Cloudflare:**
+
+- **munchira.com**: dominio principal previsto.
+- **munchira.app**: dominio secundario previsto, que debe redirigir al .com.
+
+La compra está confirmada por el propietario; la conexión DNS, la redirección y el funcionamiento de ambos dominios **todavía no se han verificado**. No volver a proponer su compra.
+
+Se mantiene la infraestructura existente: **GitHub para el código, Vercel para publicar y Supabase para base de datos, autenticación y almacenamiento**. No se ha migrado nada a Lovable Cloud.
+
+Este cambio actualiza el nombre en navegación, acceso, registro, diagnóstico, modo revisor, textos legales y título/descripción de la web. No cambia ejercicios, calificación, roles, usuarios, progreso, tablas ni funciones. El correo de contacto `nivelo.english@gmail.com` se conserva hasta que el propietario confirme un reemplazo. Los identificadores técnicos del paquete, el nombre histórico del repositorio, el nombre del CSV y los informes anteriores se conservan para evitar cambios ajenos al nombre visible.
+
+**Para Claude y otros asistentes:** leer primero [CLAUDE.md](CLAUDE.md) y [AGENTS.md](AGENTS.md). Los informes y PDF antiguos con NIVelo son antecedentes, no la marca vigente ni prueba del estado actual. La adaptación de logo/favicon y materiales gráficos sigue pendiente: usar el logo de la oruga aprobado por el propietario, no inventar otro ni alterar su diseño.
+
+### Pendiente para activar los dominios
+
+1. Añadir ambos dominios al proyecto existente en Vercel y elegir `munchira.com` como principal.
+2. Crear en Cloudflare los registros exactos que indique Vercel; no adivinar valores DNS.
+3. Configurar una redirección permanente de `munchira.app` a `https://munchira.com`, conservando rutas y parámetros.
+4. Ajustar Site URL y Redirect URLs en Supabase Auth; revisar Google OAuth y `TTS_ALLOWED_ORIGIN` si está configurado para el dominio antiguo. Conservar temporalmente las URLs antiguas que aún estén en uso.
+5. Comprobar HTTPS, acceso con correo y Google, retorno de autenticación, diagnóstico, módulos y audio en el dominio principal antes de retirar accesos antiguos.
+
+URL existente durante la transición: https://nivelo-english.vercel.app. No renombrar ni eliminar el proyecto de Vercel o el repositorio solo para cambiar la marca.
 
 ## Desarrollo local
 
@@ -66,7 +93,7 @@ Para promover a un usuario a `teacher` o `admin`, ejecuta SQL con acceso directo
 
 El contenido de cada nivel se escribe en `content/cycles/<NIVEL>.json`, se valida (`npm run content:validate`), se convierte en SQL (`npm run content:sql -- A2 supabase/seed/A2.sql`) y se carga como **borrador**. Un nivel se publica completo con `select public.publish_cycle('A2');` solo si cumple los mínimos. Guía completa, plantillas por habilidad y requisitos: `content/README.md`.
 
-Estado actual: A2 tiene un módulo de gramática completo (4 lecciones, 6 preguntas) como referencia; el resto de módulos A2–C2 están definidos como esquema (temas por lección) y falta redactarlos. El contenido de A1 sigue solo en la base de datos.
+Estado del código: A2 tiene un módulo de gramática completo (4 lecciones, 6 preguntas) como referencia; el resto de módulos A2–C2 están definidos como esquema (temas por lección) y falta redactarlos. El contenido de A1 sigue solo en la base de datos. En la revisión visual del 21 de noviembre de 2026, A1 mostraba 4/4 módulos publicados y A2–C2 mostraban 0/4; el panel docente indicaba «Listo para publicar» para estos últimos. No se ha comprobado en detalle su contenido real ni se ha publicado ningún nivel con este cambio.
 
 ## Flujos nuevos de esta rama
 

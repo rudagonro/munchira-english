@@ -43,7 +43,7 @@ export default function Login() {
   return (
     <div className="screen-center">
       <div className="auth-card">
-        <div className="auth-brand"><span>NIV</span>elo English</div>
+        <div className="auth-brand"><span>Munch</span>ira English</div>
         <p className="auth-subtitle">Inicia sesión para continuar tu camino.</p>
 
         {error && <div className="error-banner" role="alert">{error}</div>}

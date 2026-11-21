@@ -54,7 +54,7 @@ export default function ReviewerMode() {
         las respuestas. <strong>Nada de lo que hagas aquí se guarda</strong>: ni progreso, ni notas, ni diagnósticos.
       </div>
 
-      <h1>Revisar NIVelo English</h1>
+      <h1>Revisar Munchira English</h1>
 
       <section className="rv-section" aria-labelledby="rv-diag">
         <h2 id="rv-diag">Diagnóstico</h2>
