@@ -73,6 +73,8 @@ export default function Login() {
             />
           </div>
 
+          <p className="auth-forgot"><Link to="/recuperar">¿Olvidaste tu contraseña?</Link></p>
+
           <button className="btn-primary" type="submit" disabled={loading}>
             {loading ? 'Entrando...' : 'Iniciar sesión'}
           </button>

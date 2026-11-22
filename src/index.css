@@ -1430,7 +1430,7 @@ img, video { max-width: 100%; height: auto; }
   .nav-logo { font-size: 1.25rem; }
   .nav-links { gap: 2px; min-width: 0; }
   .nav-links a { padding: 6px 10px; font-size: 0.85rem; }
-  .nav-username { display: none; }
+  .nav-username { max-width: 64px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.8rem; }
   .page-shell { padding: 24px 16px 64px; }
   .page-shell h1 { font-size: 1.5rem; }
   .app-shell { padding: 24px 16px; }
@@ -1661,3 +1661,18 @@ button.tp-kpi:hover, .tp-kpi.on { border-color: var(--purple); background: var(-
 .dlg-line-btn { flex: none; width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 1.1rem; }
 .dlg-toggle { display: flex; gap: 8px; align-items: center; font-size: 0.88rem; color: var(--text-muted); cursor: pointer; min-height: 44px; }
 .dlg-toggle input { width: 20px; height: 20px; accent-color: var(--purple); }
+
+/* ===== CUENTA Y RECUPERACIÓN ===== */
+.auth-forgot { margin: -6px 0 16px; text-align: right; font-size: 0.85rem; }
+.auth-forgot a { color: var(--purple); font-weight: 600; text-decoration: none; }
+.auth-forgot a:hover { text-decoration: underline; }
+a.nav-username { text-decoration: none; }
+a.nav-username:hover, a.nav-username.active { color: var(--purple); }
+.account-page { max-width: 640px; }
+.account-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px 26px; margin-top: 20px; }
+.account-card h2 { font-size: 1.1rem; margin-bottom: 14px; }
+.account-data { display: grid; gap: 10px; margin: 0; }
+.account-data div { display: flex; gap: 12px; flex-wrap: wrap; }
+.account-data dt { width: 80px; color: var(--text-muted); font-size: 0.88rem; }
+.account-data dd { margin: 0; font-weight: 600; word-break: break-all; }
+.account-hint { margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); }
