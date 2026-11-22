@@ -5,6 +5,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import Layout from './components/Layout'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import PublicHome from './pages/PublicHome'
 import AppHome from './pages/AppHome'
 import TeacherPanel from './pages/TeacherPanel'
 import Diagnostic from './pages/Diagnostic'
@@ -23,7 +24,7 @@ function AppRoutes() {
   return (
     <ErrorBoundary resetKey={location.pathname}>
       <Routes>
-        <Route path="/" element={<Navigate to="/cycle" replace />} />
+        <Route path="/" element={<PublicHome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/recuperar" element={<ForgotPassword />} />

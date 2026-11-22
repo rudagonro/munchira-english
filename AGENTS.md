@@ -8,3 +8,4 @@
 - Verify code changes with relevant existing tests and separately verify the deployed app; a repository commit is not evidence of a successful deployment.
 - Never commit credentials, test passwords, access tokens or private keys; use the existing hosting and backend secret configuration.
 - Serve branding artwork from public/brand and load isolated brand styles after the existing stylesheet; this keeps the Vercel app independent from Lovable and avoids changing course presentation or behavior.
+- Keep the public home at / separate from /login and protected learning routes, with scoped public-home styles and a standalone sample exercise; this lets visitors explore without changing student data or authentication.
