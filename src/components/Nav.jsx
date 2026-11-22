@@ -31,11 +31,9 @@ export default function Nav() {
           {role === 'admin' && <NavLink to="/usuarios">Usuarios</NavLink>}
         </nav>
         <div className="nav-user">
-          {profile?.full_name && (
-            <span className="nav-username">
-              {profile.full_name.split(' ')[0]}
-            </span>
-          )}
+          <NavLink className="nav-username" to="/cuenta" aria-label="Mi cuenta">
+            {profile?.full_name ? profile.full_name.split(' ')[0] : 'Mi cuenta'}
+          </NavLink>
           <button className="nav-logout" type="button" onClick={handleSignOut}>
             Salir
           </button>

@@ -14,6 +14,9 @@ import Review from './pages/Review'
 import { Privacy, Terms } from './pages/Legal'
 import ReviewerMode from './pages/ReviewerMode'
 import AdminUsers from './pages/AdminUsers'
+import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
+import Account from './pages/Account'
 
 function AppRoutes() {
   const location = useLocation()
@@ -23,6 +26,8 @@ function AppRoutes() {
         <Route path="/" element={<Navigate to="/cycle" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/recuperar" element={<ForgotPassword />} />
+        <Route path="/restablecer" element={<ResetPassword />} />
         <Route path="/privacidad" element={<Privacy />} />
         <Route path="/terminos" element={<Terms />} />
 
@@ -31,6 +36,15 @@ function AppRoutes() {
           element={
             <ProtectedRoute>
               <Layout><AppHome /></Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/cuenta"
+          element={
+            <ProtectedRoute>
+              <Layout><Account /></Layout>
             </ProtectedRoute>
           }
         />

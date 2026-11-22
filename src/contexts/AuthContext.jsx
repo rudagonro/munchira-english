@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { AuthContext } from './auth-context'
+import { recoveryRedirect } from '../lib/accountRules'
 
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(null)
@@ -85,6 +86,36 @@ export function AuthProvider({ children }) {
 
   async function signOut() {
     await supabase.auth.signOut()
+  }
+
+  /** Envía el correo de recuperación. La respuesta no revela si el correo existe. */
+  async function requestPasswordReset(email) {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: recoveryRedirect(window.location.origin),
+    })
+    return { error }
+  }
+
+  /** Cambia la contraseña de la sesión actual (tras el enlace del correo o desde Mi cuenta). */
+  async function updatePassword(newPassword) {
+    const { error } = await supabase.auth.updateUser({ password: newPassword })
+    return { error }
+  }
+
+  /** Comprueba la contraseña actual sin cambiar la sesión visible (para confirmar un cambio). */
+  async function verifyPassword(email, password) {
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    return { error }
+  }
+
+  /** Guarda el nombre. La base de datos solo permite cambiar full_name en la fila propia. */
+  async function updateFullName(fullName) {
+    if (!session?.user) return { error: new Error('No hay sesión activa') }
+    const { data, error } = await supabase.from('profiles')
+      .update({ full_name: fullName }).eq('id', session.user.id)
+      .select('id, full_name, role, created_at').single()
+    if (!error && data) setProfile(data)
+    return { error }
   }
 
   /**
@@ -307,6 +338,10 @@ export function AuthProvider({ children }) {
     signInWithEmail,
     signInWithGoogle,
     signOut,
+    requestPasswordReset,
+    updatePassword,
+    verifyPassword,
+    updateFullName,
     saveDiagnosticResult,
     getActiveCycleData,
     getModuleContent,

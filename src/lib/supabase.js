@@ -12,4 +12,9 @@ if (!supabaseUrl || !supabaseAnonKey) {
   )
 }
 
+// Se lee antes de crear el cliente: Supabase limpia el hash de la URL al procesar el enlace
+// del correo, y la pantalla de restablecer contraseña solo debe abrirse desde ese enlace.
+export const arrivedViaRecoveryLink =
+  typeof window !== 'undefined' && /(^|[#&])type=recovery(&|$)/.test(window.location.hash)
+
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
