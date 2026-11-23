@@ -12,3 +12,4 @@
 - Keep shared editorial UI, safe Markdown rendering and route metadata in src/public with isolated public-site.css; this expands public pages without changing student screens or global styles.
 - Read editorial Markdown through the simple frontmatter contract in PUBLIC_BLOG.md and exclude *.example.md at import time in production; this preserves authored content and prevents unapproved examples from shipping.
 - Deliver public sections in review-only branches and small pull requests; the owner approves before merging or publishing, and Claude owns editorial content, static generation, sitemap and robots.
+- Keep optional public grammar exercises in slug-matched JSON companions, excluding example companions from production imports; this separates authored practice from page presentation without storing student data.
