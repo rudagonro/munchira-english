@@ -16,7 +16,7 @@ DNS (Cloudflare, «DNS only», sin proxy): en ambas zonas, A `@` → `216.198.79
 
 - Repositorio: `rudagonro/NIVELO-ENGLISH` en GitHub. Rubén pidió renombrarlo a `munchira-english`; el proxy de la sesión no permite cambiar ajustes de GitHub, así que lo renombra él en Settings → General. Vercel lo enlaza por identificador, no por nombre. Tras renombrar, actualizar el `origin` local.
 - Publicación: proyecto de Vercel `munchira-english`; la URL antigua `https://nivelo-english.vercel.app` sigue en la lista de acceso de Supabase pero no se pudo comprobar desde la sesión.
-- Datos, acceso de usuarios y archivos: proyecto existente de Supabase.
+- Datos, acceso de usuarios y archivos: proyecto existente de Supabase (`rzrorsobcprhibllpxpr`; su nombre visible pasó de `nivelo` a `munchira` el 23 de noviembre de 2026, sin cambiar su identificador ni sus URL). Los correos de las cuentas existentes con «nivelo» (`auditor.nivelo@example.com`, `test.nivelo.e2e@gmail.com`, `nivelo.english@gmail.com`) se conservan: son credenciales o buzones reales.
 - Registro de dominios y DNS: Cloudflare.
 - Código existente: React 19, Vite y React Router; ver `package.json`. No confundir con la portada independiente en Lovable.
 
