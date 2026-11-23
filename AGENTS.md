@@ -17,3 +17,5 @@
 - Keep approved public photography and mascot media in immutable asset pointers, resolved against their media-serving origin; use scoped home-media styles and a single entry animation disabled by prefers-reduced-motion to preserve learning screens and accessibility.
 
 - Keep the public header mascot and wordmark in the shared src/public/HeaderBrand component with scoped header-brand.css; one lockup prevents home, blog and grammar branding from drifting.
+
+- Keep stacked public closing-section and footer branding in src/public/FooterBrand with scoped footer-brand.css; sharing the transparent mascot above the wordmark prevents bottom-of-page artwork from diverging.

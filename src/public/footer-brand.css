@@ -1,0 +1,10 @@
+/* The approved transparent mascot sits above the public footer wordmark. */
+.mp-home .mp-footer-brand { display: inline-flex; flex-direction: column; align-items: center; gap: 8px; width: 120px; flex-shrink: 0; }
+.mp-home .mp-footer-brand img { width: 96px; height: 112px; object-fit: contain; flex-shrink: 0; }
+.mp-home .mp-footer-brand-name { display: flex; flex-direction: column; align-items: center; gap: 3px; line-height: 1.15; }
+.mp-home .mp-footer-brand-name strong { font-size: 18px; font-weight: 750; color: var(--mp-ink); }
+.mp-home .mp-footer-brand-name > span { font-size: 14px; font-weight: 600; color: var(--mp-teal); }
+@media (max-width: 650px) {
+  .mp-home .mp-footer-brand img { width: 78px; height: 92px; }
+  .mp-home .mp-public-cta > div { grid-template-columns: 120px minmax(0, 1fr); }
+}

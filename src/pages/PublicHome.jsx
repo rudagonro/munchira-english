@@ -6,6 +6,7 @@ import { HomeHero, CourseVisual, VocabularyVisual } from '../public/HomeMedia'
 import Seo from '../public/Seo'
 import homeCover from '../assets/aprende-juntos-1536.webp.asset.json'
 import HeaderBrand from '../public/HeaderBrand'
+import FooterBrand from '../public/FooterBrand'
 
 const levels = [
   { code: 'A1', name: 'Tus primeras palabras', label: 'Principiante', description: 'Saluda, preséntate y construye frases sencillas para hablar de tu día.', topics: ['Saludos y presentaciones', 'Vocabulario cotidiano', 'Primeras estructuras'], status: 'Inicio del recorrido' },
@@ -51,9 +52,9 @@ export default function PublicHome() {
         </div></section>
         <section className="mp-section mp-plans" id="planes" aria-labelledby="mp-plans-title"><div className="mp-wrap mp-plans-inner"><div><p className="mp-eyebrow">03 / A tu ritmo</p><h2 id="mp-plans-title">Tu aprendizaje.<br />Sin letra pequeña.</h2><p>Antes de contratar, podrás conocer el precio, qué incluye cada plan y las condiciones de cancelación.</p></div><div className="mp-plan-details"><span className="mp-plan-status">Planes por definir</span><h3>Estamos preparando la oferta.</h3><p>Los precios y las suscripciones todavía no están disponibles. Por ahora, puedes crear tu cuenta y consultar el contenido habilitado.</p><p className="mp-plan-disclaimer">Crear una cuenta no contrata una suscripción ni garantiza acceso gratuito a todos los cursos.</p><a className="mp-text-link" href="mailto:english@munchira.com">Consultar por correo <span aria-hidden="true">↗</span></a></div></div></section>
         <section className="mp-section mp-faq" aria-labelledby="mp-faq-title"><div className="mp-wrap mp-faq-grid"><div><p className="mp-eyebrow">Antes de empezar</p><h2 id="mp-faq-title">¿Alguna pregunta?</h2><p>Hablemos.<br /><a href="mailto:english@munchira.com">english@munchira.com</a></p></div><div>{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></section>
-        <section className="mp-closing"><div className="mp-wrap"><img src="/brand/munchira-icon.webp" alt="" width="72" height="72" /><h2>Empieza con un «Hello!».</h2><p>Lo siguiente lo construyes tú.</p><Link className="mp-button mp-button-dark" to="/register">Crear mi cuenta <span aria-hidden="true">↗</span></Link></div></section>
+        <section className="mp-closing"><div className="mp-wrap"><FooterBrand /><h2>Empieza con un «Hello!».</h2><p>Lo siguiente lo construyes tú.</p><Link className="mp-button mp-button-dark" to="/register">Crear mi cuenta <span aria-hidden="true">↗</span></Link></div></section>
       </main>
-      <footer className="mp-footer"><div className="mp-wrap"><div className="mp-footer-top"><strong>Munchira English</strong><nav aria-label="Información legal"><Link to="/privacidad">Privacidad</Link><Link to="/terminos">Términos</Link><a href="mailto:english@munchira.com">Contacto</a></nav></div><div className="mp-footer-bottom"><span>© {new Date().getFullYear()} Munchira English</span><span>Aprende inglés, paso a paso.</span></div></div></footer>
+      <footer className="mp-footer"><div className="mp-wrap"><div className="mp-footer-top"><FooterBrand /><nav aria-label="Información legal"><Link to="/privacidad">Privacidad</Link><Link to="/terminos">Términos</Link><a href="mailto:english@munchira.com">Contacto</a></nav></div><div className="mp-footer-bottom"><span>© {new Date().getFullYear()} Munchira English</span><span>Aprende inglés, paso a paso.</span></div></div></footer>
     </div>
   )
 }
