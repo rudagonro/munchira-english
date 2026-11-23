@@ -10,7 +10,7 @@ La aplicación antes se llamaba **NIVelo English**. El propietario decidió camb
 
 | Dominio | Estado |
 | --- | --- |
-| **https://munchira.com** | Principal de Production en el proyecto Vercel `nivelo-english`. Responde 200 con HTTPS (certificado Let's Encrypt). |
+| **https://munchira.com** | Principal de Production en el proyecto Vercel `munchira-english` (antes `nivelo-english`). Responde 200 con HTTPS (certificado Let's Encrypt). |
 | `www.munchira.com`, `munchira.app`, `www.munchira.app` | Redirigen con 308 a `https://munchira.com`, conservando ruta y parámetros. |
 | https://nivelo-english.vercel.app | URL de transición; sigue activa. No retirarla hasta comprobar el acceso con Google en `munchira.com`. |
 
@@ -30,7 +30,7 @@ El cambio actualiza el nombre en navegación, acceso, registro, diagnóstico, mo
 4. Revisar recuperación de contraseña: el acceso actual no tiene enlace visible y no se implementó un flujo nuevo.
 5. Retirar o recortar el token de Cloudflare usado para esta configuración (permitía ver zonas ajenas a Munchira) y el token de Vercel.
 
-URL de transición: https://nivelo-english.vercel.app. No renombrar/eliminar Vercel o GitHub solo para cambiar la marca.
+URL de transición: https://nivelo-english.vercel.app. El proyecto de Vercel se renombró a `munchira-english`; falta renombrar el repositorio de GitHub (lo hace Rubén en Settings → General).
 
 ## Desarrollo local
 
