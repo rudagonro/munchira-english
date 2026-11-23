@@ -1,0 +1,13 @@
+.mp-grammar-intro { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.mp-grammar-intro > div { min-width: 0; }
+.mp-grammar-intro > div > p:last-child { color: var(--mp-muted); font-size: 17px; }
+.mp-grammar-intro img { object-fit: contain; flex-shrink: 0; }
+.mp-grammar-practice { padding: 28px 0; margin-top: 32px; border-top: 1px solid var(--mp-border); border-bottom: 1px solid var(--mp-border); }
+.mp-grammar-practice h2 { margin: 12px 0 24px; font-size: 28px; }
+.mp-grammar-practice fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.mp-grammar-practice legend { padding: 0; font-size: 22px; font-weight: 600; margin-bottom: 18px; overflow-wrap: anywhere; }
+.mp-grammar-options { display: flex; flex-wrap: wrap; gap: 12px; }
+.mp-grammar-options .mp-option { min-width: 100px; }
+.mp-grammar-actions { margin-top: 24px; }
+.mp-public-header nav { gap: 20px; }
+@media(max-width: 650px) { .mp-public-header nav { grid-column: 1 / -1; grid-row: 3; flex-wrap: wrap; gap: 20px; padding-top: 12px; } .mp-public-account > a:first-child { grid-row: 2; } .mp-grammar-intro { align-items: flex-start; gap: 12px; } .mp-grammar-intro h1 { font-size: 30px; } .mp-grammar-intro img { width: 88px; height: 88px; } .mp-grammar-intro > div > p:last-child { font-size: 15px; } .mp-grammar-practice h2 { font-size: 25px; } }
