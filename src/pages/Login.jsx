@@ -3,11 +3,12 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import LegalLinks from '../components/LegalLinks'
 
-export default function Login() {
+export default function Login({ embedded = false }) {
   const { signInWithEmail, signInWithGoogle } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
 
+  const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -41,10 +42,10 @@ export default function Login() {
   }
 
   return (
-    <div className="screen-center">
-      <div className="auth-card">
-        <div className="auth-brand"><span>Munch</span>ira English</div>
-        <p className="auth-subtitle">Inicia sesión para continuar tu camino.</p>
+    <div className={embedded ? 'mp-login-form' : 'screen-center'}>
+      <div className={embedded ? 'mp-login-form-body' : 'auth-card'}>
+        {!embedded && <div className="auth-brand"><span>Munch</span>ira English</div>}
+        {!embedded && <p className="auth-subtitle">Inicia sesión para continuar tu camino.</p>}
 
         {error && <div className="error-banner" role="alert">{error}</div>}
 
@@ -63,19 +64,20 @@ export default function Login() {
 
           <div className="field-group">
             <label htmlFor="password">Contraseña</label>
-            <input
+            <div className={embedded ? 'mp-login-password' : ''}><input
               id="password"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
             />
+            {embedded && <button type="button" className="mp-password-toggle" aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'} title={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'} aria-pressed={showPassword} onClick={() => setShowPassword(value => !value)}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" /><circle cx="12" cy="12" r="3" />{showPassword && <path d="m3 3 18 18" />}</svg></button>}</div>
           </div>
 
           <p className="auth-forgot"><Link to="/recuperar">¿Olvidaste tu contraseña?</Link></p>
 
-          <button className="btn-primary" type="submit" disabled={loading}>
+          <button className={embedded ? 'mp-button mp-button-dark mp-login-submit' : 'btn-primary'} type="submit" disabled={loading}>
             {loading ? 'Entrando...' : 'Iniciar sesión'}
           </button>
         </form>

@@ -3,7 +3,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import ErrorBoundary from './components/ErrorBoundary'
 import Layout from './components/Layout'
-import Login from './pages/Login'
+import LoginPanel from './public/LoginPanel'
 import Register from './pages/Register'
 import PublicHome from './pages/PublicHome'
 import { BlogIndex, BlogArticle } from './public/Blog'
@@ -23,15 +23,16 @@ import Account from './pages/Account'
 
 function AppRoutes() {
   const location = useLocation()
+  const background = location.pathname === '/login' ? location.state?.backgroundLocation : null
   return (
     <ErrorBoundary resetKey={location.pathname}>
-      <Routes>
+      <Routes location={background || location}>
         <Route path="/" element={<PublicHome />} />
         <Route path="/blog" element={<BlogIndex />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/gramatica" element={<GrammarIndex />} />
         <Route path="/gramatica/:slug" element={<GrammarArticle />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<><PublicHome /><LoginPanel /></>} />
         <Route path="/register" element={<Register />} />
         <Route path="/recuperar" element={<ForgotPassword />} />
         <Route path="/restablecer" element={<ResetPassword />} />
@@ -136,6 +137,7 @@ function AppRoutes() {
 
         <Route path="*" element={<Navigate to="/cycle" replace />} />
       </Routes>
+      {background && <LoginPanel />}
     </ErrorBoundary>
   )
 }

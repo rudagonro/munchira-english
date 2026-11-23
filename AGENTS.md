@@ -19,3 +19,5 @@
 - Keep the public header mascot and wordmark in the shared src/public/HeaderBrand component with scoped header-brand.css; one lockup prevents home, blog and grammar branding from drifting.
 
 - Keep stacked public closing-section and footer branding in src/public/FooterBrand with scoped footer-brand.css; sharing the transparent mascot above the wordmark prevents bottom-of-page artwork from diverging.
+
+- Public login uses a native modal side panel and React Router backgroundLocation, reusing the existing Login form without changing auth services; /login remains directly reachable with the public home behind it, preserving protected-route return destinations.

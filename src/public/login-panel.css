@@ -1,0 +1,42 @@
+.mp-home.mp-login-panel {
+  --mp-panel-backdrop: color-mix(in srgb, var(--mp-ink) 46%, transparent);
+  --mp-panel-shadow: -12px 0 48px color-mix(in srgb, var(--mp-ink) 15%, transparent);
+  position: fixed; inset: 0 0 0 auto; margin: 0; width: min(480px, 100%); max-width: 100%; height: 100dvh; max-height: none;
+  padding: 0; border: 0; border-left: 1px solid var(--mp-border); box-shadow: var(--mp-panel-shadow); overflow-y: auto; overscroll-behavior: contain;
+}
+.mp-login-panel::backdrop { background: var(--mp-panel-backdrop); }
+.mp-login-panel[open] { animation: mp-panel-enter 220ms ease-out both; }
+.mp-login-panel-inner { padding: max(28px, env(safe-area-inset-top)) 32px max(24px, env(safe-area-inset-bottom)); min-height: 100%; display: flex; flex-direction: column; gap: 28px; }
+.mp-login-panel-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px; }
+.mp-login-panel-top .mp-header-brand { min-width: 0; }
+.mp-login-panel-top .mp-header-brand img { width: 58px; height: 68px; }
+.mp-login-panel-close, .mp-password-toggle { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--mp-border); border-radius: 6px; background: var(--mp-paper); color: var(--mp-ink); cursor: pointer; flex-shrink: 0; }
+.mp-login-panel-close:hover, .mp-password-toggle:hover { background: var(--mp-mint); border-color: var(--mp-teal); }
+.mp-login-panel svg { width: 20px; height: 20px; }
+.mp-login-panel-intro { padding-top: 12px; }
+.mp-login-panel-intro h2 { font-size: 30px; margin: 8px 0 12px; }
+.mp-login-panel-intro > p:last-child { color: var(--mp-muted); font-size: 15px; }
+.mp-login-panel .mp-login-form { width: 100%; }
+.mp-login-panel .field-group { margin-bottom: 20px; }
+.mp-login-panel .field-group label { color: var(--mp-ink); font-size: 14px; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
+.mp-login-panel .field-group input { min-height: 50px; border: 1px solid var(--mp-muted); border-radius: 6px; background: var(--mp-paper); color: var(--mp-ink); padding: 12px 14px; }
+.mp-login-panel .field-group input:focus-visible { outline: 3px solid var(--mp-teal); outline-offset: 3px; border-color: var(--mp-teal); }
+.mp-login-password { position: relative; }
+.mp-login-panel .mp-login-password input { padding-right: 58px; }
+.mp-login-panel .mp-password-toggle { position: absolute; right: 3px; top: 3px; border: 0; }
+.mp-login-panel .auth-forgot { margin: -4px 0 20px; }
+.mp-login-panel .auth-forgot a, .mp-login-panel .auth-footer a { color: var(--mp-teal); text-underline-offset: 4px; }
+.mp-login-panel .mp-login-submit { width: 100%; min-height: 50px; gap: 12px; }
+.mp-login-panel .mp-login-submit:disabled { background: var(--mp-muted); opacity: .75; }
+.mp-login-panel .divider { color: var(--mp-muted); letter-spacing: 0; text-transform: none; font-size: 13px; margin: 24px 0; }
+.mp-login-panel .divider::before, .mp-login-panel .divider::after { background: var(--mp-border); }
+.mp-login-panel .btn-google { min-height: 50px; border: 1px solid var(--mp-muted); border-radius: 6px; background: var(--mp-paper); color: var(--mp-ink); font-size: 15px; font-weight: 600; }
+.mp-login-panel .btn-google:hover { background: var(--mp-soft); border-color: var(--mp-teal); }
+.mp-login-panel .auth-footer { color: var(--mp-muted); font-size: 14px; line-height: 1.6; margin-top: 24px; }
+.mp-login-panel .legal-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 20px; color: var(--mp-muted); font-size: 12px; }
+.mp-login-panel .error-banner { border: 1px solid var(--mp-error); border-radius: 6px; color: var(--mp-error); background: var(--mp-soft); font-size: 14px; }
+.mp-login-panel-help { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--mp-border); color: var(--mp-muted); font-size: 13px; line-height: 1.7; }
+.mp-login-panel-help a { color: var(--mp-teal); text-underline-offset: 4px; }
+@keyframes mp-panel-enter { from { transform: translateX(40px); opacity: .6; } to { transform: translateX(0); opacity: 1; } }
+@media (max-width: 600px) { .mp-login-panel-inner { padding-left: 24px; padding-right: 24px; gap: 24px; } }
+@media (prefers-reduced-motion: reduce) { .mp-login-panel[open] { animation: none; } }
