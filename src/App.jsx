@@ -6,6 +6,7 @@ import Layout from './components/Layout'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import PublicHome from './pages/PublicHome'
+import { BlogIndex, BlogArticle } from './public/Blog'
 import AppHome from './pages/AppHome'
 import TeacherPanel from './pages/TeacherPanel'
 import Diagnostic from './pages/Diagnostic'
@@ -25,6 +26,8 @@ function AppRoutes() {
     <ErrorBoundary resetKey={location.pathname}>
       <Routes>
         <Route path="/" element={<PublicHome />} />
+        <Route path="/blog" element={<BlogIndex />} />
+        <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/recuperar" element={<ForgotPassword />} />
