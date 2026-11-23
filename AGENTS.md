@@ -9,3 +9,6 @@
 - Never commit credentials, test passwords, access tokens or private keys; use the existing hosting and backend secret configuration.
 - Serve branding artwork from public/brand and load isolated brand styles after the existing stylesheet; this keeps the Vercel app independent from Lovable and avoids changing course presentation or behavior.
 - Keep the public home at / separate from /login and protected learning routes, with scoped public-home styles and a standalone sample exercise; this lets visitors explore without changing student data or authentication.
+- Keep shared editorial UI, safe Markdown rendering and route metadata in src/public with isolated public-site.css; this expands public pages without changing student screens or global styles.
+- Read editorial Markdown through the simple frontmatter contract in PUBLIC_BLOG.md and exclude *.example.md at import time in production; this preserves authored content and prevents unapproved examples from shipping.
+- Deliver public sections in review-only branches and small pull requests; the owner approves before merging or publishing, and Claude owns editorial content, static generation, sitemap and robots.
