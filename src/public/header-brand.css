@@ -1,0 +1,25 @@
+/* Shared public header lockup; never changes learning-screen branding. */
+.mp-home .mp-header-brand { align-items: center; gap: 12px; text-decoration: none; }
+.mp-home .mp-logo.mp-header-brand img { width: 66px; height: 78px; object-fit: contain; flex-shrink: 0; }
+.mp-header-brand-name { display: flex; flex-direction: column; gap: 3px; line-height: 1.1; }
+.mp-header-brand-name strong { font-size: 23px; font-weight: 750; color: var(--mp-ink); }
+.mp-header-brand-name > span { font-size: 16px; font-weight: 600; color: var(--mp-teal); }
+@media (max-width: 1050px) and (min-width: 701px) {
+  .mp-header-inner, .mp-public-header-inner { flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 8px; padding-bottom: 12px; }
+  .mp-header-inner .mp-nav, .mp-public-header-inner nav { order: 3; width: 100%; margin-left: 0; justify-content: center; }
+}
+@media (max-width: 700px) {
+  .mp-home .mp-header-brand { gap: 8px; }
+  .mp-home .mp-logo.mp-header-brand img { width: 52px; height: 62px; }
+  .mp-header-brand-name strong { font-size: 19px; }
+  .mp-header-brand-name > span { font-size: 14px; }
+  .mp-public-header-inner { gap: 12px; }
+}
+@media (max-width: 370px) {
+  .mp-public-header-inner .mp-header-brand { grid-column: 1 / -1; }
+  .mp-home .mp-public-header-inner nav { grid-column: 1 / -1; grid-row: 2; justify-content: space-between; }
+  .mp-public-header-inner .mp-public-account > a:first-child { grid-column: 1; grid-row: 3; justify-self: start; }
+  .mp-public-header-inner .mp-public-account .mp-button { grid-column: 2; grid-row: 3; }
+  .mp-header-inner .mp-header-actions { margin-left: auto; }
+  .mp-header-inner .mp-login { font-size: 12px; }
+}

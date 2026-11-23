@@ -5,6 +5,7 @@ import '../public-home.css'
 import { HomeHero, CourseVisual, VocabularyVisual } from '../public/HomeMedia'
 import Seo from '../public/Seo'
 import homeCover from '../assets/aprende-juntos-1536.webp.asset.json'
+import HeaderBrand from '../public/HeaderBrand'
 
 const levels = [
   { code: 'A1', name: 'Tus primeras palabras', label: 'Principiante', description: 'Saluda, preséntate y construye frases sencillas para hablar de tu día.', topics: ['Saludos y presentaciones', 'Vocabulario cotidiano', 'Primeras estructuras'], status: 'Inicio del recorrido' },
@@ -30,7 +31,7 @@ export default function PublicHome() {
       <Seo title="Aprende inglés, paso a paso" description="Conoce Munchira English: cursos de A1 a C2, vocabulario, práctica y repaso a tu ritmo. A1 disponible; A2–C2 en preparación." path="/" image={`https://id-preview--f553b302-239c-4b8c-bdfd-bae63f587a74.lovable.app${homeCover.url}`} />
       <a className="mp-skip" href="#contenido">Saltar al contenido</a>
       <header className="mp-header"><div className="mp-wrap mp-header-inner">
-        <Link to="/" aria-label="Munchira English, inicio" className="mp-logo"><img src="/brand/munchira-english.avif" width="140" height="77" alt="Munchira English" /></Link>
+        <HeaderBrand />
         <nav aria-label="Navegación principal" className="mp-nav"><a href="#cursos">Cursos</a><a href="#metodo">Método</a><a href="#planes">Planes</a></nav>
         <div className="mp-header-actions"><Link className="mp-login" to="/login">Iniciar sesión</Link><Link className="mp-button mp-button-dark mp-header-register" to="/register">Crear cuenta <span aria-hidden="true">↗</span></Link></div>
       </div></header>
