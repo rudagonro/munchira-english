@@ -29,6 +29,12 @@ export function Privacy() {
         qué datos recogemos, para qué, con quién los compartimos y qué derechos tienes.
       </p>
 
+      <p>
+        <strong>Responsable:</strong> Munchira English es responsable de tus datos, es decir, decide cómo se
+        recogen y se usan. <strong>Base legal:</strong> tratamos los datos de tu cuenta porque son necesarios
+        para darte el servicio que aceptas en los <Link to="/terminos">Términos de uso</Link>.
+      </p>
+
       <h2>1. Datos que recogemos</h2>
       <ul>
         <li><strong>Cuenta:</strong> nombre, correo electrónico y contraseña. La contraseña se guarda cifrada y nunca la vemos. Si entras con Google recibimos tu nombre y correo.</li>
