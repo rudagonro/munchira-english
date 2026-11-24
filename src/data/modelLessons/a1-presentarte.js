@@ -11,7 +11,7 @@ export const lessonA1Presentarte = {
   vocab: [
     { en: 'hello', es: 'hola', say: 'jelóu' },
     { en: 'name', es: 'nombre', say: 'néim' },
-    { en: 'nice to meet you', es: 'mucho gusto | encantado de conocerte | encantada de conocerte | encantado de conocerlo | encantada de conocerlo | gusto en conocerte | gusto en conocerle | gusto en conocerlo | gusto en conocerla | un gusto | un placer', say: 'náis tu mít iu' },
+    { en: 'nice to meet you', es: 'mucho gusto', say: 'náis tu mít iu' },
     { en: 'I am', es: 'yo soy / yo estoy', say: 'ái am' },
     { en: 'from', es: 'de (origen)', say: 'from' },
     { en: 'years old', es: 'años (de edad)', say: 'íers óuld' },
@@ -22,7 +22,7 @@ export const lessonA1Presentarte = {
     { title: '3. Decir de dónde eres', text: 'Usa «I\'m from» + el país o la ciudad. «From» indica origen, como «de» en «soy de Colombia».', example: "I'm from Colombia." },
     { title: '4. Decir tu edad', text: 'Aquí está la gran diferencia: en inglés la edad no se «tiene», se «es». Se usa «I am» + número + «years old».', example: "I'm 30 years old." },
     { title: '5. Preguntar a la otra persona', text: 'Para devolver la pregunta, cambia el orden: el verbo va antes del sujeto. «You are» (tú eres) pasa a «Are you…?» y las preguntas con palabra interrogativa empiezan por ella.', example: "What's your name? / Where are you from?" },
-    { title: '6. ¿Y los animales y las cosas?', text: 'En inglés no existe «él» ni «ella» para objetos o animales: todo eso es «it». Se conjuga igual que «he» y «she»: «it is», y se contrae «it\'s».', example: "It's a cat. (Es un gato.) / It's my book. (Es mi libro.)" },
+    { title: '6. ¿Y los animales y las cosas?', text: 'En inglés no existe «él» ni «ella» para objetos o animales: todo eso es «it». Se conjuga igual que «he» y «she»: «it is», y se contrae «it\'s». Mira la fila de «it» en la tabla de abajo: «It\'s a cat» (es un gato), «It\'s my book» (es mi libro).' },
   ],
   examples: [
     { en: 'Hello, my name is Ana.', es: 'Hola, me llamo Ana.', focus: 'my name is' },
@@ -49,7 +49,7 @@ export const lessonA1Presentarte = {
   mistakes: [
     { wrong: 'I have 30 years.', right: "I'm 30 years old.", why: 'En inglés la edad se expresa con «to be» (ser), no con «have» (tener).' },
     { wrong: 'Am Rubén.', right: "I'm Rubén.", why: 'El sujeto «I» es obligatorio. En inglés nunca se omite.' },
-    { wrong: 'I am of Colombia.', right: "Im from Colombia.", why: 'Para el origen se usa «from», no «o��' },
+    { wrong: 'I am of Colombia.', right: "I'm from Colombia.", why: 'Para el origen se usa «from», no «of».' },
     { wrong: 'What is you name?', right: 'What is your name?', why: '«You» es «tú»; «your» es «tu» (posesivo, el nombre es tuyo).' },
   ],
   guided: [
@@ -73,11 +73,11 @@ export const lessonA1Presentarte = {
     { speaker: 'Tú', text: "Hello, I'm Daniel. Nice to meet you." },
     { speaker: 'Emma', text: 'Nice to meet you too. Where are you from?' },
     { speaker: 'Tú', text: "I'm from Colombia. And you?" },
-    { speaker: 'Emma', text: "Im from Canada." },
+    { speaker: 'Emma', text: "I'm from Canada." },
   ],
   pronunciation: [
     { en: 'Nice to meet you', say: 'náis tu mít iu', tip: 'Une las palabras: suena casi como una sola.' },
-    { en: "Im from Colombia", say: 'áim from colómbia', tip: '«I\'m· suena «ámB�, con la m pegada.' },
+    { en: "I'm from Colombia", say: 'áim from colómbia', tip: '«I\'m» suena «áim», con la m pegada.' },
     { en: 'years old', say: 'íers óuld', tip: 'La «y» de «years» suena como la «i» de «hielo».' },
   ],
   freeTask: 'Escribe tu presentación en tres frases: tu nombre, de dónde eres y tu edad.',
