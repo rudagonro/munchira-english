@@ -159,7 +159,12 @@ export default function Register() {
 
       <details className="rg-data">
         <summary>Cómo usamos tus datos</summary>
-        <p>Usamos tus nombres, apellidos y correo para crear tu cuenta, guardar tu nivel y tu progreso y escribirte sobre tu cuenta. Tu fecha de nacimiento sirve para confirmar que tienes al menos 14 años. No vendemos tus datos ni mostramos publicidad. Puedes pedir que borremos tu cuenta escribiendo a <a href="mailto:english@munchira.com">english@munchira.com</a>.</p>
+        <p><strong>Quién es responsable:</strong> Munchira English decide cómo se recogen y usan los datos que nos das para crear tu cuenta.</p>
+        <p><strong>Para qué:</strong> usamos tus nombres, apellidos y correo para crear tu cuenta, guardar tu nivel y tu progreso y escribirte sobre tu cuenta. Tu fecha de nacimiento sirve para confirmar que tienes al menos 14 años.</p>
+        <p><strong>Base legal:</strong> necesitamos estos datos para darte el servicio que aceptas en los Términos de uso.</p>
+        <p><strong>Dónde se guardan:</strong> en proveedores de confianza que alojan la base de datos y la web; pueden estar fuera de tu país y aplican medidas de seguridad reconocidas.</p>
+        <p><strong>Cuánto tiempo:</strong> mientras tu cuenta esté abierta. Si pides cerrarla, borramos tu cuenta y tu progreso.</p>
+        <p><strong>Tus derechos:</strong> puedes pedir una copia de tus datos, corregirlos o borrarlos escribiendo a <a href="mailto:english@munchira.com">english@munchira.com</a>, y quejarte ante la autoridad de protección de datos de tu país. No vendemos tus datos ni mostramos publicidad. Más detalles en la <Link to="/privacidad" target="_blank">Política de privacidad</Link>.</p>
       </details>
 
       <button className="rg-submit" type="submit" disabled={loading}>{loading ? 'Creando cuenta…' : 'Crear mi cuenta'}</button>
