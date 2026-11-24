@@ -1,0 +1,17 @@
+.ex-feedback.wrong { flex-wrap: wrap; }
+.ex-fb-main { flex: 1 1 220px; min-width: 0; }
+.ex-fb-title { display: block; color: var(--red); font-weight: 800; }
+.ex-feedback.correct .ex-fb-title { color: var(--green); }
+.ex-fb-why { display: block; margin-top: 4px; color: var(--text); }
+.ex-fb-why b { color: var(--purple-dark); }
+.ex-fb-motivation { display: block; margin-top: 8px; color: var(--purple); font-weight: 700; }
+.ex-fb-reveal { display: block; margin-top: 6px; color: var(--text-muted); }
+.ex-fb-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; align-items: flex-start; }
+.ex-retry-btn {
+  background: var(--purple); color: var(--white); border: 0; border-radius: 8px;
+  padding: 8px 16px; min-height: 40px; font-family: inherit; font-size: 0.88rem; font-weight: 800; cursor: pointer;
+}
+.ex-retry-btn:hover { background: var(--purple-dark); }
+.ex-retry-btn:focus-visible, .ex-next-btn:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+.ex-fb-actions .ex-next-btn { margin-left: 0; min-height: 40px; }
+@media (max-width: 560px) { .ex-fb-actions { width: 100%; } .ex-fb-actions button { flex: 1; } }

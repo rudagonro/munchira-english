@@ -1,4 +1,52 @@
 import { useState, useRef, useEffect } from 'react'
+import { canReveal, countsForScore, retryMessage, successMessage } from './exerciseRetry'
+import './exercise-retry.css'
+
+/* Retroalimentación común: si fallas ves el porqué, un ánimo y «Inténtalo otra vez». */
+function Feedback({ state, fails, why, answer, onRetry, onNext }) {
+  if (state === 'correct') return (
+    <div className="ex-feedback correct" role="status">
+      <span className="ex-fb-icon" aria-hidden="true">✓</span>
+      <div className="ex-fb-main">
+        <strong className="ex-fb-title">{successMessage(fails)}</strong>
+        {why && <span className="ex-hint"> {why}</span>}
+      </div>
+      <button className="ex-next-btn" onClick={() => onNext(countsForScore(fails))}>Siguiente →</button>
+    </div>
+  )
+  if (state === 'revealed') return (
+    <div className="ex-feedback wrong" role="status">
+      <span className="ex-fb-icon" aria-hidden="true">✗</span>
+      <div className="ex-fb-main">
+        <strong className="ex-fb-title">La respuesta correcta es: {answer}</strong>
+        {why && <span className="ex-fb-why"><b>Por qué:</b> {why}</span>}
+        <span className="ex-fb-motivation">Guárdala: la volverás a ver en el repaso.</span>
+      </div>
+      <button className="ex-next-btn" onClick={() => onNext(false)}>Siguiente →</button>
+    </div>
+  )
+  return (
+    <div className="ex-feedback wrong" role="alert">
+      <span className="ex-fb-icon" aria-hidden="true">✗</span>
+      <div className="ex-fb-main">
+        <strong className="ex-fb-title">Incorrecto</strong>
+        {why && <span className="ex-fb-why"><b>Por qué:</b> {why}</span>}
+        <span className="ex-fb-motivation">{retryMessage(fails)}</span>
+      </div>
+      <div className="ex-fb-actions">
+        <button className="ex-retry-btn" onClick={onRetry} autoFocus>Inténtalo otra vez ↻</button>
+        {canReveal(fails) && <button className="ex-next-btn" onClick={onRetry.reveal}>Ver respuesta</button>}
+      </div>
+    </div>
+  )
+}
+
+function useAttempts() {
+  const [state, setState] = useState('idle')
+  const [fails, setFails] = useState(0)
+  const mark = ok => { setState(ok ? 'correct' : 'wrong'); if (!ok) setFails(f => f + 1) }
+  return { state, setState, fails, mark }
+}
 
 export default function ExerciseBlock({ exercises }) {
   const [idx, setIdx] = useState(0)
@@ -56,17 +104,15 @@ export default function ExerciseBlock({ exercises }) {
 /* ---- Fill in the blank ---- */
 function FillEx({ ex, onNext }) {
   const [val, setVal] = useState('')
-  const [state, setState] = useState('idle')
+  const { state, setState, fails, mark } = useAttempts()
   const inputRef = useRef(null)
 
-  useEffect(() => { inputRef.current?.focus() }, [])
+  useEffect(() => { if (state === 'idle') inputRef.current?.focus() }, [state])
 
   const acceptedAnswers = ex.answer.toLowerCase().split('|').map(s => s.trim())
-
-  function check() {
-    const isCorrect = acceptedAnswers.includes(val.toLowerCase().trim())
-    setState(isCorrect ? 'correct' : 'wrong')
-  }
+  const check = () => mark(acceptedAnswers.includes(val.toLowerCase().trim()))
+  const retry = () => { setVal(''); setState('idle') }
+  retry.reveal = () => setState('revealed')
 
   const parts = ex.sentence.split('___')
 
@@ -77,12 +123,13 @@ function FillEx({ ex, onNext }) {
         <span className="ex-fill-text">{parts[0]}</span>
         <input
           ref={inputRef}
-          className={`ex-fill-input ${state}`}
+          className={`ex-fill-input ${state === 'revealed' ? 'wrong' : state}`}
           value={val}
-          onChange={e => { setVal(e.target.value); setState('idle') }}
+          onChange={e => setVal(e.target.value)}
           onKeyDown={e => e.key === 'Enter' && state === 'idle' && val.trim() && check()}
           disabled={state !== 'idle'}
           placeholder="escribe aquí"
+          aria-label="Tu respuesta"
         />
         {parts[1] && <span className="ex-fill-text">{parts[1]}</span>}
       </div>
@@ -92,28 +139,7 @@ function FillEx({ ex, onNext }) {
           Comprobar
         </button>
       )}
-
-      {state === 'correct' && (
-        <div className="ex-feedback correct">
-          <span className="ex-fb-icon">✓</span>
-          <div>
-            <strong>¡Correcto!</strong>
-            {ex.hint && <span className="ex-hint"> {ex.hint}</span>}
-          </div>
-          <button className="ex-next-btn" onClick={() => onNext(true)}>Siguiente →</button>
-        </div>
-      )}
-
-      {state === 'wrong' && (
-        <div className="ex-feedback wrong">
-          <span className="ex-fb-icon">✗</span>
-          <div>
-            Respuesta: <strong>{ex.answer.split('|')[0]}</strong>
-            {ex.hint && <span className="ex-hint"> — {ex.hint}</span>}
-          </div>
-          <button className="ex-next-btn" onClick={() => onNext(false)}>Continuar →</button>
-        </div>
-      )}
+      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={ex.answer.split('|')[0]} onRetry={retry} onNext={onNext} />}
     </div>
   )
 }
@@ -121,13 +147,15 @@ function FillEx({ ex, onNext }) {
 /* ---- Multiple choice ---- */
 function ChoiceEx({ ex, onNext }) {
   const [selected, setSelected] = useState(null)
+  const { state, setState, fails, mark } = useAttempts()
 
   function pick(i) {
-    if (selected !== null) return
+    if (state !== 'idle') return
     setSelected(i)
+    mark(i === ex.correct)
   }
-
-  const isCorrect = selected === ex.correct
+  const retry = () => { setSelected(null); setState('idle') }
+  retry.reveal = () => setState('revealed')
 
   return (
     <div className="ex-body">
@@ -136,40 +164,28 @@ function ChoiceEx({ ex, onNext }) {
       <div className="ex-opts">
         {ex.opts.map((opt, i) => {
           let cls = 'ex-opt'
-          if (selected !== null) {
-            if (i === ex.correct) cls += ' correct'
-            else if (i === selected) cls += ' wrong'
-          }
+          if (state === 'correct' && i === ex.correct) cls += ' correct'
+          if (state === 'revealed' && i === ex.correct) cls += ' correct'
+          if ((state === 'wrong' || state === 'revealed') && i === selected) cls += ' wrong'
           return (
-            <button key={i} className={cls} onClick={() => pick(i)}>
+            <button key={i} className={cls} onClick={() => pick(i)} disabled={state !== 'idle'} aria-pressed={i === selected}>
               <span className="ex-opt-letter">{String.fromCharCode(65 + i)}</span>
               {opt}
             </button>
           )
         })}
       </div>
-
-      {selected !== null && (
-        <div className={`ex-feedback ${isCorrect ? 'correct' : 'wrong'}`}>
-          <span className="ex-fb-icon">{isCorrect ? '✓' : '✗'}</span>
-          <div>
-            {isCorrect ? <strong>¡Exacto!</strong> : <strong>No exactamente.</strong>}
-            {ex.why && <span className="ex-hint"> {ex.why}</span>}
-          </div>
-          <button className="ex-next-btn" onClick={() => onNext(isCorrect)}>Siguiente →</button>
-        </div>
-      )}
+      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.why} answer={ex.opts[ex.correct]} onRetry={retry} onNext={onNext} />}
     </div>
   )
 }
 
 /* ---- Word ordering ---- */
 function OrderEx({ ex, onNext }) {
+  const initialBank = () => ex.words.map((w, i) => ({ word: w, id: i }))
   const [placed, setPlaced] = useState([])
-  const [bank, setBank] = useState(() =>
-    ex.words.map((w, i) => ({ word: w, id: i }))
-  )
-  const [state, setState] = useState('idle')
+  const [bank, setBank] = useState(initialBank)
+  const { state, setState, fails, mark } = useAttempts()
 
   function addWord(item) {
     if (state !== 'idle') return
@@ -183,13 +199,9 @@ function OrderEx({ ex, onNext }) {
     setBank(b => [...b, item])
   }
 
-  function check() {
-    const result = placed.map(x => x.word).join(' ')
-    const isCorrect = result.toLowerCase() === ex.answer.toLowerCase()
-    setState(isCorrect ? 'correct' : 'wrong')
-  }
-
-  const isCorrect = state === 'correct'
+  const check = () => mark(placed.map(x => x.word).join(' ').toLowerCase() === ex.answer.toLowerCase())
+  const retry = () => { setPlaced([]); setBank(initialBank()); setState('idle') }
+  retry.reveal = () => setState('revealed')
 
   return (
     <div className="ex-body">
@@ -218,17 +230,7 @@ function OrderEx({ ex, onNext }) {
       {state === 'idle' && placed.length > 0 && bank.length === 0 && (
         <button className="ex-check-btn" onClick={check}>Comprobar</button>
       )}
-
-      {state !== 'idle' && (
-        <div className={`ex-feedback ${state}`}>
-          <span className="ex-fb-icon">{isCorrect ? '✓' : '✗'}</span>
-          <div>
-            {isCorrect ? <strong>¡Perfecto!</strong> : <>Correcto: <strong>"{ex.answer}"</strong></>}
-            {ex.hint && <span className="ex-hint"> {ex.hint}</span>}
-          </div>
-          <button className="ex-next-btn" onClick={() => onNext(isCorrect)}>Siguiente →</button>
-        </div>
-      )}
+      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={`"${ex.answer}"`} onRetry={retry} onNext={onNext} />}
     </div>
   )
 }
