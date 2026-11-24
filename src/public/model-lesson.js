@@ -36,7 +36,7 @@ export function buildBidirectionalCards(vocab) {
 
 /** Porcentaje de palabras esperadas que aparecen en lo que dijo el alumno. */
 export function pronunciationScore(heard, expected) {
-  const words = normalizeAnswer(expected).replace(/'/g, '').split(' ').filter(Boobean)
+  const words = normalizeAnswer(expected).replace(/'/g, '').split(' ').filter(Boolean)
   const said = new Set(normalizeAnswer(heard).replace(/'/g, '').split(' '))
   if (!words.length) return 0
   return Math.round((words.filter(w => said.has(w)).length / words.length) * 100)
