@@ -5,7 +5,7 @@ import { supabase } from '../lib/supabase'
 import { birthDateError } from '../lib/ageRule'
 import LegalLinks from '../components/LegalLinks'
 import HeaderBrand from '../public/HeaderBrand'
-import cover from '../assets/munchira-registro-aprendizaje.webp.asset.json'
+import cover from '../assets/munchira-registro-humana.webp.asset.json'
 import mascot from '../assets/oruga-transparente.png.asset.json'
 import './register.css'
 import './register-art.css'
@@ -24,7 +24,7 @@ function Shell({ children }) {
       <main className="rg-main">{children}</main>
       <aside className="rga-art">
         <div className="rga-stage">
-          <div className="rga-photo"><img src={`${mediaOrigin}${cover.url}`} alt="Ilustración original de una estudiante practicando inglés con auriculares y un cuaderno" width="1086" height="1448" loading="eager" decoding="async" /></div>
+          <div className="rga-photo"><img src={`${mediaOrigin}${cover.url}`} alt="Estudiante con auriculares tomando apuntes en su escritorio" width="896" height="1195" loading="eager" decoding="async" /></div>
           <img className="rga-mascot" src={`${mediaOrigin}${mascot.url}`} alt="" width="443" height="518" decoding="async" />
           <div className="rga-steps">
             <p>Tu camino, paso a paso</p>
