@@ -55,7 +55,7 @@ export default function PublicHome() {
         <section className="mp-section mp-faq" aria-labelledby="mp-faq-title"><div className="mp-wrap mp-faq-grid"><div><p className="mp-eyebrow">Antes de empezar</p><h2 id="mp-faq-title">¿Alguna pregunta?</h2><p>Hablemos.<br /><a href="mailto:english@munchira.com">english@munchira.com</a></p></div><div>{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></section>
         <section className="mp-closing"><div className="mp-wrap"><FooterBrand /><h2>Empieza con un «Hello!».</h2><p>Lo siguiente lo construyes tú.</p><Link className="mp-button mp-button-dark" to="/register">Crear mi cuenta <span aria-hidden="true">↗</span></Link></div></section>
       </main>
-      <footer className="mp-footer"><div className="mp-wrap"><div className="mp-footer-top"><FooterBrand /><nav aria-label="Información legal"><Link to="/privacidad">Privacidad</Link><Link to="/terminos">Términos</Link><a href="mailto:english@munchira.com">Contacto</a></nav></div><div className="mp-footer-bottom"><span>© {new Date().getFullYear()} Munchira English</span><span>Aprende inglés, paso a paso.</span></div></div></footer>
+      <footer className="mp-footer"><div className="mp-wrap"><div className="mp-footer-top"><strong>Munchira English</strong><nav aria-label="Información legal"><Link to="/privacidad">Privacidad</Link><Link to="/terminos">Términos</Link><a href="mailto:english@munchira.com">Contacto</a></nav></div><div className="mp-footer-bottom"><span>© {new Date().getFullYear()} Munchira English</span><span>Aprende inglés, paso a paso.</span></div></div></footer>
     </div>
   )
 }
