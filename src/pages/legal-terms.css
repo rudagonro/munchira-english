@@ -1,0 +1,20 @@
+/* Términos de uso: resumen, índice y secciones con anclas. */
+.legal .terms-lead { font-size: 1.08rem; line-height: 1.65; }
+.legal .terms-summary {
+  margin: 24px 0; padding: 20px 22px; border-radius: 16px;
+  background: color-mix(in srgb, var(--purple, #1f3a8a) 7%, transparent);
+  border-left: 4px solid var(--purple, #1f3a8a);
+}
+.legal .terms-summary h2, .legal .terms-toc h2 { margin-top: 0; font-size: 1.05rem; }
+.legal .terms-summary ul { margin: 8px 0 0; }
+.legal .terms-summary-note { margin: 10px 0 0; font-size: .85rem; color: var(--text-muted, #667); }
+.legal .terms-toc {
+  margin: 0 0 28px; padding: 18px 22px; border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--text-muted, #667) 25%, transparent);
+}
+.legal .terms-toc ol { margin: 6px 0 0; padding-left: 22px; columns: 2; column-gap: 32px; }
+.legal .terms-toc li { break-inside: avoid; padding: 3px 0; }
+.legal .terms-toc a { color: var(--purple, #1f3a8a); text-decoration: none; }
+.legal .terms-toc a:hover { text-decoration: underline; }
+.legal .terms-section { scroll-margin-top: 90px; }
+@media (max-width: 640px) { .legal .terms-toc ol { columns: 1; } }
