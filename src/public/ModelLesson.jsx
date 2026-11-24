@@ -51,11 +51,11 @@ function TwoWayCards({ accent }) {
     if (toEnglish || ok) sayEnglish(card.audio, { accent })
   }}>
     <p className="ml-card-meta">Tarjeta {idx + 1} de {cards.length} · {toEnglish ? 'Español → Inglés' : 'Inglés → Español'}</p>
-    <p className="ml-card-prompt">{card.prompt} {!toEnglish && <ListenButtons text={card.audio} accent={accent} />}</p>
+    <p className="ml-card-prompt">{toEnglish ? (card.display ?? card.prompt) : card.prompt} {!toEnglish && <ListenButtons text={card.audio} accent={accent} />}</p>
     <label>{toEnglish ? 'Escríbelo en inglés' : 'Escríbelo en español'}
       <input value={value} onChange={e => setValue(e.target.value)} disabled={Boolean(result)} autoComplete="off" autoCapitalize="none" spellCheck={false} />
     </label>
-    {result && <p className={`ml-feedback ${result === 'ok' ? 'ml-ok' : 'ml-bad'}`} role="status">{result === 'ok' ? '¡Correcto!' : <>Casi. La respuesta es <strong>{card.answer}</strong>.</>}</p>}
+    {result && <p className={`ml-feedback ${result === 'ok' ? 'ml-ok' : 'ml-bad'}`} role="status">{result === 'ok' ? '¡Correcto!' : <>Casi. Puedes decir <strong>{card.display ?? card.answer}</strong>.</>}</p>}
     <button className="mp-button mp-button-dark" type="submit" disabled={!result && !value.trim()}>{result ? 'Siguiente →' : 'Comprobar'}</button>
   </form>
 }
