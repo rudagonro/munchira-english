@@ -415,7 +415,7 @@ test('teacher_overview aggregates progress, scores, vocabulary and blocked check
 
   const row = await asUser(db, teacher, async (c) => (await c.query('select * from public.teacher_overview()')).rows[0])
   assert.equal(row.cefr_level, 'A1')
-  assert.equal(row.modules_completed, 1)
+  assert.equal(row.modules_completed, 0) // 33% is below the 70% pass mark
   assert.equal(row.modules_total, 2)
   assert.equal(Number(row.avg_quiz_score), 33.3)
   assert.equal(row.weakest_skill, 'grammar')
@@ -714,5 +714,30 @@ test('staff save audio URLs on dialogue turns; the bucket is public; students ca
 
   await asUser(db, student, async (c) => {
     await assert.rejects(() => c.query('select public.staff_save_lesson_audio($1, $2::jsonb)', [lesson, JSON.stringify([url('a'), url('b')])]), /forbidden/)
+  })
+})
+
+test('quiz below 70% leaves the module in progress and keeps the next one locked', async () => {
+  const { db, student, a1 } = await setup()
+  await asUser(db, student, async (c) => {
+    await diagnose(c)
+    const r = await submit(c, a1.moduleIds[0], await answers(db, a1.moduleIds[0], { correct: 2 })) // 66.67%
+    assert.equal(r.passed, false)
+    const { rows } = await c.query('select status from public.module_progress')
+    assert.deepEqual(rows.map((x) => x.status), ['in_progress'])
+    await assert.rejects(() => submit(c, a1.moduleIds[1], {}), /module_locked/)
+  })
+})
+
+test('quiz at 70% or more completes the module and a weaker retake keeps it completed', async () => {
+  const { db, student, a1 } = await setup()
+  await asUser(db, student, async (c) => {
+    await diagnose(c)
+    const ok = await submit(c, a1.moduleIds[0], await answers(db, a1.moduleIds[0], { correct: 3 })) // 100%
+    assert.equal(ok.passed, true)
+    await submit(c, a1.moduleIds[0], await answers(db, a1.moduleIds[0], { correct: 0 }))
+    const { rows } = await c.query('select status, quiz_score from public.module_progress')
+    assert.equal(rows[0].status, 'completed')
+    assert.equal(Number(rows[0].quiz_score), 100)
   })
 })
