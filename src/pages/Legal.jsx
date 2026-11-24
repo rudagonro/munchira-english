@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
+import './legal-terms.css'
 
 const CONTACT = 'english@munchira.com'
-const UPDATED = '21 de noviembre de 2026'
+const UPDATED = '24 de noviembre de 2026'
 
 function Page({ title, children }) {
   return (
     <div className="legal">
-      <Link className="legal-back" to="/login">← Volver</Link>
+      <Link className="legal-back" to="/">← Volver al inicio</Link>
       <h1>{title}</h1>
       <p className="legal-meta">Munchira English · Última actualización: {UPDATED}</p>
       {children}
@@ -117,81 +118,130 @@ export function Privacy() {
 export function Terms() {
   return (
     <Page title="Términos de uso">
-      <p>
-        Al crear una cuenta o usar Munchira English aceptas estos términos. Si no estás de acuerdo, no uses el
-        servicio.
+      <p className="terms-lead">
+        Estos términos explican las reglas para usar Munchira English. Al crear una cuenta o usar el
+        Servicio los aceptas; si no estás de acuerdo, por favor no lo uses.
       </p>
 
-      <h2>1. Qué es Munchira English</h2>
-      <p>
-        Una plataforma para aprender inglés por niveles (A1 a C2 del Marco Común Europeo) con diagnóstico,
-        módulos, quizzes, audio y repaso de vocabulario. El diagnóstico y los resultados son
-        orientativos: <strong>no son una certificación oficial</strong> ni sustituyen exámenes como
-        Cambridge, IELTS o TOEFL.
-      </p>
+      <aside className="terms-summary" aria-label="Resumen">
+        <h2>En pocas palabras</h2>
+        <ul>
+          <li>Munchira te ayuda a aprender inglés paso a paso; no es una certificación oficial.</li>
+          <li>Necesitas tener 14 años o más y dar datos verdaderos.</li>
+          <li>Tu cuenta es personal y los contenidos son solo para tu estudio.</li>
+          <li>Hoy el Servicio es gratuito; nunca te cobraremos sin tu aceptación.</li>
+        </ul>
+        <p className="terms-summary-note">Este resumen no sustituye el texto completo.</p>
+      </aside>
 
-      <h2>2. Tu cuenta</h2>
-      <ul>
-        <li>Debes dar datos verdaderos y mantener tu contraseña en secreto.</li>
-        <li>Eres responsable de la actividad que ocurra en tu cuenta.</li>
-        <li>Solo puedes tener una cuenta personal; no la compartas ni la vendas.</li>
-        <li>Debes tener 14 años o más; los menores de edad necesitan permiso de su madre, padre o tutor.</li>
-      </ul>
+      <nav className="terms-toc" aria-label="Contenido">
+        <h2>Contenido</h2>
+        <ol>
+          <li><a href="#que-es">Qué es Munchira English</a></li>
+          <li><a href="#definiciones">Definiciones</a></li>
+          <li><a href="#cuenta">Tu cuenta</a></li>
+          <li><a href="#aprendizaje">Cómo funciona el aprendizaje</a></li>
+          <li><a href="#precio">Precio y pagos</a></li>
+          <li><a href="#uso">Uso aceptable</a></li>
+          <li><a href="#propiedad">Contenidos y propiedad intelectual</a></li>
+          <li><a href="#audio">Audio generado</a></li>
+          <li><a href="#disponibilidad">Disponibilidad y cambios del Servicio</a></li>
+          <li><a href="#cierre">Suspensión y cierre de la cuenta</a></li>
+          <li><a href="#responsabilidad">Limitación de responsabilidad</a></li>
+          <li><a href="#datos">Datos personales y cookies</a></li>
+          <li><a href="#cambios">Cambios en estos términos</a></li>
+        </ol>
+      </nav>
 
-      <h2>3. Uso aceptable</h2>
-      <p>No está permitido:</p>
-      <ul>
-        <li>Intentar acceder a cuentas o datos de otras personas, o saltarte las protecciones del servicio.</li>
-        <li>Usar bots, scripts o peticiones automáticas para extraer contenido o generar audio de forma masiva.</li>
-        <li>Copiar, revender o redistribuir los contenidos del curso sin permiso por escrito.</li>
-        <li>Subir o enviar contenido ilegal, ofensivo o que vulnere derechos de terceros.</li>
-      </ul>
+      <section id="que-es" className="terms-section">
+        <h2>1. Qué es Munchira English</h2>
+        <p>Munchira English es una plataforma en línea para aprender inglés por niveles, del A1 al C2 del Marco Común Europeo de Referencia. Incluye un diagnóstico de nivel, módulos con lecciones, ejercicios, cuestionarios, audio y repaso de vocabulario.</p>
+        <p>El diagnóstico y los resultados son <strong>orientativos</strong>. Munchira <strong>no emite certificaciones oficiales</strong> y no sustituye exámenes como Cambridge, IELTS o TOEFL.</p>
+      </section>
 
-      <h2>4. Contenidos y propiedad intelectual</h2>
-      <p>
-        Las lecciones, ejercicios, quizzes, audios, diseño y marca de Munchira English son de sus titulares.
-        Te damos una licencia personal, no exclusiva e intransferible para usarlos con fines de estudio
-        mientras tu cuenta esté activa.
-      </p>
+      <section id="definiciones" className="terms-section">
+        <h2>2. Definiciones</h2>
+        <ul>
+          <li><strong>“Munchira”, “nosotros”:</strong> el equipo responsable de Munchira English.</li>
+          <li><strong>“Servicio”:</strong> el sitio munchira.com, la aplicación y todos sus contenidos.</li>
+          <li><strong>“Estudiante”, “tú”:</strong> la persona que crea una cuenta o usa el Servicio.</li>
+          <li><strong>“Docente”:</strong> la persona autorizada por Munchira para acompañar el progreso de estudiantes asignados.</li>
+          <li><strong>“Contenidos”:</strong> lecciones, ejercicios, cuestionarios, audios, textos, imágenes, diseño y marca.</li>
+        </ul>
+      </section>
 
-      <h2>5. Audio generado</h2>
-      <p>
-        El audio de las lecciones se genera con voces sintéticas. Puede tener errores leves de
-        pronunciación o entonación. Existe un límite diario de audio por usuario para mantener el servicio
-        disponible para todas las personas.
-      </p>
+      <section id="cuenta" className="terms-section">
+        <h2>3. Tu cuenta</h2>
+        <ul>
+          <li>Para crear una cuenta debes tener <strong>14 años o más</strong>. Te pedimos tu fecha de nacimiento para comprobarlo. Si eres menor de edad, necesitas el permiso de tu madre, padre o tutor.</li>
+          <li>Debes dar datos verdaderos (nombres, apellidos y correo) y mantenerlos actualizados.</li>
+          <li>Tu cuenta es personal: no la compartas, vendas ni cedas. Guarda tu contraseña en secreto.</li>
+          <li>Eres responsable de la actividad que ocurra en tu cuenta. Si crees que alguien la usó sin permiso, escríbenos de inmediato.</li>
+          <li>Puedes entrar con correo y contraseña o con Google; en ambos casos se aplican estos términos.</li>
+        </ul>
+      </section>
 
-      <h2>6. Disponibilidad y cambios</h2>
-      <p>
-        Hacemos lo posible por que el servicio funcione siempre, pero puede haber interrupciones por
-        mantenimiento o por fallos de terceros. Podemos modificar, añadir o retirar contenidos y funciones.
-        Los ciclos cuyo contenido aún no está completo se publican por etapas.
-      </p>
+      <section id="aprendizaje" className="terms-section">
+        <h2>4. Cómo funciona el aprendizaje</h2>
+        <ul>
+          <li>Tu nivel inicial se asigna con el diagnóstico y puede cambiar según tu avance.</li>
+          <li>Un módulo se considera <strong>completado</strong> cuando obtienes al menos <strong>70%</strong> en su cuestionario. Puedes repetirlo; si ya lo aprobaste, un intento posterior con menor nota no te quita el aprobado.</li>
+          <li>Algunos módulos se abren a medida que completas los anteriores.</li>
+          <li>Los niveles y contenidos se publican y amplían por etapas.</li>
+        </ul>
+      </section>
 
-      <h2>7. Suspensión y cierre de la cuenta</h2>
-      <p>
-        Puedes dejar de usar Munchira y pedir la eliminación de tu cuenta cuando quieras. Podemos suspender
-        o cerrar cuentas que incumplan estos términos o pongan en riesgo la seguridad del servicio.
-      </p>
+      <section id="precio" className="terms-section">
+        <h2>5. Precio y pagos</h2>
+        <p>Actualmente Munchira <strong>no cobra</strong> por el uso del Servicio y no te pedimos datos de pago. Si en el futuro ofrecemos planes de pago o suscripciones, publicaremos antes sus precios y condiciones, y nunca te cobraremos sin que lo aceptes de forma expresa.</p>
+      </section>
 
-      <h2>8. Limitación de responsabilidad</h2>
-      <p>
-        Munchira se ofrece “tal cual”, con fines educativos. No garantizamos un resultado concreto de
-        aprendizaje ni que el servicio esté libre de errores. En la medida permitida por la ley, no
-        respondemos por daños indirectos derivados del uso o la imposibilidad de uso del servicio. Esto no
-        limita los derechos que la ley te reconoce como consumidor.
-      </p>
+      <section id="uso" className="terms-section">
+        <h2>6. Uso aceptable</h2>
+        <p>Al usar Munchira te comprometes a no:</p>
+        <ul>
+          <li>Acceder o intentar acceder a cuentas o datos de otras personas, ni saltarte las protecciones del Servicio.</li>
+          <li>Usar bots, scripts o peticiones automáticas para extraer contenidos o generar audio de forma masiva.</li>
+          <li>Copiar, revender o redistribuir los Contenidos sin permiso por escrito.</li>
+          <li>Publicar o enviar material ilegal, ofensivo, discriminatorio o que vulnere derechos de terceros.</li>
+          <li>Suplantar a otra persona o dar información falsa para crear una cuenta.</li>
+        </ul>
+      </section>
 
-      <h2>9. Datos personales</h2>
-      <p>
-        El tratamiento de tus datos se describe en la <Link to="/privacidad">Política de privacidad</Link>.
-      </p>
+      <section id="propiedad" className="terms-section">
+        <h2>7. Contenidos y propiedad intelectual</h2>
+        <p>Los Contenidos y la marca Munchira English pertenecen a sus titulares y están protegidos por la ley. Te damos una licencia <strong>personal, no exclusiva e intransferible</strong> para usarlos con fines de estudio mientras tu cuenta esté activa. Esta licencia no te permite usarlos con fines comerciales.</p>
+      </section>
 
-      <h2>10. Cambios en los términos</h2>
-      <p>
-        Podemos actualizar estos términos. Si el cambio es importante, lo avisaremos en la aplicación. Si
-        sigues usando Munchira después, entendemos que aceptas la versión actualizada.
-      </p>
+      <section id="audio" className="terms-section">
+        <h2>8. Audio generado</h2>
+        <p>El audio de las lecciones se produce con voces sintéticas y puede tener pequeños errores de pronunciación o entonación. Hay un límite diario de audio por persona para mantener el Servicio disponible para todos. La aplicación no usa tu micrófono ni graba tu voz.</p>
+      </section>
+
+      <section id="disponibilidad" className="terms-section">
+        <h2>9. Disponibilidad y cambios del Servicio</h2>
+        <p>Trabajamos para que Munchira funcione siempre, pero puede haber interrupciones por mantenimiento o fallos de proveedores. Podemos modificar, añadir o retirar contenidos y funciones para mejorar el Servicio.</p>
+      </section>
+
+      <section id="cierre" className="terms-section">
+        <h2>10. Suspensión y cierre de la cuenta</h2>
+        <p>Puedes dejar de usar Munchira y pedir que eliminemos tu cuenta en cualquier momento escribiendo a nuestro correo de contacto. Podemos suspender o cerrar cuentas que incumplan estos términos o pongan en riesgo la seguridad del Servicio o de otras personas.</p>
+      </section>
+
+      <section id="responsabilidad" className="terms-section">
+        <h2>11. Limitación de responsabilidad</h2>
+        <p>Munchira se ofrece “tal cual”, con fines educativos. No garantizamos un resultado concreto de aprendizaje ni que el Servicio esté libre de errores. En la medida permitida por la ley, no respondemos por daños indirectos derivados del uso o la imposibilidad de uso del Servicio. Nada de esto limita los derechos que la ley te reconoce como consumidor.</p>
+      </section>
+
+      <section id="datos" className="terms-section">
+        <h2>12. Datos personales y cookies</h2>
+        <p>Cómo tratamos tus datos se explica en la <Link to="/privacidad">Política de privacidad</Link>. Solo usamos almacenamiento necesario para que el Servicio funcione; no usamos cookies de publicidad ni de seguimiento.</p>
+      </section>
+
+      <section id="cambios" className="terms-section">
+        <h2>13. Cambios en estos términos</h2>
+        <p>Podemos actualizar estos términos. Cambiaremos la fecha de “Última actualización” y, si el cambio es importante, te avisaremos dentro de la aplicación. Si sigues usando Munchira después del aviso, entendemos que aceptas la nueva versión.</p>
+      </section>
     </Page>
   )
 }
