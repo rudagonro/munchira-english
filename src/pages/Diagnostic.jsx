@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
+import { supabase } from '../lib/supabase'
+import './diagnostic-choice.css'
 import { useDiagnostic } from '../hooks/useDiagnostic'
 import { LEVEL_NAMES, bankReading, bankListening, bankWriting } from '../data/diagnosticBank'
 
@@ -20,6 +22,27 @@ export default function Diagnostic({ preview = false }) {
   const [selectedIdx, setSelectedIdx] = useState(null)
   const [saving, setSaving] = useState(false)
   const [saveError, setSaveError] = useState('')
+  const [starting, setStarting] = useState(false)
+  const [startError, setStartError] = useState('')
+
+  // «Empiezo desde cero»: inscribe en A1 sin guardar un diagnóstico falso.
+  async function handleStartFromZero() {
+    setStarting(true)
+    setStartError('')
+    const { error } = await supabase.rpc('start_from_zero')
+    setStarting(false)
+    if (error) {
+      console.error(error)
+      setStartError('No pudimos empezar en A1 ahora mismo. Inténtalo de nuevo en unos minutos o haz la prueba de nivel.')
+      return
+    }
+    navigate('/app')
+  }
+
+  function handleExit() {
+    if (preview) return navigate('/revisor')
+    if (window.confirm('Si sales ahora, tus respuestas de esta prueba no se guardan. ¿Quieres salir?')) navigate('/app')
+  }
 
   function handleSelect(idx) {
     setSelectedIdx(idx)
@@ -78,20 +101,31 @@ export default function Diagnostic({ preview = false }) {
     return (
       <div className="diag-intro">
         {previewBanner}
-        <div className="diag-mark">Examen de Ubicación · CEFR</div>
-        <h1>Diagnóstico <span>Munchira English</span></h1>
-        <p>
-          Antes de empezar tu camino, necesitamos saber dónde estás parado. Mide
-          gramática, vocabulario, lectura, escucha y escritura para ubicarte en
-          el nivel exacto.
-        </p>
-        <p className="diag-note">
-          La dificultad sube o baja según tus respuestas — así se confirma tu
-          nivel real. Cada pregunta es distinta, nunca se repite.
-        </p>
-        <button className="btn-primary diag-start-btn" onClick={diag.startDiagnostic}>
-          Comenzar diagnóstico
-        </button>
+        <div className="diag-mark">Primer paso · Munchira English</div>
+        <h1>¿Cómo quieres <span>empezar</span>?</h1>
+        <p>Elige lo que mejor te describa. Siempre podrás hacer la prueba de nivel más tarde desde tu panel.</p>
+        <div className="diag-choice">
+          {!preview && (
+            <div className="diag-choice-card">
+              <h2>Empiezo desde cero</h2>
+              <p>Nunca he estudiado inglés o sé muy poco. Empiezo en A1, paso a paso.</p>
+              <button type="button" className="diag-choice-btn" onClick={handleStartFromZero} disabled={starting}>
+                {starting ? 'Preparando A1...' : 'Empezar en A1'}
+              </button>
+            </div>
+          )}
+          <div className="diag-choice-card">
+            <h2>Ya sé algo de inglés</h2>
+            <p>Haz la prueba de nivel: gramática, vocabulario, lectura, escucha y escritura. La dificultad se adapta a tus respuestas.</p>
+            <button className="btn-primary diag-start-btn" onClick={diag.startDiagnostic}>
+              Hacer prueba de nivel
+            </button>
+          </div>
+        </div>
+        {startError && <div className="error-banner" role="alert">{startError}</div>}
+        {!preview && (
+          <button type="button" className="diag-exit-link" onClick={() => navigate('/app')}>Volver a mi panel</button>
+        )}
       </div>
     )
   }
@@ -148,7 +182,7 @@ export default function Diagnostic({ preview = false }) {
   if (diag.block === 1) {
     const q = diag.gvCurrentQ
     return (
-      <DiagShell banner={previewBanner} stageLabel={`Bloque 1 · Gramática & Vocabulario — calibrando: ${diag.gvCurrentLevel}`}>
+      <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 1 · Gramática & Vocabulario — calibrando: ${diag.gvCurrentLevel}`}>
         <div className="diag-tag">Pregunta {diag.gvQuestionNumber} de hasta 15</div>
         <h1 className="diag-question">{q.q}</h1>
         <OptionsList options={q.opts} selectedIdx={selectedIdx} onSelect={handleSelect} />
@@ -162,7 +196,7 @@ export default function Diagnostic({ preview = false }) {
     const data = bankReading[diag.readingLevel]
     if (diag.readingStep === 0) {
       return (
-        <DiagShell banner={previewBanner} stageLabel={`Bloque 2 · Reading — nivel ${diag.readingLevel}`}>
+        <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 2 · Reading — nivel ${diag.readingLevel}`}>
           <div className="diag-tag">Comprensión de lectura</div>
           <div className="diag-passage">{data.passage}</div>
           <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>
@@ -174,7 +208,7 @@ export default function Diagnostic({ preview = false }) {
     }
     const q = data.questions[diag.readingStep - 1]
     return (
-      <DiagShell banner={previewBanner} stageLabel={`Bloque 2 · Reading — nivel ${diag.readingLevel}`}>
+      <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 2 · Reading — nivel ${diag.readingLevel}`}>
         <div className="diag-tag">Pregunta {diag.readingStep} de {data.questions.length}</div>
         <div className="diag-passage diag-passage-small">{data.passage}</div>
         <h1 className="diag-question">{q.q}</h1>
@@ -189,7 +223,7 @@ export default function Diagnostic({ preview = false }) {
     const data = bankListening[diag.listeningLevel]
     if (diag.listeningStep === 0) {
       return (
-        <DiagShell banner={previewBanner} stageLabel={`Bloque 3 · Listening — nivel ${diag.listeningLevel}`}>
+        <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 3 · Listening — nivel ${diag.listeningLevel}`}>
           <div className="diag-tag">Comprensión auditiva</div>
           <AudioBox transcript={data.transcript} onPlay={playAudio} />
           <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>
@@ -201,7 +235,7 @@ export default function Diagnostic({ preview = false }) {
     }
     const q = data.questions[diag.listeningStep - 1]
     return (
-      <DiagShell banner={previewBanner} stageLabel={`Bloque 3 · Listening — nivel ${diag.listeningLevel}`}>
+      <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 3 · Listening — nivel ${diag.listeningLevel}`}>
         <div className="diag-tag">Pregunta {diag.listeningStep} de {data.questions.length}</div>
         <AudioBox transcript={data.transcript} onPlay={playAudio} />
         <h1 className="diag-question">{q.q}</h1>
@@ -217,7 +251,7 @@ export default function Diagnostic({ preview = false }) {
     const words = diag.writingText.trim().split(/\s+/).filter((w) => w.length > 0).length
     const ok = words >= 40
     return (
-      <DiagShell banner={previewBanner} stageLabel={`Bloque 4 · Writing — nivel ${diag.writingLevel}`}>
+      <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 4 · Writing — nivel ${diag.writingLevel}`}>
         <div className="diag-tag">Expresión escrita</div>
         <p className="diag-writing-prompt">{prompt}</p>
         <textarea
@@ -235,11 +269,14 @@ export default function Diagnostic({ preview = false }) {
   return null
 }
 
-function DiagShell({ stageLabel, banner, children }) {
+function DiagShell({ stageLabel, banner, children, onExit }) {
   return (
     <div className="diag-shell">
       {banner}
-      <div className="diag-stage-label">{stageLabel}</div>
+      <div className="diag-topbar">
+        <div className="diag-stage-label">{stageLabel}</div>
+        {onExit && <button type="button" className="diag-exit" onClick={onExit}>Salir</button>}
+      </div>
       <div className="diag-main">{children}</div>
     </div>
   )

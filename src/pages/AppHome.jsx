@@ -45,6 +45,7 @@ export default function AppHome() {
     ? computeModuleAvailability(cycle.modules, cycle.progress, cycle.checkpoints, cycle.checkpointAttempts)
     : []
   const sum = summarizeCycle(availability)
+  const started = Boolean(diag || cycle?.enrollment)
   const level = cycle?.enrollment?.cycles?.cefr_level ?? diag?.cefr_level ?? null
 
   if (loading) return <div className="screen-center"><p className="loading-text">Cargando tu panel...</p></div>
@@ -57,8 +58,8 @@ export default function AppHome() {
         <div>
           <span className="dash-eyebrow">Tu espacio de aprendizaje</span>
           <h1>Hola, {name}</h1>
-          {!diag ? (
-            <p>Empieza con el diagnóstico: unas preguntas para ubicarte en tu nivel y preparar tus módulos.</p>
+          {!started ? (
+            <p>Elige cómo empezar: desde cero en A1 o con una prueba de nivel para ubicarte y preparar tus módulos.</p>
           ) : sum.next ? (
             <p>Tu siguiente paso es <strong>{sum.next.title}</strong>. Un poco cada día cuenta más que mucho de vez en cuando.</p>
           ) : sum.total === 0 ? (
@@ -67,8 +68,8 @@ export default function AppHome() {
             <p>Completaste todos los módulos disponibles de tu nivel. Repasa los que tengan nota baja para afianzarlos.</p>
           )}
           <div className="dash-actions">
-            {!diag
-              ? <Link to="/diagnostic" className="dash-btn">Tomar diagnóstico</Link>
+            {!started
+              ? <Link to="/diagnostic" className="dash-btn">Empezar</Link>
               : sum.next
                 ? <Link to={`/module/${sum.next.id}`} className="dash-btn">Continuar: {sum.next.title}</Link>
                 : <Link to="/cycle" className="dash-btn">Ver mis módulos</Link>}
@@ -130,7 +131,7 @@ export default function AppHome() {
       </div>
 
       <div className="dash-foot">
-        {diag && <Link to="/diagnostic" className="auth-footer" style={{ marginRight: 'auto', alignSelf: 'center' }}>Volver a tomar el diagnóstico</Link>}
+        {started && <Link to="/diagnostic" className="auth-footer" style={{ marginRight: 'auto', alignSelf: 'center' }}>{diag ? 'Repetir la prueba de nivel' : 'Hacer la prueba de nivel'}</Link>}
         <button type="button" onClick={signOut}>Cerrar sesión</button>
       </div>
     </div>

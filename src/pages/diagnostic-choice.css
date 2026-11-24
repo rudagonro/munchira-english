@@ -1,0 +1,55 @@
+/* Pantalla de primer ingreso: elegir empezar desde cero o hacer la prueba de nivel. */
+.diag-choice {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 720px;
+  margin: 24px auto 8px;
+  text-align: left;
+}
+.diag-choice-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--purple) 22%, transparent);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--purple) 5%, transparent);
+}
+.diag-choice-card h2 { margin: 0; font-size: 1.15rem; }
+.diag-choice-card p { margin: 0; flex: 1; color: var(--text-muted); font-size: .95rem; }
+.diag-choice-card .diag-start-btn { margin: 0; width: 100%; }
+.diag-choice-btn {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 2px solid var(--purple);
+  background: transparent;
+  color: var(--purple);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.diag-choice-btn:disabled { opacity: .6; cursor: wait; }
+.diag-exit-link {
+  margin-top: 12px;
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.diag-topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.diag-exit {
+  flex: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--purple) 35%, transparent);
+  background: transparent;
+  color: var(--purple);
+  font: inherit;
+  font-size: .85rem;
+  cursor: pointer;
+}
