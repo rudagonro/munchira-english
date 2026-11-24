@@ -1,3 +1,4 @@
+import { isCountryCode } from './countries.js'
 // Reglas puras de la pantalla de cuenta (sin React ni Supabase) para poder probarlas.
 
 export const MIN_PASSWORD = 8
@@ -67,15 +68,18 @@ export function profileCompletion(user) {
   const birthDate = hasBirthDate(meta.birth_date) ? meta.birth_date : ''
   const firstName = typeof meta.first_name === 'string' ? meta.first_name.trim() : ''
   const lastName = typeof meta.last_name === 'string' ? meta.last_name.trim() : ''
+  const country = isCountryCode(meta.country) ? meta.country : ''
   const needsNames = !(firstName && lastName)
   const suggested = needsNames ? splitFullName(meta.full_name ?? meta.name) : { firstName, lastName }
   return {
     birthDate,
+    country,
+    needsCountry: !country,
     firstName: suggested.firstName,
     lastName: suggested.lastName,
     needsBirthDate: !birthDate,
     needsNames,
-    needed: !birthDate || needsNames,
+    needed: !birthDate || needsNames || !country,
   }
 }
 

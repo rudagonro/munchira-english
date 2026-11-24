@@ -11,7 +11,7 @@ const googleUser = {
 const fullUser = {
   user_metadata: {
     email: 'algo@correo.com', full_name: 'Rubén González',
-    first_name: 'Rubén', last_name: 'González', birth_date: '1990-05-04',
+    first_name: 'Rubén', last_name: 'González', birth_date: '1990-05-04', country: 'CO',
   },
 }
 
@@ -46,4 +46,15 @@ test('una fecha con formato invalido no vale como dato', () => {
 test('un solo nombre no rellena los apellidos', () => {
   assert.deepEqual(splitFullName('Rubén'), { firstName: 'Rubén', lastName: '' })
   assert.deepEqual(splitFullName('Rubén González Pérez'), { firstName: 'Rubén', lastName: 'González Pérez' })
+})
+
+test('sin país hay que completar los datos aunque tenga nombres y fecha', () => {
+  const user = { user_metadata: { first_name: 'Rubén', last_name: 'González', birth_date: '1990-05-04' } }
+  assert.equal(needsProfileCompletion(user), true)
+  assert.equal(profileCompletion(user).needsCountry, true)
+})
+
+test('un país inventado no cuenta como país', () => {
+  const user = { user_metadata: { first_name: 'Rubén', last_name: 'González', birth_date: '1990-05-04', country: 'XX' } }
+  assert.equal(needsProfileCompletion(user), true)
 })

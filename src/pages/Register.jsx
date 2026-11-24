@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
 import { birthDateError } from '../lib/ageRule'
+import { COUNTRIES } from '../lib/countries'
 import LegalLinks from '../components/LegalLinks'
 import HeaderBrand from '../public/HeaderBrand'
 import cover from '../assets/munchira-registro-humana.webp.asset.json'
@@ -104,6 +105,7 @@ export default function Register() {
   const [birthYear, setBirthYear] = useState('')
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
+  const [country, setCountry] = useState('')
   const [accepted, setAccepted] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -118,6 +120,7 @@ export default function Register() {
     if (!firstName.trim() || !lastName.trim()) { setError('Escribe tus nombres y tus apellidos.'); return }
     const ageError = birthDateError(birthYear, birthMonth, birthDay)
     if (ageError) { setError(ageError); return }
+    if (!country) { setError('Elige tu país.'); return }
     if (password.length < 8) { setError('La contraseña debe tener al menos 8 caracteres.'); return }
     if (!accepted) { setError('Debes aceptar los Términos y la Política de privacidad para crear tu cuenta.'); return }
 
@@ -131,6 +134,7 @@ export default function Register() {
         first_name: firstName.trim(),
         last_name: lastName.trim(),
         birth_date: birthDate,
+        country,
       } },
     })
     setLoading(false)
@@ -169,6 +173,13 @@ export default function Register() {
           <label htmlFor="lastName">Apellidos</label>
           <input id="lastName" type="text" required value={lastName} onChange={(e) => setLastName(e.target.value)} autoComplete="family-name" />
         </div>
+      </div>
+
+      <div className="rg-field">
+        <label htmlFor="country">País</label>
+        <select id="country" required value={country} onChange={(e) => setCountry(e.target.value)} autoComplete="country">
+          <option value="">Elige tu país</option>{COUNTRIES.map((c) => <option key={c.code} value={c.code}>{c.name}</option>)}
+        </select>
       </div>
 
       <div className="rg-field">

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { birthDateError } from '../lib/ageRule'
+import { COUNTRIES } from '../lib/countries'
 import { needsProfileCompletion, profileCompletion } from '../lib/accountRules'
 import LegalLinks from '../components/LegalLinks'
 import HeaderBrand from '../public/HeaderBrand'
@@ -29,6 +30,7 @@ export default function CompleteProfile() {
   const [birthDay, setBirthDay] = useState('')
   const [birthMonth, setBirthMonth] = useState('')
   const [birthYear, setBirthYear] = useState('')
+  const [country, setCountry] = useState(need.country)
   const [accepted, setAccepted] = useState(false)
   const [error, setError] = useState('')
   const [saving, setSaving] = useState(false)
@@ -43,10 +45,11 @@ export default function CompleteProfile() {
     if (!names || !surnames) { setError('Escribe tus nombres y tus apellidos.'); return }
     const ageError = birthDateError(birthYear, birthMonth, birthDay)
     if (ageError) { setError(ageError); return }
+    if (!country) { setError('Elige tu país.'); return }
     if (!accepted) { setError('Debes aceptar los Términos de uso y la Política de privacidad.'); return }
     const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`
     setSaving(true)
-    const { error: saveError } = await completeProfile({ firstName: names, lastName: surnames, birthDate })
+    const { error: saveError } = await completeProfile({ firstName: names, lastName: surnames, birthDate, country })
     setSaving(false)
     if (saveError) { setError('No se pudieron guardar tus datos. Intenta de nuevo.'); return }
     navigate('/app', { replace: true })
@@ -64,8 +67,8 @@ export default function CompleteProfile() {
       <main className="cp-shell">
         <h1>Completa tus datos</h1>
         <p className="cp-lead">
-          Entraste con Google, y Google solo nos pasa tu nombre, tu correo y tu foto.
-          Para dejar tu cuenta bien creada nos faltan estos datos.
+          Para dejar tu cuenta bien creada necesitamos estos datos. Si entraste con
+          Google, solo nos pasó tu nombre, tu correo y tu foto.
         </p>
 
         {error && <div className="rg-error" role="alert">{error}</div>}
@@ -97,6 +100,13 @@ export default function CompleteProfile() {
               </select>
             </div>
           </fieldset>
+
+          <div className="rg-field">
+            <label htmlFor="country">País</label>
+            <select id="country" required value={country} onChange={(e) => setCountry(e.target.value)} autoComplete="country">
+              <option value="">Elige tu país</option>{COUNTRIES.map((c) => <option key={c.code} value={c.code}>{c.name}</option>)}
+            </select>
+          </div>
 
           <p className="cp-note">
             La fecha de nacimiento se guarda con tu cuenta y sirve para comprobar

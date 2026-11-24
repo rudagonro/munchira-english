@@ -125,10 +125,10 @@ export function AuthProvider({ children }) {
    * nacimiento. Se anotan en la cuenta (user_metadata) y el nombre se copia a
    * la fila de perfiles para que la interfaz siga mostrando el mismo nombre.
    */
-  async function completeProfile({ firstName, lastName, birthDate }) {
+  async function completeProfile({ firstName, lastName, birthDate, country }) {
     const fullName = `${firstName} ${lastName}`.trim()
     const { error } = await supabase.auth.updateUser({
-      data: { full_name: fullName, first_name: firstName, last_name: lastName, birth_date: birthDate },
+      data: { full_name: fullName, first_name: firstName, last_name: lastName, birth_date: birthDate, country },
     })
     if (error) return { error }
     if (session?.user) {
