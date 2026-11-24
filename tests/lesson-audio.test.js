@@ -14,6 +14,7 @@ test('la barra «/» no se lee en voz alta', () => {
 
 test('cada frase de ejemplo tiene audio natural americano y británico', () => {
   for (const p of lesson.explanation) {
+    if (!p.example) continue
     const id = audioKey(p.example)
     assert.ok(manifest[id], p.example)
     for (const a of ['us', 'gb']) assert.ok(existsSync(new URL(`../public/audio/a1-presentarte/${id}-${a}.mp3`, import.meta.url)))
