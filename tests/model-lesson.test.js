@@ -22,6 +22,7 @@ test('«Nice to meet you» acepta las formas comunes en español', () => {
   assert.equal(isCorrectAnswer('mucho gusto', card.answer), true)
   assert.equal(isCorrectAnswer('hola qué tal', card.answer), false)
   assert.equal(card.display, 'mucho gusto')
+  assert.ok(!card.display.includes('|'))
 })
 
 test('Cada palabra se practica en inglés→español y español→inglés', () => {
