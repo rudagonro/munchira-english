@@ -5,7 +5,7 @@ import { supabase } from '../lib/supabase'
 import { birthDateError } from '../lib/ageRule'
 import LegalLinks from '../components/LegalLinks'
 import HeaderBrand from '../public/HeaderBrand'
-import cover from '../assets/aprende-juntos-1536.webp.asset.json'
+import cover from '../assets/munchira-registro-aprendizaje.webp.asset.json'
 import mascot from '../assets/oruga-transparente.png.asset.json'
 import './register.css'
 import './register-art.css'
@@ -22,12 +22,11 @@ function Shell({ children }) {
     <header className="rg-top"><HeaderBrand /></header>
     <div className="rg-grid">
       <main className="rg-main">{children}</main>
-      <aside className="rg-art">
-        <div className="rg-stage">
-          <div className="rg-photo"><img src={`${mediaOrigin}${cover.url}`} alt="" loading="eager" decoding="async" /></div>
-          <span className="rg-trail" aria-hidden="true"><i /><i /><i /><i /><i /></span>
-          <img className="rg-mascot" src={`${mediaOrigin}${mascot.url}`} alt="" width="443" height="518" decoding="async" />
-          <div className="rg-steps">
+      <aside className="rga-art">
+        <div className="rga-stage">
+          <div className="rga-photo"><img src={`${mediaOrigin}${cover.url}`} alt="Ilustración original de una estudiante practicando inglés con auriculares y un cuaderno" width="1086" height="1448" loading="eager" decoding="async" /></div>
+          <img className="rga-mascot" src={`${mediaOrigin}${mascot.url}`} alt="" width="443" height="518" decoding="async" />
+          <div className="rga-steps">
             <p>Tu camino, paso a paso</p>
             <ol>{steps.map((s, i) => <li key={s} className={i === 0 ? 'is-now' : ''}><span>{i + 1}</span>{s}</li>)}</ol>
           </div>
