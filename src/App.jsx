@@ -8,6 +8,7 @@ import Register from './pages/Register'
 import PublicHome from './pages/PublicHome'
 import { BlogIndex, BlogArticle } from './public/Blog'
 import { GrammarIndex, GrammarArticle } from './public/Grammar'
+import ModelLesson from './public/ModelLesson'
 import AppHome from './pages/AppHome'
 import TeacherPanel from './pages/TeacherPanel'
 import Diagnostic from './pages/Diagnostic'
@@ -32,6 +33,7 @@ function AppRoutes() {
         <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/gramatica" element={<GrammarIndex />} />
         <Route path="/gramatica/:slug" element={<GrammarArticle />} />
+        <Route path="/leccion-modelo" element={<ModelLesson />} />
         <Route path="/login" element={<><PublicHome /><LoginPanel /></>} />
         <Route path="/register" element={<Register />} />
         <Route path="/recuperar" element={<ForgotPassword />} />

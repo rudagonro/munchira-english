@@ -1,0 +1,86 @@
+// Lección modelo A1 para revisión del propietario. No se carga en la base de datos
+// ni guarda progreso: sirve para validar el formato paso a paso antes de ampliarlo.
+export const lessonA1Presentarte = {
+  slug: 'a1-presentarte',
+  level: 'A1',
+  module: 'Módulo 1 · Primeros pasos',
+  title: 'Presentarte en inglés',
+  minutes: 12,
+  goal: 'Al terminar podrás saludar, decir tu nombre, de dónde eres y tu edad, y preguntar lo mismo a otra persona.',
+  why: 'Es lo primero que harás en inglés: al conocer a alguien en el trabajo, en un viaje o en una videollamada. Con cinco frases ya puedes empezar una conversación.',
+  vocab: [
+    { en: 'hello', es: 'hola', say: 'jelóu' },
+    { en: 'name', es: 'nombre', say: 'néim' },
+    { en: 'nice to meet you', es: 'mucho gusto', say: 'náis tu mít iu' },
+    { en: 'I am', es: 'yo soy / yo estoy', say: 'ái am' },
+    { en: 'from', es: 'de (origen)', say: 'from' },
+    { en: 'years old', es: 'años (de edad)', say: 'íers óuld' },
+  ],
+  explanation: [
+    { title: '1. Saludar', text: 'Para saludar usa «Hello» (formal o neutro) o «Hi» (informal, entre amigos). Los dos significan «hola».', example: 'Hello! / Hi!' },
+    { title: '2. Decir tu nombre', text: 'En inglés el sujeto nunca se omite. En español dices «soy Rubén», pero en inglés debes decir «I am» (yo soy). En la conversación se contrae: «I\'m».', example: "I'm Rubén. / My name is Rubén." },
+    { title: '3. Decir de dónde eres', text: 'Usa «I\'m from» + el país o la ciudad. «From» indica origen, como «de» en «soy de Colombia».', example: "I'm from Colombia." },
+    { title: '4. Decir tu edad', text: 'Aquí está la gran diferencia: en inglés la edad no se «tiene», se «es». Se usa «I am» + número + «years old».', example: "I'm 30 years old." },
+    { title: '5. Preguntar a la otra persona', text: 'Para devolver la pregunta, cambia el orden: el verbo va antes del sujeto. «You are» (tú eres) pasa a «Are you…?» y las preguntas con palabra interrogativa empiezan por ella.', example: "What's your name? / Where are you from?" },
+  ],
+  examples: [
+    { en: 'Hello, my name is Ana.', es: 'Hola, me llamo Ana.', focus: 'my name is' },
+    { en: "Hi! I'm Carlos.", es: '¡Hola! Soy Carlos.', focus: "I'm" },
+    { en: "I'm from Mexico.", es: 'Soy de México.', focus: 'from' },
+    { en: "I'm twenty-five years old.", es: 'Tengo veinticinco años.', focus: 'years old' },
+    { en: "What's your name?", es: '¿Cómo te llamas?', focus: "What's" },
+    { en: 'Where are you from?', es: '¿De dónde eres?', focus: 'Where are you' },
+    { en: 'Nice to meet you.', es: 'Mucho gusto.', focus: 'Nice to meet you' },
+  ],
+  table: {
+    caption: 'El verbo «to be» para presentarte',
+    head: ['Persona', 'Forma completa', 'Contracción', 'Español'],
+    rows: [
+      ['Yo', 'I am', "I'm", 'yo soy'],
+      ['Tú', 'You are', "You're", 'tú eres'],
+      ['Él', 'He is', "He's", 'él es'],
+      ['Ella', 'She is', "She's", 'ella es'],
+    ],
+  },
+  mistakes: [
+    { wrong: 'I have 30 years.', right: "I'm 30 years old.", why: 'En inglés la edad se expresa con «to be» (ser), no con «have» (tener).' },
+    { wrong: 'Am Rubén.', right: "I'm Rubén.", why: 'El sujeto «I» es obligatorio. En inglés nunca se omite.' },
+    { wrong: 'I am of Colombia.', right: "I'm from Colombia.", why: 'Para el origen se usa «from», no «of».' },
+    { wrong: 'What is you name?', right: 'What is your name?', why: '«You» es «tú»; «your» es «tu» (posesivo, el nombre es tuyo).' },
+  ],
+  guided: [
+    { type: 'choice', q: 'Tienes 25 años. ¿Cómo lo dices?', opts: ['I have 25 years.', "I'm 25 years old.", 'I 25 years old.'], correct: 1, why: 'La edad va con «I am» + número + «years old».' },
+    { type: 'choice', q: '¿Qué palabra falta? «I\'m ___ Peru.»', opts: ['of', 'from', 'in'], correct: 1, why: '«From» indica de dónde eres.' },
+    { type: 'fill', sentence: 'What is ___ name?', answer: 'your', hint: 'Posesivo de «you».' },
+    { type: 'order', words: ['from', 'are', 'Where', 'you'], answer: 'Where are you from', hint: 'La pregunta empieza por la palabra interrogativa.' },
+  ],
+  reading: {
+    title: 'En la primera clase',
+    text: "Hello! My name is Laura. I'm from Spain, but I live in London. I'm twenty-eight years old. I'm a nurse. Nice to meet you!",
+    translation: '¡Hola! Me llamo Laura. Soy de España, pero vivo en Londres. Tengo veintiocho años. Soy enfermera. ¡Mucho gusto!',
+    questions: [
+      { q: '¿De dónde es Laura?', opts: ['De Londres', 'De España', 'De México'], correct: 1 },
+      { q: '¿Cuántos años tiene?', opts: ['28', '18', '82'], correct: 0 },
+      { q: '¿Cuál es su profesión?', opts: ['Profesora', 'Médica', 'Enfermera'], correct: 2 },
+    ],
+  },
+  dialogue: [
+    { speaker: 'Emma', text: 'Hi! I\'m Emma. What\'s your name?' },
+    { speaker: 'Tú', text: "Hello, I'm Daniel. Nice to meet you." },
+    { speaker: 'Emma', text: 'Nice to meet you too. Where are you from?' },
+    { speaker: 'Tú', text: "I'm from Colombia. And you?" },
+    { speaker: 'Emma', text: "I'm from Canada." },
+  ],
+  pronunciation: [
+    { en: 'Nice to meet you', say: 'náis tu mít iu', tip: 'Une las palabras: suena casi como una sola.' },
+    { en: "I'm from Colombia", say: 'áim from colómbia', tip: '«I\'m» suena «áim», con la m pegada.' },
+    { en: 'years old', say: 'íers óuld', tip: 'La «y» de «years» suena como la «i» de «hielo».' },
+  ],
+  freeTask: 'Escribe tu presentación en tres frases: tu nombre, de dónde eres y tu edad.',
+  freeModel: "Hello! I'm Rubén. I'm from Colombia. I'm 40 years old.",
+  summary: [
+    "«I'm» + nombre para presentarte.",
+    "«I'm from» + país para decir tu origen.",
+    "La edad se dice con «I'm» + número + «years old», nunca con «have».",
+  ],
+}

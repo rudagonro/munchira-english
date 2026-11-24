@@ -21,3 +21,5 @@
 - Keep stacked public closing-section and footer branding in src/public/FooterBrand with scoped footer-brand.css; sharing the transparent mascot above the wordmark prevents bottom-of-page artwork from diverging.
 
 - Public login uses a native modal side panel and React Router backgroundLocation, reusing the existing Login form without changing auth services; /login remains directly reachable with the public home behind it, preserving protected-route return destinations.
+
+- Keep the review-only step-by-step lesson model in src/public/ModelLesson with pure rules in src/public/model-lesson.js and data in src/data/modelLessons; it validates the lesson format publicly without touching course data, grading or progress.
