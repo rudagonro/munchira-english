@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { computeModuleAvailability, isCycleComplete } from '../data/moduleAvailability'
 import { LEVEL_NAMES } from '../data/diagnosticBank'
@@ -106,6 +106,15 @@ export default function CycleModules() {
         <div className="success-banner" style={{ maxWidth: 560, marginBottom: 28 }}>
           🎉 ¡Felicidades! Completaste todos los módulos de este ciclo.
         </div>
+      )}
+
+      {level === 'A1' && (
+        <Link to="/leccion-modelo" className="sample-lesson-card">
+          <span className="slc-tag">Lección de muestra</span>
+          <strong>Presentarte en inglés</strong>
+          <p>13 pasos con audio, práctica, lectura, diálogo y repaso.</p>
+          <span className="slc-cta">Abrir lección →</span>
+        </Link>
       )}
 
       {modules.length === 0 ? (

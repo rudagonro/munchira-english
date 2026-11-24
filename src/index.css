@@ -190,6 +190,40 @@ body {
   gap: 20px;
 }
 
+.sample-lesson-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--purple-soft) 0%, var(--white) 62%);
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 22px;
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: 0 2px 12px rgba(79,60,201,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.sample-lesson-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(79,60,201,0.16);
+}
+.sample-lesson-card strong { font-size: 1.05rem; }
+.sample-lesson-card p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+.slc-tag {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--purple-dark);
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+.slc-cta { font-size: 0.88rem; font-weight: 700; color: var(--purple); }
+
 .module-card-v2 {
   background: var(--white);
   border-radius: 16px;

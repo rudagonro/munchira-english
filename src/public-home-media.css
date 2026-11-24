@@ -21,6 +21,8 @@
 .mp-photo-hero .mp-actions { margin-top: 22px; gap: 24px; }
 .mp-photo-hero .mp-button-dark { color: var(--mp-hero-ink) !important; background: var(--mp-accent); }
 .mp-photo-hero .mp-button-dark:hover { background: var(--mp-mint); }
+.mp-photo-hero .mp-button-ghost { border-color: #ffffff8c; color: #ffffff !important; }
+.mp-photo-hero .mp-button-ghost:hover { background: #ffffff1f; border-color: #ffffff; color: #ffffff !important; }
 .mp-photo-hero .mp-hero-footer { grid-template-columns: auto auto; margin-top: 24px; padding: 14px 0 0; border-color: var(--mp-mint-strong); gap: 16px; font-size: 12px; }
 .mp-photo-hero .mp-hero-footer span::before { color: var(--mp-accent); }
 .mp-mascot-stage { position: absolute; right: 32px; bottom: 26px; width: 270px; aspect-ratio: 443 / 518; }

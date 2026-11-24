@@ -35,7 +35,10 @@
 .mp-button-dark { background: var(--mp-ink); color: var(--mp-paper) !important; }
 .mp-button-dark:hover { background: var(--mp-teal); transform: translateY(-2px); }
 .mp-button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.mp-button-ghost { background: transparent; border-color: var(--mp-border); color: var(--mp-ink) !important; }
+.mp-button-ghost:hover { border-color: var(--mp-teal); color: var(--mp-teal) !important; transform: translateY(-2px); }
 .mp-button span { font-size: 20px; }
+.mp-level-actions { display: flex; flex-wrap: wrap; gap: 8px 26px; margin-top: 6px; }
 .mp-hero { background: var(--mp-paper); padding: 34px 0 0; }
 .mp-hero-top { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
 .mp-eyebrow { font-size: 12px; font-weight: 700; color: var(--mp-teal); }

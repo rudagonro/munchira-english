@@ -64,6 +64,13 @@ export default function AppHome() {
         </div>
       )}
 
+      <Link to="/leccion-modelo" className="sample-lesson-card">
+        <span className="slc-tag">Lección de muestra</span>
+        <strong>Presentarte en inglés</strong>
+        <p>13 pasos con audio, práctica, lectura, diálogo y repaso. Puedes abrirla cuando quieras.</p>
+        <span className="slc-cta">Abrir lección →</span>
+      </Link>
+
       <button className="logout-btn" onClick={signOut}>
         Cerrar sesión
       </button>
