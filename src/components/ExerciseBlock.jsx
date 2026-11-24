@@ -3,7 +3,7 @@ import { canReveal, countsForScore, retryMessage, successMessage } from './exerc
 import './exercise-retry.css'
 
 /* Retroalimentación común: si fallas ves el porqué, un ánimo y «Inténtalo otra vez». */
-function Feedback({ state, fails, why, answer, onRetry, onNext }) {
+function Feedback({ state, fails, why, answer, onRetry, onReveal, onNext }) {
   if (state === 'correct') return (
     <div className="ex-feedback correct" role="status">
       <span className="ex-fb-icon" aria-hidden="true">✓</span>
@@ -35,7 +35,7 @@ function Feedback({ state, fails, why, answer, onRetry, onNext }) {
       </div>
       <div className="ex-fb-actions">
         <button className="ex-retry-btn" onClick={onRetry} autoFocus>Inténtalo otra vez ↻</button>
-        {canReveal(fails) && <button className="ex-next-btn" onClick={onRetry.reveal}>Ver respuesta</button>}
+        {canReveal(fails) && <button className="ex-next-btn" onClick={onReveal}>Ver respuesta</button>}
       </div>
     </div>
   )
@@ -112,7 +112,7 @@ function FillEx({ ex, onNext }) {
   const acceptedAnswers = ex.answer.toLowerCase().split('|').map(s => s.trim())
   const check = () => mark(acceptedAnswers.includes(val.toLowerCase().trim()))
   const retry = () => { setVal(''); setState('idle') }
-  retry.reveal = () => setState('revealed')
+  const reveal = () => setState('revealed')
 
   const parts = ex.sentence.split('___')
 
@@ -139,7 +139,7 @@ function FillEx({ ex, onNext }) {
           Comprobar
         </button>
       )}
-      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={ex.answer.split('|')[0]} onRetry={retry} onNext={onNext} />}
+      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={ex.answer.split('|')[0]} onRetry={retry} onReveal={reveal} onNext={onNext} />}
     </div>
   )
 }
@@ -155,7 +155,7 @@ function ChoiceEx({ ex, onNext }) {
     mark(i === ex.correct)
   }
   const retry = () => { setSelected(null); setState('idle') }
-  retry.reveal = () => setState('revealed')
+  const reveal = () => setState('revealed')
 
   return (
     <div className="ex-body">
@@ -175,7 +175,7 @@ function ChoiceEx({ ex, onNext }) {
           )
         })}
       </div>
-      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.why} answer={ex.opts[ex.correct]} onRetry={retry} onNext={onNext} />}
+      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.why} answer={ex.opts[ex.correct]} onRetry={retry} onReveal={reveal} onNext={onNext} />}
     </div>
   )
 }
@@ -201,7 +201,7 @@ function OrderEx({ ex, onNext }) {
 
   const check = () => mark(placed.map(x => x.word).join(' ').toLowerCase() === ex.answer.toLowerCase())
   const retry = () => { setPlaced([]); setBank(initialBank()); setState('idle') }
-  retry.reveal = () => setState('revealed')
+  const reveal = () => setState('revealed')
 
   return (
     <div className="ex-body">
@@ -230,7 +230,7 @@ function OrderEx({ ex, onNext }) {
       {state === 'idle' && placed.length > 0 && bank.length === 0 && (
         <button className="ex-check-btn" onClick={check}>Comprobar</button>
       )}
-      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={`"${ex.answer}"`} onRetry={retry} onNext={onNext} />}
+      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={`"${ex.answer}"`} onRetry={retry} onReveal={reveal} onNext={onNext} />}
     </div>
   )
 }
