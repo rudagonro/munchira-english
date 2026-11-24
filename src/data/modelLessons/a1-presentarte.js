@@ -11,7 +11,7 @@ export const lessonA1Presentarte = {
   vocab: [
     { en: 'hello', es: 'hola', say: 'jelóu' },
     { en: 'name', es: 'nombre', say: 'néim' },
-    { en: 'nice to meet you', es: 'mucho gusto', say: 'náis tu mít iu' },
+    { en: 'nice to meet you', es: 'mucho gusto | encantado de conocerte | encantada de conocerte | encantado de conocerlo | encantada de conocerlo | gusto en conocerte | gusto en conocerle | gusto en conocerlo | gusto en conocerla | un gusto | un placer', say: 'náis tu mít iu' },
     { en: 'I am', es: 'yo soy / yo estoy', say: 'ái am' },
     { en: 'from', es: 'de (origen)', say: 'from' },
     { en: 'years old', es: 'años (de edad)', say: 'íers óuld' },
