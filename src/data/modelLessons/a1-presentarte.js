@@ -22,6 +22,7 @@ export const lessonA1Presentarte = {
     { title: '3. Decir de dónde eres', text: 'Usa «I\'m from» + el país o la ciudad. «From» indica origen, como «de» en «soy de Colombia».', example: "I'm from Colombia." },
     { title: '4. Decir tu edad', text: 'Aquí está la gran diferencia: en inglés la edad no se «tiene», se «es». Se usa «I am» + número + «years old».', example: "I'm 30 years old." },
     { title: '5. Preguntar a la otra persona', text: 'Para devolver la pregunta, cambia el orden: el verbo va antes del sujeto. «You are» (tú eres) pasa a «Are you…?» y las preguntas con palabra interrogativa empiezan por ella.', example: "What's your name? / Where are you from?" },
+    { title: '6. ¿Y los animales y las cosas?', text: 'En inglés no existe «él» ni «ella» para objetos o animales: todo eso es «it». Se conjuga igual que «he» y «she»: «it is», y se contrae «it\'s».', example: "It's a cat. (Es un gato.) / It's my book. (Es mi libro.)" },
   ],
   examples: [
     { en: 'Hello, my name is Ana.', es: 'Hola, me llamo Ana.', focus: 'my name is' },
@@ -40,6 +41,7 @@ export const lessonA1Presentarte = {
       ['Tú', 'You', 'are', 'You are', "You're", 'tú eres / tú estás'],
       ['Él', 'He', 'is', 'He is', "He's", 'él es / él está'],
       ['Ella', 'She', 'is', 'She is', "She's", 'ella es / ella está'],
+      ['Eso / Ello', 'It', 'is', 'It is', "It's", 'es / está (animales y cosas)'],
       ['Nosotros', 'We', 'are', 'We are', "We're", 'nosotros somos / estamos'],
       ['Ellos / Ellas', 'They', 'are', 'They are', "They're", 'ellos son / están'],
     ],
