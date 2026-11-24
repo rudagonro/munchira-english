@@ -96,6 +96,7 @@ function StepContent({ id, accent }) {
     </>
     case 'table': return <>
       <h2>Cómo se forma</h2>
+      <p>Se forma con el <strong>pronombre personal</strong> + el <strong>verbo «to be» conjugado</strong>. «I» es el pronombre personal «yo» y «am» es «to be» conjugado para «I». Juntos, «I am», significan «yo soy» o «yo estoy». En inglés el pronombre nunca se omite.</p>
       <div className="ml-table-wrap"><table className="ml-table"><caption>{lesson.table.caption}</caption><thead><tr>{lesson.table.head.map(h => <th key={h} scope="col">{h}</th>)}</tr></thead><tbody>{lesson.table.rows.map(r => <tr key={r[0]}>{r.map((c, i) => i === 0 ? <th key={i} scope="row">{c}</th> : <td key={i}>{c}</td>)}</tr>)}</tbody></table></div>
       <p className="ml-tip">En la conversación casi siempre se usa la contracción: «I'm», «you're».</p>
     </>

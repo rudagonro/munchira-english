@@ -33,13 +33,15 @@ export const lessonA1Presentarte = {
     { en: 'Nice to meet you.', es: 'Mucho gusto.', focus: 'Nice to meet you' },
   ],
   table: {
-    caption: 'El verbo «to be» para presentarte',
-    head: ['Persona', 'Forma completa', 'Contracción', 'Español'],
+    caption: 'El verbo «to be» (ser / estar) para presentarte',
+    head: ['Persona', 'Pronombre personal', 'Verbo «to be» conjugado', 'Forma completa', 'Contracción', 'Significa'],
     rows: [
-      ['Yo', 'I am', "I'm", 'yo soy'],
-      ['Tú', 'You are', "You're", 'tú eres'],
-      ['Él', 'He is', "He's", 'él es'],
-      ['Ella', 'She is', "She's", 'ella es'],
+      ['Yo', 'I', 'am', 'I am', "I'm", 'yo soy / yo estoy'],
+      ['Tú', 'You', 'are', 'You are', "You're", 'tú eres / tú estás'],
+      ['Él', 'He', 'is', 'He is', "He's", 'él es / él está'],
+      ['Ella', 'She', 'is', 'She is', "She's", 'ella es / ella está'],
+      ['Nosotros', 'We', 'are', 'We are', "We're", 'nosotros somos / estamos'],
+      ['Ellos / Ellas', 'They', 'are', 'They are', "They're", 'ellos son / están'],
     ],
   },
   mistakes: [
