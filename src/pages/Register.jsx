@@ -36,6 +36,60 @@ function Shell({ children }) {
   </div>
 }
 
+function VerifyCode({ email, onDone }) {
+  const [code, setCode] = useState('')
+  const [msg, setMsg] = useState('')
+  const [err, setErr] = useState('')
+  const [expired, setExpired] = useState(false)
+  const [busy, setBusy] = useState(false)
+
+  async function verify(e) {
+    e.preventDefault()
+    setErr(''); setMsg('')
+    const token = code.replace(/\D/g, '')
+    if (token.length !== 6) { setErr('Escribe los 6 dígitos del código.'); return }
+    setBusy(true)
+    const { data, error } = await supabase.auth.verifyOtp({ email, token, type: 'signup' })
+    setBusy(false)
+    if (error) {
+      const gone = /expired|invalid/i.test(error.message)
+      setExpired(gone)
+      setErr(gone ? 'Este código ya caducó o no es correcto. Pide uno nuevo y escríbelo en los próximos minutos.' : 'No pudimos comprobar el código. Intenta de nuevo.')
+      return
+    }
+    if (data.session) onDone()
+  }
+
+  async function resend() {
+    setErr(''); setMsg(''); setBusy(true)
+    const { error } = await supabase.auth.resend({ type: 'signup', email })
+    setBusy(false)
+    if (error) { setErr('No pudimos enviar otro código. Espera un minuto e inténtalo de nuevo.'); return }
+    setCode(''); setExpired(false)
+    setMsg(`Te enviamos un código nuevo a ${email}.`)
+  }
+
+  return <>
+    <h1>Confirma tu correo</h1>
+    <p className="rg-lead">Te enviamos un código de 6 dígitos a <strong>{email}</strong>. Escríbelo aquí para activar tu cuenta. Si no lo ves, revisa la carpeta de spam.</p>
+    {err && <div className="rg-error" role="alert">{err}</div>}
+    {msg && <p className="rg-lead" role="status"><strong>{msg}</strong></p>}
+    <form onSubmit={verify}>
+      <div className="rg-field">
+        <label htmlFor="otp">Código de verificación</label>
+        <input id="otp" inputMode="numeric" autoComplete="one-time-code" maxLength={6} value={code}
+          onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
+          style={{ letterSpacing: '0.5em', fontSize: '1.4rem', textAlign: 'center' }} autoFocus />
+      </div>
+      <button className="rg-submit" type="submit" disabled={busy}>{busy ? 'Comprobando…' : 'Confirmar'}</button>
+    </form>
+    <p className="rg-lead" style={{ marginTop: '1rem' }}>
+      {expired ? '¿Se te pasó el tiempo? ' : '¿No te llegó? '}
+      <button type="button" onClick={resend} disabled={busy} style={{ background: 'none', border: 0, padding: 0, color: 'inherit', textDecoration: 'underline', fontWeight: 700, cursor: 'pointer' }}>Enviar otro código</button>
+    </p>
+  </>
+}
+
 export default function Register() {
   const { signInWithGoogle } = useAuth()
   const navigate = useNavigate()
@@ -96,11 +150,7 @@ export default function Register() {
   }
 
   if (success) {
-    return <Shell>
-      <h1>Revisa tu correo</h1>
-      <p className="rg-lead">Tu cuenta está creada. Te enviamos un enlace a <strong>{email}</strong> para confirmarla antes de iniciar sesión.</p>
-      <Link className="rg-submit" to="/login">Ir a iniciar sesión</Link>
-    </Shell>
+    return <Shell><VerifyCode email={email} onDone={() => navigate('/app', { replace: true })} /></Shell>
   }
 
   return <Shell>
