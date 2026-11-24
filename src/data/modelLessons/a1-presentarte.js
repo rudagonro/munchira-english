@@ -69,11 +69,11 @@ export const lessonA1Presentarte = {
     ],
   },
   dialogue: [
-    { speaker: 'Emma', text: 'Hi! I\'m Emma. What\'s your name?' },
-    { speaker: 'Tú', text: "Hello, I'm Daniel. Nice to meet you." },
-    { speaker: 'Emma', text: 'Nice to meet you too. Where are you from?' },
-    { speaker: 'Tú', text: "I'm from Colombia. And you?" },
-    { speaker: 'Emma', text: "I'm from Canada." },
+    { speaker: 'Emma', voice: 'nova', text: 'Hi! I\'m Emma. What\'s your name?' },
+    { speaker: 'Tú', voice: 'onyx', text: "Hello, I'm Daniel. Nice to meet you." },
+    { speaker: 'Emma', voice: 'nova', text: 'Nice to meet you too. Where are you from?' },
+    { speaker: 'Tú', voice: 'onyx', text: "I'm from Colombia. And you?" },
+    { speaker: 'Emma', voice: 'nova', text: "I'm from Canada." },
   ],
   pronunciation: [
     { en: 'Nice to meet you', say: 'náis tu mít iu', tip: 'Une las palabras: suena casi como una sola.' },

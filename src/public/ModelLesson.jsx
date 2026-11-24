@@ -5,7 +5,7 @@ import Seo from './Seo'
 import ExerciseBlock from '../components/ExerciseBlock'
 import { lessonA1Presentarte as lesson } from '../data/modelLessons/a1-presentarte'
 import { LESSON_STEPS, buildBidirectionalCards, displayForm, isCorrectAnswer, pronunciationScore } from './model-lesson'
-import { sayEnglish, canListen, recognitionAvailable, listenOnce } from './lessonSpeech'
+import { sayEnglish, sayDialogue, canListen, recognitionAvailable, listenOnce } from './lessonSpeech'
 import './model-lesson.css'
 
 function ListenButtons({ text, accent }) {
@@ -113,8 +113,11 @@ function StepContent({ id, accent }) {
       <h3>¿Lo entendiste?</h3><ChoiceQuestions questions={lesson.reading.questions} />
     </>
     case 'dialogue': return <>
-      <h2>Diálogo: conocer a alguien</h2><p>Escucha la conversación completa y luego lee tu parte en voz alta.</p>
-      <ListenButtons text={lesson.dialogue.map(t => t.text).join(' ')} accent={accent} />
+      <h2>Diálogo: conocer a alguien</h2><p>Escucha la conversación completa y luego lee tu parte en voz alta. Emma habla con voz de mujer y Daniel con voz de hombre.</p>
+      <p className="ml-dialogue-all">
+        <button type="button" onClick={() => sayDialogue(lesson.dialogue, { accent })} aria-label="Escuchar la conversación completa">🔊 Escuchar</button>
+        <button type="button" onClick={() => sayDialogue(lesson.dialogue, { accent, slow: true })} aria-label="Escuchar despacio la conversación completa">🐢 Despacio</button>
+      </p>
       <ul className="ml-dialogue">{lesson.dialogue.map((t, i) => <li key={i} className={t.speaker === 'Tú' ? 'ml-me' : ''}><span>{t.speaker}</span><p>{t.text}</p><ListenButtons text={t.text} accent={accent} /></li>)}</ul>
     </>
     case 'speak': return <><h2>Pronunciación</h2><p>Escucha, repite y compruébalo con tu voz. Munchira no guarda tus grabaciones.</p><ul className="ml-speak-list">{lesson.pronunciation.map(p => <SpeakPractice key={p.en} item={p} accent={accent} />)}</ul></>

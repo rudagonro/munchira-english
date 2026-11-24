@@ -5,6 +5,7 @@ import { speechText, audioKey } from './speechText'
 
 const LESSON_AUDIO = '/audio/a1-presentarte'
 let current = null
+let dialogueToken = 0
 
 export function canListen() {
   return typeof window !== 'undefined' && (typeof Audio !== 'undefined' || 'speechSynthesis' in window)
@@ -14,6 +15,13 @@ export function recordedAudioUrl(text, accent = 'en-US') {
   const id = audioKey(text)
   if (!manifest[id]) return null
   return `${LESSON_AUDIO}/${id}-${accent === 'en-GB' ? 'gb' : 'us'}.mp3`
+}
+
+function stopCurrent() {
+  dialogueToken += 1
+  current?.pause()
+  current = null
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel()
 }
 
 function deviceVoice(text, slow, accent) {
@@ -28,17 +36,37 @@ function deviceVoice(text, slow, accent) {
   return true
 }
 
-export function sayEnglish(text, { slow = false, accent = 'en-US' } = {}) {
-  if (!canListen()) return false
-  current?.pause()
-  if ('speechSynthesis' in window) window.speechSynthesis.cancel()
-  const url = recordedAudioUrl(text, accent)
-  if (!url) return deviceVoice(text, slow, accent)
+function playRecorded(url, slow) {
   const audio = new Audio(url)
   audio.preservesPitch = true
   audio.playbackRate = slow ? 0.72 : 1
   current = audio
-  audio.play().catch(() => deviceVoice(text, slow, accent))
+  return audio
+}
+
+export function sayEnglish(text, { slow = false, accent = 'en-US' } = {}) {
+  if (!canListen()) return false
+  stopCurrent()
+  const url = recordedAudioUrl(text, accent)
+  if (!url) return deviceVoice(text, slow, accent)
+  playRecorded(url, slow).play().catch(() => deviceVoice(text, slow, accent))
+  return true
+}
+
+/** Reproduce el diálogo completo línea a línea, con la voz de cada personaje. */
+export function sayDialogue(lines, { slow = false, accent = 'en-US' } = {}) {
+  if (!canListen()) return false
+  stopCurrent()
+  const token = dialogueToken
+  const playLine = (i) => {
+    if (token !== dialogueToken || i >= lines.length) return
+    const url = recordedAudioUrl(lines[i].text, accent)
+    if (!url) { deviceVoice(lines[i].text, slow, accent); return }
+    const audio = playRecorded(url, slow)
+    audio.onended = () => playLine(i + 1)
+    audio.play().catch(() => deviceVoice(lines[i].text, slow, accent))
+  }
+  playLine(0)
   return true
 }
 

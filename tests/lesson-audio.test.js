@@ -20,3 +20,14 @@ test('cada frase de ejemplo tiene audio natural americano y británico', () => {
     for (const a of ['us', 'gb']) assert.ok(existsSync(new URL(`../public/audio/a1-presentarte/${id}-${a}.mp3`, import.meta.url)))
   }
 })
+
+test('cada línea del diálogo tiene voz de personaje y audio en los dos acentos', () => {
+  const voices = lesson.dialogue.map(t => t.voice)
+  assert.ok(voices.every(Boolean))
+  assert.ok(voices.includes('nova') && voices.includes('onyx'))
+  for (const t of lesson.dialogue) {
+    const id = audioKey(t.text)
+    assert.ok(manifest[id], t.text)
+    for (const a of ['us', 'gb']) assert.ok(existsSync(new URL(`../public/audio/a1-presentarte/${id}-${a}.mp3`, import.meta.url)))
+  }
+})
