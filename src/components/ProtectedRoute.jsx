@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
+import { needsProfileCompletion } from '../lib/accountRules'
 
 /**
  * Protege una ruta exigiendo sesión activa.
@@ -25,6 +26,12 @@ export function ProtectedRoute({ children, allowedRoles }) {
 
   if (allowedRoles && !allowedRoles.includes(role)) {
     return <Navigate to="/app" replace />
+  }
+
+  // Google no entrega la fecha de nacimiento, y sin ella no se puede comprobar
+  // la edad mínima. Primero se pide en /completar-datos.
+  if (location.pathname !== '/completar-datos' && needsProfileCompletion(session.user)) {
+    return <Navigate to="/completar-datos" replace />
   }
 
   return children

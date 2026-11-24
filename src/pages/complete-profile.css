@@ -1,0 +1,14 @@
+/* Pantalla «Completa tus datos»: usa los campos de register.css y estos
+   ajustes de ancho, titulares y nota. */
+.cp-shell { max-width: 640px; margin: 0 auto; padding: 48px 24px 80px; }
+.cp-shell h1 { margin: 0; font-size: clamp(32px, 4.4vw, 48px); line-height: 1.08; font-weight: 800; letter-spacing: -0.02em; color: var(--rg-ink); }
+.cp-lead { margin: 18px 0 30px; font-size: 17px; color: var(--rg-muted); }
+.cp-note { margin: 8px 0 26px; padding: 14px 16px; border-left: 4px solid var(--rg-teal); background: var(--rg-mint); color: var(--rg-ink); font-size: 16px; }
+.cp-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 26px; }
+.cp-exit { border: 0; background: none; font: inherit; font-weight: 700; color: var(--rg-teal); cursor: pointer; padding: 8px 0; }
+.cp-exit:hover { text-decoration: underline; }
+.cp-exit:focus-visible { outline: 3px solid var(--rg-lime); outline-offset: 3px; }
+
+@media (max-width: 620px) {
+  .cp-shell { padding: 32px 20px 64px; }
+}

@@ -21,6 +21,7 @@ import AdminUsers from './pages/AdminUsers'
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
 import Account from './pages/Account'
+import CompleteProfile from './pages/CompleteProfile'
 
 function AppRoutes() {
   const location = useLocation()
@@ -55,6 +56,15 @@ function AppRoutes() {
           element={
             <ProtectedRoute>
               <Layout><Account /></Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/completar-datos"
+          element={
+            <ProtectedRoute>
+              <CompleteProfile />
             </ProtectedRoute>
           }
         />

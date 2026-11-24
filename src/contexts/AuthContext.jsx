@@ -78,7 +78,9 @@ export function AuthProvider({ children }) {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: window.location.origin,
+        // Se cae en /completar-datos: Google no entrega fecha de nacimiento ni
+        // apellidos, y esa página manda a /app si la cuenta ya está completa.
+        redirectTo: `${window.location.origin}/completar-datos`,
       },
     })
     return { data, error }
@@ -116,6 +118,27 @@ export function AuthProvider({ children }) {
       .select('id, full_name, role, created_at').single()
     if (!error && data) setProfile(data)
     return { error }
+  }
+
+  /**
+   * Guarda los datos que Google no entrega: nombres, apellidos y fecha de
+   * nacimiento. Se anotan en la cuenta (user_metadata) y el nombre se copia a
+   * la fila de perfiles para que la interfaz siga mostrando el mismo nombre.
+   */
+  async function completeProfile({ firstName, lastName, birthDate }) {
+    const fullName = `${firstName} ${lastName}`.trim()
+    const { error } = await supabase.auth.updateUser({
+      data: { full_name: fullName, first_name: firstName, last_name: lastName, birth_date: birthDate },
+    })
+    if (error) return { error }
+    if (session?.user) {
+      const { data, error: profileError } = await supabase.from('profiles')
+        .update({ full_name: fullName }).eq('id', session.user.id)
+        .select('id, full_name, role, created_at').single()
+      if (profileError) return { error: profileError }
+      if (data) setProfile(data)
+    }
+    return { error: null }
   }
 
   /**
@@ -342,6 +365,7 @@ export function AuthProvider({ children }) {
     updatePassword,
     verifyPassword,
     updateFullName,
+    completeProfile,
     saveDiagnosticResult,
     getActiveCycleData,
     getModuleContent,

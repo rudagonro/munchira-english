@@ -36,3 +36,50 @@ export function roleLabel(role) {
 export function recoveryRedirect(origin) {
   return `${origin}/restablecer`
 }
+
+// ---- Datos que Google no entrega ----
+
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
+
+/** ¿El valor tiene pinta de fecha de nacimiento real (YYYY-MM-DD)? */
+export function hasBirthDate(value) {
+  return typeof value === 'string' && ISO_DATE.test(value)
+}
+
+/**
+ * Reparte un nombre completo en nombres y apellidos para prellenar el
+ * formulario. Con una sola palabra se queda en nombres y hay que escribirla.
+ */
+export function splitFullName(value) {
+  const parts = (typeof value === 'string' ? value : '').trim().split(/\s+/).filter(Boolean)
+  if (parts.length === 0) return { firstName: '', lastName: '' }
+  if (parts.length === 1) return { firstName: parts[0], lastName: '' }
+  return { firstName: parts[0], lastName: parts.slice(1).join(' ') }
+}
+
+/**
+ * Qué le falta a la cuenta y qué se puede rellenar por adelantado.
+ * Google solo entrega nombre, correo y foto: la fecha de nacimiento y los
+ * apellidos separados hay que pedirlos en un paso aparte.
+ */
+export function profileCompletion(user) {
+  const meta = user?.user_metadata ?? {}
+  const birthDate = hasBirthDate(meta.birth_date) ? meta.birth_date : ''
+  const firstName = typeof meta.first_name === 'string' ? meta.first_name.trim() : ''
+  const lastName = typeof meta.last_name === 'string' ? meta.last_name.trim() : ''
+  const needsNames = !(firstName && lastName)
+  const suggested = needsNames ? splitFullName(meta.full_name ?? meta.name) : { firstName, lastName }
+  return {
+    birthDate,
+    firstName: suggested.firstName,
+    lastName: suggested.lastName,
+    needsBirthDate: !birthDate,
+    needsNames,
+    needed: !birthDate || needsNames,
+  }
+}
+
+/** ¿Hay que mostrar «Completa tus datos» antes de dejar entrar al panel? */
+export function needsProfileCompletion(user) {
+  return profileCompletion(user).needed
+}

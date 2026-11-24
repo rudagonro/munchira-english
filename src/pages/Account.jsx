@@ -17,6 +17,8 @@ export default function Account() {
 
   const canChangePassword = hasPasswordLogin(user)
   const viaGoogle = (user?.identities ?? []).some((i) => i.provider === 'google')
+  const birthDate = typeof user?.user_metadata?.birth_date === 'string' ? user.user_metadata.birth_date : ''
+  const birthLabel = birthDate ? birthDate.split('-').reverse().join('/') : ''
 
   async function saveName(e) {
     e.preventDefault()
@@ -67,6 +69,7 @@ export default function Account() {
         <dl className="account-data">
           <div><dt>Correo</dt><dd>{user?.email}</dd></div>
           <div><dt>Rol</dt><dd>{roleLabel(role)}</dd></div>
+          {birthDate && <div><dt>Fecha de nacimiento</dt><dd>{birthLabel}</dd></div>}
           <div><dt>Formas de acceso</dt><dd>{viaGoogle && canChangePassword ? 'Puedes entrar con Google o con tu correo y contraseña' : viaGoogle ? 'Entras con tu cuenta de Google' : 'Entras con tu correo y contraseña'}</dd></div>
         </dl>
         <p className="account-hint">El correo no se puede cambiar desde aquí. Si necesitas cambiarlo, escribe a english@munchira.com.</p>
