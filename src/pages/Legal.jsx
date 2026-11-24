@@ -70,13 +70,16 @@ export function Privacy() {
           <tr><td>Supabase</td><td>Base de datos, autenticación y almacenamiento</td><td>Cuenta y progreso de aprendizaje</td></tr>
           <tr><td>Vercel</td><td>Alojamiento de la aplicación web</td><td>Datos técnicos de la conexión</td></tr>
           <tr><td>Google</td><td>Inicio de sesión opcional con Google</td><td>Tu identidad de Google al iniciar sesión</td></tr>
-          <tr><td>ElevenLabs</td><td>Generar el audio de las lecciones</td><td>Solo el texto del curso que se lee en voz alta; ningún dato personal</td></tr>
         </tbody>
       </table>
       <p>
         Algunos de estos proveedores pueden tratar datos fuera de tu país. Los usamos porque aplican medidas
         de seguridad reconocidas. Si el audio del servidor no está disponible, tu navegador puede leer el
         texto con su propia voz del sistema; en ese caso el texto no sale de tu dispositivo.
+      </p>
+      <p>
+        El audio de las lecciones se prepara antes, a partir solo del texto del curso. No intervienen tus
+        datos, por eso ese servicio no aparece en la tabla de arriba.
       </p>
 
       <h2>5. Cuánto tiempo guardamos los datos</h2>
