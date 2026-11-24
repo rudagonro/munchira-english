@@ -1,39 +1,54 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
+import { supabase } from '../lib/supabase'
+import { birthDateError } from '../lib/ageRule'
 import LegalLinks from '../components/LegalLinks'
 import HeaderBrand from '../public/HeaderBrand'
 import cover from '../assets/aprende-juntos-1536.webp.asset.json'
+import mascot from '../assets/oruga-transparente.png.asset.json'
 import './register.css'
+import './register-art.css'
 
 const mediaOrigin = 'https://id-preview--f553b302-239c-4b8c-bdfd-bae63f587a74.lovable.app'
+const steps = ['Crea tu cuenta', 'Haz tu diagnóstico de nivel', 'Empieza tu primera lección']
+const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+const thisYear = new Date().getFullYear()
+const years = Array.from({ length: thisYear - 1920 }, (_, i) => thisYear - 1 - i)
+const days = Array.from({ length: 31 }, (_, i) => i + 1)
 
 function Shell({ children }) {
   return <div className="rg-page">
     <header className="rg-top"><HeaderBrand /></header>
     <div className="rg-grid">
       <main className="rg-main">{children}</main>
-      <aside className="rg-art" aria-hidden="true">
-        <span className="rg-block rg-block-teal" />
-        <span className="rg-block rg-block-ink" />
-        <span className="rg-block rg-block-lime" />
-        <img src={`${mediaOrigin}${cover.url}`} alt="" loading="eager" decoding="async" />
-        <span className="rg-dot rg-dot-1" />
-        <span className="rg-dot rg-dot-2" />
-        <span className="rg-dot rg-dot-3" />
+      <aside className="rg-art">
+        <div className="rg-stage">
+          <div className="rg-photo"><img src={`${mediaOrigin}${cover.url}`} alt="" loading="eager" decoding="async" /></div>
+          <span className="rg-trail" aria-hidden="true"><i /><i /><i /><i /><i /></span>
+          <img className="rg-mascot" src={`${mediaOrigin}${mascot.url}`} alt="" width="443" height="518" decoding="async" />
+          <div className="rg-steps">
+            <p>Tu camino, paso a paso</p>
+            <ol>{steps.map((s, i) => <li key={s} className={i === 0 ? 'is-now' : ''}><span>{i + 1}</span>{s}</li>)}</ol>
+          </div>
+        </div>
       </aside>
     </div>
   </div>
 }
 
 export default function Register() {
-  const { signUpWithEmail, signInWithGoogle } = useAuth()
+  const { signInWithGoogle } = useAuth()
   const navigate = useNavigate()
 
-  const [fullName, setFullName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [birthDay, setBirthDay] = useState('')
+  const [birthMonth, setBirthMonth] = useState('')
+  const [birthYear, setBirthYear] = useState('')
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
   const [accepted, setAccepted] = useState(false)
@@ -41,47 +56,38 @@ export default function Register() {
 
   // NOTA DE SEGURIDAD: este formulario NUNCA debe incluir un campo para elegir
   // rol (estudiante/profesor/admin). Todo registro público cae en 'student'
-  // por defecto vía el trigger de base de datos. Crear profesores/admins es
-  // una acción exclusiva del panel de administración, no del registro público.
-
-  function validatePassword(pw) {
-    if (pw.length < 8) return 'La contraseña debe tener al menos 8 caracteres.'
-    return null
-  }
+  // por defecto vía el trigger de base de datos.
 
   async function handleSubmit(e) {
     e.preventDefault()
     setError('')
 
-    if (!accepted) {
-      setError('Debes aceptar los Términos y la Política de privacidad para crear tu cuenta.')
-      return
-    }
+    if (!firstName.trim() || !lastName.trim()) { setError('Escribe tus nombres y tus apellidos.'); return }
+    const ageError = birthDateError(birthYear, birthMonth, birthDay)
+    if (ageError) { setError(ageError); return }
+    if (password.length < 8) { setError('La contraseña debe tener al menos 8 caracteres.'); return }
+    if (!accepted) { setError('Debes aceptar los Términos y la Política de privacidad para crear tu cuenta.'); return }
 
-    const pwError = validatePassword(password)
-    if (pwError) {
-      setError(pwError)
-      return
-    }
-
+    const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`
     setLoading(true)
-    const { data, error } = await signUpWithEmail(email, password, fullName)
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: {
+        full_name: `${firstName.trim()} ${lastName.trim()}`,
+        first_name: firstName.trim(),
+        last_name: lastName.trim(),
+        birth_date: birthDate,
+      } },
+    })
     setLoading(false)
 
     if (error) {
-      if (error.message.includes('already registered')) {
-        setError('Ese correo ya está registrado. Intenta iniciar sesión.')
-      } else {
-        setError('No se pudo crear la cuenta. Intenta de nuevo.')
-      }
+      setError(error.message.includes('already registered') ? 'Ese correo ya está registrado. Intenta iniciar sesión.' : 'No se pudo crear la cuenta. Intenta de nuevo.')
       return
     }
-
-    if (data.session) {
-      navigate('/app', { replace: true })
-    } else {
-      setSuccess(true)
-    }
+    if (data.session) navigate('/app', { replace: true })
+    else setSuccess(true)
   }
 
   async function handleGoogle() {
@@ -94,7 +100,7 @@ export default function Register() {
     return <Shell>
       <h1>Revisa tu correo</h1>
       <p className="rg-lead">Tu cuenta está creada. Te enviamos un enlace a <strong>{email}</strong> para confirmarla antes de iniciar sesión.</p>
-      <Link className="rg-submit rg-submit-link" to="/login">Ir a iniciar sesión</Link>
+      <Link className="rg-submit" to="/login">Ir a iniciar sesión</Link>
     </Shell>
   }
 
@@ -104,10 +110,16 @@ export default function Register() {
 
     {error && <div className="rg-error" role="alert">{error}</div>}
 
-    <form onSubmit={handleSubmit} noValidate={false}>
-      <div className="rg-field">
-        <label htmlFor="fullName">Nombre completo</label>
-        <input id="fullName" type="text" required value={fullName} onChange={(e) => setFullName(e.target.value)} autoComplete="name" />
+    <form onSubmit={handleSubmit}>
+      <div className="rg-row">
+        <div className="rg-field">
+          <label htmlFor="firstName">Nombres</label>
+          <input id="firstName" type="text" required value={firstName} onChange={(e) => setFirstName(e.target.value)} autoComplete="given-name" />
+        </div>
+        <div className="rg-field">
+          <label htmlFor="lastName">Apellidos</label>
+          <input id="lastName" type="text" required value={lastName} onChange={(e) => setLastName(e.target.value)} autoComplete="family-name" />
+        </div>
       </div>
 
       <div className="rg-field">
@@ -124,6 +136,22 @@ export default function Register() {
         </div>
       </div>
 
+      <fieldset className="rg-field rg-birth">
+        <legend>Fecha de nacimiento</legend>
+        <p className="rg-hint">Debes tener al menos 14 años para usar Munchira.</p>
+        <div className="rg-birth-row">
+          <select aria-label="Día" required value={birthDay} onChange={(e) => setBirthDay(e.target.value)} autoComplete="bday-day">
+            <option value="">Día</option>{days.map(d => <option key={d} value={d}>{d}</option>)}
+          </select>
+          <select aria-label="Mes" required value={birthMonth} onChange={(e) => setBirthMonth(e.target.value)} autoComplete="bday-month">
+            <option value="">Mes</option>{months.map((m, i) => <option key={m} value={i + 1}>{m}</option>)}
+          </select>
+          <select aria-label="Año" required value={birthYear} onChange={(e) => setBirthYear(e.target.value)} autoComplete="bday-year">
+            <option value="">Año</option>{years.map(y => <option key={y} value={y}>{y}</option>)}
+          </select>
+        </div>
+      </fieldset>
+
       <label className="rg-consent" htmlFor="accept">
         <input id="accept" type="checkbox" checked={accepted} onChange={(e) => setAccepted(e.target.checked)} />
         <span>Acepto los <Link to="/terminos" target="_blank">Términos de uso</Link> y la <Link to="/privacidad" target="_blank">Política de privacidad</Link>.</span>
@@ -131,7 +159,7 @@ export default function Register() {
 
       <details className="rg-data">
         <summary>Cómo usamos tus datos</summary>
-        <p>Usamos tu nombre y correo solo para crear tu cuenta, guardar tu nivel y tu progreso y escribirte sobre tu cuenta. No vendemos tus datos ni mostramos publicidad. Puedes pedir que borremos tu cuenta escribiendo a <a href="mailto:english@munchira.com">english@munchira.com</a>.</p>
+        <p>Usamos tus nombres, apellidos y correo para crear tu cuenta, guardar tu nivel y tu progreso y escribirte sobre tu cuenta. Tu fecha de nacimiento sirve para confirmar que tienes al menos 14 años. No vendemos tus datos ni mostramos publicidad. Puedes pedir que borremos tu cuenta escribiendo a <a href="mailto:english@munchira.com">english@munchira.com</a>.</p>
       </details>
 
       <button className="rg-submit" type="submit" disabled={loading}>{loading ? 'Creando cuenta…' : 'Crear mi cuenta'}</button>
