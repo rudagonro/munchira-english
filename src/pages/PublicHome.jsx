@@ -7,7 +7,7 @@ import Seo from '../public/Seo'
 import homeCover from '../assets/aprende-juntos-1536.webp.asset.json'
 import HeaderBrand from '../public/HeaderBrand'
 import FooterBrand from '../public/FooterBrand'
-import LoginAccess from '../public/LoginAccess'
+import LoginAccess, { RegisterLink } from '../public/LoginAccess'
 
 const levels = [
   { code: 'A1', name: 'Tus primeras palabras', label: 'Principiante', description: 'Saluda, preséntate y construye frases sencillas para hablar de tu día.', topics: ['Saludos y presentaciones', 'Vocabulario cotidiano', 'Primeras estructuras'], status: 'Inicio del recorrido' },
@@ -35,7 +35,7 @@ export default function PublicHome() {
       <header className="mp-header"><div className="mp-wrap mp-header-inner">
         <HeaderBrand />
         <nav aria-label="Navegación principal" className="mp-nav"><a href="#cursos">Cursos</a><a href="#metodo">Método</a><a href="#planes">Planes</a></nav>
-        <div className="mp-header-actions"><LoginAccess className="mp-login" /><Link className="mp-button mp-button-dark mp-header-register" to="/register">Crear cuenta <span aria-hidden="true">↗</span></Link></div>
+        <div className="mp-header-actions"><LoginAccess className="mp-login" /><RegisterLink className="mp-button mp-button-dark mp-header-register">Crear cuenta <span aria-hidden="true">↗</span></RegisterLink></div>
       </div></header>
       <main id="contenido">
         <HomeHero />

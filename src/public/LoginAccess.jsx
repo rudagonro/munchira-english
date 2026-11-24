@@ -7,3 +7,10 @@ export default function LoginAccess({ className = '' }) {
   if (session) return <Link className={className} to="/app">Mi aprendizaje</Link>
   return <Link className={className} to="/login" state={{ backgroundLocation: location }} aria-haspopup="dialog">Iniciar sesión</Link>
 }
+
+// Con sesión abierta no tiene sentido ofrecer «Crear cuenta».
+export function RegisterLink({ className = '', children }) {
+  const { session } = useAuth()
+  if (session) return null
+  return <Link className={className} to="/register">{children}</Link>
+}

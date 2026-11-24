@@ -67,7 +67,7 @@ export default function Account() {
         <dl className="account-data">
           <div><dt>Correo</dt><dd>{user?.email}</dd></div>
           <div><dt>Rol</dt><dd>{roleLabel(role)}</dd></div>
-          <div><dt>Acceso</dt><dd>{viaGoogle && canChangePassword ? 'Google y contraseña' : viaGoogle ? 'Google' : 'Correo y contraseña'}</dd></div>
+          <div><dt>Formas de acceso</dt><dd>{viaGoogle && canChangePassword ? 'Puedes entrar con Google o con tu correo y contraseña' : viaGoogle ? 'Entras con tu cuenta de Google' : 'Entras con tu correo y contraseña'}</dd></div>
         </dl>
         <p className="account-hint">El correo no se puede cambiar desde aquí. Si necesitas cambiarlo, escribe a english@munchira.com.</p>
       </section>
