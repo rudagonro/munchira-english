@@ -4,15 +4,24 @@ import { isCorrectAnswer, buildBidirectionalCards, pronunciationScore, LESSON_ST
 import { lessonA1Presentarte } from '../src/data/modelLessons/a1-presentarte.js'
 
 test('La respuesta ignora mayúsculas, tildes y signos', () => {
-  assert.equal(isCorrectAnswer('  Your ', 'your'), true)
+  assert.equal(isCorrectAnswer('  YOUR ', 'your'), true)
   assert.equal(isCorrectAnswer('Where are you from?', 'Where are you from'), true)
   assert.equal(isCorrectAnswer('mucho gusto', 'Mucho gusto'), true)
-  assert.equal(isCorrectAnswer('you', 'your'), false)
+  assert.equal(isCorrectAnswer('yoy', 'your'), false)
 })
 
 test('Se aceptan respuestas alternativas separadas por barra', () => {
   assert.equal(isCorrectAnswer('yo estoy', 'yo soy / yo estoy'), true)
   assert.equal(isCorrectAnswer('', 'yo soy'), false)
+})
+
+test('«Nice to meet you» acepta las formas comunes en español', () => {
+  const card = buildBidirectionalCards(lessonA1Presentarte.vocab).find(c => c.id === '2-en')
+  assert.equal(isCorrectAnswer('GUSTO EN CONOCERLE', card.answer), true)
+  assert.equal(isCorrectAnswer('encantada de conocerte', card.answer), true)
+  assert.equal(isCorrectAnswer('mucho gusto', card.answer), true)
+  assert.equal(isCorrectAnswer('hola qué tal', card.answer), false)
+  assert.equal(card.display, 'mucho gusto')
 })
 
 test('Cada palabra se practica en inglés→español y español→inglés', () => {
