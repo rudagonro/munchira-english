@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
 import { birthDateError } from '../lib/ageRule'
@@ -92,7 +92,7 @@ function VerifyCode({ email, onDone }) {
 }
 
 export default function Register() {
-  const { signInWithGoogle } = useAuth()
+  const { signInWithGoogle, session } = useAuth()
   const navigate = useNavigate()
 
   const [firstName, setFirstName] = useState('')
@@ -153,6 +153,8 @@ export default function Register() {
     if (error) setError('No se pudo conectar con Google. Intenta de nuevo.')
   }
 
+  // Si ya hay sesión, no tiene sentido crear otra cuenta.
+  if (session && !success) return <Navigate to="/app" replace />
   if (success) {
     return <Shell><VerifyCode email={email} onDone={() => navigate('/app', { replace: true })} /></Shell>
   }

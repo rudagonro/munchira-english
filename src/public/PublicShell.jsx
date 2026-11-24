@@ -5,7 +5,7 @@ import './public-site.css'
 import './grammar.css'
 import HeaderBrand from './HeaderBrand'
 import FooterBrand from './FooterBrand'
-import LoginAccess, { RegisterLink } from './LoginAccess'
+import LoginAccess, { AccountCta, RegisterLink } from './LoginAccess'
 import '../public/cookie-notice.css'
 
 export default function PublicShell({ children }) {
@@ -24,7 +24,7 @@ export default function PublicShell({ children }) {
       <div className="mp-public-account"><LoginAccess /><RegisterLink className="mp-button mp-button-dark">Crear cuenta <span aria-hidden="true">↗</span></RegisterLink></div>
     </div></header>
     <main id="contenido" ref={main} tabIndex={-1}>{children}</main>
-    <section className="mp-public-cta" aria-labelledby="mp-cta-title"><div className="mp-wrap"><FooterBrand /><div><h2 id="mp-cta-title">Tu próximo paso empieza contigo.</h2><p>Continúa en tu espacio de aprendizaje.</p></div><Link className="mp-button mp-button-dark" to="/register">Crear mi cuenta <span aria-hidden="true">↗</span></Link></div></section>
+    <section className="mp-public-cta" aria-labelledby="mp-cta-title"><div className="mp-wrap"><FooterBrand /><div><h2 id="mp-cta-title">Tu próximo paso empieza contigo.</h2><p>Continúa en tu espacio de aprendizaje.</p></div><AccountCta className="mp-button mp-button-dark" signedOut="Crear mi cuenta" /></div></section>
     <footer className="mp-public-footer"><div className="mp-wrap"><div><strong>Munchira English</strong><p>Aprende inglés, paso a paso.</p></div><nav aria-label="Más información"><Link to="/blog">Blog</Link><Link to="/gramatica">Gramática</Link><Link to="/privacidad">Privacidad</Link><Link to="/terminos">Términos</Link><button type="button" className="mc-cookie-link" onClick={() => window.dispatchEvent(new Event('munchira:cookie-settings'))}>Configurar cookies</button><a href="mailto:english@munchira.com">english@munchira.com</a></nav><p>© {new Date().getFullYear()} Munchira English</p></div></footer>
   </div>
 }

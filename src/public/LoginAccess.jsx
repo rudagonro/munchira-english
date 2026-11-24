@@ -9,6 +9,14 @@ export default function LoginAccess({ className = '' }) {
 }
 
 // Con sesión abierta no tiene sentido ofrecer «Crear cuenta».
+// Con sesión iniciada no se ofrece crear otra cuenta: se lleva al panel.
+export function AccountCta({ className = '', signedOut, signedIn = 'Ir a mi panel' }) {
+  const { session } = useAuth()
+  return session
+    ? <Link className={className} to="/app">{signedIn} <span aria-hidden="true">→</span></Link>
+    : <Link className={className} to="/register">{signedOut} <span aria-hidden="true">↗</span></Link>
+}
+
 export function RegisterLink({ className = '', children }) {
   const { session } = useAuth()
   if (session) return null
