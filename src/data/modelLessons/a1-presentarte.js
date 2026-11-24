@@ -34,7 +34,7 @@ export const lessonA1Presentarte = {
   ],
   table: {
     caption: 'El verbo «to be» (ser / estar) para presentarte',
-    head: ['Español', 'Pronombre', '+ Verbo', '= Frase completa', 'Contracción', 'Significa'],
+    head: ['Persona', 'Pronombre personal', 'Verbo «to be» conjugado', 'Forma completa', 'Contracción', 'Significa'],
     rows: [
       ['Yo', 'I', 'am', 'I am', "I'm", 'yo soy / yo estoy'],
       ['Tú', 'You', 'are', 'You are', "You're", 'tú eres / tú estás'],
