@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { computeModuleAvailability, isCycleComplete } from '../data/moduleAvailability'
 import { LEVEL_NAMES } from '../data/diagnosticBank'
+import { PASS_SCORE } from '../data/dashboardSummary'
 
 const SKILL_LABELS = {
   grammar: 'Gramática',
@@ -21,7 +22,7 @@ const SKILL_ICONS = {
 }
 
 const SKILL_GRADIENTS = {
-  grammar:    'linear-gradient(135deg, #4F3CC9 0%, #7C6BD6 100%)',
+  grammar:    'linear-gradient(135deg, #163c40 0%, #16665c 100%)',
   vocabulary: 'linear-gradient(135deg, #0EA5E9 0%, #38BDF8 100%)',
   listening:  'linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%)',
   reading:    'linear-gradient(135deg, #10B981 0%, #34D399 100%)',
@@ -118,8 +119,14 @@ export default function CycleModules() {
       )}
 
       {modules.length === 0 ? (
-        <div className="error-banner" style={{ maxWidth: 560 }}>
-          El contenido de este nivel todavía no está disponible. Estamos trabajando en él — vuelve pronto.
+        <div className="cycle-empty">
+          <h2>Los módulos de {level} se están preparando</h2>
+          <p>Tu diagnóstico te ubicó en {level}. Aún no hay módulos publicados para este nivel; te avisaremos aquí en cuanto estén listos.</p>
+          <p>Mientras tanto puedes practicar con la lección de muestra o repasar tu vocabulario.</p>
+          <div className="dash-actions" style={{ marginTop: 0 }}>
+            <Link to="/leccion-modelo" className="btn-primary" style={{ textDecoration: 'none', textAlign: 'center', maxWidth: 260 }}>Abrir lección de muestra</Link>
+            <Link to="/review" className="auth-footer" style={{ alignSelf: 'center' }}>Ir al repaso →</Link>
+          </div>
         </div>
       ) : (
         <div className="module-grid">
@@ -141,7 +148,7 @@ function ModuleCard({ module, onClick }) {
   const isAvailable = module.available
   const skill = module.skill_type
   const gradient = isAvailable
-    ? (SKILL_GRADIENTS[skill] ?? 'linear-gradient(135deg, #4F3CC9 0%, #7C6BD6 100%)')
+    ? (SKILL_GRADIENTS[skill] ?? 'linear-gradient(135deg, #163c40 0%, #16665c 100%)')
     : 'linear-gradient(135deg, #9CA3AF 0%, #D1D5DB 100%)'
 
   return (
@@ -155,13 +162,18 @@ function ModuleCard({ module, onClick }) {
         <span className="mcv2-icon">
           {!isAvailable ? '🔒' : (SKILL_ICONS[skill] ?? '○')}
         </span>
-        {isCompleted && <span className="mcv2-check">Completado ✓</span>}
+        {isCompleted && <span className="mcv2-check">{module.quizScore !== null && Number(module.quizScore) < PASS_SCORE ? 'Hecho · repasar' : 'Completado ✓'}</span>}
       </div>
       <div className="mcv2-body">
         <div className="mcv2-skill">{SKILL_LABELS[skill] ?? skill}</div>
         <h3 className="mcv2-title">{module.title}</h3>
         {isCompleted && module.quizScore !== null && (
-          <div className="mcv2-score">Puntaje: {Number(module.quizScore).toFixed(0)}%</div>
+          Number(module.quizScore) >= PASS_SCORE
+            ? <div className="mcv2-score">Puntaje: {Number(module.quizScore).toFixed(0)}%</div>
+            : <>
+                <div className="mcv2-score low">Puntaje: {Number(module.quizScore).toFixed(0)}% · por mejorar</div>
+                <div className="mcv2-hint">Te recomendamos repetirlo hasta llegar a {PASS_SCORE}%.</div>
+              </>
         )}
         {!isAvailable && module.blockingCheckpoint && (
           <div className="mcv2-blocked">Requiere aprobar: {module.blockingCheckpoint.title}</div>
