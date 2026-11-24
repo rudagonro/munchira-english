@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { isCorrectAnswer, buildBidirectionalCards, pronunciationScore, LESSON_STEPS } from '../src/public/model-lesson.js'
+import { displayForm, isCorrectAnswer, buildBidirectionalCards, pronunciationScore, LESSON_STEPS } from '../src/public/model-lesson.js'
 import { lessonA1Presentarte } from '../src/data/modelLessons/a1-presentarte.js'
 
 test('La respuesta ignora mayúsculas, tildes y signos', () => {
@@ -45,4 +45,13 @@ test('La lección modelo sigue el camino completo de 13 pasos con contenido', ()
     if (ex.type === 'order') assert.deepEqual([...ex.words].sort(), ex.answer.split(' ').sort())
   }
   for (const q of l.reading.questions) assert.ok(q.correct < q.opts.length)
+})
+
+test('En la lista de palabras solo se ve la forma de referencia', () => {
+  assert.equal(displayForm('mucho gusto | encantado de conocerte'), 'mucho gusto')
+  assert.equal(displayForm(lessonA1Presentarte.vocab[2].es), 'mucho gusto')
+  for (const v of lessonA1Presentarte.vocab) {
+    assert.ok(!displayForm(v.es).includes('|'))
+    assert.equal(isCorrectAnswer(displayForm(v.es), v.es), true)
+  }
 })

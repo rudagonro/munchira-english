@@ -4,7 +4,7 @@ import PublicShell from './PublicShell'
 import Seo from './Seo'
 import ExerciseBlock from '../components/ExerciseBlock'
 import { lessonA1Presentarte as lesson } from '../data/modelLessons/a1-presentarte'
-import { LESSON_STEPS, buildBidirectionalCards, isCorrectAnswer, pronunciationScore } from './model-lesson'
+import { LESSON_STEPS, buildBidirectionalCards, displayForm, isCorrectAnswer, pronunciationScore } from './model-lesson'
 import { sayEnglish, canListen, recognitionAvailable, listenOnce } from './lessonSpeech'
 import './model-lesson.css'
 
@@ -84,7 +84,7 @@ function StepContent({ id, accent }) {
     </>
     case 'vocab': return <>
       <h2>Palabras de esta lección</h2><p>Escucha cada una. La pronunciación está escrita como suena en español.</p>
-      <ul className="ml-vocab">{lesson.vocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{v.es}</span><em>«{v.say}»</em><ListenButtons text={v.en} accent={accent} /></li>)}</ul>
+      <ul className="ml-vocab">{lesson.vocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{displayForm(v.es)}</span><em>«{v.say}»</em><ListenButtons text={v.en} accent={accent} /></li>)}</ul>
     </>
     case 'explain': return <>
       <h2>Paso a paso</h2>

@@ -19,7 +19,7 @@ export function isCorrectAnswer(given, expected) {
 }
 
 /** Primera alternativa de una respuesta: la que se muestra como la forma de referencia. */
-function displayForm(text) {
+export function displayForm(text) {
   return String(text).split(/[|/]/)[0].trim()
 }
 
