@@ -15,7 +15,14 @@ export function normalizeAnswer(text) {
 export function isCorrectAnswer(given, expected) {
   const target = normalizeAnswer(given)
   if (!target) return false
-  return String(expected).split(/[|/]/).some(option => normalizeAnswer(option) === target)
+  return String(expected).split(/[|/]/).some(option => answerForms(option).includes(target))
+}
+
+/** Una forma con aclaración entre paréntesis vale con o sin ella: «años (de edad)»
+ *  acepta «años de edad» y «años». */
+function answerForms(option) {
+  const text = String(option)
+  return [...new Set([text, text.replace(/[()]/g, ' '), text.replace(/\([^)]*\)/g, ' ')].map(normalizeAnswer).filter(Boolean))]
 }
 
 /** Primera alternativa de una respuesta: la que se muestra como la forma de referencia. */
