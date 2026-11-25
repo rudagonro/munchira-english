@@ -15,3 +15,6 @@ solo envía 2 correos por hora, así que antes de abrir el registro a más gente
 
 Los registros MX, SPF y DKIM de `munchira.com` que ya existen (reenvío de `english@munchira.com`)
 no deben modificarse; los del servicio de envío van aparte.
+
+## Confirmación de cuenta con código (24 de noviembre de 2026)
+La plantilla `confirmation.html` envía el código de 6 dígitos (`{{ .Token }}`) y no un enlace, porque la pantalla «Confirma tu correo» de /register usa `verifyOtp`. En Supabase deben coincidir: longitud del código 6 (`mailer_otp_length`) y caducidad 600 s (`mailer_otp_exp`, 10 minutos, que también afecta a la caducidad del enlace de recuperación). Tras cambiar una plantilla, Supabase tarda unos minutos en servir la nueva: comprobarlo con un envío de prueba antes de darla por buena. `recovery`, `magic_link`, `invite` y `email_change` siguen con enlace; la app no usa magic link ni reautenticación.

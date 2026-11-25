@@ -1,5 +1,5 @@
 {
-  "confirmation": "Confirma tu correo en Munchira English",
+  "confirmation": "{{ .Token }} es tu código de Munchira English",
   "recovery": "Restablece tu contraseña de Munchira English",
   "magic_link": "Tu enlace de acceso a Munchira English",
   "invite": "Te han invitado a Munchira English",
