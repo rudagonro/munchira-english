@@ -121,23 +121,22 @@ export function AuthProvider({ children }) {
   }
 
   /**
-   * Guarda los datos que Google no entrega: nombres, apellidos y fecha de
-   * nacimiento. Se anotan en la cuenta (user_metadata) y el nombre se copia a
-   * la fila de perfiles para que la interfaz siga mostrando el mismo nombre.
+   * Guarda los datos que Google no entrega: nombres, apellidos, fecha de nacimiento y país.
+   * El servidor (RPC complete_my_profile) los guarda en el perfil y comprueba la edad mínima
+   * de 14 años; después se anotan también en la cuenta (user_metadata), que es lo que usa la
+   * pantalla «Completa tus datos» para saber si ya está hecho.
    */
   async function completeProfile({ firstName, lastName, birthDate, country }) {
-    const fullName = `${firstName} ${lastName}`.trim()
+    if (!session?.user) return { error: new Error('No hay sesión activa') }
+    const { data, error: profileError } = await supabase.rpc('complete_my_profile', {
+      p_first_name: firstName, p_last_name: lastName, p_birth_date: birthDate, p_country: country,
+    })
+    if (profileError) return { error: profileError }
     const { error } = await supabase.auth.updateUser({
-      data: { full_name: fullName, first_name: firstName, last_name: lastName, birth_date: birthDate, country },
+      data: { full_name: data.full_name, first_name: firstName, last_name: lastName, birth_date: birthDate, country },
     })
     if (error) return { error }
-    if (session?.user) {
-      const { data, error: profileError } = await supabase.from('profiles')
-        .update({ full_name: fullName }).eq('id', session.user.id)
-        .select('id, full_name, role, created_at').single()
-      if (profileError) return { error: profileError }
-      if (data) setProfile(data)
-    }
+    setProfile((current) => ({ ...(current ?? {}), id: data.id, full_name: data.full_name, role: data.role, created_at: data.created_at }))
     return { error: null }
   }
 
