@@ -77,3 +77,7 @@
 @media (prefers-reduced-motion: reduce) { .ml-progress span { transition: none; } }
 .ml-shadow { display: flex; flex-wrap: wrap; gap: 8px; }
 .ml-shadow .mp-button { flex: 1 1 180px; justify-content: center; }
+
+.ml-dialogue-block { display: grid; gap: 10px; margin-top: 20px; }
+.ml-dialogue-block h3 { margin: 0; }
+.ml-dialogue-es { margin: 0; font-size: 14px; color: var(--mp-muted); }

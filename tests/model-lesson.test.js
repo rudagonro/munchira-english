@@ -46,8 +46,8 @@ test('La pronunciación se puntúa por palabras reconocidas', () => {
   assert.equal(pronunciationScore("I'm from Colombia", "I'm from Colombia"), 100)
 })
 
-test('La lección modelo sigue el camino completo de 13 pasos con contenido', () => {
-  assert.equal(LESSON_STEPS.length, 13)
+test('La lección modelo sigue el camino completo de 15 pasos con contenido', () => {
+  assert.equal(LESSON_STEPS.length, 15)
   const l = lessonA1Presentarte
   assert.ok(l.vocab.length >= 6 && l.examples.length >= 5 && l.mistakes.length >= 3)
   for (const ex of l.guided) {
@@ -63,5 +63,32 @@ test('En la lista de palabras solo se ve la forma de referencia', () => {
   for (const v of lessonA1Presentarte.vocab) {
     assert.ok(!displayForm(v.es).includes('|'))
     assert.equal(isCorrectAnswer(displayForm(v.es), v.es), true)
+  }
+})
+
+test('Unidad 1: corrección de «I\'m fine, ___ you» y respuestas de completar', () => {
+  const l = lessonA1Presentarte
+  const thank = l.guided.find(e => e.q === "I'm fine, ___ you.")
+  assert.equal(thank.opts[thank.correct], 'thank')
+  const am = l.guided.find(e => e.sentence === 'I ___ fine, thank you.')
+  assert.ok(am.answer.split('|').includes("'m") && am.answer.split('|').includes('am'))
+})
+
+test('Unidad 1: la traducción acepta «I am» e «I\'m», no «I am student»', () => {
+  const t = lessonA1Presentarte.translations.find(x => x.es === 'Soy estudiante.')
+  assert.equal(isCorrectAnswer("I'm a student", t.en), true)
+  assert.equal(isCorrectAnswer('I am a student.', t.en), true)
+  assert.equal(isCorrectAnswer('I am student', t.en), false)
+})
+
+test('Unidad 1: en la lectura Mr. Brown no saluda a Sofía por su nombre antes de preguntarlo', () => {
+  assert.ok(!lessonA1Presentarte.reading.text.includes('Hello, Sofía'))
+})
+
+test('Unidad 1: tres diálogos, cada uno con voz de mujer y de hombre', () => {
+  assert.equal(lessonA1Presentarte.dialogues.length, 3)
+  for (const d of lessonA1Presentarte.dialogues) {
+    const v = d.lines.map(t => t.voice)
+    assert.ok(v.includes('nova') && v.includes('onyx'), d.title)
   }
 })

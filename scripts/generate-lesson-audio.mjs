@@ -5,6 +5,7 @@
 import { mkdirSync, existsSync, writeFileSync } from 'node:fs'
 import { lessonA1Presentarte as lesson } from '../src/data/modelLessons/a1-presentarte.js'
 import { speechText, audioKey } from '../src/public/speechText.js'
+import { displayForm } from '../src/public/model-lesson.js'
 
 const VOICES = {
   us: { nova: 'EXAVITQu4vr4xnSDxMaL' /* Sarah */, onyx: 'nPczCjzI2devNBz1zQrb' /* Brian */ },
@@ -21,7 +22,9 @@ export function lessonSpokenTexts(l) {
     ...l.examples.map(e => ({ text: e.en, voice: 'nova', speed: 0.95 })),
     ...l.mistakes.map(m => ({ text: m.right, voice: 'nova', speed: 0.95 })),
     { text: l.reading.text, voice: 'nova', speed: 0.95 },
-    ...l.dialogue.map(t => ({ text: t.text, voice: t.voice ?? 'nova', speed: 0.9 })),
+    ...(l.dialogues ?? []).flatMap(d => d.lines).map(t => ({ text: t.text, voice: t.voice ?? 'nova', speed: 0.9 })),
+    ...(l.translations ?? []).map(t => ({ text: displayForm(t.en), voice: 'nova', speed: 0.95 })),
+    ...(l.dictation ?? []).map(text => ({ text, voice: 'nova', speed: 0.9 })),
     ...l.pronunciation.map(p => ({ text: p.en, voice: 'nova', speed: 0.95 })),
     { text: l.freeModel, voice: 'nova', speed: 0.95 },
   ]
@@ -36,7 +39,7 @@ export function lessonSpokenTexts(l) {
 }
 
 const key = process.env.ELEVENLABS_API_KEY
-if (!key) throw new Error('Falta ELEVENLABS_API_KEY')
+if (!key && !process.env.DRY) throw new Error('Falta ELEVENLABS_API_KEY')
 mkdirSync(OUT, { recursive: true })
 const manifest = {}
 for (const { text, voice, speed } of lessonSpokenTexts(lesson)) {

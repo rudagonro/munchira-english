@@ -4,7 +4,7 @@ import PublicShell from './PublicShell'
 import Seo from './Seo'
 import ExerciseBlock from '../components/ExerciseBlock'
 import { lessonA1Presentarte as lesson } from '../data/modelLessons/a1-presentarte'
-import { LESSON_STEPS, buildBidirectionalCards, checkPresentation, displayForm, isCorrectAnswer, pronunciationScore } from './model-lesson'
+import { LESSON_STEPS, buildBidirectionalCards, cardVocab, checkPresentation, displayForm, isCorrectAnswer, pronunciationScore } from './model-lesson'
 import { sayEnglish, sayDialogue, canListen, recognitionAvailable, listenOnce } from './lessonSpeech'
 import { playFeedback } from './feedbackSounds'
 import { useAuth } from '../contexts/auth-context'
@@ -37,7 +37,7 @@ function ChoiceQuestions({ questions }) {
 }
 
 function TwoWayCards({ accent }) {
-  const cards = useMemo(() => buildBidirectionalCards(lesson.vocab), [])
+  const cards = useMemo(() => buildBidirectionalCards(cardVocab(lesson)), [])
   const [idx, setIdx] = useState(0)
   const [value, setValue] = useState('')
   const [result, setResult] = useState(null) // null | 'retry' | 'ok' | 'bad'
@@ -75,6 +75,39 @@ function TwoWayCards({ accent }) {
     {result === 'ok' && <p className="ml-feedback ml-ok" role="status">{tries === 0 ? '¡Correcto!' : '¡Muy bien! Lo lograste.'}</p>}
     {result === 'retry' && <p className="ml-feedback ml-bad" role="status">Casi. Corrige tu respuesta e inténtalo otra vez — tú puedes.</p>}
     {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{card.display}</strong>. No pasa nada: la volverás a ver en tu repaso.</p>}
+    <button className="mp-button mp-button-dark" type="submit" disabled={!finished && !value.trim()}>{finished ? 'Siguiente →' : result === 'retry' ? 'Comprobar de nuevo' : 'Comprobar'}</button>
+  </form>
+}
+
+/** Escribir y comprobar con reintento: traducción y dictado. */
+function WriteCheck({ items, accent }) {
+  const [idx, setIdx] = useState(0)
+  const [value, setValue] = useState('')
+  const [result, setResult] = useState(null) // null | 'retry' | 'ok' | 'bad'
+  const [tries, setTries] = useState(0)
+  const [score, setScore] = useState(0)
+  if (idx >= items.length) return <div className="ml-done" role="status"><strong>{score} de {items.length}</strong> correctas a la primera.<button type="button" className="mp-button mp-button-dark" onClick={() => { setIdx(0); setScore(0); setValue(''); setResult(null); setTries(0) }}>Repetir</button></div>
+  const item = items[idx]
+  const shown = displayForm(item.answer)
+  const finished = result === 'ok' || result === 'bad'
+  const next = () => { setIdx(i => i + 1); setValue(''); setResult(null); setTries(0) }
+  return <form className="ml-card" onSubmit={e => {
+    e.preventDefault()
+    if (finished) { next(); return }
+    if (isCorrectAnswer(value, item.answer)) { setResult('ok'); if (tries === 0) setScore(s => s + 1); playFeedback(true); return }
+    const attempt = tries + 1
+    setTries(attempt)
+    setResult(attempt >= 2 ? 'bad' : 'retry')
+    if (attempt < 2) playFeedback(false)
+  }}>
+    <p className="ml-card-meta">Frase {idx + 1} de {items.length}</p>
+    {item.listen ? <p className="ml-card-prompt"><ListenButtons text={item.answer} accent={accent} /></p> : <p className="ml-card-prompt">{item.prompt}</p>}
+    <label>Escríbelo en inglés
+      <input value={value} onChange={e => setValue(e.target.value)} disabled={finished} autoComplete="off" autoCapitalize="none" spellCheck={false} lang="en" />
+    </label>
+    {result === 'ok' && <p className="ml-feedback ml-ok" role="status">{tries === 0 ? '¡Correcto!' : '¡Muy bien! Lo lograste.'} {item.listen ? '' : shown}</p>}
+    {result === 'retry' && <p className="ml-feedback ml-bad" role="status">Casi. Revisa la frase e inténtalo otra vez — tú puedes.</p>}
+    {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{shown}</strong>. La volverás a ver en tu repaso.</p>}
     <button className="mp-button mp-button-dark" type="submit" disabled={!finished && !value.trim()}>{finished ? 'Siguiente →' : result === 'retry' ? 'Comprobar de nuevo' : 'Comprobar'}</button>
   </form>
 }
@@ -155,14 +188,19 @@ function StepContent({ id, accent }) {
       <h3>¿Lo entendiste?</h3><ChoiceQuestions questions={lesson.reading.questions} />
     </>
     case 'dialogue': return <>
-      <h2>Diálogo: conocer a alguien</h2><p>Escucha la conversación completa y luego lee tu parte en voz alta. Emma habla con voz de mujer y Daniel con voz de hombre.</p>
-      <p className="ml-dialogue-all">
-        <button type="button" onClick={() => sayDialogue(lesson.dialogue, { accent })} aria-label="Escuchar la conversación completa">🔊 Escuchar</button>
-        <button type="button" onClick={() => sayDialogue(lesson.dialogue, { accent, slow: true })} aria-label="Escuchar despacio la conversación completa">🐢 Despacio</button>
-      </p>
-      <ul className="ml-dialogue">{lesson.dialogue.map((t, i) => <li key={i} className={t.speaker === 'Tú' ? 'ml-me' : ''}><span>{t.speaker}</span><p>{t.text}</p><ListenButtons text={t.text} accent={accent} /></li>)}</ul>
+      <h2>Diálogos: conocer a alguien</h2><p>Escucha cada conversación completa y luego léela en voz alta. Las mujeres hablan con voz de mujer y los hombres con voz de hombre.</p>
+      {lesson.dialogues.map(d => <div key={d.title} className="ml-dialogue-block">
+        <h3>{d.title}</h3>
+        <p className="ml-dialogue-all">
+          <button type="button" onClick={() => sayDialogue(d.lines, { accent })} aria-label={`Escuchar completo: ${d.title}`}>🔊 Escuchar</button>
+          <button type="button" onClick={() => sayDialogue(d.lines, { accent, slow: true })} aria-label={`Escuchar despacio: ${d.title}`}>🐢 Despacio</button>
+        </p>
+        <ul className="ml-dialogue">{d.lines.map((t, i) => <li key={i} className={t.speaker !== d.lines[0].speaker ? 'ml-me' : ''}><span>{t.speaker}</span><p>{t.text}</p>{t.es && <p className="ml-dialogue-es">{t.es}</p>}<ListenButtons text={t.text} accent={accent} /></li>)}</ul>
+      </div>)}
     </>
-    case 'speak': return <><h2>Pronunciación</h2><p>Escucha, repite y compruébalo con tu voz. Munchira no guarda tus grabaciones.</p><ul className="ml-speak-list">{lesson.pronunciation.map(p => <SpeakPractice key={p.en} item={p} accent={accent} />)}</ul></>
+    case 'translate': return <><h2>Traducción</h2><p>Escribe cada frase en inglés. Si te equivocas, corrige e inténtalo otra vez.</p><WriteCheck items={lesson.translations.map(t => ({ prompt: t.es, answer: t.en }))} accent={accent} /></>
+    case 'dictation': return <><h2>Dictado</h2><p>Escucha la frase (puedes repetirla y ponerla despacio) y escríbela en inglés.</p><WriteCheck items={lesson.dictation.map(t => ({ answer: t, listen: true }))} accent={accent} /></>
+    case 'speak': return <><h2>Escucha y repite</h2><p>Escucha cada frase, repítela igual (shadowing) y compruébalo con tu voz. Munchira no guarda tus grabaciones.</p><ul className="ml-speak-list">{lesson.pronunciation.map(p => <SpeakPractice key={p.en} item={p} accent={accent} />)}</ul></>
     case 'free': return <FreeTask />
     case 'summary': return <>
       <h2>Lo que aprendiste</h2><ul className="ml-summary">{lesson.summary.map(s => <li key={s}>✓ {s}</li>)}</ul>
@@ -199,10 +237,10 @@ export default function ModelLesson() {
   const current = LESSON_STEPS[step]
   const go = (i) => { setStep(i); window.scrollTo?.({ top: 0 }) }
   return <PublicShell>
-    <Seo title={`Lección modelo: ${lesson.title}`} description="Lección de inglés A1 paso a paso: vocabulario, explicación, ejemplos con audio, práctica, lectura y pronunciación." path="/leccion-modelo" noindex />
+    <Seo title={`Lección modelo: ${lesson.title}`} description="Unidad 1 de inglés A1 paso a paso: saludos y presentaciones con vocabulario, explicación, ejemplos con audio, práctica, traducción, lectura, diálogos, dictado y pronunciación." path="/leccion-modelo" noindex />
     <div className="mp-wrap ml-page">
       <header className="ml-head">
-        <p className="mp-eyebrow">{lesson.level} · {lesson.module} · Lección modelo</p>
+        <p className="mp-eyebrow">{lesson.level} · {lesson.module} · Lección de muestra</p>
         <h1>{lesson.title}</h1>
         <div className="ml-progress" role="progressbar" aria-valuemin={1} aria-valuemax={LESSON_STEPS.length} aria-valuenow={step + 1} aria-label="Avance de la lección"><span style={{ width: `${((step + 1) / LESSON_STEPS.length) * 100}%` }} /></div>
         <div className="ml-head-row">

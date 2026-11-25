@@ -80,10 +80,23 @@ export const LESSON_STEPS = [
   { id: 'table', label: 'Cómo se forma' },
   { id: 'mistakes', label: 'Errores típicos' },
   { id: 'guided', label: 'Práctica guiada' },
+  { id: 'translate', label: 'Traducción' },
   { id: 'cards', label: 'Repaso en dos direcciones' },
   { id: 'reading', label: 'Lectura' },
-  { id: 'dialogue', label: 'Diálogo' },
-  { id: 'speak', label: 'Pronunciación' },
+  { id: 'dialogue', label: 'Diálogos' },
+  { id: 'dictation', label: 'Dictado' },
+  { id: 'speak', label: 'Escucha y repite' },
   { id: 'free', label: 'Tu presentación' },
   { id: 'summary', label: 'Resumen' },
 ]
+
+/** Palabras del repaso en dos direcciones: las marcadas como clave, o todas. */
+export function cardVocab(lesson) {
+  if (!lesson.cardWords?.length) return lesson.vocab
+  return lesson.cardWords.map(w => lesson.vocab.find(v => v.en === w)).filter(Boolean)
+}
+
+/** Todas las líneas de los diálogos, en orden. */
+export function dialogueLines(lesson) {
+  return (lesson.dialogues ?? []).flatMap(d => d.lines)
+}
