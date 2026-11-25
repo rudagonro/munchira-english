@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { AuthContext } from './auth-context'
 import { recoveryRedirect } from '../lib/accountRules'
@@ -9,12 +9,21 @@ export function AuthProvider({ children }) {
   // loading=true mientras determinamos si hay sesión activa; evita parpadeos
   // de "no autenticado" antes de que Supabase confirme el estado real.
   const [loading, setLoading] = useState(true)
+  // Usuario cuyo perfil ya está cargado. Al volver a la pestaña, Supabase renueva
+  // el token y repite SIGNED_IN/TOKEN_REFRESHED: si es el mismo usuario no hay que
+  // volver a mostrar «Cargando…» ni recargar las pantallas.
+  const loadedUserId = useRef(null)
 
   useEffect(() => {
     let active = true
     let version = 0
 
-    async function syncSession(newSession) {
+    async function syncSession(newSession, event) {
+      const sameUser = newSession?.user?.id && newSession.user.id === loadedUserId.current
+      if (sameUser) {
+        if (event === 'USER_UPDATED') setSession(newSession)
+        return
+      }
       const request = ++version
       setSession(newSession)
       setProfile(null)
@@ -24,7 +33,9 @@ export function AuthProvider({ children }) {
           const { data, error } = await supabase.from('profiles')
             .select('id, full_name, role, created_at').eq('id', newSession.user.id).single()
           if (error) throw error
-          if (active && request === version) setProfile(data)
+          if (active && request === version) { setProfile(data); loadedUserId.current = newSession.user.id }
+        } else {
+          loadedUserId.current = null
         }
       } catch (error) {
         console.error('Error cargando perfil:', error.message)
@@ -33,9 +44,9 @@ export function AuthProvider({ children }) {
       }
     }
 
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, newSession) => {
+    const { data: listener } = supabase.auth.onAuthStateChange((event, newSession) => {
       // Defer database requests until the authentication callback has returned.
-      setTimeout(() => { if (active) void syncSession(newSession) }, 0)
+      setTimeout(() => { if (active) void syncSession(newSession, event) }, 0)
     })
     const initialVersion = version
     supabase.auth.getSession().then(({ data, error }) => {
