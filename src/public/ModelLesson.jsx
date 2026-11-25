@@ -177,16 +177,10 @@ function StepContent({ id, accent, lesson }) {
       <h2>Lectura: {lesson.reading.title}</h2>
       <blockquote className="ml-reading">
         {lesson.reading.segments ? <>
-          {lesson.reading.segments.filter(t => !t.speaker).map((t, i) => <p key={i}>{t.text}</p>)}
           <ol className="ml-reading-turns">{lesson.reading.segments.filter(t => t.speaker).map((t, i) => <li key={i}><strong>{t.speaker}:</strong><p>{t.text}</p><ListenButtons text={t.text} accent={accent} voice={t.voice} /></li>)}</ol>
-          <span className="ml-listen">
-            <button type="button" onClick={() => sayDialogue(lesson.reading.segments, { accent })} aria-label="Escuchar lectura completa">🔊 Escuchar</button>
-            <button type="button" onClick={() => sayDialogue(lesson.reading.segments, { accent, slow: true })} aria-label="Escuchar lectura despacio">🐢 Despacio</button>
-          </span>
         </> : <>{lesson.reading.text} <ListenButtons text={lesson.reading.text} accent={accent} voice={lesson.reading.voice} /></>}
       </blockquote>
       <details className="ml-translation"><summary>Ver traducción</summary>{lesson.reading.segments ? <>
-        {lesson.reading.segments.filter(t => !t.speaker).map((t, i) => <p key={i}>{t.es}</p>)}
         <ol className="ml-reading-turns">{lesson.reading.segments.filter(t => t.speaker).map((t, i) => <li key={i}><strong>{t.speaker}:</strong><p>{t.es}</p></li>)}</ol>
       </> : <p>{lesson.reading.translation}</p>}</details>
       <h3>¿Lo entendiste?</h3><ChoiceQuestions questions={lesson.reading.questions} />
