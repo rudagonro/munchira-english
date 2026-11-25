@@ -926,7 +926,7 @@
         },
         {
           "english": "years old",
-          "spanish": "años (de edad) | años"
+          "spanish": "años (de edad) | años | edad | de edad"
         }
       ],
       "practice": {
@@ -1083,7 +1083,7 @@
           },
           {
             "en": "years old",
-            "es": "años (de edad) | años",
+            "es": "años (de edad) | años | edad | de edad",
             "say": "íers óuld"
           }
         ],
