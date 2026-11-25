@@ -69,6 +69,7 @@ function TwoWayCards({ accent, lesson }) {
     {result === 'retry' && <p className="ml-feedback ml-bad" role="status">Casi. Corrige tu respuesta e inténtalo otra vez — tú puedes.</p>}
     {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{card.display}</strong>. No pasa nada: la volverás a ver en tu repaso.</p>}
     <button className="mp-button mp-button-dark" type="submit" disabled={!finished && !value.trim()}>{finished ? 'Siguiente →' : result === 'retry' ? 'Comprobar de nuevo' : 'Comprobar'}</button>
+    {result === 'retry' && <button type="button" className="mp-button" onClick={() => setResult('bad')}>Ver respuesta</button>}
   </form>
 }
 
@@ -102,6 +103,7 @@ function WriteCheck({ items, accent }) {
     {result === 'retry' && <p className="ml-feedback ml-bad" role="status">Casi. Revisa la frase e inténtalo otra vez — tú puedes.</p>}
     {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{shown}</strong>. La volverás a ver en tu repaso.</p>}
     <button className="mp-button mp-button-dark" type="submit" disabled={!finished && !value.trim()}>{finished ? 'Siguiente →' : result === 'retry' ? 'Comprobar de nuevo' : 'Comprobar'}</button>
+    {result === 'retry' && <button type="button" className="mp-button" onClick={() => setResult('bad')}>Ver respuesta</button>}
   </form>
 }
 
