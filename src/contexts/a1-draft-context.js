@@ -5,6 +5,11 @@ const empty = { ready: true, fields: {}, status: 'visitor' }
 const subscribeEmpty = () => () => {}
 const getEmpty = () => empty
 
+export function useDraftFields() {
+  const store = useContext(A1DraftContext)
+  return useSyncExternalStore(store?.subscribe ?? subscribeEmpty, store?.getSnapshot ?? getEmpty, getEmpty).fields
+}
+
 // Falls back to ordinary React state outside A1: A2–C2 and reviewer stay unchanged.
 export function useDraftState(key, initial) {
   const store = useContext(A1DraftContext)

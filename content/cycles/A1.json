@@ -585,12 +585,13 @@
               "type": "choice"
             },
             {
-              "q": "¿Es estudiante?",
+              "q": "¿Qué dice Sofía al despedirse?",
               "opts": [
-                "Sí",
-                "No"
+                "Hello!",
+                "Goodbye!",
+                "Good morning!"
               ],
-              "correct": 0,
+              "correct": 1,
               "type": "choice"
             },
             {
@@ -604,11 +605,11 @@
               "type": "choice"
             },
             {
-              "q": "¿De dónde es el profesor?",
+              "q": "¿Qué le pregunta Mr. Brown a Sofía después de su nombre?",
               "opts": [
-                "De México",
-                "De Estados Unidos",
-                "De España"
+                "¿Cuántos años tiene?",
+                "¿De dónde es?",
+                "¿Cómo está?"
               ],
               "correct": 1,
               "type": "choice"
@@ -638,12 +639,13 @@
                 "correct": 2
               },
               {
-                "q": "¿Es estudiante?",
+                "q": "¿Qué dice Sofía al despedirse?",
                 "opts": [
-                  "Sí",
-                  "No"
+                  "Hello!",
+                  "Goodbye!",
+                  "Good morning!"
                 ],
-                "correct": 0
+                "correct": 1
               },
               {
                 "q": "¿Cómo se llama el profesor?",
@@ -655,11 +657,11 @@
                 "correct": 0
               },
               {
-                "q": "¿De dónde es el profesor?",
+                "q": "¿Qué le pregunta Mr. Brown a Sofía después de su nombre?",
                 "opts": [
-                  "De México",
-                  "De Estados Unidos",
-                  "De España"
+                  "¿Cuántos años tiene?",
+                  "¿De dónde es?",
+                  "¿Cómo está?"
                 ],
                 "correct": 1
               }
@@ -926,7 +928,7 @@
         },
         {
           "english": "years old",
-          "spanish": "años (de edad) | años"
+          "spanish": "años (de edad) | años | edad | de edad"
         }
       ],
       "practice": {
@@ -1083,7 +1085,7 @@
           },
           {
             "en": "years old",
-            "es": "años (de edad) | años",
+            "es": "años (de edad) | años | edad | de edad",
             "say": "íers óuld"
           }
         ],
@@ -1565,12 +1567,13 @@
               "correct": 2
             },
             {
-              "q": "¿Es estudiante?",
+              "q": "¿Qué dice Sofía al despedirse?",
               "opts": [
-                "Sí",
-                "No"
+                "Hello!",
+                "Goodbye!",
+                "Good morning!"
               ],
-              "correct": 0
+              "correct": 1
             },
             {
               "q": "¿Cómo se llama el profesor?",
@@ -1582,11 +1585,11 @@
               "correct": 0
             },
             {
-              "q": "¿De dónde es el profesor?",
+              "q": "¿Qué le pregunta Mr. Brown a Sofía después de su nombre?",
               "opts": [
-                "De México",
-                "De Estados Unidos",
-                "De España"
+                "¿Cuántos años tiene?",
+                "¿De dónde es?",
+                "¿Cómo está?"
               ],
               "correct": 1
             }

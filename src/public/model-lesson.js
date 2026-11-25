@@ -5,17 +5,47 @@ export function normalizeAnswer(text) {
   return String(text ?? '')
     .toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .replace(/[’`]/g, "'")
-    .replace(/[¿?¡!.,;:«»"]/g, ' ')
+    .replace(/[’‘`´ʼ′]/g, "'")
+    .replace(/[¿?¡!.,;:«»"“”]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
 }
 
-/** Acepta varias respuestas válidas separadas por «|» o «/». */
+// Contracciones del inglés: la forma larga y la corta valen igual («I am» = «I'm»).
+const CONTRACTIONS = [
+  [/\bi'm\b/g, 'i am'], [/\b(you|we|they)'re\b/g, '$1 are'], [/\b(he|she|it|that|what|where|who|how|there|here)'s\b/g, '$1 is'],
+  [/\b(i|you|we|they|he|she|it)'ll\b/g, '$1 will'], [/\b(i|you|we|they)'ve\b/g, '$1 have'], [/\b(i|you|we|they|he|she|it)'d\b/g, '$1 would'],
+  [/\bcan't\b/g, 'can not'], [/\bcannot\b/g, 'can not'], [/\bwon't\b/g, 'will not'], [/\blet's\b/g, 'let us'], [/\b(\w+)n't\b/g, '$1 not'],
+]
+export function expandContractions(text) {
+  return CONTRACTIONS.reduce((t, [re, to]) => t.replace(re, to), normalizeAnswer(text)).replace(/\s+/g, ' ').trim()
+}
+
+/** Acepta varias respuestas válidas separadas por «|» o «/», con o sin contracciones. */
 export function isCorrectAnswer(given, expected) {
   const target = normalizeAnswer(given)
   if (!target) return false
-  return String(expected).split(/[|/]/).some(option => normalizeAnswer(option) === target)
+  const long = expandContractions(given)
+  return String(expected).split(/[|/]/).some(option => answerForms(option).some(f => f === target || expandContractions(f) === long))
+}
+
+/** Si el alumno acierta con la forma larga y la referencia usa contracción, se la recordamos. */
+export function contractionTip(given, expected) {
+  const ref = displayForm(expected)
+  if (!isCorrectAnswer(given, ref) || !/'/.test(ref.replace(/[’]/g, "'")) || /'/.test(normalizeAnswer(given))) return null
+  return ref
+}
+
+/** Muestra una forma sin duplicar el punto final al citarla en una frase. */
+export function quoteForm(text) {
+  return String(text).trim().replace(/[.]+$/, '')
+}
+
+/** Una forma con aclaración entre paréntesis vale con o sin ella: «años (de edad)»
+ *  acepta «años de edad» y «años». */
+function answerForms(option) {
+  const text = String(option)
+  return [...new Set([text, text.replace(/[()]/g, ' '), text.replace(/\([^)]*\)/g, ' ')].map(normalizeAnswer).filter(Boolean))]
 }
 
 /** Primera alternativa de una respuesta: la que se muestra como la forma de referencia. */
@@ -49,7 +79,12 @@ export function checkPresentation(text) {
   if (typeof text !== 'string' || !text.trim() || text.length > 1000) {
     return { ok: false, items: [{ ok: false, msg: 'Escribe tu presentación (máximo 1000 caracteres).' }] }
   }
-  const sentences = text.replace(/[’`]/g, "'").split(/[.!?\n]+/).map(normalizeAnswer).filter(Boolean)
+  // Frases separadas por punto, coma, punto y coma, salto de línea o «and»; el saludo
+  // inicial («Hello», «Hi», «Good morning») se reconoce aunque vaya pegado a la frase.
+  const greeting = /^(?:hello|hi|hey|good (?:morning|afternoon|evening))\b ?/
+  const sentences = text.replace(/[’‘`´ʼ]/g, "'").split(/[.!?\n,;]+|\band\b/i)
+    .map(normalizeAnswer).filter(Boolean)
+    .flatMap(s => { const m = s.match(greeting); const rest = m ? s.slice(m[0].length).trim() : s; return m ? [m[0].trim(), rest].filter(Boolean) : [rest] })
   const namePattern = /^(?:my name is|i am|i'm) ([\p{L}][\p{L} '-]*)$/u
   const originPattern = /^(?:i am|i'm) from [\p{L}][\p{L} '-]*$/u
   const ageNumber = '(?:\\d{1,3}|(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|and)(?:[ -](?:one|two|three|four|five|six|seven|eight|nine|hundred|and|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety))*)'
@@ -63,7 +98,7 @@ export function checkPresentation(text) {
     { ok: origin, msg: origin ? 'Origen: estructura correcta.' : 'Para tu origen usa «I’m from Colombia», no «I’m of Colombia».' },
     { ok: age, msg: age ? 'Edad: estructura correcta.' : 'Para tu edad usa «I’m 30 years old» o «I’m thirty years old», no «I have 30 years».' },
   ]
-  const recognized = s => /^(?:hello|hi)$/.test(s) || isName(s) || originPattern.test(s) || agePattern.test(s)
+  const recognized = s => greeting.test(s) && greeting.exec(s)[0].trim() === s || isName(s) || originPattern.test(s) || agePattern.test(s)
   sentences.filter(s => !recognized(s)).forEach(s => {
     items.push({ ok: false, msg: /^(am|is|are)\b/.test(s)
       ? `En «${s}» falta el sujeto: usa «I’m…» o «I am…».`

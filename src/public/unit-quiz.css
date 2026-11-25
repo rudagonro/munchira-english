@@ -1,0 +1,10 @@
+/* Comprueba lo aprendido: pregunta arriba, opciones en fila con su círculo al lado */
+.ml-quiz { display: grid; gap: 16px; }
+.ml-quiz-q { margin: 0; border: 1px solid var(--mp-border); border-radius: 12px; padding: 16px; background: var(--mp-soft); display: grid; gap: 8px; min-width: 0; }
+.ml-quiz-q legend { float: left; width: 100%; padding: 0 0 6px; font-weight: 700; font-size: 17px; color: var(--mp-ink); }
+.ml-quiz-opt { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 10px 14px; border: 1px solid var(--mp-border); border-radius: 10px; background: var(--mp-paper); cursor: pointer; font-weight: 500; }
+.ml-quiz-opt:hover { border-color: var(--mp-teal); }
+.ml-quiz-opt:has(input:checked) { border-color: var(--mp-teal); background: var(--mp-mint); font-weight: 700; }
+.ml-quiz-opt input { flex: none; width: 20px; height: 20px; min-height: 0; margin: 0; padding: 0; accent-color: var(--mp-teal); }
+.ml-quiz-opt span { flex: 1; text-align: left; }
+@media (min-width: 640px) { .ml-quiz-q { grid-template-columns: 1fr 1fr; } .ml-quiz-q legend { grid-column: 1 / -1; } }

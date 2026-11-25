@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { computeModuleAvailability } from '../data/moduleAvailability'
+import { resumeModuleStage } from '../data/moduleLessonProgress'
+import { restoreModuleDraft } from '../data/moduleDraftProgress'
 import VocabFlashcard from '../components/VocabFlashcard'
 import ExerciseBlock from '../components/ExerciseBlock'
 import DialoguePlayer from '../components/DialoguePlayer'
+import LessonText from '../components/LessonText'
 import { getLessonAudioTurns } from '../data/lessonAudio'
 import A1DraftProvider from '../components/A1DraftProvider'
-import { useDraftState } from '../contexts/a1-draft-context'
+import { useDraftFields, useDraftState } from '../contexts/a1-draft-context'
 import { supabase } from '../lib/supabase'
 import { lessonAudioStatus, prepareLessonsAudio } from '../lib/audioPublisher'
 
@@ -38,7 +41,8 @@ function ModuleDraftGate({ moduleId, preview }) {
     return () => { active = false }
   }, [moduleId, preview, retry])
   if (!preview && level === null) return <div className="app-shell"><p role="status">{error ? 'No pudimos abrir el módulo. Comprueba tu conexión.' : 'Cargando módulo…'}</p>{error && <button type="button" onClick={() => setRetry(n => n + 1)}>Intentar otra vez</button>}</div>
-  return <A1DraftProvider lessonKey={`module:${moduleId}`} enabled={!preview && level === 'A1'}><ModuleContent preview={preview} /></A1DraftProvider>
+  const draftEnabled = !preview && level === 'A1'
+  return <A1DraftProvider lessonKey={`module:${moduleId}`} enabled={draftEnabled}><ModuleContent preview={preview} draftEnabled={draftEnabled} /></A1DraftProvider>
 }
 
 // Barra del modo revisor: salta a cualquier parte del módulo sin guardar nada.
@@ -86,7 +90,7 @@ function PreviewBar({ stage, lessonIdx, lessons, hasVocab, showAnswers, onShowAn
   )
 }
 
-function ModuleContent({ preview }) {
+function ModuleContent({ preview, draftEnabled }) {
   const { moduleId } = useParams()
   const navigate = useNavigate()
   const {
@@ -103,16 +107,21 @@ function ModuleContent({ preview }) {
   const [content, setContent] = useState(null)
   const [enrollmentInfo, setEnrollmentInfo] = useState(null)
 
-  const [stage, setStage, initializeStage] = useDraftState('module.stage', 'lessons') // vocab? -> lessons -> quiz -> result
-  const [lessonIdx, setLessonIdx, initializeLessonIdx] = useDraftState('module.lessonIdx', 0)
+  const [savedStage, setStage, initializeStage] = useDraftState('module.stage', 'lessons') // vocab? -> lessons -> quiz -> result
+  const [savedLessonIdx, setLessonIdx, initializeLessonIdx] = useDraftState('module.lessonIdx', 0)
   const [completedLessons, setCompletedLessons] = useState(() => new Set())
   const [dueVocab, setDueVocab] = useState([])
+  const [practicedLessonIds, setPracticedLessonIds] = useDraftState('module.practicedLessonIds', [])
+  const fields = useDraftFields()
+  const practicedLessons = new Set([...practicedLessonIds, ...(content?.lessons ?? []).filter(lesson => fields[`lesson:${lesson.id}.done`] === true).map(lesson => lesson.id)])
+  const [moduleCompleted, setModuleCompleted] = useState(false)
   const [answers, setAnswers] = useDraftState('module.answers', {})
   const [saving, setSaving] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [quizResult, setQuizResult] = useDraftState('module.quizResult', null)
   const [checkpointResult, setCheckpointResult] = useDraftState('module.checkpointResult', null)
   const [cycleAdvanced, setCycleAdvanced] = useDraftState('module.cycleAdvanced', null)
+  const { stage, lessonIdx } = !draftEnabled ? { stage: savedStage, lessonIdx: savedLessonIdx } : restoreModuleDraft({ stage: savedStage, lessonIdx: savedLessonIdx, lessons: content?.lessons ?? [], completedIds: [...completedLessons], moduleCompleted, quizResult })
 
 
   useEffect(() => {
@@ -151,12 +160,13 @@ function ModuleContent({ preview }) {
         // Solo se practican las palabras nuevas o cuya fecha de repaso ya llegó.
         const due = data.vocabItems.filter((v) => !data.wordProgress[v.id] || new Date(data.wordProgress[v.id]).getTime() <= now)
         const done = new Set(data.completedLessonIds)
-        const firstPending = data.lessons.findIndex((l) => !done.has(l.id))
+        const resume = resumeModuleStage(data.lessons, data.completedLessonIds, cycle.progress.some(row => row.module_id === moduleId && row.status === 'completed'))
+        setModuleCompleted(cycle.progress.some(row => row.module_id === moduleId && row.status === 'completed'))
         setContent(data)
         setDueVocab(due)
         setCompletedLessons(done)
-        initializeLessonIdx(firstPending === -1 ? 0 : firstPending)
-        initializeStage(data.module.skill_type === 'vocabulary' && due.length ? 'vocab' : 'lessons')
+        initializeLessonIdx(resume.lessonIdx)
+        initializeStage(resume.stage === 'quiz' ? 'quiz' : data.module.skill_type === 'vocabulary' && due.length ? 'vocab' : 'lessons')
         setEnrollmentInfo(cycle.enrollment)
       } catch (error) {
         if (active) setError(error.message || 'No se pudo cargar el módulo.')
@@ -180,12 +190,16 @@ function ModuleContent({ preview }) {
     setWarm({ running: false, ...result })
   }
 
-  function markLessonDone(lessonId) {
-    if (preview || completedLessons.has(lessonId)) return
+  async function markLessonDone(lessonId) {
+    if (preview || completedLessons.has(lessonId)) return true
+    setSaving(true)
+    let error
+    try { ({ error } = await completeLesson(lessonId)) }
+    catch (failure) { error = failure }
+    finally { setSaving(false) }
+    if (error) { setSubmitError('No pudimos guardar esta lección. Revisa la conexión y vuelve a intentarlo.'); return false }
     setCompletedLessons((prev) => new Set(prev).add(lessonId))
-    void completeLesson(lessonId).then(({ error }) => {
-      if (error) console.warn('No se pudo guardar el progreso de la lección:', error.message)
-    })
+    return true
   }
 
   function selectAnswer(questionId, idx) {
@@ -257,7 +271,7 @@ function ModuleContent({ preview }) {
   function goTo(nextStage, idx) {
     setStage(nextStage)
     if (nextStage === 'lessons') setLessonIdx(idx)
-    if (nextStage === 'quiz') { setAnswers({}); setQuizResult(null) }
+    if (nextStage === 'quiz' && stage === 'result') { setAnswers({}); setQuizResult(null) }
     window.scrollTo?.({ top: 0 })
   }
   const bar = preview ? (
@@ -329,6 +343,7 @@ function ModuleContent({ preview }) {
               ))}
             </div>
           </div>
+          {!preview && <p role="status">{lessons.filter(item => completedLessons.has(item.id)).length} de {lessons.length} lecciones completadas y guardadas</p>}
           <h1 className="lesson-title">{lesson.title}</h1>
         </div>
 
@@ -338,7 +353,7 @@ function ModuleContent({ preview }) {
             <span className="lesson-card-icon">📖</span>
             Teoría
           </div>
-          <p className="lesson-card-text">{lesson.theory_content}</p>
+          <LessonText text={lesson.theory_content} />
           {lesson.theory_table && (
             <div className="lesson-table-wrap">
               <table className="lesson-table">
@@ -363,7 +378,7 @@ function ModuleContent({ preview }) {
 
         {/* Ejercicios interactivos */}
         {lesson.exercises && lesson.exercises.length > 0 && (
-          <ExerciseBlock key={lesson.id} draftKey={`lesson:${lesson.id}`} exercises={lesson.exercises} />
+          <ExerciseBlock key={lesson.id} draftKey={`lesson:${lesson.id}`} exercises={lesson.exercises} onComplete={() => setPracticedLessonIds(previous => [...new Set([...previous, lesson.id])])} />
         )}
 
         {/* Práctica */}
@@ -372,9 +387,10 @@ function ModuleContent({ preview }) {
             <span className="lesson-card-icon">✏️</span>
             Práctica
           </div>
-          <p className="lesson-card-text">{lesson.practice_content}</p>
+          <LessonText text={lesson.practice_content} />
         </div>
 
+        {submitError && <p role="alert">{submitError}</p>}
         {/* Navegación */}
         <div className="lesson-nav">
           {lessonIdx > 0 && (
@@ -388,13 +404,14 @@ function ModuleContent({ preview }) {
           )}
           <button
             className="btn-primary lesson-nav-next"
-            onClick={() => {
-              markLessonDone(lesson.id)
+            disabled={saving || (!preview && !completedLessons.has(lesson.id) && lesson.exercises?.length > 0 && !practicedLessons.has(lesson.id))}
+            onClick={async () => {
+              if (!await markLessonDone(lesson.id)) return
               if (isLastLesson) setStage('quiz')
               else setLessonIdx(lessonIdx + 1)
             }}
           >
-            {isLastLesson ? 'Ir al quiz →' : 'Siguiente lección →'}
+            {saving ? 'Guardando…' : isLastLesson ? 'Guardar e ir al quiz →' : 'Guardar y seguir →'}
           </button>
         </div>
       </div>
@@ -413,6 +430,9 @@ function ModuleContent({ preview }) {
           </button>
         )}
         <span className="role-tag">{module.title}</span>
+        <button className="lesson-back" type="button" disabled={saving} onClick={() => goTo('lessons', 0)}>
+          ← Repasar lecciones
+        </button>
         <h1>Quiz del módulo</h1>
         <p style={{ opacity: 0.7, marginBottom: 24 }}>Responde todas las preguntas para terminar el módulo.</p>
 

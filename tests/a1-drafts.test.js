@@ -2,6 +2,9 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { createDb, addUser, asUser, asAnon, seedCycle } from './helpers/db.js'
 import { createDraftStore } from '../src/lib/a1Draft.js'
+import { LESSON_STEPS } from '../src/public/model-lesson.js'
+import { canOpenStep } from '../src/public/lessonProgress.js'
+import { restoreLessonProgress } from '../src/public/lessonDraftProgress.js'
 
 const save = (db, uid, key, fields, rev = 0) => db.query('select * from public.save_a1_learning_draft($1,$2::jsonb,$3,$4::uuid)', [key, JSON.stringify(fields), rev, uid])
 const memory = () => { const data = new Map(); return { getItem: key => data.get(key) ?? null, setItem: (key, value) => data.set(key, value), removeItem: key => data.delete(key) } }
@@ -53,6 +56,21 @@ test('A1 drafts resume all 8 units across devices without altering grades', asyn
         assert.equal(second.getSnapshot().fields['free.text'], 'My name is Ruben.')
         assert.deepEqual(second.getSnapshot().fields['quiz.answers'], { 0: 1, 2: 0 })
       }
+      assert.equal((await db.query('select count(*)::int as count from public.a1_unit_progress')).rows[0].count, 0)
+    })
+    await t.test('server roundtrip restores practiced steps and unsent step 8 without unlocking step 9', async () => {
+      const first = device('unit:3'); await first.start()
+      first.set('step', 7)
+      first.set('step.completed', LESSON_STEPS.slice(0, 7).map(step => step.id))
+      first.set('translate.value', 'I am still writing')
+      await first.flush()
+      const second = device('unit:3'); await second.start()
+      const fields = second.getSnapshot().fields
+      const restored = restoreLessonProgress(fields.step, LESSON_STEPS, new Set(fields['step.completed']))
+      assert.equal(restored.step, 7)
+      assert.equal(fields['translate.value'], 'I am still writing')
+      assert.equal(canOpenStep(8, LESSON_STEPS, restored.completed), false)
+      assert.equal(canOpenStep(14, LESSON_STEPS, restored.completed), false)
       assert.equal((await db.query('select count(*)::int as count from public.a1_unit_progress')).rows[0].count, 0)
     })
     await t.test('offline answers stay on the original device and retry to the server on reconnection', async () => {

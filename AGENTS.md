@@ -22,6 +22,7 @@
 
 - Public login uses a native modal side panel and React Router backgroundLocation, reusing the existing Login form without changing auth services; /login remains directly reachable with the public home behind it, preserving protected-route return destinations.
 
+- Keep shared lesson navigation and completion rules in src/public/lessonProgress.js, separate from answer normalization; callbacks from completed activities unlock the next step and mounted visited panels preserve unfinished work while navigating.
 - Keep the step-by-step A1 player in src/public/ModelLesson with pure teaching rules in src/public/model-lesson.js and repository-owned lesson data; separate private drafts from authoritative grades and completion.
 
 - Keep registration artwork in a dedicated immutable asset pointer and rga-prefixed styles in register-art.css; this prevents registration restyles from changing shared course images or authentication logic.
@@ -34,6 +35,12 @@
 
 - Never run generic seed_cycle/seed_module imports for repository-only A1; the eight local units are not replacements for the four legacy database modules.
 - A1 quiz grading lives in the additive progress RPC with explicit grants and owner-only RLS; update its answer-key migration alongside curriculum quizzes to prevent frontend/server drift.
+- Keep repository A1 vocabulary in a separate catalog and owner-scoped review table, merged by get_due_vocab; this reuses the existing Repaso screen without changing legacy vocabulary identifiers or settled progress.
 - A1 shadowing uses local MediaRecorder playback, not cloud speech recognition; self-comparison must not be presented as automatic pronunciation scoring.
 
+- Render module theory and practice through the shared safe LessonText formatter; separating authored steps, examples and notes preserves course content and grading while improving readability across levels.
+
+- Derive module lesson counters and resume targets from owner-filtered lesson_progress through moduleLessonProgress; pending quizzes resume directly without treating partial study as module approval.
+
 - A1 unfinished work uses the shared draft context and additive owner-only draft RPC; revision checks prevent stale-device overwrites while account-scoped local outboxes retry unsent changes, without changing grading or A2–C2.
+- Restore unit drafts through lessonDraftProgress and legacy module positions through moduleDraftProgress; remembered positions must respect required practice and authoritative lesson completion, including older drafts without completion lists.

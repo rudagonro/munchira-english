@@ -1,6 +1,7 @@
+import { isCorrectAnswer } from '../public/model-lesson.js'
 import { useRef, useEffect } from 'react'
-import { canReveal, countsForScore, retryMessage, successMessage } from './exerciseRetry'
 import { useDraftState } from '../contexts/a1-draft-context'
+import { canReveal, countsForScore, retryMessage, successMessage } from './exerciseRetry'
 import './exercise-retry.css'
 
 /* Retroalimentación común: si fallas ves el porqué, un ánimo y «Inténtalo otra vez». */
@@ -23,7 +24,7 @@ function Feedback({ state, fails, why, answer, onRetry, onReveal, onNext }) {
         {why && <span className="ex-fb-why"><b>Por qué:</b> {why}</span>}
         <span className="ex-fb-motivation">Guárdala: la volverás a ver en el repaso.</span>
       </div>
-      <button className="ex-next-btn" onClick={() => onNext(false)}>Siguiente →</button>
+      <button className="ex-retry-btn" onClick={onRetry}>Practicar la respuesta ↻</button>
     </div>
   )
   return (
@@ -42,14 +43,14 @@ function Feedback({ state, fails, why, answer, onRetry, onReveal, onNext }) {
   )
 }
 
-function useAttempts(draftKey) {
+function useAttempts(draftKey, onAttempt) {
   const [state, setState] = useDraftState(`${draftKey}.state`, 'idle')
   const [fails, setFails] = useDraftState(`${draftKey}.fails`, 0)
-  const mark = ok => { setState(ok ? 'correct' : 'wrong'); if (!ok) setFails(f => f + 1) }
+  const mark = ok => { onAttempt?.(ok && fails === 0); setState(ok ? 'correct' : 'wrong'); if (!ok) setFails(f => f + 1) }
   return { state, setState, fails, mark }
 }
 
-export default function ExerciseBlock({ exercises, draftKey = 'exercise' }) {
+export default function ExerciseBlock({ exercises, onComplete, onAttempt, draftKey = 'exercise' }) {
   const [idx, setIdx] = useDraftState(`${draftKey}.idx`, 0)
   const [score, setScore] = useDraftState(`${draftKey}.score`, 0)
   const [done, setDone] = useDraftState(`${draftKey}.done`, false)
@@ -78,7 +79,7 @@ export default function ExerciseBlock({ exercises, draftKey = 'exercise' }) {
   function next(correct) {
     if (correct) setScore(s => s + 1)
     if (idx + 1 < exercises.length) setIdx(i => i + 1)
-    else setDone(true)
+    else { setDone(true); onComplete?.() }
   }
 
   return (
@@ -95,23 +96,22 @@ export default function ExerciseBlock({ exercises, draftKey = 'exercise' }) {
         </div>
       </div>
 
-      {ex.type === 'fill' && <FillEx key={idx} ex={ex} draftKey={`${draftKey}.${idx}`} onNext={next} />}
-      {ex.type === 'choice' && <ChoiceEx key={idx} ex={ex} draftKey={`${draftKey}.${idx}`} onNext={next} />}
-      {ex.type === 'order' && <OrderEx key={idx} ex={ex} draftKey={`${draftKey}.${idx}`} onNext={next} />}
+      {ex.type === 'fill' && <FillEx key={idx} draftKey={`${draftKey}.${idx}`} ex={ex} onNext={next} onAttempt={known => onAttempt?.(ex, known)} />}
+      {ex.type === 'choice' && <ChoiceEx key={idx} draftKey={`${draftKey}.${idx}`} ex={ex} onNext={next} onAttempt={known => onAttempt?.(ex, known)} />}
+      {ex.type === 'order' && <OrderEx key={idx} draftKey={`${draftKey}.${idx}`} ex={ex} onNext={next} onAttempt={known => onAttempt?.(ex, known)} />}
     </div>
   )
 }
 
 /* ---- Fill in the blank ---- */
-function FillEx({ ex, onNext, draftKey }) {
+function FillEx({ ex, onNext, onAttempt, draftKey }) {
   const [val, setVal] = useDraftState(`${draftKey}.val`, '')
-  const { state, setState, fails, mark } = useAttempts(draftKey)
+  const { state, setState, fails, mark } = useAttempts(draftKey, onAttempt)
   const inputRef = useRef(null)
 
   useEffect(() => { if (state === 'idle') inputRef.current?.focus() }, [state])
 
-  const acceptedAnswers = ex.answer.toLowerCase().split('|').map(s => s.trim())
-  const check = () => mark(acceptedAnswers.includes(val.toLowerCase().trim()))
+  const check = () => mark(isCorrectAnswer(val, ex.answer))
   const retry = () => { setVal(''); setState('idle') }
   const reveal = () => setState('revealed')
 
@@ -146,9 +146,9 @@ function FillEx({ ex, onNext, draftKey }) {
 }
 
 /* ---- Multiple choice ---- */
-function ChoiceEx({ ex, onNext, draftKey }) {
+function ChoiceEx({ ex, onNext, onAttempt, draftKey }) {
   const [selected, setSelected] = useDraftState(`${draftKey}.selected`, null)
-  const { state, setState, fails, mark } = useAttempts(draftKey)
+  const { state, setState, fails, mark } = useAttempts(draftKey, onAttempt)
 
   function pick(i) {
     if (state !== 'idle') return
@@ -182,11 +182,11 @@ function ChoiceEx({ ex, onNext, draftKey }) {
 }
 
 /* ---- Word ordering ---- */
-function OrderEx({ ex, onNext, draftKey }) {
+function OrderEx({ ex, onNext, onAttempt, draftKey }) {
   const initialBank = () => ex.words.map((w, i) => ({ word: w, id: i }))
   const [placed, setPlaced] = useDraftState(`${draftKey}.placed`, [])
   const [bank, setBank] = useDraftState(`${draftKey}.bank`, initialBank)
-  const { state, setState, fails, mark } = useAttempts(draftKey)
+  const { state, setState, fails, mark } = useAttempts(draftKey, onAttempt)
 
   function addWord(item) {
     if (state !== 'idle') return
@@ -200,7 +200,7 @@ function OrderEx({ ex, onNext, draftKey }) {
     setBank(b => [...b, item])
   }
 
-  const check = () => mark(placed.map(x => x.word).join(' ').toLowerCase() === ex.answer.toLowerCase())
+  const check = () => mark(isCorrectAnswer(placed.map(x => x.word).join(' '), ex.answer))
   const retry = () => { setPlaced([]); setBank(initialBank()); setState('idle') }
   const reveal = () => setState('revealed')
 
