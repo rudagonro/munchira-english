@@ -14,7 +14,7 @@ test('every committed cycle file is valid', () => {
   for (const [name, cycle] of Object.entries(cycles)) {
     assert.deepEqual(validateCycleFile(cycle, name), [], name)
   }
-  assert.deepEqual(Object.values(cycles).map((c) => c.level).sort(), ['A2', 'B1', 'B2', 'C1', 'C2'])
+  assert.deepEqual(Object.values(cycles).map((c) => c.level).sort(), ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'])
 })
 
 test('the templates have the keys the validator expects', () => {
@@ -87,7 +87,7 @@ test('generated SQL only includes ready modules and is safe against tag injectio
 
 test('every committed cycle loads in Postgres and passes the publish checks', async () => {
   const db = await createDb()
-  for (const cycle of Object.values(cycles)) {
+  for (const cycle of Object.values(cycles).filter(c => c.delivery !== 'repository-only')) {
     assert.ok(cycle.modules.every((m) => m.status === 'ready'), `${cycle.level}: quedan módulos en esquema`)
     await db.exec(buildCycleSql(cycle))
     const { rows } = await db.query('select problem from public.content_readiness($1)', [cycle.level])

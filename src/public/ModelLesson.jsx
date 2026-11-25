@@ -1,13 +1,14 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PublicShell from './PublicShell'
 import Seo from './Seo'
 import ExerciseBlock from '../components/ExerciseBlock'
 import { lessonA1Presentarte as defaultLesson } from '../data/modelLessons/a1-presentarte'
-import { LESSON_STEPS, buildBidirectionalCards, cardVocab, checkPresentation, displayForm, isCorrectAnswer, pronunciationScore } from './model-lesson'
-import { sayEnglish, sayDialogue, stopLessonAudio, canListen, recognitionAvailable, listenOnce } from './lessonSpeech'
+import { LESSON_STEPS, buildBidirectionalCards, cardVocab, checkPresentation, displayForm, isCorrectAnswer } from './model-lesson'
+import { sayEnglish, sayDialogue, stopLessonAudio, canListen } from './lessonSpeech'
 import { playFeedback } from './feedbackSounds'
 import { useAuth } from '../contexts/auth-context'
+import UnitCompletion from './UnitCompletion'
 import './model-lesson.css'
 
 function ListenButtons({ text, accent, voice }) {
@@ -105,40 +106,37 @@ function WriteCheck({ items, accent }) {
 }
 
 function SpeakPractice({ item, accent }) {
-  const [state, setState] = useState(null)
-  const canRecord = recognitionAvailable()
-  const listen = () => {
-    setState({ listening: true })
-    listenOnce({
-      accent,
-      onResult: heard => {
-        const score = pronunciationScore(heard, item.en)
-        const ok = score >= 75
-        setState(s => ({ heard, score, tries: (s?.tries ?? 0) + 1, cheer: playFeedback(ok) }))
-      },
-      onError: () => setState({ error: true }),
-    })
+  const [recording, setRecording] = useState(false)
+  const [url, setUrl] = useState('')
+  const [error, setError] = useState('')
+  const recorder = useRef(null)
+  const streamRef = useRef(null)
+  const active = useRef(true)
+  useEffect(() => { active.current = true; return () => { active.current = false; if (recorder.current?.state === 'recording') recorder.current.stop(); streamRef.current?.getTracks().forEach(track => track.stop()) } }, [])
+  useEffect(() => () => { if (url) URL.revokeObjectURL(url) }, [url])
+  async function record() {
+    if (recording) { recorder.current?.stop(); return }
+    setError('')
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      if (!active.current) { stream.getTracks().forEach(track => track.stop()); return }
+      streamRef.current = stream
+      const device = new MediaRecorder(stream)
+      recorder.current = device
+      const chunks = []
+      device.ondataavailable = event => { if (event.data.size) chunks.push(event.data) }
+      device.onstop = () => { stream.getTracks().forEach(track => track.stop()); recorder.current = null; if (active.current) { setRecording(false); setUrl(URL.createObjectURL(new Blob(chunks, { type: device.mimeType }))) } }
+      device.start(); setRecording(true)
+    } catch { setError('No pudimos abrir el micrófono. Revisa el permiso y vuelve a intentarlo.') }
   }
-  const shadow = () => { setState({ playing: true }); sayEnglish(item.en, { accent, onEnd: listen }) }
-  const busy = state?.playing || state?.listening
-  const ok = state?.score >= 75
+  const supported = typeof MediaRecorder !== 'undefined' && Boolean(navigator.mediaDevices?.getUserMedia)
   return <li className="ml-speak">
     <p className="ml-big">{item.en} <ListenButtons text={item.en} accent={accent} /></p>
-    <p className="ml-say">Se pronuncia: <strong>{item.say}</strong></p>
-    <p className="ml-tip">💡 {item.tip}</p>
-    {canRecord
-      ? <div className="ml-shadow">
-          <button type="button" className="mp-button mp-button-dark" disabled={busy} onClick={shadow}>
-            {state?.playing ? '🎧 Escucha…' : state?.listening ? '🎙 ¡Ahora tú!' : '🎧 Escucha y repite'}
-          </button>
-          <button type="button" className="mp-button" disabled={busy} onClick={listen}>🎙 Dilo tú</button>
-        </div>
-      : <p className="ml-tip">Escucha, repite en voz alta y compara. Tu navegador no permite comprobar la voz automáticamente.</p>}
-    {canRecord && !state && <p className="ml-tip">Shadowing: escuchas la frase y el micrófono se abre solo para que la repitas enseguida.</p>}
-    {state?.heard !== undefined && <p className={`ml-feedback ${ok ? 'ml-ok' : 'ml-bad'}`} role="status">
-      <strong>{state.cheer}</strong> Entendí: «{state.heard}» · {ok ? '¡Muy bien!' : 'Escúchala otra vez y repítela.'}
-    </p>}
-    {state?.error && <p className="ml-feedback ml-bad" role="status">No pude oírte. Revisa el permiso del micrófono e inténtalo de nuevo.</p>}
+    <p className="ml-say">Se pronuncia: <strong>{item.say}</strong></p><p className="ml-tip">{item.tip}</p>
+    {supported && <button className="mp-button mp-button-dark" type="button" onClick={record}>{recording ? 'Detener grabación' : 'Grabar mi repetición'}</button>}
+    {url && <audio src={url} controls aria-label="Mi repetición" />}
+    <p>Escucha el modelo, repítelo y compara. La grabación permanece solo en este dispositivo y no recibe una calificación automática.</p>
+    {error && <p role="alert">{error}</p>}
   </li>
 }
 
@@ -192,7 +190,7 @@ function StepContent({ id, accent, lesson }) {
     </>
     case 'translate': return <><h2>Traducción</h2><p>Escribe cada frase en inglés. Si te equivocas, corrige e inténtalo otra vez.</p><WriteCheck items={lesson.translations.map(t => ({ prompt: t.es, answer: t.en }))} accent={accent} /></>
     case 'dictation': return <><h2>Dictado</h2><p>Escucha la frase (puedes repetirla y ponerla despacio) y escríbela en inglés.</p><WriteCheck items={lesson.dictation.map(t => ({ answer: t, listen: true }))} accent={accent} /></>
-    case 'speak': return <><h2>Escucha y repite</h2><p>Escucha cada frase, repítela igual (shadowing) y compruébalo con tu voz. Munchira no guarda tus grabaciones.</p><ul className="ml-speak-list">{lesson.pronunciation.map(p => <SpeakPractice key={p.en} item={p} accent={accent} />)}</ul></>
+    case 'speak': return <><h2>Escucha y repite</h2><p>Escucha cada frase, repítela igual (shadowing) y compara con tu voz. Munchira no guarda tus grabaciones.</p><ul className="ml-speak-list">{lesson.pronunciation.map(p => <SpeakPractice key={p.en} item={p} accent={accent} />)}</ul></>
     case 'free': return <FreeTask lesson={lesson} />
     case 'summary': return <>
       <h2>Lo que aprendiste</h2><ul className="ml-summary">{lesson.summary.map(s => <li key={s}>✓ {s}</li>)}</ul>
@@ -210,7 +208,7 @@ function FreeTask({ lesson }) {
     <h2>{lesson.number ? 'Ponlo en práctica' : 'Tu presentación'}</h2><p>{lesson.freeTask}</p>
     <label className="ml-free">Escribe aquí<textarea rows={4} value={text} maxLength={1000} lang="en" spellCheck onChange={e => { setText(e.target.value); setReview(null) }} /></label>
     <div className="ml-row">
-      {!lesson.number && <button type="button" className="mp-button mp-button-dark" disabled={!text.trim()} onClick={() => setReview(checkPresentation(text))}>✓ Revisar mi presentación</button>}
+      {lesson.number <= 1 && <button type="button" className="mp-button mp-button-dark" disabled={!text.trim()} onClick={() => setReview(checkPresentation(text))}>✓ Revisar mi presentación</button>}
       {text.trim() && <button type="button" className="mp-button" onClick={() => sayEnglish(text)}>🔊 Escuchar lo que escribiste</button>}
       <button type="button" className="mp-button" onClick={() => setShown(true)}>Ver un modelo</button>
     </div>
@@ -242,7 +240,7 @@ export default function ModelLesson({ lesson = defaultLesson }) {
           <p>Paso {step + 1} de {steps.length}: <strong>{current.label}</strong></p>
           <label className="ml-accent">Acento <select value={accent} onChange={e => setAccent(e.target.value)}><option value="en-US">Americano</option><option value="en-GB">Británico</option></select></label>
         </div>
-      <p className="ml-tip"><Link to="/cursos/A1">← Temario A1</Link>{lesson.number && ' · Práctica independiente; no modifica tus notas ni el avance de tus módulos.'}</p>{lesson.number && <small>Powered by ElevenLabs</small>}
+      <p className="ml-tip"><Link to="/cursos/A1">← Temario A1</Link>{' · Guarda el avance A1 al aprobar el cuestionario final.'}</p>
       </header>
       <div className="ml-layout">
         <nav className="ml-steps" aria-label="Pasos de la lección"><ol>{steps.map((s, i) => <li key={s.id}><button type="button" aria-current={i === step ? 'step' : undefined} className={i < step ? 'ml-step-done' : ''} onClick={() => go(i)}><span>{i < step ? '✓' : i + 1}</span>{s.label}</button></li>)}</ol></nav>
@@ -259,9 +257,10 @@ export default function ModelLesson({ lesson = defaultLesson }) {
 
 /** Con sesión: seguir en el panel. Sin sesión (visitante): invitar a crear cuenta. */
 function SummaryNextStep({ lesson }) {
-  const { session } = useAuth()
+  const { session, user } = useAuth()
   if (lesson.number) return <>
-    <p>Terminaste esta práctica. Puedes repetirla sin cambiar las notas de tus módulos.</p>
+    <p>Repasa lo aprendido y completa el cuestionario para guardar el avance de esta unidad.</p>
+    <UnitCompletion key={`${user?.id ?? 'visitor'}-${lesson.number}`} number={lesson.number} />
     {lesson.number < 8 && <Link className="mp-button mp-button-dark" to={`/cursos/A1/unidad/${lesson.number + 1}`}>Unidad {lesson.number + 1} →</Link>}
     <Link className="mp-text-link" to="/cursos/A1">Volver al temario A1</Link>
     {session ? <Link className="mp-text-link" to="/app">Ir a mi panel</Link> : <Link className="mp-text-link" to="/register">Crear mi cuenta</Link>}

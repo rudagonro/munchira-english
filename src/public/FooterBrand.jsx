@@ -1,7 +1,7 @@
 import mascot from '../assets/oruga-transparente.png.asset.json'
 import './footer-brand.css'
 
-const mediaOrigin = 'https://id-preview--f553b302-239c-4b8c-bdfd-bae63f587a74.lovable.app'
+const mediaOrigin = ''
 
 export default function FooterBrand() {
   return <div className="mp-footer-brand">

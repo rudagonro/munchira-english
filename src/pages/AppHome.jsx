@@ -8,7 +8,7 @@ import { summarizeCycle } from '../data/dashboardSummary'
 import mascot from '../assets/oruga-transparente.png.asset.json'
 import CurriculumOutline from '../components/CurriculumOutline'
 
-const mediaOrigin = 'https://id-preview--f553b302-239c-4b8c-bdfd-bae63f587a74.lovable.app'
+const mediaOrigin = ''
 const SKILLS = [
   ['grammar', '📝', 'Gramática'], ['vocabulary', '📖', 'Vocabulario'], ['listening', '🎧', 'Listening'],
   ['reading', '📚', 'Reading'], ['writing', '✍️', 'Writing'],

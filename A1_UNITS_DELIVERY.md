@@ -1,3 +1,7 @@
+# Histórico de entrega A1
+
+Este informe describe la entrega anterior con recursos externos. La revisión que elimina esa dependencia y añade progreso A1 se documenta en `A1_REPOSITORY.md`; seguir ese documento para la versión nueva.
+
 # A1: unidades 2–8, 25 de noviembre de 2026
 
 Las siete unidades del propietario se ofrecen como práctica independiente en `/cursos/A1/unidad/2` hasta `/cursos/A1/unidad/8`, enlazadas desde el temario A1 público y el esquema compartido del alumno. La Unidad 1 sigue en `/leccion-modelo`. Se reutilizan los quince pasos existentes, los reintentos y las opciones de acento. No hay migración, modificación de módulos, notas ni progreso; terminar estas prácticas no marca un módulo aprobado.

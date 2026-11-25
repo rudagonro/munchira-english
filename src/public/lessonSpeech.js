@@ -35,8 +35,9 @@ function deviceVoice(text, slow, accent, onEnd) {
   const utter = new SpeechSynthesisUtterance(calmCaps(speechText(text)))
   utter.lang = accent
   utter.rate = slow ? 0.6 : 0.95
-  const voice = bestVoice(window.speechSynthesis.getVoices(), accent)
-  if (voice) utter.voice = voice
+  const voice = bestVoice(window.speechSynthesis.getVoices().filter(item => item.localService === true), accent)
+  if (!voice) { onEnd?.(); return false }
+  utter.voice = voice
   if (onEnd) utter.onend = () => onEnd()
   window.speechSynthesis.speak(utter)
   return true
@@ -78,7 +79,7 @@ export function sayEnglish(text, { slow = false, accent = 'en-US', voice = 'nova
   if (!url) return deviceVoice(text, slow, accent, onEnd)
   const audio = playRecorded(url, slow, clip)
   if (onEnd) audio.onended = () => onEnd()
-  audio.play().catch(() => deviceVoice(text, slow, accent, onEnd))
+  audio.play().catch(() => { onEnd?.(); })
   return true
 }
 
@@ -91,29 +92,12 @@ export function sayDialogue(lines, { slow = false, accent = 'en-US' } = {}) {
     if (token !== dialogueToken || i >= lines.length) return
     const clip = lessonAudioClip(lines[i].text, accent, lines[i].voice)
     const url = recordedAudioUrl(lines[i].text, accent, lines[i].voice)
-    if (!url) { deviceVoice(lines[i].text, slow, accent, () => playLine(i + 1)); return }
+    if (!url) return
     const audio = playRecorded(url, slow, clip)
     audio.onended = () => playLine(i + 1)
-    audio.play().catch(() => deviceVoice(lines[i].text, slow, accent))
+    audio.play().catch(() => {})
   }
   playLine(0)
   return true
 }
 
-export function recognitionAvailable() {
-  return typeof window !== 'undefined' && Boolean(window.SpeechRecognition || window.webkitSpeechRecognition)
-}
-
-/** Escucha una frase del alumno. El audio lo procesa el navegador; Munchira no lo guarda. */
-export function listenOnce({ accent = 'en-US', onResult, onError }) {
-  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition
-  if (!Recognition) { onError?.('unsupported'); return () => {} }
-  const rec = new Recognition()
-  rec.lang = accent
-  rec.interimResults = false
-  rec.maxAlternatives = 3
-  rec.onresult = (event) => onResult?.(Array.from(event.results[0]).map(r => r.transcript).join(' '))
-  rec.onerror = (event) => onError?.(event.error)
-  rec.start()
-  return () => rec.abort()
-}

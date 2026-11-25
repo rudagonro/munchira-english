@@ -15,6 +15,7 @@ function text(value) {
 }
 
 export function buildCycleSql(cycle) {
+  if (cycle.level === 'A1' && cycle.delivery === 'repository-only') throw new Error('A1 se sirve desde el repositorio. No importar sobre el A1 existente: aplicar solo la migración aditiva de progreso A1.')
   const lines = [
     `-- Generado por scripts/content.mjs desde content/cycles/${cycle.level}.json. No editar a mano.`,
     `-- Carga el contenido como borrador (published = false). Publica con: select public.publish_cycle('${cycle.level}');`,

@@ -11,7 +11,7 @@ import mascot from '../assets/oruga-transparente.png.asset.json'
 import './register.css'
 import './register-art.css'
 
-const mediaOrigin = 'https://id-preview--f553b302-239c-4b8c-bdfd-bae63f587a74.lovable.app'
+const mediaOrigin = ''
 const steps = ['Crea tu cuenta', 'Haz tu diagnóstico de nivel', 'Empieza tu primera lección']
 const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 const thisYear = new Date().getFullYear()
