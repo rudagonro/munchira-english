@@ -5,17 +5,40 @@ export function normalizeAnswer(text) {
   return String(text ?? '')
     .toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .replace(/[’`]/g, "'")
-    .replace(/[¿?¡!.,;:«»"]/g, ' ')
+    .replace(/[’‘`´ʼ′]/g, "'")
+    .replace(/[¿?¡!.,;:«»"“”]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
 }
 
-/** Acepta varias respuestas válidas separadas por «|» o «/». */
+// Contracciones del inglés: la forma larga y la corta valen igual («I am» = «I'm»).
+const CONTRACTIONS = [
+  [/\bi'm\b/g, 'i am'], [/\b(you|we|they)'re\b/g, '$1 are'], [/\b(he|she|it|that|what|where|who|how|there|here)'s\b/g, '$1 is'],
+  [/\b(i|you|we|they|he|she|it)'ll\b/g, '$1 will'], [/\b(i|you|we|they)'ve\b/g, '$1 have'], [/\b(i|you|we|they|he|she|it)'d\b/g, '$1 would'],
+  [/\bcan't\b/g, 'can not'], [/\bcannot\b/g, 'can not'], [/\bwon't\b/g, 'will not'], [/\blet's\b/g, 'let us'], [/\b(\w+)n't\b/g, '$1 not'],
+]
+export function expandContractions(text) {
+  return CONTRACTIONS.reduce((t, [re, to]) => t.replace(re, to), normalizeAnswer(text)).replace(/\s+/g, ' ').trim()
+}
+
+/** Acepta varias respuestas válidas separadas por «|» o «/», con o sin contracciones. */
 export function isCorrectAnswer(given, expected) {
   const target = normalizeAnswer(given)
   if (!target) return false
-  return String(expected).split(/[|/]/).some(option => answerForms(option).includes(target))
+  const long = expandContractions(given)
+  return String(expected).split(/[|/]/).some(option => answerForms(option).some(f => f === target || expandContractions(f) === long))
+}
+
+/** Si el alumno acierta con la forma larga y la referencia usa contracción, se la recordamos. */
+export function contractionTip(given, expected) {
+  const ref = displayForm(expected)
+  if (!isCorrectAnswer(given, ref) || !/'/.test(ref.replace(/[’]/g, "'")) || /'/.test(normalizeAnswer(given))) return null
+  return ref
+}
+
+/** Muestra una forma sin duplicar el punto final al citarla en una frase. */
+export function quoteForm(text) {
+  return String(text).trim().replace(/[.]+$/, '')
 }
 
 /** Una forma con aclaración entre paréntesis vale con o sin ella: «años (de edad)»
