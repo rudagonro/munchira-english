@@ -1,3 +1,4 @@
+import { isCorrectAnswer } from '../public/model-lesson.js'
 import { useState, useRef, useEffect } from 'react'
 import { canReveal, countsForScore, retryMessage, successMessage } from './exerciseRetry'
 import './exercise-retry.css'
@@ -109,8 +110,7 @@ function FillEx({ ex, onNext }) {
 
   useEffect(() => { if (state === 'idle') inputRef.current?.focus() }, [state])
 
-  const acceptedAnswers = ex.answer.toLowerCase().split('|').map(s => s.trim())
-  const check = () => mark(acceptedAnswers.includes(val.toLowerCase().trim()))
+  const check = () => mark(isCorrectAnswer(val, ex.answer))
   const retry = () => { setVal(''); setState('idle') }
   const reveal = () => setState('revealed')
 
