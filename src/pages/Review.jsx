@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import VocabFlashcard from '../components/VocabFlashcard'
+import { recordA1Review } from '../public/a1Review'
 
 const BATCH = 20
 
@@ -51,7 +52,7 @@ export default function Review() {
         <div style={{ fontSize: '3rem', marginBottom: 20 }} aria-hidden="true">✅</div>
         <h1 style={{ fontSize: '1.6rem', marginBottom: 12 }}>Estás al día</h1>
         <p style={{ color: 'var(--text-muted)', marginBottom: 28 }}>
-          No tienes palabras por repasar ahora. Las palabras que estudies en los módulos de vocabulario
+          No tienes palabras por repasar ahora. Las palabras que practiques en A1 o en los módulos de vocabulario
           volverán aquí cuando toque repasarlas.
         </p>
         <Link to="/cycle" className="btn-primary" style={{ display: 'inline-block', textDecoration: 'none', maxWidth: 260 }}>
@@ -73,7 +74,7 @@ export default function Review() {
         key={state.round}
         vocabItems={state.items}
         doneLabel="Buscar más palabras →"
-        onReview={(item, known) => recordVocabReview(item.id, known)}
+        onReview={(item, known) => item.module_id ? recordVocabReview(item.id, known) : recordA1Review(item.id, known)}
         onComplete={reload}
       />
     </div>

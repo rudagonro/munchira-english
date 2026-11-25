@@ -9,7 +9,7 @@ function progressError(error) {
   return 'No pudimos guardar tu avance. Comprueba tu conexión y vuelve a intentarlo.'
 }
 
-export default function UnitCompletion({ number }) {
+export default function UnitCompletion({ number, onPassed }) {
   const { user, loading } = useAuth()
   const questions = cycle.modules.find(unit => unit.order === number)?.quiz ?? []
   const [answers, setAnswers] = useState({})
@@ -33,12 +33,14 @@ export default function UnitCompletion({ number }) {
     setError(''); setBusy(true)
     try {
       if (!user) {
-        setLocalScore(Math.round(selected.filter((answer, index) => answer === questions[index].correct_idx).length * 100 / questions.length))
+        const score = Math.round(selected.filter((answer, index) => answer === questions[index].correct_idx).length * 100 / questions.length)
+        setLocalScore(score); if (score >= 70) onPassed?.()
         return
       }
       const { data, error: saveError } = await supabase.rpc('submit_a1_unit_quiz', { p_unit: number, p_answers: selected })
       if (saveError) { setError(progressError(saveError)); return }
       setProgress(data)
+      if (data?.completed_at) onPassed?.()
     } catch { setError('No pudimos guardar tu avance. Inténtalo de nuevo.') }
     finally { setBusy(false) }
   }

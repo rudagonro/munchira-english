@@ -88,6 +88,7 @@ function ModuleContent({ preview }) {
   const [lessonIdx, setLessonIdx] = useState(0)
   const [completedLessons, setCompletedLessons] = useState(() => new Set())
   const [dueVocab, setDueVocab] = useState([])
+  const [practicedLessons, setPracticedLessons] = useState(() => new Set())
   const [answers, setAnswers] = useState({})
   const [saving, setSaving] = useState(false)
   const [submitError, setSubmitError] = useState('')
@@ -161,12 +162,12 @@ function ModuleContent({ preview }) {
     setWarm({ running: false, ...result })
   }
 
-  function markLessonDone(lessonId) {
-    if (preview || completedLessons.has(lessonId)) return
+  async function markLessonDone(lessonId) {
+    if (preview || completedLessons.has(lessonId)) return true
+    const { error } = await completeLesson(lessonId)
+    if (error) { setSubmitError('No pudimos guardar esta lección. Revisa la conexión y vuelve a intentarlo.'); return false }
     setCompletedLessons((prev) => new Set(prev).add(lessonId))
-    void completeLesson(lessonId).then(({ error }) => {
-      if (error) console.warn('No se pudo guardar el progreso de la lección:', error.message)
-    })
+    return true
   }
 
   function selectAnswer(questionId, idx) {
@@ -344,7 +345,7 @@ function ModuleContent({ preview }) {
 
         {/* Ejercicios interactivos */}
         {lesson.exercises && lesson.exercises.length > 0 && (
-          <ExerciseBlock key={lesson.id} exercises={lesson.exercises} />
+          <ExerciseBlock key={lesson.id} exercises={lesson.exercises} onComplete={() => setPracticedLessons(previous => new Set(previous).add(lesson.id))} />
         )}
 
         {/* Práctica */}
@@ -356,6 +357,7 @@ function ModuleContent({ preview }) {
           <p className="lesson-card-text">{lesson.practice_content}</p>
         </div>
 
+        {submitError && <p role="alert">{submitError}</p>}
         {/* Navegación */}
         <div className="lesson-nav">
           {lessonIdx > 0 && (
@@ -369,8 +371,9 @@ function ModuleContent({ preview }) {
           )}
           <button
             className="btn-primary lesson-nav-next"
-            onClick={() => {
-              markLessonDone(lesson.id)
+            disabled={!preview && !completedLessons.has(lesson.id) && lesson.exercises?.length > 0 && !practicedLessons.has(lesson.id)}
+            onClick={async () => {
+              if (!await markLessonDone(lesson.id)) return
               if (isLastLesson) setStage('quiz')
               else setLessonIdx(lessonIdx + 1)
             }}

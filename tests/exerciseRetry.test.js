@@ -2,11 +2,12 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { canReveal, countsForScore, retryMessage, successMessage } from '../src/components/exerciseRetry.js'
 
-test('tras el primer fallo solo se puede reintentar, no ver la respuesta', () => {
-  assert.equal(canReveal(1), false)
+test('tras el primer fallo se permite consultar la respuesta para practicarla', () => {
+  assert.equal(canReveal(0), false)
+  assert.equal(canReveal(1), true)
 })
 
-test('tras dos fallos se ofrece ver la respuesta y seguir', () => {
+test('tras dos fallos se conserva la ayuda', () => {
   assert.equal(canReveal(2), true)
 })
 
