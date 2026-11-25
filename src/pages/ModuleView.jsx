@@ -5,6 +5,7 @@ import { computeModuleAvailability } from '../data/moduleAvailability'
 import VocabFlashcard from '../components/VocabFlashcard'
 import ExerciseBlock from '../components/ExerciseBlock'
 import DialoguePlayer from '../components/DialoguePlayer'
+import LessonText from '../components/LessonText'
 import { getLessonAudioTurns } from '../data/lessonAudio'
 import { lessonAudioStatus, prepareLessonsAudio } from '../lib/audioPublisher'
 
@@ -320,7 +321,7 @@ function ModuleContent({ preview }) {
             <span className="lesson-card-icon">📖</span>
             Teoría
           </div>
-          <p className="lesson-card-text">{lesson.theory_content}</p>
+          <LessonText text={lesson.theory_content} />
           {lesson.theory_table && (
             <div className="lesson-table-wrap">
               <table className="lesson-table">
@@ -354,7 +355,7 @@ function ModuleContent({ preview }) {
             <span className="lesson-card-icon">✏️</span>
             Práctica
           </div>
-          <p className="lesson-card-text">{lesson.practice_content}</p>
+          <LessonText text={lesson.practice_content} />
         </div>
 
         {submitError && <p role="alert">{submitError}</p>}

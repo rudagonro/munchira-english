@@ -1,0 +1,38 @@
+.lesson-copy {
+  color: var(--text);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.lesson-copy-section { max-width: 72ch; min-width: 0; }
+.lesson-copy-section + .lesson-copy-section { margin-top: 24px; }
+.lesson-copy-step + .lesson-copy-step {
+  padding-top: 24px;
+  border-top: 1px solid var(--border-strong);
+}
+.lesson-copy-heading {
+  color: var(--purple);
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0;
+  margin: 0 0 10px;
+}
+.lesson-copy-body { display: grid; gap: 12px; min-width: 0; }
+.lesson-copy-body p { margin: 0; }
+.lesson-copy-example {
+  margin: 0;
+  padding: 8px 0 8px 16px;
+  border-left: 3px solid var(--purple-light);
+  font-weight: 600;
+}
+.lesson-copy-separator { color: var(--text-muted); line-height: 1; }
+.lesson-copy-note {
+  padding-top: 20px;
+  border-top: 1px solid var(--border-strong);
+}
+@media (max-width: 540px) {
+  .lesson-copy { font-size: 1rem; }
+  .lesson-copy-example { padding-left: 12px; }
+}
