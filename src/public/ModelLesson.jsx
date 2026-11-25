@@ -252,7 +252,7 @@ export default function ModelLesson({ lesson = defaultLesson }) {
           <p>Paso {step + 1} de {steps.length}: <strong>{current.label}</strong></p>
           <label className="ml-accent">Acento <select value={accent} onChange={e => setAccent(e.target.value)}><option value="en-US">Americano</option><option value="en-GB">Británico</option></select></label>
         </div>
-      <p className="ml-tip"><Link to="/cursos/A1">← Temario A1</Link>{' · Guarda el avance A1 al aprobar el cuestionario final.'}</p>
+      <LessonBackLinks />
       </header>
       <div className="ml-layout">
         <nav className="ml-steps" aria-label="Pasos de la lección"><ol>{steps.map((s, i) => <li key={s.id}><button type="button" aria-current={i === step ? 'step' : undefined} className={i < step ? 'ml-step-done' : ''} onClick={() => go(i)}><span>{i < step ? '✓' : i + 1}</span>{s.label}</button></li>)}</ol></nav>
@@ -265,6 +265,18 @@ export default function ModelLesson({ lesson = defaultLesson }) {
       </div>
     </div>
   </PublicShell>
+}
+
+/** Enlaces de salida de la lección: temario siempre; panel cuando hay sesión. */
+function LessonBackLinks() {
+  const { session } = useAuth()
+  return (
+    <p className="ml-tip">
+      <Link to="/cursos/A1">← Temario A1</Link>
+      {session && <>{' · '}<Link to="/app">← Volver a mi panel</Link></>}
+      {' · Guarda el avance A1 al aprobar el cuestionario final.'}
+    </p>
+  )
 }
 
 /** Con sesión: seguir en el panel. Sin sesión (visitante): invitar a crear cuenta. */
