@@ -104,7 +104,12 @@ function ModuleCard({ module, onClick }) {
         ? <div className="mcv2-score">Puntaje: {Number(module.quizScore).toFixed(0)}%</div>
         : <><div className="mcv2-score low">Puntaje: {Number(module.quizScore).toFixed(0)}% · por mejorar</div><div className="mcv2-hint">Te recomendamos repetirlo hasta llegar a {PASS_SCORE}%.</div></>)}
       {!isAvailable && module.blockingCheckpoint && <div className="mcv2-blocked">Requiere aprobar: {module.blockingCheckpoint.title}</div>}
-      <div className="mcv2-cta">{isCompleted ? 'Repasar módulo →' : isAvailable ? 'Empezar módulo →' : 'Módulo bloqueado'}</div>
+      {module.lessonProgress?.total > 0 && <div className="mcv2-hint">
+        <p>{module.lessonProgress.completed} de {module.lessonProgress.total} lecciones completadas · {module.lessonProgress.pct}%</p>
+        <progress value={module.lessonProgress.completed} max={module.lessonProgress.total} aria-label={`Lecciones completadas de ${module.title}`} />
+        {!isCompleted && module.lessonProgress.completed === module.lessonProgress.total && <p>Cuestionario final pendiente</p>}
+      </div>}
+      <div className="mcv2-cta">{isCompleted ? 'Repasar módulo →' : isAvailable ? module.lessonProgress?.completed > 0 ? 'Continuar módulo →' : 'Empezar módulo →' : 'Módulo bloqueado'}</div>
     </div>
   </button>
 }

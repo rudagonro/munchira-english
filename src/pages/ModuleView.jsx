@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { computeModuleAvailability } from '../data/moduleAvailability'
+import { resumeModuleStage } from '../data/moduleLessonProgress'
 import VocabFlashcard from '../components/VocabFlashcard'
 import ExerciseBlock from '../components/ExerciseBlock'
 import DialoguePlayer from '../components/DialoguePlayer'
@@ -133,12 +134,12 @@ function ModuleContent({ preview }) {
         // Solo se practican las palabras nuevas o cuya fecha de repaso ya llegó.
         const due = data.vocabItems.filter((v) => !data.wordProgress[v.id] || new Date(data.wordProgress[v.id]).getTime() <= now)
         const done = new Set(data.completedLessonIds)
-        const firstPending = data.lessons.findIndex((l) => !done.has(l.id))
+        const resume = resumeModuleStage(data.lessons, data.completedLessonIds, cycle.progress.some(row => row.module_id === moduleId && row.status === 'completed'))
         setContent(data)
         setDueVocab(due)
         setCompletedLessons(done)
-        setLessonIdx(firstPending === -1 ? 0 : firstPending)
-        setStage(data.module.skill_type === 'vocabulary' && due.length ? 'vocab' : 'lessons')
+        setLessonIdx(resume.lessonIdx)
+        setStage(resume.stage === 'quiz' ? 'quiz' : data.module.skill_type === 'vocabulary' && due.length ? 'vocab' : 'lessons')
         setEnrollmentInfo(cycle.enrollment)
       } catch (error) {
         if (active) setError(error.message || 'No se pudo cargar el módulo.')
@@ -164,7 +165,11 @@ function ModuleContent({ preview }) {
 
   async function markLessonDone(lessonId) {
     if (preview || completedLessons.has(lessonId)) return true
-    const { error } = await completeLesson(lessonId)
+    setSaving(true)
+    let error
+    try { ({ error } = await completeLesson(lessonId)) }
+    catch (failure) { error = failure }
+    finally { setSaving(false) }
     if (error) { setSubmitError('No pudimos guardar esta lección. Revisa la conexión y vuelve a intentarlo.'); return false }
     setCompletedLessons((prev) => new Set(prev).add(lessonId))
     return true
@@ -311,6 +316,7 @@ function ModuleContent({ preview }) {
               ))}
             </div>
           </div>
+          {!preview && <p role="status">{lessons.filter(item => completedLessons.has(item.id)).length} de {lessons.length} lecciones completadas y guardadas</p>}
           <h1 className="lesson-title">{lesson.title}</h1>
         </div>
 
@@ -371,14 +377,14 @@ function ModuleContent({ preview }) {
           )}
           <button
             className="btn-primary lesson-nav-next"
-            disabled={!preview && !completedLessons.has(lesson.id) && lesson.exercises?.length > 0 && !practicedLessons.has(lesson.id)}
+            disabled={saving || (!preview && !completedLessons.has(lesson.id) && lesson.exercises?.length > 0 && !practicedLessons.has(lesson.id))}
             onClick={async () => {
               if (!await markLessonDone(lesson.id)) return
               if (isLastLesson) setStage('quiz')
               else setLessonIdx(lessonIdx + 1)
             }}
           >
-            {isLastLesson ? 'Ir al quiz →' : 'Siguiente lección →'}
+            {saving ? 'Guardando…' : isLastLesson ? 'Guardar e ir al quiz →' : 'Guardar y seguir →'}
           </button>
         </div>
       </div>
