@@ -6,6 +6,7 @@ import ExerciseBlock from '../components/ExerciseBlock'
 import { lessonA1Presentarte as lesson } from '../data/modelLessons/a1-presentarte'
 import { LESSON_STEPS, buildBidirectionalCards, displayForm, isCorrectAnswer, pronunciationScore } from './model-lesson'
 import { sayEnglish, sayDialogue, canListen, recognitionAvailable, listenOnce } from './lessonSpeech'
+import { playFeedback } from './feedbackSounds'
 import './model-lesson.css'
 
 function ListenButtons({ text, accent }) {
@@ -63,14 +64,37 @@ function TwoWayCards({ accent }) {
 function SpeakPractice({ item, accent }) {
   const [state, setState] = useState(null)
   const canRecord = recognitionAvailable()
+  const listen = () => {
+    setState({ listening: true })
+    listenOnce({
+      accent,
+      onResult: heard => {
+        const score = pronunciationScore(heard, item.en)
+        const ok = score >= 75
+        setState(s => ({ heard, score, tries: (s?.tries ?? 0) + 1, cheer: playFeedback(ok) }))
+      },
+      onError: () => setState({ error: true }),
+    })
+  }
+  const shadow = () => { setState({ playing: true }); sayEnglish(item.en, { accent, onEnd: listen }) }
+  const busy = state?.playing || state?.listening
+  const ok = state?.score >= 75
   return <li className="ml-speak">
     <p className="ml-big">{item.en} <ListenButtons text={item.en} accent={accent} /></p>
     <p className="ml-say">Se pronuncia: <strong>{item.say}</strong></p>
     <p className="ml-tip">💡 {item.tip}</p>
     {canRecord
-      ? <button type="button" className="mp-button" onClick={() => { setState({ listening: true }); listenOnce({ accent, onResult: heard => setState({ heard, score: pronunciationScore(heard, item.en) }), onError: () => setState({ error: true }) }) }}>{state?.listening ? '🎙 Escuchando…' : '🎙 Dilo tú'}</button>
+      ? <div className="ml-shadow">
+          <button type="button" className="mp-button mp-button-dark" disabled={busy} onClick={shadow}>
+            {state?.playing ? '🎧 Escucha…' : state?.listening ? '🎙 ¡Ahora tú!' : '🎧 Escucha y repite'}
+          </button>
+          <button type="button" className="mp-button" disabled={busy} onClick={listen}>🎙 Dilo tú</button>
+        </div>
       : <p className="ml-tip">Escucha, repite en voz alta y compara. Tu navegador no permite comprobar la voz automáticamente.</p>}
-    {state?.heard !== undefined && <p className={`ml-feedback ${state.score >= 75 ? 'ml-ok' : 'ml-bad'}`} role="status">Entendí: «{state.heard}» · {state.score >= 75 ? '¡Muy bien!' : 'Escucha despacio e inténtalo otra vez.'}</p>}
+    {canRecord && !state && <p className="ml-tip">Shadowing: escuchas la frase y el micrófono se abre solo para que la repitas enseguida.</p>}
+    {state?.heard !== undefined && <p className={`ml-feedback ${ok ? 'ml-ok' : 'ml-bad'}`} role="status">
+      <strong>{state.cheer}</strong> Entendí: «{state.heard}» · {ok ? '¡Muy bien!' : 'Escúchala otra vez y repítela.'}
+    </p>}
     {state?.error && <p className="ml-feedback ml-bad" role="status">No pude oírte. Revisa el permiso del micrófono e inténtalo de nuevo.</p>}
   </li>
 }

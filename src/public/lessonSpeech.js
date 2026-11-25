@@ -24,14 +24,15 @@ function stopCurrent() {
   if ('speechSynthesis' in window) window.speechSynthesis.cancel()
 }
 
-function deviceVoice(text, slow, accent) {
-  if (!('speechSynthesis' in window)) return false
+function deviceVoice(text, slow, accent, onEnd) {
+  if (!('speechSynthesis' in window)) { onEnd?.(); return false }
   window.speechSynthesis.cancel()
   const utter = new SpeechSynthesisUtterance(speechText(text))
   utter.lang = accent
   utter.rate = slow ? 0.6 : 0.95
   const voice = window.speechSynthesis.getVoices().find(v => v.lang === accent)
   if (voice) utter.voice = voice
+  if (onEnd) utter.onend = () => onEnd()
   window.speechSynthesis.speak(utter)
   return true
 }
@@ -44,12 +45,14 @@ function playRecorded(url, slow) {
   return audio
 }
 
-export function sayEnglish(text, { slow = false, accent = 'en-US' } = {}) {
-  if (!canListen()) return false
+export function sayEnglish(text, { slow = false, accent = 'en-US', onEnd } = {}) {
+  if (!canListen()) { onEnd?.(); return false }
   stopCurrent()
   const url = recordedAudioUrl(text, accent)
-  if (!url) return deviceVoice(text, slow, accent)
-  playRecorded(url, slow).play().catch(() => deviceVoice(text, slow, accent))
+  if (!url) return deviceVoice(text, slow, accent, onEnd)
+  const audio = playRecorded(url, slow)
+  if (onEnd) audio.onended = () => onEnd()
+  audio.play().catch(() => deviceVoice(text, slow, accent, onEnd))
   return true
 }
 

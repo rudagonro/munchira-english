@@ -75,3 +75,5 @@
   .ml-nav .mp-button { width: 100%; justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) { .ml-progress span { transition: none; } }
+.ml-shadow { display: flex; flex-wrap: wrap; gap: 8px; }
+.ml-shadow .mp-button { flex: 1 1 180px; justify-content: center; }
