@@ -7,13 +7,13 @@ export default function CurriculumOutline({ level }) {
   if (!curriculum) return null
   return <section className="mc-internal-plan" aria-labelledby="mc-internal-title">
     <h2 id="mc-internal-title">Plan de estudios {curriculum.code}</h2>
-    <p>Ocho unidades temáticas en desarrollo. Tus módulos actuales y tu progreso se mantienen separados de este nuevo recorrido.</p>
+    <p>{curriculum.code === 'A1' ? 'Ocho unidades con práctica disponible. Estas prácticas no cambian las notas ni el progreso de tus módulos.' : 'Ocho unidades temáticas en desarrollo. Tus módulos actuales y tu progreso se mantienen separados de este nuevo recorrido.'}</p>
     <ol>{curriculum.units.map(unit => {
       const state = getUnitState(unit)
       return <li key={unit.id}>
         <span>{String(unit.number).padStart(2, '0')}</span>
         <div><strong>{unit.title}</strong><small>{unit.project}</small>
-          {state.path ? <Link to={state.path}>Abrir lección de muestra →</Link> : <small>{state.label}</small>}
+          {state.path ? <Link to={state.path}>{unit.state === 'practice' ? 'Abrir unidad' : 'Abrir lección de muestra'} →</Link> : <small>{state.label}</small>}
         </div>
       </li>
     })}</ol>

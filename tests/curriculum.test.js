@@ -21,9 +21,9 @@ test('six levels contain 48 distinct unit identifiers', () => {
   assert.equal(new Set(ids).size, 48)
 })
 
-test('the existing A1 sample is the only playable curriculum item', () => {
+test('the authored A1 units are playable without making other levels available', () => {
   const playable = CURRICULUM.flatMap(level => level.units.filter(unit => getUnitState(unit).path))
-  assert.deepEqual(playable.map(unit => unit.id), ['a1-01'])
+  assert.deepEqual(playable.map(unit => unit.id), ['a1-01', 'a1-02', 'a1-03', 'a1-04', 'a1-05', 'a1-06', 'a1-07', 'a1-08'])
   assert.equal(getUnitState(playable[0]).path, '/leccion-modelo')
   const plannedWithMaterials = { state: 'planned', samplePath: '/leccion-modelo', existingLessons: [{ title: 'Existing material' }] }
   assert.equal(getUnitState(plannedWithMaterials).path, null)

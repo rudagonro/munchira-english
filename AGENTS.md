@@ -27,4 +27,6 @@
 - Keep registration artwork in a dedicated immutable asset pointer and rga-prefixed styles in register-art.css; this prevents registration restyles from changing shared course images or authentication logic.
 - Keep free-presentation checks browser-local in the model-lesson pure rules and label their A1-only scope; this avoids transmitting student text or falsely certifying arbitrary grammar and proper-name spelling.
 - Keep the thematic curriculum in src/data/curriculum.json, with original owner documents in content/curriculum/sources and exact references to unchanged source lessons; this separates planned units from published database modules without fabricating progress or replacing student identifiers.
-- Course syllabus routes and the student outline share pure curriculum rules; only an explicitly linked sample is playable until complete units have been authored, reviewed and safely integrated.
+- Course syllabus routes and the student outline share pure curriculum rules; authored independent practice units are linked explicitly and never fabricate persisted progress or replace module identifiers.
+- Keep large authored A1 unit data, original/reviewed source text and aligned audio cues in an immutable JSON asset pointer; loading it by the explicit media origin preserves the external app without adding secrets or a backend dependency.
+- Reuse ModelLesson with a lesson prop and gender-aware audio sprites; shared retry controls and timed clips preserve the approved teaching experience without duplicating screens.

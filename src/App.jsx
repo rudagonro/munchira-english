@@ -9,6 +9,7 @@ import PublicHome from './pages/PublicHome'
 import { BlogIndex, BlogArticle } from './public/Blog'
 import { GrammarIndex, GrammarArticle } from './public/Grammar'
 import ModelLesson from './public/ModelLesson'
+import CurriculumLesson from './public/CurriculumLesson'
 import AppHome from './pages/AppHome'
 import TeacherPanel from './pages/TeacherPanel'
 import Diagnostic from './pages/Diagnostic'
@@ -32,6 +33,7 @@ function AppRoutes() {
       <Routes location={background || location}>
         <Route path="/" element={<PublicHome />} />
         <Route path="/cursos" element={<CourseIndex />} />
+        <Route path="/cursos/A1/unidad/:number" element={<CurriculumLesson />} />
         <Route path="/cursos/:level" element={<CourseLevel />} />
         <Route path="/blog" element={<BlogIndex />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />

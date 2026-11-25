@@ -62,7 +62,7 @@ function UnitOutline({ unit }) {
         <p className="mc-plan-status">{state.path ? 'Esta muestra permite practicar parte de la unidad; no representa una unidad completa.' : 'Estos materiales cubren parte del tema; todavía falta integrarlos y ampliarlos en la unidad.'}</p>
       </div>}
       {state.path
-        ? <Link className="mp-text-link" to={state.path}>Practicar la lección de muestra <span aria-hidden="true">→</span></Link>
+        ? <Link className="mp-text-link" to={state.path}>{unit.state === 'practice' ? 'Abrir la unidad' : 'Practicar la lección de muestra'} <span aria-hidden="true">→</span></Link>
         : <p className="mc-plan-status">La unidad completa aún está en desarrollo.</p>}
     </div>
   </details>
@@ -83,7 +83,7 @@ export function CourseLevel() {
         <p className="mp-eyebrow">Munchira English · {level.label}</p>
         <h1>Inglés {level.code}</h1>
         <p>{level.description}</p>
-        <p className="mc-plan-note">8 unidades planificadas. Los módulos actuales y sus avances se conservan; las unidades completas del nuevo temario siguen en desarrollo.</p>
+        <p className="mc-plan-note">{level.code === 'A1' ? 'Las ocho unidades tienen práctica disponible. Conservamos tus módulos y avances; estas prácticas independientes no cambian sus notas ni se guardan en tu progreso.' : '8 unidades planificadas. Los módulos actuales y sus avances se conservan; las unidades completas del nuevo temario siguen en desarrollo.'}</p>
         <div className="mc-plan-actions">
           <AccountCta className="mp-button mp-button-dark" signedOut="Crear cuenta" signedIn="Ir a mi panel" />
           {level.code === 'A1' && <Link className="mp-text-link" to="/leccion-modelo">Probar la lección de muestra →</Link>}

@@ -2,6 +2,7 @@
 // tiene grabación (p. ej. lo que escribe el alumno), usa la voz del dispositivo.
 import manifest from '../data/modelLessons/a1-presentarte.audio.json'
 import { speechText, audioKey, bestVoice, calmCaps } from './speechText'
+import { lessonAudioClip } from './lessonRecordings'
 
 const LESSON_AUDIO = '/audio/a1-presentarte'
 let current = null
@@ -11,11 +12,15 @@ export function canListen() {
   return typeof window !== 'undefined' && (typeof Audio !== 'undefined' || 'speechSynthesis' in window)
 }
 
-export function recordedAudioUrl(text, accent = 'en-US') {
+export function recordedAudioUrl(text, accent = 'en-US', voice = 'nova') {
+  const clip = lessonAudioClip(text, accent, voice)
+  if (clip) return clip.url
   const id = audioKey(text)
   if (!manifest[id]) return null
   return `${LESSON_AUDIO}/${id}-${accent === 'en-GB' ? 'gb' : 'us'}.mp3`
 }
+
+export function stopLessonAudio() { stopCurrent() }
 
 function stopCurrent() {
   dialogueToken += 1
@@ -37,20 +42,41 @@ function deviceVoice(text, slow, accent, onEnd) {
   return true
 }
 
-function playRecorded(url, slow) {
+function playRecorded(url, slow, clip) {
   const audio = new Audio(url)
   audio.preservesPitch = true
   audio.playbackRate = slow ? 0.72 : 1
   current = audio
+  if (clip) {
+    let timer
+    let finished = false
+    const finish = () => {
+      if (finished) return
+      finished = true
+      clearTimeout(timer)
+      audio.pause()
+      audio.onended?.()
+    }
+    const schedule = () => {
+      clearTimeout(timer)
+      if (!finished) timer = setTimeout(finish, Math.max(0, (clip.end - audio.currentTime) / audio.playbackRate * 1000))
+    }
+    audio.addEventListener('loadedmetadata', () => { audio.currentTime = clip.start })
+    audio.addEventListener('playing', schedule)
+    audio.addEventListener('seeked', () => { if (!audio.paused) schedule() })
+    audio.addEventListener('pause', () => clearTimeout(timer))
+    audio.addEventListener('timeupdate', () => { if (audio.currentTime >= clip.end) finish() })
+  }
   return audio
 }
 
-export function sayEnglish(text, { slow = false, accent = 'en-US', onEnd } = {}) {
+export function sayEnglish(text, { slow = false, accent = 'en-US', voice = 'nova', onEnd } = {}) {
   if (!canListen()) { onEnd?.(); return false }
   stopCurrent()
-  const url = recordedAudioUrl(text, accent)
+  const clip = lessonAudioClip(text, accent, voice)
+  const url = recordedAudioUrl(text, accent, voice)
   if (!url) return deviceVoice(text, slow, accent, onEnd)
-  const audio = playRecorded(url, slow)
+  const audio = playRecorded(url, slow, clip)
   if (onEnd) audio.onended = () => onEnd()
   audio.play().catch(() => deviceVoice(text, slow, accent, onEnd))
   return true
@@ -63,9 +89,10 @@ export function sayDialogue(lines, { slow = false, accent = 'en-US' } = {}) {
   const token = dialogueToken
   const playLine = (i) => {
     if (token !== dialogueToken || i >= lines.length) return
-    const url = recordedAudioUrl(lines[i].text, accent)
-    if (!url) { deviceVoice(lines[i].text, slow, accent); return }
-    const audio = playRecorded(url, slow)
+    const clip = lessonAudioClip(lines[i].text, accent, lines[i].voice)
+    const url = recordedAudioUrl(lines[i].text, accent, lines[i].voice)
+    if (!url) { deviceVoice(lines[i].text, slow, accent, () => playLine(i + 1)); return }
+    const audio = playRecorded(url, slow, clip)
     audio.onended = () => playLine(i + 1)
     audio.play().catch(() => deviceVoice(lines[i].text, slow, accent))
   }
