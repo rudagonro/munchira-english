@@ -50,8 +50,8 @@ export function checkPresentation(text) {
     return { ok: false, items: [{ ok: false, msg: 'Escribe tu presentación (máximo 1000 caracteres).' }] }
   }
   const sentences = text.replace(/[’`]/g, "'").split(/[.!?\n]+/).map(normalizeAnswer).filter(Boolean)
-  const namePattern = /^(?:my name is|i am|i'm) ([\p{L}][\p{L} '\-]*)$/u
-  const originPattern = /^(?:i am|i'm) from [\p{L}][\p{L} '\-]*$/u
+  const namePattern = /^(?:my name is|i am|i'm) ([\p{L}][\p{L} '-]*)$/u
+  const originPattern = /^(?:i am|i'm) from [\p{L}][\p{L} '-]*$/u
   const ageNumber = '(?:\\d{1,3}|(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|and)(?:[ -](?:one|two|three|four|five|six|seven|eight|nine|hundred|and|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety))*)'
   const agePattern = new RegExp(`^(?:i am|i'm) ${ageNumber} years old$`)
   const isName = s => namePattern.test(s) && !/^(?:i am|i'm) (?:from|of|years|a|an)\b/.test(s) && !/\byears?\b/.test(s)
