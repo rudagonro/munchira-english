@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
 import cycle from '../../content/cycles/A1.json'
+import './unit-quiz.css'
 
 function progressError(error) {
   if (['PGRST202', 'PGRST205', '42P01', '42883'].includes(error?.code)) return 'El guardado A1 aún no está habilitado. Tu práctica sigue disponible; vuelve a intentarlo cuando se active.'
