@@ -1,7 +1,7 @@
 // Audio de la lección: voces naturales pregrabadas (public/audio). Si una frase no
 // tiene grabación (p. ej. lo que escribe el alumno), usa la voz del dispositivo.
 import manifest from '../data/modelLessons/a1-presentarte.audio.json'
-import { speechText, audioKey } from './speechText'
+import { speechText, audioKey, bestVoice, calmCaps } from './speechText'
 
 const LESSON_AUDIO = '/audio/a1-presentarte'
 let current = null
@@ -27,10 +27,10 @@ function stopCurrent() {
 function deviceVoice(text, slow, accent, onEnd) {
   if (!('speechSynthesis' in window)) { onEnd?.(); return false }
   window.speechSynthesis.cancel()
-  const utter = new SpeechSynthesisUtterance(speechText(text))
+  const utter = new SpeechSynthesisUtterance(calmCaps(speechText(text)))
   utter.lang = accent
   utter.rate = slow ? 0.6 : 0.95
-  const voice = window.speechSynthesis.getVoices().find(v => v.lang === accent)
+  const voice = bestVoice(window.speechSynthesis.getVoices(), accent)
   if (voice) utter.voice = voice
   if (onEnd) utter.onend = () => onEnd()
   window.speechSynthesis.speak(utter)
