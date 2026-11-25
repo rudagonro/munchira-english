@@ -4,7 +4,7 @@ import PublicShell from './PublicShell'
 import Seo from './Seo'
 import ExerciseBlock from '../components/ExerciseBlock'
 import { lessonA1Presentarte as defaultLesson } from '../data/modelLessons/a1-presentarte'
-import { LESSON_STEPS, buildBidirectionalCards, cardVocab, checkPresentation, displayForm, isCorrectAnswer } from './model-lesson'
+import { LESSON_STEPS, buildBidirectionalCards, cardVocab, checkPresentation, contractionTip, displayForm, isCorrectAnswer, quoteForm } from './model-lesson'
 import { sayEnglish, sayDialogue, stopLessonAudio, canListen } from './lessonSpeech'
 import { playFeedback } from './feedbackSounds'
 import { useAuth } from '../contexts/auth-context'
@@ -66,8 +66,9 @@ function TwoWayCards({ accent, lesson }) {
       <input value={value} onChange={e => setValue(e.target.value)} disabled={finished} autoComplete="off" autoCapitalize="none" spellCheck={false} />
     </label>
     {result === 'ok' && <p className="ml-feedback ml-ok" role="status">{tries === 0 ? '¡Correcto!' : '¡Muy bien! Lo lograste.'}</p>}
+    {result === 'ok' && contractionTip(value, card.display) && <p className="ml-feedback ml-ok">💡 En inglés hablado es más común la contracción: <strong>{quoteForm(contractionTip(value, card.display))}</strong>.</p>}
     {result === 'retry' && <p className="ml-feedback ml-bad" role="status">Casi. Corrige tu respuesta e inténtalo otra vez — tú puedes.</p>}
-    {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{card.display}</strong>. No pasa nada: la volverás a ver en tu repaso.</p>}
+    {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{quoteForm(card.display)}</strong>. No pasa nada: la volverás a ver en tu repaso.</p>}
     <button className="mp-button mp-button-dark" type="submit" disabled={!finished && !value.trim()}>{finished ? 'Siguiente →' : result === 'retry' ? 'Comprobar de nuevo' : 'Comprobar'}</button>
     {result === 'retry' && <button type="button" className="mp-button" onClick={() => setResult('bad')}>Ver respuesta</button>}
   </form>
@@ -100,8 +101,9 @@ function WriteCheck({ items, accent }) {
       <input value={value} onChange={e => setValue(e.target.value)} disabled={finished} autoComplete="off" autoCapitalize="none" spellCheck={false} lang="en" />
     </label>
     {result === 'ok' && <p className="ml-feedback ml-ok" role="status">{tries === 0 ? '¡Correcto!' : '¡Muy bien! Lo lograste.'} {item.listen ? '' : shown}</p>}
+    {result === 'ok' && contractionTip(value, item.answer) && <p className="ml-feedback ml-ok">💡 En inglés hablado es más común la contracción: <strong>{quoteForm(contractionTip(value, item.answer))}</strong>.</p>}
     {result === 'retry' && <p className="ml-feedback ml-bad" role="status">Casi. Revisa la frase e inténtalo otra vez — tú puedes.</p>}
-    {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{shown}</strong>. La volverás a ver en tu repaso.</p>}
+    {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{quoteForm(shown)}</strong>. La volverás a ver en tu repaso.</p>}
     <button className="mp-button mp-button-dark" type="submit" disabled={!finished && !value.trim()}>{finished ? 'Siguiente →' : result === 'retry' ? 'Comprobar de nuevo' : 'Comprobar'}</button>
     {result === 'retry' && <button type="button" className="mp-button" onClick={() => setResult('bad')}>Ver respuesta</button>}
   </form>

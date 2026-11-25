@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { displayForm, isCorrectAnswer, buildBidirectionalCards, pronunciationScore, LESSON_STEPS } from '../src/public/model-lesson.js'
+import { contractionTip, displayForm, isCorrectAnswer, buildBidirectionalCards, pronunciationScore, LESSON_STEPS } from '../src/public/model-lesson.js'
 import { lessonA1Presentarte } from '../src/data/modelLessons/a1-presentarte.js'
 
 test('La respuesta ignora mayúsculas, tildes y signos', () => {
@@ -97,4 +97,13 @@ test('«years old» acepta años, años de edad, edad y la forma con paréntesis
   const expected = 'años (de edad) | años | edad | de edad'
   for (const v of ['años', 'años de edad', 'AÑOS (DE EDAD)', 'edad', 'anos de edad']) assert.equal(isCorrectAnswer(v, expected), true, v)
   assert.equal(isCorrectAnswer('años de viejo', expected), false)
+})
+
+test('contracciones y apóstrofos: «I´m», «I am» e «I’m» valen igual y se recuerda la contracción', () => {
+  for (const v of ['I´m from Mexico', 'I am from Mexico', 'I’m from mexico.', 'i m from mexico'.replace(' m', "'m")]) assert.equal(isCorrectAnswer(v, "I'm from Mexico."), true, v)
+  assert.equal(isCorrectAnswer("She's a teacher", 'She is a teacher.'), true)
+  assert.equal(isCorrectAnswer("I don't like it", 'I do not like it'), true)
+  assert.equal(isCorrectAnswer('I is from Mexico', "I'm from Mexico."), false)
+  assert.equal(contractionTip('I am from Mexico', "I'm from Mexico."), "I'm from Mexico.")
+  assert.equal(contractionTip("I'm from Mexico", "I'm from Mexico."), null)
 })
