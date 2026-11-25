@@ -663,6 +663,49 @@
                 ],
                 "correct": 1
               }
+            ],
+            "segments": [
+              {
+                "text": "Hello! My name is Sofía. I am from Mexico. I am a student. Good morning! How are you? I am fine, thank you. My teacher is Mr. Brown. He is from the United States.",
+                "es": "¡Hola! Me llamo Sofía. Soy de México. Soy estudiante. ¡Buenos días! ¿Cómo estás? Estoy bien, gracias. Mi profesor es el señor Brown. Es de Estados Unidos.",
+                "voice": "nova"
+              },
+              {
+                "speaker": "Mr. Brown",
+                "text": "Hello! What is your name?",
+                "es": "¡Hola! ¿Cómo te llamas?",
+                "voice": "onyx"
+              },
+              {
+                "speaker": "Sofía",
+                "text": "My name is Sofía. And you?",
+                "es": "Me llamo Sofía. ¿Y usted?",
+                "voice": "nova"
+              },
+              {
+                "speaker": "Mr. Brown",
+                "text": "I am Mr. Brown. Where are you from?",
+                "es": "Soy el señor Brown. ¿De dónde eres?",
+                "voice": "onyx"
+              },
+              {
+                "speaker": "Sofía",
+                "text": "I am from Mexico. Nice to meet you.",
+                "es": "Soy de México. Mucho gusto.",
+                "voice": "nova"
+              },
+              {
+                "speaker": "Mr. Brown",
+                "text": "Nice to meet you too. See you later!",
+                "es": "Igualmente. ¡Hasta luego!",
+                "voice": "onyx"
+              },
+              {
+                "speaker": "Sofía",
+                "text": "Goodbye!",
+                "es": "¡Adiós!",
+                "voice": "nova"
+              }
             ]
           }
         }
@@ -1547,6 +1590,49 @@
               ],
               "correct": 1
             }
+          ],
+          "segments": [
+            {
+              "text": "Hello! My name is Sofía. I am from Mexico. I am a student. Good morning! How are you? I am fine, thank you. My teacher is Mr. Brown. He is from the United States.",
+              "es": "¡Hola! Me llamo Sofía. Soy de México. Soy estudiante. ¡Buenos días! ¿Cómo estás? Estoy bien, gracias. Mi profesor es el señor Brown. Es de Estados Unidos.",
+              "voice": "nova"
+            },
+            {
+              "speaker": "Mr. Brown",
+              "text": "Hello! What is your name?",
+              "es": "¡Hola! ¿Cómo te llamas?",
+              "voice": "onyx"
+            },
+            {
+              "speaker": "Sofía",
+              "text": "My name is Sofía. And you?",
+              "es": "Me llamo Sofía. ¿Y usted?",
+              "voice": "nova"
+            },
+            {
+              "speaker": "Mr. Brown",
+              "text": "I am Mr. Brown. Where are you from?",
+              "es": "Soy el señor Brown. ¿De dónde eres?",
+              "voice": "onyx"
+            },
+            {
+              "speaker": "Sofía",
+              "text": "I am from Mexico. Nice to meet you.",
+              "es": "Soy de México. Mucho gusto.",
+              "voice": "nova"
+            },
+            {
+              "speaker": "Mr. Brown",
+              "text": "Nice to meet you too. See you later!",
+              "es": "Igualmente. ¡Hasta luego!",
+              "voice": "onyx"
+            },
+            {
+              "speaker": "Sofía",
+              "text": "Goodbye!",
+              "es": "¡Adiós!",
+              "voice": "nova"
+            }
           ]
         },
         "dialogues": [
@@ -2315,7 +2401,8 @@
                 "correct": 1,
                 "why": "El texto indica: Ana."
               }
-            ]
+            ],
+            "voice": "onyx"
           }
         }
       ],
@@ -3193,7 +3280,8 @@
               "correct": 1,
               "why": "El texto indica: Ana."
             }
-          ]
+          ],
+          "voice": "onyx"
         },
         "dialogues": [
           {
@@ -7279,7 +7367,8 @@
                 "correct": 1,
                 "why": "El texto indica: Sí."
               }
-            ]
+            ],
+            "voice": "onyx"
           }
         }
       ],
@@ -8018,7 +8107,8 @@
               "correct": 1,
               "why": "El texto indica: Sí."
             }
-          ]
+          ],
+          "voice": "onyx"
         },
         "dialogues": [
           {
@@ -11789,7 +11879,8 @@
                 "correct": 1,
                 "why": "El texto indica: Van al parque."
               }
-            ]
+            ],
+            "voice": "onyx"
           }
         }
       ],
@@ -12540,7 +12631,8 @@
               "correct": 1,
               "why": "El texto indica: Van al parque."
             }
-          ]
+          ],
+          "voice": "onyx"
         },
         "dialogues": [
           {
