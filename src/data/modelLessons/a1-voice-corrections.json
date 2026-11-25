@@ -2,7 +2,7 @@
   "sprites": {
     "voice-corrections-nova-us": "/audio/a1/voice-corrections-nova-us.mp3",
     "voice-corrections-nova-gb": "/audio/a1/voice-corrections-nova-gb.mp3",
-    "voice-corrections-onyx-us": "/audio/a1/voice-corrections-onyx-us.mp3",
+    "voice-corrections-onyx-us": "/audio/a1/voice-corrections-onyx-us-v2.mp3",
     "voice-corrections-onyx-gb": "/audio/a1/voice-corrections-onyx-gb.mp3"
   },
   "clips": {
@@ -67,7 +67,7 @@
         "us": [
           "voice-corrections-onyx-us",
           0,
-          2.2988
+          1.4861
         ],
         "gb": [
           "voice-corrections-onyx-gb",
@@ -80,8 +80,8 @@
       "onyx": {
         "us": [
           "voice-corrections-onyx-us",
-          2.6488,
-          6.2014
+          1.8361,
+          4.0652
         ],
         "gb": [
           "voice-corrections-onyx-gb",
@@ -94,8 +94,8 @@
       "onyx": {
         "us": [
           "voice-corrections-onyx-us",
-          6.5514,
-          9.4655
+          4.4152,
+          6.3657
         ],
         "gb": [
           "voice-corrections-onyx-gb",
@@ -108,8 +108,8 @@
       "onyx": {
         "us": [
           "voice-corrections-onyx-us",
-          9.8155,
-          12.1607
+          6.7157,
+          8.4804
         ],
         "gb": [
           "voice-corrections-onyx-gb",
@@ -122,8 +122,8 @@
       "onyx": {
         "us": [
           "voice-corrections-onyx-us",
-          12.5107,
-          14.1594
+          8.8304,
+          10.3629
         ],
         "gb": [
           "voice-corrections-onyx-gb",
@@ -136,8 +136,8 @@
       "onyx": {
         "us": [
           "voice-corrections-onyx-us",
-          14.5094,
-          17.0868
+          10.7129,
+          12.6634
         ],
         "gb": [
           "voice-corrections-onyx-gb",
@@ -150,8 +150,8 @@
       "onyx": {
         "us": [
           "voice-corrections-onyx-us",
-          17.4368,
-          18.9925
+          13.0134,
+          14.4066
         ],
         "gb": [
           "voice-corrections-onyx-gb",
@@ -164,8 +164,8 @@
       "onyx": {
         "us": [
           "voice-corrections-onyx-us",
-          19.3425,
-          21.7922
+          14.7566,
+          16.2891
         ],
         "gb": [
           "voice-corrections-onyx-gb",
@@ -178,8 +178,8 @@
       "onyx": {
         "us": [
           "voice-corrections-onyx-us",
-          22.1422,
-          24.859
+          16.6391,
+          18.2645
         ],
         "gb": [
           "voice-corrections-onyx-gb",
@@ -192,8 +192,8 @@
       "onyx": {
         "us": [
           "voice-corrections-onyx-us",
-          25.209,
-          59.8996
+          18.6145,
+          45.9212
         ],
         "gb": [
           "voice-corrections-onyx-gb",
@@ -206,8 +206,8 @@
       "onyx": {
         "us": [
           "voice-corrections-onyx-us",
-          60.2496,
-          83.8991
+          46.2712,
+          70.327
         ],
         "gb": [
           "voice-corrections-onyx-gb",
@@ -220,8 +220,8 @@
       "onyx": {
         "us": [
           "voice-corrections-onyx-us",
-          84.2491,
-          110.2438
+          70.677,
+          93.3397
         ],
         "gb": [
           "voice-corrections-onyx-gb",
