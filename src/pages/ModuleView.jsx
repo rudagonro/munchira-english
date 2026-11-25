@@ -388,6 +388,11 @@ function ModuleContent({ preview }) {
     return (
       <div className="app-shell">
         {bar}
+        {!preview && (
+          <button className="lesson-back" onClick={() => navigate('/cycle')} type="button">
+            ← Mis módulos
+          </button>
+        )}
         <span className="role-tag">{module.title}</span>
         <h1>Quiz del módulo</h1>
         <p style={{ opacity: 0.7, marginBottom: 24 }}>Responde todas las preguntas para terminar el módulo.</p>
