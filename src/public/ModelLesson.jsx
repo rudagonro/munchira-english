@@ -7,6 +7,7 @@ import { lessonA1Presentarte as lesson } from '../data/modelLessons/a1-presentar
 import { LESSON_STEPS, buildBidirectionalCards, displayForm, isCorrectAnswer, pronunciationScore } from './model-lesson'
 import { sayEnglish, sayDialogue, canListen, recognitionAvailable, listenOnce } from './lessonSpeech'
 import { playFeedback } from './feedbackSounds'
+import { useAuth } from '../contexts/auth-context'
 import './model-lesson.css'
 
 function ListenButtons({ text, accent }) {
@@ -148,8 +149,7 @@ function StepContent({ id, accent }) {
     case 'free': return <FreeTask />
     case 'summary': return <>
       <h2>Lo que aprendiste</h2><ul className="ml-summary">{lesson.summary.map(s => <li key={s}>✓ {s}</li>)}</ul>
-      <p>En tu cuenta, estas palabras pasarían a tu repaso diario y la siguiente lección se desbloquearía.</p>
-      <Link className="mp-button mp-button-dark" to="/register">Crear mi cuenta <span aria-hidden="true">↗</span></Link>
+      <SummaryNextStep />
     </>
     default: return null
   }
@@ -197,4 +197,17 @@ export default function ModelLesson() {
       </div>
     </div>
   </PublicShell>
+}
+
+/** Con sesión: seguir en el panel. Sin sesión (visitante): invitar a crear cuenta. */
+function SummaryNextStep() {
+  const { session } = useAuth()
+  if (session) return <>
+    <p>Ya tienes tu cuenta. Sigue con tus módulos y tu repaso diario desde tu panel.</p>
+    <Link className="mp-button mp-button-dark" to="/app">Ir a mi panel <span aria-hidden="true">→</span></Link>
+  </>
+  return <>
+    <p>¿Aún no tienes cuenta? Créala gratis: estas palabras pasarán a tu repaso diario y se desbloqueará la siguiente lección.</p>
+    <Link className="mp-button mp-button-dark" to="/register">Crear mi cuenta <span aria-hidden="true">↗</span></Link>
+  </>
 }
