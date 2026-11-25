@@ -25,3 +25,4 @@
 - Keep the review-only step-by-step lesson model in src/public/ModelLesson with pure rules in src/public/model-lesson.js and data in src/data/modelLessons; it validates the lesson format publicly without touching course data, grading or progress.
 
 - Keep registration artwork in a dedicated immutable asset pointer and rga-prefixed styles in register-art.css; this prevents registration restyles from changing shared course images or authentication logic.
+- Keep free-presentation checks browser-local in the model-lesson pure rules and label their A1-only scope; this avoids transmitting student text or falsely certifying arbitrary grammar and proper-name spelling.

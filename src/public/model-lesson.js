@@ -24,8 +24,7 @@ export function displayForm(text) {
 }
 
 /** Cada palabra se practica en las dos direcciones: inglés→español y español→inglés.
- *  `alt` agrega otras formas aceptadas en inglés (p. ej. «hi» para «hello») sin
- *  cambiar la forma de referencia que se muestra. */
+ *  `alt` agrega otras formas aceptadas en inglés sin cambiar la referencia visible. */
 export function buildBidirectionalCards(vocab) {
   return vocab.flatMap((item, i) => {
     const display = displayForm(item.es)
@@ -43,6 +42,34 @@ export function pronunciationScore(heard, expected) {
   const said = new Set(normalizeAnswer(heard).replace(/'/g, '').split(' '))
   if (!words.length) return 0
   return Math.round((words.filter(w => said.has(w)).length / words.length) * 100)
+}
+
+/** Checks only taught A1 structures; never certifies arbitrary text or proper-name spelling. */
+export function checkPresentation(text) {
+  if (typeof text !== 'string' || !text.trim() || text.length > 1000) {
+    return { ok: false, items: [{ ok: false, msg: 'Escribe tu presentación (máximo 1000 caracteres).' }] }
+  }
+  const sentences = text.replace(/[’`]/g, "'").split(/[.!?\n]+/).map(normalizeAnswer).filter(Boolean)
+  const namePattern = /^(?:my name is|i am|i'm) ([\p{L}][\p{L} '\-]*)$/u
+  const originPattern = /^(?:i am|i'm) from [\p{L}][\p{L} '\-]*$/u
+  const ageNumber = '(?:\\d{1,3}|(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|and)(?:[ -](?:one|two|three|four|five|six|seven|eight|nine|hundred|and|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety))*)'
+  const agePattern = new RegExp(`^(?:i am|i'm) ${ageNumber} years old$`)
+  const isName = s => namePattern.test(s) && !/^(?:i am|i'm) (?:from|of|years|a|an)\b/.test(s) && !/\byears?\b/.test(s)
+  const name = sentences.some(isName)
+  const origin = sentences.some(s => originPattern.test(s))
+  const age = sentences.some(s => agePattern.test(s))
+  const items = [
+    { ok: name, msg: name ? 'Nombre: estructura correcta.' : 'Falta tu nombre: «My name is Ana» o «I’m Ana».' },
+    { ok: origin, msg: origin ? 'Origen: estructura correcta.' : 'Para tu origen usa «I’m from Colombia», no «I’m of Colombia».' },
+    { ok: age, msg: age ? 'Edad: estructura correcta.' : 'Para tu edad usa «I’m 30 years old» o «I’m thirty years old», no «I have 30 years».' },
+  ]
+  const recognized = s => /^(?:hello|hi)$/.test(s) || isName(s) || originPattern.test(s) || agePattern.test(s)
+  sentences.filter(s => !recognized(s)).forEach(s => {
+    items.push({ ok: false, msg: /^(am|is|are)\b/.test(s)
+      ? `En «${s}» falta el sujeto: usa «I’m…» o «I am…».`
+      : `No pude verificar «${s}». Revisa la escritura y separa cada frase con un punto; compara con el modelo.` })
+  })
+  return { ok: items.every(i => i.ok), items }
 }
 
 export const LESSON_STEPS = [

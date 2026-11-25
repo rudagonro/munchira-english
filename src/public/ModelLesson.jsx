@@ -4,7 +4,7 @@ import PublicShell from './PublicShell'
 import Seo from './Seo'
 import ExerciseBlock from '../components/ExerciseBlock'
 import { lessonA1Presentarte as lesson } from '../data/modelLessons/a1-presentarte'
-import { LESSON_STEPS, buildBidirectionalCards, displayForm, isCorrectAnswer, pronunciationScore } from './model-lesson'
+import { LESSON_STEPS, buildBidirectionalCards, checkPresentation, displayForm, isCorrectAnswer, pronunciationScore } from './model-lesson'
 import { sayEnglish, sayDialogue, canListen, recognitionAvailable, listenOnce } from './lessonSpeech'
 import { playFeedback } from './feedbackSounds'
 import { useAuth } from '../contexts/auth-context'
@@ -175,13 +175,20 @@ function StepContent({ id, accent }) {
 function FreeTask() {
   const [text, setText] = useState('')
   const [shown, setShown] = useState(false)
+  const [review, setReview] = useState(null)
   return <>
     <h2>Tu presentación</h2><p>{lesson.freeTask}</p>
-    <label className="ml-free">Escribe aquí<textarea rows={4} value={text} onChange={e => setText(e.target.value)} /></label>
+    <label className="ml-free">Escribe aquí<textarea rows={4} value={text} maxLength={1000} lang="en" spellCheck onChange={e => { setText(e.target.value); setReview(null) }} /></label>
     <div className="ml-row">
+      <button type="button" className="mp-button mp-button-dark" disabled={!text.trim()} onClick={() => setReview(checkPresentation(text))}>✓ Revisar mi presentación</button>
       {text.trim() && <button type="button" className="mp-button" onClick={() => sayEnglish(text)}>🔊 Escuchar lo que escribiste</button>}
       <button type="button" className="mp-button" onClick={() => setShown(true)}>Ver un modelo</button>
     </div>
+    {review && <div role="status">
+      {review.items.map((item, i) => <p key={i} className={`ml-feedback ${item.ok ? 'ml-ok' : 'ml-bad'}`}>{item.ok ? '✓' : '✗'} {item.msg}</p>)}
+      <p className={`ml-feedback ${review.ok ? 'ml-ok' : 'ml-bad'}`}><strong>{review.ok ? '¡Bien! Has usado correctamente las estructuras de esta lección.' : 'Tú puedes: corrige los puntos marcados y vuelve a revisar.'}</strong></p>
+      <p className="ml-tip">Revisión de estructuras A1; no comprueba todos los errores de ortografía ni los nombres propios.</p>
+    </div>}
     {shown && <p className="ml-example">{lesson.freeModel}</p>}
   </>
 }
