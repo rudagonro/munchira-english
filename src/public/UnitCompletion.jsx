@@ -45,10 +45,10 @@ export default function UnitCompletion({ number }) {
     <h3 id="a1-check-title">Comprueba lo aprendido</h3>
     <p>Con 70% o más completas esta unidad. Un repaso posterior no borra el aprobado ni cambia tus módulos anteriores.</p>
     {progress?.completed_at && <p className="ml-feedback ml-ok" role="status">Unidad completada · Mejor resultado: {progress.best_score}% · Guardado en tu cuenta.</p>}
-    <form onSubmit={submit}>
-      {questions.map((question, index) => <fieldset key={index} className="ml-card">
+    <form onSubmit={submit} className="ml-quiz">
+      {questions.map((question, index) => <fieldset key={index} className="ml-quiz-q">
         <legend>{index + 1}. {question.question}</legend>
-        {question.options.map((option, value) => <label key={value} className="ml-row"><input type="radio" name={`a1-question-${index}`} value={value} checked={answers[index] === value} onChange={() => setAnswers(previous => ({ ...previous, [index]: value }))} disabled={busy} required />{option}</label>)}
+        {question.options.map((option, value) => <label key={value} className="ml-quiz-opt"><input type="radio" name={`a1-question-${index}`} value={value} checked={answers[index] === value} onChange={() => setAnswers(previous => ({ ...previous, [index]: value }))} disabled={busy} required /><span>{option}</span></label>)}
       </fieldset>)}
       <button type="submit" className="mp-button mp-button-dark" disabled={busy || loading || Object.keys(answers).length !== questions.length}>{busy ? 'Guardando…' : user ? 'Comprobar y guardar mi avance' : 'Comprobar mi práctica'}</button>
     </form>
