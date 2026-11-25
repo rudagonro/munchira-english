@@ -6,6 +6,9 @@ import VocabFlashcard from '../components/VocabFlashcard'
 import ExerciseBlock from '../components/ExerciseBlock'
 import DialoguePlayer from '../components/DialoguePlayer'
 import { getLessonAudioTurns } from '../data/lessonAudio'
+import A1DraftProvider from '../components/A1DraftProvider'
+import { useDraftState } from '../contexts/a1-draft-context'
+import { supabase } from '../lib/supabase'
 import { lessonAudioStatus, prepareLessonsAudio } from '../lib/audioPublisher'
 
 function quizErrorMessage(error) {
@@ -19,7 +22,23 @@ function quizErrorMessage(error) {
 
 export default function ModuleView({ preview = false }) {
   const { moduleId } = useParams()
-  return <ModuleContent key={moduleId} preview={preview} />
+  return <ModuleDraftGate key={moduleId} moduleId={moduleId} preview={preview} />
+}
+
+function ModuleDraftGate({ moduleId, preview }) {
+  const [level, setLevel] = useState(null)
+  const [error, setError] = useState(false)
+  const [retry, setRetry] = useState(0)
+  useEffect(() => {
+    if (preview) return
+    let active = true
+    supabase.from('modules').select('cycles(cefr_level)').eq('id', moduleId).single()
+      .then(({ data, error }) => { if (active) { if (error) setError(true); else { setError(false); setLevel(data.cycles.cefr_level) } } })
+      .catch(() => { if (active) setError(true) })
+    return () => { active = false }
+  }, [moduleId, preview, retry])
+  if (!preview && level === null) return <div className="app-shell"><p role="status">{error ? 'No pudimos abrir el módulo. Comprueba tu conexión.' : 'Cargando módulo…'}</p>{error && <button type="button" onClick={() => setRetry(n => n + 1)}>Intentar otra vez</button>}</div>
+  return <A1DraftProvider lessonKey={`module:${moduleId}`} enabled={!preview && level === 'A1'}><ModuleContent preview={preview} /></A1DraftProvider>
 }
 
 // Barra del modo revisor: salta a cualquier parte del módulo sin guardar nada.
@@ -84,16 +103,16 @@ function ModuleContent({ preview }) {
   const [content, setContent] = useState(null)
   const [enrollmentInfo, setEnrollmentInfo] = useState(null)
 
-  const [stage, setStage] = useState('lessons') // vocab? -> lessons -> quiz -> result
-  const [lessonIdx, setLessonIdx] = useState(0)
+  const [stage, setStage, initializeStage] = useDraftState('module.stage', 'lessons') // vocab? -> lessons -> quiz -> result
+  const [lessonIdx, setLessonIdx, initializeLessonIdx] = useDraftState('module.lessonIdx', 0)
   const [completedLessons, setCompletedLessons] = useState(() => new Set())
   const [dueVocab, setDueVocab] = useState([])
-  const [answers, setAnswers] = useState({})
+  const [answers, setAnswers] = useDraftState('module.answers', {})
   const [saving, setSaving] = useState(false)
   const [submitError, setSubmitError] = useState('')
-  const [quizResult, setQuizResult] = useState(null)
-  const [checkpointResult, setCheckpointResult] = useState(null)
-  const [cycleAdvanced, setCycleAdvanced] = useState(null)
+  const [quizResult, setQuizResult] = useDraftState('module.quizResult', null)
+  const [checkpointResult, setCheckpointResult] = useDraftState('module.checkpointResult', null)
+  const [cycleAdvanced, setCycleAdvanced] = useDraftState('module.cycleAdvanced', null)
 
 
   useEffect(() => {
@@ -136,8 +155,8 @@ function ModuleContent({ preview }) {
         setContent(data)
         setDueVocab(due)
         setCompletedLessons(done)
-        setLessonIdx(firstPending === -1 ? 0 : firstPending)
-        setStage(data.module.skill_type === 'vocabulary' && due.length ? 'vocab' : 'lessons')
+        initializeLessonIdx(firstPending === -1 ? 0 : firstPending)
+        initializeStage(data.module.skill_type === 'vocabulary' && due.length ? 'vocab' : 'lessons')
         setEnrollmentInfo(cycle.enrollment)
       } catch (error) {
         if (active) setError(error.message || 'No se pudo cargar el módulo.')
@@ -147,7 +166,7 @@ function ModuleContent({ preview }) {
     }
     void load()
     return () => { active = false }
-  }, [moduleId, preview, getActiveCycleData, getModuleContent, getStaffQuizAnswers])
+  }, [moduleId, preview, getActiveCycleData, getModuleContent, getStaffQuizAnswers, initializeLessonIdx, initializeStage, setLessonIdx, setStage])
 
   // Modo revisor: genera el audio una sola vez, lo deja como archivo fijo y guarda sus URLs en la lección.
   async function prepareAudio() {
@@ -344,7 +363,7 @@ function ModuleContent({ preview }) {
 
         {/* Ejercicios interactivos */}
         {lesson.exercises && lesson.exercises.length > 0 && (
-          <ExerciseBlock key={lesson.id} exercises={lesson.exercises} />
+          <ExerciseBlock key={lesson.id} draftKey={`lesson:${lesson.id}`} exercises={lesson.exercises} />
         )}
 
         {/* Práctica */}

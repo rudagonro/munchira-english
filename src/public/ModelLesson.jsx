@@ -9,6 +9,8 @@ import { sayEnglish, sayDialogue, stopLessonAudio, canListen } from './lessonSpe
 import { playFeedback } from './feedbackSounds'
 import { useAuth } from '../contexts/auth-context'
 import UnitCompletion from './UnitCompletion'
+import A1DraftProvider from '../components/A1DraftProvider'
+import { useDraftState } from '../contexts/a1-draft-context'
 import './model-lesson.css'
 
 function ListenButtons({ text, accent, voice }) {
@@ -26,16 +28,16 @@ function Highlight({ text, focus }) {
 }
 
 function ChoiceQuestions({ questions }) {
-  return <ExerciseBlock exercises={questions.map(q => ({ ...q, type: 'choice', why: q.why ?? 'Vuelve a leer el texto y busca la información de la pregunta.' }))} />
+  return <ExerciseBlock draftKey="reading" exercises={questions.map(q => ({ ...q, type: 'choice', why: q.why ?? 'Vuelve a leer el texto y busca la información de la pregunta.' }))} />
 }
 
 function TwoWayCards({ accent, lesson }) {
   const cards = useMemo(() => buildBidirectionalCards(cardVocab(lesson)), [lesson])
-  const [idx, setIdx] = useState(0)
-  const [value, setValue] = useState('')
-  const [result, setResult] = useState(null) // null | 'retry' | 'ok' | 'bad'
-  const [tries, setTries] = useState(0)
-  const [score, setScore] = useState(0)
+  const [idx, setIdx] = useDraftState('cards.idx', 0)
+  const [value, setValue] = useDraftState('cards.value', '')
+  const [result, setResult] = useDraftState('cards.result', null) // null | 'retry' | 'ok' | 'bad'
+  const [tries, setTries] = useDraftState('cards.tries', 0)
+  const [score, setScore] = useDraftState('cards.score', 0)
   if (idx >= cards.length) return <div className="ml-done" role="status"><strong>{score} de {cards.length}</strong> respuestas correctas a la primera. Las que fallaste volverían antes en tu repaso.<button type="button" className="mp-button mp-button-dark" onClick={() => { setIdx(0); setScore(0); setResult(null); setValue(''); setTries(0) }}>Repetir ↻</button></div>
   const card = cards[idx]
   const toEnglish = card.direction === 'es-en'
@@ -73,12 +75,12 @@ function TwoWayCards({ accent, lesson }) {
 }
 
 /** Escribir y comprobar con reintento: traducción y dictado. */
-function WriteCheck({ items, accent }) {
-  const [idx, setIdx] = useState(0)
-  const [value, setValue] = useState('')
-  const [result, setResult] = useState(null) // null | 'retry' | 'ok' | 'bad'
-  const [tries, setTries] = useState(0)
-  const [score, setScore] = useState(0)
+function WriteCheck({ items, accent, draftKey }) {
+  const [idx, setIdx] = useDraftState(`${draftKey}.idx`, 0)
+  const [value, setValue] = useDraftState(`${draftKey}.value`, '')
+  const [result, setResult] = useDraftState(`${draftKey}.result`, null) // null | 'retry' | 'ok' | 'bad'
+  const [tries, setTries] = useDraftState(`${draftKey}.tries`, 0)
+  const [score, setScore] = useDraftState(`${draftKey}.score`, 0)
   if (idx >= items.length) return <div className="ml-done" role="status"><strong>{score} de {items.length}</strong> correctas a la primera.<button type="button" className="mp-button mp-button-dark" onClick={() => { setIdx(0); setScore(0); setResult(null); setValue(''); setTries(0) }}>Repetir</button></div>
   const item = items[idx]
   const shown = displayForm(item.answer)
@@ -169,7 +171,7 @@ function StepContent({ id, accent, lesson }) {
       <h2>Errores típicos de hispanohablantes</h2>
       <ul className="ml-mistakes">{lesson.mistakes.map(m => <li key={m.wrong}><p className="ml-wrong">✗ {m.wrong}</p><p className="ml-right">✓ {m.right} <ListenButtons text={m.right} accent={accent} /></p><p>{m.why}</p></li>)}</ul>
     </>
-    case 'guided': return <><h2>Práctica guiada</h2><p>Primero con pistas. Si fallas, verás por qué.</p><ExerciseBlock exercises={lesson.guided} /></>
+    case 'guided': return <><h2>Práctica guiada</h2><p>Primero con pistas. Si fallas, verás por qué.</p><ExerciseBlock draftKey="guided" exercises={lesson.guided} /></>
     case 'cards': return <><h2>Repaso en dos direcciones</h2><p>Cada palabra aparece de inglés a español y de español a inglés. Así se queda en la memoria.</p><TwoWayCards accent={accent} lesson={lesson} /></>
     case 'reading': return <>
       <h2>Lectura: {lesson.reading.title}</h2>
@@ -200,8 +202,8 @@ function StepContent({ id, accent, lesson }) {
         <ul className="ml-dialogue">{d.lines.map((t, i) => <li key={i} className={t.speaker !== d.lines[0].speaker ? 'ml-me' : ''}><strong>{t.speaker}</strong><p>{t.text}</p>{t.es && <p className="ml-dialogue-es">{t.es}</p>}<ListenButtons text={t.text} accent={accent} voice={t.voice} /></li>)}</ul>
       </div>)}
     </>
-    case 'translate': return <><h2>Traducción</h2><p>Escribe cada frase en inglés. Si te equivocas, corrige e inténtalo otra vez.</p><WriteCheck items={lesson.translations.map(t => ({ prompt: t.es, answer: t.en }))} accent={accent} /></>
-    case 'dictation': return <><h2>Dictado</h2><p>Escucha la frase (puedes repetirla y ponerla despacio) y escríbela en inglés.</p><WriteCheck items={lesson.dictation.map(t => ({ answer: t, listen: true }))} accent={accent} /></>
+    case 'translate': return <><h2>Traducción</h2><p>Escribe cada frase en inglés. Si te equivocas, corrige e inténtalo otra vez.</p><WriteCheck draftKey="translate" items={lesson.translations.map(t => ({ prompt: t.es, answer: t.en }))} accent={accent} /></>
+    case 'dictation': return <><h2>Dictado</h2><p>Escucha la frase (puedes repetirla y ponerla despacio) y escríbela en inglés.</p><WriteCheck draftKey="dictation" items={lesson.dictation.map(t => ({ answer: t, listen: true }))} accent={accent} /></>
     case 'speak': return <><h2>Escucha y repite</h2><p>Escucha cada frase, repítela igual (shadowing) y compara con tu voz. Munchira no guarda tus grabaciones.</p><ul className="ml-speak-list">{lesson.pronunciation.map(p => <SpeakPractice key={p.en} item={p} accent={accent} />)}</ul></>
     case 'free': return <FreeTask lesson={lesson} />
     case 'summary': return <>
@@ -213,9 +215,9 @@ function StepContent({ id, accent, lesson }) {
 }
 
 function FreeTask({ lesson }) {
-  const [text, setText] = useState('')
-  const [shown, setShown] = useState(false)
-  const [review, setReview] = useState(null)
+  const [text, setText] = useDraftState('free.text', '')
+  const [shown, setShown] = useDraftState('free.shown', false)
+  const [review, setReview] = useDraftState('free.review', null)
   return <>
     <h2>{lesson.number ? 'Ponlo en práctica' : 'Tu presentación'}</h2><p>{lesson.freeTask}</p>
     <label className="ml-free">Escribe aquí<textarea rows={4} value={text} maxLength={1000} lang="en" spellCheck onChange={e => { setText(e.target.value); setReview(null) }} /></label>
@@ -235,8 +237,13 @@ function FreeTask({ lesson }) {
 }
 
 export default function ModelLesson({ lesson = defaultLesson }) {
-  const [step, setStep] = useState(0)
-  const [accent, setAccent] = useState('en-US')
+  return <A1DraftProvider lessonKey={`unit:${lesson.number ?? 1}`}><ModelLessonContent lesson={lesson} /></A1DraftProvider>
+}
+
+function ModelLessonContent({ lesson }) {
+  const [savedStep, setStep] = useDraftState('step', 0)
+  const step = Number.isInteger(savedStep) && savedStep >= 0 && savedStep < LESSON_STEPS.length ? savedStep : 0
+  const [accent, setAccent] = useDraftState('accent', 'en-US')
   const steps = LESSON_STEPS.map(s => s.id === 'free' && lesson.number ? { ...s, label: 'Ponlo en práctica' } : s)
   const current = steps[step]
   useEffect(() => () => stopLessonAudio(), [])
@@ -274,7 +281,7 @@ function LessonBackLinks() {
     <p className="ml-tip">
       <Link to="/cursos/A1">← Temario A1</Link>
       {session && <>{' · '}<Link to="/app">← Volver a mi panel</Link></>}
-      {' · Guarda el avance A1 al aprobar el cuestionario final.'}
+      {' · El aprobado se guarda al enviar el cuestionario; tu punto y respuestas se guardan automáticamente con sesión.'}
     </p>
   )
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
+import { useDraftState } from '../contexts/a1-draft-context'
 import cycle from '../../content/cycles/A1.json'
 
 function progressError(error) {
@@ -11,7 +12,7 @@ function progressError(error) {
 export default function UnitCompletion({ number }) {
   const { user, loading } = useAuth()
   const questions = cycle.modules.find(unit => unit.order === number)?.quiz ?? []
-  const [answers, setAnswers] = useState({})
+  const [answers, setAnswers] = useDraftState('quiz.answers', {})
   const [progress, setProgress] = useState(null)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)

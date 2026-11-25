@@ -1,12 +1,13 @@
 import { useState, useCallback, useRef } from 'react'
+import { useDraftState } from '../contexts/a1-draft-context'
 
 export default function VocabFlashcard({ vocabItems, onComplete, onReview, doneLabel = 'Empezar las lecciones →' }) {
-  const [queue, setQueue] = useState(() => vocabItems.map((v, i) => ({ ...v, _key: i })))
-  const [repeatQueue, setRepeatQueue] = useState([])
-  const [currentIdx, setCurrentIdx] = useState(0)
-  const [flipped, setFlipped] = useState(false)
-  const [round, setRound] = useState(1)
-  const [known, setKnown] = useState(0)
+  const [queue, setQueue] = useDraftState('vocab.queue', () => vocabItems.map((v, i) => ({ ...v, _key: i })))
+  const [repeatQueue, setRepeatQueue] = useDraftState('vocab.repeatQueue', [])
+  const [currentIdx, setCurrentIdx] = useDraftState('vocab.currentIdx', 0)
+  const [flipped, setFlipped] = useDraftState('vocab.flipped', false)
+  const [round, setRound] = useDraftState('vocab.round', 1)
+  const [known, setKnown] = useDraftState('vocab.known', 0)
   const [animating, setAnimating] = useState(false)
   const [exitDir, setExitDir] = useState(null) // 'right' | 'left'
   const [saveWarning, setSaveWarning] = useState(false)
@@ -50,7 +51,7 @@ export default function VocabFlashcard({ vocabItems, onComplete, onReview, doneL
       setAnimating(false)
       cardRef.current?.focus()
     }, 320)
-  }, [animating, currentIdx, queue, repeatQueue, current, onReview])
+  }, [animating, currentIdx, queue, repeatQueue, current, onReview, setKnown, setCurrentIdx, setQueue, setRepeatQueue, setRound, setFlipped])
 
   function handleKeyDown(e) {
     if (!flipped || animating) return

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { AuthContext } from './auth-context'
+import { flushActiveDrafts } from '../lib/a1Draft'
 import { recoveryRedirect } from '../lib/accountRules'
 
 export function AuthProvider({ children }) {
@@ -98,6 +99,7 @@ export function AuthProvider({ children }) {
   }
 
   async function signOut() {
+    await flushActiveDrafts()
     await supabase.auth.signOut()
   }
 
