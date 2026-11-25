@@ -16,7 +16,8 @@ export function recordedAudioUrl(text, accent = 'en-US', voice = 'nova') {
   const clip = lessonAudioClip(text, accent, voice)
   if (clip) return clip.url
   const id = audioKey(text)
-  if (!manifest[id]) return null
+  // The legacy manifest is a single female voice, never a male fallback.
+  if (voice !== 'nova' || !manifest[id]) return null
   return `${LESSON_AUDIO}/${id}-${accent === 'en-GB' ? 'gb' : 'us'}.mp3`
 }
 

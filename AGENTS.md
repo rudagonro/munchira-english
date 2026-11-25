@@ -30,6 +30,7 @@
 - Course syllabus routes and the student outline share pure curriculum rules; A1 unit progress uses its own authenticated RPC and table so old module identifiers, scores and enrollments stay untouched.
 - Keep authoritative A1 units in content/cycles/A1.json and MP3s in public/audio/a1; local descriptors remove runtime CDN and AI dependencies.
 - Reuse ModelLesson with a lesson prop and gender-aware audio sprites; shared retry controls and timed clips preserve the approved teaching experience without duplicating screens.
+- ModelLesson renders reading segments separately from speaker labels and resolves audio by exact voice plus accent; checked-in offline voice corrections prevent male turns from silently using legacy female clips.
 
 - Never run generic seed_cycle/seed_module imports for repository-only A1; the eight local units are not replacements for the four legacy database modules.
 - A1 quiz grading lives in the additive progress RPC with explicit grants and owner-only RLS; update its answer-key migration alongside curriculum quizzes to prevent frontend/server drift.

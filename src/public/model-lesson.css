@@ -24,6 +24,9 @@
 .ml-listen { display: inline-flex; gap: 6px; vertical-align: middle; margin-left: 6px; flex-wrap: wrap; }
 .ml-listen button { min-height: 36px; padding: 4px 10px; border: 1px solid var(--mp-border); border-radius: 99px; background: var(--mp-soft); color: var(--mp-ink); font: inherit; font-size: 13px; cursor: pointer; }
 .ml-listen button:hover { border-color: var(--mp-teal); }
+.ml-reading-turns { list-style: none; margin: 20px 0; padding: 0; display: grid; gap: 20px; }
+.ml-reading-turns li { display: grid; gap: 4px; }
+.ml-reading-turns p { margin: 0; }
 .ml-vocab, .ml-examples, .ml-mistakes, .ml-dialogue, .ml-speak-list, .ml-summary, .ml-explain, .ml-questions { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
 .ml-vocab { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
 .ml-vocab li, .ml-examples li, .ml-mistakes li, .ml-explain li, .ml-speak, .ml-questions li { border: 1px solid var(--mp-border); border-radius: 12px; padding: 16px; display: grid; gap: 6px; background: var(--mp-soft); }
