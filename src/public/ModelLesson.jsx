@@ -40,25 +40,42 @@ function TwoWayCards({ accent }) {
   const cards = useMemo(() => buildBidirectionalCards(lesson.vocab), [])
   const [idx, setIdx] = useState(0)
   const [value, setValue] = useState('')
-  const [result, setResult] = useState(null)
+  const [result, setResult] = useState(null) // null | 'retry' | 'ok' | 'bad'
+  const [tries, setTries] = useState(0)
   const [score, setScore] = useState(0)
-  if (idx >= cards.length) return <div className="ml-done" role="status"><strong>{score} de {cards.length}</strong> respuestas correctas. Las que fallaste volverían antes en tu repaso.<button type="button" className="mp-button mp-button-dark" onClick={() => { setIdx(0); setScore(0); setResult(null); setValue('') }}>Repetir ↻</button></div>
+  if (idx >= cards.length) return <div className="ml-done" role="status"><strong>{score} de {cards.length}</strong> respuestas correctas a la primera. Las que fallaste volverían antes en tu repaso.<button type="button" className="mp-button mp-button-dark" onClick={() => { setIdx(0); setScore(0); setResult(null); setValue(''); setTries(0) }}>Repetir ↻</button></div>
   const card = cards[idx]
   const toEnglish = card.direction === 'es-en'
+  const finished = result === 'ok' || result === 'bad'
+  const next = () => { setIdx(i => i + 1); setValue(''); setResult(null); setTries(0) }
   return <form className="ml-card" onSubmit={e => {
     e.preventDefault()
-    if (result) { setIdx(i => i + 1); setValue(''); setResult(null); return }
+    if (finished) { next(); return }
     const ok = isCorrectAnswer(value, card.answer)
-    setResult(ok ? 'ok' : 'bad'); if (ok) setScore(s => s + 1)
-    if (toEnglish || ok) sayEnglish(card.audio, { accent })
+    if (ok) {
+      setResult('ok')
+      if (tries === 0) setScore(s => s + 1)
+      sayEnglish(card.audio, { accent })
+      return
+    }
+    const attempt = tries + 1
+    setTries(attempt)
+    if (attempt >= 2) {
+      setResult('bad')
+      if (toEnglish) sayEnglish(card.audio, { accent })
+    } else {
+      setResult('retry')
+    }
   }}>
     <p className="ml-card-meta">Tarjeta {idx + 1} de {cards.length} · {toEnglish ? 'Español → Inglés' : 'Inglés → Español'}</p>
     <p className="ml-card-prompt">{card.prompt} {!toEnglish && <ListenButtons text={card.audio} accent={accent} />}</p>
     <label>{toEnglish ? 'Escríbelo en inglés' : 'Escríbelo en español'}
-      <input value={value} onChange={e => setValue(e.target.value)} disabled={Boolean(result)} autoComplete="off" autoCapitalize="none" spellCheck={false} />
+      <input value={value} onChange={e => setValue(e.target.value)} disabled={finished} autoComplete="off" autoCapitalize="none" spellCheck={false} />
     </label>
-    {result && <p className={`ml-feedback ${result === 'ok' ? 'ml-ok' : 'ml-bad'}`} role="status">{result === 'ok' ? '¡Correcto!' : <>Casi. La respuesta es <strong>{card.display}</strong>.</>}</p>}
-    <button className="mp-button mp-button-dark" type="submit" disabled={!result && !value.trim()}>{result ? 'Siguiente →' : 'Comprobar'}</button>
+    {result === 'ok' && <p className="ml-feedback ml-ok" role="status">{tries === 0 ? '¡Correcto!' : '¡Muy bien! Lo lograste.'}</p>}
+    {result === 'retry' && <p className="ml-feedback ml-bad" role="status">Casi. Corrige tu respuesta e inténtalo otra vez — tú puedes.</p>}
+    {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{card.display}</strong>. No pasa nada: la volverás a ver en tu repaso.</p>}
+    <button className="mp-button mp-button-dark" type="submit" disabled={!finished && !value.trim()}>{finished ? 'Siguiente →' : result === 'retry' ? 'Comprobar de nuevo' : 'Comprobar'}</button>
   </form>
 }
 

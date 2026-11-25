@@ -9,7 +9,7 @@ export const lessonA1Presentarte = {
   goal: 'Al terminar podrás saludar, decir tu nombre, de dónde eres y tu edad, y preguntar lo mismo a otra persona.',
   why: 'Es lo primero que harás en inglés: al conocer a alguien en el trabajo, en un viaje o en una videollamada. Con cinco frases ya puedes empezar una conversación.',
   vocab: [
-    { en: 'hello', es: 'hola', say: 'jelóu' },
+    { en: 'hello', es: 'hola', say: 'jelóu', alt: 'hi' },
     { en: 'name', es: 'nombre', say: 'néim' },
     { en: 'nice to meet you', es: 'mucho gusto | encantado de conocerte | encantada de conocerte | encantado de conocerlo | encantada de conocerlo | gusto en conocerte | gusto en conocerle | gusto en conocerlo | gusto en conocerla | un gusto | un placer', say: 'náis tu mít iu' },
     { en: 'I am', es: 'yo soy / yo estoy', say: 'ái am' },

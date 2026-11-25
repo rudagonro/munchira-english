@@ -25,6 +25,15 @@ test('«Nice to meet you» acepta las formas comunes en español', () => {
   assert.ok(!card.display.includes('|'))
 })
 
+test('«Hola» acepta «hello» y también «hi», pero muestra solo «hello»', () => {
+  const card = buildBidirectionalCards(lessonA1Presentarte.vocab).find(c => c.id === '0-es')
+  assert.equal(card.display, 'hello')
+  assert.equal(card.audio, 'hello')
+  assert.equal(isCorrectAnswer('HI', card.answer), true)
+  assert.equal(isCorrectAnswer('hello', card.answer), true)
+  assert.equal(isCorrectAnswer('hey', card.answer), false)
+})
+
 test('Cada palabra se practica en inglés→español y español→inglés', () => {
   const cards = buildBidirectionalCards([{ en: 'name', es: 'nombre' }])
   assert.deepEqual(cards.map(c => [c.direction, c.prompt, c.answer]), [['en-es', 'name', 'nombre'], ['es-en', 'nombre', 'name']])

@@ -23,13 +23,16 @@ export function displayForm(text) {
   return String(text).split(/[|/]/)[0].trim()
 }
 
-/** Cada palabra se practica en las dos direcciones: inglés→español y español→inglés. */
+/** Cada palabra se practica en las dos direcciones: inglés→español y español→inglés.
+ *  `alt` agrega otras formas aceptadas en inglés (p. ej. «hi» para «hello») sin
+ *  cambiar la forma de referencia que se muestra. */
 export function buildBidirectionalCards(vocab) {
   return vocab.flatMap((item, i) => {
     const display = displayForm(item.es)
+    const enAnswer = item.alt ? `${item.en} | ${item.alt}` : item.en
     return [
       { id: `${i}-en`, direction: 'en-es', prompt: item.en, answer: item.es, display, audio: item.en },
-      { id: `${i}-es`, direction: 'es-en', prompt: display, answer: item.en, display: item.en, audio: item.en },
+      { id: `${i}-es`, direction: 'es-en', prompt: display, answer: enAnswer, display: item.en, audio: item.en },
     ]
   })
 }
