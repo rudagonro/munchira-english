@@ -92,3 +92,9 @@ test('Unidad 1: tres diálogos, cada uno con voz de mujer y de hombre', () => {
     assert.ok(v.includes('nova') && v.includes('onyx'), d.title)
   }
 })
+
+test('«years old» acepta años, años de edad, edad y la forma con paréntesis', () => {
+  const expected = 'años (de edad) | años | edad | de edad'
+  for (const v of ['años', 'años de edad', 'AÑOS (DE EDAD)', 'edad', 'anos de edad']) assert.equal(isCorrectAnswer(v, expected), true, v)
+  assert.equal(isCorrectAnswer('años de viejo', expected), false)
+})
