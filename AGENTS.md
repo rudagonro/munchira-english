@@ -22,7 +22,7 @@
 
 - Public login uses a native modal side panel and React Router backgroundLocation, reusing the existing Login form without changing auth services; /login remains directly reachable with the public home behind it, preserving protected-route return destinations.
 
-- Keep the review-only step-by-step lesson model in src/public/ModelLesson with pure rules in src/public/model-lesson.js and data in src/data/modelLessons; it validates the lesson format publicly without touching course data, grading or progress.
+- Keep shared lesson navigation and completion rules in src/public/lessonProgress.js, separate from answer normalization; callbacks from completed activities unlock the next step and mounted visited panels preserve unfinished work while navigating.
 
 - Keep registration artwork in a dedicated immutable asset pointer and rga-prefixed styles in register-art.css; this prevents registration restyles from changing shared course images or authentication logic.
 - Keep free-presentation checks browser-local in the model-lesson pure rules and label their A1-only scope; this avoids transmitting student text or falsely certifying arbitrary grammar and proper-name spelling.
@@ -34,4 +34,5 @@
 
 - Never run generic seed_cycle/seed_module imports for repository-only A1; the eight local units are not replacements for the four legacy database modules.
 - A1 quiz grading lives in the additive progress RPC with explicit grants and owner-only RLS; update its answer-key migration alongside curriculum quizzes to prevent frontend/server drift.
+- Keep repository A1 vocabulary in a separate catalog and owner-scoped review table, merged by get_due_vocab; this reuses the existing Repaso screen without changing legacy vocabulary identifiers or settled progress.
 - A1 shadowing uses local MediaRecorder playback, not cloud speech recognition; self-comparison must not be presented as automatic pronunciation scoring.

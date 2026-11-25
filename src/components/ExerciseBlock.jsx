@@ -23,7 +23,7 @@ function Feedback({ state, fails, why, answer, onRetry, onReveal, onNext }) {
         {why && <span className="ex-fb-why"><b>Por qué:</b> {why}</span>}
         <span className="ex-fb-motivation">Guárdala: la volverás a ver en el repaso.</span>
       </div>
-      <button className="ex-next-btn" onClick={() => onNext(false)}>Siguiente →</button>
+      <button className="ex-retry-btn" onClick={onRetry}>Practicar la respuesta ↻</button>
     </div>
   )
   return (
@@ -42,14 +42,14 @@ function Feedback({ state, fails, why, answer, onRetry, onReveal, onNext }) {
   )
 }
 
-function useAttempts() {
+function useAttempts(onAttempt) {
   const [state, setState] = useState('idle')
   const [fails, setFails] = useState(0)
-  const mark = ok => { setState(ok ? 'correct' : 'wrong'); if (!ok) setFails(f => f + 1) }
+  const mark = ok => { onAttempt?.(ok && fails === 0); setState(ok ? 'correct' : 'wrong'); if (!ok) setFails(f => f + 1) }
   return { state, setState, fails, mark }
 }
 
-export default function ExerciseBlock({ exercises }) {
+export default function ExerciseBlock({ exercises, onComplete, onAttempt }) {
   const [idx, setIdx] = useState(0)
   const [score, setScore] = useState(0)
   const [done, setDone] = useState(false)
@@ -78,7 +78,7 @@ export default function ExerciseBlock({ exercises }) {
   function next(correct) {
     if (correct) setScore(s => s + 1)
     if (idx + 1 < exercises.length) setIdx(i => i + 1)
-    else setDone(true)
+    else { setDone(true); onComplete?.() }
   }
 
   return (
@@ -95,17 +95,17 @@ export default function ExerciseBlock({ exercises }) {
         </div>
       </div>
 
-      {ex.type === 'fill' && <FillEx key={idx} ex={ex} onNext={next} />}
-      {ex.type === 'choice' && <ChoiceEx key={idx} ex={ex} onNext={next} />}
-      {ex.type === 'order' && <OrderEx key={idx} ex={ex} onNext={next} />}
+      {ex.type === 'fill' && <FillEx key={idx} ex={ex} onNext={next} onAttempt={known => onAttempt?.(ex, known)} />}
+      {ex.type === 'choice' && <ChoiceEx key={idx} ex={ex} onNext={next} onAttempt={known => onAttempt?.(ex, known)} />}
+      {ex.type === 'order' && <OrderEx key={idx} ex={ex} onNext={next} onAttempt={known => onAttempt?.(ex, known)} />}
     </div>
   )
 }
 
 /* ---- Fill in the blank ---- */
-function FillEx({ ex, onNext }) {
+function FillEx({ ex, onNext, onAttempt }) {
   const [val, setVal] = useState('')
-  const { state, setState, fails, mark } = useAttempts()
+  const { state, setState, fails, mark } = useAttempts(onAttempt)
   const inputRef = useRef(null)
 
   useEffect(() => { if (state === 'idle') inputRef.current?.focus() }, [state])
@@ -145,9 +145,9 @@ function FillEx({ ex, onNext }) {
 }
 
 /* ---- Multiple choice ---- */
-function ChoiceEx({ ex, onNext }) {
+function ChoiceEx({ ex, onNext, onAttempt }) {
   const [selected, setSelected] = useState(null)
-  const { state, setState, fails, mark } = useAttempts()
+  const { state, setState, fails, mark } = useAttempts(onAttempt)
 
   function pick(i) {
     if (state !== 'idle') return
@@ -181,11 +181,11 @@ function ChoiceEx({ ex, onNext }) {
 }
 
 /* ---- Word ordering ---- */
-function OrderEx({ ex, onNext }) {
+function OrderEx({ ex, onNext, onAttempt }) {
   const initialBank = () => ex.words.map((w, i) => ({ word: w, id: i }))
   const [placed, setPlaced] = useState([])
   const [bank, setBank] = useState(initialBank)
-  const { state, setState, fails, mark } = useAttempts()
+  const { state, setState, fails, mark } = useAttempts(onAttempt)
 
   function addWord(item) {
     if (state !== 'idle') return
@@ -199,7 +199,7 @@ function OrderEx({ ex, onNext }) {
     setBank(b => [...b, item])
   }
 
-  const check = () => mark(placed.map(x => x.word).join(' ').toLowerCase() === ex.answer.toLowerCase())
+  const check = () => mark(isCorrectAnswer(placed.map(x => x.word).join(' '), ex.answer))
   const retry = () => { setPlaced([]); setBank(initialBank()); setState('idle') }
   const reveal = () => setState('revealed')
 

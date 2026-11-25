@@ -1,5 +1,5 @@
 // Reglas del reintento en los ejercicios: si fallas, ves el porqué y vuelves a intentarlo.
-export const REVEAL_AFTER_FAILS = 2
+export const REVEAL_AFTER_FAILS = 1
 
 const RETRY_MESSAGES = [
   'Equivocarse es parte de aprender. ¡Inténtalo otra vez!',
@@ -11,7 +11,7 @@ export function retryMessage(fails) {
   return RETRY_MESSAGES[Math.max(0, fails - 1) % RETRY_MESSAGES.length]
 }
 
-// Solo se ofrece ver la respuesta y seguir después de varios fallos.
+// Tras el primer fallo se puede consultar la respuesta, pero hay que practicarla.
 export function canReveal(fails) {
   return fails >= REVEAL_AFTER_FAILS
 }
