@@ -38,3 +38,13 @@ test('Valida tipo, vacío y límite de 1000 caracteres', () => {
   assert.equal(checkPresentation('   ').ok, false)
   assert.equal(checkPresentation('a'.repeat(1001)).ok, false)
 })
+
+test('presentación: acepta comas, «and», saludo pegado y mayúsculas', () => {
+  for (const v of [
+    "HELLO, I'M RUBEN, I AM FROM COLOMBIA AND I'M FORTY FOUR YEARS OLD",
+    "MY NAME IS RUBEN, I'M FROM COLOMBIA, I'M FORTY FOUR YEARS OLD",
+    "HELLO MY NAME IS RUBEN. I'M FROM COLOMBIA. I'M 30 YEARS OLD",
+    "Hi! I´m Ana. I’m from Mexico. I am 25 years old.",
+  ]) assert.equal(checkPresentation(v).ok, true, v)
+  assert.equal(checkPresentation("My name is Ana, I'm of Colombia, I have 30 years").ok, false)
+})
