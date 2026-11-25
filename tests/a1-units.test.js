@@ -33,7 +33,7 @@ for (const number of [2, 3, 4, 5, 6, 7, 8]) {
         const clip = lessonAudioClip(text, accent, voice)
         assert.ok(clip, `Missing recording: ${text} ${accent}`)
         assert.ok(clip.end > clip.start)
-        assert.ok(clip.url.startsWith('https://'))
+        assert.ok(clip.url.startsWith('/audio/a1/'))
         const expected = l.audio.clips[audioKey(text)][voice][accent === 'en-GB' ? 'gb' : 'us']
         assert.equal(clip.url, l.audio.sprites[expected[0]])
       }

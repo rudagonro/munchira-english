@@ -1,0 +1,237 @@
+[
+  {
+    "path": "public/audio/a1/u2-onyx-gb.mp3",
+    "sha256": "539b7f55d852272771eef15a813006913e7ae1650fc01aad3f8dc31f5577c906",
+    "size": 203171
+  },
+  {
+    "path": "public/audio/a1/u2-onyx-us.mp3",
+    "sha256": "00642dda8de5c208e74e907ab333ccaf41efb3e0554bb35347d36e47e42c143a",
+    "size": 143821
+  },
+  {
+    "path": "public/audio/a1/u2-nova-us.mp3",
+    "sha256": "d48f45daa53a3ccbcd4ffabe4b8ed82dd4bbf5186319e612ff2066c2d44527a0",
+    "size": 1965705
+  },
+  {
+    "path": "public/audio/a1/u2-nova-gb.mp3",
+    "sha256": "29220b91749909c902afc7fe195cef479b1065cc7068e7678c1b910e18ae47de",
+    "size": 2017532
+  },
+  {
+    "path": "public/audio/a1/u3-onyx-us.mp3",
+    "sha256": "3c8069c06d525b84ae1f86e00dcd59f171e50aa4951fd08f7668c52d25704f96",
+    "size": 154270
+  },
+  {
+    "path": "public/audio/a1/u3-onyx-gb.mp3",
+    "sha256": "dfab34f6257bf6a8ab2bc3597aaf06f82ed04f0c01f46e5488964a229ce8bf2f",
+    "size": 186034
+  },
+  {
+    "path": "public/audio/a1/u3-nova-us.mp3",
+    "sha256": "57e0452342833b6432c2c8635598f88f76d6980bac692d6ad14efcd01a3b9335",
+    "size": 1984095
+  },
+  {
+    "path": "public/audio/a1/u3-nova-gb.mp3",
+    "sha256": "fea9646144797f403211beaddcf5287243431e247016632ee1ae73526cc08b40",
+    "size": 1967794
+  },
+  {
+    "path": "public/audio/a1/u4-onyx-us.mp3",
+    "sha256": "062ee85e1a431c59e036106868229866ce8360065999dae0f1151fa1d9b8c171",
+    "size": 110384
+  },
+  {
+    "path": "public/audio/a1/u4-nova-us.mp3",
+    "sha256": "4abd10b7cb5b28c261d5d37256c8859ef5daf5ed9a25f9b151a7de3ff09e0d32",
+    "size": 1570315
+  },
+  {
+    "path": "public/audio/a1/u4-onyx-gb.mp3",
+    "sha256": "3acf0306839ac3f41613fa95de19823b1985dcff4f1103e96a87989839784762",
+    "size": 130446
+  },
+  {
+    "path": "public/audio/a1/u4-nova-gb.mp3",
+    "sha256": "a9e1b3809a43f222efd0e48509df8d31e35d1008fd898b378d2ed92a7e268827",
+    "size": 1631337
+  },
+  {
+    "path": "public/audio/a1/u5-onyx-us.mp3",
+    "sha256": "1c6c35542300fc5841646e68586d58544bb8d0e31ae8a969e216f2286bf7bd8a",
+    "size": 74439
+  },
+  {
+    "path": "public/audio/a1/u5-onyx-gb.mp3",
+    "sha256": "995b2fadc983cf103086ffd4ea26b2ead201268c78e0c6d01abd0642cb7c885e",
+    "size": 113310
+  },
+  {
+    "path": "public/audio/a1/u5-nova-us.mp3",
+    "sha256": "75f7052c54c7bb615e64f1c9af15ecf78f37e2028230e99c2ab3164ac2879821",
+    "size": 1503442
+  },
+  {
+    "path": "public/audio/a1/u5-nova-gb.mp3",
+    "sha256": "537fd1f21cc12aa829967315ac2a6fe9f31bc704950332659d013c4cd36cebb7",
+    "size": 1576167
+  },
+  {
+    "path": "public/audio/a1/u6-onyx-us.mp3",
+    "sha256": "44b158ca7fda3b24c3f52d6334779041e28ac277365c641b5f852c3362fc88d5",
+    "size": 124594
+  },
+  {
+    "path": "public/audio/a1/u6-onyx-gb.mp3",
+    "sha256": "9d45e1511d44fa8b3b28faaa077ed3bf1e13f2027d87e4038625b5cbbb425309",
+    "size": 145910
+  },
+  {
+    "path": "public/audio/a1/u6-nova-us.mp3",
+    "sha256": "04c55e9f7f310b6366b4b805787e6cd609b8726ffa7fa93f785cf126497404a4",
+    "size": 1693613
+  },
+  {
+    "path": "public/audio/a1/u6-nova-gb.mp3",
+    "sha256": "d90cec8fd5da54f094ab2f9cb43b9e8e548ea1de151cde649ea580776e867770",
+    "size": 1732483
+  },
+  {
+    "path": "public/audio/a1/u7-onyx-us.mp3",
+    "sha256": "39838f1c8be4ce41841caaf0883c51516cb7c2912602d16171f0185e2c15edb4",
+    "size": 122923
+  },
+  {
+    "path": "public/audio/a1/u7-nova-us.mp3",
+    "sha256": "6178291906961bf0afbc2b5ac2488874e7f08698a29411df237513f0e596413e",
+    "size": 1487141
+  },
+  {
+    "path": "public/audio/a1/u7-onyx-gb.mp3",
+    "sha256": "fee1ee218d9479cf1d30b818f2ea7fc9f30f3683e45f7d979837df8e46ef7fc6",
+    "size": 154687
+  },
+  {
+    "path": "public/audio/a1/u7-nova-gb.mp3",
+    "sha256": "033c6505968d958acf219e3321d7d2ea081f93c257798d74128ebaf36bc8d6bc",
+    "size": 1533953
+  },
+  {
+    "path": "public/audio/a1/u8-onyx-us.mp3",
+    "sha256": "3920a3e5a4186ff031bcdc6502eefbeeb44eed35285964b774b536afa91ee706",
+    "size": 231592
+  },
+  {
+    "path": "public/audio/a1/u8-onyx-gb.mp3",
+    "sha256": "c0bdbe8833b887a7e73ccbb0b2b4d8f1770bdb0bd4a9126701cd750be2d798f2",
+    "size": 308078
+  },
+  {
+    "path": "public/audio/a1/u8-nova-us.mp3",
+    "sha256": "032dc306a1760361d8fc25c923dee45f01b150f7e9f6217ffa25bd56096b1fa3",
+    "size": 2120350
+  },
+  {
+    "path": "public/audio/a1/u8-nova-gb.mp3",
+    "sha256": "3f6070a25aaa87cc6b281cb5016fb59d034de91280b8740bbba127f246697871",
+    "size": 2178028
+  },
+  {
+    "path": "public/media/aprende-juntos-1536.webp",
+    "sha256": "196e9e89a10b653a76103777dde11bdb45d03838db7c674d754765b86b62a68e",
+    "size": 73798
+  },
+  {
+    "path": "public/media/aprende-juntos-768.webp",
+    "sha256": "e6b039623b8b882b0d2f8911852824aa9dc3a53e949d438e4d6644d1c0e9d2b2",
+    "size": 44914
+  },
+  {
+    "path": "public/media/aprendizaje-en-grupo-480.webp",
+    "sha256": "aefc1a943be24d13bcbdf7d01902bccfaa64709b98a6d543ff1f282fd85a5e20",
+    "size": 32174
+  },
+  {
+    "path": "public/media/aprendizaje-en-grupo-960.webp",
+    "sha256": "ab197abd4e396f43f336e0a3f36dde4fda7dfd56e56ddb561a4c6ce068db6090",
+    "size": 85052
+  },
+  {
+    "path": "public/media/comparte-ideas-480.webp",
+    "sha256": "bba1284ebe1be68d1b91ed1182c91262b58f6cc3c84b243067a4e4be4b856993",
+    "size": 31816
+  },
+  {
+    "path": "public/media/comparte-ideas-960.webp",
+    "sha256": "8037c15c46f2b70201fd380c41470564a7d43b0ef36d7dfe29fb6309aad0f1f8",
+    "size": 85620
+  },
+  {
+    "path": "public/media/conversacion-avanzada-480.webp",
+    "sha256": "50502c486bf4989bd00e51519de62a563e0d3adf93bebaaaf2c028f725e07f0a",
+    "size": 22242
+  },
+  {
+    "path": "public/media/conversacion-avanzada-960.webp",
+    "sha256": "3838a935cfebfae9d604c16c44a91d6c437b281e1283416ebaf595373d2b9ce4",
+    "size": 50554
+  },
+  {
+    "path": "public/media/ingles-viajes-480.webp",
+    "sha256": "33fe66812da2ca1787119947a2bc3c4541ebeb2ef43efd48c8d8d7607da5ff83",
+    "size": 28380
+  },
+  {
+    "path": "public/media/ingles-viajes-960.webp",
+    "sha256": "242a9b5860c4ecb62cd31efaebb6edec3437fef81ad7a053693eccb23e77caf7",
+    "size": 69016
+  },
+  {
+    "path": "public/media/lectura-compartida-480.webp",
+    "sha256": "93d260a0e8a3e4cbed0aa2de0bcd036e86a2983138fdb1cff8de6d8df2a5078c",
+    "size": 27246
+  },
+  {
+    "path": "public/media/lectura-compartida-960.webp",
+    "sha256": "2a821d52171264e379205c36375216e74d9ed1865138007aba275f362233d415",
+    "size": 71568
+  },
+  {
+    "path": "public/media/munchira-registro-aprendizaje.webp",
+    "sha256": "69fcdc5e15269495e5d8750b0e0de330872f28f190c0a48186c4074df51b972c",
+    "size": 295674
+  },
+  {
+    "path": "public/media/munchira-registro-humana.webp",
+    "sha256": "a8d8bce190c9189a2662651f79a1f22301c8492fd4f73afb439904f85dcb98e9",
+    "size": 83704
+  },
+  {
+    "path": "public/media/oruga-transparente.png",
+    "sha256": "2fd2315e346427f0b5a12d5dda7f36e3de29036089c7d9ce1d8c3da5a7b5baaa",
+    "size": 260307
+  },
+  {
+    "path": "public/media/primeras-conversaciones-480.webp",
+    "sha256": "ef220c929243c6a687a30f5a159f34772e8a017c9d8262c6aab4206419fe4220",
+    "size": 27840
+  },
+  {
+    "path": "public/media/primeras-conversaciones-960.webp",
+    "sha256": "9e5bd07c3ac5d515acc4919e0f67c8db59c885db25c3cf3db80b70a64bd0de79",
+    "size": 75722
+  },
+  {
+    "path": "public/media/vocabulario-cotidiano-480.webp",
+    "sha256": "484691fca3c49084579ce752904d5675d596b2d0ade13f3cd66642ea19da55af",
+    "size": 19266
+  },
+  {
+    "path": "public/media/vocabulario-cotidiano-960.webp",
+    "sha256": "fcf39bca93e7130407470d0982cada5535326076e318be8fb528c6b561c5d0a7",
+    "size": 44764
+  }
+]

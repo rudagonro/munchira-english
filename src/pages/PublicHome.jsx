@@ -30,7 +30,7 @@ export default function PublicHome() {
   const level = levels.find(item => item.code === active) || levels[0]
   return (
     <div className="mp-home">
-      <Seo title="Aprende inglés, paso a paso" description="Conoce Munchira English: plan de inglés A1 a C2 con ocho unidades por nivel, módulos disponibles en tu cuenta y una lección de muestra. El nuevo temario sigue en desarrollo." path="/" image={`https://id-preview--f553b302-239c-4b8c-bdfd-bae63f587a74.lovable.app${homeCover.url}`} />
+      <Seo title="Aprende inglés, paso a paso" description="Conoce Munchira English: plan de inglés A1 a C2 con ocho unidades por nivel, módulos disponibles en tu cuenta y una lección de muestra. El nuevo temario sigue en desarrollo." path="/" image={`https://munchira.com${homeCover.url}`} />
       <a className="mp-skip" href="#contenido">Saltar al contenido</a>
       <header className="mp-header"><div className="mp-wrap mp-header-inner">
         <HeaderBrand />

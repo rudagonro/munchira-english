@@ -14,7 +14,7 @@
 - Deliver public sections in review-only branches and small pull requests; the owner approves before merging or publishing, and Claude owns editorial content, static generation, sitemap and robots.
 - Keep optional public grammar exercises in slug-matched JSON companions, excluding example companions from production imports; this separates authored practice from page presentation without storing student data.
 
-- Keep approved public photography and mascot media in immutable asset pointers, resolved against their media-serving origin; use scoped home-media styles and a single entry animation disabled by prefers-reduced-motion to preserve learning screens and accessibility.
+- Keep approved public photography and mascot media as checked-in public/media files with local URL descriptors; use scoped home-media styles and a single entry animation disabled by prefers-reduced-motion to preserve learning screens and accessibility.
 
 - Keep the public header mascot and wordmark in the shared src/public/HeaderBrand component with scoped header-brand.css; one lockup prevents home, blog and grammar branding from drifting.
 
@@ -27,6 +27,10 @@
 - Keep registration artwork in a dedicated immutable asset pointer and rga-prefixed styles in register-art.css; this prevents registration restyles from changing shared course images or authentication logic.
 - Keep free-presentation checks browser-local in the model-lesson pure rules and label their A1-only scope; this avoids transmitting student text or falsely certifying arbitrary grammar and proper-name spelling.
 - Keep the thematic curriculum in src/data/curriculum.json, with original owner documents in content/curriculum/sources and exact references to unchanged source lessons; this separates planned units from published database modules without fabricating progress or replacing student identifiers.
-- Course syllabus routes and the student outline share pure curriculum rules; authored independent practice units are linked explicitly and never fabricate persisted progress or replace module identifiers.
-- Keep large authored A1 unit data, original/reviewed source text and aligned audio cues in an immutable JSON asset pointer; loading it by the explicit media origin preserves the external app without adding secrets or a backend dependency.
+- Course syllabus routes and the student outline share pure curriculum rules; A1 unit progress uses its own authenticated RPC and table so old module identifiers, scores and enrollments stay untouched.
+- Keep authoritative A1 units in content/cycles/A1.json and MP3s in public/audio/a1; local descriptors remove runtime CDN and AI dependencies.
 - Reuse ModelLesson with a lesson prop and gender-aware audio sprites; shared retry controls and timed clips preserve the approved teaching experience without duplicating screens.
+
+- Never run generic seed_cycle/seed_module imports for repository-only A1; the eight local units are not replacements for the four legacy database modules.
+- A1 quiz grading lives in the additive progress RPC with explicit grants and owner-only RLS; update its answer-key migration alongside curriculum quizzes to prevent frontend/server drift.
+- A1 shadowing uses local MediaRecorder playback, not cloud speech recognition; self-comparison must not be presented as automatic pronunciation scoring.

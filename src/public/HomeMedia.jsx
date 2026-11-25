@@ -20,7 +20,7 @@ import vocabulario_cotidiano_480 from '../assets/vocabulario-cotidiano-480.webp.
 import vocabulario_cotidiano_960 from '../assets/vocabulario-cotidiano-960.webp.asset.json'
 
 // Media is served from its own immutable asset origin, never from the Vercel route.
-const mediaOrigin = 'https://id-preview--f553b302-239c-4b8c-bdfd-bae63f587a74.lovable.app'
+const mediaOrigin = ''
 const url = asset => `${mediaOrigin}${asset.url}`
 const courses = {
   A1: [primeras_conversaciones_480, primeras_conversaciones_960, 'Dos adultos conversan en una cafetería'],
