@@ -173,8 +173,20 @@ function StepContent({ id, accent, lesson }) {
     case 'cards': return <><h2>Repaso en dos direcciones</h2><p>Cada palabra aparece de inglés a español y de español a inglés. Así se queda en la memoria.</p><TwoWayCards accent={accent} lesson={lesson} /></>
     case 'reading': return <>
       <h2>Lectura: {lesson.reading.title}</h2>
-      <blockquote className="ml-reading">{lesson.reading.text} <ListenButtons text={lesson.reading.text} accent={accent} /></blockquote>
-      <details className="ml-translation"><summary>Ver traducción</summary><p>{lesson.reading.translation}</p></details>
+      <blockquote className="ml-reading">
+        {lesson.reading.segments ? <>
+          {lesson.reading.segments.filter(t => !t.speaker).map((t, i) => <p key={i}>{t.text}</p>)}
+          <ol className="ml-reading-turns">{lesson.reading.segments.filter(t => t.speaker).map((t, i) => <li key={i}><strong>{t.speaker}:</strong><p>{t.text}</p><ListenButtons text={t.text} accent={accent} voice={t.voice} /></li>)}</ol>
+          <span className="ml-listen">
+            <button type="button" onClick={() => sayDialogue(lesson.reading.segments, { accent })} aria-label="Escuchar lectura completa">🔊 Escuchar</button>
+            <button type="button" onClick={() => sayDialogue(lesson.reading.segments, { accent, slow: true })} aria-label="Escuchar lectura despacio">🐢 Despacio</button>
+          </span>
+        </> : <>{lesson.reading.text} <ListenButtons text={lesson.reading.text} accent={accent} voice={lesson.reading.voice} /></>}
+      </blockquote>
+      <details className="ml-translation"><summary>Ver traducción</summary>{lesson.reading.segments ? <>
+        {lesson.reading.segments.filter(t => !t.speaker).map((t, i) => <p key={i}>{t.es}</p>)}
+        <ol className="ml-reading-turns">{lesson.reading.segments.filter(t => t.speaker).map((t, i) => <li key={i}><strong>{t.speaker}:</strong><p>{t.es}</p></li>)}</ol>
+      </> : <p>{lesson.reading.translation}</p>}</details>
       <h3>¿Lo entendiste?</h3><ChoiceQuestions questions={lesson.reading.questions} />
     </>
     case 'dialogue': return <>
@@ -185,7 +197,7 @@ function StepContent({ id, accent, lesson }) {
           <button type="button" onClick={() => sayDialogue(d.lines, { accent })} aria-label={`Escuchar completo: ${d.title}`}>🔊 Escuchar</button>
           <button type="button" onClick={() => sayDialogue(d.lines, { accent, slow: true })} aria-label={`Escuchar despacio: ${d.title}`}>🐢 Despacio</button>
         </p>
-        <ul className="ml-dialogue">{d.lines.map((t, i) => <li key={i} className={t.speaker !== d.lines[0].speaker ? 'ml-me' : ''}><span>{t.speaker}</span><p>{t.text}</p>{t.es && <p className="ml-dialogue-es">{t.es}</p>}<ListenButtons text={t.text} accent={accent} voice={t.voice} /></li>)}</ul>
+        <ul className="ml-dialogue">{d.lines.map((t, i) => <li key={i} className={t.speaker !== d.lines[0].speaker ? 'ml-me' : ''}><strong>{t.speaker}</strong><p>{t.text}</p>{t.es && <p className="ml-dialogue-es">{t.es}</p>}<ListenButtons text={t.text} accent={accent} voice={t.voice} /></li>)}</ul>
       </div>)}
     </>
     case 'translate': return <><h2>Traducción</h2><p>Escribe cada frase en inglés. Si te equivocas, corrige e inténtalo otra vez.</p><WriteCheck items={lesson.translations.map(t => ({ prompt: t.es, answer: t.en }))} accent={accent} /></>
