@@ -6,6 +6,7 @@ import { resumeModuleStage } from '../data/moduleLessonProgress'
 import VocabFlashcard from '../components/VocabFlashcard'
 import ExerciseBlock from '../components/ExerciseBlock'
 import DialoguePlayer from '../components/DialoguePlayer'
+import LessonText from '../components/LessonText'
 import { getLessonAudioTurns } from '../data/lessonAudio'
 import { lessonAudioStatus, prepareLessonsAudio } from '../lib/audioPublisher'
 
@@ -326,7 +327,7 @@ function ModuleContent({ preview }) {
             <span className="lesson-card-icon">📖</span>
             Teoría
           </div>
-          <p className="lesson-card-text">{lesson.theory_content}</p>
+          <LessonText text={lesson.theory_content} />
           {lesson.theory_table && (
             <div className="lesson-table-wrap">
               <table className="lesson-table">
@@ -360,7 +361,7 @@ function ModuleContent({ preview }) {
             <span className="lesson-card-icon">✏️</span>
             Práctica
           </div>
-          <p className="lesson-card-text">{lesson.practice_content}</p>
+          <LessonText text={lesson.practice_content} />
         </div>
 
         {submitError && <p role="alert">{submitError}</p>}
@@ -403,6 +404,9 @@ function ModuleContent({ preview }) {
           </button>
         )}
         <span className="role-tag">{module.title}</span>
+        <button className="lesson-back" type="button" disabled={saving} onClick={() => goTo('lessons', 0)}>
+          ← Repasar lecciones
+        </button>
         <h1>Quiz del módulo</h1>
         <p style={{ opacity: 0.7, marginBottom: 24 }}>Responde todas las preguntas para terminar el módulo.</p>
 

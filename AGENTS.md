@@ -37,4 +37,6 @@
 - Keep repository A1 vocabulary in a separate catalog and owner-scoped review table, merged by get_due_vocab; this reuses the existing Repaso screen without changing legacy vocabulary identifiers or settled progress.
 - A1 shadowing uses local MediaRecorder playback, not cloud speech recognition; self-comparison must not be presented as automatic pronunciation scoring.
 
+- Render module theory and practice through the shared safe LessonText formatter; separating authored steps, examples and notes preserves course content and grading while improving readability across levels.
+
 - Derive module lesson counters and resume targets from owner-filtered lesson_progress through moduleLessonProgress; pending quizzes resume directly without treating partial study as module approval.
