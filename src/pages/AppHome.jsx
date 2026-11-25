@@ -6,6 +6,7 @@ import { LEVEL_NAMES } from '../data/diagnosticBank'
 import { computeModuleAvailability } from '../data/moduleAvailability'
 import { summarizeCycle } from '../data/dashboardSummary'
 import mascot from '../assets/oruga-transparente.png.asset.json'
+import CurriculumOutline from '../components/CurriculumOutline'
 
 const mediaOrigin = 'https://id-preview--f553b302-239c-4b8c-bdfd-bae63f587a74.lovable.app'
 const SKILLS = [
@@ -53,7 +54,6 @@ export default function AppHome() {
   return (
     <div className="dash">
       {loadError && <div className="error-banner" role="alert">{loadError}</div>}
-
       <section className="dash-hero">
         <div>
           <span className="dash-eyebrow">Tu espacio de aprendizaje</span>
@@ -90,14 +90,12 @@ export default function AppHome() {
           <div className="dash-mascot"><img src={`${mediaOrigin}${mascot.url}`} alt="" width="443" height="518" /></div>
         )}
       </section>
-
       <div className="dash-stats">
         <div className="dash-stat"><b>{sum.completed}</b><span>Módulos completados</span></div>
         <div className="dash-stat"><b>{sum.avg === null ? '—' : `${sum.avg}%`}</b><span>Nota media</span></div>
         <div className="dash-stat"><b>{sum.toImprove}</b><span>Módulos por mejorar (menos de 70%)</span></div>
         <div className="dash-stat"><b>{due ?? '—'}</b><span>Palabras para repasar hoy</span></div>
       </div>
-
       <div className="dash-grid">
         <Link to="/cycle" className="dash-card">
           <span className="tag">Módulos</span>
@@ -118,7 +116,7 @@ export default function AppHome() {
           <span className="go">Abrir lección →</span>
         </Link>
       </div>
-
+      <CurriculumOutline level={level} />
       <h2 className="dash-section-title">Lo que practicas en Munchira</h2>
       <div className="dash-skills">
         {SKILLS.map(([k, icon, label]) => (
@@ -129,7 +127,6 @@ export default function AppHome() {
           </div>
         ))}
       </div>
-
       <div className="dash-foot">
         {started && <Link to="/diagnostic" className="auth-footer" style={{ marginRight: 'auto', alignSelf: 'center' }}>{diag ? 'Repetir la prueba de nivel' : 'Hacer la prueba de nivel'}</Link>}
         <button type="button" onClick={signOut}>Cerrar sesión</button>

@@ -10,17 +10,17 @@ import FooterBrand from '../public/FooterBrand'
 import LoginAccess, { AccountCta, RegisterLink } from '../public/LoginAccess'
 
 const levels = [
-  { code: 'A1', name: 'Tus primeras palabras', label: 'Principiante', description: 'Saluda, preséntate y construye frases sencillas para hablar de tu día.', topics: ['Saludos y presentaciones', 'Vocabulario cotidiano', 'Primeras estructuras'], status: 'Inicio del recorrido' },
-  { code: 'A2', name: 'Más allá de lo básico', label: 'Elemental', description: 'Amplía tu inglés para situaciones cotidianas, planes y experiencias.', topics: ['Viajes y servicios', 'Experiencias pasadas', 'Planes y conversaciones'], status: 'En preparación' },
-  { code: 'B1', name: 'Expresa lo que piensas', label: 'Intermedio', description: 'Conecta ideas, comparte experiencias y construye tus propias opiniones.', topics: ['Relatos y experiencias', 'Opiniones y decisiones', 'Lectura y vocabulario'], status: 'En preparación' },
-  { code: 'B2', name: 'Dale profundidad a tu inglés', label: 'Intermedio alto', description: 'Explora textos más complejos y desarrolla argumentos con mayor precisión.', topics: ['Lectura contextual', 'Argumentación', 'Matices del vocabulario'], status: 'En preparación' },
-  { code: 'C1', name: 'Comunica con precisión', label: 'Avanzado', description: 'Trabaja registros, estructuras avanzadas y formas de expresar ideas complejas.', topics: ['Registro y contexto', 'Estructuras avanzadas', 'Ideas complejas'], status: 'En preparación' },
-  { code: 'C2', name: 'Afina cada matiz', label: 'Avanzado superior', description: 'Un recorrido orientado al uso flexible del idioma y a los matices de expresión.', topics: ['Matices de expresión', 'Uso flexible del idioma', 'Análisis de textos'], status: 'En preparación' },
+  { code: 'A1', name: 'Tus primeras palabras', label: 'Principiante', description: 'Saluda, preséntate y construye frases sencillas para hablar de tu día.', topics: ['Saludos y presentaciones', 'Vocabulario cotidiano', 'Primeras estructuras'], status: 'Temario en desarrollo' },
+  { code: 'A2', name: 'Más allá de lo básico', label: 'Elemental', description: 'Amplía tu inglés para situaciones cotidianas, planes y experiencias.', topics: ['Viajes y servicios', 'Experiencias pasadas', 'Planes y conversaciones'], status: 'Temario en desarrollo' },
+  { code: 'B1', name: 'Expresa lo que piensas', label: 'Intermedio', description: 'Conecta ideas, comparte experiencias y construye tus propias opiniones.', topics: ['Relatos y experiencias', 'Opiniones y decisiones', 'Lectura y vocabulario'], status: 'Temario en desarrollo' },
+  { code: 'B2', name: 'Dale profundidad a tu inglés', label: 'Intermedio alto', description: 'Explora textos más complejos y desarrolla argumentos con mayor precisión.', topics: ['Lectura contextual', 'Argumentación', 'Matices del vocabulario'], status: 'Temario en desarrollo' },
+  { code: 'C1', name: 'Comunica con precisión', label: 'Avanzado', description: 'Trabaja registros, estructuras avanzadas y formas de expresar ideas complejas.', topics: ['Registro y contexto', 'Estructuras avanzadas', 'Ideas complejas'], status: 'Temario en desarrollo' },
+  { code: 'C2', name: 'Afina cada matiz', label: 'Avanzado superior', description: 'Un recorrido orientado al uso flexible del idioma y a los matices de expresión.', topics: ['Matices de expresión', 'Uso flexible del idioma', 'Análisis de textos'], status: 'Temario en desarrollo' },
 ]
 const faqs = [
   ['¿Puedo empezar desde cero?', 'Sí. A1 es el punto de partida para trabajar vocabulario básico, presentaciones y primeras frases. Dentro de tu cuenta puedes consultar los módulos disponibles.'],
   ['¿Cómo sé por dónde empezar?', 'La plataforma incluye un diagnóstico de nivel. Crea tu cuenta y accede al diagnóstico desde tu espacio de aprendizaje.'],
-  ['¿Están abiertos todos los niveles?', 'No. El recorrido contempla A1–C2, pero los niveles A2–C2 están en preparación. El contenido disponible se consulta dentro de tu cuenta; no se ofrece acceso anticipado a los niveles pendientes.'],
+  ['¿Qué incluye cada nivel?', 'El nuevo temario organiza ocho unidades temáticas por nivel, con objetivos y proyectos. Está en desarrollo: los módulos publicados que puedes practicar se consultan dentro de tu cuenta y no equivalen todavía a todas las unidades completas del temario.'],
   ['¿Puedo aprender desde el teléfono?', 'Puedes acceder desde el navegador de tu teléfono, tableta u ordenador. No necesitas instalar una aplicación.'],
   ['¿Cómo funcionan los pagos?', 'Los precios, la periodicidad y las condiciones de suscripción todavía están por definir. Esta página no procesa pagos ni ofrece una prueba gratuita o acceso ilimitado.'],
 ]
@@ -30,11 +30,11 @@ export default function PublicHome() {
   const level = levels.find(item => item.code === active) || levels[0]
   return (
     <div className="mp-home">
-      <Seo title="Aprende inglés, paso a paso" description="Conoce Munchira English: cursos de A1 a C2, vocabulario, práctica y repaso a tu ritmo. A1 disponible; A2–C2 en preparación." path="/" image={`https://id-preview--f553b302-239c-4b8c-bdfd-bae63f587a74.lovable.app${homeCover.url}`} />
+      <Seo title="Aprende inglés, paso a paso" description="Conoce Munchira English: plan de inglés A1 a C2 con ocho unidades por nivel, módulos disponibles en tu cuenta y una lección de muestra. El nuevo temario sigue en desarrollo." path="/" image={`https://id-preview--f553b302-239c-4b8c-bdfd-bae63f587a74.lovable.app${homeCover.url}`} />
       <a className="mp-skip" href="#contenido">Saltar al contenido</a>
       <header className="mp-header"><div className="mp-wrap mp-header-inner">
         <HeaderBrand />
-        <nav aria-label="Navegación principal" className="mp-nav"><a href="#cursos">Cursos</a><a href="#metodo">Método</a><a href="#planes">Planes</a></nav>
+        <nav aria-label="Navegación principal" className="mp-nav"><Link to="/cursos">Cursos</Link><a href="#metodo">Método</a><a href="#planes">Planes</a></nav>
         <div className="mp-header-actions"><LoginAccess className="mp-login" /><RegisterLink className="mp-button mp-button-dark mp-header-register">Crear cuenta <span aria-hidden="true">↗</span></RegisterLink></div>
       </div></header>
       <main id="contenido">
@@ -44,8 +44,8 @@ export default function PublicHome() {
           <div className="mp-level-tabs" role="tablist" aria-label="Niveles de inglés">{levels.map((item, index) => <button id={`mp-tab-${item.code}`} role="tab" aria-selected={active === item.code} aria-controls="mp-level-panel" tabIndex={active === item.code ? 0 : -1} key={item.code} className={`mp-level-tab ${active === item.code ? 'mp-level-active' : ''}`} onClick={() => setActive(item.code)} onKeyDown={event => { let next; if (event.key === 'ArrowRight') next = (index + 1) % levels.length; if (event.key === 'ArrowLeft') next = (index + levels.length - 1) % levels.length; if (event.key === 'Home') next = 0; if (event.key === 'End') next = levels.length - 1; if (next !== undefined) { event.preventDefault(); setActive(levels[next].code); document.getElementById(`mp-tab-${levels[next].code}`)?.focus() } }}><strong>{item.code}</strong><span>{item.label}</span></button>)}</div>
           <div id="mp-level-panel" className="mp-level-panel" role="tabpanel" aria-labelledby={`mp-tab-${active}`} tabIndex={0}>
             <CourseVisual code={level.code} />
-            <div className="mp-level-detail"><p className="mp-eyebrow">{level.label} · {level.status}</p><h3>{level.name}</h3><p>{level.description}</p><ul>{level.topics.map(topic => <li key={topic}><span aria-hidden="true">✓</span>{topic}</li>)}</ul>{active === 'A1' ? <div className="mp-level-actions"><Link className="mp-text-link" to="/leccion-modelo">Probar la lección de muestra <span aria-hidden="true">↗</span></Link><AccountCta className="mp-text-link" signedOut="Crear cuenta y ver módulos" signedIn="Ver mis módulos" /></div> : <p className="mp-availability">Este nivel todavía no está abierto.</p>}</div>
-          </div><p className="mp-course-note">A1–C2 describe la ruta de aprendizaje; no equivale a una certificación oficial. A2–C2 están en preparación.</p>
+            <div className="mp-level-detail"><p className="mp-eyebrow">{level.label} · {level.status}</p><h3>{level.name}</h3><p>{level.description}</p><ul>{level.topics.map(topic => <li key={topic}><span aria-hidden="true">✓</span>{topic}</li>)}</ul><div className="mp-level-actions"><Link className="mp-text-link" to={`/cursos/${level.code}`}>Ver las 8 unidades de {level.code} <span aria-hidden="true">↗</span></Link>{active === 'A1' && <Link className="mp-text-link" to="/leccion-modelo">Probar la lección de muestra <span aria-hidden="true">↗</span></Link>}<AccountCta className="mp-text-link" signedOut="Crear cuenta y ver módulos" signedIn="Ir a mi panel" /></div></div>
+          </div><p className="mp-course-note">A1–C2 orienta el plan de estudios; no equivale a una certificación oficial. Las 48 unidades del nuevo temario están en desarrollo; los módulos actuales se consultan en tu cuenta.</p>
         </div></section>
         <section className="mp-section mp-method" id="metodo" aria-labelledby="mp-method-title"><div className="mp-wrap">
           <div className="mp-section-heading"><div><p className="mp-eyebrow">02 / Aprende haciendo</p><h2 id="mp-method-title">Menos memorizar.<br />Más ponerlo en práctica.</h2></div><p>Un poco de curiosidad.<br />Una palabra nueva. Un paso más.</p></div>

@@ -22,6 +22,7 @@ import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
 import Account from './pages/Account'
 import CompleteProfile from './pages/CompleteProfile'
+import { CourseIndex, CourseLevel } from './public/Curriculum'
 
 function AppRoutes() {
   const location = useLocation()
@@ -30,6 +31,8 @@ function AppRoutes() {
     <ErrorBoundary resetKey={location.pathname}>
       <Routes location={background || location}>
         <Route path="/" element={<PublicHome />} />
+        <Route path="/cursos" element={<CourseIndex />} />
+        <Route path="/cursos/:level" element={<CourseLevel />} />
         <Route path="/blog" element={<BlogIndex />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/gramatica" element={<GrammarIndex />} />
@@ -41,112 +44,18 @@ function AppRoutes() {
         <Route path="/restablecer" element={<ResetPassword />} />
         <Route path="/privacidad" element={<Privacy />} />
         <Route path="/terminos" element={<Terms />} />
-
-        <Route
-          path="/app"
-          element={
-            <ProtectedRoute>
-              <Layout><AppHome /></Layout>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/cuenta"
-          element={
-            <ProtectedRoute>
-              <Layout><Account /></Layout>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/completar-datos"
-          element={
-            <ProtectedRoute>
-              <CompleteProfile />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/diagnostic"
-          element={
-            <ProtectedRoute>
-              <Diagnostic />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/cycle"
-          element={
-            <ProtectedRoute>
-              <Layout><CycleModules /></Layout>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/module/:moduleId"
-          element={
-            <ProtectedRoute>
-              <Layout><ModuleView /></Layout>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/review"
-          element={
-            <ProtectedRoute>
-              <Layout><Review /></Layout>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/teacher"
-          element={
-            <ProtectedRoute allowedRoles={['teacher', 'admin']}>
-              <Layout><TeacherPanel /></Layout>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/usuarios"
-          element={
-            <ProtectedRoute allowedRoles={['admin']}>
-              <Layout><AdminUsers /></Layout>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/revisor"
-          element={
-            <ProtectedRoute allowedRoles={['teacher', 'admin']}>
-              <Layout><ReviewerMode /></Layout>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/revisor/modulo/:moduleId"
-          element={
-            <ProtectedRoute allowedRoles={['teacher', 'admin']}>
-              <Layout><ModuleView preview /></Layout>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/revisor/diagnostico"
-          element={
-            <ProtectedRoute allowedRoles={['teacher', 'admin']}>
-              <Diagnostic preview />
-            </ProtectedRoute>
-          }
-        />
-
+        <Route path="/app" element={<ProtectedRoute><Layout><AppHome /></Layout></ProtectedRoute>} />
+        <Route path="/cuenta" element={<ProtectedRoute><Layout><Account /></Layout></ProtectedRoute>} />
+        <Route path="/completar-datos" element={<ProtectedRoute><CompleteProfile /></ProtectedRoute>} />
+        <Route path="/diagnostic" element={<ProtectedRoute><Diagnostic /></ProtectedRoute>} />
+        <Route path="/cycle" element={<ProtectedRoute><Layout><CycleModules /></Layout></ProtectedRoute>} />
+        <Route path="/module/:moduleId" element={<ProtectedRoute><Layout><ModuleView /></Layout></ProtectedRoute>} />
+        <Route path="/review" element={<ProtectedRoute><Layout><Review /></Layout></ProtectedRoute>} />
+        <Route path="/teacher" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><TeacherPanel /></Layout></ProtectedRoute>} />
+        <Route path="/usuarios" element={<ProtectedRoute allowedRoles={['admin']}><Layout><AdminUsers /></Layout></ProtectedRoute>} />
+        <Route path="/revisor" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><ReviewerMode /></Layout></ProtectedRoute>} />
+        <Route path="/revisor/modulo/:moduleId" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><ModuleView preview /></Layout></ProtectedRoute>} />
+        <Route path="/revisor/diagnostico" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Diagnostic preview /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/cycle" replace />} />
       </Routes>
       {background && <LoginPanel />}

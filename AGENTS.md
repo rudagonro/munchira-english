@@ -26,3 +26,5 @@
 
 - Keep registration artwork in a dedicated immutable asset pointer and rga-prefixed styles in register-art.css; this prevents registration restyles from changing shared course images or authentication logic.
 - Keep free-presentation checks browser-local in the model-lesson pure rules and label their A1-only scope; this avoids transmitting student text or falsely certifying arbitrary grammar and proper-name spelling.
+- Keep the thematic curriculum in src/data/curriculum.json, with original owner documents in content/curriculum/sources and exact references to unchanged source lessons; this separates planned units from published database modules without fabricating progress or replacing student identifiers.
+- Course syllabus routes and the student outline share pure curriculum rules; only an explicitly linked sample is playable until complete units have been authored, reviewed and safely integrated.

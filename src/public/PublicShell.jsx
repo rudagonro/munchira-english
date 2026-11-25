@@ -20,7 +20,7 @@ export default function PublicShell({ children }) {
     <a className="mp-skip" href="#contenido">Saltar al contenido</a>
     <header className="mp-public-header"><div className="mp-wrap mp-public-header-inner">
       <HeaderBrand />
-      <nav aria-label="Navegación principal"><NavLink to="/" end>Inicio</NavLink><NavLink to="/blog">Blog</NavLink><NavLink to="/gramatica">Gramática</NavLink></nav>
+      <nav aria-label="Navegación principal"><NavLink to="/" end>Inicio</NavLink><NavLink to="/cursos">Cursos</NavLink><NavLink to="/blog">Blog</NavLink><NavLink to="/gramatica">Gramática</NavLink></nav>
       <div className="mp-public-account"><LoginAccess /><RegisterLink className="mp-button mp-button-dark">Crear cuenta <span aria-hidden="true">↗</span></RegisterLink></div>
     </div></header>
     <main id="contenido" ref={main} tabIndex={-1}>{children}</main>
