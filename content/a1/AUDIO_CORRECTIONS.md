@@ -22,3 +22,7 @@ Piper: https://github.com/OHF-Voice/piper1-gpl . Modelos y fichas de licencia: h
 - Guardado de progreso y migración A1: sin locución ni formato de lecturas, no necesitan cambios.
 
 La corrección se añade a la revisión A1 #26; mientras no se apruebe y publique, munchira.com conserva la versión anterior.
+
+## Voz masculina estadounidense (actualización)
+
+La voz Piper en_US-joe-medium sonaba robótica. Las 12 frases masculinas US se regrabaron una sola vez con ElevenLabs (voz Brian, la misma de las unidades 2–8) usando el saldo del propietario, y quedan como MP3 fijo en `public/audio/a1/voice-corrections-onyx-us-v2.mp3`. La app no llama a ningún servicio externo para reproducirlas. Las voces británicas no cambian.
