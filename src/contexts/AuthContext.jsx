@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { AuthContext } from './auth-context'
+import { flushActiveDrafts } from '../lib/a1Draft'
 import { recoveryRedirect } from '../lib/accountRules'
+import { attachLessonProgress } from '../data/moduleLessonProgress'
 
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(null)
@@ -98,6 +100,7 @@ export function AuthProvider({ children }) {
   }
 
   async function signOut() {
+    await flushActiveDrafts()
     await supabase.auth.signOut()
   }
 
@@ -220,8 +223,19 @@ export function AuthProvider({ children }) {
 
     if (attemptsError) return { data: null, error: attemptsError }
 
+    const moduleIds = modules.map(module => module.id)
+    const lessonRes = moduleIds.length
+      ? await supabase.from('lessons').select('id,module_id').in('module_id', moduleIds)
+      : { data: [], error: null }
+    if (lessonRes.error) return { data: null, error: lessonRes.error }
+    const lessonIds = lessonRes.data.map(lesson => lesson.id)
+    const savedRes = lessonIds.length
+      ? await supabase.from('lesson_progress').select('lesson_id').eq('user_id', currentUser.id).in('lesson_id', lessonIds)
+      : { data: [], error: null }
+    if (savedRes.error) return { data: null, error: savedRes.error }
+    const modulesWithLessons = attachLessonProgress(modules, lessonRes.data, savedRes.data.map(row => row.lesson_id))
     return {
-      data: { enrollment, modules, progress, checkpoints, checkpointAttempts },
+      data: { enrollment, modules: modulesWithLessons, progress, checkpoints, checkpointAttempts },
       error: null,
     }
   }, [session?.user])
@@ -357,8 +371,15 @@ export function AuthProvider({ children }) {
 
   /** Marca una lección como vista; el servidor valida que esté desbloqueada. */
   async function completeLesson(lessonId) {
+    const userId = session?.user?.id
+    if (!userId) return { error: new Error('No hay sesión activa') }
     const { error } = await supabase.rpc('complete_lesson', { p_lesson_id: lessonId })
-    return { error }
+    if (error) return { error }
+    const { data, error: readError } = await supabase.from('lesson_progress')
+      .select('lesson_id').eq('user_id', userId).eq('lesson_id', lessonId).maybeSingle()
+    if (readError) return { error: readError }
+    if (!data) return { error: new Error('No se pudo confirmar la lección guardada') }
+    return { error: null }
   }
 
   const value = {

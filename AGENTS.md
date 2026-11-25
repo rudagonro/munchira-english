@@ -23,9 +23,10 @@
 - Public login uses a native modal side panel and React Router backgroundLocation, reusing the existing Login form without changing auth services; /login remains directly reachable with the public home behind it, preserving protected-route return destinations.
 
 - Keep shared lesson navigation and completion rules in src/public/lessonProgress.js, separate from answer normalization; callbacks from completed activities unlock the next step and mounted visited panels preserve unfinished work while navigating.
+- Keep the step-by-step A1 player in src/public/ModelLesson with pure teaching rules in src/public/model-lesson.js and repository-owned lesson data; separate private drafts from authoritative grades and completion.
 
 - Keep registration artwork in a dedicated immutable asset pointer and rga-prefixed styles in register-art.css; this prevents registration restyles from changing shared course images or authentication logic.
-- Keep free-presentation checks browser-local in the model-lesson pure rules and label their A1-only scope; this avoids transmitting student text or falsely certifying arbitrary grammar and proper-name spelling.
+- Keep free-presentation checking in the model-lesson pure rules and label its A1-only scope; draft text syncs only to the existing account backend, never an AI provider.
 - Keep the thematic curriculum in src/data/curriculum.json, with original owner documents in content/curriculum/sources and exact references to unchanged source lessons; this separates planned units from published database modules without fabricating progress or replacing student identifiers.
 - Course syllabus routes and the student outline share pure curriculum rules; A1 unit progress uses its own authenticated RPC and table so old module identifiers, scores and enrollments stay untouched.
 - Keep authoritative A1 units in content/cycles/A1.json and MP3s in public/audio/a1; local descriptors remove runtime CDN and AI dependencies.
@@ -38,3 +39,8 @@
 - A1 shadowing uses local MediaRecorder playback, not cloud speech recognition; self-comparison must not be presented as automatic pronunciation scoring.
 
 - Render module theory and practice through the shared safe LessonText formatter; separating authored steps, examples and notes preserves course content and grading while improving readability across levels.
+
+- Derive module lesson counters and resume targets from owner-filtered lesson_progress through moduleLessonProgress; pending quizzes resume directly without treating partial study as module approval.
+
+- A1 unfinished work uses the shared draft context and additive owner-only draft RPC; revision checks prevent stale-device overwrites while account-scoped local outboxes retry unsent changes, without changing grading or A2–C2.
+- Restore unit drafts through lessonDraftProgress and legacy module positions through moduleDraftProgress; remembered positions must respect required practice and authoritative lesson completion, including older drafts without completion lists.

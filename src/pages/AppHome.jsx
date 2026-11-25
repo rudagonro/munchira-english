@@ -32,7 +32,7 @@ export default function AppHome() {
       getDueVocab(50),
     ]).then(([d, c, v]) => {
       if (!active) return
-      if (d.error) setLoadError('No se pudo cargar tu progreso. Intenta de nuevo más tarde.')
+      if (d.error || c.error) setLoadError('No se pudo cargar tu progreso. Intenta de nuevo más tarde.')
       setDiag(d.data ?? null)
       setCycle(c.data ?? null)
       setDue(v.error ? null : v.data.length)
@@ -61,7 +61,7 @@ export default function AppHome() {
           {!started ? (
             <p>Elige cómo empezar: desde cero en A1 o con una prueba de nivel para ubicarte y preparar tus módulos.</p>
           ) : sum.next ? (
-            <p>Tu siguiente paso es <strong>{sum.next.title}</strong>. Un poco cada día cuenta más que mucho de vez en cuando.</p>
+            <p>Tu siguiente paso es <strong>{sum.next.title}</strong>.{sum.next.lessonProgress?.total > 0 && <> Llevas {sum.next.lessonProgress.completed} de {sum.next.lessonProgress.total} lecciones completadas.</>} Un poco cada día cuenta más que mucho de vez en cuando.</p>
           ) : sum.total === 0 ? (
             <p>Tu nivel es {level}. Sus módulos aún se están preparando; mientras tanto puedes practicar con la lección de muestra y el repaso.</p>
           ) : (

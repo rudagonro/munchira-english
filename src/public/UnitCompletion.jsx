@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
+import { useDraftState } from '../contexts/a1-draft-context'
 import cycle from '../../content/cycles/A1.json'
 import './unit-quiz.css'
 
@@ -10,9 +11,11 @@ function progressError(error) {
 }
 
 export default function UnitCompletion({ number, onPassed }) {
+  const passedCallback = useRef(onPassed)
+  useEffect(() => { passedCallback.current = onPassed }, [onPassed])
   const { user, loading } = useAuth()
   const questions = cycle.modules.find(unit => unit.order === number)?.quiz ?? []
-  const [answers, setAnswers] = useState({})
+  const [answers, setAnswers] = useDraftState('quiz.answers', {})
   const [progress, setProgress] = useState(null)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
@@ -22,7 +25,7 @@ export default function UnitCompletion({ number, onPassed }) {
     let active = true
     supabase.from('a1_unit_progress').select('unit_number,best_score,last_score,completed_at')
       .eq('user_id', user.id).eq('unit_number', number).maybeSingle()
-      .then(({ data, error: readError }) => { if (active) { if (readError) setError(progressError(readError)); else setProgress(data) } })
+      .then(({ data, error: readError }) => { if (active) { if (readError) setError(progressError(readError)); else { setProgress(data); if (data?.completed_at) passedCallback.current?.() } } })
       .catch(() => { if (active) setError('No pudimos consultar tu avance guardado. Inténtalo de nuevo.') })
     return () => { active = false }
   }, [number, user])
