@@ -17,7 +17,7 @@ Al final de cada unidad el alumno responde su cuestionario. El servidor calcula 
 
 ### Activación después de aprobar la PR
 1. Respaldar el proyecto de datos existente según su procedimiento habitual.
-2. Aplicar **solo** `supabase/migrations/20261125000100_a1_repository_progress.sql` en ese proyecto. Es aditiva e idempotente; incluye grants, RLS y la función de guardado.
+2. Aplicar **solo** `supabase/migrations/20261125000200_a1_repository_progress.sql` en ese proyecto. Es aditiva e idempotente; incluye grants, RLS y la función de guardado.
 3. Publicar la rama aprobada en el alojamiento existente con sus variables públicas de Supabase.
 4. Entrar con una cuenta real: fallar, aprobar con 70%, repetir con nota peor, recargar y comprobar el avance en unidad/panel.
 
