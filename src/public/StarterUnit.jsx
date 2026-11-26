@@ -9,6 +9,8 @@ import Seo from './Seo'
 import { QuestionFeedback } from './UnitCompletion'
 import { sayEnglish, stopLessonAudio } from './lessonSpeech'
 import { useLocalUnit0Pass } from './useLocalUnit0Pass'
+import { useReviewMode } from '../contexts/review-mode-context'
+import ReviewAnswer from '../components/ReviewAnswer'
 import './model-lesson.css'
 import './unit-quiz.css'
 import './starter-unit.css'
@@ -66,8 +68,9 @@ function Numbers({ accent }) {
 
 function SaveToReview({ set }) {
   const { user } = useAuth()
+  const review = useReviewMode()
   const [state, setState] = useState('idle')
-  if (!user) return null
+  if (!user || review) return null
   async function save() {
     setState('busy')
     try {
@@ -110,6 +113,7 @@ function Vocabulary({ accent }) {
 
 function StarterQuiz({ onPassed }) {
   const { user, loading } = useAuth()
+  const review = useReviewMode()
   const questions = UNIT0.quiz
   const [answers, setAnswers] = useState({})
   const [reviewed, setReviewed] = useState(null)
@@ -118,12 +122,12 @@ function StarterQuiz({ onPassed }) {
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
   useEffect(() => {
-    if (!user) return
+    if (!user || review) return
     let active = true
     supabase.from('a1_unit0_progress').select('best_score,last_score,completed_at').eq('user_id', user.id).maybeSingle()
       .then(({ data }) => { if (active && data) { setProgress(data); if (data.completed_at) onPassed() } }, () => {})
     return () => { active = false }
-  }, [user, onPassed])
+  }, [user, onPassed, review])
   async function submit(event) {
     event.preventDefault()
     const selected = questions.map((_, index) => answers[index])
@@ -132,10 +136,11 @@ function StarterQuiz({ onPassed }) {
     const local = () => {
       const score = scoreUnit0(selected)
       setReviewed(selected); setResult({ score, local: true })
-      if (score >= UNIT0_PASS_SCORE) { markLocalUnit0Pass(); onPassed() }
+      if (score >= UNIT0_PASS_SCORE) { if (!review) markLocalUnit0Pass(); onPassed() }
     }
     try {
-      if (!user) return local()
+      // Visitante o revisor: se corrige aquí. El revisor no guarda nada, ni siquiera en este navegador.
+      if (!user || review) return local()
       const { data, error: saveError } = await supabase.rpc('submit_a1_unit0_quiz', { p_answers: selected })
       if (saveError) {
         // Migración aún sin aplicar: la práctica se corrige aquí y la Unidad 1 se abre en este navegador.
@@ -156,9 +161,10 @@ function StarterQuiz({ onPassed }) {
       {questions.map((question, index) => <fieldset key={index} className="ml-quiz-q">
         <legend>{index + 1}. {question.question}</legend>
         {question.options.map((option, value) => <label key={value} className="ml-quiz-opt"><input type="radio" name={`u0-question-${index}`} value={value} checked={answers[index] === value} onChange={() => { setReviewed(null); setResult(null); setAnswers(previous => ({ ...previous, [index]: value })) }} disabled={busy} required /><span>{option}</span></label>)}
+        <ReviewAnswer>{question.options[question.correct_idx]}</ReviewAnswer>
         {reviewed && <QuestionFeedback question={question} answer={reviewed[index]} />}
       </fieldset>)}
-      <button type="submit" className="mp-button mp-button-dark" disabled={busy || loading || Object.keys(answers).length !== questions.length}>{busy ? 'Guardando…' : user ? 'Comprobar y guardar mi resultado' : 'Comprobar mis respuestas'}</button>
+      <button type="submit" className="mp-button mp-button-dark" disabled={busy || loading || Object.keys(answers).length !== questions.length}>{busy ? 'Guardando…' : review ? 'Comprobar (no se guarda)' : user ? 'Comprobar y guardar mi resultado' : 'Comprobar mis respuestas'}</button>
     </form>
     {result && <p role="status" className={`ml-feedback ${passed ? 'ml-ok' : 'ml-bad'}`}>Resultado: {result.score}%. {passed ? '¡Aprobaste! Ya puedes empezar la Unidad 1.' : progress?.completed_at ? 'Tu aprobado anterior se conserva.' : `Necesitas ${UNIT0_PASS_SCORE}%. Repasa las explicaciones y vuelve a intentarlo.`}{result.local && !user && passed && ' Crea una cuenta para guardar tu avance.'}</p>}
     {error && <p className="ml-feedback ml-bad" role="alert">{error}</p>}
@@ -169,7 +175,8 @@ export default function StarterUnit() {
   const [accent, setAccent] = useState('en-US')
   const [serverPassed, setPassed] = useState(false)
   const localPassed = useLocalUnit0Pass()
-  const passed = serverPassed || localPassed === true
+  const review = useReviewMode()
+  const passed = review || serverPassed || localPassed === true
   useEffect(() => () => stopLessonAudio(), [])
   const markPassed = useState(() => () => setPassed(true))[0]
   const { hash } = useLocation()
@@ -194,7 +201,7 @@ export default function StarterUnit() {
       <StarterQuiz onPassed={markPassed} />
       <div className="su-next">
         {passed
-          ? <Link className="mp-button mp-button-dark" to="/cursos/A1/unidad/1">Empezar la Unidad 1 →</Link>
+          ? <Link className="mp-button mp-button-dark" to={review ? '/revisor/A1/unidad/1' : '/cursos/A1/unidad/1'}>Empezar la Unidad 1 →</Link>
           : <p>La Unidad 1 se abre al aprobar este cuestionario.</p>}
         <Link className="mp-text-link" to="/cursos/A1">Volver al temario A1</Link>
       </div>

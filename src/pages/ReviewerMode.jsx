@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { LEVELS, LEVEL_NAMES, bankGV, bankReading, bankListening, bankWriting } from '../data/diagnosticBank'
 import { lessonAudioStatus, prepareLessonsAudio } from '../lib/audioPublisher'
+import { ARCHIVE_AUDIO_LEVELS, REVIEW_UNITS, reviewUnitPath } from '../data/reviewerUnits'
 
 const SKILL_LABELS = {
   grammar: 'Gramática', vocabulary: 'Vocabulario', reading: 'Reading', listening: 'Listening', writing: 'Writing',
@@ -26,9 +27,10 @@ export default function ReviewerMode() {
     return () => { active = false }
   }, [getContentTree])
 
-  // Genera una sola vez el audio de todos los módulos con diálogos y lo deja como archivo fijo.
+  // Genera una sola vez el audio de los módulos con diálogos de A2–C2 (A1 ya trae su audio en las unidades).
   async function prepareAllAudio() {
-    const listening = (tree ?? []).flatMap((c) => c.modules.filter((m) => m.skill_type === 'listening').map((m) => ({ ...m, level: c.cefr_level })))
+    const listening = (tree ?? []).filter((c) => ARCHIVE_AUDIO_LEVELS.includes(c.cefr_level))
+      .flatMap((c) => c.modules.filter((m) => m.skill_type === 'listening').map((m) => ({ ...m, level: c.cefr_level })))
     const totals = { running: true, module: 0, modules: listening.length, done: 0, failed: 0, saved: 0, pending: 0 }
     setBulk({ ...totals })
     for (const m of listening) {
@@ -50,11 +52,40 @@ export default function ReviewerMode() {
   return (
     <div className="page-shell rv-page">
       <div className="rv-banner" role="note">
-        <strong>Modo revisor.</strong> Aquí puedes abrir cualquier módulo o el diagnóstico, saltar de una parte a otra y ver
-        las respuestas. <strong>Nada de lo que hagas aquí se guarda</strong>: ni progreso, ni notas, ni diagnósticos.
+        <strong>Modo revisor.</strong> Aquí ves las unidades tal como las ve el alumno, pero con todo abierto: sin la puerta de la
+        Unidad 0, con todos los pasos disponibles y las respuestas a la vista. <strong>Nada de lo que hagas aquí se guarda</strong>:
+        ni avance, ni Repaso, ni cuestionarios, ni pruebas de nivel.
       </div>
 
       <h1>Revisar Munchira English</h1>
+
+      <section className="rv-section" aria-labelledby="rv-a1">
+        <h2 id="rv-a1">Curso A1: las unidades que ve el alumno</h2>
+        <p className="au-help">Unidad 0 «{REVIEW_UNITS[0].title}» (obligatoria) y Unidades 1 a {REVIEW_UNITS.length - 1}. Cada unidad tiene sus pasos y un cuestionario final.</p>
+        <ul className="rv-units">
+          {REVIEW_UNITS.map((unit) => (
+            <li key={unit.number}>
+              <Link to={reviewUnitPath(unit.number)} className="rv-module">
+                <span className="rv-module-icon" aria-hidden="true">{unit.number === 0 ? '🚪' : unit.number}</span>
+                <span className="rv-module-text">
+                  <span className="rv-module-title">Unidad {unit.number}: {unit.title}</span>
+                  <span className="rv-module-skill">{unit.number === 0 ? 'Obligatoria antes de la Unidad 1' : 'Pasos y cuestionario'}</span>
+                </span>
+                <span className="rv-badge pub">Publicada</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="rv-section" aria-labelledby="rv-wait">
+        <h2 id="rv-wait">A2 a C2: en preparación</h2>
+        <p className="rv-waitlist">
+          Estos niveles se están rehaciendo por unidades. Sus alumnos ven una pantalla de <strong>lista de espera</strong> y
+          conservan su inscripción y su avance. Cada nivel empezará con una Unidad 0 «Punto de partida» obligatoria para todos.
+          Sus módulos antiguos siguen abajo, en el Archivo.
+        </p>
+      </section>
 
       <section className="rv-section" aria-labelledby="rv-diag">
         <h2 id="rv-diag">Diagnóstico</h2>
@@ -68,13 +99,13 @@ export default function ReviewerMode() {
       </section>
 
       <section className="rv-section" aria-labelledby="rv-audio">
-        <h2 id="rv-audio">Audio de los diálogos</h2>
+        <h2 id="rv-audio">Audio de los diálogos (A2 a C2, Archivo)</h2>
         <p className="au-help">
           Genera el audio una sola vez y lo guarda como archivo fijo. Después los alumnos lo oyen al instante, sin esperar y sin gastar
           créditos de ElevenLabs. Hazlo cuando el texto de los diálogos esté definitivo; si cambias una frase, solo esa se vuelve a generar.
         </p>
         <button className="rv-btn-secondary" type="button" onClick={prepareAllAudio} disabled={!tree || bulk?.running}>
-          {bulk?.running ? 'Preparando audio…' : 'Preparar el audio de todos los módulos'}
+          {bulk?.running ? 'Preparando audio…' : 'Preparar el audio de los módulos A2–C2'}
         </button>
         {bulk && (
           <p role="status" className="rv-warm-text" style={{ marginTop: 10 }}>
@@ -87,8 +118,9 @@ export default function ReviewerMode() {
         )}
       </section>
 
-      <section className="rv-section" aria-labelledby="rv-mod">
-        <h2 id="rv-mod">Módulos de todos los niveles</h2>
+      <details className="rv-archive">
+        <summary id="rv-mod">Archivo: módulos anteriores de todos los niveles</summary>
+        <p className="au-help">El contenido anterior a las unidades. Los alumnos ya no lo ven: A1 usa las unidades y A2–C2 está en lista de espera. Su avance se conserva.</p>
         {error && <div className="error-banner" role="alert">{error}</div>}
         {!tree && !error && <p className="loading-text">Cargando contenido…</p>}
         {tree && LEVELS.map((level) => {
@@ -96,7 +128,7 @@ export default function ReviewerMode() {
           const modules = cycle?.modules ?? []
           const published = modules.filter((m) => m.published).length
           return (
-            <details key={level} className="rv-level" open={level === 'A1'}>
+            <details key={level} className="rv-level">
               <summary>
                 <span className="rv-level-name">{level} · {LEVEL_NAMES[level]}</span>
                 <span className="rv-level-meta">
@@ -124,7 +156,7 @@ export default function ReviewerMode() {
             </details>
           )
         })}
-      </section>
+      </details>
     </div>
   )
 }

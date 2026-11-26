@@ -3,6 +3,8 @@ import { useRef, useEffect } from 'react'
 import { useDraftState } from '../contexts/a1-draft-context'
 import { canReveal, countsForScore, retryMessage, successMessage } from './exerciseRetry'
 import './exercise-retry.css'
+import ReviewAnswer from './ReviewAnswer'
+import { useReviewMode } from '../contexts/review-mode-context'
 
 /* Retroalimentación común: si fallas ves el porqué, un ánimo y «Inténtalo otra vez». */
 function Feedback({ state, fails, why, answer, onRetry, onReveal, onNext }) {
@@ -54,6 +56,7 @@ export default function ExerciseBlock({ exercises, onComplete, onAttempt, draftK
   const [idx, setIdx] = useDraftState(`${draftKey}.idx`, 0)
   const [score, setScore] = useDraftState(`${draftKey}.score`, 0)
   const [done, setDone] = useDraftState(`${draftKey}.done`, false)
+  const review = useReviewMode()
 
   if (!exercises || exercises.length === 0) return null
 
@@ -70,6 +73,7 @@ export default function ExerciseBlock({ exercises, onComplete, onAttempt, draftK
             ? ' — Buen intento, sigue practicando.'
             : ' — Repasa la teoría y vuelve a intentarlo.'}
         </div>
+        {review && <ReviewKey exercises={exercises} onRestart={() => { setIdx(0); setScore(0); setDone(false) }} />}
       </div>
     )
   }
@@ -140,6 +144,7 @@ function FillEx({ ex, onNext, onAttempt, draftKey }) {
           Comprobar
         </button>
       )}
+      <ReviewAnswer>{String(ex.answer).split('|')[0].trim()}</ReviewAnswer>
       {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={String(ex.answer).split('|')[0].trim()} onRetry={retry} onReveal={reveal} onNext={onNext} />}
     </div>
   )
@@ -176,6 +181,7 @@ function ChoiceEx({ ex, onNext, onAttempt, draftKey }) {
           )
         })}
       </div>
+      <ReviewAnswer>{ex.opts[ex.correct]}</ReviewAnswer>
       {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.why} answer={ex.opts[ex.correct]} onRetry={retry} onReveal={reveal} onNext={onNext} />}
     </div>
   )
@@ -231,7 +237,20 @@ function OrderEx({ ex, onNext, onAttempt, draftKey }) {
       {state === 'idle' && placed.length > 0 && bank.length === 0 && (
         <button className="ex-check-btn" onClick={check}>Comprobar</button>
       )}
+      <ReviewAnswer>{`"${String(ex.answer).split('|')[0].trim()}"`}</ReviewAnswer>
       {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={`"${String(ex.answer).split('|')[0].trim()}"`} onRetry={retry} onReveal={reveal} onNext={onNext} />}
+    </div>
+  )
+}
+
+const exerciseAnswer = ex => ex.type === 'choice' ? ex.opts?.[ex.correct] : String(ex.answer ?? '').split('|')[0].trim()
+
+/** Solo en el modo revisor: al terminar, el solucionario completo sigue a la vista y se puede repetir. */
+export function ReviewKey({ exercises, onRestart }) {
+  return (
+    <div className="rv-key">
+      <ol>{exercises.map((ex, i) => <li key={i}>{ex.q ?? ex.sentence ?? ex.instruction ?? ex.words?.join(' / ')} <ReviewAnswer>{exerciseAnswer(ex)}</ReviewAnswer></li>)}</ol>
+      <button type="button" className="ex-check-btn" onClick={onRestart}>Repetir los ejercicios</button>
     </div>
   )
 }

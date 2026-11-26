@@ -20,6 +20,7 @@ import ModuleView from './pages/ModuleView'
 import Review from './pages/Review'
 import { Privacy, Terms } from './pages/Legal'
 import ReviewerMode from './pages/ReviewerMode'
+import ReviewerUnit from './pages/ReviewerUnit'
 import AdminUsers from './pages/AdminUsers'
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
@@ -63,6 +64,7 @@ function AppRoutes() {
         <Route path="/usuarios" element={<ProtectedRoute allowedRoles={['admin']}><Layout><AdminUsers /></Layout></ProtectedRoute>} />
         <Route path="/revisor" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><ReviewerMode /></Layout></ProtectedRoute>} />
         <Route path="/revisor/modulo/:moduleId" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><ModuleView preview /></Layout></ProtectedRoute>} />
+        <Route path="/revisor/A1/unidad/:number" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><ReviewerUnit /></ProtectedRoute>} />
         <Route path="/revisor/diagnostico" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Diagnostic preview /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/cycle" replace />} />
       </Routes>

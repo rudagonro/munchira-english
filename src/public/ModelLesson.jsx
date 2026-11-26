@@ -14,6 +14,8 @@ import UnitCompletion from './UnitCompletion'
 import A1DraftProvider from '../components/A1DraftProvider'
 import { useDraftFields, useDraftState } from '../contexts/a1-draft-context'
 import { restoreLessonProgress } from './lessonDraftProgress'
+import { useReviewMode } from '../contexts/review-mode-context'
+import ReviewAnswer from '../components/ReviewAnswer'
 import { ExtraGuided, ExtraTables, ExtraVocab, FreeChallenge, RescuedDialogues } from './RescuedPractice'
 import './model-lesson.css'
 
@@ -45,10 +47,11 @@ function TwoWayCards({ accent, lesson, onComplete }) {
   const [tries, setTries] = useDraftState(`${CARDS_DRAFT}.tries`, 0)
   const [score, setScore] = useDraftState(`${CARDS_DRAFT}.score`, 0)
   const { user } = useAuth()
+  const review = useReviewMode()
   const [saveError, setSaveError] = useState('')
   const reported = useRef(new Set())
   const saveWord = (known) => {
-    if (!user || reported.current.has(idx)) return
+    if (review || !user || reported.current.has(idx)) return
     reported.current.add(idx)
     void recordA1Word(lesson.number ?? 1, cards[idx].word, known).then(({ error }) => { if (error) { reported.current.delete(idx); setSaveError('No pudimos guardar esta palabra en Repaso. Comprueba tu conexión y vuelve a practicarla.') } else setSaveError('') })
   }
@@ -82,6 +85,7 @@ function TwoWayCards({ accent, lesson, onComplete }) {
     <label>{toEnglish ? 'Escríbelo en inglés' : 'Escríbelo en español'}
       <input value={value} onChange={e => setValue(e.target.value)} disabled={finished} autoComplete="off" autoCapitalize="none" spellCheck={false} />
     </label>
+    <ReviewAnswer>{quoteForm(card.display)}</ReviewAnswer>
     {result === 'ok' && <p className="ml-feedback ml-ok" role="status">{tries === 0 ? '¡Correcto!' : '¡Muy bien! Lo lograste.'}</p>}
     {result === 'ok' && contractionTip(value, card.display) && <p className="ml-feedback ml-ok">💡 En inglés hablado es más común la contracción: <strong>{quoteForm(contractionTip(value, card.display))}</strong>.</p>}
     {result === 'retry' && <p className="ml-feedback ml-bad" role="status">Casi. Corrige tu respuesta e inténtalo otra vez — tú puedes.</p>}
@@ -120,6 +124,7 @@ function WriteCheck({ items, accent, onComplete, onAttempt, draftKey }) {
     <label>Escríbelo en inglés
       <input value={value} onChange={e => setValue(e.target.value)} disabled={finished} autoComplete="off" autoCapitalize="none" spellCheck={false} lang="en" />
     </label>
+    <ReviewAnswer>{quoteForm(shown)}</ReviewAnswer>
     {result === 'ok' && <p className="ml-feedback ml-ok" role="status">{tries === 0 ? '¡Correcto!' : '¡Muy bien! Lo lograste.'} {item.listen ? '' : shown}</p>}
     {result === 'ok' && contractionTip(value, item.answer) && <p className="ml-feedback ml-ok">💡 En inglés hablado es más común la contracción: <strong>{quoteForm(contractionTip(value, item.answer))}</strong>.</p>}
     {result === 'retry' && <p className="ml-feedback ml-bad" role="status">Casi. Revisa la frase e inténtalo otra vez — tú puedes.</p>}
@@ -166,9 +171,10 @@ function SpeakPractice({ item, accent }) {
 
 function StepContent({ id, accent, lesson, onComplete, legacyRules = [], legacy = false }) {
   const { user } = useAuth()
+  const review = useReviewMode()
   const [saveError, setSaveError] = useState('')
   const attempt = (text, known) => {
-    if (!user) return
+    if (review || !user) return
     void recordA1Text(lesson, text, known).then(({ error }) => setSaveError(error ? 'No pudimos guardar estas palabras en Repaso. Comprueba tu conexión y vuelve a practicar.' : ''))
   }
   const exerciseAttempt = (ex, known) => attempt(ex.type === 'choice' ? `${ex.q} ${ex.opts[ex.correct]}` : ex.sentence?.replace('___', displayForm(ex.answer)) ?? ex.answer, known)
@@ -293,6 +299,7 @@ function TheoryRule({ rule, index, accent, recognised = false, showLegacy = fals
     <ul className="ml-examples">{rule.examples.map(example => <li key={example.en}><p className="ml-big">{example.en}</p><p>{example.es}</p><ListenButtons text={example.en} accent={accent} /></li>)}</ul>
     <h4>Aplica la regla con palabras nuevas</h4>
     <p>Ordena estas palabras y escribe la frase: <strong>{rule.apply.words.join(' + ')}</strong> <span>({rule.apply.es})</span></p>
+    <ReviewAnswer>{rule.apply.answer}</ReviewAnswer>
     <p className="ml-input-row">
       <input type="text" aria-label={`Tu frase para «${rule.apply.es}»`} value={value} onChange={event => { setValue(event.target.value); setChecked(null) }} onKeyDown={event => { if (event.key === 'Enter' && value.trim()) check() }} />
       <button type="button" className="mp-button" disabled={!value.trim()} onClick={check}>Comprobar</button>
@@ -306,7 +313,8 @@ function TheoryRule({ rule, index, accent, recognised = false, showLegacy = fals
 }
 
 export default function ModelLesson({ lesson = defaultLesson, legacyTheory = false, legacyRules = [] }) {
-  return <A1DraftProvider lessonKey={`unit:${lesson.number ?? 1}`}><ModelLessonContent lesson={lesson} legacyTheory={legacyTheory} legacyRules={legacyRules} /></A1DraftProvider>
+  const review = useReviewMode()
+  return <A1DraftProvider lessonKey={`unit:${lesson.number ?? 1}`} enabled={!review}><ModelLessonContent lesson={lesson} legacyTheory={legacyTheory} legacyRules={legacyRules} /></A1DraftProvider>
 }
 
 function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
@@ -315,7 +323,9 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
   const [completedIds, setCompletedIds] = useDraftState('step.completed', [])
   const steps = LESSON_STEPS.map(s => s.id === 'free' && lesson.number ? { ...s, label: 'Ponlo en práctica' } : s)
   const fields = useDraftFields()
-  const credited = legacyTheory ? steps.filter(s => s.id !== 'summary').map(s => s.id) : []
+  const review = useReviewMode()
+  // En el modo revisor todos los pasos están abiertos (cuentan como hechos solo en esta vista; no se guarda nada).
+  const credited = review ? steps.map(s => s.id) : legacyTheory ? steps.filter(s => s.id !== 'summary').map(s => s.id) : []
   const wantsQuiz = new URLSearchParams(useLocation().search).get('paso') === 'cuestionario'
   // restoreLessonProgress still steps back if required practice is pending, so the link never skips work.
   const resumeStep = wantsQuiz || (legacyTheory && !Object.hasOwn(fields, 'step')) ? steps.length - 1 : savedStep
@@ -370,11 +380,12 @@ function LessonBackLinks() {
 /** Con sesión: seguir en el panel. Sin sesión (visitante): invitar a crear cuenta. */
 function SummaryNextStep({ lesson, onComplete }) {
   const { session, user } = useAuth()
+  const review = useReviewMode()
   const [passed, setPassed] = useState(false)
   if (lesson.number) return <>
     <p>Repasa lo aprendido y completa el cuestionario para guardar el avance de esta unidad.</p>
     <UnitCompletion key={`${user?.id ?? 'visitor'}-${lesson.number}`} number={lesson.number} onPassed={() => { setPassed(true); onComplete?.() }} />
-    {passed && lesson.number < 8 && <Link className="mp-button mp-button-dark" to={`/cursos/A1/unidad/${lesson.number + 1}`}>Unidad {lesson.number + 1} →</Link>}
+    {(passed || review) && lesson.number < 8 && <Link className="mp-button mp-button-dark" to={`${review ? '/revisor' : '/cursos'}/A1/unidad/${lesson.number + 1}`}>Unidad {lesson.number + 1} →</Link>}
     <Link className="mp-text-link" to="/cursos/A1">Volver al temario A1</Link>
     {session ? <Link className="mp-text-link" to="/app">Ir a mi panel</Link> : <Link className="mp-text-link" to="/register">Crear mi cuenta</Link>}
   </>
