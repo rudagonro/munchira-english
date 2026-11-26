@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import ExerciseBlock from '../components/ExerciseBlock'
 import { useDraftState } from '../contexts/a1-draft-context'
 import { canListen, sayEnglish } from './lessonSpeech'
@@ -9,10 +10,14 @@ import { displayForm } from './model-lesson'
 const PENDING = 'Audio con voz natural en preparación: por ahora suena con la voz de tu dispositivo.'
 
 function Listen({ text, accent, voice }) {
+  const [silent, setSilent] = useState(false)
   if (!canListen()) return null
+  // sayEnglish returns false when there is no MP3 and the device has no local English voice.
+  const play = slow => setSilent(sayEnglish(text, { accent, voice, slow }) === false)
   return <span className="ml-listen">
-    <button type="button" onClick={() => sayEnglish(text, { accent, voice })} aria-label={`Escuchar «${text}»`}>🔊 Escuchar</button>
-    <button type="button" onClick={() => sayEnglish(text, { accent, voice, slow: true })} aria-label={`Escuchar despacio «${text}»`}>🐢 Despacio</button>
+    <button type="button" onClick={() => play(false)} aria-label={`Escuchar «${text}»`}>🔊 Escuchar</button>
+    <button type="button" onClick={() => play(true)} aria-label={`Escuchar despacio «${text}»`}>🐢 Despacio</button>
+    {silent && <small role="status">Este dispositivo no tiene una voz en inglés y esta frase aún no tiene grabación. Pronto tendrá audio propio.</small>}
   </span>
 }
 
