@@ -1,0 +1,853 @@
+{
+  "unit": 1,
+  "provider": "ElevenLabs",
+  "model": "eleven_multilingual_v2",
+  "speed": 0.9,
+  "generatedAt": "2026-11-26",
+  "sprites": {
+    "unit1-theory-108cbb60-gb": "/audio/a1/unit1-theory/108cbb60-gb.mp3",
+    "unit1-theory-108cbb60-us": "/audio/a1/unit1-theory/108cbb60-us.mp3",
+    "unit1-theory-10aac3bd-gb": "/audio/a1/unit1-theory/10aac3bd-gb.mp3",
+    "unit1-theory-10aac3bd-us": "/audio/a1/unit1-theory/10aac3bd-us.mp3",
+    "unit1-theory-1f093395-gb": "/audio/a1/unit1-theory/1f093395-gb.mp3",
+    "unit1-theory-1f093395-us": "/audio/a1/unit1-theory/1f093395-us.mp3",
+    "unit1-theory-276e2f59-gb": "/audio/a1/unit1-theory/276e2f59-gb.mp3",
+    "unit1-theory-276e2f59-us": "/audio/a1/unit1-theory/276e2f59-us.mp3",
+    "unit1-theory-2db405c6-gb": "/audio/a1/unit1-theory/2db405c6-gb.mp3",
+    "unit1-theory-2db405c6-us": "/audio/a1/unit1-theory/2db405c6-us.mp3",
+    "unit1-theory-350dc134-gb": "/audio/a1/unit1-theory/350dc134-gb.mp3",
+    "unit1-theory-350dc134-us": "/audio/a1/unit1-theory/350dc134-us.mp3",
+    "unit1-theory-3bb51705-gb": "/audio/a1/unit1-theory/3bb51705-gb.mp3",
+    "unit1-theory-3bb51705-us": "/audio/a1/unit1-theory/3bb51705-us.mp3",
+    "unit1-theory-67194a41-gb": "/audio/a1/unit1-theory/67194a41-gb.mp3",
+    "unit1-theory-67194a41-us": "/audio/a1/unit1-theory/67194a41-us.mp3",
+    "unit1-theory-69bf2ea4-gb": "/audio/a1/unit1-theory/69bf2ea4-gb.mp3",
+    "unit1-theory-69bf2ea4-us": "/audio/a1/unit1-theory/69bf2ea4-us.mp3",
+    "unit1-theory-81c49d72-gb": "/audio/a1/unit1-theory/81c49d72-gb.mp3",
+    "unit1-theory-81c49d72-us": "/audio/a1/unit1-theory/81c49d72-us.mp3",
+    "unit1-theory-94ccafe1-gb": "/audio/a1/unit1-theory/94ccafe1-gb.mp3",
+    "unit1-theory-94ccafe1-us": "/audio/a1/unit1-theory/94ccafe1-us.mp3",
+    "unit1-theory-a83eeba7-gb": "/audio/a1/unit1-theory/a83eeba7-gb.mp3",
+    "unit1-theory-a83eeba7-us": "/audio/a1/unit1-theory/a83eeba7-us.mp3",
+    "unit1-theory-b133ed86-gb": "/audio/a1/unit1-theory/b133ed86-gb.mp3",
+    "unit1-theory-b133ed86-us": "/audio/a1/unit1-theory/b133ed86-us.mp3",
+    "unit1-theory-c6c6b286-gb": "/audio/a1/unit1-theory/c6c6b286-gb.mp3",
+    "unit1-theory-c6c6b286-us": "/audio/a1/unit1-theory/c6c6b286-us.mp3",
+    "unit1-theory-c7247576-gb": "/audio/a1/unit1-theory/c7247576-gb.mp3",
+    "unit1-theory-c7247576-us": "/audio/a1/unit1-theory/c7247576-us.mp3",
+    "unit1-theory-d1a45b23-gb": "/audio/a1/unit1-theory/d1a45b23-gb.mp3",
+    "unit1-theory-d1a45b23-us": "/audio/a1/unit1-theory/d1a45b23-us.mp3",
+    "unit1-theory-d481d9d1-gb": "/audio/a1/unit1-theory/d481d9d1-gb.mp3",
+    "unit1-theory-d481d9d1-us": "/audio/a1/unit1-theory/d481d9d1-us.mp3",
+    "unit1-theory-d5420724-gb": "/audio/a1/unit1-theory/d5420724-gb.mp3",
+    "unit1-theory-d5420724-us": "/audio/a1/unit1-theory/d5420724-us.mp3",
+    "unit1-theory-d6f31275-gb": "/audio/a1/unit1-theory/d6f31275-gb.mp3",
+    "unit1-theory-d6f31275-us": "/audio/a1/unit1-theory/d6f31275-us.mp3",
+    "unit1-theory-e03b1e1e-gb": "/audio/a1/unit1-theory/e03b1e1e-gb.mp3",
+    "unit1-theory-e03b1e1e-us": "/audio/a1/unit1-theory/e03b1e1e-us.mp3",
+    "unit1-theory-ea8aea2b-gb": "/audio/a1/unit1-theory/ea8aea2b-gb.mp3",
+    "unit1-theory-ea8aea2b-us": "/audio/a1/unit1-theory/ea8aea2b-us.mp3"
+  },
+  "clips": {
+    "108cbb60": {
+      "nova": {
+        "gb": [
+          "unit1-theory-108cbb60-gb",
+          0,
+          1.300317
+        ],
+        "us": [
+          "unit1-theory-108cbb60-us",
+          0,
+          1.300317
+        ]
+      }
+    },
+    "10aac3bd": {
+      "nova": {
+        "gb": [
+          "unit1-theory-10aac3bd-gb",
+          0,
+          1.718277
+        ],
+        "us": [
+          "unit1-theory-10aac3bd-us",
+          0,
+          1.439637
+        ]
+      }
+    },
+    "1f093395": {
+      "nova": {
+        "gb": [
+          "unit1-theory-1f093395-gb",
+          0,
+          1.160998
+        ],
+        "us": [
+          "unit1-theory-1f093395-us",
+          0,
+          1.207438
+        ]
+      }
+    },
+    "276e2f59": {
+      "nova": {
+        "gb": [
+          "unit1-theory-276e2f59-gb",
+          0,
+          1.578957
+        ],
+        "us": [
+          "unit1-theory-276e2f59-us",
+          0,
+          1.578957
+        ]
+      }
+    },
+    "2db405c6": {
+      "nova": {
+        "gb": [
+          "unit1-theory-2db405c6-gb",
+          0,
+          1.486077
+        ],
+        "us": [
+          "unit1-theory-2db405c6-us",
+          0,
+          1.253878
+        ]
+      }
+    },
+    "350dc134": {
+      "nova": {
+        "gb": [
+          "unit1-theory-350dc134-gb",
+          0,
+          1.578957
+        ],
+        "us": [
+          "unit1-theory-350dc134-us",
+          0,
+          1.207438
+        ]
+      }
+    },
+    "3bb51705": {
+      "nova": {
+        "gb": [
+          "unit1-theory-3bb51705-gb",
+          0,
+          1.300317
+        ],
+        "us": [
+          "unit1-theory-3bb51705-us",
+          0,
+          1.207438
+        ]
+      }
+    },
+    "67194a41": {
+      "nova": {
+        "gb": [
+          "unit1-theory-67194a41-gb",
+          0,
+          1.253878
+        ],
+        "us": [
+          "unit1-theory-67194a41-us",
+          0,
+          1.160998
+        ]
+      }
+    },
+    "69bf2ea4": {
+      "nova": {
+        "gb": [
+          "unit1-theory-69bf2ea4-gb",
+          0,
+          1.950476
+        ],
+        "us": [
+          "unit1-theory-69bf2ea4-us",
+          0,
+          1.904036
+        ]
+      }
+    },
+    "81c49d72": {
+      "nova": {
+        "gb": [
+          "unit1-theory-81c49d72-gb",
+          0,
+          1.393197
+        ],
+        "us": [
+          "unit1-theory-81c49d72-us",
+          0,
+          1.532517
+        ]
+      }
+    },
+    "94ccafe1": {
+      "nova": {
+        "gb": [
+          "unit1-theory-94ccafe1-gb",
+          0,
+          1.671837
+        ],
+        "us": [
+          "unit1-theory-94ccafe1-us",
+          0,
+          1.532517
+        ]
+      }
+    },
+    "a83eeba7": {
+      "nova": {
+        "gb": [
+          "unit1-theory-a83eeba7-gb",
+          0,
+          1.625397
+        ],
+        "us": [
+          "unit1-theory-a83eeba7-us",
+          0,
+          1.625397
+        ]
+      }
+    },
+    "b133ed86": {
+      "nova": {
+        "gb": [
+          "unit1-theory-b133ed86-gb",
+          0,
+          2.647075
+        ],
+        "us": [
+          "unit1-theory-b133ed86-us",
+          0,
+          2.368435
+        ]
+      }
+    },
+    "c6c6b286": {
+      "nova": {
+        "gb": [
+          "unit1-theory-c6c6b286-gb",
+          0,
+          1.393197
+        ],
+        "us": [
+          "unit1-theory-c6c6b286-us",
+          0,
+          1.253878
+        ]
+      }
+    },
+    "c7247576": {
+      "nova": {
+        "gb": [
+          "unit1-theory-c7247576-gb",
+          0,
+          1.160998
+        ],
+        "us": [
+          "unit1-theory-c7247576-us",
+          0,
+          1.207438
+        ]
+      }
+    },
+    "d1a45b23": {
+      "nova": {
+        "gb": [
+          "unit1-theory-d1a45b23-gb",
+          0,
+          1.718277
+        ],
+        "us": [
+          "unit1-theory-d1a45b23-us",
+          0,
+          1.578957
+        ]
+      }
+    },
+    "d481d9d1": {
+      "nova": {
+        "gb": [
+          "unit1-theory-d481d9d1-gb",
+          0,
+          1.625397
+        ],
+        "us": [
+          "unit1-theory-d481d9d1-us",
+          0,
+          1.393197
+        ]
+      }
+    },
+    "d5420724": {
+      "nova": {
+        "gb": [
+          "unit1-theory-d5420724-gb",
+          0,
+          1.393197
+        ],
+        "us": [
+          "unit1-theory-d5420724-us",
+          0,
+          1.300317
+        ]
+      }
+    },
+    "d6f31275": {
+      "nova": {
+        "gb": [
+          "unit1-theory-d6f31275-gb",
+          0,
+          1.904036
+        ],
+        "us": [
+          "unit1-theory-d6f31275-us",
+          0,
+          1.764717
+        ]
+      }
+    },
+    "e03b1e1e": {
+      "nova": {
+        "gb": [
+          "unit1-theory-e03b1e1e-gb",
+          0,
+          1.532517
+        ],
+        "us": [
+          "unit1-theory-e03b1e1e-us",
+          0,
+          1.439637
+        ]
+      }
+    },
+    "ea8aea2b": {
+      "nova": {
+        "gb": [
+          "unit1-theory-ea8aea2b-gb",
+          0,
+          1.439637
+        ],
+        "us": [
+          "unit1-theory-ea8aea2b-us",
+          0,
+          1.114558
+        ]
+      }
+    }
+  },
+  "inventory": [
+    {
+      "key": "108cbb60",
+      "text": "He is at home.",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 1.300317,
+      "url": "/audio/a1/unit1-theory/108cbb60-gb.mp3",
+      "sha256": "a436b52cc44076e0ee67889677d37fa0e08816dc5779111196625354d0784491"
+    },
+    {
+      "key": "108cbb60",
+      "text": "He is at home.",
+      "accent": "us",
+      "voice": "Liam",
+      "voiceId": "TX3LPaxmHKxFdv7VOQHJ",
+      "gender": "male",
+      "age": "young",
+      "duration": 1.300317,
+      "url": "/audio/a1/unit1-theory/108cbb60-us.mp3",
+      "sha256": "eb5558adf2fafcf37742a26a96f0adfe6ff6ba407e6f4f5879b21d21a913ee72"
+    },
+    {
+      "key": "10aac3bd",
+      "text": "I am thirty years old.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.718277,
+      "url": "/audio/a1/unit1-theory/10aac3bd-gb.mp3",
+      "sha256": "db4e3923faf1b115c051ef1934ef909d52ff887cdae4ce86b847adce05feb20b"
+    },
+    {
+      "key": "10aac3bd",
+      "text": "I am thirty years old.",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.439637,
+      "url": "/audio/a1/unit1-theory/10aac3bd-us.mp3",
+      "sha256": "aa1f2fd2071594f7ad506fa481720f11f6ad6a747c86c10ebb458c5cd556137d"
+    },
+    {
+      "key": "1f093395",
+      "text": "Are you tired?",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 1.160998,
+      "url": "/audio/a1/unit1-theory/1f093395-gb.mp3",
+      "sha256": "1daf18ab00a23c91585d6afefbfc3274ba3b19eb19a7a0890ea1b9a3ffc97658"
+    },
+    {
+      "key": "1f093395",
+      "text": "Are you tired?",
+      "accent": "us",
+      "voice": "Will",
+      "voiceId": "bIHbv24MWmeRgasZH58o",
+      "gender": "male",
+      "age": "young",
+      "duration": 1.207438,
+      "url": "/audio/a1/unit1-theory/1f093395-us.mp3",
+      "sha256": "d78010d13786911e8b9ea02ee58d07e85eb6d988f3dd373dbc6cb44c5a535bcd"
+    },
+    {
+      "key": "276e2f59",
+      "text": "I don’t live in Bogotá.",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 1.578957,
+      "url": "/audio/a1/unit1-theory/276e2f59-gb.mp3",
+      "sha256": "489eb20e9297fc4314797a48366d0178d501c759bc6d28b406866f71b24abddf"
+    },
+    {
+      "key": "276e2f59",
+      "text": "I don’t live in Bogotá.",
+      "accent": "us",
+      "voice": "Liam",
+      "voiceId": "TX3LPaxmHKxFdv7VOQHJ",
+      "gender": "male",
+      "age": "young",
+      "duration": 1.578957,
+      "url": "/audio/a1/unit1-theory/276e2f59-us.mp3",
+      "sha256": "5679a0e4c1ee1f277ae889a72927e3a7198fb2e5ce885fbcaff9c620be95e791"
+    },
+    {
+      "key": "2db405c6",
+      "text": "You are my friend.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.486077,
+      "url": "/audio/a1/unit1-theory/2db405c6-gb.mp3",
+      "sha256": "4c0895d29a700a7043e5f564be43d7d064601d6e374c09c412924ec64c0924dd"
+    },
+    {
+      "key": "2db405c6",
+      "text": "You are my friend.",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.253878,
+      "url": "/audio/a1/unit1-theory/2db405c6-us.mp3",
+      "sha256": "5395c51ddc9cf6145c5b0d0dd4d8a2460299cf5450676290b9254fa72578ef9d"
+    },
+    {
+      "key": "350dc134",
+      "text": "She is a teacher.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.578957,
+      "url": "/audio/a1/unit1-theory/350dc134-gb.mp3",
+      "sha256": "00fb0cb7556bf21c96cf52f410c9a4d40aa1ab3008cb40a9fd53f1a5f0368d6c"
+    },
+    {
+      "key": "350dc134",
+      "text": "She is a teacher.",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.207438,
+      "url": "/audio/a1/unit1-theory/350dc134-us.mp3",
+      "sha256": "64a8d1a0e527a44d0e14fb13dafdbe003e9fa5e857965bf2c02804bc2b40dd23"
+    },
+    {
+      "key": "3bb51705",
+      "text": "We are tired.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.300317,
+      "url": "/audio/a1/unit1-theory/3bb51705-gb.mp3",
+      "sha256": "aefc78f51a15683fb37e73e3a092fc356a4107f195adb846cc0ede184116fd61"
+    },
+    {
+      "key": "3bb51705",
+      "text": "We are tired.",
+      "accent": "us",
+      "voice": "Sarah",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.207438,
+      "url": "/audio/a1/unit1-theory/3bb51705-us.mp3",
+      "sha256": "f05ddabd62387a46dd4e353696009929e359c04329aa3590f6f62aaff6008913"
+    },
+    {
+      "key": "67194a41",
+      "text": "Where do you live?",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.253878,
+      "url": "/audio/a1/unit1-theory/67194a41-gb.mp3",
+      "sha256": "6493bbff9db0b583d084a29f6ad95c9b9af82ed040a38e8d1ddfd10ad33add0b"
+    },
+    {
+      "key": "67194a41",
+      "text": "Where do you live?",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.160998,
+      "url": "/audio/a1/unit1-theory/67194a41-us.mp3",
+      "sha256": "b316c864f25a4fdd7951cc3f13382701a33af872587f08356f58c0de580644e6"
+    },
+    {
+      "key": "69bf2ea4",
+      "text": "Excuse me, I’m sorry.",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 1.950476,
+      "url": "/audio/a1/unit1-theory/69bf2ea4-gb.mp3",
+      "sha256": "e295c3adbd932c02994d24448b0fdb185a3c67dd5d54f0fdd3494eff36160b4b"
+    },
+    {
+      "key": "69bf2ea4",
+      "text": "Excuse me, I’m sorry.",
+      "accent": "us",
+      "voice": "Liam",
+      "voiceId": "TX3LPaxmHKxFdv7VOQHJ",
+      "gender": "male",
+      "age": "young",
+      "duration": 1.904036,
+      "url": "/audio/a1/unit1-theory/69bf2ea4-us.mp3",
+      "sha256": "66f99529c636b3fea815329be7a100196c9b075a8b2dcbe13df525e3ecb6c595"
+    },
+    {
+      "key": "81c49d72",
+      "text": "We are not tired.",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 1.393197,
+      "url": "/audio/a1/unit1-theory/81c49d72-gb.mp3",
+      "sha256": "780fa887682a3ccb9ae3c08d0dfbb319ae64dcf2fd2a88b13447b3bc44fdb903"
+    },
+    {
+      "key": "81c49d72",
+      "text": "We are not tired.",
+      "accent": "us",
+      "voice": "Liam",
+      "voiceId": "TX3LPaxmHKxFdv7VOQHJ",
+      "gender": "male",
+      "age": "young",
+      "duration": 1.532517,
+      "url": "/audio/a1/unit1-theory/81c49d72-us.mp3",
+      "sha256": "6f54879dfab88ca0c4684edc5e1ce4d5ec697d7627b9a55092dd307c80df14c6"
+    },
+    {
+      "key": "94ccafe1",
+      "text": "My sister is a nurse.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.671837,
+      "url": "/audio/a1/unit1-theory/94ccafe1-gb.mp3",
+      "sha256": "a11d169c18938a45941539b6fb4cbdd1da30dbeb6719f0db0aa7dbc16ac25a92"
+    },
+    {
+      "key": "94ccafe1",
+      "text": "My sister is a nurse.",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.532517,
+      "url": "/audio/a1/unit1-theory/94ccafe1-us.mp3",
+      "sha256": "45aa16333aacbcaf1ebc7e60d624591efa2a4e3e0cadcd433e8b5eb1335ce55f"
+    },
+    {
+      "key": "a83eeba7",
+      "text": "She is not a teacher.",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 1.625397,
+      "url": "/audio/a1/unit1-theory/a83eeba7-gb.mp3",
+      "sha256": "901ca957b923b30ffe167764f985563869baab36988723b8aa9b630bb939b944"
+    },
+    {
+      "key": "a83eeba7",
+      "text": "She is not a teacher.",
+      "accent": "us",
+      "voice": "Will",
+      "voiceId": "bIHbv24MWmeRgasZH58o",
+      "gender": "male",
+      "age": "young",
+      "duration": 1.625397,
+      "url": "/audio/a1/unit1-theory/a83eeba7-us.mp3",
+      "sha256": "ae2d61ee516fb26591fa1af0b478ab3f80d27d4b29112636cc45fa302eb65748"
+    },
+    {
+      "key": "b133ed86",
+      "text": "I am from Peru and I live in Lima.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 2.647075,
+      "url": "/audio/a1/unit1-theory/b133ed86-gb.mp3",
+      "sha256": "ef30415cc47bd81e72e198afe42f7fc90ece80af0d8346aea195a8287a32f6a6"
+    },
+    {
+      "key": "b133ed86",
+      "text": "I am from Peru and I live in Lima.",
+      "accent": "us",
+      "voice": "Sarah",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "gender": "female",
+      "age": "young",
+      "duration": 2.368435,
+      "url": "/audio/a1/unit1-theory/b133ed86-us.mp3",
+      "sha256": "4f9d3b25e4d10fc54a905ab36089cdd7f8d2775aa68fd4ed18ec8674810f1fdc"
+    },
+    {
+      "key": "c6c6b286",
+      "text": "We aren’t tired.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.393197,
+      "url": "/audio/a1/unit1-theory/c6c6b286-gb.mp3",
+      "sha256": "cdbee9cb0e8148a07140bd4aca5391d2c49890fdde807e765d0c9bb9274c35f6"
+    },
+    {
+      "key": "c6c6b286",
+      "text": "We aren’t tired.",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.253878,
+      "url": "/audio/a1/unit1-theory/c6c6b286-us.mp3",
+      "sha256": "ac922b2706113f2c4d5c0fac177e0ebb3fa6a6814abab70462db6856d65bfd57"
+    },
+    {
+      "key": "c7247576",
+      "text": "I am happy.",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 1.160998,
+      "url": "/audio/a1/unit1-theory/c7247576-gb.mp3",
+      "sha256": "9692f1738de5522e5b788000f128c5728b4f21db5781440da42e2f758ccba4f2"
+    },
+    {
+      "key": "c7247576",
+      "text": "I am happy.",
+      "accent": "us",
+      "voice": "Will",
+      "voiceId": "bIHbv24MWmeRgasZH58o",
+      "gender": "male",
+      "age": "young",
+      "duration": 1.207438,
+      "url": "/audio/a1/unit1-theory/c7247576-us.mp3",
+      "sha256": "93bf33e94d8f079d8a9761e5fbe2e4a4e52372b170a03a930b1ecf4562843ee1"
+    },
+    {
+      "key": "d1a45b23",
+      "text": "They are from Bogotá.",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 1.718277,
+      "url": "/audio/a1/unit1-theory/d1a45b23-gb.mp3",
+      "sha256": "6dfa809118df4d3a751676420f1350121fabdd1bf15b6b4cc51f9067b68a7994"
+    },
+    {
+      "key": "d1a45b23",
+      "text": "They are from Bogotá.",
+      "accent": "us",
+      "voice": "Will",
+      "voiceId": "bIHbv24MWmeRgasZH58o",
+      "gender": "male",
+      "age": "young",
+      "duration": 1.578957,
+      "url": "/audio/a1/unit1-theory/d1a45b23-us.mp3",
+      "sha256": "2165509144a6e9cb75fe39ce29a5f467d08122d0d377be4cd5211c1b7dd30984"
+    },
+    {
+      "key": "d481d9d1",
+      "text": "I live in Medellín.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.625397,
+      "url": "/audio/a1/unit1-theory/d481d9d1-gb.mp3",
+      "sha256": "f0da1afe4c19f5a5ca361b1743b538f0a0d10d76e16c85291ddd4f279fb50d9b"
+    },
+    {
+      "key": "d481d9d1",
+      "text": "I live in Medellín.",
+      "accent": "us",
+      "voice": "Sarah",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.393197,
+      "url": "/audio/a1/unit1-theory/d481d9d1-us.mp3",
+      "sha256": "46606ffa430efea89d42c4fce68df9558fe510172eca87260a31db0a8286e907"
+    },
+    {
+      "key": "d5420724",
+      "text": "I am a student.",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 1.393197,
+      "url": "/audio/a1/unit1-theory/d5420724-gb.mp3",
+      "sha256": "7decd27bf9e3404e88d4e20d0bb0b542ce117b6ab2069ae431ecac8ad896cd53"
+    },
+    {
+      "key": "d5420724",
+      "text": "I am a student.",
+      "accent": "us",
+      "voice": "Liam",
+      "voiceId": "TX3LPaxmHKxFdv7VOQHJ",
+      "gender": "male",
+      "age": "young",
+      "duration": 1.300317,
+      "url": "/audio/a1/unit1-theory/d5420724-us.mp3",
+      "sha256": "a040cb4f71fa94ae29dbadf96625273d18768c7bd720c352dc2c3189e1907a03"
+    },
+    {
+      "key": "d6f31275",
+      "text": "Good morning! My name is Laura.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.904036,
+      "url": "/audio/a1/unit1-theory/d6f31275-gb.mp3",
+      "sha256": "c9725f491a1c92194467de2d90bb02ccde021ff77348f01e7799333387de5730"
+    },
+    {
+      "key": "d6f31275",
+      "text": "Good morning! My name is Laura.",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.764717,
+      "url": "/audio/a1/unit1-theory/d6f31275-us.mp3",
+      "sha256": "d605846640f4e340931542fa6911c773849566fcdb9ed417617712510821a1b6"
+    },
+    {
+      "key": "e03b1e1e",
+      "text": "I am from Colombia.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.532517,
+      "url": "/audio/a1/unit1-theory/e03b1e1e-gb.mp3",
+      "sha256": "b965c6cb058cf11c8b53d46736adfc2f785a2a4d8986ec835fc1e56334222e58"
+    },
+    {
+      "key": "e03b1e1e",
+      "text": "I am from Colombia.",
+      "accent": "us",
+      "voice": "Sarah",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.439637,
+      "url": "/audio/a1/unit1-theory/e03b1e1e-us.mp3",
+      "sha256": "e057e4aa12ba8b64b0a373e173d96d180c3c84186245180214abe77785273472"
+    },
+    {
+      "key": "ea8aea2b",
+      "text": "Is she a teacher?",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.439637,
+      "url": "/audio/a1/unit1-theory/ea8aea2b-gb.mp3",
+      "sha256": "ca39540ca5edd646874c37911d6352bf0f7f0cfdc51a38fbb8884a3bff05f919"
+    },
+    {
+      "key": "ea8aea2b",
+      "text": "Is she a teacher?",
+      "accent": "us",
+      "voice": "Sarah",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.114558,
+      "url": "/audio/a1/unit1-theory/ea8aea2b-us.mp3",
+      "sha256": "c05cf1ff4e063d719eaa1cf19e49e6f50b47c5bc42719e0ea3004ed2034e8f13"
+    }
+  ]
+}
