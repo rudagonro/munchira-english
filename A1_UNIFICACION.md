@@ -16,3 +16,18 @@ Aprobado por el propietario el 25 de noviembre de 2026. Las 8 unidades de `conte
 - La unidad muestra «En curso · teoría reconocida: X de Y reglas». En «Explicación», cada regla reconocida lleva «✓ Reconocido de tus módulos anteriores».
 - El reconocimiento parcial no marca pasos como hechos ni aprueba nada: la práctica y el cuestionario siguen siendo obligatorios.
 - Una prueba comprueba que las fuentes de las reglas coinciden con `A1_LEGACY_LESSON_MAP`.
+
+## Contenido rescatado de los módulos antiguos (PR 3)
+
+Todo este material es **opcional**: no bloquea pasos, no cuenta para la nota y no entra en «Repaso». Cada elemento indica en `source` de qué lección antigua viene. Se muestra con `src/public/RescuedPractice.jsx`.
+
+- `rescuedDialogues`: los 3 diálogos de listening, en las unidades 1 (3.1), 5 (3.3) y 7 (3.2), con nombres de hablante y preguntas de comprensión. Los nombres van en negrita y no se locutan; cada turno tiene su propio botón de audio.
+- `extraGuided`: 52 ejercicios antiguos de nivel A1 en «Práctica guiada», bajo «Práctica extra (opcional)». Se descartaron:
+  - los que usan pasado o futuro (*did*, *was*, *going to*);
+  - los que tienen varios huecos;
+  - los que estaban mal escritos (*Sorry for that I did*, *I talk to you later*).
+- `freeChallenge`: retos de escritura de 4.5 (unidad 3) y 4.6 (unidad 6, adaptado al presente).
+- `extraTables`: marcadores de tiempo (unidad 3) y saludos y cierres formales e informales (unidad 6).
+- `extraVocab`: live (U1), order y recommend (U5), straight ahead y on the corner (U7).
+  - No entran en «Repaso» porque el catálogo `a1_vocab_items` es una migración; añadirlas exige una migración aparte.
+- **Audio pendiente:** `content/a1/pending-audio.json` lista cada frase nueva sin MP3. Hasta grabarlas, suenan con la voz del dispositivo. Una prueba exige que la lista esté al día.

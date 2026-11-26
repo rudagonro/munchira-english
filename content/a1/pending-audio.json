@@ -1,0 +1,163 @@
+{
+  "note": "Frases nuevas de A1 sin MP3 propio. Hasta grabarlas suenan con la voz del dispositivo. Generar en ambos acentos (US y GB) con la voz del personaje y retirar cada entrada al añadir su clip.",
+  "pending": [
+    {
+      "unit": 1,
+      "kind": "dialogue",
+      "title": "Escucha guiada · Laura y Carlos",
+      "speaker": "Laura",
+      "voice": "nova",
+      "text": "Hi! My name is Laura. What is your name?"
+    },
+    {
+      "unit": 1,
+      "kind": "dialogue",
+      "title": "Escucha guiada · Laura y Carlos",
+      "speaker": "Carlos",
+      "voice": "onyx",
+      "text": "Hello, Laura! My name is Carlos. Nice to meet you."
+    },
+    {
+      "unit": 1,
+      "kind": "dialogue",
+      "title": "Escucha guiada · Laura y Carlos",
+      "speaker": "Laura",
+      "voice": "nova",
+      "text": "Nice to meet you too! Where are you from, Carlos?"
+    },
+    {
+      "unit": 1,
+      "kind": "dialogue",
+      "title": "Escucha guiada · Laura y Carlos",
+      "speaker": "Carlos",
+      "voice": "onyx",
+      "text": "I am from Mexico. And you?"
+    },
+    {
+      "unit": 1,
+      "kind": "dialogue",
+      "title": "Escucha guiada · Laura y Carlos",
+      "speaker": "Laura",
+      "voice": "nova",
+      "text": "I am from Colombia. I live in a small house with my family."
+    },
+    {
+      "unit": 1,
+      "kind": "vocab",
+      "voice": "nova",
+      "text": "live"
+    },
+    {
+      "unit": 5,
+      "kind": "dialogue",
+      "title": "Escucha guiada · En el restaurante",
+      "speaker": "Waitress",
+      "voice": "nova",
+      "text": "Good evening! Welcome. Can I help you?"
+    },
+    {
+      "unit": 5,
+      "kind": "dialogue",
+      "title": "Escucha guiada · En el restaurante",
+      "speaker": "Carlos",
+      "voice": "onyx",
+      "text": "Yes, please. Can I have some chicken and rice?"
+    },
+    {
+      "unit": 5,
+      "kind": "dialogue",
+      "title": "Escucha guiada · En el restaurante",
+      "speaker": "Waitress",
+      "voice": "nova",
+      "text": "Of course. And to drink?"
+    },
+    {
+      "unit": 5,
+      "kind": "dialogue",
+      "title": "Escucha guiada · En el restaurante",
+      "speaker": "Carlos",
+      "voice": "onyx",
+      "text": "Water, please. That is all, thank you."
+    },
+    {
+      "unit": 5,
+      "kind": "dialogue",
+      "title": "Escucha guiada · En el restaurante",
+      "speaker": "Waitress",
+      "voice": "nova",
+      "text": "Perfect. Your order will be ready in a few minutes."
+    },
+    {
+      "unit": 5,
+      "kind": "vocab",
+      "voice": "nova",
+      "text": "order"
+    },
+    {
+      "unit": 5,
+      "kind": "vocab",
+      "voice": "nova",
+      "text": "recommend"
+    },
+    {
+      "unit": 7,
+      "kind": "dialogue",
+      "title": "Escucha guiada · ¿Dónde está el supermercado?",
+      "speaker": "Carlos",
+      "voice": "onyx",
+      "text": "Excuse me. Where is the supermarket?"
+    },
+    {
+      "unit": 7,
+      "kind": "dialogue",
+      "title": "Escucha guiada · ¿Dónde está el supermercado?",
+      "speaker": "Laura",
+      "voice": "nova",
+      "text": "The supermarket? Turn left at the bank."
+    },
+    {
+      "unit": 7,
+      "kind": "dialogue",
+      "title": "Escucha guiada · ¿Dónde está el supermercado?",
+      "speaker": "Carlos",
+      "voice": "onyx",
+      "text": "Turn left at the bank. And then?"
+    },
+    {
+      "unit": 7,
+      "kind": "dialogue",
+      "title": "Escucha guiada · ¿Dónde está el supermercado?",
+      "speaker": "Laura",
+      "voice": "nova",
+      "text": "Then go straight. It is near the park, on the right."
+    },
+    {
+      "unit": 7,
+      "kind": "dialogue",
+      "title": "Escucha guiada · ¿Dónde está el supermercado?",
+      "speaker": "Carlos",
+      "voice": "onyx",
+      "text": "Near the park. Thank you very much!"
+    },
+    {
+      "unit": 7,
+      "kind": "dialogue",
+      "title": "Escucha guiada · ¿Dónde está el supermercado?",
+      "speaker": "Laura",
+      "voice": "nova",
+      "text": "You are welcome. Have a good day!"
+    },
+    {
+      "unit": 7,
+      "kind": "vocab",
+      "voice": "nova",
+      "text": "straight ahead"
+    },
+    {
+      "unit": 7,
+      "kind": "vocab",
+      "voice": "nova",
+      "text": "on the corner"
+    }
+  ]
+}
