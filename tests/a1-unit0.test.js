@@ -130,7 +130,7 @@ test('servidor: el progreso guardado antes de la migración queda igual y el ban
       const due = (await db.query('select english,spanish from public.get_due_vocab(50)')).rows
       assert.ok(due.some(r => r.english === bankCard(203).en && r.spanish === bankCard(203).es))
     })
-    assert.equal((await db.query("select count(*)::int as n from pg_policies where tablename='a1_unit0_progress'")).rows[0].n, 1)
+    assert.equal((await db.query("select count(*)::int as n from pg_policies where tablename='a1_unit0_progress' and permissive='PERMISSIVE'")).rows[0].n, 1)
   } finally { await db.close() }
 })
 

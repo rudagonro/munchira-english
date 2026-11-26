@@ -51,3 +51,5 @@
 - Old A1 module work only recognises unit theory (legacyUnitCredit); a unit is completed solely by its own server-graded quiz (>=70) in a1_unit_progress, so displayed progress is always real and old rows are read, never rewritten.
 
 - A1 Unidad 0 (content/a1/unit0.json) vive fuera de A1.json y abre la Unidad 1; nunca bloquees a quien ya tiene avance A1 ni por un fallo de lectura. Reutiliza content/a1/card-bank.json con index estables (nunca los cambies) e ilustraciones locales con su atribución CC BY.
+
+- Suspender y eliminar cuentas: la regla (admin activo, nunca a sí mismo ni a otro admin, queda un admin) vive en SQL y la llaman las Edge Functions admin-account-status y admin-delete-user con el token del admin; el ban y deleteUser usan el service_role del entorno de la función. La suspensión se aplica con políticas RESTRICTIVAS y un trigger de escritura, sin tocar calificación ni RPCs existentes.

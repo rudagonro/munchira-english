@@ -4,6 +4,7 @@ import { AuthContext } from './auth-context'
 import { flushActiveDrafts } from '../lib/a1Draft'
 import { recoveryRedirect } from '../lib/accountRules'
 import { attachLessonProgress } from '../data/moduleLessonProgress'
+import { bannedFromRedirect, isBannedError, isSuspendedStatus } from '../lib/accountSuspension'
 
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(null)
@@ -11,6 +12,9 @@ export function AuthProvider({ children }) {
   // loading=true mientras determinamos si hay sesión activa; evita parpadeos
   // de "no autenticado" antes de que Supabase confirme el estado real.
   const [loading, setLoading] = useState(true)
+  // Cuenta suspendida por un administrador: se muestra la pantalla «Cuenta suspendida» y se cierra sesión.
+  const [suspended, setSuspended] = useState(() => typeof window !== 'undefined'
+    && bannedFromRedirect(window.location.search, window.location.hash))
   // Usuario cuyo perfil ya está cargado. Al volver a la pestaña, Supabase renueva
   // el token y repite SIGNED_IN/TOKEN_REFRESHED: si es el mismo usuario no hay que
   // volver a mostrar «Cargando…» ni recargar las pantallas.
@@ -20,10 +24,25 @@ export function AuthProvider({ children }) {
     let active = true
     let version = 0
 
+    // Si el servidor dice que la cuenta está suspendida, se cierra la sesión solo en este navegador
+    // (sin guardar borradores: el servidor ya rechaza sus escrituras). Un fallo de lectura no bloquea.
+    async function checkSuspension() {
+      try {
+        const { data, error } = await supabase.rpc('my_account_status')
+        if (error || !active || !isSuspendedStatus(data)) return false
+        setSuspended(true)
+        await supabase.auth.signOut({ scope: 'local' })
+        return true
+      } catch {
+        return false
+      }
+    }
+
     async function syncSession(newSession, event) {
       const sameUser = newSession?.user?.id && newSession.user.id === loadedUserId.current
       if (sameUser) {
         if (event === 'USER_UPDATED') setSession(newSession)
+        if (event === 'TOKEN_REFRESHED') void checkSuspension()
         return
       }
       const request = ++version
@@ -35,6 +54,7 @@ export function AuthProvider({ children }) {
           const { data, error } = await supabase.from('profiles')
             .select('id, full_name, role, created_at').eq('id', newSession.user.id).single()
           if (error) throw error
+          if (await checkSuspension()) return
           if (active && request === version) { setProfile(data); loadedUserId.current = newSession.user.id }
         } else {
           loadedUserId.current = null
@@ -61,9 +81,15 @@ export function AuthProvider({ children }) {
         setLoading(false)
       }
     })
+    // Al volver a la pestaña se comprueba otra vez: una suspensión aplica sin esperar a que caduque el token.
+    function onVisible() {
+      if (document.visibilityState === 'visible' && loadedUserId.current) void checkSuspension()
+    }
+    document.addEventListener('visibilitychange', onVisible)
     return () => {
       active = false
       listener.subscription.unsubscribe()
+      document.removeEventListener('visibilitychange', onVisible)
     }
   }, [])
 
@@ -84,8 +110,11 @@ export function AuthProvider({ children }) {
 
   async function signInWithEmail(email, password) {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+    if (isBannedError(error)) setSuspended(true)
     return { data, error }
   }
+
+  const clearSuspended = useCallback(() => setSuspended(false), [])
 
   async function signInWithGoogle() {
     const { data, error } = await supabase.auth.signInWithOAuth({
@@ -368,6 +397,36 @@ export function AuthProvider({ children }) {
     const { error } = await supabase.rpc('admin_assign_student', { p_student: studentId, p_teacher: teacherId })
     return { error }
   }
+  /**
+   * Lista con el estado de suspensión. Si la migración 0400 aún no está aplicada se usa la lista
+   * anterior y `accountActions` queda en false (el panel oculta suspender y eliminar).
+   */
+  const adminListUsersWithStatus = useCallback(async () => {
+    const v2 = await supabase.rpc('admin_list_users_v2')
+    if (!v2.error) return { data: v2.data ?? [], error: null, accountActions: true }
+    const v1 = await supabase.rpc('admin_list_users')
+    return { data: v1.data ?? [], error: v1.error, accountActions: false }
+  }, [])
+  /** Suspender / reactivar y eliminar pasan por Edge Functions: el bloqueo en Auth exige el service_role del servidor. */
+  async function invokeAdminFunction(name, body) {
+    const { data, error } = await supabase.functions.invoke(name, { body })
+    if (!error) return { data, code: null }
+    let code = 'internal_error'
+    try {
+      const payload = await error.context?.json?.()
+      if (payload?.error) code = payload.error
+    } catch { /* respuesta sin JSON */ }
+    if (error.name === 'FunctionsRelayError' || error.name === 'FunctionsFetchError' || error.context?.status === 404) {
+      if (code === 'internal_error') code = 'not_deployed'
+    }
+    return { data: null, code }
+  }
+  function adminSetSuspension(userId, suspend) {
+    return invokeAdminFunction('admin-account-status', { user_id: userId, action: suspend ? 'suspend' : 'reactivate' })
+  }
+  function adminDeleteUser(userId, confirmEmail) {
+    return invokeAdminFunction('admin-delete-user', { user_id: userId, confirm_email: confirmEmail })
+  }
 
   /** Marca una lección como vista; el servidor valida que esté desbloqueada. */
   async function completeLesson(lessonId) {
@@ -388,6 +447,8 @@ export function AuthProvider({ children }) {
     profile,
     role: profile?.role ?? null,
     loading,
+    suspended,
+    clearSuspended,
     signUpWithEmail,
     signInWithEmail,
     signInWithGoogle,
@@ -410,6 +471,9 @@ export function AuthProvider({ children }) {
     adminListUsers,
     adminSetRole,
     adminAssignStudent,
+    adminListUsersWithStatus,
+    adminSetSuspension,
+    adminDeleteUser,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
