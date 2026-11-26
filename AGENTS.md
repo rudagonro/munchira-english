@@ -46,4 +46,6 @@
 - Restore unit drafts through lessonDraftProgress and legacy module positions through moduleDraftProgress; remembered positions must respect required practice and authoritative lesson completion, including older drafts without completion lists.
 
 - Resolve fixed Unit 1 grammar clips from the dedicated unit1Theory manifest before legacy recordings; exact text, voice alias and accent lookup keeps both accents local without changing dialogue voices.
+
+- Resolve fixed Unit 2–8 grammar clips from the units2to8Theory manifest after corrections and the unit's own recordings; per-unit folders and exact text, voice alias and accent lookup fill only unrecorded theory phrases, so existing unit sprites and dialogue voices never change.
 - Old A1 module work only recognises unit theory (legacyUnitCredit); a unit is completed solely by its own server-graded quiz (>=70) in a1_unit_progress, so displayed progress is always real and old rows are read, never rewritten.
