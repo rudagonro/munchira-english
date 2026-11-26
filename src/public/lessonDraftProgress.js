@@ -1,4 +1,5 @@
 import { canOpenStep, isPracticeStep } from './lessonProgress.js'
+import { cardVocab } from './model-lesson.js'
 
 // Older drafts stored position but no completion list: recover performed work,
 // never turn a remembered screen number into completed practice.
@@ -8,7 +9,7 @@ export function restoreLessonProgress(savedStep, steps, completed, fields = {}, 
   const restored = new Set([...completed].filter(id => validIds.has(id)))
   if (fields['guided.done'] === true) restored.add('guided')
   if (fields['reading.done'] === true) restored.add('reading')
-  for (const [id, count] of [['cards', (lesson.vocab?.length ?? 0) * 2], ['translate', lesson.translations?.length ?? 0], ['dictation', lesson.dictation?.length ?? 0]]) {
+  for (const [id, count] of [['cards', lesson.vocab ? cardVocab(lesson).length * 2 : 0], ['translate', lesson.translations?.length ?? 0], ['dictation', lesson.dictation?.length ?? 0]]) {
     if (count > 0 && Number.isInteger(fields[`${id}.idx`]) && fields[`${id}.idx`] >= count) restored.add(id)
   }
   if (lesson.number <= 1 && fields['free.review']?.ok === true) restored.add('free')

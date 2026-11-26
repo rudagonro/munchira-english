@@ -7,8 +7,6 @@ import { displayForm } from './model-lesson'
 // Content rescued from the four old A1 modules (see A1_UNIFICACION.md). It is optional practice:
 // it never gates a step, never records grades and never writes to Repaso.
 
-const PENDING = 'Audio con voz natural en preparación: por ahora suena con la voz de tu dispositivo.'
-
 function Listen({ text, accent, voice }) {
   const [silent, setSilent] = useState(false)
   if (!canListen()) return null
@@ -21,11 +19,11 @@ function Listen({ text, accent, voice }) {
   </span>
 }
 
-export function ExtraVocab({ lesson, accent }) {
+export function ExtraVocab({ lesson, accent, legacy = false }) {
   if (!lesson.extraVocab?.length) return null
   return <>
     <h3>Más palabras útiles</h3>
-    <p className="ml-tip">Vienen de tus módulos anteriores. Todavía no entran en «Repaso». {PENDING}</p>
+    <p className="ml-tip">{legacy ? 'Vienen de tus módulos anteriores. ' : ''}Son de consulta: todavía no entran en «Repaso».</p>
     <ul className="ml-vocab">{lesson.extraVocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{displayForm(v.es)}</span><em>«{v.say}»</em>{v.example && <span>{v.example}</span>}<Listen text={v.en} accent={accent} /></li>)}</ul>
   </>
 }
@@ -37,13 +35,13 @@ export function ExtraTables({ lesson }) {
     <tbody>{table.rows.map(r => <tr key={r[0]}>{r.map((cell, i) => i === 0 ? <th key={i} scope="row">{cell}</th> : <td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>)
 }
 
-export function ExtraGuided({ lesson }) {
+export function ExtraGuided({ lesson, legacy = false }) {
   // Mounted only on demand: its inputs autofocus and must not pull the learner away from required practice.
   const [open, setOpen] = useDraftState('extraGuided.open', false)
   if (!lesson.extraGuided?.length) return null
   return <>
     <h3>Práctica extra (opcional)</h3>
-    <p>{lesson.extraGuided.length} ejercicios de tus módulos anteriores para reforzar lo mismo. No cuentan para la nota.</p>
+    <p>{lesson.extraGuided.length} ejercicios {legacy ? 'de tus módulos anteriores ' : ''}para reforzar lo mismo. No cuentan para la nota.</p>
     {open ? <ExerciseBlock draftKey="extraGuided" exercises={lesson.extraGuided} /> : <button type="button" className="mp-button" onClick={() => setOpen(true)}>Abrir la práctica extra</button>}
   </>
 }
@@ -53,7 +51,6 @@ export function RescuedDialogues({ lesson, accent }) {
   if (!lesson.rescuedDialogues?.length) return null
   return lesson.rescuedDialogues.map((d, index) => <div key={d.title} className="ml-dialogue-block">
     <h3>{d.title}</h3>
-    {d.audioPending && <p className="ml-tip">{PENDING}</p>}
     <ul className="ml-dialogue">{d.lines.map((t, i) => <li key={i} className={t.speaker !== d.lines[0].speaker ? 'ml-me' : ''}><strong>{t.speaker}</strong><p>{t.text}</p>{t.es && <p className="ml-dialogue-es">{t.es}</p>}<Listen text={t.text} accent={accent} voice={t.voice} /></li>)}</ul>
     {d.questions?.length > 0 && <><h4>¿Entendiste?</h4><ExerciseBlock draftKey={`rescuedDialogue.${index}`} exercises={d.questions} /></>}
   </div>)
