@@ -159,5 +159,92 @@
       "voice": "nova",
       "text": "on the corner"
     }
-  ]
+  ],
+  "theory": [
+    {
+      "unit": 3,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "She works in a bank."
+    },
+    {
+      "unit": 3,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "I go to work on Monday."
+    },
+    {
+      "unit": 4,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "The school is between the bank and the hospital."
+    },
+    {
+      "unit": 4,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "The bank is near the park."
+    },
+    {
+      "unit": 6,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "She loves reading."
+    },
+    {
+      "unit": 6,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "She doesn’t like football."
+    },
+    {
+      "unit": 6,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "Do you like dancing?"
+    },
+    {
+      "unit": 6,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "I like music."
+    },
+    {
+      "unit": 6,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "My brother hates cooking."
+    },
+    {
+      "unit": 6,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "Do you like movies? — Yes, I do."
+    },
+    {
+      "unit": 6,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "I love playing tennis."
+    },
+    {
+      "unit": 6,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "She likes reading."
+    },
+    {
+      "unit": 8,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "The flight is three hours late."
+    },
+    {
+      "unit": 8,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "Sorry, I don’t understand. Could you repeat that, please?"
+    }
+  ],
+  "theoryNote": "Frases de las reglas de teoría añadidas o cambiadas por la revisión de A1 (PR 4/4) que aún no tienen MP3 propio. Generarlas en ambos acentos en las carpetas unitN-theory y retirarlas de esta lista."
 }

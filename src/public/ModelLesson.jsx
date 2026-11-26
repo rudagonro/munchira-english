@@ -282,7 +282,8 @@ function TheoryRule({ rule, index, accent, recognised = false }) {
   }
   return <section className="ml-rule" aria-labelledby={`ml-rule-${index}`}>
     <h3 id={`ml-rule-${index}`}>{index + 1}. {rule.title}</h3>
-    <p><strong>Regla:</strong> {rule.rule}</p>
+    {rule.kind === 'strategy' && <p className="ml-tip">Estrategia de escucha: te ayuda a entender, pero no se evalúa en el cuestionario final.</p>}
+    <p><strong>{rule.kind === 'strategy' ? 'Estrategia:' : 'Regla:'}</strong> {rule.rule}</p>
     <p><strong>Cómo se forma:</strong> <span className="ml-formula">{rule.form}</span></p>
     <ol>{rule.steps.map(step => <li key={step}>{step}</li>)}</ol>
     <div className="ml-table-wrap"><table className="ml-table"><caption>Afirmativa, negativa y pregunta</caption><tbody>{rule.forms.map(form => <tr key={form.label}><th scope="row">{form.label}</th><td>{form.en} <ListenButtons text={form.en.split(' / ')[0]} accent={accent} /></td><td>{form.es}</td></tr>)}</tbody></table></div>
@@ -298,7 +299,7 @@ function TheoryRule({ rule, index, accent, recognised = false }) {
     {checked === true && <p className="ml-feedback ml-ok" role="status">¡Bien construida! {rule.apply.answer}</p>}
     {checked === false && <p className="ml-feedback ml-bad" role="status">Todavía no. Revisa el orden: {rule.form}.</p>}
     {shown && !checked && <p className="ml-example">{rule.apply.answer} <ListenButtons text={rule.apply.answer} accent={accent} /></p>}
-    <p className="ml-tip">{recognised && <strong>✓ Reconocido de tus módulos anteriores · </strong>}Antes en: {rule.source.join(' · ')}</p>
+    {rule.source.some(line => line.includes(' · Lección ')) ? <p className="ml-tip">{recognised && <strong>✓ Reconocido de tus módulos anteriores · </strong>}Antes en: {rule.source.join(' · ')}</p> : <p className="ml-tip">Regla nueva de esta unidad.</p>}
   </section>
 }
 

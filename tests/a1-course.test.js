@@ -154,7 +154,8 @@ test('quien cambió de nivel y volvió a A1 conserva el reconocimiento de lo apr
 test('las fuentes de cada regla de teoría coinciden con el mapa de lecciones antiguas', async () => {
   const { default: cycle } = await import('../content/cycles/A1.json', { with: { type: 'json' } })
   for (const unit of cycle.modules) {
-    const fromRules = new Set(unit.practice.theory.flatMap(rule => rule.source.map(legacySourceKey)))
+    const legacyRules = unit.practice.theory.filter(rule => !rule.source.every(line => line.startsWith('Nuevo en Munchira')))
+    const fromRules = new Set(legacyRules.flatMap(rule => rule.source.map(legacySourceKey)))
     assert.ok(!fromRules.has(null), `Unidad ${unit.order}: fuente sin lección antigua reconocible`)
     const fromMap = Object.entries(A1_LEGACY_LESSON_MAP).filter(([, n]) => n === unit.order).map(([key]) => key)
     assert.deepEqual([...fromRules].sort(), fromMap.sort(), `Unidad ${unit.order}`)
@@ -181,4 +182,14 @@ test('el reconocimiento parcial no marca pasos ni aprueba la unidad', () => {
   assert.equal(summary.completed, 0)
   assert.equal(summary.units[0].status, 'in-progress')
   assert.equal(summary.units[0].fromLegacy, false)
+})
+
+test('una regla nueva (sin lección antigua) nunca se reconoce por el progreso antiguo', async () => {
+  const { default: cycle } = await import('../content/cycles/A1.json', { with: { type: 'json' } })
+  const theory = cycle.modules.find(m => m.order === 6).practice.theory
+  const fresh = theory.findIndex(rule => rule.source[0].startsWith('Nuevo en Munchira'))
+  assert.ok(fresh >= 0)
+  const moduleProgress = [1, 2, 3, 4].map(order => ({ module_id: `m${order}`, status: 'completed', quiz_score: 100 }))
+  const unit6 = summarizeA1Course({ legacy: legacyUnitCredit({ modules, lessons, moduleProgress }) }).units[5]
+  assert.ok(!unit6.legacyRules.includes(fresh))
 })
