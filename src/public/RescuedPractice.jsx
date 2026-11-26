@@ -33,11 +33,13 @@ export function ExtraTables({ lesson }) {
 }
 
 export function ExtraGuided({ lesson }) {
+  // Mounted only on demand: its inputs autofocus and must not pull the learner away from required practice.
+  const [open, setOpen] = useDraftState('extraGuided.open', false)
   if (!lesson.extraGuided?.length) return null
   return <>
     <h3>Práctica extra (opcional)</h3>
-    <p>Ejercicios de tus módulos anteriores para reforzar lo mismo. No cuentan para la nota.</p>
-    <ExerciseBlock draftKey="extraGuided" exercises={lesson.extraGuided} />
+    <p>{lesson.extraGuided.length} ejercicios de tus módulos anteriores para reforzar lo mismo. No cuentan para la nota.</p>
+    {open ? <ExerciseBlock draftKey="extraGuided" exercises={lesson.extraGuided} /> : <button type="button" className="mp-button" onClick={() => setOpen(true)}>Abrir la práctica extra</button>}
   </>
 }
 
