@@ -31,3 +31,20 @@ Todo este material es **opcional**: no bloquea pasos, no cuenta para la nota y n
 - `extraVocab`: live (U1), order y recommend (U5), straight ahead y on the corner (U7).
   - No entran en «Repaso» porque el catálogo `a1_vocab_items` es una migración; añadirlas exige una migración aparte.
 - **Audio pendiente:** `content/a1/pending-audio.json` lista cada frase nueva sin MP3. Hasta grabarlas, suenan con la voz del dispositivo. Una prueba exige que la lista esté al día.
+
+## Revisión de las reglas de teoría (PR 4)
+
+- **Regla 13 (direcciones):** ya no marca «You turn left» como error, porque es natural. El error típico ahora es «Go to straight and turn to left».
+- **Refuerzos:**
+  - 2: tener → to be (*I am hungry*) y contracciones.
+  - 3: aviso de que *don’t* y *do* llegan en la Unidad 3.
+  - 6: ortografía de -es, -ies y *has*, y preguntas con *do* y *does*.
+  - 8: *at*, *on* e *in* con la hora, los días y las partes del día.
+  - 10: *next to*, *between*, *in front of* y *near* sin *from*.
+  - 12: error de contracción.
+  - Unidad 6: regla nueva sobre gustos (*like*, *love*, *hate* + sustantivo o -ing, y *Do you like…?*). Va al final de la unidad para no mover los borradores guardados. Su fuente es «Nuevo en Munchira», así que el progreso antiguo nunca la reconoce.
+- **Todas las reglas tienen ahora un error típico.**
+- **Ajustes menores:** 5 (no cambian por género ni número), 7 (*doesn’t* + verbo sin -s), 9 (sonido, no letra) y 14 (*Can* frente a *Could*).
+- **Regla 16:** es una estrategia (`kind: "strategy"`, `graded: false`). La interfaz avisa que no se evalúa, y ninguna pregunta de cuestionario depende de ella.
+- **Unidad 1:** sus frases en inglés tienen MP3 obligatorios, así que ahí solo cambié textos en español (regla, pasos y explicación). Sus frases de ejemplo no se tocaron.
+- Las frases en inglés nuevas o cambiadas están en `theory` dentro de `content/a1/pending-audio.json`, para el lote de MP3 de teoría de las unidades 2 a 8.
