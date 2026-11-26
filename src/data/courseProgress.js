@@ -58,6 +58,13 @@ export function summarizeStudentCourse(entry, level = 'A1') {
   }
 }
 
+const hasCourseActivity = entry => Boolean(entry && ((entry.units?.length ?? 0) > 0 || (entry.drafts?.length ?? 0) > 0 || Number(entry.words_studied ?? 0) > 0))
+const activity = (row, course) => ({
+  words_studied: Number(row.words_studied ?? 0) + course.wordsStudied,
+  words_due: Number(row.words_due ?? 0) + course.wordsDue,
+  last_activity: latest(row.last_activity, course.lastActivity),
+})
+
 /**
  * Une el resumen antiguo (teacher_overview) con el avance por unidades. El alumno de un nivel abierto
  * pasa a medirse por unidades; el de un nivel en preparación queda marcado en lista de espera.
@@ -68,7 +75,14 @@ export function mergeCourseProgress(rows, courseRows) {
   const byStudent = new Map(courseRows.map(entry => [entry.student_id, entry]))
   return rows.map(row => {
     if (isWaitlisted(row.cefr_level)) return { ...row, waitlisted: true }
-    const course = summarizeStudentCourse(byStudent.get(row.student_id), row.cefr_level)
+    const entry = byStudent.get(row.student_id)
+    if (!row.cefr_level) {
+      // Sin nivel asignado, pero con práctica A1 guardada (por ejemplo, aprobó la Unidad 0 desde el temario):
+      // sigue «Sin nivel», y la ficha muestra ese avance en vez de esconderlo.
+      const started = hasCourseActivity(entry) ? summarizeStudentCourse(entry, 'A1') : null
+      return started ? { ...row, course: started, ...activity(row, started) } : row
+    }
+    const course = summarizeStudentCourse(entry, row.cefr_level)
     if (!course) return row
     return {
       ...row,
@@ -76,9 +90,7 @@ export function mergeCourseProgress(rows, courseRows) {
       avg_quiz_score: course.avgScore,
       weakest_skill: null,
       checkpoint_blocked: false,
-      words_studied: Number(row.words_studied ?? 0) + course.wordsStudied,
-      words_due: Number(row.words_due ?? 0) + course.wordsDue,
-      last_activity: latest(row.last_activity, course.lastActivity),
+      ...activity(row, course),
     }
   })
 }

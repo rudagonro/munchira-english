@@ -73,6 +73,17 @@ test('el panel docente mide A1 por unidades y pone A2–C2 en lista de espera', 
   assert.match(toCsv(rows, NOW).split('\r\n')[1], /,A1,2 de 9 unidades,22,74,/)
 })
 
+test('una cuenta sin nivel que aprobó la Unidad 0 desde el temario muestra ese avance (y sigue «Sin nivel»)', () => {
+  const unit0Only = { student_id: 'eva', units: [{ level: 'A1', unit_number: 0, best_score: 90, completed_at: '2026-11-25T00:00:00Z', updated_at: '2026-11-25T00:00:00Z' }], drafts: [], words_studied: 0, words_due: 0, last_activity: '2026-11-25T00:00:00Z' }
+  const idle = { student_id: 'fer', units: [], drafts: [], words_studied: 0, words_due: 0, last_activity: null }
+  const [eva, fer] = mergeCourseProgress([overview({ student_id: 'eva', cefr_level: null, last_activity: null }), overview({ student_id: 'fer', cefr_level: null })], [unit0Only, idle])
+  assert.equal(eva.course.completed, 1)
+  assert.equal(eva.course.units[0].status, 'completed')
+  assert.equal(eva.last_activity, '2026-11-25T00:00:00Z')
+  assert.equal(statusOf(eva, NOW), STATUS.NO_DIAGNOSTIC)
+  assert.equal(fer.course, undefined, 'una cuenta sin actividad sigue sin resumen')
+})
+
 test('sin la fase 2 aplicada, el panel queda exactamente como antes', () => {
   const rows = [overview()]
   assert.equal(mergeCourseProgress(rows, null), rows)
