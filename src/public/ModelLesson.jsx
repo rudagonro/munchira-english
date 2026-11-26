@@ -35,13 +35,17 @@ function ChoiceQuestions({ questions, onComplete, onAttempt }) {
   return <ExerciseBlock draftKey="reading" onComplete={onComplete} onAttempt={onAttempt} exercises={questions.map(q => ({ ...q, type: 'choice', why: q.why ?? 'Vuelve a leer el texto y busca la información de la pregunta.' }))} />
 }
 
+// La baraja cambió (solo palabras clave): un borrador de la baraja anterior no se reinterpreta.
+// Las tarjetas terminadas con la baraja completa siguen contando (lessonDraftProgress.js).
+const CARDS_DRAFT = 'cardDeck2'
+
 function TwoWayCards({ accent, lesson, onComplete }) {
   const cards = useMemo(() => lessonCards(lesson), [lesson])
-  const [idx, setIdx] = useDraftState('cards.idx', 0)
-  const [value, setValue] = useDraftState('cards.value', '')
-  const [result, setResult] = useDraftState('cards.result', null) // null | 'retry' | 'ok' | 'bad'
-  const [tries, setTries] = useDraftState('cards.tries', 0)
-  const [score, setScore] = useDraftState('cards.score', 0)
+  const [idx, setIdx] = useDraftState(`${CARDS_DRAFT}.idx`, 0)
+  const [value, setValue] = useDraftState(`${CARDS_DRAFT}.value`, '')
+  const [result, setResult] = useDraftState(`${CARDS_DRAFT}.result`, null) // null | 'retry' | 'ok' | 'bad'
+  const [tries, setTries] = useDraftState(`${CARDS_DRAFT}.tries`, 0)
+  const [score, setScore] = useDraftState(`${CARDS_DRAFT}.score`, 0)
   const { user } = useAuth()
   const [saveError, setSaveError] = useState('')
   const reported = useRef(new Set())
