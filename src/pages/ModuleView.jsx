@@ -289,7 +289,7 @@ function ModuleContent({ preview, draftEnabled }) {
         {bar}
         {!preview && (
           <button className="lesson-back" onClick={() => navigate('/cycle')} type="button">
-            ← Mis módulos
+            ← Mi curso
           </button>
         )}
         <div className="lesson-header">
@@ -325,7 +325,7 @@ function ModuleContent({ preview, draftEnabled }) {
         {/* Breadcrumb */}
         {!preview && (
           <button className="lesson-back" onClick={() => navigate('/cycle')} type="button">
-            ← Mis módulos
+            ← Mi curso
           </button>
         )}
 
@@ -426,7 +426,7 @@ function ModuleContent({ preview, draftEnabled }) {
         {bar}
         {!preview && (
           <button className="lesson-back" onClick={() => navigate('/cycle')} type="button">
-            ← Mis módulos
+            ← Mi curso
           </button>
         )}
         <span className="role-tag">{module.title}</span>
