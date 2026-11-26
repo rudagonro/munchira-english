@@ -39,5 +39,7 @@ export function useA1Course() {
     }).catch(() => { if (active) setState({ userId: user.id, summary: EMPTY, error: true }) })
     return () => { active = false }
   }, [user, getActiveCycleData])
-  return { ...state, loading: Boolean(user) && state.userId !== user.id }
+  // Never expose a previous account's summary (for example after signing out in another tab).
+  const current = Boolean(user) && state.userId === user.id
+  return { ...state, summary: current ? state.summary : EMPTY, error: current ? state.error : false, loading: Boolean(user) && !current }
 }
