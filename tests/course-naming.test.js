@@ -11,8 +11,8 @@ function sources(dir) {
   })
 }
 
-test('el alumno ve un solo recorrido: «Mi curso», sin «Mis módulos» en ninguna pantalla', () => {
-  const offenders = sources(srcDir).filter((file) => readFileSync(file, 'utf8').includes('Mis módulos'))
+test('el alumno ve un solo recorrido: «Mi curso», sin «mis módulos» en ninguna pantalla', () => {
+  const offenders = sources(srcDir).filter((file) => /mis módulos/i.test(readFileSync(file, 'utf8')))
   assert.deepEqual(offenders, [])
   assert.match(readFileSync(srcDir + 'components/Nav.jsx', 'utf8'), /<NavLink to="\/cycle">Mi curso<\/NavLink>/)
 })

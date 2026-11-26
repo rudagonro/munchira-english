@@ -42,8 +42,8 @@ export function HomeHero() {
       <div className="mp-hero-copy"><p className="mp-eyebrow">Un idioma. Nuevas posibilidades.</p>
         <h1 id="mp-title">Munchira <span>English</span></h1>
         <p className="mp-hero-tagline">Aprende inglés, paso a paso.</p>
-        <p className="mp-hero-description">Lecciones, vocabulario y repaso para construir tu inglés a tu ritmo. Empieza por las bases y sigue tu progreso en un solo lugar.</p>
-        <div className="mp-actions"><AccountCta className="mp-button mp-button-dark" signedOut="Crear mi cuenta" /><Link className="mp-button mp-button-ghost" to="/leccion-modelo">Prueba una lección gratis</Link><a className="mp-text-link" href="#cursos">Conocer los cursos <span aria-hidden="true">↓</span></a></div>
+        <p className="mp-hero-description">Unidades paso a paso, vocabulario y repaso para construir tu inglés a tu ritmo. Empieza por las bases y sigue tu progreso en un solo lugar.</p>
+        <div className="mp-actions"><AccountCta className="mp-button mp-button-dark" signedOut="Crear mi cuenta" /><Link className="mp-button mp-button-ghost" to="/cursos/A1/unidad/0">Prueba la Unidad 0 gratis</Link><a className="mp-text-link" href="#cursos">Conocer los cursos <span aria-hidden="true">↓</span></a></div>
         <div className="mp-hero-footer"><span>Práctica + repaso + progreso</span><span>En tu navegador</span></div>
       </div>
       <div className="mp-mascot-stage"><div className="mp-crawl-track"><img className="mp-crawl-mascot" src={url(oruga_transparente)} alt="La oruga Munchira con audífonos te saluda: Hi!" width="443" height="518" decoding="async" /></div></div>

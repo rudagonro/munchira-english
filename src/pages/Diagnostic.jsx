@@ -5,15 +5,11 @@ import { supabase } from '../lib/supabase'
 import './diagnostic-choice.css'
 import { useDiagnostic } from '../hooks/useDiagnostic'
 import { LEVEL_NAMES, bankReading, bankListening, bankWriting } from '../data/diagnosticBank'
+import { getCurriculum } from '../data/curriculum'
+import { isWaitlisted, unit0For } from '../data/levelAccess'
 
-const CYCLE_PLANS = {
-  A1: { duration: '8–10 semanas', modules: ['Verbo To Be y presente simple', 'Vocabulario de uso diario (300 palabras núcleo)', 'Listening guiado con subtítulos', 'Frases básicas de supervivencia'] },
-  A2: { duration: '10–12 semanas', modules: ['Pasado simple y futuro con "going to"', 'Vocabulario temático: trabajo, viajes, comida', 'Reading de textos cortos narrativos', 'Writing guiado: emails simples'] },
-  B1: { duration: '12–14 semanas', modules: ['Condicionales y voz pasiva', 'Vocabulario abstracto e idiomático básico', 'Listening de noticias y podcasts breves', 'Writing: opinión estructurada'] },
-  B2: { duration: '14–16 semanas', modules: ['Estructuras complejas y conectores avanzados', 'Vocabulario académico y profesional', 'Reading crítico de artículos de opinión', 'Writing: ensayos argumentativos'] },
-  C1: { duration: '16–18 semanas', modules: ['Matices, registro y lenguaje idiomático', 'Vocabulario de especialización (negocios/academia)', 'Listening de debates y conferencias', 'Writing: informes y análisis crítico'] },
-  C2: { duration: 'Programa abierto', modules: ['Refinamiento estilístico y retórico', 'Dominio de matices culturales y humor', 'Listening sin restricciones (medios nativos)', 'Writing: publicación y persuasión de alto nivel'] },
-}
+// Duración orientativa de cada nivel (semanas de estudio constante).
+const LEVEL_DURATION = { A1: '8–10 semanas', A2: '10–12 semanas', B1: '12–14 semanas', B2: '14–16 semanas', C1: '16–18 semanas', C2: 'Programa abierto' }
 
 export default function Diagnostic({ preview = false }) {
   const { saveDiagnosticResult } = useAuth()
@@ -133,29 +129,33 @@ export default function Diagnostic({ preview = false }) {
   // --- Pantalla de resultados ---
   if (diag.block === 5 && diag.result) {
     const r = diag.result
-    const plan = CYCLE_PLANS[r.finalLevel]
+    const units = getCurriculum(r.finalLevel)?.units ?? []
+    const unit0 = unit0For(r.finalLevel)
+    const waiting = isWaitlisted(r.finalLevel)
     return (
       <div className="diag-results">
         {previewBanner}
-        <div className="diag-eyebrow">Tu nivel CEFR es</div>
+        <div className="diag-eyebrow">Tu nivel MCER es</div>
         <div className="diag-level-big">{r.finalLevel}</div>
         <div className="diag-level-name">{LEVEL_NAMES[r.finalLevel]}</div>
 
         <div className="diag-skill-bars">
-          <SkillBar label="Gram/Vocab" pct={r.gvPct} />
-          <SkillBar label="Reading" pct={r.readingPct} />
-          <SkillBar label="Listening" pct={r.listeningPct} />
-          <SkillBar label="Writing" pct={r.writingPct} />
+          <SkillBar label="Gramática y vocabulario" pct={r.gvPct} />
+          <SkillBar label="Lectura" pct={r.readingPct} />
+          <SkillBar label="Escucha" pct={r.listeningPct} />
+          <SkillBar label="Escritura" pct={r.writingPct} />
         </div>
 
         <div className="diag-cycle-card">
-          <div className="diag-ctitle">Ciclo recomendado</div>
+          <div className="diag-ctitle">Tu nivel y sus unidades</div>
           <h2>{r.finalLevel} — {LEVEL_NAMES[r.finalLevel]}</h2>
           <ul>
-            {plan.modules.map((m) => <li key={m}>{m}</li>)}
+            <li key="u0">Unidad 0 · {unit0.title}</li>
+            {units.map((unit) => <li key={unit.id}>Unidad {unit.number} · {unit.title}</li>)}
           </ul>
+          {waiting && <p className="diag-waitlist" role="status">Este nivel está en preparación: quedas en su lista de espera y te avisaremos cuando esté listo. Mientras tanto puedes practicar con A1 si quieres.</p>}
           <div className="diag-cycle-meta">
-            Duración estimada: {plan.duration} · Puntaje global: {r.finalScore.toFixed(1)}/100
+            Duración estimada: {LEVEL_DURATION[r.finalLevel]} · Puntaje global: {r.finalScore.toFixed(1)}/100
           </div>
         </div>
 
@@ -163,7 +163,7 @@ export default function Diagnostic({ preview = false }) {
         {saveError && <div className="error-banner" role="alert" style={{ marginTop: 16 }}>{saveError}</div>}
         {!saving && !saveError && (
           <p className="success-banner" style={{ marginTop: 16, display: 'inline-block' }}>
-            Resultado guardado. Ya quedaste inscrito en tu ciclo.
+            {waiting ? `Resultado guardado. Quedaste en la lista de espera de ${r.finalLevel}.` : `Resultado guardado. Ya quedaste inscrito en ${r.finalLevel}.`}
           </p>
         )}
 
@@ -182,7 +182,7 @@ export default function Diagnostic({ preview = false }) {
   if (diag.block === 1) {
     const q = diag.gvCurrentQ
     return (
-      <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 1 · Gramática & Vocabulario — calibrando: ${diag.gvCurrentLevel}`}>
+      <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 1 · Gramática y vocabulario — calibrando: ${diag.gvCurrentLevel}`}>
         <div className="diag-tag">Pregunta {diag.gvQuestionNumber} de hasta 15</div>
         <h1 className="diag-question">{q.q}</h1>
         <OptionsList options={q.opts} selectedIdx={selectedIdx} onSelect={handleSelect} />
@@ -196,7 +196,7 @@ export default function Diagnostic({ preview = false }) {
     const data = bankReading[diag.readingLevel]
     if (diag.readingStep === 0) {
       return (
-        <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 2 · Reading — nivel ${diag.readingLevel}`}>
+        <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 2 · Lectura — nivel ${diag.readingLevel}`}>
           <div className="diag-tag">Comprensión de lectura</div>
           <div className="diag-passage">{data.passage}</div>
           <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>
@@ -208,7 +208,7 @@ export default function Diagnostic({ preview = false }) {
     }
     const q = data.questions[diag.readingStep - 1]
     return (
-      <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 2 · Reading — nivel ${diag.readingLevel}`}>
+      <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 2 · Lectura — nivel ${diag.readingLevel}`}>
         <div className="diag-tag">Pregunta {diag.readingStep} de {data.questions.length}</div>
         <div className="diag-passage diag-passage-small">{data.passage}</div>
         <h1 className="diag-question">{q.q}</h1>
@@ -223,7 +223,7 @@ export default function Diagnostic({ preview = false }) {
     const data = bankListening[diag.listeningLevel]
     if (diag.listeningStep === 0) {
       return (
-        <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 3 · Listening — nivel ${diag.listeningLevel}`}>
+        <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 3 · Escucha — nivel ${diag.listeningLevel}`}>
           <div className="diag-tag">Comprensión auditiva</div>
           <AudioBox transcript={data.transcript} onPlay={playAudio} />
           <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>
@@ -235,7 +235,7 @@ export default function Diagnostic({ preview = false }) {
     }
     const q = data.questions[diag.listeningStep - 1]
     return (
-      <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 3 · Listening — nivel ${diag.listeningLevel}`}>
+      <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 3 · Escucha — nivel ${diag.listeningLevel}`}>
         <div className="diag-tag">Pregunta {diag.listeningStep} de {data.questions.length}</div>
         <AudioBox transcript={data.transcript} onPlay={playAudio} />
         <h1 className="diag-question">{q.q}</h1>
@@ -251,7 +251,7 @@ export default function Diagnostic({ preview = false }) {
     const words = diag.writingText.trim().split(/\s+/).filter((w) => w.length > 0).length
     const ok = words >= 40
     return (
-      <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 4 · Writing — nivel ${diag.writingLevel}`}>
+      <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 4 · Escritura — nivel ${diag.writingLevel}`}>
         <div className="diag-tag">Expresión escrita</div>
         <p className="diag-writing-prompt">{prompt}</p>
         <textarea

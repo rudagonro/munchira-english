@@ -65,7 +65,9 @@ test('el sitemap lista las páginas indexables y omite las marcadas noindex', ()
     assert.ok(sitemap.includes(`<loc>https://munchira.com${path}</loc>`), `falta ${path} en el sitemap`)
   }
   assert.doesNotMatch(sitemap, /leccion-modelo|\/unidad\//)
-  assert.ok(read('leccion-modelo/index.html').includes('noindex'))
+  // La antigua «lección de muestra» ya no se genera: vercel.json la redirige (301) a la Unidad 1.
+  assert.equal(existsSync(join(dist, 'leccion-modelo', 'index.html')), false)
+  assert.ok(read('cursos/A1/unidad/1/index.html').includes('noindex'))
   assert.equal(result.failed.length, 0)
   assert.ok(result.written.length >= 20, 'se esperan al menos 20 páginas generadas')
 })

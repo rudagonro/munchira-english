@@ -146,7 +146,7 @@ export function nextAction(next, total = A1_UNIT_COUNT) {
 }
 
 export const A1_QUIZ_PARAM = 'paso=cuestionario'
-export const A1_LEGACY_LABEL = 'Reconocido de tus módulos anteriores'
+export const A1_LEGACY_LABEL = 'Reconocido de tu avance anterior'
 const A1_STATUS = { completed: 'Completada', 'quiz-pending': 'Falta el cuestionario final', 'in-progress': 'En curso', 'not-started': 'Sin empezar' }
 
 const A1_UNIT0_STATUS = { completed: 'Completada', recognized: 'Reconocida por tu avance A1', 'quiz-pending': 'Falta aprobar el cuestionario', 'not-started': 'Obligatoria antes de la Unidad 1' }

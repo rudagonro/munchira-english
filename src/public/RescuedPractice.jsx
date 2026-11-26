@@ -23,7 +23,7 @@ export function ExtraVocab({ lesson, accent, legacy = false }) {
   if (!lesson.extraVocab?.length) return null
   return <>
     <h3>Más palabras útiles</h3>
-    <p className="ml-tip">{legacy ? 'Vienen de tus módulos anteriores. ' : ''}También aparecen en las tarjetas y entran en «Repaso».</p>
+    <p className="ml-tip">{legacy ? 'Vienen del curso anterior. ' : ''}También aparecen en las tarjetas y entran en «Repaso».</p>
     <ul className="ml-vocab">{lesson.extraVocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{displayForm(v.es)}</span><em>«{v.say}»</em>{v.example && <span>{v.example}</span>}<Listen text={v.en} accent={accent} /></li>)}</ul>
   </>
 }
@@ -41,7 +41,7 @@ export function ExtraGuided({ lesson, legacy = false }) {
   if (!lesson.extraGuided?.length) return null
   return <>
     <h3>Práctica extra (opcional)</h3>
-    <p>{lesson.extraGuided.length} ejercicios {legacy ? 'de tus módulos anteriores ' : ''}para reforzar lo mismo. No cuentan para la nota.</p>
+    <p>{lesson.extraGuided.length} ejercicios {legacy ? 'del curso anterior ' : ''}para reforzar lo mismo. No cuentan para la nota.</p>
     {open ? <ExerciseBlock draftKey="extraGuided" exercises={lesson.extraGuided} /> : <button type="button" className="mp-button" onClick={() => setOpen(true)}>Abrir la práctica extra</button>}
   </>
 }

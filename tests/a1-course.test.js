@@ -60,7 +60,7 @@ test('el progreso antiguo se reconoce pero nunca completa una unidad: queda list
   assert.equal(summary.completed, 0)
   assert.ok(summary.units.every(unit => unit.status === 'quiz-pending' && unit.fromLegacy && unit.legacyTheory))
   assert.ok(summary.units.every(unit => unitStatusText(unit) === 'Teoría reconocida · lista para el cuestionario'))
-  assert.equal(A1_LEGACY_LABEL, 'Reconocido de tus módulos anteriores')
+  assert.equal(A1_LEGACY_LABEL, 'Reconocido de tu avance anterior')
   assert.equal(summary.nextAction.text, 'Tu teoría de la Unidad 1 está reconocida: solo te falta su cuestionario final')
   assert.equal(summary.nextAction.path, '/cursos/A1/unidad/1?paso=cuestionario')
 })

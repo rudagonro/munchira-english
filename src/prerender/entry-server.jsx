@@ -10,7 +10,6 @@ import { CourseIndex, CourseLevel } from '../public/Curriculum'
 import CurriculumLesson from '../public/CurriculumLesson'
 import { BlogArticle, BlogIndex } from '../public/Blog'
 import { GrammarArticle, GrammarIndex } from '../public/Grammar'
-import ModelLesson from '../public/ModelLesson'
 import { blogArticles, grammarArticles } from '../public/content'
 import { CURRICULUM } from '../data/curriculum'
 import { A1_UNIT_COUNT } from '../data/a1Course'
@@ -25,7 +24,6 @@ export const PUBLIC_PAGES = [
   ['/blog/:slug', <BlogArticle key="articulo" />],
   ['/gramatica', <GrammarIndex key="gramatica" />],
   ['/gramatica/:slug', <GrammarArticle key="tema" />],
-  ['/leccion-modelo', <ModelLesson key="modelo" />],
   ['/privacidad', <Privacy key="privacidad" />],
   ['/terminos', <Terms key="terminos" />],
 ]
@@ -37,7 +35,7 @@ const visitor = { session: null, user: null, profile: null, role: null, loading:
 export function publicPaths() {
   const levels = CURRICULUM.map((level) => level.code)
   return [
-    '/', '/cursos', '/blog', '/gramatica', '/leccion-modelo', '/privacidad', '/terminos',
+    '/', '/cursos', '/blog', '/gramatica', '/privacidad', '/terminos',
     ...levels.map((code) => `/cursos/${code}`),
     '/cursos/A1/unidad/0',
     ...Array.from({ length: A1_UNIT_COUNT }, (_, index) => `/cursos/A1/unidad/${index + 1}`),

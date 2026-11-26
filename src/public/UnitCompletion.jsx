@@ -60,7 +60,7 @@ export default function UnitCompletion({ number, onPassed }) {
   }
   return <section aria-labelledby="a1-check-title">
     <h3 id="a1-check-title">Comprueba lo aprendido</h3>
-    <p>Con 70% o más completas esta unidad. Un repaso posterior no borra el aprobado ni cambia tus módulos anteriores.</p>
+    <p>Con 70% o más completas esta unidad. Un repaso posterior no borra el aprobado ni cambia tu avance anterior.</p>
     {progress?.completed_at && <p className="ml-feedback ml-ok" role="status">Unidad completada · Mejor resultado: {progress.best_score}% · Guardado en tu cuenta.</p>}
     <form onSubmit={submit} className="ml-quiz">
       {questions.map((question, index) => <fieldset key={index} className="ml-quiz-q">
