@@ -20,7 +20,7 @@ security definer
 set search_path = ''
 as $$
 begin
-  if auth.uid() is null or not public.is_staff() then
+  if auth.uid() is null or not public.is_staff() or not public.is_active_user() then
     raise exception 'forbidden' using errcode = '42501';
   end if;
 
@@ -29,7 +29,9 @@ begin
     d.user_id,
     'A1'::text,
     substring(d.lesson_key from '^unit:([1-8])$')::integer,
-    case when jsonb_typeof(d.fields -> 'step') = 'number' then (d.fields ->> 'step')::numeric::integer end,
+    -- Un paso fuera de rango (lo escribe el propio alumno) se ignora en vez de romper la lectura del grupo.
+    case when jsonb_typeof(d.fields -> 'step') = 'number' and (d.fields ->> 'step') ~ '^[0-9]{1,3}$'
+         then (d.fields ->> 'step')::integer end,
     case when jsonb_typeof(d.fields -> 'step.completed') = 'array' then d.fields -> 'step.completed' else '[]'::jsonb end,
     d.updated_at
   from public.a1_learning_drafts d

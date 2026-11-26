@@ -15,15 +15,15 @@ import { createDraftStore } from '../src/lib/a1Draft.js'
 const src = path => readFileSync(new URL(`../src/${path}`, import.meta.url), 'utf8')
 
 // ---- 1. Panel docente: misma regla que /cycle ------------------------------------------------------
-// Datos con la forma real del alumno revisado (DARIO ROA): Unidad 1 aprobada, Unidad 2 a medias, un borrador
+// Datos con la forma real del alumno revisado (anonimizado): Unidad 1 aprobada, Unidad 2 a medias, un borrador
 // de la Unidad 8 en el paso 7 y el módulo antiguo 3 aprobado (su lección 3.5 pasó a la Unidad 8).
 const KEYS = ['1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7', '2.1', '2.2', '2.3', '2.4', '3.1', '3.2', '3.3', '3.4', '3.5', '4.1', '4.2', '4.3', '4.4', '4.5', '4.6']
 const modules = [1, 2, 3, 4].map(order => ({ id: `m${order}`, order_index: order }))
 const lessons = KEYS.map(key => ({ id: `l${key}`, module_id: `m${key.split('.')[0]}`, order_index: Number(key.split('.')[1]) }))
-const lessonRows = KEYS.slice(0, 7).map(key => ({ user_id: 'dario', lesson_id: `l${key}` }))
+const lessonRows = KEYS.slice(0, 7).map(key => ({ user_id: 'alumno-1', lesson_id: `l${key}` }))
 const moduleRows = [
-  { user_id: 'dario', module_id: 'm1', status: 'in_progress', quiz_score: 12.5 },
-  { user_id: 'dario', module_id: 'm3', status: 'completed', quiz_score: 100 },
+  { user_id: 'alumno-1', module_id: 'm1', status: 'in_progress', quiz_score: 12.5 },
+  { user_id: 'alumno-1', module_id: 'm3', status: 'completed', quiz_score: 100 },
 ]
 const ALL = ['goal', 'vocab', 'explain', 'examples', 'table', 'mistakes', 'guided', 'translate', 'cards', 'reading', 'dialogue', 'dictation', 'speak', 'free', 'summary']
 const fields = {
@@ -32,13 +32,13 @@ const fields = {
   8: { step: 6, 'step.completed': ALL.slice(0, 6) },
 }
 const courseRow = {
-  student_id: 'dario',
+  student_id: 'alumno-1',
   units: [{ level: 'A1', unit_number: 1, best_score: 90, completed_at: '2026-11-26T02:20:10Z', updated_at: '2026-11-26T02:20:10Z' }],
   drafts: [1, 2, 8].map(unit_number => ({ level: 'A1', unit_number, updated_at: '2026-11-26T11:31:44Z' })),
   words_studied: 49, words_due: 0, last_activity: '2026-11-26T11:32:31Z',
 }
-const overview = { student_id: 'dario', full_name: 'DARIO ROA', cefr_level: 'A1', modules_completed: 1, modules_total: 4, avg_quiz_score: 37, words_studied: 0, words_due: 0 }
-const draftRows = [1, 2, 8].map(unit => ({ student_id: 'dario', level: 'A1', unit_number: unit, step: fields[unit].step, completed: fields[unit]['step.completed'], updated_at: '2026-11-26T11:31:44Z' }))
+const overview = { student_id: 'alumno-1', full_name: 'Alumno de prueba', cefr_level: 'A1', modules_completed: 1, modules_total: 4, avg_quiz_score: 37, words_studied: 0, words_due: 0 }
+const draftRows = [1, 2, 8].map(unit => ({ student_id: 'alumno-1', level: 'A1', unit_number: unit, step: fields[unit].step, completed: fields[unit]['step.completed'], updated_at: '2026-11-26T11:31:44Z' }))
 
 // Lo que ve el alumno en /cycle (useA1Course → summarizeA1Course con las mismas fuentes).
 const cycleView = summarizeA1Course({
@@ -79,9 +79,9 @@ test('panel docente: con el paso de cada borrador, un borrador sin avanzar no cu
   const idle = { ...courseRow, units: [], drafts: [{ level: 'A1', unit_number: 5 }] }
   const [basic] = mergeCourseProgress([overview], [idle])
   assert.equal(basic.course.units[5].status, 'in-progress', 'sin la migración: un borrador guardado cuenta como empezado')
-  const [detailed] = mergeCourseProgress([overview], [idle], { draftsByStudent: groupCourseDrafts([{ student_id: 'dario', unit_number: 5, step: 0, completed: [] }]) })
+  const [detailed] = mergeCourseProgress([overview], [idle], { draftsByStudent: groupCourseDrafts([{ student_id: 'alumno-1', unit_number: 5, step: 0, completed: [] }]) })
   assert.equal(detailed.course.units[5].status, 'not-started')
-  const ready = groupCourseDrafts([{ student_id: 'dario', unit_number: 5, step: 14, completed: ALL.slice(0, 14) }])
+  const ready = groupCourseDrafts([{ student_id: 'alumno-1', unit_number: 5, step: 14, completed: ALL.slice(0, 14) }])
   assert.equal(mergeCourseProgress([overview], [idle], { draftsByStudent: ready })[0].course.units[5].status, 'quiz-pending')
 })
 
@@ -200,21 +200,35 @@ test('PostgreSQL: teacher_course_drafts da solo el paso (nunca las respuestas) y
     const ben = await addUser(db, { email: 'ben@x.test' })
     const teacher = await addUser(db, { email: 'profe@x.test', role: 'teacher' })
     const admin = await addUser(db, { email: 'admin@x.test', role: 'admin' })
+    const carl = await addUser(db, { email: 'carl@x.test' })
+    await db.query(`insert into public.a1_learning_drafts(user_id,lesson_key,fields,revision) values ($1,'unit:3','{"step":1e30}',1)`, [carl])
     await db.query(`insert into public.a1_learning_drafts(user_id,lesson_key,fields,revision) values
       ($1,'unit:8','{"step":6,"step.completed":["goal","vocab"],"free.text":"mi respuesta"}',1),
       ($1,'module:x','{"step":1}',1), ($2,'unit:2','{"step":"raro"}',1), ($3,'unit:1','{"step":3}',1)`, [ana, ben, admin])
     await db.query('insert into public.teacher_students(teacher_id,student_id) values ($1,$2)', [teacher, ana])
     await asUser(db, admin, async db => {
       const rows = (await db.query('select * from public.teacher_course_drafts() order by unit_number')).rows
-      assert.deepEqual(rows.map(row => [row.student_id, row.unit_number, row.step]), [[ben, 2, null], [ana, 8, 6]], 'solo alumnos y solo «unit:1–8»; el admin no aparece')
-      assert.deepEqual(rows[1].completed, ['goal', 'vocab'])
-      assert.deepEqual(Object.keys(rows[1]).sort(), ['completed', 'level', 'step', 'student_id', 'unit_number', 'updated_at'], 'nunca las respuestas escritas')
+      assert.deepEqual(rows.map(row => [row.student_id, row.unit_number, row.step]), [[ben, 2, null], [carl, 3, null], [ana, 8, 6]], 'solo alumnos y solo «unit:1–8»; el admin no aparece')
+      assert.deepEqual(rows[2].completed, ['goal', 'vocab'])
+      assert.deepEqual(Object.keys(rows[2]).sort(), ['completed', 'level', 'step', 'student_id', 'unit_number', 'updated_at'], 'nunca las respuestas escritas')
     })
     await asUser(db, teacher, async db => {
       assert.deepEqual((await db.query('select student_id from public.teacher_course_drafts()')).rows.map(row => row.student_id), [ana])
     })
     await asUser(db, ana, async db => { await assert.rejects(db.query('select * from public.teacher_course_drafts()'), /forbidden/) })
+    // Una cuenta docente suspendida (con su sesión aún vigente) ya no lee el avance de sus alumnos.
+    await db.query('update public.profiles set suspended_at = now() where id = $1', [teacher])
+    await asUser(db, teacher, async db => { await assert.rejects(db.query('select * from public.teacher_course_drafts()'), /forbidden/) })
   } finally {
     await db.close()
   }
+})
+
+test('personal sin guardado: puede salir del cuestionario de una unidad con teoría reconocida y ve los enlaces de las unidades', () => {
+  const lesson = src('public/ModelLesson.jsx')
+  assert.match(lesson, /legacyTheory && !picked && !Object\.hasOwn\(fields, 'step'\)/, 'la elección del paso se recuerda aunque no haya borrador')
+  assert.equal((lesson.match(/setPicked\(true\)/g) ?? []).length, 2, '«Anterior», el menú de pasos y «Siguiente» marcan la elección')
+  const outline = src('components/CurriculumOutline.jsx')
+  assert.match(outline, /isStaffRole\(role \?\? profile\?\.role\)/)
+  assert.match(outline, /\{open && <Link/)
 })

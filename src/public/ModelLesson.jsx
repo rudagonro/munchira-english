@@ -329,14 +329,16 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
   const credited = review ? steps.map(s => s.id) : legacyTheory ? steps.filter(s => s.id !== 'summary').map(s => s.id) : []
   const wantsQuiz = new URLSearchParams(useLocation().search).get('paso') === 'cuestionario'
   // restoreLessonProgress still steps back if required practice is pending, so the link never skips work.
-  const resumeStep = wantsQuiz || (legacyTheory && !Object.hasOwn(fields, 'step')) ? steps.length - 1 : savedStep
+  // Sin guardado (personal) el borrador nunca tiene «step»: lo que elige se recuerda aquí para poder salir del cuestionario.
+  const [picked, setPicked] = useState(false)
+  const resumeStep = wantsQuiz || (legacyTheory && !picked && !Object.hasOwn(fields, 'step')) ? steps.length - 1 : savedStep
   const { step, completed } = restoreLessonProgress(resumeStep, steps, new Set([...completedIds, ...credited]), fields, lesson)
   const [visited, setVisited] = useState(() => new Set(Array.from({ length: step + 1 }, (_, index) => index)))
   const current = steps[step]
   useEffect(() => () => stopLessonAudio(), [])
   const mark = (id, done = true) => setCompletedIds(previous => { const next = new Set([...completed, ...previous]); if (done) next.add(id); else next.delete(id); return [...next] })
-  const go = (i) => { if (!canOpenStep(i, steps, completed)) return; stopLessonAudio(); setVisited(previous => new Set(previous).add(i)); setStep(i); window.scrollTo?.({ top: 0 }) }
-  const next = () => { if (isPracticeStep(current.id) && !completed.has(current.id)) return; mark(current.id); setVisited(previous => new Set(previous).add(step + 1)); setStep(step + 1); stopLessonAudio(); window.scrollTo?.({ top: 0 }) }
+  const go = (i) => { if (!canOpenStep(i, steps, completed)) return; stopLessonAudio(); setVisited(previous => new Set(previous).add(i)); setPicked(true); setStep(i); window.scrollTo?.({ top: 0 }) }
+  const next = () => { if (isPracticeStep(current.id) && !completed.has(current.id)) return; mark(current.id); setVisited(previous => new Set(previous).add(step + 1)); setPicked(true); setStep(step + 1); stopLessonAudio(); window.scrollTo?.({ top: 0 }) }
   return <PublicShell>
     <Seo title={`${lesson.number ? `A1 · Unidad ${lesson.number}` : 'A1 · Unidad 1'}: ${lesson.title}`} description={`Inglés A1: ${lesson.title.toLowerCase()} con vocabulario, explicación, ejercicios, lectura, diálogos, dictado y pronunciación.`} path={lesson.path ?? '/cursos/A1/unidad/1'} noindex />
     <div className="mp-wrap ml-page">
