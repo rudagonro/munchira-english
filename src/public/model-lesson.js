@@ -179,6 +179,14 @@ export function lessonCards(lesson) {
   }).map((card, i) => ({ ...card, id: `${card.word}-${i % 2 ? 'es' : 'en'}` }))
 }
 
+/** Clave del borrador de tarjetas: «cards» si la baraja es la misma de antes (todo el vocabulario,
+ *  en el mismo orden); «cardDeck2» si cambió, para no reinterpretar posiciones de la baraja anterior. */
+export function cardDraftKey(lesson) {
+  const deck = cardVocab(lesson)
+  const same = deck.length === lesson.vocab.length && deck.every((v, i) => v === lesson.vocab[i]) && !lesson.extraVocab?.length
+  return same ? 'cards' : 'cardDeck2'
+}
+
 /** Todas las líneas de los diálogos, en orden. */
 export function dialogueLines(lesson) {
   return (lesson.dialogues ?? []).flatMap(d => d.lines)

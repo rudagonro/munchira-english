@@ -2,7 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import cycle from '../content/cycles/A1.json' with { type: 'json' }
-import { cardVocab, checkPresentation, isCorrectAnswer, lessonCards } from '../src/public/model-lesson.js'
+import { cardDraftKey, cardVocab, checkPresentation, isCorrectAnswer, lessonCards } from '../src/public/model-lesson.js'
 import { restoreLessonProgress } from '../src/public/lessonDraftProgress.js'
 import { LESSON_STEPS } from '../src/public/model-lesson.js'
 
@@ -60,6 +60,9 @@ test('tarjetas: solo las palabras clave y cada una con su índice real en vocab'
   assert.ok(restore({ 'cards.idx': lesson.vocab.length * 2 }))
   const source = readFileSync(new URL('../src/public/ModelLesson.jsx', import.meta.url), 'utf8')
   assert.doesNotMatch(source, /useDraftState\('cards\./)
+  // La Unidad 8 conserva la misma baraja: su borrador anterior se retoma donde quedó.
+  assert.equal(cardDraftKey(units[7]), 'cards')
+  for (const unit of units.slice(0, 7)) assert.equal(cardDraftKey(unit), 'cardDeck2')
 })
 
 test('contenido revisado: sin pistas genéricas, notas internas, asteriscos, usted ni avisos de audio', () => {
