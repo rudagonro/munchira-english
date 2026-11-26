@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
+import { captureSeo } from './seoCapture.js'
 
 export default function Seo({ title, description, path, article = false, noindex = false, image }) {
+  captureSeo({ title, description, path, article, noindex, image })
   useEffect(() => {
     const previousTitle = document.title
     document.title = `${title} — Munchira English`

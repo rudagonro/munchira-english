@@ -130,3 +130,14 @@ El panel docente solo ve estudiantes asignados en teacher_students (admins ven t
 ## Verificación de la continuación
 
 13 pruebas learning/teacher pasan; cinco JSON validan sin errores; logo/icono revisados visualmente. Vista previa de integración en acceso público comprobada en ordenador/móvil sin desbordamiento. Pendientes: despliegue final de esta entrega, recorrido autenticado real y exportación A1. No se modificaron datos ni migraciones.
+
+## SEO y páginas públicas prerenderizadas
+
+`npm run build` ejecuta `vite build` y después `scripts/prerender-public.mjs`, que genera HTML real para las páginas públicas (portada, cursos, blog, gramática, privacidad, términos) con título, descripción, canonical, Open Graph, JSON-LD y `sitemap.xml`. Así WhatsApp, Facebook, LinkedIn, buscadores y lectores de IA ven contenido sin ejecutar JavaScript. React sustituye ese HTML al cargar (no hay hidratación).
+
+- Las rutas públicas están en `src/prerender/entry-server.jsx` (`PUBLIC_PAGES`); al añadir una ruta pública en `src/App.jsx`, añádela también ahí.
+- Título y descripción salen del componente `<Seo>` de cada página (una sola fuente de verdad).
+- Las rutas privadas (`/app`, `/login`, `/cuenta`, `/teacher`…) no se prerenderizan: `vercel.json` las envía a `app-shell.html`, el cascarón vacío de la app. `public/robots.txt` las bloquea.
+- Las páginas con `noindex` se generan pero no entran en el sitemap.
+- `npm run prerender` ejecuta el paso suelto en modo estricto (falla si una página no se genera). Prueba: `tests/seo-prerender.test.js`.
+

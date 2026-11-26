@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender-public.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "node --test",
     "content:validate": "node scripts/content.mjs validate",
-    "content:sql": "node scripts/content.mjs sql"
+    "content:sql": "node scripts/content.mjs sql",
+    "prerender": "node scripts/prerender-public.mjs --strict"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
