@@ -1,0 +1,6 @@
+{
+  "prompt": "I waited for ___ hour.",
+  "options": ["a", "an", "the"],
+  "answer": "an",
+  "explanation": "En hour la h no se pronuncia; el sonido inicial es una vocal, por eso usamos an: an hour."
+}
