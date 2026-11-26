@@ -9,8 +9,9 @@ import Seo from './Seo'
 import { QuestionFeedback } from './UnitCompletion'
 import { sayEnglish, stopLessonAudio } from './lessonSpeech'
 import { useLocalUnit0Pass } from './useLocalUnit0Pass'
-import { useReviewMode } from '../contexts/review-mode-context'
+import { useNoSave, useReviewMode } from '../contexts/review-mode-context'
 import ReviewAnswer from '../components/ReviewAnswer'
+import StaffNoSaveNote from '../components/StaffNoSaveNote'
 import './model-lesson.css'
 import './unit-quiz.css'
 import './starter-unit.css'
@@ -68,7 +69,7 @@ function Numbers({ accent }) {
 
 function SaveToReview({ set }) {
   const { user } = useAuth()
-  const review = useReviewMode()
+  const review = useNoSave()
   const [state, setState] = useState('idle')
   if (!user || review) return null
   async function save() {
@@ -113,7 +114,7 @@ function Vocabulary({ accent }) {
 
 function StarterQuiz({ onPassed }) {
   const { user, loading } = useAuth()
-  const review = useReviewMode()
+  const review = useNoSave() // revisor o cuenta del personal: se corrige aquí y no se guarda nada
   const questions = UNIT0.quiz
   const [answers, setAnswers] = useState({})
   const [reviewed, setReviewed] = useState(null)
@@ -190,6 +191,7 @@ export default function StarterUnit() {
         <h1>{UNIT0.title}</h1>
         <p className="su-goal">{UNIT0.goal}</p>
         <p>{UNIT0.intro}</p>
+        <StaffNoSaveNote />
         <div className="ml-head-row">
           <nav className="su-jump" aria-label="Secciones de la unidad">{SECTIONS.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav>
           <label className="ml-accent">Acento <select value={accent} onChange={event => setAccent(event.target.value)}><option value="en-US">Americano</option><option value="en-GB">Británico</option></select></label>

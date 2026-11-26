@@ -14,8 +14,9 @@ import UnitCompletion from './UnitCompletion'
 import A1DraftProvider from '../components/A1DraftProvider'
 import { useDraftFields, useDraftState } from '../contexts/a1-draft-context'
 import { restoreLessonProgress } from './lessonDraftProgress'
-import { useReviewMode } from '../contexts/review-mode-context'
+import { useNoSave, useReviewMode } from '../contexts/review-mode-context'
 import ReviewAnswer from '../components/ReviewAnswer'
+import StaffNoSaveNote from '../components/StaffNoSaveNote'
 import { ExtraGuided, ExtraTables, ExtraVocab, FreeChallenge, RescuedDialogues } from './RescuedPractice'
 import './model-lesson.css'
 
@@ -47,11 +48,11 @@ function TwoWayCards({ accent, lesson, onComplete }) {
   const [tries, setTries] = useDraftState(`${CARDS_DRAFT}.tries`, 0)
   const [score, setScore] = useDraftState(`${CARDS_DRAFT}.score`, 0)
   const { user } = useAuth()
-  const review = useReviewMode()
+  const noSave = useNoSave()
   const [saveError, setSaveError] = useState('')
   const reported = useRef(new Set())
   const saveWord = (known) => {
-    if (review || !user || reported.current.has(idx)) return
+    if (noSave || !user || reported.current.has(idx)) return
     reported.current.add(idx)
     void recordA1Word(lesson.number ?? 1, cards[idx].word, known).then(({ error }) => { if (error) { reported.current.delete(idx); setSaveError('No pudimos guardar esta palabra en Repaso. Comprueba tu conexión y vuelve a practicarla.') } else setSaveError('') })
   }
@@ -171,10 +172,10 @@ function SpeakPractice({ item, accent }) {
 
 function StepContent({ id, accent, lesson, onComplete, legacyRules = [], legacy = false }) {
   const { user } = useAuth()
-  const review = useReviewMode()
+  const noSave = useNoSave()
   const [saveError, setSaveError] = useState('')
   const attempt = (text, known) => {
-    if (review || !user) return
+    if (noSave || !user) return
     void recordA1Text(lesson, text, known).then(({ error }) => setSaveError(error ? 'No pudimos guardar estas palabras en Repaso. Comprueba tu conexión y vuelve a practicar.' : ''))
   }
   const exerciseAttempt = (ex, known) => attempt(ex.type === 'choice' ? `${ex.q} ${ex.opts[ex.correct]}` : ex.sentence?.replace('___', displayForm(ex.answer)) ?? ex.answer, known)
@@ -313,8 +314,8 @@ function TheoryRule({ rule, index, accent, recognised = false, showLegacy = fals
 }
 
 export default function ModelLesson({ lesson = defaultLesson, legacyTheory = false, legacyRules = [] }) {
-  const review = useReviewMode()
-  return <A1DraftProvider lessonKey={`unit:${lesson.number ?? 1}`} enabled={!review}><ModelLessonContent lesson={lesson} legacyTheory={legacyTheory} legacyRules={legacyRules} /></A1DraftProvider>
+  const noSave = useNoSave()
+  return <A1DraftProvider lessonKey={`unit:${lesson.number ?? 1}`} enabled={!noSave}><ModelLessonContent lesson={lesson} legacyTheory={legacyTheory} legacyRules={legacyRules} /></A1DraftProvider>
 }
 
 function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
@@ -328,14 +329,16 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
   const credited = review ? steps.map(s => s.id) : legacyTheory ? steps.filter(s => s.id !== 'summary').map(s => s.id) : []
   const wantsQuiz = new URLSearchParams(useLocation().search).get('paso') === 'cuestionario'
   // restoreLessonProgress still steps back if required practice is pending, so the link never skips work.
-  const resumeStep = wantsQuiz || (legacyTheory && !Object.hasOwn(fields, 'step')) ? steps.length - 1 : savedStep
+  // Sin guardado (personal) el borrador nunca tiene «step»: lo que elige se recuerda aquí para poder salir del cuestionario.
+  const [picked, setPicked] = useState(false)
+  const resumeStep = wantsQuiz || (legacyTheory && !picked && !Object.hasOwn(fields, 'step')) ? steps.length - 1 : savedStep
   const { step, completed } = restoreLessonProgress(resumeStep, steps, new Set([...completedIds, ...credited]), fields, lesson)
   const [visited, setVisited] = useState(() => new Set(Array.from({ length: step + 1 }, (_, index) => index)))
   const current = steps[step]
   useEffect(() => () => stopLessonAudio(), [])
   const mark = (id, done = true) => setCompletedIds(previous => { const next = new Set([...completed, ...previous]); if (done) next.add(id); else next.delete(id); return [...next] })
-  const go = (i) => { if (!canOpenStep(i, steps, completed)) return; stopLessonAudio(); setVisited(previous => new Set(previous).add(i)); setStep(i); window.scrollTo?.({ top: 0 }) }
-  const next = () => { if (isPracticeStep(current.id) && !completed.has(current.id)) return; mark(current.id); setVisited(previous => new Set(previous).add(step + 1)); setStep(step + 1); stopLessonAudio(); window.scrollTo?.({ top: 0 }) }
+  const go = (i) => { if (!canOpenStep(i, steps, completed)) return; stopLessonAudio(); setVisited(previous => new Set(previous).add(i)); setPicked(true); setStep(i); window.scrollTo?.({ top: 0 }) }
+  const next = () => { if (isPracticeStep(current.id) && !completed.has(current.id)) return; mark(current.id); setVisited(previous => new Set(previous).add(step + 1)); setPicked(true); setStep(step + 1); stopLessonAudio(); window.scrollTo?.({ top: 0 }) }
   return <PublicShell>
     <Seo title={`${lesson.number ? `A1 · Unidad ${lesson.number}` : 'A1 · Unidad 1'}: ${lesson.title}`} description={`Inglés A1: ${lesson.title.toLowerCase()} con vocabulario, explicación, ejercicios, lectura, diálogos, dictado y pronunciación.`} path={lesson.path ?? '/cursos/A1/unidad/1'} noindex />
     <div className="mp-wrap ml-page">
@@ -350,6 +353,7 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
           <label className="ml-accent">Acento <select value={accent} onChange={e => setAccent(e.target.value)}><option value="en-US">Americano</option><option value="en-GB">Británico</option></select></label>
         </div>
       <LessonBackLinks />
+      <StaffNoSaveNote />
       </header>
       <div className="ml-layout">
         <nav className="ml-steps" aria-label="Pasos de la unidad"><ol>{steps.map((s, i) => <li key={s.id}><button type="button" aria-current={i === step ? 'step' : undefined} className={completed.has(s.id) ? 'ml-step-done' : ''} disabled={!canOpenStep(i, steps, completed)} onClick={() => go(i)}><span>{completed.has(s.id) ? '✓' : i + 1}</span>{s.label}</button></li>)}</ol></nav>

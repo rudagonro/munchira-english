@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom'
 import { getCurriculum } from '../data/curriculum'
 import { A1_LEGACY_LABEL, unit0StatusText, unitStatusText } from '../data/a1Course'
+import { useAuth } from '../contexts/auth-context'
+import { isStaffRole } from '../contexts/review-mode-context'
 import '../public/curriculum.css'
 
 export default function CurriculumOutline({ level, course }) {
+  const { role, profile } = useAuth()
   const curriculum = getCurriculum(level)
+  // El personal no guarda el aprobado de la Unidad 0 (no escribe nada), así que sus unidades no se cierran.
+  const open = !course?.unit0 || course.unit0.cleared || isStaffRole(role ?? profile?.role)
   if (!curriculum) return null
   if (curriculum.code === 'A1' && course) return <section className="mc-internal-plan" aria-labelledby="mc-internal-title">
     <h2 id="mc-internal-title">Curso A1 · Unidad 0 y {course.total} unidades</h2>
@@ -20,9 +25,9 @@ export default function CurriculumOutline({ level, course }) {
       {course.units.map(unit => <li key={unit.number}>
         <span>{String(unit.number).padStart(2, '0')}</span>
         <div><strong>{unit.label}</strong>
-          <small>{course.unit0 && !course.unit0.cleared ? 'Se abre al aprobar la Unidad 0' : unitStatusText(unit)}{unit.bestScore !== null ? ` · ${unit.bestScore}%` : ''}</small>
+          <small>{!open ? 'Se abre al aprobar la Unidad 0' : unitStatusText(unit)}{unit.bestScore !== null ? ` · ${unit.bestScore}%` : ''}</small>
           {unit.fromLegacy && <small className="mc-legacy-badge">{A1_LEGACY_LABEL}</small>}
-          {(!course.unit0 || course.unit0.cleared) && <Link to={unit.path}>{unit.status === 'completed' ? 'Repasar unidad' : unit.status === 'not-started' ? 'Empezar unidad' : 'Continuar unidad'} →</Link>}
+          {open && <Link to={unit.path}>{unit.status === 'completed' ? 'Repasar unidad' : unit.status === 'not-started' ? 'Empezar unidad' : 'Continuar unidad'} →</Link>}
         </div>
       </li>)}
     </ol>

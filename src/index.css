@@ -1556,6 +1556,7 @@ button.tp-kpi:hover, .tp-kpi.on { border-color: var(--purple); background: var(-
 .tp-badge.at_risk { background: #FEE2E2; color: #991B1B; }
 .tp-badge.checkpoint_blocked { background: #FEF3C7; color: #92400E; }
 .tp-badge.no_diagnostic { background: var(--border); color: var(--text-muted); }
+.tp-badge.waitlist { background: #E0E7FF; color: #3730A3; }
 
 .tp-detail-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
 .tp-detail-head .tp-h2 { font-size: 1.3rem; }
@@ -1799,7 +1800,7 @@ a.dash-card:hover { border-color: var(--purple); box-shadow: 0 10px 28px rgba(22
 /* Revisor de unidades A1 (lo que ve el alumno, sin guardar nada y con respuestas) */
 .rv-unit-wrap { max-width: 1120px; margin: 0 auto; padding: 10px 16px 0; }
 /* La barra del revisor queda a la vista al bajar por la unidad (el contenedor fijo es el que se pega arriba). */
-.rv-unit-sticky { position: sticky; top: 0; z-index: 30; }
+.rv-unit-sticky { position: sticky; top: var(--rv-nav-h, 0px); z-index: 30; }
 .rv-unit-sticky .rv-unit-bar { position: static; margin-bottom: 8px; }
 .rv-key { flex-basis: 100%; margin-top: 10px; font-size: 0.9rem; }
 .rv-key ol { padding-left: 20px; display: grid; gap: 6px; margin-bottom: 10px; }
@@ -1812,9 +1813,10 @@ a.dash-card:hover { border-color: var(--purple); box-shadow: 0 10px 28px rgba(22
 .rv-waitlist { font-size: 0.92rem; line-height: 1.55; }
 .ex-done:has(.rv-key) { flex-wrap: wrap; }
 /* Con la barra fija del revisor: el menú de pasos y los destinos de los enlaces quedan debajo de ella. */
-.rv-review .ml-steps { top: calc(var(--rv-bar-h, 0px) + 16px); }
-.rv-review .su-section, .rv-review [id] { scroll-margin-top: calc(var(--rv-bar-h, 0px) + 12px); }
+.rv-review .ml-steps { top: calc(var(--rv-nav-h, 0px) + var(--rv-bar-h, 0px) + 16px); }
+.rv-review .su-section, .rv-review [id] { scroll-margin-top: calc(var(--rv-nav-h, 0px) + var(--rv-bar-h, 0px) + 12px); }
 @media (max-width: 640px) {
   .rv-unit-bar .rv-chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; }
   .rv-unit-bar .rv-chip { flex: none; }
 }
+@media (max-width: 640px) { .rv-unit-bar .rv-bar-top { font-size: 0.78rem; } }

@@ -7,15 +7,19 @@ import HeaderBrand from './HeaderBrand'
 import FooterBrand from './FooterBrand'
 import LoginAccess, { AccountCta, RegisterLink } from './LoginAccess'
 import '../public/cookie-notice.css'
+import { useReviewMode } from '../contexts/review-mode-context'
 
 export default function PublicShell({ children }) {
   const { pathname } = useLocation()
+  const review = useReviewMode()
   const main = useRef(null)
   const previousPath = useRef(pathname)
   useEffect(() => {
     if (previousPath.current !== pathname) { main.current?.focus(); window.scrollTo(0, 0) }
     previousPath.current = pathname
   }, [pathname])
+  // En el revisor la unidad va dentro de la navegación de la app (Layout): sin cabecera ni pie públicos.
+  if (review) return <div className="mp-home mp-public rv-embedded">{children}</div>
   return <div className="mp-home mp-public">
     <a className="mp-skip" href="#contenido">Saltar al contenido</a>
     <header className="mp-public-header"><div className="mp-wrap mp-public-header-inner">
