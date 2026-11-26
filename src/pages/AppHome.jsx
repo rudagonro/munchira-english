@@ -7,6 +7,7 @@ import { computeModuleAvailability } from '../data/moduleAvailability'
 import { summarizeCycle } from '../data/dashboardSummary'
 import mascot from '../assets/oruga-transparente.png.asset.json'
 import CurriculumOutline from '../components/CurriculumOutline'
+import { useA1Course } from '../data/useA1Course'
 
 const mediaOrigin = ''
 const SKILLS = [
@@ -21,6 +22,7 @@ export default function AppHome() {
   const [due, setDue] = useState(null)
   const [loading, setLoading] = useState(true)
   const [loadError, setLoadError] = useState('')
+  const course = useA1Course()
 
   useEffect(() => {
     if (!user) return
@@ -48,8 +50,9 @@ export default function AppHome() {
   const sum = summarizeCycle(availability)
   const started = Boolean(diag || cycle?.enrollment)
   const level = cycle?.enrollment?.cycles?.cefr_level ?? diag?.cefr_level ?? null
+  const a1 = level === 'A1' ? course.summary : null
 
-  if (loading) return <div className="screen-center"><p className="loading-text">Cargando tu panel...</p></div>
+  if (loading || (level === 'A1' && course.loading)) return <div className="screen-center"><p className="loading-text">Cargando tu panel...</p></div>
 
   return (
     <div className="dash">
@@ -60,6 +63,8 @@ export default function AppHome() {
           <h1>Hola, {name}</h1>
           {!started ? (
             <p>Elige cómo empezar: desde cero en A1 o con una prueba de nivel para ubicarte y preparar tus módulos.</p>
+          ) : a1 ? (
+            <p><strong>{a1.nextAction.text}.</strong> Un poco cada día cuenta más que mucho de vez en cuando.</p>
           ) : sum.next ? (
             <p>Tu siguiente paso es <strong>{sum.next.title}</strong>.{sum.next.lessonProgress?.total > 0 && <> Llevas {sum.next.lessonProgress.completed} de {sum.next.lessonProgress.total} lecciones completadas.</>} Un poco cada día cuenta más que mucho de vez en cuando.</p>
           ) : sum.total === 0 ? (
@@ -70,10 +75,11 @@ export default function AppHome() {
           <div className="dash-actions">
             {!started
               ? <Link to="/diagnostic" className="dash-btn">Empezar</Link>
-              : sum.next
-                ? <Link to={`/module/${sum.next.id}`} className="dash-btn">Continuar: {sum.next.title}</Link>
-                : <Link to="/cycle" className="dash-btn">Ver mis módulos</Link>}
-            <Link to="/leccion-modelo" className="dash-btn ghost">Lección de muestra</Link>
+              : a1
+                ? <Link to={a1.nextAction.path} className="dash-btn">{a1.nextAction.cta}</Link>
+                : sum.next
+                  ? <Link to={`/module/${sum.next.id}`} className="dash-btn">Continuar: {sum.next.title}</Link>
+                  : <Link to="/cycle" className="dash-btn">Ver mis módulos</Link>}
           </div>
         </div>
         {level ? (
@@ -81,7 +87,11 @@ export default function AppHome() {
             <span className="dash-eyebrow">Tu nivel</span>
             <strong>{level}</strong>
             <span>{LEVEL_NAMES[level]}{diag ? ` · diagnóstico ${Number(diag.final_score).toFixed(0)}/100` : ''}</span>
-            {sum.total > 0 && <>
+            {a1 && <>
+              <div className="dash-meter" aria-label={`${a1.pct}% del curso A1`}><span style={{ width: `${a1.pct}%` }} /></div>
+              <span>{a1.progressLabel} · {a1.pct}%</span>
+            </>}
+            {!a1 && sum.total > 0 && <>
               <div className="dash-meter" aria-label={`${sum.pct}% del nivel`}><span style={{ width: `${sum.pct}%` }} /></div>
               <span>{sum.completed} de {sum.total} módulos · {sum.pct}%</span>
             </>}
@@ -91,32 +101,38 @@ export default function AppHome() {
         )}
       </section>
       <div className="dash-stats">
-        <div className="dash-stat"><b>{sum.completed}</b><span>Módulos completados</span></div>
-        <div className="dash-stat"><b>{sum.avg === null ? '—' : `${sum.avg}%`}</b><span>Nota media</span></div>
-        <div className="dash-stat"><b>{sum.toImprove}</b><span>Módulos por mejorar (menos de 70%)</span></div>
+        {a1 ? <>
+          <div className="dash-stat"><b>{a1.completed} / {a1.total}</b><span>Unidades completadas</span></div>
+          <div className="dash-stat"><b>{a1.avg === null ? '—' : `${a1.avg}%`}</b><span>Nota media de cuestionarios</span></div>
+          <div className="dash-stat"><b>{a1.units.filter(unit => unit.status === 'quiz-pending').length}</b><span>Cuestionarios finales pendientes</span></div>
+        </> : <>
+          <div className="dash-stat"><b>{sum.completed}</b><span>Módulos completados</span></div>
+          <div className="dash-stat"><b>{sum.avg === null ? '—' : `${sum.avg}%`}</b><span>Nota media</span></div>
+          <div className="dash-stat"><b>{sum.toImprove}</b><span>Módulos por mejorar (menos de 70%)</span></div>
+        </>}
         <div className="dash-stat"><b>{due ?? '—'}</b><span>Palabras para repasar hoy</span></div>
       </div>
       <div className="dash-grid">
-        <Link to="/cycle" className="dash-card">
+        {a1 ? <Link to="/cycle" className="dash-card">
+          <span className="tag">Mi curso</span>
+          <h3>Curso A1 · {a1.total} unidades</h3>
+          <p>Teoría paso a paso, práctica, escucha, diálogo y un cuestionario final en cada unidad.</p>
+          <span className="go">Ver mi curso →</span>
+        </Link> : <Link to="/cycle" className="dash-card">
           <span className="tag">Módulos</span>
           <h3>Tu ruta {level ? `de ${level}` : ''}</h3>
           <p>Avanza en orden: cada módulo desbloquea el siguiente y algunos terminan con un control.</p>
           <span className="go">Ver módulos →</span>
-        </Link>
+        </Link>}
         <Link to="/review" className="dash-card">
           <span className="tag">Repaso</span>
           <h3>Vocabulario de hoy</h3>
           <p>{due ? `Tienes ${due} palabras listas para repasar.` : 'Las palabras que aprendas volverán aquí en el momento justo para no olvidarlas.'}</p>
           <span className="go">Ir al repaso →</span>
         </Link>
-        <Link to="/leccion-modelo" className="dash-card">
-          <span className="tag">Lección de muestra</span>
-          <h3>Presentarte en inglés</h3>
-          <p>13 pasos con audio natural, práctica, lectura, diálogo y repaso.</p>
-          <span className="go">Abrir lección →</span>
-        </Link>
       </div>
-      <CurriculumOutline level={level} />
+      <CurriculumOutline level={level} course={a1} />
+      {!a1 && <>
       <h2 className="dash-section-title">Lo que practicas en Munchira</h2>
       <div className="dash-skills">
         {SKILLS.map(([k, icon, label]) => (
@@ -127,6 +143,7 @@ export default function AppHome() {
           </div>
         ))}
       </div>
+      </>}
       <div className="dash-foot">
         {started && <Link to="/diagnostic" className="auth-footer" style={{ marginRight: 'auto', alignSelf: 'center' }}>{diag ? 'Repetir la prueba de nivel' : 'Hacer la prueba de nivel'}</Link>}
         <button type="button" onClick={signOut}>Cerrar sesión</button>

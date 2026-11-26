@@ -5,6 +5,7 @@ import { computeModuleAvailability, isCycleComplete } from '../data/moduleAvaila
 import { LEVEL_NAMES } from '../data/diagnosticBank'
 import { PASS_SCORE } from '../data/dashboardSummary'
 import CurriculumOutline from '../components/CurriculumOutline'
+import { useA1Course } from '../data/useA1Course'
 
 const SKILL_LABELS = {
   grammar: 'Gramática',
@@ -30,6 +31,7 @@ export default function CycleModules() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [cycleData, setCycleData] = useState(null)
+  const course = useA1Course()
   useEffect(() => {
     let active = true
     async function load() {
@@ -59,6 +61,7 @@ export default function CycleModules() {
   }
   const { enrollment, modules, progress, checkpoints, checkpointAttempts } = cycleData
   const level = enrollment.cycles.cefr_level
+  if (level === 'A1') return <A1CourseView course={course} />
   const availability = computeModuleAvailability(modules, progress, checkpoints, checkpointAttempts)
   const cycleComplete = isCycleComplete(modules, progress, checkpoints, checkpointAttempts)
   const completed = availability.filter(m => m.status === 'completed').length
@@ -69,9 +72,6 @@ export default function CycleModules() {
       <p className="cycle-subtitle">{completed} de {modules.length} módulos completados · Completa los módulos en orden.</p>
     </div>
     {cycleComplete && <div className="success-banner" style={{ maxWidth: 560, marginBottom: 28 }}>🎉 ¡Felicidades! Completaste todos los módulos de este ciclo.</div>}
-    {level === 'A1' && <Link to="/leccion-modelo" className="sample-lesson-card">
-      <span className="slc-tag">Lección de muestra</span><strong>Presentarte en inglés</strong><p>13 pasos con audio, práctica, lectura, diálogo y repaso.</p><span className="slc-cta">Abrir lección →</span>
-    </Link>}
     {modules.length === 0 ? <div className="cycle-empty">
       <h2>Los módulos de {level} se están preparando</h2>
       <p>Tu diagnóstico te ubicó en {level}. Aún no hay módulos publicados para este nivel; te avisaremos aquí en cuanto estén listos.</p>
@@ -82,6 +82,21 @@ export default function CycleModules() {
       </div>
     </div> : <div className="module-grid">{availability.map(mod => <ModuleCard key={mod.id} module={mod} onClick={() => navigate(`/module/${mod.id}`)} />)}</div>}
     <CurriculumOutline level={level} />
+  </div>
+}
+
+function A1CourseView({ course }) {
+  if (course.loading) return <div className="screen-center"><p className="loading-text">Cargando tu curso...</p></div>
+  const { summary } = course
+  return <div className="page-shell">
+    <div className="cycle-header">
+      <div className="cycle-level-badge">A1 · {LEVEL_NAMES.A1}</div>
+      <h1 className="cycle-title">Mi curso A1</h1>
+      <p className="cycle-subtitle">{summary.progressLabel} · {summary.pct}%</p>
+    </div>
+    {course.error && <div className="error-banner" role="alert">No pudimos consultar todo tu avance. Lo que ya completaste sigue guardado.</div>}
+    <div className="dash-actions"><p><strong>{summary.nextAction.text}.</strong></p><Link to={summary.nextAction.path} className="btn-primary" style={{ textDecoration: 'none', textAlign: 'center', maxWidth: 320 }}>{summary.nextAction.cta}</Link></div>
+    <CurriculumOutline level="A1" course={summary} />
   </div>
 }
 

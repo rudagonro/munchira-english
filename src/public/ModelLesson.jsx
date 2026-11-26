@@ -181,7 +181,13 @@ function StepContent({ id, accent, lesson, onComplete }) {
       <ul className="ml-vocab">{lesson.vocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{displayForm(v.es)}</span><em>«{v.say}»</em><ListenButtons text={v.en} accent={accent} /></li>)}</ul>
     </>
     case 'explain': return <>
-      <h2>Paso a paso</h2>
+      {lesson.theory?.length > 0 && <>
+        <h2>La regla, paso a paso</h2>
+        <p>Primero entiende cómo se construye la frase; después aplícala con palabras nuevas.</p>
+        {lesson.theory.map((rule, index) => <TheoryRule key={rule.title} rule={rule} index={index} accent={accent} />)}
+        <h2>Más detalles de la unidad</h2>
+      </>}
+      {!lesson.theory?.length && <h2>Paso a paso</h2>}
       <ol className="ml-explain">{lesson.explanation.map(p => <li key={p.title}><h3>{p.title}</h3><p>{p.text}</p>{p.example && <p className="ml-example">{p.example} <ListenButtons text={p.example} accent={accent} /></p>}</li>)}</ol>
     </>
     case 'examples': return <>
@@ -196,7 +202,7 @@ function StepContent({ id, accent, lesson, onComplete }) {
     </>
     case 'mistakes': return <>
       <h2>Errores típicos de hispanohablantes</h2>
-      <ul className="ml-mistakes">{lesson.mistakes.map(m => <li key={m.wrong}><p className="ml-wrong">✗ {m.wrong}</p><p className="ml-right">✓ {m.right} <ListenButtons text={m.right} accent={accent} /></p><p>{m.why}</p></li>)}</ul>
+      <ul className="ml-mistakes">{[...(lesson.mistakes ?? []), ...(lesson.theory ?? []).flatMap(rule => rule.mistake ? [rule.mistake] : [])].map(m => <li key={m.wrong}><p className="ml-wrong">✗ {m.wrong}</p><p className="ml-right">✓ {m.right} <ListenButtons text={m.right} accent={accent} /></p><p>{m.why}</p></li>)}</ul>
     </>
     case 'guided': return <><h2>Práctica guiada</h2><p>Primero con pistas. Si fallas, verás por qué.</p><ExerciseBlock draftKey="guided" exercises={lesson.guided} onComplete={onComplete} onAttempt={exerciseAttempt} />{warning}</>
     case 'cards': return <><h2>Repaso en dos direcciones</h2><p>Cada palabra aparece de inglés a español y de español a inglés. Así se queda en la memoria.</p><TwoWayCards accent={accent} lesson={lesson} onComplete={onComplete} /></>
@@ -258,17 +264,51 @@ function FreeTask({ lesson, onComplete }) {
   </>
 }
 
-export default function ModelLesson({ lesson = defaultLesson }) {
-  return <A1DraftProvider lessonKey={`unit:${lesson.number ?? 1}`}><ModelLessonContent lesson={lesson} /></A1DraftProvider>
+function TheoryRule({ rule, index, accent }) {
+  const [value, setValue] = useDraftState(`theory.${index}.val`, '')
+  const [fails, setFails] = useDraftState(`theory.${index}.fails`, 0)
+  const [checked, setChecked] = useState(null)
+  const [shown, setShown] = useState(false)
+  const check = () => {
+    const ok = isCorrectAnswer(value, rule.apply.answer)
+    setChecked(ok)
+    playFeedback(ok)
+    if (!ok) setFails(fails + 1)
+  }
+  return <section className="ml-rule" aria-labelledby={`ml-rule-${index}`}>
+    <h3 id={`ml-rule-${index}`}>{index + 1}. {rule.title}</h3>
+    <p><strong>Regla:</strong> {rule.rule}</p>
+    <p><strong>Cómo se forma:</strong> <span className="ml-formula">{rule.form}</span></p>
+    <ol>{rule.steps.map(step => <li key={step}>{step}</li>)}</ol>
+    <div className="ml-table-wrap"><table className="ml-table"><caption>Afirmativa, negativa y pregunta</caption><tbody>{rule.forms.map(form => <tr key={form.label}><th scope="row">{form.label}</th><td>{form.en} <ListenButtons text={form.en.split(' / ')[0]} accent={accent} /></td><td>{form.es}</td></tr>)}</tbody></table></div>
+    <h4>Ejemplos</h4>
+    <ul className="ml-examples">{rule.examples.map(example => <li key={example.en}><p className="ml-big">{example.en}</p><p>{example.es}</p><ListenButtons text={example.en} accent={accent} /></li>)}</ul>
+    <h4>Aplica la regla con palabras nuevas</h4>
+    <p>Ordena estas palabras y escribe la frase: <strong>{rule.apply.words.join(' + ')}</strong> <span>({rule.apply.es})</span></p>
+    <p className="ml-input-row">
+      <input type="text" aria-label={`Tu frase para «${rule.apply.es}»`} value={value} onChange={event => { setValue(event.target.value); setChecked(null) }} onKeyDown={event => { if (event.key === 'Enter' && value.trim()) check() }} />
+      <button type="button" className="mp-button" disabled={!value.trim()} onClick={check}>Comprobar</button>
+      {fails > 0 && !checked && <button type="button" className="mp-button" onClick={() => setShown(true)}>Ver respuesta</button>}
+    </p>
+    {checked === true && <p className="ml-feedback ml-ok" role="status">¡Bien construida! {rule.apply.answer}</p>}
+    {checked === false && <p className="ml-feedback ml-bad" role="status">Todavía no. Revisa el orden: {rule.form}.</p>}
+    {shown && !checked && <p className="ml-example">{rule.apply.answer} <ListenButtons text={rule.apply.answer} accent={accent} /></p>}
+    <p className="ml-tip">Antes en: {rule.source.join(' · ')}</p>
+  </section>
 }
 
-function ModelLessonContent({ lesson }) {
+export default function ModelLesson({ lesson = defaultLesson, legacyTheory = false }) {
+  return <A1DraftProvider lessonKey={`unit:${lesson.number ?? 1}`}><ModelLessonContent lesson={lesson} legacyTheory={legacyTheory} /></A1DraftProvider>
+}
+
+function ModelLessonContent({ lesson, legacyTheory }) {
   const [savedStep, setStep] = useDraftState('step', 0)
   const [accent, setAccent] = useDraftState('accent', 'en-US')
   const [completedIds, setCompletedIds] = useDraftState('step.completed', [])
   const steps = LESSON_STEPS.map(s => s.id === 'free' && lesson.number ? { ...s, label: 'Ponlo en práctica' } : s)
   const fields = useDraftFields()
-  const { step, completed } = restoreLessonProgress(savedStep, steps, new Set(completedIds), fields, lesson)
+  const credited = legacyTheory ? steps.filter(s => s.id !== 'summary').map(s => s.id) : []
+  const { step, completed } = restoreLessonProgress(savedStep, steps, new Set([...completedIds, ...credited]), fields, lesson)
   const [visited, setVisited] = useState(() => new Set(Array.from({ length: step + 1 }, (_, index) => index)))
   const current = steps[step]
   useEffect(() => () => stopLessonAudio(), [])
@@ -279,8 +319,9 @@ function ModelLessonContent({ lesson }) {
     <Seo title={`${lesson.number ? `A1 · Unidad ${lesson.number}` : 'Lección modelo'}: ${lesson.title}`} description={`Inglés A1: ${lesson.title.toLowerCase()} con vocabulario, explicación, ejercicios, lectura, diálogos, dictado y pronunciación.`} path={lesson.path ?? '/leccion-modelo'} noindex />
     <div className="mp-wrap ml-page">
       <header className="ml-head">
-        <p className="mp-eyebrow">{lesson.level} · {lesson.module}{!lesson.number && ' · Lección de muestra'}</p>
-        <h1>{lesson.title}</h1>
+        <p className="mp-eyebrow">{lesson.number ? `Curso ${lesson.level} · ${lesson.module}` : `${lesson.level} · ${lesson.module} · Lección de muestra`}</p>
+        <h1>{lesson.number ? `Unidad ${lesson.number}: ${lesson.title}` : lesson.title}</h1>
+        {legacyTheory && <p className="ml-tip" role="status">Ya estudiaste esta teoría en los módulos anteriores: puedes ir directo al cuestionario final o repasar cualquier paso.</p>}
         <div className="ml-progress" role="progressbar" aria-valuemin={0} aria-valuemax={steps.length} aria-valuenow={completed.size} aria-label="Avance de la lección"><span style={{ width: `${(completed.size / steps.length) * 100}%` }} /></div>
         <div className="ml-head-row">
           <p>Paso {step + 1} de {steps.length}: <strong>{current.label}</strong></p>
@@ -326,7 +367,7 @@ function SummaryNextStep({ lesson, onComplete }) {
     {session ? <Link className="mp-text-link" to="/app">Ir a mi panel</Link> : <Link className="mp-text-link" to="/register">Crear mi cuenta</Link>}
   </>
   if (session) return <>
-    <p>Ya tienes tu cuenta. Sigue con tus módulos y tu repaso diario desde tu panel.</p>
+    <p>Ya tienes tu cuenta. Sigue con tu curso y tu repaso diario desde tu panel.</p>
     <Link className="mp-button mp-button-dark" to="/app">Ir a mi panel <span aria-hidden="true">→</span></Link>
   </>
   return <>

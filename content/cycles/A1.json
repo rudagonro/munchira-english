@@ -1765,7 +1765,191 @@
           "La edad se dice con «I'm» + número + «years old», nunca con «have»."
         ],
         "number": 1,
-        "path": "/leccion-modelo"
+        "path": "/leccion-modelo",
+        "theory": [
+          {
+            "source": [
+              "Gramática núcleo: To Be y presente simple · Lección 1: Estructura de la oración en inglés"
+            ],
+            "title": "El orden de la frase: sujeto + verbo + complemento",
+            "rule": "Toda frase en inglés sigue un orden fijo. Primero va el sujeto (quién), luego el verbo (qué hace o qué es) y al final el complemento (el resto de la idea). A diferencia del español, el sujeto casi nunca se omite.",
+            "form": "Sujeto + verbo + complemento",
+            "steps": [
+              "Elige el sujeto: I, you, he, she, it, we, they o un nombre (my mother, Ana).",
+              "Pon el verbo justo después: am, is, are, work, live…",
+              "Termina la idea con el complemento: a teacher, from Cali, in Bogotá."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "She is a teacher.",
+                "es": "Ella es profesora."
+              },
+              {
+                "label": "Negativa",
+                "en": "She is not a teacher.",
+                "es": "Ella no es profesora."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Is she a teacher?",
+                "es": "¿Ella es profesora?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "I am a student.",
+                "es": "Soy estudiante."
+              },
+              {
+                "en": "My sister is a nurse.",
+                "es": "Mi hermana es enfermera."
+              },
+              {
+                "en": "They are from Bogotá.",
+                "es": "Ellos son de Bogotá."
+              }
+            ],
+            "apply": {
+              "words": [
+                "teacher",
+                "a",
+                "is",
+                "she"
+              ],
+              "answer": "She is a teacher.",
+              "es": "Ella es profesora."
+            },
+            "mistake": {
+              "wrong": "Is a teacher.",
+              "right": "She is a teacher.",
+              "why": "En inglés el sujeto es obligatorio, aunque en español se pueda omitir."
+            }
+          },
+          {
+            "source": [
+              "Gramática núcleo: To Be y presente simple · Lección 2: El verbo To Be"
+            ],
+            "title": "El verbo to be: am, is, are",
+            "rule": "«To be» significa ser o estar. En presente tiene tres formas y cada sujeto usa una sola: I → am; he, she, it → is; you, we, they → are.",
+            "form": "Sujeto + am / is / are + nombre, adjetivo o lugar",
+            "steps": [
+              "Mira el sujeto.",
+              "Elige am, is o are según la tabla.",
+              "Añade lo que eres o cómo estás: a doctor, happy, at home.",
+              "Para negar, pon not después del verbo. Para preguntar, pon el verbo antes del sujeto."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "We are tired.",
+                "es": "Estamos cansados."
+              },
+              {
+                "label": "Negativa",
+                "en": "We are not tired. / We aren’t tired.",
+                "es": "No estamos cansados."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Are you tired?",
+                "es": "¿Estás cansado?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "I am from Colombia.",
+                "es": "Soy de Colombia."
+              },
+              {
+                "en": "He is at home.",
+                "es": "Él está en casa."
+              },
+              {
+                "en": "You are my friend.",
+                "es": "Eres mi amigo."
+              }
+            ],
+            "apply": {
+              "words": [
+                "tired",
+                "are",
+                "we"
+              ],
+              "answer": "We are tired.",
+              "es": "Estamos cansados."
+            },
+            "mistake": {
+              "wrong": "I is happy.",
+              "right": "I am happy.",
+              "why": "Con I siempre se usa am."
+            }
+          },
+          {
+            "source": [
+              "Listening guiado con apoyo · Lección 1: Presentaciones personales",
+              "Frases básicas de supervivencia · Lección 1: Saludos y cortesía",
+              "Frases básicas de supervivencia · Lección 2: Presentarte por escrito"
+            ],
+            "title": "Saludar y presentarte con frases que puedes completar",
+            "rule": "Una presentación se construye con frases fijas que tienen un hueco. Cambias solo la palabra del hueco y obtienes una frase nueva. El saludo depende de la hora del día.",
+            "form": "Hello / Good morning + My name is ___ + I am from ___ + I live in ___ + I am ___ years old",
+            "steps": [
+              "Saluda: Hello, Hi, Good morning, Good afternoon, Good evening.",
+              "Di tu nombre: My name is… o I’m…",
+              "Di tu origen y tu ciudad: I am from…, I live in…",
+              "Di tu edad con to be: I am 30 years old (no «I have 30 years»).",
+              "Cierra con cortesía: Nice to meet you. Thank you."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "I live in Medellín.",
+                "es": "Vivo en Medellín."
+              },
+              {
+                "label": "Negativa",
+                "en": "I don’t live in Bogotá.",
+                "es": "No vivo en Bogotá."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Where do you live?",
+                "es": "¿Dónde vives?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "Good morning! My name is Laura.",
+                "es": "¡Buenos días! Me llamo Laura."
+              },
+              {
+                "en": "I am from Peru and I live in Lima.",
+                "es": "Soy de Perú y vivo en Lima."
+              },
+              {
+                "en": "Excuse me, I’m sorry.",
+                "es": "Disculpe, lo siento."
+              }
+            ],
+            "apply": {
+              "words": [
+                "years",
+                "I",
+                "old",
+                "am",
+                "thirty"
+              ],
+              "answer": "I am thirty years old.",
+              "es": "Tengo treinta años."
+            },
+            "mistake": {
+              "wrong": "I have thirty years.",
+              "right": "I am thirty years old.",
+              "why": "La edad se dice con to be, no con have."
+            }
+          }
+        ]
       }
     },
     {
@@ -4469,7 +4653,130 @@
               }
             }
           }
-        }
+        },
+        "theory": [
+          {
+            "source": [
+              "Gramática núcleo: To Be y presente simple · Lección 4: Preguntas con To Be"
+            ],
+            "title": "Preguntas con to be",
+            "rule": "Para preguntar con to be se invierte el orden: el verbo va antes del sujeto. Si necesitas una palabra interrogativa (what, where, how old, who), va al principio.",
+            "form": "(What / Where / Who / How old) + am / is / are + sujeto + resto?",
+            "steps": [
+              "Parte de la afirmación: She is your sister.",
+              "Mueve el verbo delante del sujeto: Is she your sister?",
+              "Si preguntas por un dato, empieza con la palabra interrogativa: Who is she?",
+              "Responde corto: Yes, she is. / No, she isn’t."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "She is your sister.",
+                "es": "Ella es tu hermana."
+              },
+              {
+                "label": "Negativa",
+                "en": "She isn’t your sister.",
+                "es": "Ella no es tu hermana."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Is she your sister?",
+                "es": "¿Ella es tu hermana?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "What is your name?",
+                "es": "¿Cómo te llamas?"
+              },
+              {
+                "en": "How old is your brother?",
+                "es": "¿Cuántos años tiene tu hermano?"
+              },
+              {
+                "en": "Are you married?",
+                "es": "¿Estás casado?"
+              }
+            ],
+            "apply": {
+              "words": [
+                "your",
+                "is",
+                "what",
+                "name"
+              ],
+              "answer": "What is your name?",
+              "es": "¿Cómo te llamas?"
+            },
+            "mistake": {
+              "wrong": "You are a student?",
+              "right": "Are you a student?",
+              "why": "En la pregunta el verbo va antes del sujeto."
+            }
+          },
+          {
+            "source": [
+              "Gramática núcleo: To Be y presente simple · Lección 6: Adjetivos descriptivos básicos",
+              "Vocabulario de uso diario (núcleo) · Lección 1: Familia y personas"
+            ],
+            "title": "Describir a tu familia con adjetivos",
+            "rule": "Los adjetivos en inglés nunca cambian: no tienen masculino, femenino ni plural. Van antes del sustantivo (a tall man) o después de to be (my father is tall).",
+            "form": "Posesivo + persona + to be + adjetivo  |  a / an + adjetivo + sustantivo",
+            "steps": [
+              "Elige la persona con su posesivo: my mother, your father, his sister, her brother.",
+              "Añade to be: is para una persona, are para varias.",
+              "Termina con el adjetivo: tall, short, young, old, happy, sick.",
+              "Si el adjetivo acompaña a un sustantivo, va delante: a big family."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "My mother is sick.",
+                "es": "Mi mamá está enferma."
+              },
+              {
+                "label": "Negativa",
+                "en": "My mother isn’t sick.",
+                "es": "Mi mamá no está enferma."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Is your mother sick?",
+                "es": "¿Tu mamá está enferma?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "My brother is tall.",
+                "es": "Mi hermano es alto."
+              },
+              {
+                "en": "I have a big family.",
+                "es": "Tengo una familia grande."
+              },
+              {
+                "en": "My grandparents are old but happy.",
+                "es": "Mis abuelos son mayores pero felices."
+              }
+            ],
+            "apply": {
+              "words": [
+                "sick",
+                "is",
+                "my",
+                "mother"
+              ],
+              "answer": "My mother is sick.",
+              "es": "Mi mamá está enferma."
+            },
+            "mistake": {
+              "wrong": "My sisters are talls.",
+              "right": "My sisters are tall.",
+              "why": "El adjetivo no lleva plural."
+            }
+          }
+        ]
       }
     },
     {
@@ -6797,7 +7104,180 @@
               }
             }
           }
-        }
+        },
+        "theory": [
+          {
+            "source": [
+              "Gramática núcleo: To Be y presente simple · Lección 3: Presente simple con otros verbos"
+            ],
+            "title": "Presente simple: la -s de he, she, it",
+            "rule": "Con verbos que no son to be (work, live, drink…) el presente simple usa el verbo tal cual. Solo con he, she e it se añade -s. Se usa para rutinas y hechos generales.",
+            "form": "Sujeto + verbo (+ -s con he / she / it) + complemento",
+            "steps": [
+              "Elige el sujeto.",
+              "Si es he, she, it o una persona (my father), añade -s al verbo: works, lives, drinks.",
+              "Con I, you, we, they el verbo no cambia.",
+              "Añade cuándo: every day, on Monday, at night."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "My father drinks coffee.",
+                "es": "Mi papá toma café."
+              },
+              {
+                "label": "Negativa",
+                "en": "My father doesn’t drink coffee.",
+                "es": "Mi papá no toma café."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Does your father drink coffee?",
+                "es": "¿Tu papá toma café?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "I work in an office.",
+                "es": "Trabajo en una oficina."
+              },
+              {
+                "en": "She lives in Cali.",
+                "es": "Ella vive en Cali."
+              },
+              {
+                "en": "We eat lunch at one.",
+                "es": "Almorzamos a la una."
+              }
+            ],
+            "apply": {
+              "words": [
+                "coffee",
+                "drinks",
+                "my",
+                "father"
+              ],
+              "answer": "My father drinks coffee.",
+              "es": "Mi papá toma café."
+            }
+          },
+          {
+            "source": [
+              "Gramática núcleo: To Be y presente simple · Lección 5: Negación con To Be y presente simple"
+            ],
+            "title": "Negar: not con to be, don’t / doesn’t con los demás verbos",
+            "rule": "Hay dos maneras de negar. Con to be basta poner not después de am, is o are. Con los demás verbos se usa el auxiliar do not (don’t) o does not (doesn’t) y el verbo vuelve a su forma base.",
+            "form": "Sujeto + am/is/are + not  |  Sujeto + don’t / doesn’t + verbo base",
+            "steps": [
+              "¿El verbo es to be? Añade not: I am not tired.",
+              "¿Es otro verbo? Pon don’t (I, you, we, they) o doesn’t (he, she, it).",
+              "Después de doesn’t el verbo no lleva -s: he doesn’t work."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "She is tired. / She works.",
+                "es": "Ella está cansada. / Ella trabaja."
+              },
+              {
+                "label": "Negativa",
+                "en": "She is not tired. / She doesn’t work.",
+                "es": "Ella no está cansada. / Ella no trabaja."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Is she tired? / Does she work?",
+                "es": "¿Está cansada? / ¿Trabaja?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "I am not late.",
+                "es": "No llego tarde."
+              },
+              {
+                "en": "They don’t work on Sundays.",
+                "es": "No trabajan los domingos."
+              },
+              {
+                "en": "He doesn’t live here.",
+                "es": "Él no vive aquí."
+              }
+            ],
+            "apply": {
+              "words": [
+                "not",
+                "is",
+                "she",
+                "tired"
+              ],
+              "answer": "She is not tired.",
+              "es": "Ella no está cansada."
+            },
+            "mistake": {
+              "wrong": "I no work on Sunday.",
+              "right": "I don’t work on Sunday.",
+              "why": "En inglés no se niega con no delante del verbo: se usa don’t."
+            }
+          },
+          {
+            "source": [
+              "Vocabulario de uso diario (núcleo) · Lección 3: Números y la hora",
+              "Frases básicas de supervivencia · Lección 5: Describir tu rutina diaria"
+            ],
+            "title": "La hora y el orden de tu rutina",
+            "rule": "Para la hora se usa It’s + hora, y para decir cuándo haces algo, at + hora. Los marcadores de tiempo (in the morning, then, after that) ordenan tu rutina y van al principio o al final de la frase.",
+            "form": "Marcador de tiempo + sujeto + verbo + complemento  |  sujeto + verbo + at + hora",
+            "steps": [
+              "Pregunta la hora: What time is it? — It’s three o’clock.",
+              "Di a qué hora haces algo: I get up at seven.",
+              "Ordena tu día: First…, then…, after that…, at night…",
+              "Usa los días: on Monday, on Saturday."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "At night, I study English.",
+                "es": "Por la noche estudio inglés."
+              },
+              {
+                "label": "Negativa",
+                "en": "I don’t study in the morning.",
+                "es": "No estudio por la mañana."
+              },
+              {
+                "label": "Pregunta",
+                "en": "What time do you get up?",
+                "es": "¿A qué hora te levantas?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "It’s half past three.",
+                "es": "Son las tres y media."
+              },
+              {
+                "en": "First I shower, then I have breakfast.",
+                "es": "Primero me ducho y luego desayuno."
+              },
+              {
+                "en": "On Monday I go to work at eight.",
+                "es": "El lunes voy a trabajar a las ocho."
+              }
+            ],
+            "apply": {
+              "words": [
+                "at",
+                "I",
+                "up",
+                "get",
+                "seven"
+              ],
+              "answer": "I get up at seven.",
+              "es": "Me levanto a las siete."
+            }
+          }
+        ]
       }
     },
     {
@@ -8971,7 +9451,120 @@
               }
             }
           }
-        }
+        },
+        "theory": [
+          {
+            "source": [
+              "Gramática núcleo: To Be y presente simple · Lección 7: A, AN y THE — Los artículos en inglés"
+            ],
+            "title": "A, an y the",
+            "rule": "A y an significan «un / una» y se usan para algo que mencionas por primera vez. A va antes de sonido de consonante; an, antes de sonido de vocal. The significa «el, la, los, las» y se usa cuando ya se sabe de qué cosa hablas.",
+            "form": "a + consonante | an + vocal | the + algo conocido",
+            "steps": [
+              "¿Es la primera vez que lo mencionas? Usa a o an.",
+              "Mira el sonido inicial: a house, a car / an apartment, an hour.",
+              "Cuando ya es conocido, cambia a the: There is a park. The park is big.",
+              "Con nombres de ciudades y países no uses artículo: Colombia, Lima."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "There is a park near my house.",
+                "es": "Hay un parque cerca de mi casa."
+              },
+              {
+                "label": "Negativa",
+                "en": "There isn’t a bank on my street.",
+                "es": "No hay un banco en mi calle."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Is there a supermarket near here?",
+                "es": "¿Hay un supermercado cerca?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "I live in an apartment.",
+                "es": "Vivo en un apartamento."
+              },
+              {
+                "en": "The kitchen is small.",
+                "es": "La cocina es pequeña."
+              },
+              {
+                "en": "I have a car. The car is red.",
+                "es": "Tengo un carro. El carro es rojo."
+              }
+            ],
+            "apply": {
+              "words": [
+                "an",
+                "is",
+                "it",
+                "apartment"
+              ],
+              "answer": "It is an apartment.",
+              "es": "Es un apartamento."
+            },
+            "mistake": {
+              "wrong": "I live in a apartment.",
+              "right": "I live in an apartment.",
+              "why": "Antes de sonido de vocal se usa an."
+            }
+          },
+          {
+            "source": [
+              "Vocabulario de uso diario (núcleo) · Lección 4: Lugares y direcciones básicas"
+            ],
+            "title": "Lugares de la ciudad: near y far",
+            "rule": "Para ubicar un lugar se usa to be + near (cerca de) o far from (lejos de). El lugar suele llevar the porque hablas de uno concreto.",
+            "form": "The + lugar + is + near / far from + otro lugar",
+            "steps": [
+              "Nombra el lugar: the school, the hospital, the bank, the park, the supermarket.",
+              "Añade is.",
+              "Di si está cerca o lejos: near my house, far from the center."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "The hospital is near the park.",
+                "es": "El hospital está cerca del parque."
+              },
+              {
+                "label": "Negativa",
+                "en": "The bank isn’t far from here.",
+                "es": "El banco no está lejos de aquí."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Is the school near your house?",
+                "es": "¿La escuela está cerca de tu casa?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "The supermarket is near my house.",
+                "es": "El supermercado está cerca de mi casa."
+              },
+              {
+                "en": "My office is far from the center.",
+                "es": "Mi oficina está lejos del centro."
+              }
+            ],
+            "apply": {
+              "words": [
+                "near",
+                "the",
+                "is",
+                "school",
+                "my house"
+              ],
+              "answer": "The school is near my house.",
+              "es": "La escuela está cerca de mi casa."
+            }
+          }
+        ]
       }
     },
     {
@@ -11281,7 +11874,69 @@
               }
             }
           }
-        }
+        },
+        "theory": [
+          {
+            "source": [
+              "Vocabulario de uso diario (núcleo) · Lección 2: Comida y bebidas",
+              "Listening guiado con apoyo · Lección 3: En el restaurante"
+            ],
+            "title": "Pedir comida: I’d like y Can I have…?",
+            "rule": "Para pedir con cortesía se usa I would like (I’d like) o la pregunta Can I have…? seguidos de a/an (una unidad) o some (una cantidad). Please hace la frase más amable.",
+            "form": "I’d like + a / an / some + comida (+ please)  |  Can I have + comida, please?",
+            "steps": [
+              "Elige la fórmula: I’d like… o Can I have…?",
+              "Añade a/an para una unidad (a coffee) o some para cantidad (some water).",
+              "Termina con please.",
+              "Al final: That’s all, thank you."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "I’d like a coffee, please.",
+                "es": "Quisiera un café, por favor."
+              },
+              {
+                "label": "Negativa",
+                "en": "I don’t want sugar, thank you.",
+                "es": "No quiero azúcar, gracias."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Can I have the menu, please?",
+                "es": "¿Me trae la carta, por favor?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "Can I have some rice and chicken?",
+                "es": "¿Me da arroz con pollo?"
+              },
+              {
+                "en": "I’d like an orange juice.",
+                "es": "Quisiera un jugo de naranja."
+              },
+              {
+                "en": "Anything else? — That’s all, thank you.",
+                "es": "¿Algo más? — Eso es todo, gracias."
+              }
+            ],
+            "apply": {
+              "words": [
+                "some",
+                "I’d like",
+                "water"
+              ],
+              "answer": "I’d like some water.",
+              "es": "Quisiera agua."
+            },
+            "mistake": {
+              "wrong": "I like a coffee.",
+              "right": "I’d like a coffee.",
+              "why": "I like = me gusta. Para pedir se usa I’d like = quisiera."
+            }
+          }
+        ]
       }
     },
     {
@@ -13573,7 +14228,64 @@
               }
             }
           }
-        }
+        },
+        "theory": [
+          {
+            "source": [
+              "Frases básicas de supervivencia · Lección 6: Escribir mensajes informales en inglés"
+            ],
+            "title": "Mensajes informales: saludo, cuerpo y cierre",
+            "rule": "Un mensaje informal tiene tres partes: un saludo cálido, el cuerpo con lo que quieres decir y un cierre amigable. Se usan contracciones (I’m, you’re, it’s) y frases cortas.",
+            "form": "Saludo (Hi! / Hey!) + cuerpo (I’m… / Are you…?) + cierre (See you! / Take care!)",
+            "steps": [
+              "Saluda: Hi Ana! / Hey!",
+              "Pregunta o cuenta algo: Are you free on Saturday? I like…",
+              "Propón un plan: Let’s go to the park.",
+              "Despídete: See you! / Talk soon!"
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "I’m free on Saturday.",
+                "es": "Estoy libre el sábado."
+              },
+              {
+                "label": "Negativa",
+                "en": "I’m not free on Sunday.",
+                "es": "No estoy libre el domingo."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Are you free on Saturday?",
+                "es": "¿Estás libre el sábado?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "Hi Ana! How are you?",
+                "es": "¡Hola, Ana! ¿Cómo estás?"
+              },
+              {
+                "en": "I love playing football on weekends.",
+                "es": "Me encanta jugar fútbol los fines de semana."
+              },
+              {
+                "en": "See you soon!",
+                "es": "¡Nos vemos pronto!"
+              }
+            ],
+            "apply": {
+              "words": [
+                "free",
+                "are",
+                "you",
+                "tonight"
+              ],
+              "answer": "Are you free tonight?",
+              "es": "¿Estás libre esta noche?"
+            }
+          }
+        ]
       }
     },
     {
@@ -15714,7 +16426,125 @@
               }
             }
           }
-        }
+        },
+        "theory": [
+          {
+            "source": [
+              "Listening guiado con apoyo · Lección 2: Pidiendo direcciones"
+            ],
+            "title": "Pedir y dar direcciones",
+            "rule": "Para pedir una dirección se empieza con Excuse me y la pregunta Where is…? Para darla se usa el imperativo: el verbo en forma base y sin sujeto (turn, go, take).",
+            "form": "Excuse me, where is + the + lugar?  |  Verbo base + left / right / straight",
+            "steps": [
+              "Llama la atención: Excuse me.",
+              "Pregunta: Where is the station?",
+              "Da la indicación sin sujeto: Turn left. Go straight.",
+              "Para negar el imperativo usa Don’t: Don’t turn right."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "Turn left at the bank.",
+                "es": "Gira a la izquierda en el banco."
+              },
+              {
+                "label": "Negativa",
+                "en": "Don’t turn right.",
+                "es": "No gires a la derecha."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Where is the station?",
+                "es": "¿Dónde está la estación?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "Excuse me, where is the hotel?",
+                "es": "Disculpe, ¿dónde está el hotel?"
+              },
+              {
+                "en": "Go straight for two blocks.",
+                "es": "Siga derecho dos cuadras."
+              },
+              {
+                "en": "It’s near the bank.",
+                "es": "Está cerca del banco."
+              }
+            ],
+            "apply": {
+              "words": [
+                "is",
+                "where",
+                "the",
+                "hotel"
+              ],
+              "answer": "Where is the hotel?",
+              "es": "¿Dónde está el hotel?"
+            },
+            "mistake": {
+              "wrong": "You turn left.",
+              "right": "Turn left.",
+              "why": "Para dar una instrucción no se usa sujeto."
+            }
+          },
+          {
+            "source": [
+              "Listening guiado con apoyo · Lección 4: Frases de supervivencia en situaciones reales",
+              "Frases básicas de supervivencia · Lección 3: Pedir ayuda y disculparte"
+            ],
+            "title": "Frases de supervivencia: pedir ayuda y disculparte",
+            "rule": "Algunas frases se aprenden como un bloque completo (chunk). Con Could you…? pides algo con cortesía; el verbo que sigue va en forma base.",
+            "form": "Could you + verbo base (+ me) + please?  |  I don’t understand. / I’m sorry, I’m late.",
+            "steps": [
+              "Para pedir ayuda: Could you help me, please?",
+              "Si no entiendes: I don’t understand. Could you repeat that?",
+              "Para disculparte: I’m sorry.",
+              "Responde a un gracias: You’re welcome."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "I understand.",
+                "es": "Entiendo."
+              },
+              {
+                "label": "Negativa",
+                "en": "I don’t understand.",
+                "es": "No entiendo."
+              },
+              {
+                "label": "Pregunta",
+                "en": "Could you repeat that, please?",
+                "es": "¿Podría repetirlo, por favor?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "Could you help me, please?",
+                "es": "¿Me podría ayudar, por favor?"
+              },
+              {
+                "en": "I’m sorry, I’m late.",
+                "es": "Perdón, llego tarde."
+              },
+              {
+                "en": "Thank you very much. — You’re welcome.",
+                "es": "Muchas gracias. — De nada."
+              }
+            ],
+            "apply": {
+              "words": [
+                "help",
+                "could",
+                "me",
+                "you"
+              ],
+              "answer": "Could you help me?",
+              "es": "¿Me podría ayudar?"
+            }
+          }
+        ]
       }
     },
     {
@@ -17750,7 +18580,115 @@
               }
             }
           }
-        }
+        },
+        "theory": [
+          {
+            "source": [
+              "Frases básicas de supervivencia · Lección 4: Tu presentación personal en inglés"
+            ],
+            "title": "Tu presentación completa",
+            "rule": "Una buena presentación sigue siempre el mismo orden: nombre → origen → ocupación → algo personal (familia o gustos) → cierre. Lo importante es ser claro, no complicado.",
+            "form": "My name is… + I’m from… + I am a… / I study… + I like / love… + Nice to meet you!",
+            "steps": [
+              "Nombre: My name is… / I’m…",
+              "Origen: I’m from Cali, Colombia.",
+              "Ocupación: I am a nurse. / I study English.",
+              "Gustos o familia: I love dancing. I have two brothers.",
+              "Cierre: Nice to meet you!"
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "I love dancing.",
+                "es": "Me encanta bailar."
+              },
+              {
+                "label": "Negativa",
+                "en": "I don’t like football.",
+                "es": "No me gusta el fútbol."
+              },
+              {
+                "label": "Pregunta",
+                "en": "What do you do?",
+                "es": "¿A qué te dedicas?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "My name is Rubén and I’m from Colombia.",
+                "es": "Me llamo Rubén y soy de Colombia."
+              },
+              {
+                "en": "I am a nurse and I like music.",
+                "es": "Soy enfermero y me gusta la música."
+              },
+              {
+                "en": "Nice to meet you!",
+                "es": "¡Mucho gusto!"
+              }
+            ],
+            "apply": {
+              "words": [
+                "love",
+                "I",
+                "dancing"
+              ],
+              "answer": "I love dancing.",
+              "es": "Me encanta bailar."
+            }
+          },
+          {
+            "source": [
+              "Listening guiado con apoyo · Lección 5: Estrategia: escuchar sin entender todo"
+            ],
+            "title": "Escuchar palabras clave",
+            "rule": "Al principio no vas a entender todas las palabras, y no hace falta. Escucha las palabras clave: sustantivos (dónde, qué), verbos (qué pasa), números (cuánto, cuándo) y palabras de pregunta.",
+            "form": "Palabra de pregunta + sustantivo + número = la idea principal",
+            "steps": [
+              "Antes de escuchar, piensa qué información buscas: un lugar, una hora, un precio.",
+              "Escucha solo los sustantivos, verbos y números.",
+              "Une las palabras clave: train… three… late → el tren de las tres va tarde."
+            ],
+            "forms": [
+              {
+                "label": "Afirmativa",
+                "en": "The train is at three.",
+                "es": "El tren sale a las tres."
+              },
+              {
+                "label": "Negativa",
+                "en": "The train isn’t late.",
+                "es": "El tren no va tarde."
+              },
+              {
+                "label": "Pregunta",
+                "en": "When is the train?",
+                "es": "¿Cuándo sale el tren?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "The flight is delayed three hours.",
+                "es": "El vuelo tiene tres horas de retraso."
+              },
+              {
+                "en": "Turn left, two blocks.",
+                "es": "Gire a la izquierda, dos cuadras."
+              }
+            ],
+            "apply": {
+              "words": [
+                "three",
+                "at",
+                "is",
+                "train",
+                "the"
+              ],
+              "answer": "The train is at three.",
+              "es": "El tren sale a las tres."
+            }
+          }
+        ]
       }
     }
   ],

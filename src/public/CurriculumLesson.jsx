@@ -6,8 +6,10 @@ import PublicShell from './PublicShell'
 import Seo from './Seo'
 import { registerLessonRecordings } from './lessonRecordings'
 import { stopLessonAudio } from './lessonSpeech'
+import { useA1Course } from '../data/useA1Course'
 
 function UnitLoader({ unit }) {
+  const course = useA1Course()
   const [lesson, setLesson] = useState(null)
   const [error, setError] = useState(false)
   const [retry, setRetry] = useState(0)
@@ -16,11 +18,11 @@ function UnitLoader({ unit }) {
     loadA1Content().then(data => {
       const found = data.lessons.find(item => item.number === unit.number)
       if (!found) throw new Error('Unidad no disponible')
-      if (active) { registerLessonRecordings(found.audio); setLesson(found); setError(false) }
+      if (active) { registerLessonRecordings(found.audio); setLesson({ ...found, path: unit.path }); setError(false) }
     }).catch(() => { if (active) setError(true) })
     return () => { active = false; stopLessonAudio(); registerLessonRecordings(null) }
-  }, [unit.number, retry])
-  if (lesson) return <ModelLesson key={lesson.slug} lesson={lesson} />
+  }, [unit.number, unit.path, retry])
+  if (lesson) return <ModelLesson key={lesson.slug} lesson={lesson} legacyTheory={Boolean(course.summary.units.find(item => item.number === unit.number)?.legacyTheory)} />
   return <PublicShell>
     <Seo title={`A1 · Unidad ${unit.number}: ${unit.title}`} description={`Practica ${unit.title.toLowerCase()} en Munchira, con ejercicios y audios paso a paso.`} path={unit.path} noindex />
     <div className="mp-wrap ml-page"><h1>{unit.title}</h1><p role="status">{error ? 'No pudimos cargar la unidad. Comprueba tu conexión e inténtalo otra vez.' : 'Cargando tu unidad…'}</p>

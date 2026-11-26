@@ -1,0 +1,94 @@
+import test from 'node:test'
+import assert from 'node:assert/strict'
+import { A1_COURSE_UNITS, A1_LEGACY_LESSON_MAP, legacyUnitCredit, summarizeA1Course } from '../src/data/a1Course.js'
+import { LESSON_STEPS } from '../src/public/model-lesson.js'
+
+const modules = [1, 2, 3, 4].map(order => ({ id: `m${order}`, order_index: order }))
+const lessons = Object.keys(A1_LEGACY_LESSON_MAP).map(key => {
+  const [module, lesson] = key.split('.').map(Number)
+  return { id: `l${key}`, module_id: `m${module}`, order_index: lesson }
+})
+
+test('el curso A1 tiene una sola lista de 8 unidades y la Unidad 1 no es una lección de muestra', () => {
+  assert.equal(A1_COURSE_UNITS.length, 8)
+  assert.equal(A1_COURSE_UNITS[0].label, 'Unidad 1: Saludos y presentaciones')
+  assert.equal(A1_COURSE_UNITS[0].path, '/cursos/A1/unidad/1')
+  const summary = summarizeA1Course()
+  assert.equal(summary.total, 8)
+  assert.equal(summary.progressLabel, '0 de 8 unidades completadas')
+  assert.equal(summary.nextAction.path, '/cursos/A1/unidad/1')
+})
+
+test('cada lección de los 4 módulos antiguos pertenece a una de las 8 unidades', () => {
+  assert.equal(Object.keys(A1_LEGACY_LESSON_MAP).length, 22)
+  for (const unit of Object.values(A1_LEGACY_LESSON_MAP)) assert.ok(unit >= 1 && unit <= 8)
+  assert.deepEqual([...new Set(Object.values(A1_LEGACY_LESSON_MAP))].sort(), [1, 2, 3, 4, 5, 6, 7, 8])
+})
+
+test('el avance del panel cuenta 8 unidades: aprobar la Unidad 1 da «Unidad 1 de 8 completada · 12%»', () => {
+  const summary = summarizeA1Course({ unitRows: [{ unit_number: 1, best_score: 80, completed_at: '2026-11-25' }] })
+  assert.equal(summary.completed, 1)
+  assert.equal(summary.pct, 12)
+  assert.equal(`${summary.progressLabel} · ${summary.pct}%`, 'Unidad 1 de 8 completada · 12%')
+  assert.equal(summary.avg, 80)
+  assert.equal(summary.nextAction.path, '/cursos/A1/unidad/2')
+})
+
+test('si solo falta el cuestionario, el botón lo dice', () => {
+  const completed = LESSON_STEPS.filter(step => step.id !== 'summary').map(step => step.id)
+  const summary = summarizeA1Course({ drafts: [{ lesson_key: 'unit:1', fields: { step: 14, 'step.completed': completed } }] })
+  assert.equal(summary.units[0].status, 'quiz-pending')
+  assert.equal(summary.nextAction.text, 'Te falta el cuestionario final de la Unidad 1')
+  const failed = summarizeA1Course({ unitRows: [{ unit_number: 1, best_score: 50, completed_at: null }] })
+  assert.equal(failed.completed, 0)
+  assert.equal(failed.nextAction.text, 'Te falta el cuestionario final de la Unidad 1')
+})
+
+test('una unidad empezada continúa en el paso guardado', () => {
+  const summary = summarizeA1Course({ drafts: [{ lesson_key: 'unit:1', fields: { step: 3, 'step.completed': ['goal', 'vocab', 'explain'] } }] })
+  assert.equal(summary.units[0].status, 'in-progress')
+  assert.equal(summary.nextAction.cta, 'Continuar Unidad 1')
+})
+
+test('el progreso antiguo se conserva: módulos aprobados completan sus unidades sin tocar los registros', () => {
+  const moduleProgress = [1, 2, 3, 4].map(order => ({ module_id: `m${order}`, status: 'completed', best_score: 90 }))
+  const input = { modules, lessons, completedLessonIds: [], moduleProgress }
+  const snapshot = JSON.stringify(input)
+  const legacy = legacyUnitCredit(input)
+  assert.equal(JSON.stringify(input), snapshot, 'no modifica filas antiguas')
+  const summary = summarizeA1Course({ legacy })
+  assert.equal(summary.completed, 8)
+  assert.ok(summary.units.every(unit => unit.fromLegacy))
+})
+
+test('lecciones antiguas estudiadas sin el cuestionario dejan la unidad lista para su cuestionario final', () => {
+  const unit6 = lessons.filter(lesson => A1_LEGACY_LESSON_MAP[lesson.id.slice(1)] === 6).map(lesson => lesson.id)
+  const legacy = legacyUnitCredit({ modules, lessons, completedLessonIds: unit6, moduleProgress: [] })
+  const summary = summarizeA1Course({ legacy })
+  assert.equal(summary.units[5].status, 'quiz-pending')
+  assert.equal(summary.units[5].legacyTheory, true)
+  const partial = legacyUnitCredit({ modules, lessons, completedLessonIds: ['l1.1'], moduleProgress: [] })
+  assert.equal(summarizeA1Course({ legacy: partial }).units[0].status, 'in-progress')
+})
+
+test('una nota nueva de unidad no se pierde frente al crédito antiguo', () => {
+  const legacy = legacyUnitCredit({ modules, lessons, completedLessonIds: [], moduleProgress: [{ module_id: 'm1', status: 'completed' }] })
+  const summary = summarizeA1Course({ legacy, unitRows: [{ unit_number: 2, best_score: 95, completed_at: '2026-11-25' }] })
+  assert.equal(summary.units[1].status, 'completed')
+  assert.equal(summary.units[1].bestScore, 95)
+})
+
+test('cada unidad enseña a construir frases: regla, forma, afirmativa/negativa/pregunta y aplicación con palabras nuevas', async () => {
+  const { default: cycle } = await import('../content/cycles/A1.json', { with: { type: 'json' } })
+  const { isCorrectAnswer } = await import('../src/public/model-lesson.js')
+  for (const unit of cycle.modules) {
+    assert.ok(unit.practice.theory?.length > 0, `Unidad ${unit.order} sin teoría`)
+    for (const rule of unit.practice.theory) {
+      assert.ok(rule.rule && rule.form && rule.steps.length && rule.examples.length && rule.source.length)
+      assert.deepEqual(rule.forms.map(form => form.label), ['Afirmativa', 'Negativa', 'Pregunta'])
+      const words = rule.apply.answer.replace(/[.?!,]/g, '').toLowerCase().split(/\s+/)
+      assert.deepEqual(rule.apply.words.flatMap(w => w.toLowerCase().split(' ')).sort(), [...words].sort(), rule.title)
+      assert.ok(isCorrectAnswer(rule.apply.answer.toLowerCase().replace(/[.?!]/g, ''), rule.apply.answer))
+    }
+  }
+})
