@@ -24,7 +24,7 @@ export function createDraftStore({ client, userId, lessonKey, storage, notify = 
     const serverRevision = data?.revision ?? 0
     unverified = false
     if (serial === savedSerial) { revision = serverRevision; emit({ fields: data?.fields ?? view.fields, status: 'saved' }); return }
-    if (serverRevision !== revision) { revision = serverRevision; blocked = true; emit({ status: 'conflict' }); cache() }
+    if (serverRevision !== revision) { blocked = true; emit({ status: 'conflict' }); cache() }
   }
   async function start() {
     if (started) return started

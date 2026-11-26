@@ -62,3 +62,21 @@ test('módulo antiguo sin borrador abre en la primera lección pendiente confirm
   const lessons = [{ id: 'a' }, { id: 'b' }, { id: 'c' }]
   assert.deepEqual(restoreModuleDraft({ stage: 'lessons', lessonIdx: undefined, lessons, completedIds: ['a'] }), { stage: 'lessons', lessonIdx: 1 })
 })
+
+test('un trabajo sin conexión en conflicto no sobrescribe el avance más nuevo al volver a abrir', async () => {
+  const { state, client } = fakeServer()
+  const storage = new Map(), store = { getItem: k => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, v), removeItem: k => storage.delete(k) }
+  const first = createDraftStore({ client, userId: 'u1', lessonKey: 'unit:1', storage: store, delay: 60000 })
+  await first.start()
+  first.set('step', 2)
+  state.failReads = false
+  state.row = { fields: { step: 9 }, revision: 5 }
+  await first.flush()
+  assert.equal(first.getSnapshot().status, 'conflict')
+  const reopened = createDraftStore({ client, userId: 'u1', lessonKey: 'unit:1', storage: store, delay: 60000 })
+  await reopened.start()
+  await reopened.flush()
+  assert.equal(reopened.getSnapshot().status, 'conflict')
+  assert.equal(state.saves.length, 0)
+  assert.deepEqual(state.row.fields, { step: 9 })
+})
