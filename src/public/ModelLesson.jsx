@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import PublicShell from './PublicShell'
 import Seo from './Seo'
 import ExerciseBlock from '../components/ExerciseBlock'
@@ -308,7 +308,9 @@ function ModelLessonContent({ lesson, legacyTheory }) {
   const steps = LESSON_STEPS.map(s => s.id === 'free' && lesson.number ? { ...s, label: 'Ponlo en práctica' } : s)
   const fields = useDraftFields()
   const credited = legacyTheory ? steps.filter(s => s.id !== 'summary').map(s => s.id) : []
-  const resumeStep = legacyTheory && !Object.hasOwn(fields, 'step') ? steps.length - 1 : savedStep
+  const wantsQuiz = new URLSearchParams(useLocation().search).get('paso') === 'cuestionario'
+  // restoreLessonProgress still steps back if required practice is pending, so the link never skips work.
+  const resumeStep = wantsQuiz || (legacyTheory && !Object.hasOwn(fields, 'step')) ? steps.length - 1 : savedStep
   const { step, completed } = restoreLessonProgress(resumeStep, steps, new Set([...completedIds, ...credited]), fields, lesson)
   const [visited, setVisited] = useState(() => new Set(Array.from({ length: step + 1 }, (_, index) => index)))
   const current = steps[step]
@@ -322,7 +324,7 @@ function ModelLessonContent({ lesson, legacyTheory }) {
       <header className="ml-head">
         <p className="mp-eyebrow">{lesson.number ? `Curso ${lesson.level} · ${lesson.module}` : `${lesson.level} · ${lesson.module} · Lección de muestra`}</p>
         <h1>{lesson.number ? `Unidad ${lesson.number}: ${lesson.title}` : lesson.title}</h1>
-        {legacyTheory && <p className="ml-tip" role="status">Ya estudiaste esta teoría en los módulos anteriores: puedes ir directo al cuestionario final o repasar cualquier paso.</p>}
+        {legacyTheory && <p className="ml-tip" role="status">Teoría reconocida de tus módulos anteriores: para completar la unidad aprueba su cuestionario final (70%). Puedes ir directo o repasar cualquier paso.</p>}
         <div className="ml-progress" role="progressbar" aria-valuemin={0} aria-valuemax={steps.length} aria-valuenow={completed.size} aria-label="Avance de la lección"><span style={{ width: `${(completed.size / steps.length) * 100}%` }} /></div>
         <div className="ml-head-row">
           <p>Paso {step + 1} de {steps.length}: <strong>{current.label}</strong></p>

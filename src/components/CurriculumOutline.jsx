@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
 import { getCurriculum, getUnitState } from '../data/curriculum'
+import { A1_LEGACY_LABEL, unitStatusText } from '../data/a1Course'
 import '../public/curriculum.css'
-
-const A1_STATUS = { completed: 'Completada', 'quiz-pending': 'Falta el cuestionario final', 'in-progress': 'En curso', 'not-started': 'Sin empezar' }
 
 export default function CurriculumOutline({ level, course }) {
   const curriculum = getCurriculum(level)
@@ -13,7 +12,8 @@ export default function CurriculumOutline({ level, course }) {
     <ol>{course.units.map(unit => <li key={unit.number}>
       <span>{String(unit.number).padStart(2, '0')}</span>
       <div><strong>{unit.label}</strong>
-        <small>{A1_STATUS[unit.status]}{unit.bestScore !== null ? ` · ${unit.bestScore}%` : ''}{unit.fromLegacy ? ' · por tus módulos anteriores' : ''}</small>
+        <small>{unitStatusText(unit)}{unit.bestScore !== null ? ` · ${unit.bestScore}%` : ''}</small>
+        {unit.fromLegacy && <small className="mc-legacy-badge">{A1_LEGACY_LABEL}</small>}
         <Link to={unit.path}>{unit.status === 'completed' ? 'Repasar unidad' : unit.status === 'not-started' ? 'Empezar unidad' : 'Continuar unidad'} →</Link>
       </div>
     </li>)}</ol>
