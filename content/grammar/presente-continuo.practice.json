@@ -1,0 +1,6 @@
+{
+  "prompt": "She ___ studying right now.",
+  "options": ["am", "is", "are"],
+  "answer": "is",
+  "explanation": "El presente continuo usa to be + verbo-ing. Con she corresponde is: She is studying right now."
+}

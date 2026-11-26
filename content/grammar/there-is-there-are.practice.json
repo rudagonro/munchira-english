@@ -1,0 +1,6 @@
+{
+  "prompt": "There ___ two supermarkets near my house.",
+  "options": ["is", "are", "am"],
+  "answer": "are",
+  "explanation": "Two supermarkets es plural, por eso usamos there are: There are two supermarkets near my house."
+}
