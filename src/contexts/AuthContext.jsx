@@ -225,7 +225,7 @@ export function AuthProvider({ children }) {
 
     const moduleIds = modules.map(module => module.id)
     const lessonRes = moduleIds.length
-      ? await supabase.from('lessons').select('id,module_id').in('module_id', moduleIds)
+      ? await supabase.from('lessons').select('id,module_id,order_index').in('module_id', moduleIds)
       : { data: [], error: null }
     if (lessonRes.error) return { data: null, error: lessonRes.error }
     const lessonIds = lessonRes.data.map(lesson => lesson.id)
@@ -235,7 +235,7 @@ export function AuthProvider({ children }) {
     if (savedRes.error) return { data: null, error: savedRes.error }
     const modulesWithLessons = attachLessonProgress(modules, lessonRes.data, savedRes.data.map(row => row.lesson_id))
     return {
-      data: { enrollment, modules: modulesWithLessons, progress, checkpoints, checkpointAttempts },
+      data: { enrollment, modules: modulesWithLessons, progress, checkpoints, checkpointAttempts, lessons: lessonRes.data, completedLessonIds: savedRes.data.map(row => row.lesson_id) },
       error: null,
     }
   }, [session?.user])

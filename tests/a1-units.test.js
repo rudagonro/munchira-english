@@ -8,8 +8,9 @@ import { isCorrectAnswer } from '../src/public/model-lesson.js'
 const content = await loadA1Content()
 const unit = number => content.lessons.find(item => item.number === number)
 
-test('units 2 through 8 resolve individually and invalid unit numbers do not fall back', () => {
-  assert.deepEqual(A1_UNITS.map(u => u.number), [2, 3, 4, 5, 6, 7, 8])
+test('units 1 through 8 resolve individually and invalid unit numbers do not fall back', () => {
+  assert.deepEqual(A1_UNITS.map(u => u.number), [1, 2, 3, 4, 5, 6, 7, 8])
+  assert.equal(getA1Unit('1').path, '/cursos/A1/unidad/1')
   assert.equal(getA1Unit('6').path, '/cursos/A1/unidad/6')
   assert.equal(getA1Unit('9'), null)
   assert.equal(getA1Unit('invalid'), null)

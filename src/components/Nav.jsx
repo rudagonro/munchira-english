@@ -22,7 +22,7 @@ export default function Nav() {
   return (
     <header className={`nav-header${open ? ' nav-open' : ''}`}>
       <div className="nav-inner">
-        <Link className="nav-logo" to="/cycle" aria-label="Munchira English, ir a mis módulos">
+        <Link className="nav-logo" to="/cycle" aria-label="Munchira English, ir a mi curso">
           <span className="nav-logo-text">
             <span className="nav-logo-name">Munchira</span>
             <span className="nav-logo-sub">English</span>
@@ -33,7 +33,7 @@ export default function Nav() {
         </button>
         <div className="nav-menu" id="nav-menu" onClick={e => { if (e.target.closest('a')) setOpen(false) }}>
         <nav className="nav-links" aria-label="Principal">
-          <NavLink to="/cycle">Mis módulos</NavLink>
+          <NavLink to="/cycle">Mi curso</NavLink>
           <NavLink to="/review">Repaso</NavLink>
           {(role === 'teacher' || role === 'admin') && (
             <NavLink to="/teacher">Panel docente</NavLink>

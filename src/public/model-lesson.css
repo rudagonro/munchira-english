@@ -85,3 +85,9 @@
 .ml-dialogue-block { display: grid; gap: 10px; margin-top: 20px; }
 .ml-dialogue-block h3 { margin: 0; }
 .ml-dialogue-es { margin: 0; font-size: 14px; color: var(--mp-muted); }
+
+.ml-rule { border: 1px solid var(--mp-line, #d9e2e0); border-radius: 14px; padding: 1rem 1.1rem; margin: 0 0 1.2rem; }
+.ml-rule h4 { margin: 1rem 0 .4rem; }
+.ml-formula { display: inline-block; font-weight: 600; background: var(--mp-mint); border-radius: 8px; padding: .1rem .5rem; }
+.ml-input-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.ml-input-row input { flex: 1 1 14rem; min-width: 0; padding: .55rem .7rem; border-radius: 10px; border: 1px solid var(--mp-line, #c9d4d2); font: inherit; }
