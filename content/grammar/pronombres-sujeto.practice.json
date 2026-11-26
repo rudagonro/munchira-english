@@ -1,0 +1,6 @@
+{
+  "prompt": "Daniel and I are students. ___ study English together.",
+  "options": ["They", "We", "You"],
+  "answer": "We",
+  "explanation": "Daniel and I incluye a quien habla, así que el pronombre sujeto correcto es we: We study English together."
+}

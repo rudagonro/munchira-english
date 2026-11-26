@@ -1,0 +1,6 @@
+{
+  "prompt": "It ___ my dog.",
+  "options": ["am", "is", "are"],
+  "answer": "is",
+  "explanation": "Con it usamos is: It is my dog. It puede referirse a un animal o una cosa."
+}

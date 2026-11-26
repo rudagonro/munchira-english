@@ -1,0 +1,6 @@
+{
+  "prompt": "They didn't ___ to the beach yesterday.",
+  "options": ["go", "went", "going"],
+  "answer": "go",
+  "explanation": "Después de didn't usamos el verbo básico: They didn't go. El pasado ya está indicado por did."
+}

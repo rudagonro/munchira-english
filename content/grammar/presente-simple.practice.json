@@ -1,0 +1,6 @@
+{
+  "prompt": "Does she ___ here?",
+  "options": ["work", "works", "working"],
+  "answer": "work",
+  "explanation": "Después de does usamos el verbo en su forma básica: Does she work here? La marca de tercera persona ya está en does."
+}
