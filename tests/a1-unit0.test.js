@@ -28,8 +28,11 @@ test('contenido de la Unidad 0: validador sin errores, ilustraciones, licencia y
   for (const text of unit0SpokenTexts(unit0, bank)) {
     for (const accent of ['en-US', 'en-GB']) assert.ok(lessonAudioClip(text, accent), `sin audio: ${text} ${accent}`)
   }
+  // El audio de cada letra dice solo su nombre («A», «B»…), sin «Letter»: el texto hablado es la letra sola.
+  for (const l of unit0.alphabet.letters) assert.equal(l.say, l.letter)
+  assert.equal(unit0.alphabet.letters.map(l => l.letter).join(''), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
   // La Z británica es «zed»: el mismo texto de la letra resuelve a un clip distinto por acento.
-  assert.notEqual(lessonAudioClip('Letter Z.', 'en-US').url, lessonAudioClip('Letter Z.', 'en-GB').url)
+  assert.notEqual(lessonAudioClip('Z', 'en-US').url, lessonAudioClip('Z', 'en-GB').url)
 })
 
 test('banco de tarjetas reutilizable: index estables y únicos, grupos de 7–29 y una imagen local por tarjeta', () => {

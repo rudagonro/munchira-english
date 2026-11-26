@@ -75,6 +75,8 @@ export function validateUnit0(unit0, bank, { publicDir, audio, audioKey } = {}) 
   const letters = unit0.alphabet?.letters ?? []
   if (letters.map(l => l.letter).join('') !== 'ABCDEFGHIJKLMNOPQRSTUVWXYZ') errors.push('unit0: el abecedario debe tener las 26 letras en orden')
   for (const l of letters) if (!isText(l.guide) || !isText(l.say)) errors.push(`unit0: la letra ${l.letter} necesita guide y say`)
+  // El audio de la letra dice solo su nombre: «Letter A.» confunde al principiante.
+  for (const l of letters) if (isText(l.say) && l.say !== l.letter) errors.push(`unit0: la letra ${l.letter} debe decir solo «${l.letter}» (say: «${l.say}»)`)
   for (const pair of ['E / I', 'G / J']) if (!(unit0.alphabet?.confusions ?? []).some(c => c.pair === pair)) errors.push(`unit0: falta la confusión ${pair}`)
   if (!(unit0.alphabet?.spelling?.phrases ?? []).some(p => p.en === 'How do you spell it?')) errors.push('unit0: falta «How do you spell it?»')
   const blocks = unit0.numbers?.blocks ?? []
