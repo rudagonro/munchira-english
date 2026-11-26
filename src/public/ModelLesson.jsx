@@ -6,7 +6,7 @@ import ExerciseBlock from '../components/ExerciseBlock'
 import { lessonA1Presentarte as defaultLesson } from '../data/modelLessons/a1-presentarte'
 import { canOpenStep, isPracticeStep } from './lessonProgress'
 import { recordA1Word, recordA1Text } from './a1Review'
-import { LESSON_STEPS, checkPresentation, lessonCards, contractionTip, displayForm, isCorrectAnswer, quoteForm } from './model-lesson'
+import { LESSON_STEPS, cardDraftKey, checkPresentation, lessonCards, contractionTip, displayForm, isCorrectAnswer, quoteForm } from './model-lesson'
 import { sayEnglish, sayDialogue, stopLessonAudio, canListen } from './lessonSpeech'
 import { playFeedback } from './feedbackSounds'
 import { useAuth } from '../contexts/auth-context'
@@ -35,12 +35,10 @@ function ChoiceQuestions({ questions, onComplete, onAttempt }) {
   return <ExerciseBlock draftKey="reading" onComplete={onComplete} onAttempt={onAttempt} exercises={questions.map(q => ({ ...q, type: 'choice', why: q.why ?? 'Vuelve a leer el texto y busca la información de la pregunta.' }))} />
 }
 
-// La baraja cambió (solo palabras clave): un borrador de la baraja anterior no se reinterpreta.
-// Las tarjetas terminadas con la baraja completa siguen contando (lessonDraftProgress.js).
-const CARDS_DRAFT = 'cardDeck2'
-
 function TwoWayCards({ accent, lesson, onComplete }) {
   const cards = useMemo(() => lessonCards(lesson), [lesson])
+  // Si la baraja cambió, un borrador de la anterior no se reinterpreta (ver cardDraftKey).
+  const CARDS_DRAFT = cardDraftKey(lesson)
   const [idx, setIdx] = useDraftState(`${CARDS_DRAFT}.idx`, 0)
   const [value, setValue] = useDraftState(`${CARDS_DRAFT}.value`, '')
   const [result, setResult] = useDraftState(`${CARDS_DRAFT}.result`, null) // null | 'retry' | 'ok' | 'bad'
