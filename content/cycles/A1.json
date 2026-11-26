@@ -2838,15 +2838,15 @@
           "why": "El hijo de tus padres es tu hermano: brother."
         },
         {
-          "question": "Laura is married. Her ___ is Pedro.",
+          "question": "Laura is married to Pedro. Pedro is her ___.",
           "options": [
             "wife",
             "husband",
-            "son",
+            "daughter",
             "sister"
           ],
           "correct_idx": 1,
-          "why": "El esposo de Laura es su husband; wife es esposa."
+          "why": "Pedro es el esposo de Laura: husband. Wife es esposa."
         },
         {
           "question": "¿Qué pregunta tiene la respuesta «I’m 35»?",
@@ -10742,7 +10742,7 @@
             "Do your sister like tea?",
             "Does your sister like tea?",
             "Does your sister likes tea?",
-            "Your sister does like tea?"
+            "Does your sister to like tea?"
           ],
           "correct_idx": 1,
           "why": "Your sister = she: Does + sujeto + verbo base."
@@ -13248,7 +13248,7 @@
         {
           "question": "Elige la frase correcta.",
           "options": [
-            "He always is happy.",
+            "He always happy is.",
             "He is always happy.",
             "Always he is happy.",
             "He happy is always."
@@ -13272,11 +13272,11 @@
           "options": [
             "play",
             "goes",
-            "are",
+            "making",
             "go"
           ],
           "correct_idx": 3,
-          "why": "Con actividades en -ing se usa go: go swimming. Con we, go."
+          "why": "Con actividades en -ing se usa go: go swimming. Con we, go (sin -es)."
         },
         {
           "question": "Do you like dancing? — Yes, I ___.",

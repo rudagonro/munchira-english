@@ -107,3 +107,10 @@ test('las 5 palabras rescatadas entran en Repaso y el catálogo usa el español 
     assert.equal(car.spanish, 'carro')
   } finally { await db.close() }
 })
+
+test('un borrador del cuestionario anterior no preselecciona respuestas en el nuevo', () => {
+  const source = readFileSync(new URL('../src/public/UnitCompletion.jsx', import.meta.url), 'utf8')
+  assert.match(source, /useDraftState\('quizV2\.answers'/)
+  assert.doesNotMatch(source, /useDraftState\('quiz\.answers'/)
+  assert.match(source, /rpc\('submit_a1_unit_quiz_v2'/)
+})

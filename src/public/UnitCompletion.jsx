@@ -23,7 +23,7 @@ export default function UnitCompletion({ number, onPassed }) {
   useEffect(() => { passedCallback.current = onPassed }, [onPassed])
   const { user, loading } = useAuth()
   const questions = cycle.modules.find(unit => unit.order === number)?.quiz ?? []
-  const [answers, setAnswers] = useDraftState('quiz.answers', {})
+  const [answers, setAnswers] = useDraftState('quizV2.answers', {}) // «quiz.answers» era el cuestionario anterior: sus índices no valen aquí
   const [progress, setProgress] = useState(null)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
