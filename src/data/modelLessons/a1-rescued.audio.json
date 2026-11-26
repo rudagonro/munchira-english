@@ -1,0 +1,1031 @@
+{
+  "units": [
+    1,
+    5,
+    7
+  ],
+  "provider": "ElevenLabs",
+  "model": "eleven_multilingual_v2",
+  "speed": 0.9,
+  "voiceSettings": {
+    "stability": 0.6,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "generatedAt": "2026-11-26",
+  "sprites": {
+    "unit1-rescued-07f017af-gb": "/audio/a1/unit1-rescued/07f017af-gb.mp3",
+    "unit1-rescued-07f017af-us": "/audio/a1/unit1-rescued/07f017af-us.mp3",
+    "unit1-rescued-390aa914-gb": "/audio/a1/unit1-rescued/390aa914-gb.mp3",
+    "unit1-rescued-390aa914-us": "/audio/a1/unit1-rescued/390aa914-us.mp3",
+    "unit1-rescued-4a614ae7-gb": "/audio/a1/unit1-rescued/4a614ae7-gb.mp3",
+    "unit1-rescued-4a614ae7-us": "/audio/a1/unit1-rescued/4a614ae7-us.mp3",
+    "unit1-rescued-731372b8-gb": "/audio/a1/unit1-rescued/731372b8-gb.mp3",
+    "unit1-rescued-731372b8-us": "/audio/a1/unit1-rescued/731372b8-us.mp3",
+    "unit1-rescued-79f68f98-gb": "/audio/a1/unit1-rescued/79f68f98-gb.mp3",
+    "unit1-rescued-79f68f98-us": "/audio/a1/unit1-rescued/79f68f98-us.mp3",
+    "unit1-rescued-f9a8e5d2-gb": "/audio/a1/unit1-rescued/f9a8e5d2-gb.mp3",
+    "unit1-rescued-f9a8e5d2-us": "/audio/a1/unit1-rescued/f9a8e5d2-us.mp3",
+    "unit5-rescued-248f6033-gb": "/audio/a1/unit5-rescued/248f6033-gb.mp3",
+    "unit5-rescued-248f6033-us": "/audio/a1/unit5-rescued/248f6033-us.mp3",
+    "unit5-rescued-2511afe2-gb": "/audio/a1/unit5-rescued/2511afe2-gb.mp3",
+    "unit5-rescued-2511afe2-us": "/audio/a1/unit5-rescued/2511afe2-us.mp3",
+    "unit5-rescued-67da5e37-gb": "/audio/a1/unit5-rescued/67da5e37-gb.mp3",
+    "unit5-rescued-67da5e37-us": "/audio/a1/unit5-rescued/67da5e37-us.mp3",
+    "unit5-rescued-732c1097-gb": "/audio/a1/unit5-rescued/732c1097-gb.mp3",
+    "unit5-rescued-732c1097-us": "/audio/a1/unit5-rescued/732c1097-us.mp3",
+    "unit5-rescued-987370d3-gb": "/audio/a1/unit5-rescued/987370d3-gb.mp3",
+    "unit5-rescued-987370d3-us": "/audio/a1/unit5-rescued/987370d3-us.mp3",
+    "unit5-rescued-d34048bc-gb": "/audio/a1/unit5-rescued/d34048bc-gb.mp3",
+    "unit5-rescued-d34048bc-us": "/audio/a1/unit5-rescued/d34048bc-us.mp3",
+    "unit5-rescued-ddd200a5-gb": "/audio/a1/unit5-rescued/ddd200a5-gb.mp3",
+    "unit5-rescued-ddd200a5-us": "/audio/a1/unit5-rescued/ddd200a5-us.mp3",
+    "unit7-rescued-1be64aee-gb": "/audio/a1/unit7-rescued/1be64aee-gb.mp3",
+    "unit7-rescued-1be64aee-us": "/audio/a1/unit7-rescued/1be64aee-us.mp3",
+    "unit7-rescued-1fcf89f4-gb": "/audio/a1/unit7-rescued/1fcf89f4-gb.mp3",
+    "unit7-rescued-1fcf89f4-us": "/audio/a1/unit7-rescued/1fcf89f4-us.mp3",
+    "unit7-rescued-261bedea-gb": "/audio/a1/unit7-rescued/261bedea-gb.mp3",
+    "unit7-rescued-261bedea-us": "/audio/a1/unit7-rescued/261bedea-us.mp3",
+    "unit7-rescued-5cbea0d3-gb": "/audio/a1/unit7-rescued/5cbea0d3-gb.mp3",
+    "unit7-rescued-5cbea0d3-us": "/audio/a1/unit7-rescued/5cbea0d3-us.mp3",
+    "unit7-rescued-90faa806-gb": "/audio/a1/unit7-rescued/90faa806-gb.mp3",
+    "unit7-rescued-90faa806-us": "/audio/a1/unit7-rescued/90faa806-us.mp3",
+    "unit7-rescued-9c80b96e-gb": "/audio/a1/unit7-rescued/9c80b96e-gb.mp3",
+    "unit7-rescued-9c80b96e-us": "/audio/a1/unit7-rescued/9c80b96e-us.mp3",
+    "unit7-rescued-b4daaace-gb": "/audio/a1/unit7-rescued/b4daaace-gb.mp3",
+    "unit7-rescued-b4daaace-us": "/audio/a1/unit7-rescued/b4daaace-us.mp3",
+    "unit7-rescued-c3dcf9df-gb": "/audio/a1/unit7-rescued/c3dcf9df-gb.mp3",
+    "unit7-rescued-c3dcf9df-us": "/audio/a1/unit7-rescued/c3dcf9df-us.mp3"
+  },
+  "clips": {
+    "07f017af": {
+      "nova": {
+        "gb": [
+          "unit1-rescued-07f017af-gb",
+          0,
+          0.835918
+        ],
+        "us": [
+          "unit1-rescued-07f017af-us",
+          0,
+          0.696599
+        ]
+      }
+    },
+    "1be64aee": {
+      "nova": {
+        "gb": [
+          "unit7-rescued-1be64aee-gb",
+          0,
+          1.114558
+        ],
+        "us": [
+          "unit7-rescued-1be64aee-us",
+          0,
+          1.207438
+        ]
+      }
+    },
+    "1fcf89f4": {
+      "nova": {
+        "gb": [
+          "unit7-rescued-1fcf89f4-gb",
+          0,
+          1.486077
+        ],
+        "us": [
+          "unit7-rescued-1fcf89f4-us",
+          0,
+          1.068118
+        ]
+      }
+    },
+    "248f6033": {
+      "onyx": {
+        "gb": [
+          "unit5-rescued-248f6033-gb",
+          0,
+          2.832834
+        ],
+        "us": [
+          "unit5-rescued-248f6033-us",
+          0,
+          2.321995
+        ]
+      }
+    },
+    "2511afe2": {
+      "nova": {
+        "gb": [
+          "unit5-rescued-2511afe2-gb",
+          0,
+          3.065034
+        ],
+        "us": [
+          "unit5-rescued-2511afe2-us",
+          0,
+          2.786395
+        ]
+      }
+    },
+    "261bedea": {
+      "onyx": {
+        "gb": [
+          "unit7-rescued-261bedea-gb",
+          0,
+          2.461315
+        ],
+        "us": [
+          "unit7-rescued-261bedea-us",
+          0,
+          2.182676
+        ]
+      }
+    },
+    "390aa914": {
+      "nova": {
+        "gb": [
+          "unit1-rescued-390aa914-gb",
+          0,
+          2.693515
+        ],
+        "us": [
+          "unit1-rescued-390aa914-us",
+          0,
+          2.461315
+        ]
+      }
+    },
+    "4a614ae7": {
+      "nova": {
+        "gb": [
+          "unit1-rescued-4a614ae7-gb",
+          0,
+          3.111474
+        ],
+        "us": [
+          "unit1-rescued-4a614ae7-us",
+          0,
+          3.204354
+        ]
+      }
+    },
+    "5cbea0d3": {
+      "onyx": {
+        "gb": [
+          "unit7-rescued-5cbea0d3-gb",
+          0,
+          2.461315
+        ],
+        "us": [
+          "unit7-rescued-5cbea0d3-us",
+          0,
+          2.368435
+        ]
+      }
+    },
+    "67da5e37": {
+      "nova": {
+        "gb": [
+          "unit5-rescued-67da5e37-gb",
+          0,
+          3.018594
+        ],
+        "us": [
+          "unit5-rescued-67da5e37-us",
+          0,
+          2.647075
+        ]
+      }
+    },
+    "731372b8": {
+      "nova": {
+        "gb": [
+          "unit1-rescued-731372b8-gb",
+          0,
+          3.993832
+        ],
+        "us": [
+          "unit1-rescued-731372b8-us",
+          0,
+          3.900952
+        ]
+      }
+    },
+    "732c1097": {
+      "nova": {
+        "gb": [
+          "unit5-rescued-732c1097-gb",
+          0,
+          0.789478
+        ],
+        "us": [
+          "unit5-rescued-732c1097-us",
+          0,
+          0.743039
+        ]
+      }
+    },
+    "79f68f98": {
+      "onyx": {
+        "gb": [
+          "unit1-rescued-79f68f98-gb",
+          0,
+          2.136236
+        ],
+        "us": [
+          "unit1-rescued-79f68f98-us",
+          0,
+          1.904036
+        ]
+      }
+    },
+    "90faa806": {
+      "nova": {
+        "gb": [
+          "unit7-rescued-90faa806-gb",
+          0,
+          2.600635
+        ],
+        "us": [
+          "unit7-rescued-90faa806-us",
+          0,
+          2.786395
+        ]
+      }
+    },
+    "987370d3": {
+      "onyx": {
+        "gb": [
+          "unit5-rescued-987370d3-gb",
+          0,
+          2.414875
+        ],
+        "us": [
+          "unit5-rescued-987370d3-us",
+          0,
+          2.182676
+        ]
+      }
+    },
+    "9c80b96e": {
+      "onyx": {
+        "gb": [
+          "unit7-rescued-9c80b96e-gb",
+          0,
+          2.693515
+        ],
+        "us": [
+          "unit7-rescued-9c80b96e-us",
+          0,
+          2.275556
+        ]
+      }
+    },
+    "b4daaace": {
+      "nova": {
+        "gb": [
+          "unit7-rescued-b4daaace-gb",
+          0,
+          3.390113
+        ],
+        "us": [
+          "unit7-rescued-b4daaace-us",
+          0,
+          3.065034
+        ]
+      }
+    },
+    "c3dcf9df": {
+      "nova": {
+        "gb": [
+          "unit7-rescued-c3dcf9df-gb",
+          0,
+          2.461315
+        ],
+        "us": [
+          "unit7-rescued-c3dcf9df-us",
+          0,
+          2.229116
+        ]
+      }
+    },
+    "d34048bc": {
+      "nova": {
+        "gb": [
+          "unit5-rescued-d34048bc-gb",
+          0,
+          1.578957
+        ],
+        "us": [
+          "unit5-rescued-d34048bc-us",
+          0,
+          1.578957
+        ]
+      }
+    },
+    "ddd200a5": {
+      "nova": {
+        "gb": [
+          "unit5-rescued-ddd200a5-gb",
+          0,
+          1.114558
+        ],
+        "us": [
+          "unit5-rescued-ddd200a5-us",
+          0,
+          0.975238
+        ]
+      }
+    },
+    "f9a8e5d2": {
+      "onyx": {
+        "gb": [
+          "unit1-rescued-f9a8e5d2-gb",
+          0,
+          3.808073
+        ],
+        "us": [
+          "unit1-rescued-f9a8e5d2-us",
+          0,
+          3.204354
+        ]
+      }
+    }
+  },
+  "inventory": [
+    {
+      "unit": 1,
+      "key": "07f017af",
+      "text": "live",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 0.835918,
+      "url": "/audio/a1/unit1-rescued/07f017af-gb.mp3",
+      "sha256": "7adb17964d48755fc2106147d39257bfef397b502d6777f0a290d7406658bc36",
+      "clipVoice": "nova",
+      "kind": "vocab",
+      "speaker": null
+    },
+    {
+      "unit": 1,
+      "key": "07f017af",
+      "text": "live",
+      "accent": "us",
+      "voice": "Sarah",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "gender": "female",
+      "age": "young",
+      "duration": 0.696599,
+      "url": "/audio/a1/unit1-rescued/07f017af-us.mp3",
+      "sha256": "0239096ec288092daf0cfa4aba67e0a22fcaae788937432481981a094a483e59",
+      "clipVoice": "nova",
+      "kind": "vocab",
+      "speaker": null
+    },
+    {
+      "unit": 1,
+      "key": "390aa914",
+      "text": "Hi! My name is Laura. What is your name?",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 2.693515,
+      "url": "/audio/a1/unit1-rescued/390aa914-gb.mp3",
+      "sha256": "4c2f866d27c22a8c62f7beeb4714b81b7e75940a4133b23af1b23bcd6a2017ac",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Laura"
+    },
+    {
+      "unit": 1,
+      "key": "390aa914",
+      "text": "Hi! My name is Laura. What is your name?",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 2.461315,
+      "url": "/audio/a1/unit1-rescued/390aa914-us.mp3",
+      "sha256": "b56c4cbc4221e3b46051375c4deb057bb630a1d2dcf3dc9bd99066d84b105d62",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Laura"
+    },
+    {
+      "unit": 1,
+      "key": "4a614ae7",
+      "text": "Nice to meet you too! Where are you from, Carlos?",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 3.111474,
+      "url": "/audio/a1/unit1-rescued/4a614ae7-gb.mp3",
+      "sha256": "64dbd2f2893476abd24f2d5ef7043d28ec576120c30673472cf7d563376632d1",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Laura"
+    },
+    {
+      "unit": 1,
+      "key": "4a614ae7",
+      "text": "Nice to meet you too! Where are you from, Carlos?",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 3.204354,
+      "url": "/audio/a1/unit1-rescued/4a614ae7-us.mp3",
+      "sha256": "efbcd6a4e61814073d4c46f79bff8c49377f7c487aece79be1da2a1419a0a82f",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Laura"
+    },
+    {
+      "unit": 1,
+      "key": "731372b8",
+      "text": "I am from Colombia. I live in a small house with my family.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 3.993832,
+      "url": "/audio/a1/unit1-rescued/731372b8-gb.mp3",
+      "sha256": "08eb6694ce202fbcfd055895cb22285dc7fda14acef8ce6c46e69b8133180ca4",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Laura"
+    },
+    {
+      "unit": 1,
+      "key": "731372b8",
+      "text": "I am from Colombia. I live in a small house with my family.",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 3.900952,
+      "url": "/audio/a1/unit1-rescued/731372b8-us.mp3",
+      "sha256": "c4c9bc53343bef4ee706ad7f67d3967ed229a9f6e4a283d82ad1f94f4d33b80b",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Laura"
+    },
+    {
+      "unit": 1,
+      "key": "79f68f98",
+      "text": "I am from Mexico. And you?",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 2.136236,
+      "url": "/audio/a1/unit1-rescued/79f68f98-gb.mp3",
+      "sha256": "22346bc14f032387eb2323b124aabfce641eff198cbd85e2ead6a5f32d4e9996",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 1,
+      "key": "79f68f98",
+      "text": "I am from Mexico. And you?",
+      "accent": "us",
+      "voice": "Will",
+      "voiceId": "bIHbv24MWmeRgasZH58o",
+      "gender": "male",
+      "age": "young",
+      "duration": 1.904036,
+      "url": "/audio/a1/unit1-rescued/79f68f98-us.mp3",
+      "sha256": "2bb9668ca87976484b6a59c6d589d98a6bdefd696ff801149d582de363a19910",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 1,
+      "key": "f9a8e5d2",
+      "text": "Hello, Laura! My name is Carlos. Nice to meet you.",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 3.808073,
+      "url": "/audio/a1/unit1-rescued/f9a8e5d2-gb.mp3",
+      "sha256": "bf01397f99ed5c6d80c1ede10eaa79e413063b4c8bdbd2af0fe8fd9283e2306e",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 1,
+      "key": "f9a8e5d2",
+      "text": "Hello, Laura! My name is Carlos. Nice to meet you.",
+      "accent": "us",
+      "voice": "Will",
+      "voiceId": "bIHbv24MWmeRgasZH58o",
+      "gender": "male",
+      "age": "young",
+      "duration": 3.204354,
+      "url": "/audio/a1/unit1-rescued/f9a8e5d2-us.mp3",
+      "sha256": "cd425ee166e47bebeee9dfd2325b47aea324d4dbc4b099848f9f2ada954d6c97",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 5,
+      "key": "248f6033",
+      "text": "Yes, please. Can I have some chicken and rice?",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 2.832834,
+      "url": "/audio/a1/unit5-rescued/248f6033-gb.mp3",
+      "sha256": "207829f0a583d8136191c2927fec73566855f19f06107540d056799ba1b4727e",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 5,
+      "key": "248f6033",
+      "text": "Yes, please. Can I have some chicken and rice?",
+      "accent": "us",
+      "voice": "Will",
+      "voiceId": "bIHbv24MWmeRgasZH58o",
+      "gender": "male",
+      "age": "young",
+      "duration": 2.321995,
+      "url": "/audio/a1/unit5-rescued/248f6033-us.mp3",
+      "sha256": "8ca8a6caea1036d670fa51555a52ea69042a30874eb024f7f38a9ba37e3862d8",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 5,
+      "key": "2511afe2",
+      "text": "Perfect. Your order will be ready in a few minutes.",
+      "accent": "gb",
+      "voice": "Lily",
+      "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 3.065034,
+      "url": "/audio/a1/unit5-rescued/2511afe2-gb.mp3",
+      "sha256": "39f643cdec1cff6f91e606b12fae45440c1a0457cb4e2d1c83520a610774cc7b",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Waitress"
+    },
+    {
+      "unit": 5,
+      "key": "2511afe2",
+      "text": "Perfect. Your order will be ready in a few minutes.",
+      "accent": "us",
+      "voice": "Sarah",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "gender": "female",
+      "age": "young",
+      "duration": 2.786395,
+      "url": "/audio/a1/unit5-rescued/2511afe2-us.mp3",
+      "sha256": "ba346f509b6694ade547a37202f02d981f47e83ee614574753f9c27a4ba09628",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Waitress"
+    },
+    {
+      "unit": 5,
+      "key": "67da5e37",
+      "text": "Good evening! Welcome. Can I help you?",
+      "accent": "gb",
+      "voice": "Lily",
+      "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 3.018594,
+      "url": "/audio/a1/unit5-rescued/67da5e37-gb.mp3",
+      "sha256": "e9be773747eb091b3258cda0703fe6b60c6c9f298aa45e8e7231301059486c1a",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Waitress"
+    },
+    {
+      "unit": 5,
+      "key": "67da5e37",
+      "text": "Good evening! Welcome. Can I help you?",
+      "accent": "us",
+      "voice": "Sarah",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "gender": "female",
+      "age": "young",
+      "duration": 2.647075,
+      "url": "/audio/a1/unit5-rescued/67da5e37-us.mp3",
+      "sha256": "79ffb0bb69c3df1ba66d9d9e6348cdfbc5a00c83dbc3fb8ba78dbd6182c9f765",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Waitress"
+    },
+    {
+      "unit": 5,
+      "key": "732c1097",
+      "text": "order",
+      "accent": "gb",
+      "voice": "Lily",
+      "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 0.789478,
+      "url": "/audio/a1/unit5-rescued/732c1097-gb.mp3",
+      "sha256": "b4407c60685a1830060dfe15a1ae9cb098769bd29d2bc8304361fcb66ce93754",
+      "clipVoice": "nova",
+      "kind": "vocab",
+      "speaker": null
+    },
+    {
+      "unit": 5,
+      "key": "732c1097",
+      "text": "order",
+      "accent": "us",
+      "voice": "Sarah",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "gender": "female",
+      "age": "young",
+      "duration": 0.743039,
+      "url": "/audio/a1/unit5-rescued/732c1097-us.mp3",
+      "sha256": "289638078f03fed0d1263193e24f45a1565af1bcebc1393704938cd921fa50e3",
+      "clipVoice": "nova",
+      "kind": "vocab",
+      "speaker": null
+    },
+    {
+      "unit": 5,
+      "key": "987370d3",
+      "text": "Water, please. That is all, thank you.",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 2.414875,
+      "url": "/audio/a1/unit5-rescued/987370d3-gb.mp3",
+      "sha256": "f6b4e63445c2bed1e0bd8204e5faf7d12884d4e92e751f0bbe95af2cd43d49dd",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 5,
+      "key": "987370d3",
+      "text": "Water, please. That is all, thank you.",
+      "accent": "us",
+      "voice": "Will",
+      "voiceId": "bIHbv24MWmeRgasZH58o",
+      "gender": "male",
+      "age": "young",
+      "duration": 2.182676,
+      "url": "/audio/a1/unit5-rescued/987370d3-us.mp3",
+      "sha256": "174c12bc0e803aba0990e1e9c4545f2fa48b0e5b83fdb386a2244385272a7631",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 5,
+      "key": "d34048bc",
+      "text": "Of course. And to drink?",
+      "accent": "gb",
+      "voice": "Lily",
+      "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.578957,
+      "url": "/audio/a1/unit5-rescued/d34048bc-gb.mp3",
+      "sha256": "4c63735faa9ac0bd89008f2000baf8e5ec991c0f73d5faf80e86a82f1fd4a307",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Waitress"
+    },
+    {
+      "unit": 5,
+      "key": "d34048bc",
+      "text": "Of course. And to drink?",
+      "accent": "us",
+      "voice": "Sarah",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.578957,
+      "url": "/audio/a1/unit5-rescued/d34048bc-us.mp3",
+      "sha256": "ea40fb307d3de56085e540bde6fae3a0bb1d7e2928ab91e754a5c4bf242eea29",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Waitress"
+    },
+    {
+      "unit": 5,
+      "key": "ddd200a5",
+      "text": "recommend",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.114558,
+      "url": "/audio/a1/unit5-rescued/ddd200a5-gb.mp3",
+      "sha256": "e80f1ebadbd47c50abccec2c8af109a4667d6aa63e1fb09eab2e22d2888d528e",
+      "clipVoice": "nova",
+      "kind": "vocab",
+      "speaker": null
+    },
+    {
+      "unit": 5,
+      "key": "ddd200a5",
+      "text": "recommend",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 0.975238,
+      "url": "/audio/a1/unit5-rescued/ddd200a5-us.mp3",
+      "sha256": "cff93e449e359da361694419727047b230623098ee84a9e9dd0750b946cba3e5",
+      "clipVoice": "nova",
+      "kind": "vocab",
+      "speaker": null
+    },
+    {
+      "unit": 7,
+      "key": "1be64aee",
+      "text": "straight ahead",
+      "accent": "gb",
+      "voice": "Lily",
+      "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.114558,
+      "url": "/audio/a1/unit7-rescued/1be64aee-gb.mp3",
+      "sha256": "b8b449394757dea4b574647696b513ae9ff4cea496f40813f644f8999c7f7447",
+      "clipVoice": "nova",
+      "kind": "vocab",
+      "speaker": null
+    },
+    {
+      "unit": 7,
+      "key": "1be64aee",
+      "text": "straight ahead",
+      "accent": "us",
+      "voice": "Sarah",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.207438,
+      "url": "/audio/a1/unit7-rescued/1be64aee-us.mp3",
+      "sha256": "d774813158b7484f978220533a24f69b776369b4703fecc7f541454bbd25fab0",
+      "clipVoice": "nova",
+      "kind": "vocab",
+      "speaker": null
+    },
+    {
+      "unit": 7,
+      "key": "1fcf89f4",
+      "text": "on the corner",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 1.486077,
+      "url": "/audio/a1/unit7-rescued/1fcf89f4-gb.mp3",
+      "sha256": "2b4449fd25811c5467d56acc390128f8d244d35a3c960bfba05dc571c9e52701",
+      "clipVoice": "nova",
+      "kind": "vocab",
+      "speaker": null
+    },
+    {
+      "unit": 7,
+      "key": "1fcf89f4",
+      "text": "on the corner",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 1.068118,
+      "url": "/audio/a1/unit7-rescued/1fcf89f4-us.mp3",
+      "sha256": "bbf1c4d719b6104cb192bd42a7b4be57578af262326a4abe5b528a20ed6afd0c",
+      "clipVoice": "nova",
+      "kind": "vocab",
+      "speaker": null
+    },
+    {
+      "unit": 7,
+      "key": "261bedea",
+      "text": "Turn left at the bank. And then?",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 2.461315,
+      "url": "/audio/a1/unit7-rescued/261bedea-gb.mp3",
+      "sha256": "18265937c664f8e8032fb1d5f0c4e77da388dc87b713e676715288596339552f",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 7,
+      "key": "261bedea",
+      "text": "Turn left at the bank. And then?",
+      "accent": "us",
+      "voice": "Will",
+      "voiceId": "bIHbv24MWmeRgasZH58o",
+      "gender": "male",
+      "age": "young",
+      "duration": 2.182676,
+      "url": "/audio/a1/unit7-rescued/261bedea-us.mp3",
+      "sha256": "d7475b2ff8631a05e219773f9bb35ad8b2cae8e6c16aa19d4ce4e97594f75d41",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 7,
+      "key": "5cbea0d3",
+      "text": "Near the park. Thank you very much!",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 2.461315,
+      "url": "/audio/a1/unit7-rescued/5cbea0d3-gb.mp3",
+      "sha256": "7f50bc2e33481b3e9f884379ede2a2e54e8caf09218d9a2a82709ce5f89d0d90",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 7,
+      "key": "5cbea0d3",
+      "text": "Near the park. Thank you very much!",
+      "accent": "us",
+      "voice": "Will",
+      "voiceId": "bIHbv24MWmeRgasZH58o",
+      "gender": "male",
+      "age": "young",
+      "duration": 2.368435,
+      "url": "/audio/a1/unit7-rescued/5cbea0d3-us.mp3",
+      "sha256": "f459c083f71cf4afdec07d3ab97401cae49e1c877205a48a17b5c8bcc7531951",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 7,
+      "key": "90faa806",
+      "text": "The supermarket? Turn left at the bank.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 2.600635,
+      "url": "/audio/a1/unit7-rescued/90faa806-gb.mp3",
+      "sha256": "a87c22983b18fcb7c3c9b7c5c60713ee2d4109a04d7fbe7db10278148914d490",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Laura"
+    },
+    {
+      "unit": 7,
+      "key": "90faa806",
+      "text": "The supermarket? Turn left at the bank.",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 2.786395,
+      "url": "/audio/a1/unit7-rescued/90faa806-us.mp3",
+      "sha256": "e9ec480163d170eac0b40409253e4a98dd4514558b9ba56e044ebdbdace53d6b",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Laura"
+    },
+    {
+      "unit": 7,
+      "key": "9c80b96e",
+      "text": "Excuse me. Where is the supermarket?",
+      "accent": "gb",
+      "voice": "George",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "gender": "male",
+      "age": "middle_aged",
+      "duration": 2.693515,
+      "url": "/audio/a1/unit7-rescued/9c80b96e-gb.mp3",
+      "sha256": "d1cce9b4f3601b97ff652236cbb564ac10de61613d0f40946d8219520f93d69b",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 7,
+      "key": "9c80b96e",
+      "text": "Excuse me. Where is the supermarket?",
+      "accent": "us",
+      "voice": "Will",
+      "voiceId": "bIHbv24MWmeRgasZH58o",
+      "gender": "male",
+      "age": "young",
+      "duration": 2.275556,
+      "url": "/audio/a1/unit7-rescued/9c80b96e-us.mp3",
+      "sha256": "7ec6d19f1f7d4259e1b185d01be4af04aad0d7d91eef8550cecfa0dd5d3eae1e",
+      "clipVoice": "onyx",
+      "kind": "dialogue",
+      "speaker": "Carlos"
+    },
+    {
+      "unit": 7,
+      "key": "b4daaace",
+      "text": "Then go straight. It is near the park, on the right.",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 3.390113,
+      "url": "/audio/a1/unit7-rescued/b4daaace-gb.mp3",
+      "sha256": "dced36305cfdceb2883e0322e9414f31e55c2d8e69ebb0941237baecc4ee7689",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Laura"
+    },
+    {
+      "unit": 7,
+      "key": "b4daaace",
+      "text": "Then go straight. It is near the park, on the right.",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 3.065034,
+      "url": "/audio/a1/unit7-rescued/b4daaace-us.mp3",
+      "sha256": "4410887426506e92c52218f9892dab3c59e7bd4babd93d76dc52e8075c512347",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Laura"
+    },
+    {
+      "unit": 7,
+      "key": "c3dcf9df",
+      "text": "You are welcome. Have a good day!",
+      "accent": "gb",
+      "voice": "Alice",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "gender": "female",
+      "age": "middle_aged",
+      "duration": 2.461315,
+      "url": "/audio/a1/unit7-rescued/c3dcf9df-gb.mp3",
+      "sha256": "f72b977196c77067b7c2be37c607766fd7c3382dd09d2ff1de67930f97f056f1",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Laura"
+    },
+    {
+      "unit": 7,
+      "key": "c3dcf9df",
+      "text": "You are welcome. Have a good day!",
+      "accent": "us",
+      "voice": "Jessica",
+      "voiceId": "cgSgspJ2msm6clMCkdW9",
+      "gender": "female",
+      "age": "young",
+      "duration": 2.229116,
+      "url": "/audio/a1/unit7-rescued/c3dcf9df-us.mp3",
+      "sha256": "6f13403e425245371e09e2973f3caa1412a3e0d15b4335bdeaf6bf487fc7bc40",
+      "clipVoice": "nova",
+      "kind": "dialogue",
+      "speaker": "Laura"
+    }
+  ]
+}
