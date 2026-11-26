@@ -2,7 +2,7 @@
 export function createDraftStore({ client, userId, lessonKey, storage, notify = () => {}, delay = 500 }) {
   const cacheKey = `munchira:a1-draft:v1:${userId}:${lessonKey}`
   let view = { ready: false, fields: {}, status: 'loading' }
-  let revision = 0, serial = 0, savedSerial = 0, timer, running, blocked = false, started
+  let revision = 0, serial = 0, savedSerial = 0, timer, running, blocked = false, started, unverified = false
   const listeners = new Set()
   const emit = changes => { view = { ...view, ...changes }; listeners.forEach(fn => fn()); notify(view) }
   const cache = () => { try { storage?.setItem(cacheKey, JSON.stringify({ revision, fields: view.fields })) } catch { /* Storage may be disabled. */ } }
@@ -14,15 +14,27 @@ export function createDraftStore({ client, userId, lessonKey, storage, notify = 
     try { return await build(controller.signal) } finally { clearTimeout(timeout) }
   }
   function schedule() { clearTimeout(timer); timer = setTimeout(() => { void flush() }, delay) }
+  const readServer = () => request(signal => client.from('a1_learning_drafts').select('fields,revision').eq('user_id', userId).eq('lesson_key', lessonKey).abortSignal(signal).maybeSingle())
+  const validFields = value => typeof value === 'object' && value !== null && !Array.isArray(value)
+  // A failed recovery must not lock the lesson: open from local/confirmed progress and
+  // check the server revision before the first write so newer saved work is never overwritten.
+  async function verify() {
+    const { data, error } = await readServer()
+    if (error) throw error
+    const serverRevision = data?.revision ?? 0
+    unverified = false
+    if (serial === savedSerial) { revision = serverRevision; emit({ fields: data?.fields ?? view.fields, status: 'saved' }); return }
+    if (serverRevision !== revision) { revision = serverRevision; blocked = true; emit({ status: 'conflict' }); cache() }
+  }
   async function start() {
     if (started) return started
     started = (async () => {
       try {
-        const { data, error } = await request(signal => client.from('a1_learning_drafts').select('fields,revision').eq('user_id', userId).eq('lesson_key', lessonKey).abortSignal(signal).maybeSingle())
+        const { data, error } = await readServer()
         if (error) throw error
         revision = data?.revision ?? 0
         const pending = readCache()
-        const validPending = pending && typeof pending.fields === 'object' && pending.fields !== null && !Array.isArray(pending.fields)
+        const validPending = pending && validFields(pending.fields)
         if (validPending && pending.revision !== revision) {
           blocked = true
           emit({ ready: true, fields: pending.fields, status: 'conflict' })
@@ -30,7 +42,16 @@ export function createDraftStore({ client, userId, lessonKey, storage, notify = 
         }
         emit({ ready: true, fields: validPending ? pending.fields : data?.fields ?? {}, status: validPending ? 'pending' : 'saved' })
         if (validPending) { serial++; schedule() }
-      } catch { emit({ status: 'load-error' }); started = null }
+      } catch {
+        started = null
+        if (view.ready) { emit({ status: 'load-error' }); return }
+        const pending = readCache()
+        const validPending = pending && validFields(pending.fields) && Number.isInteger(pending.revision)
+        revision = validPending ? pending.revision : 0
+        unverified = true
+        if (validPending) serial++
+        emit({ ready: true, fields: validPending ? pending.fields : {}, status: 'load-error' })
+      }
     })()
     return started
   }
@@ -46,7 +67,12 @@ export function createDraftStore({ client, userId, lessonKey, storage, notify = 
   async function flush() {
     clearTimeout(timer)
     if (running) { await running; if (serial > savedSerial && !blocked && view.status === 'pending') return flush(); return }
-    if (!view.ready || blocked || serial === savedSerial) return
+    if (!view.ready || blocked) return
+    if (unverified) {
+      try { await verify() } catch { if (serial > savedSerial) { emit({ status: 'offline' }); cache() } return }
+      if (blocked) return
+    }
+    if (serial === savedSerial) return
     const sentSerial = serial, fields = view.fields
     emit({ status: 'saving' })
     running = (async () => {
@@ -65,7 +91,7 @@ export function createDraftStore({ client, userId, lessonKey, storage, notify = 
   }
   async function reloadServer() {
     clearTimeout(timer); if (running) await running
-    removeCache(); blocked = false; serial = 0; savedSerial = 0; started = null
+    removeCache(); blocked = false; unverified = false; serial = 0; savedSerial = 0; started = null
     emit({ ready: false, status: 'loading' }); await start()
   }
   return { getSnapshot: () => view, subscribe: fn => { listeners.add(fn); return () => listeners.delete(fn) }, start, set, flush, reloadServer,

@@ -290,7 +290,7 @@ function ModelLessonContent({ lesson }) {
       </header>
       <div className="ml-layout">
         <nav className="ml-steps" aria-label="Pasos de la lección"><ol>{steps.map((s, i) => <li key={s.id}><button type="button" aria-current={i === step ? 'step' : undefined} className={completed.has(s.id) ? 'ml-step-done' : ''} disabled={!canOpenStep(i, steps, completed)} onClick={() => go(i)}><span>{completed.has(s.id) ? '✓' : i + 1}</span>{s.label}</button></li>)}</ol></nav>
-        <section className="ml-panel" aria-live="polite"><>{steps.map((s, i) => visited.has(i) && <div className="ml-step-content" hidden={i !== step} key={s.id}><StepContent id={s.id} accent={accent} lesson={lesson} onComplete={done => mark(s.id, done ?? true)} /></div>)}</>
+        <section className="ml-panel" aria-live="polite"><>{steps.map((s, i) => (visited.has(i) || i === step) && <div className="ml-step-content" hidden={i !== step} key={s.id}><StepContent id={s.id} accent={accent} lesson={lesson} onComplete={done => mark(s.id, done ?? true)} /></div>)}</>
           {isPracticeStep(current.id) && !completed.has(current.id) && current.id !== 'summary' && <p className="ml-tip" role="status">Completa esta actividad antes de continuar.</p>}
           <div className="ml-nav">
             {step > 0 && <button type="button" className="mp-button" onClick={() => go(step - 1)}>← Anterior</button>}

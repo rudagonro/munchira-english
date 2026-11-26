@@ -135,10 +135,10 @@ test('edits during a save are serialized and the newest unsent response wins', a
   store.dispose()
 })
 
-test('a failed read never overwrites an existing draft with initial empty answers', async () => {
+test('a failed read opens the lesson but never overwrites an existing draft with initial empty answers', async () => {
   let writes = 0
   const query = { select: () => query, eq: () => query, abortSignal: () => query, maybeSingle: async () => ({ error: new Error('offline') }) }
   const store = createDraftStore({ client: { from: () => query, rpc: () => { writes++; throw new Error('must not write') } }, userId: 'owner', lessonKey: 'unit:1', storage: memory() })
   await store.start(); store.set('step', 0); await store.flush()
-  assert.equal(store.getSnapshot().ready, false); assert.equal(writes, 0); store.dispose()
+  assert.equal(store.getSnapshot().ready, true); assert.equal(store.getSnapshot().status, 'offline'); assert.equal(writes, 0); store.dispose()
 })
