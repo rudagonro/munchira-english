@@ -105,3 +105,11 @@ test('con la teoría antigua completa, la unidad puede abrir directamente en el 
   const { step } = restoreLessonProgress(LESSON_STEPS.length - 1, LESSON_STEPS, credited)
   assert.equal(LESSON_STEPS[step].id, 'summary')
 })
+
+test('quien cambió de nivel y volvió a A1 conserva los cuestionarios aprobados en su inscripción anterior', () => {
+  const current = [1, 2, 3, 4].map(order => ({ module_id: `m${order}`, status: 'in_progress', quiz_score: 20 }))
+  const previous = [1, 2, 3, 4].map(order => ({ module_id: `m${order}`, status: 'completed', quiz_score: 85 }))
+  assert.equal(summarizeA1Course({ legacy: legacyUnitCredit({ modules, lessons, moduleProgress: current }) }).completed, 0)
+  const summary = summarizeA1Course({ legacy: legacyUnitCredit({ modules, lessons, moduleProgress: [...current, ...previous] }) })
+  assert.equal(summary.completed, 8)
+})
