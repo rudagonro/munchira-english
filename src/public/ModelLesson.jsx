@@ -322,7 +322,7 @@ function ModelLessonContent({ lesson, legacyTheory }) {
       <header className="ml-head">
         <p className="mp-eyebrow">{lesson.number ? `Curso ${lesson.level} · ${lesson.module}` : `${lesson.level} · ${lesson.module} · Lección de muestra`}</p>
         <h1>{lesson.number ? `Unidad ${lesson.number}: ${lesson.title}` : lesson.title}</h1>
-        {legacyTheory && <p className="ml-tip" role="status">Ya estudiaste esta teoría en los módulos anteriores: puedes ir directo al cuestionario final o repasar cualquier paso.</p>}
+        {legacyTheory && <p className="ml-tip" role="status">Teoría reconocida de tus módulos anteriores: para completar la unidad aprueba su cuestionario final (70%). Puedes ir directo o repasar cualquier paso.</p>}
         <div className="ml-progress" role="progressbar" aria-valuemin={0} aria-valuemax={steps.length} aria-valuenow={completed.size} aria-label="Avance de la lección"><span style={{ width: `${(completed.size / steps.length) * 100}%` }} /></div>
         <div className="ml-head-row">
           <p>Paso {step + 1} de {steps.length}: <strong>{current.label}</strong></p>

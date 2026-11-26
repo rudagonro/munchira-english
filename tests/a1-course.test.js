@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { A1_COURSE_UNITS, A1_LEGACY_LESSON_MAP, legacyUnitCredit, summarizeA1Course } from '../src/data/a1Course.js'
+import { A1_COURSE_UNITS, A1_LEGACY_LABEL, A1_LEGACY_LESSON_MAP, legacyUnitCredit, summarizeA1Course, unitStatusText } from '../src/data/a1Course.js'
 import { LESSON_STEPS } from '../src/public/model-lesson.js'
 
 const modules = [1, 2, 3, 4].map(order => ({ id: `m${order}`, order_index: order }))
@@ -50,15 +50,38 @@ test('una unidad empezada continúa en el paso guardado', () => {
   assert.equal(summary.nextAction.cta, 'Continuar Unidad 1')
 })
 
-test('el progreso antiguo se conserva: módulos aprobados completan sus unidades sin tocar los registros', () => {
+test('el progreso antiguo se reconoce pero nunca completa una unidad: queda lista para su cuestionario', () => {
   const moduleProgress = [1, 2, 3, 4].map(order => ({ module_id: `m${order}`, status: 'completed', quiz_score: 90 }))
   const input = { modules, lessons, completedLessonIds: [], moduleProgress }
   const snapshot = JSON.stringify(input)
   const legacy = legacyUnitCredit(input)
   assert.equal(JSON.stringify(input), snapshot, 'no modifica filas antiguas')
   const summary = summarizeA1Course({ legacy })
-  assert.equal(summary.completed, 8)
-  assert.ok(summary.units.every(unit => unit.fromLegacy))
+  assert.equal(summary.completed, 0)
+  assert.ok(summary.units.every(unit => unit.status === 'quiz-pending' && unit.fromLegacy && unit.legacyTheory))
+  assert.ok(summary.units.every(unit => unitStatusText(unit) === 'Teoría reconocida · lista para el cuestionario'))
+  assert.equal(A1_LEGACY_LABEL, 'Reconocido de tus módulos anteriores')
+  assert.equal(summary.nextAction.text, 'Tu teoría de la Unidad 1 está reconocida: solo te falta su cuestionario final')
+  assert.equal(summary.nextAction.path, '/cursos/A1/unidad/1')
+})
+
+test('aprobar 3 de 4 módulos antiguos ya no marca 4 de 8 unidades como completadas', () => {
+  const moduleProgress = [1, 3, 4].map(order => ({ module_id: `m${order}`, status: 'completed', quiz_score: 100 }))
+  const summary = summarizeA1Course({ legacy: legacyUnitCredit({ modules, lessons, moduleProgress }) })
+  assert.equal(summary.completed, 0)
+  assert.deepEqual(summary.units.filter(unit => unit.fromLegacy).map(unit => unit.number), [1, 6, 7, 8])
+  assert.deepEqual(summary.units.filter(unit => unit.status === 'in-progress').map(unit => unit.number), [2, 3, 4, 5])
+})
+
+test('aprobar el cuestionario nuevo completa la unidad y retira la etiqueta de crédito antiguo', () => {
+  const moduleProgress = [1, 2, 3, 4].map(order => ({ module_id: `m${order}`, status: 'completed', quiz_score: 90 }))
+  const legacy = legacyUnitCredit({ modules, lessons, moduleProgress })
+  const summary = summarizeA1Course({ legacy, unitRows: [{ unit_number: 4, best_score: 70, completed_at: '2026-11-26' }] })
+  assert.equal(summary.units[3].status, 'completed')
+  assert.equal(summary.units[3].fromLegacy, false)
+  assert.equal(summary.completed, 1)
+  const failed = summarizeA1Course({ legacy, unitRows: [{ unit_number: 4, best_score: 60, completed_at: null }] })
+  assert.equal(failed.units[3].status, 'quiz-pending')
 })
 
 test('lecciones antiguas estudiadas sin el cuestionario dejan la unidad lista para su cuestionario final', () => {
@@ -93,10 +116,11 @@ test('cada unidad enseña a construir frases: regla, forma, afirmativa/negativa/
   }
 })
 
-test('un cuestionario antiguo suspendido (menos de 70%) no da la unidad por aprobada', () => {
+test('un cuestionario antiguo suspendido (menos de 70%) ni aprueba ni reconoce la unidad', () => {
   const moduleProgress = [1, 2, 3, 4].map(order => ({ module_id: `m${order}`, status: 'completed', quiz_score: 40 }))
   const summary = summarizeA1Course({ legacy: legacyUnitCredit({ modules, lessons, completedLessonIds: [], moduleProgress }) })
   assert.equal(summary.completed, 0)
+  assert.ok(summary.units.every(unit => !unit.legacyTheory))
 })
 
 test('con la teoría antigua completa, la unidad puede abrir directamente en el cuestionario final', async () => {
@@ -106,10 +130,11 @@ test('con la teoría antigua completa, la unidad puede abrir directamente en el 
   assert.equal(LESSON_STEPS[step].id, 'summary')
 })
 
-test('quien cambió de nivel y volvió a A1 conserva los cuestionarios aprobados en su inscripción anterior', () => {
+test('quien cambió de nivel y volvió a A1 conserva el reconocimiento de lo aprobado en su inscripción anterior', () => {
   const current = [1, 2, 3, 4].map(order => ({ module_id: `m${order}`, status: 'in_progress', quiz_score: 20 }))
   const previous = [1, 2, 3, 4].map(order => ({ module_id: `m${order}`, status: 'completed', quiz_score: 85 }))
   assert.equal(summarizeA1Course({ legacy: legacyUnitCredit({ modules, lessons, moduleProgress: current }) }).completed, 0)
   const summary = summarizeA1Course({ legacy: legacyUnitCredit({ modules, lessons, moduleProgress: [...current, ...previous] }) })
-  assert.equal(summary.completed, 8)
+  assert.equal(summary.completed, 0)
+  assert.ok(summary.units.every(unit => unit.status === 'quiz-pending' && unit.legacyTheory))
 })

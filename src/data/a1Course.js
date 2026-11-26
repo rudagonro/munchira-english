@@ -20,7 +20,7 @@ export const A1_LEGACY_LESSON_MAP = {
   '4.1': 1, '4.2': 1, '4.3': 7, '4.4': 8, '4.5': 3, '4.6': 6,
 }
 
-/** Credit earned in the four old A1 modules, grouped by the unit that absorbed each lesson. */
+/** Evidence from the four old A1 modules, grouped by the unit that absorbed each lesson. It only recognises theory; it never approves a unit. */
 export function legacyUnitCredit({ modules = [], lessons = [], completedLessonIds = [], moduleProgress = [] } = {}, map = A1_LEGACY_LESSON_MAP) {
   const done = new Set(completedLessonIds)
   const moduleById = new Map(modules.map(module => [module.id, module]))
@@ -30,7 +30,7 @@ export function legacyUnitCredit({ modules = [], lessons = [], completedLessonId
     const module = moduleById.get(lesson.module_id)
     const unit = module && map[`${module.order_index}.${lesson.order_index}`]
     if (!unit) continue
-    const entry = credit.get(unit) ?? { total: 0, done: 0, modules: new Set(), theoryDone: false, quizPassed: false }
+    const entry = credit.get(unit) ?? { total: 0, done: 0, modules: new Set(), theoryDone: false }
     entry.total++
     if (done.has(lesson.id) || passedModules.has(module.id)) entry.done++
     entry.modules.add(module.id)
@@ -38,7 +38,6 @@ export function legacyUnitCredit({ modules = [], lessons = [], completedLessonId
   }
   for (const entry of credit.values()) {
     entry.theoryDone = entry.total > 0 && entry.done === entry.total
-    entry.quizPassed = entry.theoryDone && [...entry.modules].every(id => passedModules.has(id))
   }
   return credit
 }
@@ -51,8 +50,10 @@ function draftState(fields) {
 }
 
 /**
- * One A1 course of eight units. A unit counts as completed when its quiz was passed (>=70, stored in
- * a1_unit_progress) or when every old lesson mapped to it was studied and its old module quiz passed.
+ * One A1 course of eight units. A unit counts as completed only when its own final quiz was passed
+ * (>=70, stored in a1_unit_progress). Old module work never completes a unit: when every old lesson
+ * mapped to it was studied (or its old module was approved) the theory is recognised and the unit
+ * waits for its quiz; partial old work marks the unit as in progress.
  */
 export function summarizeA1Course({ unitRows = [], drafts = [], legacy = new Map() } = {}) {
   const units = A1_COURSE_UNITS.map(unit => {
@@ -60,10 +61,10 @@ export function summarizeA1Course({ unitRows = [], drafts = [], legacy = new Map
     const draft = draftState(drafts.find(item => item.lesson_key === `unit:${unit.number}`)?.fields)
     const credit = legacy.get(unit.number)
     let status = 'not-started'
-    if (row?.completed_at || credit?.quizPassed) status = 'completed'
+    if (row?.completed_at) status = 'completed'
     else if (draft.readyForQuiz || credit?.theoryDone || row) status = 'quiz-pending'
     else if (draft.started || credit?.done > 0) status = 'in-progress'
-    return { ...unit, status, bestScore: row?.best_score ?? null, step: draft.step, fromLegacy: Boolean(credit?.quizPassed && !row?.completed_at), legacyTheory: Boolean(credit?.theoryDone) }
+    return { ...unit, status, bestScore: row?.best_score ?? null, step: draft.step, fromLegacy: Boolean(credit?.theoryDone && !row?.completed_at), legacyTheory: Boolean(credit?.theoryDone) }
   })
   const completed = units.filter(unit => unit.status === 'completed').length
   const next = units.find(unit => unit.status !== 'completed') ?? null
@@ -82,7 +83,17 @@ export function summarizeA1Course({ unitRows = [], drafts = [], legacy = new Map
 
 export function nextAction(next, total = A1_UNIT_COUNT) {
   if (!next) return { text: `Completaste las ${total} unidades de A1`, cta: 'Repasar el curso', path: '/cycle' }
+  if (next.status === 'quiz-pending' && next.fromLegacy) return { text: `Tu teoría de la Unidad ${next.number} está reconocida: solo te falta su cuestionario final`, cta: `Hacer el cuestionario de la Unidad ${next.number}`, path: next.path }
   if (next.status === 'quiz-pending') return { text: `Te falta el cuestionario final de la Unidad ${next.number}`, cta: `Hacer el cuestionario de la Unidad ${next.number}`, path: next.path }
   if (next.status === 'in-progress') return { text: `Vas por la ${next.label}`, cta: `Continuar Unidad ${next.number}`, path: next.path }
   return { text: `Tu siguiente paso es la ${next.label}`, cta: `Empezar Unidad ${next.number}`, path: next.path }
+}
+
+export const A1_LEGACY_LABEL = 'Reconocido de tus módulos anteriores'
+const A1_STATUS = { completed: 'Completada', 'quiz-pending': 'Falta el cuestionario final', 'in-progress': 'En curso', 'not-started': 'Sin empezar' }
+
+/** Text shown for a unit in the course outline. */
+export function unitStatusText(unit) {
+  if (unit.status === 'quiz-pending' && unit.fromLegacy) return 'Teoría reconocida · lista para el cuestionario'
+  return A1_STATUS[unit.status] ?? ''
 }
