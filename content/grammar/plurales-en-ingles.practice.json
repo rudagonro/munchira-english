@@ -1,0 +1,6 @@
+{
+  "prompt": "Two ___ are playing in the park.",
+  "options": ["childs", "children", "childrens"],
+  "answer": "children",
+  "explanation": "Child tiene un plural irregular: children. No añadimos otra s después."
+}
