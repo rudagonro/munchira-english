@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
+import { useAuth } from './contexts/auth-context'
+import AccountSuspended from './pages/AccountSuspended'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import ErrorBoundary from './components/ErrorBoundary'
 import Layout from './components/Layout'
@@ -27,6 +29,8 @@ import { CourseIndex, CourseLevel } from './public/Curriculum'
 
 function AppRoutes() {
   const location = useLocation()
+  const { suspended } = useAuth()
+  if (suspended) return <AccountSuspended />
   const background = location.pathname === '/login' ? location.state?.backgroundLocation : null
   return (
     <ErrorBoundary resetKey={location.pathname}>

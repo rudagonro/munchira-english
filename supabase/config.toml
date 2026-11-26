@@ -3,3 +3,10 @@ project_id = "munchira"
 
 [functions.tts-generate]
 verify_jwt = true
+
+# Solo administradores: cada función comprueba el rol en SQL con el token de quien llama.
+[functions.admin-account-status]
+verify_jwt = true
+
+[functions.admin-delete-user]
+verify_jwt = true
