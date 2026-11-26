@@ -99,3 +99,23 @@ test('en el modo revisor ninguna escritura se ejecuta', () => {
   assert.match(starter, /if \(!review\) markLocalUnit0Pass\(\)/, 'ni siquiera el aprobado local del navegador')
   assert.match(starter, /if \(!user \|\| review\) return null/, 'sin «Guardar en mi Repaso»')
 })
+
+test('al terminar los ejercicios, el revisor sigue viendo el solucionario y puede repetirlos', async () => {
+  const { ReviewKey } = await load('/src/components/ExerciseBlock.jsx')
+  const exercises = [
+    { type: 'choice', q: 'She ___ my sister.', opts: ['am', 'is', 'are'], correct: 1 },
+    { type: 'fill', sentence: 'I ___ 20 years old.', answer: 'am|\'m' },
+  ]
+  const html = render(h(ReviewKey, { exercises, onRestart: () => {} }), { review: true })
+  assert.match(html, /She ___ my sister\..*Respuesta:.*<strong>is<\/strong>/s)
+  assert.match(html, /I ___ 20 years old\..*<strong>am<\/strong>/s)
+  assert.match(html, /Repetir los ejercicios/)
+  const code = src('components/ExerciseBlock.jsx')
+  assert.match(code, /\{review && <ReviewKey exercises=\{exercises\} onRestart=\{\(\) => \{ setIdx\(0\); setScore\(0\); setDone\(false\) \}\} \/>\}/, 'solo en el modo revisor')
+})
+
+test('la barra del revisor queda pegada arriba mientras se baja por la unidad', () => {
+  assert.match(src('pages/ReviewerUnit.jsx'), /className="rv-unit-wrap rv-unit-sticky"/)
+  assert.match(src('index.css'), /\.rv-unit-sticky \{ position: sticky; top: 0;/)
+})
+

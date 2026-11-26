@@ -49,7 +49,7 @@ export default function ReviewerUnit() {
   if (!starter && !unit) return <div className="page-shell"><h1>Unidad no encontrada</h1><Link to="/revisor">← Volver al revisor</Link></div>
   const current = starter ? 0 : unit.number
   return <ReviewModeContext.Provider value={true}>
-    <div className="rv-unit-wrap"><ReviewBar number={current} /></div>
+    <div className="rv-unit-wrap rv-unit-sticky"><ReviewBar number={current} /></div>
     {starter ? <StarterUnit /> : <UnitPreview key={unit.number} unit={unit} />}
   </ReviewModeContext.Provider>
 }
