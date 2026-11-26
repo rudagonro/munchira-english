@@ -24,6 +24,8 @@ test('respuestas: forma completa con barra, números en palabras u horas y name\
   assert.equal(isCorrectAnswer("I am / I'm", "I am / I'm"), true)
   assert.equal(isCorrectAnswer('I get up at seven.', 'I get up at 7.'), true)
   assert.equal(isCorrectAnswer("I get up at 7 o'clock", 'I get up at 7.'), true)
+  assert.equal(isCorrectAnswer('I get up at 7:00.', 'I get up at 7.'), true)
+  assert.equal(isCorrectAnswer('I get up at 7.00', 'I get up at 7.'), true)
   assert.equal(isCorrectAnswer('I wake up at six thirty', 'I wake up at 6:30.'), true)
   assert.equal(isCorrectAnswer('I am twenty-eight years old.', 'I am 28 years old.'), true)
   assert.equal(isCorrectAnswer("My name's Ana.", 'My name is Ana.'), true)
@@ -50,8 +52,14 @@ test('tarjetas: solo las palabras clave y cada una con su índice real en vocab'
   }
   const lesson = units[1]
   const steps = LESSON_STEPS
-  const done = restoreLessonProgress(0, steps, new Set(), { 'cards.idx': cardVocab(lesson).length * 2 }, lesson)
-  assert.ok(done.completed.has('cards'))
+  const restore = fields => restoreLessonProgress(0, steps, new Set(), fields, lesson).completed.has('cards')
+  assert.ok(restore({ cardDeck2: undefined, 'cardDeck2.idx': cardVocab(lesson).length * 2 }))
+  // Un borrador de la baraja anterior a mitad (entre el límite nuevo y el viejo) no cuenta como terminado…
+  assert.equal(restore({ 'cards.idx': cardVocab(lesson).length * 2 }), false)
+  // …pero la baraja anterior terminada sí.
+  assert.ok(restore({ 'cards.idx': lesson.vocab.length * 2 }))
+  const source = readFileSync(new URL('../src/public/ModelLesson.jsx', import.meta.url), 'utf8')
+  assert.doesNotMatch(source, /useDraftState\('cards\./)
 })
 
 test('contenido revisado: sin pistas genéricas, notas internas, asteriscos, usted ni avisos de audio', () => {

@@ -29,8 +29,8 @@ export function canonicalNumbers(text) {
   return String(text)
     .replace(/\b(twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)(?:[ -](one|two|three|four|five|six|seven|eight|nine))?\b/g, (_, t, u) => String(TENS[t] + (u ? NUMBER_WORDS.indexOf(u) : 0)))
     .replace(new RegExp(`\\b(${NUMBER_WORDS.join('|')})\\b`, 'g'), w => String(NUMBER_WORDS.indexOf(w)))
-    .replace(/\b(\d{1,2}):00\b/g, '$1')
     .replace(/\b(\d{1,2}) (\d{2})\b/g, '$1:$2')
+    .replace(/\b(\d{1,2}):00\b/g, '$1')
     .replace(/\b(\d{1,2}(?::\d{2})?) ?(?:o'clock|o clock|a ?m|p ?m)\b/g, '$1')
     .replace(/\s+/g, ' ').trim()
 }
