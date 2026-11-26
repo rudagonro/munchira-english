@@ -40,7 +40,8 @@ test('la práctica rescatada es A1, tiene origen y sus respuestas son válidas',
         assert.equal(ex.sentence.split('___').length, 2, 'un solo hueco por frase')
         for (const option of ex.answer.split('|')) assert.ok(isCorrectAnswer(option, ex.answer))
       }
-      if (ex.type === 'order') assert.deepEqual([...ex.words].map(w => w.toLowerCase()).sort(), ex.answer.toLowerCase().split(' ').sort())
+      if (ex.type === 'order') for (const option of ex.answer.split('|')) assert.deepEqual([...ex.words].map(w => w.toLowerCase()).sort(), option.toLowerCase().split(' ').sort(), option)
+      if (ex.type === 'choice') assert.equal(new Set(ex.opts).size, ex.opts.length)
     }
   }
   assert.ok(total >= 40)

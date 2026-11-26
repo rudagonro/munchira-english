@@ -10015,8 +10015,8 @@
             "opts": [
               "I am doctor.",
               "I am a doctor.",
-              "I am the doctor.",
-              "I am an doctors."
+              "I am an doctor.",
+              "I am doctor a."
             ],
             "correct": 1,
             "why": "Las profesiones en singular llevan a o an: I am a doctor.",
@@ -17333,8 +17333,8 @@
           {
             "type": "fill",
             "sentence": "Go ___ for two blocks, then turn right.",
-            "answer": "straight",
-            "hint": "«Go straight» = sigue recto.",
+            "answer": "straight|straight ahead",
+            "hint": "«Go straight» o «go straight ahead» = sigue recto.",
             "source": "Listening guiado con apoyo · Lección 2: Pidiendo direcciones"
           },
           {
@@ -19729,7 +19729,7 @@
               "In",
               "my"
             ],
-            "answer": "In my free time I love cooking",
+            "answer": "In my free time I love cooking|I love cooking in my free time",
             "hint": "In my free time + I + love + actividad con -ing.",
             "source": "Frases básicas de supervivencia · Lección 4: Tu presentación personal en inglés"
           },
