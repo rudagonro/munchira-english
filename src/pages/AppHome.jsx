@@ -3,17 +3,12 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
 import { LEVEL_NAMES } from '../data/diagnosticBank'
-import { computeModuleAvailability } from '../data/moduleAvailability'
-import { summarizeCycle } from '../data/dashboardSummary'
 import mascot from '../assets/oruga-transparente.png.asset.json'
 import CurriculumOutline from '../components/CurriculumOutline'
 import { useA1Course } from '../data/useA1Course'
+import { isWaitlisted } from '../data/levelAccess'
 
 const mediaOrigin = ''
-const SKILLS = [
-  ['grammar', '📝', 'Gramática'], ['vocabulary', '📖', 'Vocabulario'], ['listening', '🎧', 'Listening'],
-  ['reading', '📚', 'Reading'], ['writing', '✍️', 'Writing'],
-]
 
 export default function AppHome() {
   const { profile, signOut, user, getActiveCycleData, getDueVocab } = useAuth()
@@ -44,15 +39,12 @@ export default function AppHome() {
   }, [user, getActiveCycleData, getDueVocab])
 
   const name = profile?.full_name || 'estudiante'
-  const availability = cycle
-    ? computeModuleAvailability(cycle.modules, cycle.progress, cycle.checkpoints, cycle.checkpointAttempts)
-    : []
-  const sum = summarizeCycle(availability)
   const started = Boolean(diag || cycle?.enrollment)
   const level = cycle?.enrollment?.cycles?.cefr_level ?? diag?.cefr_level ?? null
-  const a1 = level === 'A1' ? course.summary : null
+  const waiting = started && isWaitlisted(level)
+  const a1 = started && !waiting ? course.summary : null
 
-  if (loading || (level === 'A1' && course.loading)) return <div className="screen-center"><p className="loading-text">Cargando tu panel...</p></div>
+  if (loading || (a1 && course.loading)) return <div className="screen-center"><p className="loading-text">Cargando tu panel...</p></div>
 
   return (
     <div className="dash">
@@ -62,24 +54,18 @@ export default function AppHome() {
           <span className="dash-eyebrow">Tu espacio de aprendizaje</span>
           <h1>Hola, {name}</h1>
           {!started ? (
-            <p>Elige cómo empezar: desde cero en A1 o con una prueba de nivel para ubicarte y preparar tus módulos.</p>
-          ) : a1 ? (
-            <p><strong>{a1.nextAction.text}.</strong> Un poco cada día cuenta más que mucho de vez en cuando.</p>
-          ) : sum.next ? (
-            <p>Tu siguiente paso es <strong>{sum.next.title}</strong>.{sum.next.lessonProgress?.total > 0 && <> Llevas {sum.next.lessonProgress.completed} de {sum.next.lessonProgress.total} lecciones completadas.</>} Un poco cada día cuenta más que mucho de vez en cuando.</p>
-          ) : sum.total === 0 ? (
-            <p>Tu nivel es {level}. Sus módulos aún se están preparando; mientras tanto puedes practicar con la lección de muestra y el repaso.</p>
+            <p>Elige cómo empezar: desde cero en A1 o con una prueba de nivel para saber en qué nivel empiezas.</p>
+          ) : waiting ? (
+            <p><strong>Tu nivel {level} está en preparación y estás en su lista de espera.</strong> Te avisaremos cuando esté listo. Mientras tanto, si quieres, puedes practicar con A1.</p>
           ) : (
-            <p>Completaste todos los módulos disponibles de tu nivel. Repasa los que tengan nota baja para afianzarlos.</p>
+            <p><strong>{a1.nextAction.text}.</strong> Un poco cada día cuenta más que mucho de vez en cuando.</p>
           )}
           <div className="dash-actions">
             {!started
               ? <Link to="/diagnostic" className="dash-btn">Empezar</Link>
-              : a1
-                ? <Link to={a1.nextAction.path} className="dash-btn">{a1.nextAction.cta}</Link>
-                : sum.next
-                  ? <Link to={`/module/${sum.next.id}`} className="dash-btn">Continuar: {sum.next.title}</Link>
-                  : <Link to="/cycle" className="dash-btn">Ver mis módulos</Link>}
+              : waiting
+                ? <Link to="/cycle" className="dash-btn">Ver mi lista de espera</Link>
+                : <Link to={a1.nextAction.path} className="dash-btn">{a1.nextAction.cta}</Link>}
           </div>
         </div>
         {level ? (
@@ -91,10 +77,7 @@ export default function AppHome() {
               <div className="dash-meter" aria-label={`${a1.pct}% del curso A1`}><span style={{ width: `${a1.pct}%` }} /></div>
               <span>{a1.progressLabel} · {a1.pct}%</span>
             </>}
-            {!a1 && sum.total > 0 && <>
-              <div className="dash-meter" aria-label={`${sum.pct}% del nivel`}><span style={{ width: `${sum.pct}%` }} /></div>
-              <span>{sum.completed} de {sum.total} módulos · {sum.pct}%</span>
-            </>}
+            {waiting && <span>En preparación · lista de espera</span>}
           </div>
         ) : (
           <div className="dash-mascot"><img src={`${mediaOrigin}${mascot.url}`} alt="" width="443" height="518" /></div>
@@ -105,11 +88,7 @@ export default function AppHome() {
           <div className="dash-stat"><b>{a1.completed} / {a1.total}</b><span>Unidades completadas</span></div>
           <div className="dash-stat"><b>{a1.avg === null ? '—' : `${a1.avg}%`}</b><span>Nota media de cuestionarios</span></div>
           <div className="dash-stat"><b>{a1.units.filter(unit => unit.status === 'quiz-pending').length}</b><span>Cuestionarios finales pendientes</span></div>
-        </> : <>
-          <div className="dash-stat"><b>{sum.completed}</b><span>Módulos completados</span></div>
-          <div className="dash-stat"><b>{sum.avg === null ? '—' : `${sum.avg}%`}</b><span>Nota media</span></div>
-          <div className="dash-stat"><b>{sum.toImprove}</b><span>Módulos por mejorar (menos de 70%)</span></div>
-        </>}
+        </> : null}
         <div className="dash-stat"><b>{due ?? '—'}</b><span>Palabras para repasar hoy</span></div>
       </div>
       <div className="dash-grid">
@@ -118,11 +97,16 @@ export default function AppHome() {
           <h3>Curso A1 · {a1.total} unidades</h3>
           <p>Teoría paso a paso, práctica, escucha, diálogo y un cuestionario final en cada unidad.</p>
           <span className="go">Ver mi curso →</span>
-        </Link> : <Link to="/cycle" className="dash-card">
-          <span className="tag">Módulos</span>
-          <h3>Tu ruta {level ? `de ${level}` : ''}</h3>
-          <p>Avanza en orden: cada módulo desbloquea el siguiente y algunos terminan con un control.</p>
-          <span className="go">Ver módulos →</span>
+        </Link> : !waiting ? <Link to="/diagnostic" className="dash-card">
+          <span className="tag">Mi curso</span>
+          <h3>Elige cómo empezar</h3>
+          <p>Desde cero en A1, con su Unidad 0, o con una prueba de nivel.</p>
+          <span className="go">Empezar →</span>
+        </Link> : <Link to="/cursos/A1" className="dash-card">
+          <span className="tag">Práctica opcional</span>
+          <h3>Curso A1</h3>
+          <p>Mientras preparamos tu nivel, puedes practicar las unidades de A1. No cambia tu nivel ni tu lugar en la lista.</p>
+          <span className="go">Ver A1 →</span>
         </Link>}
         <Link to="/review" className="dash-card">
           <span className="tag">Repaso</span>
@@ -131,19 +115,7 @@ export default function AppHome() {
           <span className="go">Ir al repaso →</span>
         </Link>
       </div>
-      <CurriculumOutline level={level} course={a1} />
-      {!a1 && <>
-      <h2 className="dash-section-title">Lo que practicas en Munchira</h2>
-      <div className="dash-skills">
-        {SKILLS.map(([k, icon, label]) => (
-          <div key={k} className="dash-skill">{icon}<b>{label}</b>
-            <span style={{ color: 'var(--text-muted)', fontSize: '.8rem' }}>
-              {sum.bySkill[k] ? `${sum.bySkill[k].done} de ${sum.bySkill[k].total} módulos` : 'Sin módulos aún'}
-            </span>
-          </div>
-        ))}
-      </div>
-      </>}
+      {a1 && <CurriculumOutline level="A1" course={a1} />}
       <div className="dash-foot">
         {started && <Link to="/diagnostic" className="auth-footer" style={{ marginRight: 'auto', alignSelf: 'center' }}>{diag ? 'Repetir la prueba de nivel' : 'Hacer la prueba de nivel'}</Link>}
         <button type="button" onClick={signOut}>Cerrar sesión</button>

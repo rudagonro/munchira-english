@@ -1,5 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
-import { CURRICULUM, getCurriculum, getUnitState, UNIT_SEQUENCE } from '../data/curriculum'
+import { CURRICULUM, getCurriculum, getUnitState } from '../data/curriculum'
+import { isLevelOpen, unit0For } from '../data/levelAccess'
+import { LESSON_STEPS } from './model-lesson'
 import { courseImage } from '../data/courseMedia'
 import { PASS_SCORE } from '../data/dashboardSummary'
 import { CourseVisual } from './HomeMedia'
@@ -18,13 +20,13 @@ function LevelNavigation({ active }) {
 
 export function CourseIndex() {
   return <PublicShell>
-    <Seo title="Cursos de inglés A1–C2 · Temario" description="Explora el plan de estudios de Munchira: seis niveles, ocho unidades por nivel, objetivos y proyectos. Consulta qué contenido está disponible y qué sigue en desarrollo." path="/cursos" />
+    <Seo title="Cursos de inglés A1–C2 · Temario" description="Explora el plan de estudios de Munchira: seis niveles, ocho unidades por nivel, objetivos y proyectos. A1 ya está disponible; A2 a C2 están en preparación." path="/cursos" />
     <div className="mp-wrap mc-plan">
       <div className="mc-plan-intro">
         <p className="mp-eyebrow">Munchira English · Plan de estudios</p>
         <h1>Cursos de inglés A1–C2</h1>
-        <p>De tus primeras presentaciones a una comunicación precisa: ocho unidades temáticas por nivel, con un proyecto para poner en práctica lo aprendido.</p>
-        <p className="mc-plan-note">El temario está en desarrollo. Los módulos actuales siguen disponibles dentro de tu cuenta; no todas las unidades del nuevo recorrido tienen todavía lecciones completas.</p>
+        <p>De tus primeras presentaciones a una comunicación precisa: una Unidad 0 de entrada y ocho unidades temáticas por nivel. Cada unidad se recorre paso a paso y termina con un cuestionario.</p>
+        <p className="mc-plan-note">A1 está disponible completo: Unidad 0 y Unidades 1 a 8. A2 a C2 están en preparación; si tu prueba de nivel te ubica en uno de ellos, quedas en su lista de espera y te avisamos cuando esté listo.</p>
       </div>
       <LevelNavigation />
       <div className="mc-course-grid">
@@ -34,14 +36,21 @@ export function CourseIndex() {
             <p>{level.code} · {level.label}</p>
             <h2><Link to={`/cursos/${level.code}`}>Inglés {level.code}</Link></h2>
             <ul>{level.goals.slice(0, 2).map(goal => <li key={goal}>{goal}</li>)}</ul>
-            <p>8 unidades · Proyecto final · Temario en desarrollo</p>
+            <p>Unidad 0 + 8 unidades · {isLevelOpen(level.code) ? 'Disponible' : 'En preparación'}</p>
             <Link className="mp-text-link" to={`/cursos/${level.code}`}>Ver temario {level.code} <span aria-hidden="true">→</span></Link>
           </div>
         </article>)}
       </div>
-      <p className="mc-plan-status">Los niveles se orientan al MCER. Completar los módulos disponibles no equivale a una certificación oficial ni acredita por sí solo el dominio completo del nivel.</p>
+      <p className="mc-plan-status">Los niveles se orientan al MCER. Completar un nivel en Munchira no equivale a una certificación oficial ni acredita por sí solo el dominio completo del nivel.</p>
     </div>
   </PublicShell>
+}
+
+/** Unidad 0 (entrada del nivel) seguida de las Unidades 1–8 del temario. */
+function levelUnits(level) {
+  const unit0 = unit0For(level.code)
+  const open = level.code === 'A1'
+  return [{ id: `${level.code.toLowerCase()}-00`, ...unit0, state: open ? 'practice' : 'planned', samplePath: open ? '/cursos/A1/unidad/0' : undefined, existingLessons: [] }, ...level.units]
 }
 
 function UnitOutline({ unit }) {
@@ -55,15 +64,10 @@ function UnitOutline({ unit }) {
     </summary>
     <div className="mc-unit-body">
       <div><h3>Contenido principal</h3><p>{unit.topics}.</p></div>
-      <div className="mc-unit-project"><h3>Proyecto de la unidad</h3><p>{unit.project}.</p></div>
-      {unit.existingLessons.length > 0 && <div>
-        <h3>Material de partida</h3>
-        <ul>{unit.existingLessons.map(lesson => <li key={`${lesson.moduleOrder ?? 'sample'}-${lesson.lessonOrder ?? lesson.title}`}>{lesson.title}</li>)}</ul>
-        <p className="mc-plan-status">{state.path ? 'Esta muestra permite practicar parte de la unidad; no representa una unidad completa.' : 'Estos materiales cubren parte del tema; todavía falta integrarlos y ampliarlos en la unidad.'}</p>
-      </div>}
+      <div className="mc-unit-project"><h3>{unit.number === 0 ? 'Al terminar' : 'Proyecto de la unidad'}</h3><p>{unit.project}.</p></div>
       {state.path
-        ? <Link className="mp-text-link" to={state.path}>{unit.state === 'practice' ? 'Abrir la unidad' : 'Practicar la lección de muestra'} <span aria-hidden="true">→</span></Link>
-        : <p className="mc-plan-status">La unidad completa aún está en desarrollo.</p>}
+        ? <Link className="mp-text-link" to={state.path}>Abrir la unidad <span aria-hidden="true">→</span></Link>
+        : <p className="mc-plan-status">Esta unidad está en preparación.</p>}
     </div>
   </details>
 }
@@ -76,33 +80,33 @@ export function CourseLevel() {
     <div className="mp-wrap mc-plan"><h1>Nivel no encontrado</h1><Link className="mp-button mp-button-dark" to="/cursos">Ver los cursos</Link></div>
   </PublicShell>
   return <PublicShell>
-    <Seo title={`Inglés ${level.code} · ${level.label} · Temario`} description={`Plan de inglés ${level.code} de Munchira: ocho unidades, objetivos de aprendizaje y proyectos. Consulta las lecciones de muestra y el contenido en desarrollo.`} path={`/cursos/${level.code}`} image={courseImage(level.code)} />
+    <Seo title={`Inglés ${level.code} · ${level.label} · Temario`} description={`Plan de inglés ${level.code} de Munchira: Unidad 0 y ocho unidades, objetivos de aprendizaje y proyectos. ${isLevelOpen(level.code) ? 'Disponible paso a paso.' : 'Nivel en preparación.'}`} path={`/cursos/${level.code}`} image={courseImage(level.code)} />
     <div className="mp-wrap mc-plan">
       <LevelNavigation active={level.code} />
       <div className="mc-plan-intro">
         <p className="mp-eyebrow">Munchira English · {level.label}</p>
         <h1>Inglés {level.code}</h1>
         <p>{level.description}</p>
-        <p className="mc-plan-note">{level.code === 'A1' ? 'Si empiezas desde cero, la Unidad 0 (abecedario, números y primeras palabras) abre el curso. Las ocho unidades tienen práctica disponible. Con tu cuenta guardas el avance A1 al aprobar el cuestionario de cada unidad; las notas de tus módulos anteriores se conservan.' : '8 unidades planificadas. Los módulos actuales y sus avances se conservan; las unidades completas del nuevo temario siguen en desarrollo.'}</p>
+        <p className="mc-plan-note">{level.code === 'A1' ? 'Si empiezas desde cero, la Unidad 0 (abecedario, números y primeras palabras) abre el curso. Después siguen las Unidades 1 a 8. Con tu cuenta guardas tu avance al aprobar el cuestionario de cada unidad.' : `Nivel en preparación. Tendrá una Unidad 0 «Punto de partida», obligatoria para todos, y 8 unidades con pasos y cuestionario. Si te inscribes en ${level.code}, quedas en su lista de espera y te avisamos cuando esté listo.`}</p>
         <div className="mc-plan-actions">
           <AccountCta className="mp-button mp-button-dark" signedOut="Crear cuenta" signedIn="Ir a mi panel" />
           {level.code === 'A1' && <Link className="mp-text-link" to="/cursos/A1/unidad/0">Empezar desde cero: Unidad 0 →</Link>}
-          {level.code === 'A1' && <Link className="mp-text-link" to="/leccion-modelo">Probar la lección de muestra →</Link>}
         </div>
       </div>
       <div className="mc-level-photo"><CourseVisual code={level.code} /></div>
       <section aria-labelledby="mc-goals"><h2 id="mc-goals">Objetivos del nivel</h2><ul>{level.goals.map(goal => <li key={goal}>{goal}</li>)}</ul></section>
-      <div className="mc-unit-heading"><h2 id="mc-units-title">Las ocho unidades</h2><span className="mc-plan-status">Temario en desarrollo</span></div>
-      <section className="mc-units" aria-labelledby="mc-units-title">{level.units.map(unit => <UnitOutline key={unit.id} unit={unit} />)}</section>
+      <div className="mc-unit-heading"><h2 id="mc-units-title">Las unidades: de la 0 a la 8</h2><span className="mc-plan-status">{isLevelOpen(level.code) ? 'Disponible' : 'En preparación'}</span></div>
+      <section className="mc-units" aria-labelledby="mc-units-title">{levelUnits(level).map(unit => <UnitOutline key={unit.id} unit={unit} />)}</section>
       <div className="mc-plan-columns">
         <section><h2>Gramática y uso</h2><ul>{level.grammar.map(item => <li key={item}>{item}</li>)}</ul></section>
         <section><h2>Vocabulario en contexto</h2><ul>{level.vocabulary.map(item => <li key={item}>{item}</li>)}</ul></section>
       </div>
       <section><h2>Las cuatro habilidades</h2><div className="mc-skill-grid">{Object.entries(level.skills).map(([skill, goals]) => <div key={skill}><h3>{skillNames[skill]}</h3><ul>{goals.map(goal => <li key={goal}>{goal}</li>)}</ul></div>)}</div></section>
-      <section><h2>Secuencia de trabajo prevista</h2><ol className="mc-sequence">{UNIT_SEQUENCE.map(([title, description]) => <li key={title}><strong>{title}</strong><p>{description}</p></li>)}</ol></section>
-      <section><h2>Evaluación prevista</h2><ul>{level.evaluation.map(item => <li key={item}>{item}</li>)}</ul>
-        <p className="mc-plan-note">En los módulos actuales, el cuestionario se aprueba con {PASS_SCORE}% o más. Los proyectos orales y escritos del nuevo temario necesitan criterios de evaluación propios; no se consideran evaluados por responder un cuestionario.</p>
-        <p className="mc-plan-status">Un módulo aprobado se conserva aunque un repaso posterior tenga una nota menor. Este recorrido no ofrece una certificación oficial MCER.</p>
+      <section><h2>Los {LESSON_STEPS.length} pasos de cada unidad</h2><ol className="mc-sequence">{LESSON_STEPS.map(step => <li key={step.id}><strong>{step.label}</strong></li>)}</ol>
+        <p className="mc-plan-status">Después del último paso viene el cuestionario de la unidad.</p></section>
+      <section><h2>Evaluación</h2><ul>{level.evaluation.map(item => <li key={item}>{item}</li>)}</ul>
+        <p className="mc-plan-note">Cada unidad termina con un cuestionario que se aprueba con {PASS_SCORE}% o más. Los proyectos orales y escritos se revisan con su modelo y su lista de revisión; no se califican con el cuestionario.</p>
+        <p className="mc-plan-status">Una unidad aprobada se conserva aunque un repaso posterior tenga una nota menor. Este recorrido no ofrece una certificación oficial MCER.</p>
       </section>
     </div>
   </PublicShell>

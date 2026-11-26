@@ -12,7 +12,7 @@ import './register.css'
 import './register-art.css'
 
 const mediaOrigin = ''
-const steps = ['Crea tu cuenta', 'Haz tu diagnóstico de nivel', 'Empieza tu primera lección']
+const steps = ['Crea tu cuenta', 'Haz tu diagnóstico de nivel', 'Empieza tu primera unidad']
 const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 const thisYear = new Date().getFullYear()
 const years = Array.from({ length: thisYear - 1920 }, (_, i) => thisYear - 1 - i)

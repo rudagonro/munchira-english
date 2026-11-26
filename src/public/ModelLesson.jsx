@@ -180,7 +180,7 @@ function StepContent({ id, accent, lesson, onComplete, legacyRules = [], legacy 
       <p className="ml-tip">⏱ Unos {lesson.minutes} minutos · Avanza a tu ritmo y vuelve atrás cuando quieras.</p>
     </>
     case 'vocab': return <>
-      <h2>Palabras de esta lección</h2><p>Escucha cada una. La pronunciación está escrita como suena en español.</p>
+      <h2>Palabras de esta unidad</h2><p>Escucha cada una. La pronunciación está escrita como suena en español.</p>
       <ul className="ml-vocab">{lesson.vocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{displayForm(v.es)}</span><em>«{v.say}»</em><ListenButtons text={v.en} accent={accent} /></li>)}</ul>
       <ExtraVocab lesson={lesson} accent={accent} legacy={legacy} />
     </>
@@ -262,7 +262,7 @@ function FreeTask({ lesson, onComplete }) {
     {lesson.freeChecklist && <><h3>Revisa tu texto</h3><ul className="ml-summary">{lesson.freeChecklist.map(item => <li key={item}>{item}</li>)}</ul><p>Compara con el modelo. Esta tarea no recibe una nota ni una corrección automática completa.</p></>}
     {review && <div role="status">
       {review.items.map((item, i) => item.warn ? <p key={i} className="ml-tip">• {item.msg}</p> : <p key={i} className={`ml-feedback ${item.ok ? 'ml-ok' : 'ml-bad'}`}>{item.ok ? '✓' : '✗'} {item.msg}</p>)}
-      <p className={`ml-feedback ${review.ok ? 'ml-ok' : 'ml-bad'}`}><strong>{review.ok ? '¡Bien! Has usado correctamente las estructuras de esta lección.' : 'Tú puedes: corrige los puntos marcados y vuelve a revisar.'}</strong></p>
+      <p className={`ml-feedback ${review.ok ? 'ml-ok' : 'ml-bad'}`}><strong>{review.ok ? '¡Bien! Has usado correctamente las estructuras de esta unidad.' : 'Tú puedes: corrige los puntos marcados y vuelve a revisar.'}</strong></p>
       <p className="ml-tip">Revisión de estructuras A1; no comprueba todos los errores de ortografía ni los nombres propios.</p>
     </div>}
     {shown && <p className="ml-example">{lesson.freeModel}</p>}
@@ -301,7 +301,7 @@ function TheoryRule({ rule, index, accent, recognised = false, showLegacy = fals
     {checked === true && <p className="ml-feedback ml-ok" role="status">¡Bien construida! {rule.apply.answer}</p>}
     {checked === false && <p className="ml-feedback ml-bad" role="status">Todavía no. Revisa el orden: {rule.form}.</p>}
     {shown && !checked && <p className="ml-example">{rule.apply.answer} <ListenButtons text={rule.apply.answer} accent={accent} /></p>}
-    {showLegacy && rule.source.some(line => line.includes(' · Lección ')) && <p className="ml-tip">{recognised && <strong>✓ Reconocido de tus módulos anteriores · </strong>}Antes en: {rule.source.join(' · ')}</p>}
+    {showLegacy && rule.source.some(line => line.includes(' · Lección ')) && <p className="ml-tip">{recognised && <strong>✓ Reconocido de tu avance anterior · </strong>}Antes en: {rule.source.join(' · ')}</p>}
   </section>
 }
 
@@ -327,14 +327,14 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
   const go = (i) => { if (!canOpenStep(i, steps, completed)) return; stopLessonAudio(); setVisited(previous => new Set(previous).add(i)); setStep(i); window.scrollTo?.({ top: 0 }) }
   const next = () => { if (isPracticeStep(current.id) && !completed.has(current.id)) return; mark(current.id); setVisited(previous => new Set(previous).add(step + 1)); setStep(step + 1); stopLessonAudio(); window.scrollTo?.({ top: 0 }) }
   return <PublicShell>
-    <Seo title={`${lesson.number ? `A1 · Unidad ${lesson.number}` : 'Lección modelo'}: ${lesson.title}`} description={`Inglés A1: ${lesson.title.toLowerCase()} con vocabulario, explicación, ejercicios, lectura, diálogos, dictado y pronunciación.`} path={lesson.path ?? '/leccion-modelo'} noindex />
+    <Seo title={`${lesson.number ? `A1 · Unidad ${lesson.number}` : 'A1 · Unidad 1'}: ${lesson.title}`} description={`Inglés A1: ${lesson.title.toLowerCase()} con vocabulario, explicación, ejercicios, lectura, diálogos, dictado y pronunciación.`} path={lesson.path ?? '/cursos/A1/unidad/1'} noindex />
     <div className="mp-wrap ml-page">
       <header className="ml-head">
-        <p className="mp-eyebrow">{lesson.number ? `Curso ${lesson.level} · ${lesson.module}` : `${lesson.level} · ${lesson.module} · Lección de muestra`}</p>
+        <p className="mp-eyebrow">{lesson.number ? `Curso ${lesson.level} · ${lesson.module}` : `Curso ${lesson.level} · ${lesson.module}`}</p>
         <h1>{lesson.number ? `Unidad ${lesson.number}: ${lesson.title}` : lesson.title}</h1>
-        {!legacyTheory && legacyRules.length > 0 && <p className="ml-tip" role="status">Reconocimos {legacyRules.length} de {lesson.theory?.length ?? 0} reglas de teoría por tus módulos anteriores (marcadas con ✓ en «Explicación»). Completa el resto de la unidad y su cuestionario final.</p>}
-        {legacyTheory && <p className="ml-tip" role="status">Teoría reconocida de tus módulos anteriores: para completar la unidad aprueba su cuestionario final (70%). Puedes ir directo o repasar cualquier paso.</p>}
-        <div className="ml-progress" role="progressbar" aria-valuemin={0} aria-valuemax={steps.length} aria-valuenow={completed.size} aria-label="Avance de la lección"><span style={{ width: `${(completed.size / steps.length) * 100}%` }} /></div>
+        {!legacyTheory && legacyRules.length > 0 && <p className="ml-tip" role="status">Reconocimos {legacyRules.length} de {lesson.theory?.length ?? 0} reglas de teoría por tu avance anterior (marcadas con ✓ en «Explicación»). Completa el resto de la unidad y su cuestionario final.</p>}
+        {legacyTheory && <p className="ml-tip" role="status">Teoría reconocida de tu avance anterior: para completar la unidad aprueba su cuestionario final (70%). Puedes ir directo o repasar cualquier paso.</p>}
+        <div className="ml-progress" role="progressbar" aria-valuemin={0} aria-valuemax={steps.length} aria-valuenow={completed.size} aria-label="Avance de la unidad"><span style={{ width: `${(completed.size / steps.length) * 100}%` }} /></div>
         <div className="ml-head-row">
           <p>Paso {step + 1} de {steps.length}: <strong>{current.label}</strong></p>
           <label className="ml-accent">Acento <select value={accent} onChange={e => setAccent(e.target.value)}><option value="en-US">Americano</option><option value="en-GB">Británico</option></select></label>
@@ -342,7 +342,7 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
       <LessonBackLinks />
       </header>
       <div className="ml-layout">
-        <nav className="ml-steps" aria-label="Pasos de la lección"><ol>{steps.map((s, i) => <li key={s.id}><button type="button" aria-current={i === step ? 'step' : undefined} className={completed.has(s.id) ? 'ml-step-done' : ''} disabled={!canOpenStep(i, steps, completed)} onClick={() => go(i)}><span>{completed.has(s.id) ? '✓' : i + 1}</span>{s.label}</button></li>)}</ol></nav>
+        <nav className="ml-steps" aria-label="Pasos de la unidad"><ol>{steps.map((s, i) => <li key={s.id}><button type="button" aria-current={i === step ? 'step' : undefined} className={completed.has(s.id) ? 'ml-step-done' : ''} disabled={!canOpenStep(i, steps, completed)} onClick={() => go(i)}><span>{completed.has(s.id) ? '✓' : i + 1}</span>{s.label}</button></li>)}</ol></nav>
         <section className="ml-panel" aria-live="polite"><>{steps.map((s, i) => (visited.has(i) || i === step) && <div className="ml-step-content" hidden={i !== step} key={s.id}><StepContent id={s.id} accent={accent} lesson={lesson} legacyRules={legacyRules} legacy={legacyTheory || legacyRules.length > 0} onComplete={done => mark(s.id, done ?? true)} /></div>)}</>
           {isPracticeStep(current.id) && !completed.has(current.id) && current.id !== 'summary' && <p className="ml-tip" role="status">Completa esta actividad antes de continuar.</p>}
           <div className="ml-nav">
@@ -355,7 +355,7 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
   </PublicShell>
 }
 
-/** Enlaces de salida de la lección: temario siempre; panel cuando hay sesión. */
+/** Enlaces de salida de la unidad: temario siempre; panel cuando hay sesión. */
 function LessonBackLinks() {
   const { session } = useAuth()
   return (
@@ -383,7 +383,7 @@ function SummaryNextStep({ lesson, onComplete }) {
     <Link className="mp-button mp-button-dark" to="/app">Ir a mi panel <span aria-hidden="true">→</span></Link>
   </>
   return <>
-    <p>¿Aún no tienes cuenta? Créala gratis: estas palabras pasarán a tu repaso diario y se desbloqueará la siguiente lección.</p>
+    <p>¿Aún no tienes cuenta? Créala gratis: estas palabras pasarán a tu repaso diario y se abrirá la siguiente unidad.</p>
     <Link className="mp-button mp-button-dark" to="/register">Crear mi cuenta <span aria-hidden="true">↗</span></Link>
   </>
 }

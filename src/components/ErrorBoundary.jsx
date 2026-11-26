@@ -32,7 +32,7 @@ export default class ErrorBoundary extends Component {
           <button className="btn-primary" type="button" onClick={() => window.location.reload()}>
             Recargar la página
           </button>
-          <p className="auth-footer"><a href="/cycle">Ir a mis módulos</a></p>
+          <p className="auth-footer"><a href="/cycle">Ir a mi curso</a></p>
         </div>
       </div>
     )

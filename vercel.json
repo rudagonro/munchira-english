@@ -1,3 +1,15 @@
 {
-  "rewrites": [{ "source": "/((?!assets/|favicon.svg|icons.svg|robots.txt|sitemap.xml).*)", "destination": "/app-shell.html" }]
+  "redirects": [
+    {
+      "source": "/leccion-modelo",
+      "destination": "/cursos/A1/unidad/1",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!assets/|favicon.svg|icons.svg|robots.txt|sitemap.xml).*)",
+      "destination": "/app-shell.html"
+    }
+  ]
 }

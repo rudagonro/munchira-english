@@ -261,7 +261,7 @@ function ModuleContent({ preview, draftEnabled }) {
     return (
       <div className="app-shell">
         <div className="error-banner" role="alert">{error}</div>
-        <button className="logout-btn" onClick={() => navigate(backPath)}>{preview ? 'Volver al revisor' : 'Volver a mis módulos'}</button>
+        <button className="logout-btn" onClick={() => navigate(backPath)}>{preview ? 'Volver al revisor' : 'Volver a mi curso'}</button>
       </div>
     )
   }
@@ -516,7 +516,7 @@ function ModuleContent({ preview, draftEnabled }) {
         )}
 
         <button className="btn-primary" style={{ maxWidth: 280, margin: '0 auto', display: 'block' }} onClick={() => navigate(backPath)}>
-          {preview ? 'Volver al revisor' : 'Volver a mis módulos'}
+          {preview ? 'Volver al revisor' : 'Volver a mi curso'}
         </button>
       </div>
     )

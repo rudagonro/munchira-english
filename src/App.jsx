@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import LegacyRedirect from './components/LegacyRedirect'
 import { AuthProvider } from './contexts/AuthContext'
 import { useAuth } from './contexts/auth-context'
 import AccountSuspended from './pages/AccountSuspended'
@@ -10,7 +11,6 @@ import Register from './pages/Register'
 import PublicHome from './pages/PublicHome'
 import { BlogIndex, BlogArticle } from './public/Blog'
 import { GrammarIndex, GrammarArticle } from './public/Grammar'
-import ModelLesson from './public/ModelLesson'
 import CurriculumLesson from './public/CurriculumLesson'
 import AppHome from './pages/AppHome'
 import TeacherPanel from './pages/TeacherPanel'
@@ -43,7 +43,8 @@ function AppRoutes() {
         <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/gramatica" element={<GrammarIndex />} />
         <Route path="/gramatica/:slug" element={<GrammarArticle />} />
-        <Route path="/leccion-modelo" element={<ModelLesson />} />
+        {/* La antigua «lección de muestra» es la Unidad 1 de A1: una sola dirección por unidad. */}
+        <Route path="/leccion-modelo" element={<LegacyRedirect to="/cursos/A1/unidad/1" />} />
         <Route path="/login" element={<><PublicHome /><LoginPanel /></>} />
         <Route path="/register" element={<Register />} />
         <Route path="/recuperar" element={<ForgotPassword />} />
@@ -55,7 +56,8 @@ function AppRoutes() {
         <Route path="/completar-datos" element={<ProtectedRoute><CompleteProfile /></ProtectedRoute>} />
         <Route path="/diagnostic" element={<ProtectedRoute><Diagnostic /></ProtectedRoute>} />
         <Route path="/cycle" element={<ProtectedRoute><Layout><CycleModules /></Layout></ProtectedRoute>} />
-        <Route path="/module/:moduleId" element={<ProtectedRoute><Layout><ModuleView /></Layout></ProtectedRoute>} />
+        {/* Los módulos antiguos solo se consultan desde el revisor (Archivo); el alumno vuelve a «Mi curso». */}
+        <Route path="/module/:moduleId" element={<Navigate to="/cycle" replace />} />
         <Route path="/review" element={<ProtectedRoute><Layout><Review /></Layout></ProtectedRoute>} />
         <Route path="/teacher" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><TeacherPanel /></Layout></ProtectedRoute>} />
         <Route path="/usuarios" element={<ProtectedRoute allowedRoles={['admin']}><Layout><AdminUsers /></Layout></ProtectedRoute>} />

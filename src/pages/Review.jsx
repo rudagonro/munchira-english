@@ -52,11 +52,11 @@ export default function Review() {
         <div style={{ fontSize: '3rem', marginBottom: 20 }} aria-hidden="true">✅</div>
         <h1 style={{ fontSize: '1.6rem', marginBottom: 12 }}>Estás al día</h1>
         <p style={{ color: 'var(--text-muted)', marginBottom: 28 }}>
-          No tienes palabras por repasar ahora. Las palabras que practiques en A1 o en los módulos de vocabulario
+          No tienes palabras por repasar ahora. Las palabras que practiques en tus unidades
           volverán aquí cuando toque repasarlas.
         </p>
         <Link to="/cycle" className="btn-primary" style={{ display: 'inline-block', textDecoration: 'none', maxWidth: 260 }}>
-          Ir a mis módulos
+          Ir a mi curso
         </Link>
       </div>
     )
