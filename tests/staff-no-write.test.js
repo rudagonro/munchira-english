@@ -11,7 +11,10 @@ const MIGRATION = readFileSync(new URL('../supabase/migrations/20261126000600_st
 test('Repaso: el personal pasa las tarjetas sin guardar y ve el aviso con el revisor', () => {
   const review = src('pages/Review.jsx')
   assert.match(review, /const noSave = useNoSave\(\)/)
-  assert.match(review, /onReview=\{\(item, known\) => noSave \? undefined : /)
+  assert.match(review, /onReview=\{\(item, known\) => noSave \? void seen\.current\.add\(item\.id\) : /)
+  // Sin guardar, «Buscar más palabras» trae las siguientes tarjetas y no repite el primer lote.
+  assert.match(review, /getDueVocab\(noSave \? Math\.min\(BATCH \+ seen\.current\.size, 100\) : BATCH\)/)
+  assert.match(review, /filter\(item => !seen\.current\.has\(item\.id\)\)/)
   assert.equal((review.match(/<StaffNoSaveNote \/>/g) ?? []).length, 2, 'aviso con y sin palabras por repasar')
   assert.match(src('components/StaffNoSaveNote.jsx'), /<Link to="\/revisor">revisor<\/Link>/)
 })

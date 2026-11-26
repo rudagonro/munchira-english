@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import VocabFlashcard from '../components/VocabFlashcard'
@@ -13,16 +13,19 @@ export default function Review() {
   const { getDueVocab, recordVocabReview } = useAuth()
   // El personal (admin o docente) puede pasar las tarjetas, pero no se guarda ningún repaso.
   const noSave = useNoSave()
+  // Sin guardar, las fechas de repaso no cambian: las tarjetas ya vistas se recuerdan aquí para que
+  // «Buscar más palabras» traiga las siguientes (la función devuelve como máximo 100).
+  const seen = useRef(new Set())
   const [state, setState] = useState({ loading: true, error: '', items: [], round: 0 })
 
   const fetchItems = useCallback(async () => {
-    const { data, error } = await getDueVocab(BATCH)
+    const { data, error } = await getDueVocab(noSave ? Math.min(BATCH + seen.current.size, 100) : BATCH)
     return {
       loading: false,
       error: error ? 'No se pudo cargar tu repaso. Intenta de nuevo más tarde.' : '',
-      items: data,
+      items: noSave ? (data ?? []).filter(item => !seen.current.has(item.id)).slice(0, BATCH) : data,
     }
-  }, [getDueVocab])
+  }, [getDueVocab, noSave])
 
   useEffect(() => {
     let active = true
@@ -80,7 +83,7 @@ export default function Review() {
         key={state.round}
         vocabItems={state.items}
         doneLabel="Buscar más palabras →"
-        onReview={(item, known) => noSave ? undefined : item.module_id ? recordVocabReview(item.id, known) : recordA1Review(item.id, known)}
+        onReview={(item, known) => noSave ? void seen.current.add(item.id) : item.module_id ? recordVocabReview(item.id, known) : recordA1Review(item.id, known)}
         onComplete={reload}
       />
     </div>
