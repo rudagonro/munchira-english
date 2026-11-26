@@ -3,6 +3,7 @@ import { useRef, useEffect } from 'react'
 import { useDraftState } from '../contexts/a1-draft-context'
 import { canReveal, countsForScore, retryMessage, successMessage } from './exerciseRetry'
 import './exercise-retry.css'
+import ReviewAnswer from './ReviewAnswer'
 
 /* Retroalimentación común: si fallas ves el porqué, un ánimo y «Inténtalo otra vez». */
 function Feedback({ state, fails, why, answer, onRetry, onReveal, onNext }) {
@@ -140,6 +141,7 @@ function FillEx({ ex, onNext, onAttempt, draftKey }) {
           Comprobar
         </button>
       )}
+      <ReviewAnswer>{String(ex.answer).split('|')[0].trim()}</ReviewAnswer>
       {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={String(ex.answer).split('|')[0].trim()} onRetry={retry} onReveal={reveal} onNext={onNext} />}
     </div>
   )
@@ -176,6 +178,7 @@ function ChoiceEx({ ex, onNext, onAttempt, draftKey }) {
           )
         })}
       </div>
+      <ReviewAnswer>{ex.opts[ex.correct]}</ReviewAnswer>
       {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.why} answer={ex.opts[ex.correct]} onRetry={retry} onReveal={reveal} onNext={onNext} />}
     </div>
   )
@@ -231,6 +234,7 @@ function OrderEx({ ex, onNext, onAttempt, draftKey }) {
       {state === 'idle' && placed.length > 0 && bank.length === 0 && (
         <button className="ex-check-btn" onClick={check}>Comprobar</button>
       )}
+      <ReviewAnswer>{`"${String(ex.answer).split('|')[0].trim()}"`}</ReviewAnswer>
       {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={`"${String(ex.answer).split('|')[0].trim()}"`} onRetry={retry} onReveal={reveal} onNext={onNext} />}
     </div>
   )

@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
 import { useDraftState } from '../contexts/a1-draft-context'
+import { useReviewMode } from '../contexts/review-mode-context'
+import ReviewAnswer from '../components/ReviewAnswer'
 import cycle from '../../content/cycles/A1.json'
 import './unit-quiz.css'
 
@@ -22,6 +24,7 @@ export default function UnitCompletion({ number, onPassed }) {
   const passedCallback = useRef(onPassed)
   useEffect(() => { passedCallback.current = onPassed }, [onPassed])
   const { user, loading } = useAuth()
+  const review = useReviewMode()
   const questions = cycle.modules.find(unit => unit.order === number)?.quiz ?? []
   const [answers, setAnswers] = useDraftState('quizV2.answers', {}) // «quiz.answers» era el cuestionario anterior: sus índices no valen aquí
   const [progress, setProgress] = useState(null)
@@ -30,21 +33,22 @@ export default function UnitCompletion({ number, onPassed }) {
   const [localScore, setLocalScore] = useState(null)
   const [reviewed, setReviewed] = useState(null) // respuestas enviadas: muestran la corrección por pregunta
   useEffect(() => {
-    if (!user) return
+    if (!user || review) return
     let active = true
     supabase.from('a1_unit_progress').select('unit_number,best_score,last_score,completed_at')
       .eq('user_id', user.id).eq('unit_number', number).maybeSingle()
       .then(({ data, error: readError }) => { if (active) { if (readError) setError(progressError(readError)); else { setProgress(data); if (data?.completed_at) passedCallback.current?.() } } })
       .catch(() => { if (active) setError('No pudimos consultar tu avance guardado. Inténtalo de nuevo.') })
     return () => { active = false }
-  }, [number, user])
+  }, [number, user, review])
   async function submit(event) {
     event.preventDefault()
     const selected = questions.map((_, index) => answers[index])
     if (selected.some(value => !Number.isInteger(value))) return
     setError(''); setBusy(true)
     try {
-      if (!user) {
+      // Visitante o revisor: se corrige aquí y no se guarda nada.
+      if (!user || review) {
         setReviewed(selected)
         const score = Math.round(selected.filter((answer, index) => answer === questions[index].correct_idx).length * 100 / questions.length)
         setLocalScore(score); if (score >= 70) onPassed?.()
@@ -66,9 +70,10 @@ export default function UnitCompletion({ number, onPassed }) {
       {questions.map((question, index) => <fieldset key={index} className="ml-quiz-q">
         <legend>{index + 1}. {question.question}</legend>
         {question.options.map((option, value) => <label key={value} className="ml-quiz-opt"><input type="radio" name={`a1-question-${index}`} value={value} checked={answers[index] === value} onChange={() => { setReviewed(null); setAnswers(previous => ({ ...previous, [index]: value })) }} disabled={busy} required /><span>{option}</span></label>)}
+        <ReviewAnswer>{question.options[question.correct_idx]}</ReviewAnswer>
         {reviewed && <QuestionFeedback question={question} answer={reviewed[index]} />}
       </fieldset>)}
-      <button type="submit" className="mp-button mp-button-dark" disabled={busy || loading || Object.keys(answers).length !== questions.length}>{busy ? 'Guardando…' : user ? 'Comprobar y guardar mi avance' : 'Comprobar mi práctica'}</button>
+      <button type="submit" className="mp-button mp-button-dark" disabled={busy || loading || Object.keys(answers).length !== questions.length}>{busy ? 'Guardando…' : review ? 'Comprobar (no se guarda)' : user ? 'Comprobar y guardar mi avance' : 'Comprobar mi práctica'}</button>
     </form>
     {progress?.last_score !== undefined && <p role="status">Resultado: {progress.last_score}%. {progress.last_score >= 70 ? '¡Bien hecho!' : progress.completed_at ? 'Puedes seguir practicando: tu aprobado se conserva.' : 'Escucha y repasa; puedes intentarlo otra vez.'}</p>}
     {localScore !== null && <p role="status">Resultado de práctica: {localScore}%. Crea una cuenta o inicia sesión para guardar tu avance.</p>}
