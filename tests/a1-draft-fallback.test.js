@@ -80,3 +80,14 @@ test('un trabajo sin conexión en conflicto no sobrescribe el avance más nuevo 
   assert.equal(state.saves.length, 0)
   assert.deepEqual(state.row.fields, { step: 9 })
 })
+
+test('dos reintentos simultáneos tras un fallo de lectura envían un solo guardado', async () => {
+  const { state, client } = fakeServer()
+  const store = createDraftStore({ client, userId: 'u1', lessonKey: 'unit:1', delay: 60000 })
+  await store.start()
+  store.set('step', 3)
+  state.failReads = false
+  await Promise.all([store.flush(), store.flush()])
+  assert.equal(store.getSnapshot().status, 'saved')
+  assert.equal(state.saves.length, 1)
+})

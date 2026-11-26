@@ -71,6 +71,7 @@ export function createDraftStore({ client, userId, lessonKey, storage, notify = 
     if (unverified) {
       try { await verify() } catch { if (serial > savedSerial) { emit({ status: 'offline' }); cache() } return }
       if (blocked) return
+      if (running) return flush()
     }
     if (serial === savedSerial) return
     const sentSerial = serial, fields = view.fields
