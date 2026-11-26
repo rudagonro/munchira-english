@@ -82,6 +82,11 @@ test('una cuenta sin nivel que aprobó la Unidad 0 desde el temario muestra ese 
   assert.equal(eva.last_activity, '2026-11-25T00:00:00Z')
   assert.equal(statusOf(eva, NOW), STATUS.NO_DIAGNOSTIC)
   assert.equal(fer.course, undefined, 'una cuenta sin actividad sigue sin resumen')
+  // Tabla, orden y CSV dicen lo mismo: 1 de 9 unidades (11 %).
+  assert.equal(progressPct(eva), 11)
+  assert.equal(progressLabel(eva), '1 de 9 unidades')
+  assert.match(toCsv([eva], NOW).split('\r\n')[1], /,1 de 9 unidades,11,/)
+  assert.match(readFileSync(new URL('../src/pages/TeacherPanel.jsx', import.meta.url), 'utf8'), /\(r\.cefr_level \|\| r\.course\) && pct !== null/)
 })
 
 test('sin la fase 2 aplicada, el panel queda exactamente como antes', () => {

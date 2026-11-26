@@ -232,7 +232,7 @@ export default function TeacherPanel() {
                         </th>
                         <td>{r.cefr_level ? <span className="tp-level">{r.cefr_level}</span> : '—'}</td>
                         <td>
-                          {r.cefr_level && pct !== null ? (
+                          {(r.cefr_level || r.course) && pct !== null ? (
                             <div className="tp-progress" title={progressLabel(r)}>
                               <span className="tp-bar" aria-hidden="true"><span style={{ width: `${pct}%` }} /></span>
                               <span>{pct}%</span>

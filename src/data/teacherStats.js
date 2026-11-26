@@ -150,7 +150,7 @@ export function toCsv(rows, now = new Date()) {
     'Estado', 'Última actividad',
   ]
   const lines = rows.map((r) => [
-    r.full_name, r.cefr_level ?? '', r.cefr_level ? progressLabel(r) : '', progressPct(r) ?? '',
+    r.full_name, r.cefr_level ?? '', r.cefr_level || r.course ? progressLabel(r) : '', progressPct(r) ?? '',
     r.avg_quiz_score ?? '', r.weakest_skill ?? '', r.words_studied, r.words_due,
     STATUS_LABELS[statusOf(r, now)], r.last_activity ? new Date(r.last_activity).toISOString().slice(0, 10) : '',
   ])
