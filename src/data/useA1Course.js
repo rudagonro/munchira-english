@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
 import { legacyUnitCredit, summarizeA1Course } from './a1Course'
 import { isMissingUnit0Backend, readLocalUnit0Pass } from './a1Starter'
+import { isMissingCourseBackend, normalizeUnitRows, splitLevelRows } from './courseProgress'
 
 const EMPTY = summarizeA1Course()
 
@@ -17,6 +18,26 @@ async function previousA1Progress(userId, current) {
   return { rows: progress.data ?? [], error: progress.error }
 }
 
+/**
+ * Avance por unidades de A1 desde un solo origen: la vista course_unit_progress (fase 2). Si la vista aún
+ * no existe en la base (migración sin aplicar), lee las dos tablas A1 de siempre, con los mismos datos.
+ */
+async function readA1UnitRows(userId) {
+  const view = await supabase.from('course_unit_progress').select('level,unit_number,best_score,last_score,completed_at').eq('user_id', userId).eq('level', 'A1')
+  if (!view.error) {
+    const { unit0, units } = splitLevelRows(normalizeUnitRows({ view: view.data ?? [] }))
+    return { units: { data: units, error: null }, starter: { data: unit0, error: null } }
+  }
+  if (!isMissingCourseBackend(view.error)) return { units: { data: null, error: view.error }, starter: { data: null, error: view.error } }
+  const [units, starter] = await Promise.all([
+    supabase.from('a1_unit_progress').select('unit_number,best_score,completed_at').eq('user_id', userId),
+    // Unidad 0 (migración 20261126000200). Si falla la lectura no se bloquea ninguna unidad.
+    supabase.from('a1_unit0_progress').select('best_score,last_score,completed_at').eq('user_id', userId).maybeSingle()
+      .then(result => result, error => ({ data: null, error })),
+  ])
+  return { units, starter }
+}
+
 /** Reads the student's A1 progress (units, drafts and old A1 modules) without writing anything. */
 export function useA1Course() {
   const { user, getActiveCycleData } = useAuth()
@@ -25,13 +46,10 @@ export function useA1Course() {
     if (!user) return
     let active = true
     Promise.all([
-      supabase.from('a1_unit_progress').select('unit_number,best_score,completed_at').eq('user_id', user.id),
+      readA1UnitRows(user.id),
       supabase.from('a1_learning_drafts').select('lesson_key,fields').eq('user_id', user.id),
       getActiveCycleData(),
-      // Unidad 0 (migración 20261126000200). Si falla la lectura no se bloquea ninguna unidad.
-      supabase.from('a1_unit0_progress').select('best_score,last_score,completed_at').eq('user_id', user.id).maybeSingle()
-        .then(result => result, error => ({ data: null, error })),
-    ]).then(async ([units, drafts, cycle, starter]) => {
+    ]).then(async ([{ units, starter }, drafts, cycle]) => {
       const data = cycle.data
       const isA1 = data?.enrollment?.cycles?.cefr_level === 'A1'
       const history = isA1 ? await previousA1Progress(user.id, data.enrollment) : { rows: [], error: null }

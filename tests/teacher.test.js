@@ -78,6 +78,6 @@ test('CSV escapes quotes/commas and neutralises spreadsheet formulas', () => {
   const csv = toCsv([row({ full_name: '=HYPERLINK("x"),evil', words_due: 3 })], NOW)
   const [header, line] = csv.split('\r\n')
   assert.ok(header.startsWith('Estudiante,Nivel'))
-  assert.ok(line.startsWith(`"'=HYPERLINK(""x""),evil",A1,1,4,25`))
+  assert.ok(line.startsWith(`"'=HYPERLINK(""x""),evil",A1,1 de 4 módulos (curso anterior),25`))
   assert.equal(toCsv([], NOW).split('\r\n').length, 1)
 })
