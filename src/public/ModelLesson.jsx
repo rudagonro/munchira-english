@@ -308,7 +308,8 @@ function ModelLessonContent({ lesson, legacyTheory }) {
   const steps = LESSON_STEPS.map(s => s.id === 'free' && lesson.number ? { ...s, label: 'Ponlo en práctica' } : s)
   const fields = useDraftFields()
   const credited = legacyTheory ? steps.filter(s => s.id !== 'summary').map(s => s.id) : []
-  const { step, completed } = restoreLessonProgress(savedStep, steps, new Set([...completedIds, ...credited]), fields, lesson)
+  const resumeStep = legacyTheory && !Object.hasOwn(fields, 'step') ? steps.length - 1 : savedStep
+  const { step, completed } = restoreLessonProgress(resumeStep, steps, new Set([...completedIds, ...credited]), fields, lesson)
   const [visited, setVisited] = useState(() => new Set(Array.from({ length: step + 1 }, (_, index) => index)))
   const current = steps[step]
   useEffect(() => () => stopLessonAudio(), [])

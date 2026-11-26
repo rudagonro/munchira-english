@@ -98,3 +98,10 @@ test('un cuestionario antiguo suspendido (menos de 70%) no da la unidad por apro
   const summary = summarizeA1Course({ legacy: legacyUnitCredit({ modules, lessons, completedLessonIds: [], moduleProgress }) })
   assert.equal(summary.completed, 0)
 })
+
+test('con la teoría antigua completa, la unidad puede abrir directamente en el cuestionario final', async () => {
+  const { restoreLessonProgress } = await import('../src/public/lessonDraftProgress.js')
+  const credited = new Set(LESSON_STEPS.filter(step => step.id !== 'summary').map(step => step.id))
+  const { step } = restoreLessonProgress(LESSON_STEPS.length - 1, LESSON_STEPS, credited)
+  assert.equal(LESSON_STEPS[step].id, 'summary')
+})
