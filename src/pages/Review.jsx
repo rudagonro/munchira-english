@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import VocabFlashcard from '../components/VocabFlashcard'
 import { recordA1Review } from '../public/a1Review'
+import StaffNoSaveNote from '../components/StaffNoSaveNote'
+import { useNoSave } from '../contexts/review-mode-context'
 
 const BATCH = 20
 
 // Repaso espaciado: palabras ya estudiadas cuya fecha de repaso ha llegado.
 export default function Review() {
   const { getDueVocab, recordVocabReview } = useAuth()
+  // El personal (admin o docente) puede pasar las tarjetas, pero no se guarda ningún repaso.
+  const noSave = useNoSave()
   const [state, setState] = useState({ loading: true, error: '', items: [], round: 0 })
 
   const fetchItems = useCallback(async () => {
@@ -55,6 +59,7 @@ export default function Review() {
           No tienes palabras por repasar ahora. Las palabras que practiques en tus unidades
           volverán aquí cuando toque repasarlas.
         </p>
+        <StaffNoSaveNote />
         <Link to="/cycle" className="btn-primary" style={{ display: 'inline-block', textDecoration: 'none', maxWidth: 260 }}>
           Ir a mi curso
         </Link>
@@ -70,11 +75,12 @@ export default function Review() {
           {state.items.length} {state.items.length === 1 ? 'palabra' : 'palabras'} por repasar
         </h1>
       </div>
+      <StaffNoSaveNote />
       <VocabFlashcard
         key={state.round}
         vocabItems={state.items}
         doneLabel="Buscar más palabras →"
-        onReview={(item, known) => item.module_id ? recordVocabReview(item.id, known) : recordA1Review(item.id, known)}
+        onReview={(item, known) => noSave ? undefined : item.module_id ? recordVocabReview(item.id, known) : recordA1Review(item.id, known)}
         onComplete={reload}
       />
     </div>
