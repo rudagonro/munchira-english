@@ -161,7 +161,7 @@ function SpeakPractice({ item, accent }) {
   </li>
 }
 
-function StepContent({ id, accent, lesson, onComplete }) {
+function StepContent({ id, accent, lesson, onComplete, legacyRules = [] }) {
   const { user } = useAuth()
   const [saveError, setSaveError] = useState('')
   const attempt = (text, known) => {
@@ -184,7 +184,7 @@ function StepContent({ id, accent, lesson, onComplete }) {
       {lesson.theory?.length > 0 && <>
         <h2>La regla, paso a paso</h2>
         <p>Primero entiende cómo se construye la frase; después aplícala con palabras nuevas.</p>
-        {lesson.theory.map((rule, index) => <TheoryRule key={rule.title} rule={rule} index={index} accent={accent} />)}
+        {lesson.theory.map((rule, index) => <TheoryRule key={rule.title} rule={rule} index={index} accent={accent} recognised={legacyRules.includes(index)} />)}
         <h2>Más detalles de la unidad</h2>
       </>}
       {!lesson.theory?.length && <h2>Paso a paso</h2>}
@@ -264,7 +264,7 @@ function FreeTask({ lesson, onComplete }) {
   </>
 }
 
-function TheoryRule({ rule, index, accent }) {
+function TheoryRule({ rule, index, accent, recognised = false }) {
   const [value, setValue] = useDraftState(`theory.${index}.val`, '')
   const [fails, setFails] = useDraftState(`theory.${index}.fails`, 0)
   const [checked, setChecked] = useState(null)
@@ -293,15 +293,15 @@ function TheoryRule({ rule, index, accent }) {
     {checked === true && <p className="ml-feedback ml-ok" role="status">¡Bien construida! {rule.apply.answer}</p>}
     {checked === false && <p className="ml-feedback ml-bad" role="status">Todavía no. Revisa el orden: {rule.form}.</p>}
     {shown && !checked && <p className="ml-example">{rule.apply.answer} <ListenButtons text={rule.apply.answer} accent={accent} /></p>}
-    <p className="ml-tip">Antes en: {rule.source.join(' · ')}</p>
+    <p className="ml-tip">{recognised && <strong>✓ Reconocido de tus módulos anteriores · </strong>}Antes en: {rule.source.join(' · ')}</p>
   </section>
 }
 
-export default function ModelLesson({ lesson = defaultLesson, legacyTheory = false }) {
-  return <A1DraftProvider lessonKey={`unit:${lesson.number ?? 1}`}><ModelLessonContent lesson={lesson} legacyTheory={legacyTheory} /></A1DraftProvider>
+export default function ModelLesson({ lesson = defaultLesson, legacyTheory = false, legacyRules = [] }) {
+  return <A1DraftProvider lessonKey={`unit:${lesson.number ?? 1}`}><ModelLessonContent lesson={lesson} legacyTheory={legacyTheory} legacyRules={legacyRules} /></A1DraftProvider>
 }
 
-function ModelLessonContent({ lesson, legacyTheory }) {
+function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
   const [savedStep, setStep] = useDraftState('step', 0)
   const [accent, setAccent] = useDraftState('accent', 'en-US')
   const [completedIds, setCompletedIds] = useDraftState('step.completed', [])
@@ -324,6 +324,7 @@ function ModelLessonContent({ lesson, legacyTheory }) {
       <header className="ml-head">
         <p className="mp-eyebrow">{lesson.number ? `Curso ${lesson.level} · ${lesson.module}` : `${lesson.level} · ${lesson.module} · Lección de muestra`}</p>
         <h1>{lesson.number ? `Unidad ${lesson.number}: ${lesson.title}` : lesson.title}</h1>
+        {!legacyTheory && legacyRules.length > 0 && <p className="ml-tip" role="status">Reconocimos {legacyRules.length} de {lesson.theory?.length ?? 0} reglas de teoría por tus módulos anteriores (marcadas con ✓ en «Explicación»). Completa el resto de la unidad y su cuestionario final.</p>}
         {legacyTheory && <p className="ml-tip" role="status">Teoría reconocida de tus módulos anteriores: para completar la unidad aprueba su cuestionario final (70%). Puedes ir directo o repasar cualquier paso.</p>}
         <div className="ml-progress" role="progressbar" aria-valuemin={0} aria-valuemax={steps.length} aria-valuenow={completed.size} aria-label="Avance de la lección"><span style={{ width: `${(completed.size / steps.length) * 100}%` }} /></div>
         <div className="ml-head-row">
@@ -334,7 +335,7 @@ function ModelLessonContent({ lesson, legacyTheory }) {
       </header>
       <div className="ml-layout">
         <nav className="ml-steps" aria-label="Pasos de la lección"><ol>{steps.map((s, i) => <li key={s.id}><button type="button" aria-current={i === step ? 'step' : undefined} className={completed.has(s.id) ? 'ml-step-done' : ''} disabled={!canOpenStep(i, steps, completed)} onClick={() => go(i)}><span>{completed.has(s.id) ? '✓' : i + 1}</span>{s.label}</button></li>)}</ol></nav>
-        <section className="ml-panel" aria-live="polite"><>{steps.map((s, i) => (visited.has(i) || i === step) && <div className="ml-step-content" hidden={i !== step} key={s.id}><StepContent id={s.id} accent={accent} lesson={lesson} onComplete={done => mark(s.id, done ?? true)} /></div>)}</>
+        <section className="ml-panel" aria-live="polite"><>{steps.map((s, i) => (visited.has(i) || i === step) && <div className="ml-step-content" hidden={i !== step} key={s.id}><StepContent id={s.id} accent={accent} lesson={lesson} legacyRules={legacyRules} onComplete={done => mark(s.id, done ?? true)} /></div>)}</>
           {isPracticeStep(current.id) && !completed.has(current.id) && current.id !== 'summary' && <p className="ml-tip" role="status">Completa esta actividad antes de continuar.</p>}
           <div className="ml-nav">
             {step > 0 && <button type="button" className="mp-button" onClick={() => go(step - 1)}>← Anterior</button>}

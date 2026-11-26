@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { A1_COURSE_UNITS, A1_LEGACY_LABEL, A1_LEGACY_LESSON_MAP, legacyUnitCredit, summarizeA1Course, unitStatusText } from '../src/data/a1Course.js'
+import { A1_COURSE_UNITS, A1_LEGACY_LABEL, A1_LEGACY_LESSON_MAP, legacySourceKey, legacyUnitCredit, summarizeA1Course, unitStatusText } from '../src/data/a1Course.js'
 import { LESSON_STEPS } from '../src/public/model-lesson.js'
 
 const modules = [1, 2, 3, 4].map(order => ({ id: `m${order}`, order_index: order }))
@@ -149,4 +149,36 @@ test('quien cambió de nivel y volvió a A1 conserva el reconocimiento de lo apr
   const summary = summarizeA1Course({ legacy: legacyUnitCredit({ modules, lessons, moduleProgress: [...current, ...previous] }) })
   assert.equal(summary.completed, 0)
   assert.ok(summary.units.every(unit => unit.status === 'quiz-pending' && unit.legacyTheory))
+})
+
+test('las fuentes de cada regla de teoría coinciden con el mapa de lecciones antiguas', async () => {
+  const { default: cycle } = await import('../content/cycles/A1.json', { with: { type: 'json' } })
+  for (const unit of cycle.modules) {
+    const fromRules = new Set(unit.practice.theory.flatMap(rule => rule.source.map(legacySourceKey)))
+    assert.ok(!fromRules.has(null), `Unidad ${unit.order}: fuente sin lección antigua reconocible`)
+    const fromMap = Object.entries(A1_LEGACY_LESSON_MAP).filter(([, n]) => n === unit.order).map(([key]) => key)
+    assert.deepEqual([...fromRules].sort(), fromMap.sort(), `Unidad ${unit.order}`)
+  }
+})
+
+test('con parte de las lecciones antiguas se reconocen solo las reglas cuyas fuentes están completas', () => {
+  // Unidad 1: regla 0 ← 1.1, regla 1 ← 1.2, regla 2 ← 3.1 + 4.1 + 4.2
+  const partial = legacyUnitCredit({ modules, lessons, completedLessonIds: ['l1.1', 'l3.1'], moduleProgress: [] })
+  const unit1 = summarizeA1Course({ legacy: partial }).units[0]
+  assert.equal(unit1.status, 'in-progress')
+  assert.deepEqual(unit1.legacyRules, [0])
+  assert.equal(unitStatusText(unit1), 'En curso · teoría reconocida: 1 de 3 reglas')
+  assert.equal(unit1.legacyTheory, false)
+  // Módulo 4 aprobado: cubre las lecciones 4.1 y 4.2; con 3.1 hecha, la regla 2 también queda reconocida
+  const withModule = legacyUnitCredit({ modules, lessons, completedLessonIds: ['l1.1', 'l3.1'], moduleProgress: [{ module_id: 'm4', status: 'completed', quiz_score: 80 }] })
+  assert.deepEqual(summarizeA1Course({ legacy: withModule }).units[0].legacyRules, [0, 2])
+  assert.deepEqual(summarizeA1Course().units[0].legacyRules, [])
+})
+
+test('el reconocimiento parcial no marca pasos ni aprueba la unidad', () => {
+  const partial = legacyUnitCredit({ modules, lessons, completedLessonIds: ['l1.1', 'l1.2'], moduleProgress: [] })
+  const summary = summarizeA1Course({ legacy: partial })
+  assert.equal(summary.completed, 0)
+  assert.equal(summary.units[0].status, 'in-progress')
+  assert.equal(summary.units[0].fromLegacy, false)
 })
