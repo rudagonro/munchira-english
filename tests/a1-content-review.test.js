@@ -46,9 +46,9 @@ test('tarjetas: solo las palabras clave y cada una con su índice real en vocab'
   for (const unit of units) {
     const lesson = { ...unit, number: unit.number }
     const cards = lessonCards(lesson)
-    assert.equal(cards.length, cardVocab(lesson).length * 2)
-    assert.ok(cards.length <= 24)
-    for (const card of cards) assert.equal(unit.vocab[card.word].en, card.audio)
+    assert.equal(cards.length, (cardVocab(lesson).length + (unit.extraVocab?.length ?? 0)) * 2)
+    assert.ok(cards.length <= 28)
+    for (const card of cards) assert.equal(card.word >= 100 ? unit.extraVocab[card.word - 100].en : unit.vocab[card.word].en, card.audio)
   }
   const lesson = units[1]
   const steps = LESSON_STEPS

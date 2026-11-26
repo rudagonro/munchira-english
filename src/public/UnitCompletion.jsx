@@ -10,16 +10,25 @@ function progressError(error) {
   return 'No pudimos guardar tu avance. Comprueba tu conexión y vuelve a intentarlo.'
 }
 
+/** Corrección de una pregunta después de enviar: qué era correcto y por qué. */
+export function QuestionFeedback({ question, answer }) {
+  const ok = answer === question.correct_idx
+  return <p className={`ml-feedback ${ok ? 'ml-ok' : 'ml-bad'}`}>
+    {ok ? '✓ Correcto.' : <>✗ La respuesta correcta es «{question.options[question.correct_idx]}».</>}{question.why && <> {question.why}</>}
+  </p>
+}
+
 export default function UnitCompletion({ number, onPassed }) {
   const passedCallback = useRef(onPassed)
   useEffect(() => { passedCallback.current = onPassed }, [onPassed])
   const { user, loading } = useAuth()
   const questions = cycle.modules.find(unit => unit.order === number)?.quiz ?? []
-  const [answers, setAnswers] = useDraftState('quiz.answers', {})
+  const [answers, setAnswers] = useDraftState('quizV2.answers', {}) // «quiz.answers» era el cuestionario anterior: sus índices no valen aquí
   const [progress, setProgress] = useState(null)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
   const [localScore, setLocalScore] = useState(null)
+  const [reviewed, setReviewed] = useState(null) // respuestas enviadas: muestran la corrección por pregunta
   useEffect(() => {
     if (!user) return
     let active = true
@@ -36,13 +45,15 @@ export default function UnitCompletion({ number, onPassed }) {
     setError(''); setBusy(true)
     try {
       if (!user) {
+        setReviewed(selected)
         const score = Math.round(selected.filter((answer, index) => answer === questions[index].correct_idx).length * 100 / questions.length)
         setLocalScore(score); if (score >= 70) onPassed?.()
         return
       }
-      const { data, error: saveError } = await supabase.rpc('submit_a1_unit_quiz', { p_unit: number, p_answers: selected })
+      // v2 califica los cuestionarios actuales (migración 20261126000100_a1_quiz_v2).
+      const { data, error: saveError } = await supabase.rpc('submit_a1_unit_quiz_v2', { p_unit: number, p_answers: selected })
       if (saveError) { setError(progressError(saveError)); return }
-      setProgress(data)
+      setProgress(data); setReviewed(selected)
       if (data?.completed_at) onPassed?.()
     } catch { setError('No pudimos guardar tu avance. Inténtalo de nuevo.') }
     finally { setBusy(false) }
@@ -54,7 +65,8 @@ export default function UnitCompletion({ number, onPassed }) {
     <form onSubmit={submit} className="ml-quiz">
       {questions.map((question, index) => <fieldset key={index} className="ml-quiz-q">
         <legend>{index + 1}. {question.question}</legend>
-        {question.options.map((option, value) => <label key={value} className="ml-quiz-opt"><input type="radio" name={`a1-question-${index}`} value={value} checked={answers[index] === value} onChange={() => setAnswers(previous => ({ ...previous, [index]: value }))} disabled={busy} required /><span>{option}</span></label>)}
+        {question.options.map((option, value) => <label key={value} className="ml-quiz-opt"><input type="radio" name={`a1-question-${index}`} value={value} checked={answers[index] === value} onChange={() => { setReviewed(null); setAnswers(previous => ({ ...previous, [index]: value })) }} disabled={busy} required /><span>{option}</span></label>)}
+        {reviewed && <QuestionFeedback question={question} answer={reviewed[index]} />}
       </fieldset>)}
       <button type="submit" className="mp-button mp-button-dark" disabled={busy || loading || Object.keys(answers).length !== questions.length}>{busy ? 'Guardando…' : user ? 'Comprobar y guardar mi avance' : 'Comprobar mi práctica'}</button>
     </form>

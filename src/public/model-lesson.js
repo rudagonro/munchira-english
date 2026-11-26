@@ -167,9 +167,16 @@ export function cardVocab(lesson) {
   return lesson.cardWords.map(w => lesson.vocab.find(v => v.en === w)).filter(Boolean)
 }
 
-/** Tarjetas de las palabras clave; cada una conserva su índice en `vocab` para Repaso. */
+/** Las palabras rescatadas («Más palabras útiles») se registran en Repaso con índice 100 + n. */
+export const EXTRA_WORD_OFFSET = 100
+
+/** Tarjetas de las palabras clave y de las rescatadas; cada una conserva su índice para Repaso. */
 export function lessonCards(lesson) {
-  return buildBidirectionalCards(cardVocab(lesson), item => lesson.vocab.indexOf(item))
+  const extra = lesson.extraVocab ?? []
+  return buildBidirectionalCards([...cardVocab(lesson), ...extra], item => {
+    const index = lesson.vocab.indexOf(item)
+    return index >= 0 ? index : EXTRA_WORD_OFFSET + extra.indexOf(item)
+  }).map((card, i) => ({ ...card, id: `${card.word}-${i % 2 ? 'es' : 'en'}` }))
 }
 
 /** Clave del borrador de tarjetas: «cards» si la baraja es la misma de antes (todo el vocabulario,

@@ -1,10 +1,13 @@
 import { practicedWordIndices } from './lessonProgress'
 import { supabase } from '../lib/supabase'
 import cycle from '../../content/cycles/A1.json'
+import { EXTRA_WORD_OFFSET } from './model-lesson'
 
 // Indices refer to the checked-in catalog, never text supplied by an API caller.
 export async function recordA1Word(unit, word, known) {
-  if (!cycle.modules.find(item => item.order === unit)?.practice.vocab[word]) return { error: new Error('Palabra no disponible') }
+  const practice = cycle.modules.find(item => item.order === unit)?.practice
+  const item = word >= EXTRA_WORD_OFFSET ? practice?.extraVocab?.[word - EXTRA_WORD_OFFSET] : practice?.vocab[word]
+  if (!Number.isInteger(word) || !item) return { error: new Error('Palabra no disponible') }
   try { return await supabase.rpc('record_a1_vocab_practice', { p_unit: unit, p_word: word, p_known: known }) }
   catch (error) { return { error } }
 }

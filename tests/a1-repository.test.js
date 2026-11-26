@@ -7,7 +7,7 @@ import inventory from '../content/assets.sha256.json' with { type: 'json' }
 import { buildCycleSql } from '../content/lib/sql.js'
 import { addUser, asUser, asAnon, createDb, seedCycle } from './helpers/db.js'
 
-const rpc = (db, unit, answers) => db.query('select (public.submit_a1_unit_quiz($1,$2::jsonb)).*', [unit, JSON.stringify(answers)])
+const rpc = (db, unit, answers) => db.query('select (public.submit_a1_unit_quiz_v2($1,$2::jsonb)).*', [unit, JSON.stringify(answers)])
 const correct = cycle.modules[1].quiz.map(question => question.correct_idx)
 const answered = count => correct.map((value,index) => index < count ? value : (value + 1) % cycle.modules[1].quiz[index].options.length)
 
