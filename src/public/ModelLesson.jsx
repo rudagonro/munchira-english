@@ -6,7 +6,7 @@ import ExerciseBlock from '../components/ExerciseBlock'
 import { lessonA1Presentarte as defaultLesson } from '../data/modelLessons/a1-presentarte'
 import { canOpenStep, isPracticeStep } from './lessonProgress'
 import { recordA1Word, recordA1Text } from './a1Review'
-import { LESSON_STEPS, buildBidirectionalCards, checkPresentation, contractionTip, displayForm, isCorrectAnswer, quoteForm } from './model-lesson'
+import { LESSON_STEPS, cardDraftKey, checkPresentation, lessonCards, contractionTip, displayForm, isCorrectAnswer, quoteForm } from './model-lesson'
 import { sayEnglish, sayDialogue, stopLessonAudio, canListen } from './lessonSpeech'
 import { playFeedback } from './feedbackSounds'
 import { useAuth } from '../contexts/auth-context'
@@ -36,19 +36,21 @@ function ChoiceQuestions({ questions, onComplete, onAttempt }) {
 }
 
 function TwoWayCards({ accent, lesson, onComplete }) {
-  const cards = useMemo(() => buildBidirectionalCards(lesson.vocab), [lesson])
-  const [idx, setIdx] = useDraftState('cards.idx', 0)
-  const [value, setValue] = useDraftState('cards.value', '')
-  const [result, setResult] = useDraftState('cards.result', null) // null | 'retry' | 'ok' | 'bad'
-  const [tries, setTries] = useDraftState('cards.tries', 0)
-  const [score, setScore] = useDraftState('cards.score', 0)
+  const cards = useMemo(() => lessonCards(lesson), [lesson])
+  // Si la baraja cambió, un borrador de la anterior no se reinterpreta (ver cardDraftKey).
+  const CARDS_DRAFT = cardDraftKey(lesson)
+  const [idx, setIdx] = useDraftState(`${CARDS_DRAFT}.idx`, 0)
+  const [value, setValue] = useDraftState(`${CARDS_DRAFT}.value`, '')
+  const [result, setResult] = useDraftState(`${CARDS_DRAFT}.result`, null) // null | 'retry' | 'ok' | 'bad'
+  const [tries, setTries] = useDraftState(`${CARDS_DRAFT}.tries`, 0)
+  const [score, setScore] = useDraftState(`${CARDS_DRAFT}.score`, 0)
   const { user } = useAuth()
   const [saveError, setSaveError] = useState('')
   const reported = useRef(new Set())
   const saveWord = (known) => {
     if (!user || reported.current.has(idx)) return
     reported.current.add(idx)
-    void recordA1Word(lesson.number ?? 1, Math.floor(idx / 2), known).then(({ error }) => { if (error) { reported.current.delete(idx); setSaveError('No pudimos guardar esta palabra en Repaso. Comprueba tu conexión y vuelve a practicarla.') } else setSaveError('') })
+    void recordA1Word(lesson.number ?? 1, cards[idx].word, known).then(({ error }) => { if (error) { reported.current.delete(idx); setSaveError('No pudimos guardar esta palabra en Repaso. Comprueba tu conexión y vuelve a practicarla.') } else setSaveError('') })
   }
   if (idx >= cards.length) return <div className="ml-done" role="status"><strong>{score} de {cards.length}</strong> respuestas correctas a la primera. Las que te costaron se programan antes en Repaso cuando tienes sesión.<button type="button" className="mp-button mp-button-dark" onClick={() => { setIdx(0); setScore(0); setResult(null); setValue(''); setTries(0) }}>Repetir ↻</button></div>
   const card = cards[idx]
@@ -154,7 +156,7 @@ function SpeakPractice({ item, accent }) {
   const supported = typeof MediaRecorder !== 'undefined' && Boolean(navigator.mediaDevices?.getUserMedia)
   return <li className="ml-speak">
     <p className="ml-big">{item.en} <ListenButtons text={item.en} accent={accent} /></p>
-    <p className="ml-say">Se pronuncia: <strong>{item.say}</strong></p><p className="ml-tip">{item.tip}</p>
+    {item.say && <p className="ml-say">Se pronuncia: <strong>{item.say}</strong></p>}{item.tip && <p className="ml-tip">{item.tip}</p>}
     {supported && <button className="mp-button mp-button-dark" type="button" onClick={record}>{recording ? 'Detener grabación' : 'Grabar mi repetición'}</button>}
     {url && <audio src={url} controls aria-label="Mi repetición" />}
     <p>Escucha el modelo, repítelo y compara. La grabación permanece solo en este dispositivo y no recibe una calificación automática.</p>
@@ -162,7 +164,7 @@ function SpeakPractice({ item, accent }) {
   </li>
 }
 
-function StepContent({ id, accent, lesson, onComplete, legacyRules = [] }) {
+function StepContent({ id, accent, lesson, onComplete, legacyRules = [], legacy = false }) {
   const { user } = useAuth()
   const [saveError, setSaveError] = useState('')
   const attempt = (text, known) => {
@@ -180,13 +182,13 @@ function StepContent({ id, accent, lesson, onComplete, legacyRules = [] }) {
     case 'vocab': return <>
       <h2>Palabras de esta lección</h2><p>Escucha cada una. La pronunciación está escrita como suena en español.</p>
       <ul className="ml-vocab">{lesson.vocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{displayForm(v.es)}</span><em>«{v.say}»</em><ListenButtons text={v.en} accent={accent} /></li>)}</ul>
-      <ExtraVocab lesson={lesson} accent={accent} />
+      <ExtraVocab lesson={lesson} accent={accent} legacy={legacy} />
     </>
     case 'explain': return <>
       {lesson.theory?.length > 0 && <>
         <h2>La regla, paso a paso</h2>
         <p>Primero entiende cómo se construye la frase; después aplícala con palabras nuevas.</p>
-        {lesson.theory.map((rule, index) => <TheoryRule key={rule.title} rule={rule} index={index} accent={accent} recognised={legacyRules.includes(index)} />)}
+        {lesson.theory.map((rule, index) => <TheoryRule key={rule.title} rule={rule} index={index} accent={accent} recognised={legacyRules.includes(index)} showLegacy={legacy} />)}
         <h2>Más detalles de la unidad</h2>
       </>}
       {!lesson.theory?.length && <h2>Paso a paso</h2>}
@@ -207,17 +209,17 @@ function StepContent({ id, accent, lesson, onComplete, legacyRules = [] }) {
       <h2>Errores típicos de hispanohablantes</h2>
       <ul className="ml-mistakes">{[...(lesson.mistakes ?? []), ...(lesson.theory ?? []).flatMap(rule => rule.mistake ? [rule.mistake] : [])].map(m => <li key={m.wrong}><p className="ml-wrong">✗ {m.wrong}</p><p className="ml-right">✓ {m.right} <ListenButtons text={m.right} accent={accent} /></p><p>{m.why}</p></li>)}</ul>
     </>
-    case 'guided': return <><h2>Práctica guiada</h2><p>Primero con pistas. Si fallas, verás por qué.</p><ExerciseBlock draftKey="guided" exercises={lesson.guided} onComplete={onComplete} onAttempt={exerciseAttempt} />{warning}<ExtraGuided lesson={lesson} /></>
+    case 'guided': return <><h2>Práctica guiada</h2><p>Primero con pistas. Si fallas, verás por qué.</p><ExerciseBlock draftKey="guided" exercises={lesson.guided} onComplete={onComplete} onAttempt={exerciseAttempt} />{warning}<ExtraGuided lesson={lesson} legacy={legacy} /></>
     case 'cards': return <><h2>Repaso en dos direcciones</h2><p>Cada palabra aparece de inglés a español y de español a inglés. Así se queda en la memoria.</p><TwoWayCards accent={accent} lesson={lesson} onComplete={onComplete} /></>
     case 'reading': return <>
       <h2>Lectura: {lesson.reading.title}</h2>
       <blockquote className="ml-reading">
         {lesson.reading.segments ? <>
-          <ol className="ml-reading-turns">{lesson.reading.segments.filter(t => t.speaker).map((t, i) => <li key={i}><strong>{t.speaker}:</strong><p>{t.text}</p><ListenButtons text={t.text} accent={accent} voice={t.voice} /></li>)}</ol>
+          <ol className="ml-reading-turns">{lesson.reading.segments.map((t, i) => <li key={i} className={t.speaker ? undefined : 'ml-reading-narration'}>{t.speaker && <strong>{t.speaker}:</strong>}<p>{t.text}</p><ListenButtons text={t.text} accent={accent} voice={t.voice} /></li>)}</ol>
         </> : <>{lesson.reading.text} <ListenButtons text={lesson.reading.text} accent={accent} voice={lesson.reading.voice} /></>}
       </blockquote>
       <details className="ml-translation"><summary>Ver traducción</summary>{lesson.reading.segments ? <>
-        <ol className="ml-reading-turns">{lesson.reading.segments.filter(t => t.speaker).map((t, i) => <li key={i}><strong>{t.speaker}:</strong><p>{t.es}</p></li>)}</ol>
+        <ol className="ml-reading-turns">{lesson.reading.segments.map((t, i) => <li key={i} className={t.speaker ? undefined : 'ml-reading-narration'}>{t.speaker && <strong>{t.speaker}:</strong>}<p>{t.es}</p></li>)}</ol>
       </> : <p>{lesson.reading.translation}</p>}</details>
       <h3>¿Lo entendiste?</h3><ChoiceQuestions questions={lesson.reading.questions} onComplete={onComplete} onAttempt={exerciseAttempt} />{warning}
     </>
@@ -259,7 +261,7 @@ function FreeTask({ lesson, onComplete }) {
     </div>
     {lesson.freeChecklist && <><h3>Revisa tu texto</h3><ul className="ml-summary">{lesson.freeChecklist.map(item => <li key={item}>{item}</li>)}</ul><p>Compara con el modelo. Esta tarea no recibe una nota ni una corrección automática completa.</p></>}
     {review && <div role="status">
-      {review.items.map((item, i) => <p key={i} className={`ml-feedback ${item.ok ? 'ml-ok' : 'ml-bad'}`}>{item.ok ? '✓' : '✗'} {item.msg}</p>)}
+      {review.items.map((item, i) => item.warn ? <p key={i} className="ml-tip">• {item.msg}</p> : <p key={i} className={`ml-feedback ${item.ok ? 'ml-ok' : 'ml-bad'}`}>{item.ok ? '✓' : '✗'} {item.msg}</p>)}
       <p className={`ml-feedback ${review.ok ? 'ml-ok' : 'ml-bad'}`}><strong>{review.ok ? '¡Bien! Has usado correctamente las estructuras de esta lección.' : 'Tú puedes: corrige los puntos marcados y vuelve a revisar.'}</strong></p>
       <p className="ml-tip">Revisión de estructuras A1; no comprueba todos los errores de ortografía ni los nombres propios.</p>
     </div>}
@@ -269,7 +271,7 @@ function FreeTask({ lesson, onComplete }) {
   </>
 }
 
-function TheoryRule({ rule, index, accent, recognised = false }) {
+function TheoryRule({ rule, index, accent, recognised = false, showLegacy = false }) {
   const [value, setValue] = useDraftState(`theory.${index}.val`, '')
   const [fails, setFails] = useDraftState(`theory.${index}.fails`, 0)
   const [checked, setChecked] = useState(null)
@@ -299,7 +301,7 @@ function TheoryRule({ rule, index, accent, recognised = false }) {
     {checked === true && <p className="ml-feedback ml-ok" role="status">¡Bien construida! {rule.apply.answer}</p>}
     {checked === false && <p className="ml-feedback ml-bad" role="status">Todavía no. Revisa el orden: {rule.form}.</p>}
     {shown && !checked && <p className="ml-example">{rule.apply.answer} <ListenButtons text={rule.apply.answer} accent={accent} /></p>}
-    {rule.source.some(line => line.includes(' · Lección ')) ? <p className="ml-tip">{recognised && <strong>✓ Reconocido de tus módulos anteriores · </strong>}Antes en: {rule.source.join(' · ')}</p> : <p className="ml-tip">Regla nueva de esta unidad.</p>}
+    {showLegacy && rule.source.some(line => line.includes(' · Lección ')) && <p className="ml-tip">{recognised && <strong>✓ Reconocido de tus módulos anteriores · </strong>}Antes en: {rule.source.join(' · ')}</p>}
   </section>
 }
 
@@ -341,7 +343,7 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
       </header>
       <div className="ml-layout">
         <nav className="ml-steps" aria-label="Pasos de la lección"><ol>{steps.map((s, i) => <li key={s.id}><button type="button" aria-current={i === step ? 'step' : undefined} className={completed.has(s.id) ? 'ml-step-done' : ''} disabled={!canOpenStep(i, steps, completed)} onClick={() => go(i)}><span>{completed.has(s.id) ? '✓' : i + 1}</span>{s.label}</button></li>)}</ol></nav>
-        <section className="ml-panel" aria-live="polite"><>{steps.map((s, i) => (visited.has(i) || i === step) && <div className="ml-step-content" hidden={i !== step} key={s.id}><StepContent id={s.id} accent={accent} lesson={lesson} legacyRules={legacyRules} onComplete={done => mark(s.id, done ?? true)} /></div>)}</>
+        <section className="ml-panel" aria-live="polite"><>{steps.map((s, i) => (visited.has(i) || i === step) && <div className="ml-step-content" hidden={i !== step} key={s.id}><StepContent id={s.id} accent={accent} lesson={lesson} legacyRules={legacyRules} legacy={legacyTheory || legacyRules.length > 0} onComplete={done => mark(s.id, done ?? true)} /></div>)}</>
           {isPracticeStep(current.id) && !completed.has(current.id) && current.id !== 'summary' && <p className="ml-tip" role="status">Completa esta actividad antes de continuar.</p>}
           <div className="ml-nav">
             {step > 0 && <button type="button" className="mp-button" onClick={() => go(step - 1)}>← Anterior</button>}

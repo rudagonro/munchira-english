@@ -140,7 +140,7 @@ function FillEx({ ex, onNext, onAttempt, draftKey }) {
           Comprobar
         </button>
       )}
-      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={ex.answer.split('|')[0]} onRetry={retry} onReveal={reveal} onNext={onNext} />}
+      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={String(ex.answer).split('|')[0].trim()} onRetry={retry} onReveal={reveal} onNext={onNext} />}
     </div>
   )
 }
@@ -231,7 +231,7 @@ function OrderEx({ ex, onNext, onAttempt, draftKey }) {
       {state === 'idle' && placed.length > 0 && bank.length === 0 && (
         <button className="ex-check-btn" onClick={check}>Comprobar</button>
       )}
-      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={`"${ex.answer}"`} onRetry={retry} onReveal={reveal} onNext={onNext} />}
+      {state !== 'idle' && <Feedback state={state} fails={fails} why={ex.hint} answer={`"${String(ex.answer).split('|')[0].trim()}"`} onRetry={retry} onReveal={reveal} onNext={onNext} />}
     </div>
   )
 }
