@@ -165,25 +165,13 @@
       "unit": 3,
       "kind": "theory",
       "voice": "nova",
-      "text": "I go to work on Monday."
+      "text": "She works in a bank."
     },
     {
       "unit": 3,
       "kind": "theory",
       "voice": "nova",
-      "text": "She works in a bank."
-    },
-    {
-      "unit": 4,
-      "kind": "theory",
-      "voice": "nova",
-      "text": "The bank is near the park."
-    },
-    {
-      "unit": 4,
-      "kind": "theory",
-      "voice": "nova",
-      "text": "The bank is next to the park."
+      "text": "I go to work on Monday."
     },
     {
       "unit": 4,
@@ -192,34 +180,16 @@
       "text": "The school is between the bank and the hospital."
     },
     {
-      "unit": 6,
+      "unit": 4,
       "kind": "theory",
       "voice": "nova",
-      "text": "Do you like dancing?"
+      "text": "The bank is near the park."
     },
     {
       "unit": 6,
       "kind": "theory",
       "voice": "nova",
-      "text": "Do you like movies? — Yes, I do."
-    },
-    {
-      "unit": 6,
-      "kind": "theory",
-      "voice": "nova",
-      "text": "I like music."
-    },
-    {
-      "unit": 6,
-      "kind": "theory",
-      "voice": "nova",
-      "text": "I love playing tennis."
-    },
-    {
-      "unit": 6,
-      "kind": "theory",
-      "voice": "nova",
-      "text": "My brother hates cooking."
+      "text": "She loves reading."
     },
     {
       "unit": 6,
@@ -231,32 +201,50 @@
       "unit": 6,
       "kind": "theory",
       "voice": "nova",
-      "text": "She likes reading."
+      "text": "Do you like dancing?"
     },
     {
       "unit": 6,
       "kind": "theory",
       "voice": "nova",
-      "text": "She loves reading."
+      "text": "I like music."
     },
     {
-      "unit": 7,
+      "unit": 6,
       "kind": "theory",
       "voice": "nova",
-      "text": "Go straight and turn left."
+      "text": "My brother hates cooking."
     },
     {
-      "unit": 8,
+      "unit": 6,
       "kind": "theory",
       "voice": "nova",
-      "text": "Sorry, I don’t understand. Could you repeat that, please?"
+      "text": "Do you like movies? — Yes, I do."
+    },
+    {
+      "unit": 6,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "I love playing tennis."
+    },
+    {
+      "unit": 6,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "She likes reading."
     },
     {
       "unit": 8,
       "kind": "theory",
       "voice": "nova",
       "text": "The flight is three hours late."
+    },
+    {
+      "unit": 8,
+      "kind": "theory",
+      "voice": "nova",
+      "text": "Sorry, I don’t understand. Could you repeat that, please?"
     }
   ],
-  "theoryNote": "Frases de las reglas de teoría añadidas o cambiadas por la revisión de A1 (PR 4/4). Los MP3 de teoría de las unidades 2-8 se generan aparte: incluir estas frases en ese lote."
+  "theoryNote": "Frases de las reglas de teoría añadidas o cambiadas por la revisión de A1 (PR 4/4) que aún no tienen MP3 propio. Generarlas en ambos acentos en las carpetas unitN-theory y retirarlas de esta lista."
 }

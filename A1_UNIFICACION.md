@@ -47,4 +47,4 @@ Todo este material es **opcional**: no bloquea pasos, no cuenta para la nota y n
 - **Ajustes menores:** 5 (no cambian por género ni número), 7 (*doesn’t* + verbo sin -s), 9 (sonido, no letra) y 14 (*Can* frente a *Could*).
 - **Regla 16:** es una estrategia (`kind: "strategy"`, `graded: false`). La interfaz avisa que no se evalúa, y ninguna pregunta de cuestionario depende de ella.
 - **Unidad 1:** sus frases en inglés tienen MP3 obligatorios, así que ahí solo cambié textos en español (regla, pasos y explicación). Sus frases de ejemplo no se tocaron.
-- Las frases en inglés nuevas o cambiadas están en `theory` dentro de `content/a1/pending-audio.json`, para el lote de MP3 de teoría de las unidades 2 a 8.
+- Las frases en inglés nuevas o cambiadas que todavía no tienen MP3 (14) están en `theory` dentro de `content/a1/pending-audio.json`. `tests/a1-units2-8-theory-audio.test.js` las exime solo si están en esa lista, y falla si alguna ya tiene audio o si ya no existe, para que la lista no quede vieja. Los MP3 de frases retiradas (por ejemplo, *The flight is delayed three hours*) siguen en el repositorio, sin uso.
