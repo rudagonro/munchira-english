@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getA1Unit, loadA1Content } from '../data/modelLessons/a1-units'
 import { REVIEW_UNITS, reviewUnitPath } from '../data/reviewerUnits'
@@ -46,10 +46,23 @@ export default function ReviewerUnit() {
   const { number } = useParams()
   const starter = number === '0'
   const unit = starter ? null : getA1Unit(number)
+  // La barra queda fija arriba: su altura real (cambia al envolver en varias filas) desplaza el menú de pasos
+  // fijo y los destinos de los enlaces de sección, para que nada quede tapado.
+  const bar = useRef(null)
+  const [barHeight, setBarHeight] = useState(0)
+  useEffect(() => {
+    const element = bar.current
+    if (!element || typeof ResizeObserver === 'undefined') return
+    const observer = new ResizeObserver(() => setBarHeight(Math.ceil(element.getBoundingClientRect().height)))
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [])
   if (!starter && !unit) return <div className="page-shell"><h1>Unidad no encontrada</h1><Link to="/revisor">← Volver al revisor</Link></div>
   const current = starter ? 0 : unit.number
   return <ReviewModeContext.Provider value={true}>
-    <div className="rv-unit-wrap rv-unit-sticky"><ReviewBar number={current} /></div>
-    {starter ? <StarterUnit /> : <UnitPreview key={unit.number} unit={unit} />}
+    <div className="rv-review" style={{ '--rv-bar-h': `${barHeight}px` }}>
+      <div className="rv-unit-wrap rv-unit-sticky" ref={bar}><ReviewBar number={current} /></div>
+      {starter ? <StarterUnit /> : <UnitPreview key={unit.number} unit={unit} />}
+    </div>
   </ReviewModeContext.Provider>
 }

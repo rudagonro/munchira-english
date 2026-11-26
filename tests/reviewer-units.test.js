@@ -117,5 +117,9 @@ test('al terminar los ejercicios, el revisor sigue viendo el solucionario y pued
 test('la barra del revisor queda pegada arriba mientras se baja por la unidad', () => {
   assert.match(src('pages/ReviewerUnit.jsx'), /className="rv-unit-wrap rv-unit-sticky"/)
   assert.match(src('index.css'), /\.rv-unit-sticky \{ position: sticky; top: 0;/)
+  // La altura real de la barra desplaza el menú de pasos fijo y los destinos de los enlaces (comprobado en Playwright a 1280 y 390 px).
+  assert.match(src('pages/ReviewerUnit.jsx'), /style=\{\{ '--rv-bar-h': `\$\{barHeight\}px` \}\}/)
+  assert.match(src('index.css'), /\.rv-review \.ml-steps \{ top: calc\(var\(--rv-bar-h, 0px\) \+ 16px\); \}/)
+  assert.match(src('index.css'), /\.rv-review \.su-section, \.rv-review \[id\] \{ scroll-margin-top: calc\(var\(--rv-bar-h, 0px\) \+ 12px\); \}/)
 })
 
