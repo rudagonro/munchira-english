@@ -84,3 +84,21 @@ test('vercel.json no intercepta robots.txt ni sitemap.xml y envía lo demás al 
   for (const path of ['/robots.txt', '/sitemap.xml', '/assets/index.js', '/favicon.svg']) assert.equal(source.test(path), false, `${path} no debe reescribirse`)
   for (const path of ['/app', '/login', '/cuenta', '/ruta-desconocida']) assert.equal(source.test(path), true, `${path} debe ir al cascarón`)
 })
+
+test('la Unidad 0 se genera con sus tarjetas: imagen local, inglés, español y botón de audio en cada una', () => {
+  const html = read('cursos/A1/unidad/0/index.html')
+  assert.equal((html.match(/<h1[\s>]/g) ?? []).length, 1)
+  assert.match(html, /<meta name="robots" content="noindex/)
+  const cards = html.match(/<li class="fc ?"[^>]*data-card="colors\.\d+"[\s\S]*?<\/li>/g) ?? []
+  assert.equal(cards.length, 12, 'el primer grupo (colores) muestra sus 12 tarjetas')
+  for (const card of cards) {
+    assert.match(card, /<img class="fc-art" src="\/media\/cards\/twemoji\/[0-9a-f-]+\.svg"/)
+    assert.match(card, /class="fc-en" lang="en">[^<]+</)
+    assert.match(card, /class="fc-audio"[^>]*aria-label="Escuchar «[^»]+» \(americano\)"/)
+    assert.match(card, /aria-pressed="false"/)
+  }
+  assert.equal((html.match(/class="su-letter-main"/g) ?? []).length, 26)
+  assert.match(html, /CC BY 4\.0/)
+  // Las unidades 1–8 no muestran la puerta en el HTML estático: se decide en el navegador.
+  assert.doesNotMatch(read('cursos/A1/unidad/1/index.html'), /su-gate-box/)
+})

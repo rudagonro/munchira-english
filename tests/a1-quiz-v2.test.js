@@ -59,9 +59,11 @@ test('las claves y el número de opciones de la migración v2 coinciden con el c
 test('unidades ya completadas siguen completadas después de aplicar la migración v2', async () => {
   const db = await createDb({ migrate: false })
   try {
+    // Migraciones hasta la v2 (incluida); las posteriores (p. ej. la Unidad 0) tienen sus propias pruebas.
     const files = migrationFiles()
-    assert.equal(files.at(-1), MIGRATION)
-    for (const file of files.slice(0, -1)) await db.exec(readFileSync(new URL(file, migrationsDir), 'utf8'))
+    const upTo = files.indexOf(MIGRATION)
+    assert.ok(upTo > 0)
+    for (const file of files.slice(0, upTo)) await db.exec(readFileSync(new URL(file, migrationsDir), 'utf8'))
     const uid = await addUser(db, { email: 'before-v2@example.test' })
     await asUser(db, uid, async db => { for (const unit of [1, 2, 3]) await v1(db, unit, OLD_KEYS[unit]) })
     const before = (await db.query('select * from public.a1_unit_progress order by unit_number')).rows
@@ -92,7 +94,7 @@ test('las 5 palabras rescatadas entran en Repaso y el catálogo usa el español 
   const db = await createDb()
   try {
     const uid = await addUser(db, { email: 'extra-words@example.test' })
-    const extra = (await db.query('select unit_number,word_index,english from public.a1_vocab_items where word_index >= 100 order by unit_number,word_index')).rows
+    const extra = (await db.query('select unit_number,word_index,english from public.a1_vocab_items where unit_number between 1 and 8 and word_index >= 100 order by unit_number,word_index')).rows
     const expected = cycle.modules.flatMap(m => (m.practice.extraVocab ?? []).map((v, i) => ({ unit_number: m.order, word_index: 100 + i, english: v.en })))
     assert.deepEqual(extra, expected)
     await asUser(db, uid, async db => {

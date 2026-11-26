@@ -1,0 +1,682 @@
+{
+  "number": 0,
+  "slug": "a1-unidad-0-primeros-pasos",
+  "title": "Primeros pasos",
+  "goal": "El abecedario, los números y tus primeras palabras en inglés.",
+  "intro": "Esta unidad es para empezar desde cero. Aprendes a decir y deletrear letras, a contar y a reconocer palabras básicas. Toca cada tarjeta para practicar y escucha el audio en acento americano o británico. Al final hay un cuestionario: con 70% o más se abre la Unidad 1.",
+  "alphabet": {
+    "title": "El abecedario",
+    "intro": "El abecedario en inglés tiene 26 letras: no tiene Ñ ni CH ni LL. Cada letra tiene un nombre distinto al del español. La guía de pronunciación usa letras del español para que te hagas una idea; escucha el audio para oír el sonido real.",
+    "letters": [
+      {
+        "letter": "A",
+        "guide": "éi",
+        "tip": "No es «a»: suena como «ei» en «rey».",
+        "say": "Letter A."
+      },
+      {
+        "letter": "B",
+        "guide": "bi",
+        "say": "Letter B."
+      },
+      {
+        "letter": "C",
+        "guide": "si",
+        "say": "Letter C."
+      },
+      {
+        "letter": "D",
+        "guide": "di",
+        "say": "Letter D."
+      },
+      {
+        "letter": "E",
+        "guide": "i",
+        "tip": "La E en inglés suena «i». Es la que más se confunde con la I.",
+        "say": "Letter E."
+      },
+      {
+        "letter": "F",
+        "guide": "ef",
+        "say": "Letter F."
+      },
+      {
+        "letter": "G",
+        "guide": "yi",
+        "tip": "Suena como «yi» suave (casi «dyi»). No la confundas con la J.",
+        "say": "Letter G."
+      },
+      {
+        "letter": "H",
+        "guide": "éich",
+        "tip": "Se dice «éich»; nunca es muda al deletrear.",
+        "say": "Letter H."
+      },
+      {
+        "letter": "I",
+        "guide": "ái",
+        "tip": "La I en inglés suena «ai», como en «hay».",
+        "say": "Letter I."
+      },
+      {
+        "letter": "J",
+        "guide": "yéi",
+        "tip": "Suena «yei». La G es «yi» y la J es «yei».",
+        "say": "Letter J."
+      },
+      {
+        "letter": "K",
+        "guide": "kéi",
+        "say": "Letter K."
+      },
+      {
+        "letter": "L",
+        "guide": "el",
+        "say": "Letter L."
+      },
+      {
+        "letter": "M",
+        "guide": "em",
+        "say": "Letter M."
+      },
+      {
+        "letter": "N",
+        "guide": "en",
+        "say": "Letter N."
+      },
+      {
+        "letter": "O",
+        "guide": "óu",
+        "tip": "Como «ou», con la boca redonda.",
+        "say": "Letter O."
+      },
+      {
+        "letter": "P",
+        "guide": "pi",
+        "say": "Letter P."
+      },
+      {
+        "letter": "Q",
+        "guide": "kiú",
+        "say": "Letter Q."
+      },
+      {
+        "letter": "R",
+        "guide": "ar",
+        "tip": "En americano se oye la r al final («ar»); en británico casi no («a»).",
+        "say": "Letter R."
+      },
+      {
+        "letter": "S",
+        "guide": "es",
+        "say": "Letter S."
+      },
+      {
+        "letter": "T",
+        "guide": "ti",
+        "say": "Letter T."
+      },
+      {
+        "letter": "U",
+        "guide": "iú",
+        "tip": "Suena «iu», como en «you».",
+        "say": "Letter U."
+      },
+      {
+        "letter": "V",
+        "guide": "vi",
+        "tip": "Muerde suave el labio de abajo; no es «bi».",
+        "say": "Letter V."
+      },
+      {
+        "letter": "W",
+        "guide": "dábel-iu",
+        "tip": "Literalmente «doble u».",
+        "say": "Letter W."
+      },
+      {
+        "letter": "X",
+        "guide": "eks",
+        "say": "Letter X."
+      },
+      {
+        "letter": "Y",
+        "guide": "uái",
+        "tip": "Suena «uai». No es «i griega».",
+        "say": "Letter Y."
+      },
+      {
+        "letter": "Z",
+        "guide": "zi (EE. UU.) / zed (Reino Unido)",
+        "tip": "Es la única letra que cambia de nombre: zee en EE. UU., zed en el Reino Unido.",
+        "sayGb": "Letter zed.",
+        "say": "Letter Z."
+      }
+    ],
+    "confusions": [
+      {
+        "pair": "E / I",
+        "explain": "La E se dice «i» y la I se dice «ai». Truco: E de «email» → «i-meil»; I de «I am» → «ai am»."
+      },
+      {
+        "pair": "G / J",
+        "explain": "La G se dice «yi» y la J se dice «yei». Truco: G de «Gmail» → «yi-meil»; J de «jeans» → «yins», pero la letra es «yei»."
+      },
+      {
+        "pair": "A / E / I",
+        "explain": "A = «ei», E = «i», I = «ai». Es el trío que más se cruza al deletrear: practica «A, E, I» en voz alta hasta que salga solo."
+      },
+      {
+        "pair": "Y",
+        "explain": "La Y se dice «uai», como la palabra «why» (¿por qué?). No digas «i griega»."
+      },
+      {
+        "pair": "W",
+        "explain": "La W se dice «dábel-iu» (doble u). Es la letra más larga de decir: www se dice «dábel-iu, dábel-iu, dábel-iu»."
+      },
+      {
+        "pair": "Z: zee / zed",
+        "explain": "En Estados Unidos la Z es «zi» (zee); en el Reino Unido, Australia y Canadá es «zed». Las dos son correctas."
+      }
+    ],
+    "spelling": {
+      "title": "Deletrea tu nombre",
+      "explain": "Cuando digas tu nombre o tu correo, es muy común que te pidan deletrearlo. Responde letra por letra, con una pequeña pausa entre letras. Para letras dobles puedes decir «double»: double L (LL), double R (RR).",
+      "phrases": [
+        {
+          "en": "How do you spell it?",
+          "es": "¿Cómo se escribe? / ¿Cómo lo deletreas?"
+        },
+        {
+          "en": "How do you spell your name?",
+          "es": "¿Cómo se escribe tu nombre?"
+        },
+        {
+          "en": "Can you repeat that, please?",
+          "es": "¿Puedes repetir, por favor?"
+        }
+      ],
+      "example": {
+        "name": "Rubén",
+        "spelled": "R – U – B – E – N",
+        "guide": "ar – iú – bi – i – en",
+        "note": "Las tildes no se deletrean en inglés: Rubén se deletrea R-U-B-E-N.",
+        "say": "R, U, B, E, N."
+      }
+    }
+  },
+  "numbers": {
+    "title": "Los números",
+    "intro": "Con los números del 1 al 20 y unas pocas reglas puedes decir cualquier número. En inglés se usa la coma para los miles (2,026) y el punto para los decimales (1.5), al revés que en Colombia.",
+    "blocks": [
+      {
+        "id": "n1-20",
+        "title": "Del 1 al 20",
+        "explain": "Apréndelos de memoria: del 13 al 19 todos terminan en «-teen».",
+        "items": [
+          {
+            "label": "1",
+            "en": "one"
+          },
+          {
+            "label": "2",
+            "en": "two"
+          },
+          {
+            "label": "3",
+            "en": "three"
+          },
+          {
+            "label": "4",
+            "en": "four"
+          },
+          {
+            "label": "5",
+            "en": "five"
+          },
+          {
+            "label": "6",
+            "en": "six"
+          },
+          {
+            "label": "7",
+            "en": "seven"
+          },
+          {
+            "label": "8",
+            "en": "eight"
+          },
+          {
+            "label": "9",
+            "en": "nine"
+          },
+          {
+            "label": "10",
+            "en": "ten"
+          },
+          {
+            "label": "11",
+            "en": "eleven"
+          },
+          {
+            "label": "12",
+            "en": "twelve"
+          },
+          {
+            "label": "13",
+            "en": "thirteen"
+          },
+          {
+            "label": "14",
+            "en": "fourteen"
+          },
+          {
+            "label": "15",
+            "en": "fifteen"
+          },
+          {
+            "label": "16",
+            "en": "sixteen"
+          },
+          {
+            "label": "17",
+            "en": "seventeen"
+          },
+          {
+            "label": "18",
+            "en": "eighteen"
+          },
+          {
+            "label": "19",
+            "en": "nineteen"
+          },
+          {
+            "label": "20",
+            "en": "twenty"
+          }
+        ]
+      },
+      {
+        "id": "n21-29",
+        "title": "Del 21 al 29: el patrón",
+        "explain": "Decena + guion + unidad: twenty-one, twenty-two… El mismo patrón sirve para 31, 45, 99. Se escribe con guion: twenty-one.",
+        "items": [
+          {
+            "label": "21",
+            "en": "twenty-one"
+          },
+          {
+            "label": "22",
+            "en": "twenty-two"
+          },
+          {
+            "label": "23",
+            "en": "twenty-three"
+          },
+          {
+            "label": "24",
+            "en": "twenty-four"
+          },
+          {
+            "label": "25",
+            "en": "twenty-five"
+          },
+          {
+            "label": "26",
+            "en": "twenty-six"
+          },
+          {
+            "label": "27",
+            "en": "twenty-seven"
+          },
+          {
+            "label": "28",
+            "en": "twenty-eight"
+          },
+          {
+            "label": "29",
+            "en": "twenty-nine"
+          }
+        ]
+      },
+      {
+        "id": "tens",
+        "title": "Las decenas: 30 a 100",
+        "explain": "Las decenas terminan en «-ty». Ojo con el acento: thirTEEN (13) lleva la fuerza al final; THIRty (30) la lleva al principio. Igual 14/40, 15/50… hasta 19/90.",
+        "items": [
+          {
+            "label": "30",
+            "en": "thirty"
+          },
+          {
+            "label": "40",
+            "en": "forty"
+          },
+          {
+            "label": "50",
+            "en": "fifty"
+          },
+          {
+            "label": "60",
+            "en": "sixty"
+          },
+          {
+            "label": "70",
+            "en": "seventy"
+          },
+          {
+            "label": "80",
+            "en": "eighty"
+          },
+          {
+            "label": "90",
+            "en": "ninety"
+          },
+          {
+            "label": "100",
+            "en": "one hundred"
+          }
+        ],
+        "contrast": [
+          {
+            "label": "13",
+            "en": "thirteen"
+          },
+          {
+            "label": "30",
+            "en": "thirty"
+          },
+          {
+            "label": "15",
+            "en": "fifteen"
+          },
+          {
+            "label": "50",
+            "en": "fifty"
+          },
+          {
+            "label": "18",
+            "en": "eighteen"
+          },
+          {
+            "label": "80",
+            "en": "eighty"
+          }
+        ]
+      },
+      {
+        "id": "hundreds",
+        "title": "Las centenas: 100 a 1,000",
+        "explain": "Número + hundred, sin -s: two hundred (no «two hundreds»). 1,000 es one thousand.",
+        "items": [
+          {
+            "label": "100",
+            "en": "one hundred"
+          },
+          {
+            "label": "200",
+            "en": "two hundred"
+          },
+          {
+            "label": "300",
+            "en": "three hundred"
+          },
+          {
+            "label": "400",
+            "en": "four hundred"
+          },
+          {
+            "label": "500",
+            "en": "five hundred"
+          },
+          {
+            "label": "600",
+            "en": "six hundred"
+          },
+          {
+            "label": "700",
+            "en": "seven hundred"
+          },
+          {
+            "label": "800",
+            "en": "eight hundred"
+          },
+          {
+            "label": "900",
+            "en": "nine hundred"
+          },
+          {
+            "label": "1,000",
+            "en": "one thousand"
+          }
+        ]
+      },
+      {
+        "id": "thousands",
+        "title": "Los miles",
+        "explain": "Igual que hundred: two thousand, ten thousand, sin -s. Un millón es one million.",
+        "items": [
+          {
+            "label": "2,000",
+            "en": "two thousand"
+          },
+          {
+            "label": "10,000",
+            "en": "ten thousand"
+          },
+          {
+            "label": "100,000",
+            "en": "one hundred thousand"
+          },
+          {
+            "label": "1,000,000",
+            "en": "one million"
+          }
+        ]
+      },
+      {
+        "id": "combos",
+        "title": "Combinaciones",
+        "explain": "Arma el número por partes: miles, centenas y el resto. En británico se dice «and» después de hundred (three hundred and forty-five); en americano es opcional.",
+        "items": [
+          {
+            "label": "345",
+            "en": "three hundred forty-five"
+          },
+          {
+            "label": "2,026",
+            "en": "two thousand twenty-six"
+          },
+          {
+            "label": "999",
+            "en": "nine hundred ninety-nine"
+          },
+          {
+            "label": "1,500",
+            "en": "one thousand five hundred"
+          }
+        ]
+      },
+      {
+        "id": "years",
+        "title": "Los años",
+        "explain": "Los años se dicen normalmente en dos parejas: 1999 = nineteen ninety-nine; 2026 = twenty twenty-six. Del 2000 al 2009 se dice two thousand: 2005 = two thousand five.",
+        "items": [
+          {
+            "label": "1999",
+            "en": "nineteen ninety-nine"
+          },
+          {
+            "label": "2005",
+            "en": "two thousand five"
+          },
+          {
+            "label": "2026",
+            "en": "twenty twenty-six"
+          }
+        ]
+      },
+      {
+        "id": "phone",
+        "title": "Números de teléfono",
+        "explain": "Se dicen dígito por dígito. El 0 se dice «zero» (en británico también «oh»). Haz una pausa en cada grupo.",
+        "items": [
+          {
+            "label": "310 555 0123",
+            "en": "three one zero, five five five, zero one two three"
+          }
+        ]
+      }
+    ]
+  },
+  "vocabulary": {
+    "title": "Tus primeras palabras",
+    "intro": "Tarjetas pequeñas con imagen, palabra y significado. Tócalas para voltearlas: verás el español y tendrás que recordar la palabra en inglés.",
+    "sets": [
+      "colors",
+      "body",
+      "house",
+      "transport",
+      "greetings",
+      "family",
+      "clothes",
+      "food",
+      "days",
+      "months"
+    ]
+  },
+  "quiz": [
+    {
+      "question": "¿Cómo suena la letra E en inglés?",
+      "options": [
+        "«e»",
+        "«ai»",
+        "«i»",
+        "«ei»"
+      ],
+      "correct_idx": 2,
+      "why": "La E se dice «i». «ai» es la I y «ei» es la A."
+    },
+    {
+      "question": "Te deletrean «yi – ou – ou – di». ¿Qué palabra es?",
+      "options": [
+        "GOOD",
+        "JOOD",
+        "GOLD",
+        "COOD"
+      ],
+      "correct_idx": 0,
+      "why": "G = «yi», O = «ou», D = «di»: G-O-O-D, good."
+    },
+    {
+      "question": "¿Cuál es la letra que se llama «uai»?",
+      "options": [
+        "W",
+        "I",
+        "E",
+        "Y"
+      ],
+      "correct_idx": 3,
+      "why": "La Y se dice «uai», como «why». La W es «dábel-iu»."
+    },
+    {
+      "question": "Alguien en Londres dice «zed». ¿Qué letra es?",
+      "options": [
+        "S",
+        "Z",
+        "C",
+        "X"
+      ],
+      "correct_idx": 1,
+      "why": "En el Reino Unido la Z es «zed»; en EE. UU. es «zee»."
+    },
+    {
+      "question": "¿Cómo se escribe el número 13?",
+      "options": [
+        "thirty",
+        "thirteen",
+        "three",
+        "third"
+      ],
+      "correct_idx": 1,
+      "why": "thirteen = 13 (fuerza al final). thirty = 30 (fuerza al principio)."
+    },
+    {
+      "question": "¿Qué número es «forty-seven»?",
+      "options": [
+        "74",
+        "407",
+        "17",
+        "47"
+      ],
+      "correct_idx": 3,
+      "why": "forty = 40, seven = 7: 47. Decena + guion + unidad."
+    },
+    {
+      "question": "¿Cómo se dice 500?",
+      "options": [
+        "five hundred",
+        "five hundreds",
+        "fifty hundred",
+        "fifteen hundred"
+      ],
+      "correct_idx": 0,
+      "why": "Hundred no lleva -s después de un número: five hundred."
+    },
+    {
+      "question": "¿Cómo se dice normalmente el año 2026?",
+      "options": [
+        "two zero two six",
+        "twenty-six hundred",
+        "twenty twenty-six",
+        "two thousand twenty-six hundred"
+      ],
+      "correct_idx": 2,
+      "why": "Los años se dicen en dos parejas: twenty / twenty-six."
+    },
+    {
+      "question": "Tu amiga dice: «My car is blue.» ¿De qué color es su carro?",
+      "options": [
+        "negro",
+        "verde",
+        "gris",
+        "azul"
+      ],
+      "correct_idx": 3,
+      "why": "blue = azul. black = negro, green = verde, gray = gris."
+    },
+    {
+      "question": "¿Qué parte del cuerpo es «leg»?",
+      "options": [
+        "brazo",
+        "pierna",
+        "pie",
+        "mano"
+      ],
+      "correct_idx": 1,
+      "why": "leg = pierna. arm = brazo, foot = pie, hand = mano."
+    },
+    {
+      "question": "¿En qué parte de la casa cocinas?",
+      "options": [
+        "bedroom",
+        "bathroom",
+        "kitchen",
+        "garden"
+      ],
+      "correct_idx": 2,
+      "why": "kitchen = cocina. bedroom = cuarto, bathroom = baño, garden = jardín."
+    },
+    {
+      "question": "¿Qué día viene después de «Tuesday»?",
+      "options": [
+        "Wednesday",
+        "Monday",
+        "Thursday",
+        "Friday"
+      ],
+      "correct_idx": 0,
+      "why": "Monday, Tuesday, Wednesday (miércoles), Thursday…"
+    }
+  ]
+}

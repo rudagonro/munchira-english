@@ -1,5 +1,6 @@
 import cycle from '../../content/cycles/A1.json' with { type: 'json' }
 import { LESSON_STEPS } from '../public/model-lesson.js'
+import { A1_UNIT0 } from './a1Starter.js'
 
 export const A1_UNIT_COUNT = cycle.modules.length
 export const A1_COURSE_UNITS = cycle.modules.map(unit => ({
@@ -79,7 +80,26 @@ function draftState(fields) {
  * mapped to it was studied (or its old module was approved) the theory is recognised and the unit
  * waits for its quiz; partial old work marks the unit as in progress.
  */
-export function summarizeA1Course({ unitRows = [], drafts = [], legacy = new Map() } = {}) {
+/**
+ * Unidad 0 · Primeros pasos. Obligatoria para quien empieza A1 desde cero, pero se da por reconocida
+ * a cualquier estudiante con avance A1 previo (una unidad guardada, un borrador empezado, teoría de
+ * los módulos antiguos) o que ya estudia un nivel superior: nadie que ya avanzó queda bloqueado.
+ *   row: fila de a1_unit0_progress · localPassed + backendMissing: aprobado local mientras la
+ *   migración no esté aplicada · beyondA1: su ciclo activo es A2 o superior.
+ */
+export function summarizeA1Unit0({ row = null, localPassed = false, backendMissing = false, beyondA1 = false, unitRows = [], drafts = [], legacy = new Map() } = {}) {
+  const startedDraft = drafts.some(item => /^unit:[1-8]$/.test(item?.lesson_key ?? '') && draftState(item.fields).started)
+  const legacyWork = [...legacy.values()].some(entry => entry?.done > 0)
+  const recognized = unitRows.length > 0 || startedDraft || legacyWork || beyondA1
+  const completed = Boolean(row?.completed_at) || (backendMissing && localPassed)
+  let status = 'not-started'
+  if (completed) status = 'completed'
+  else if (recognized) status = 'recognized'
+  else if (row) status = 'quiz-pending'
+  return { ...A1_UNIT0, status, cleared: completed || recognized, recognized: recognized && !completed, bestScore: row?.best_score ?? null }
+}
+
+export function summarizeA1Course({ unitRows = [], drafts = [], legacy = new Map(), unit0: unit0Input } = {}) {
   const units = A1_COURSE_UNITS.map(unit => {
     const row = unitRows.find(item => item.unit_number === unit.number)
     const draft = draftState(drafts.find(item => item.lesson_key === `unit:${unit.number}`)?.fields)
@@ -95,16 +115,24 @@ export function summarizeA1Course({ unitRows = [], drafts = [], legacy = new Map
   const completed = units.filter(unit => unit.status === 'completed').length
   const next = units.find(unit => unit.status !== 'completed') ?? null
   const scores = units.map(unit => unit.bestScore).filter(score => score !== null).map(Number)
+  // Sin datos de la Unidad 0 (o si no se pudieron leer) no se bloquea nada.
+  const unit0 = unit0Input ? summarizeA1Unit0({ ...unit0Input, unitRows, drafts, legacy }) : null
   return {
     units,
+    unit0,
     total: units.length,
     completed,
     pct: Math.floor((completed * 100) / units.length),
     avg: scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : null,
     next,
     progressLabel: completed === 1 ? `Unidad 1 de ${units.length} completada` : `${completed} de ${units.length} unidades completadas`,
-    nextAction: nextAction(next, units.length),
+    nextAction: unit0 && !unit0.cleared ? unit0Action(unit0) : nextAction(next, units.length),
   }
+}
+
+export function unit0Action(unit0) {
+  if (unit0.status === 'quiz-pending') return { text: 'Te falta aprobar el cuestionario de la Unidad 0: Primeros pasos', cta: 'Hacer el cuestionario de la Unidad 0', path: A1_UNIT0.quizPath }
+  return { text: 'Tu primer paso es la Unidad 0: Primeros pasos (abecedario, números y tus primeras palabras)', cta: 'Empezar Unidad 0', path: A1_UNIT0.path }
 }
 
 export function nextAction(next, total = A1_UNIT_COUNT) {
@@ -120,6 +148,9 @@ export function nextAction(next, total = A1_UNIT_COUNT) {
 export const A1_QUIZ_PARAM = 'paso=cuestionario'
 export const A1_LEGACY_LABEL = 'Reconocido de tus módulos anteriores'
 const A1_STATUS = { completed: 'Completada', 'quiz-pending': 'Falta el cuestionario final', 'in-progress': 'En curso', 'not-started': 'Sin empezar' }
+
+const A1_UNIT0_STATUS = { completed: 'Completada', recognized: 'Reconocida por tu avance A1', 'quiz-pending': 'Falta aprobar el cuestionario', 'not-started': 'Obligatoria antes de la Unidad 1' }
+export function unit0StatusText(unit0) { return A1_UNIT0_STATUS[unit0?.status] ?? '' }
 
 /** Text shown for a unit in the course outline. */
 export function unitStatusText(unit) {

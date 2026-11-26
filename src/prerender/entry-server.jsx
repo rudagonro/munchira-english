@@ -39,6 +39,7 @@ export function publicPaths() {
   return [
     '/', '/cursos', '/blog', '/gramatica', '/leccion-modelo', '/privacidad', '/terminos',
     ...levels.map((code) => `/cursos/${code}`),
+    '/cursos/A1/unidad/0',
     ...Array.from({ length: A1_UNIT_COUNT }, (_, index) => `/cursos/A1/unidad/${index + 1}`),
     ...blogArticles.map((article) => `/blog/${article.slug}`),
     ...grammarArticles.map((article) => `/gramatica/${article.slug}`),

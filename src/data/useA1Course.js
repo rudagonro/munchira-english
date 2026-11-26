@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
 import { legacyUnitCredit, summarizeA1Course } from './a1Course'
+import { isMissingUnit0Backend, readLocalUnit0Pass } from './a1Starter'
 
 const EMPTY = summarizeA1Course()
 
@@ -27,7 +28,10 @@ export function useA1Course() {
       supabase.from('a1_unit_progress').select('unit_number,best_score,completed_at').eq('user_id', user.id),
       supabase.from('a1_learning_drafts').select('lesson_key,fields').eq('user_id', user.id),
       getActiveCycleData(),
-    ]).then(async ([units, drafts, cycle]) => {
+      // Unidad 0 (migración 20261126000200). Si falla la lectura no se bloquea ninguna unidad.
+      supabase.from('a1_unit0_progress').select('best_score,last_score,completed_at').eq('user_id', user.id).maybeSingle()
+        .then(result => result, error => ({ data: null, error })),
+    ]).then(async ([units, drafts, cycle, starter]) => {
       const data = cycle.data
       const isA1 = data?.enrollment?.cycles?.cefr_level === 'A1'
       const history = isA1 ? await previousA1Progress(user.id, data.enrollment) : { rows: [], error: null }
@@ -35,7 +39,12 @@ export function useA1Course() {
       const legacy = isA1
         ? legacyUnitCredit({ modules: data.modules, lessons: data.lessons, completedLessonIds: data.completedLessonIds, moduleProgress: [...data.progress, ...history.rows] })
         : new Map()
-      setState({ userId: user.id, error: Boolean(units.error || cycle.error || history.error), summary: summarizeA1Course({ unitRows: units.data ?? [], drafts: drafts.error ? [] : drafts.data ?? [], legacy }) })
+      const level = data?.enrollment?.cycles?.cefr_level
+      const backendMissing = isMissingUnit0Backend(starter?.error)
+      // Si no se pudo leer el avance A1 o la Unidad 0, no se exige la Unidad 0 (nunca bloquea por un fallo).
+      const unit0 = units.error || drafts.error || cycle.error || history.error || (starter?.error && !backendMissing) ? undefined
+        : { row: starter?.data ?? null, backendMissing, localPassed: readLocalUnit0Pass(), beyondA1: Boolean(level && level !== 'A1') }
+      setState({ userId: user.id, error: Boolean(units.error || cycle.error || history.error), summary: summarizeA1Course({ unitRows: units.data ?? [], drafts: drafts.error ? [] : drafts.data ?? [], legacy, unit0 }) })
     }).catch(() => { if (active) setState({ userId: user.id, summary: EMPTY, error: true }) })
     return () => { active = false }
   }, [user, getActiveCycleData])
