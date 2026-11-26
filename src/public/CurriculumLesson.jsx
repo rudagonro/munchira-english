@@ -22,7 +22,8 @@ function UnitLoader({ unit }) {
     }).catch(() => { if (active) setError(true) })
     return () => { active = false; stopLessonAudio(); registerLessonRecordings(null) }
   }, [unit.number, unit.path, retry])
-  if (lesson) return <ModelLesson key={lesson.slug} lesson={lesson} legacyTheory={Boolean(course.summary.units.find(item => item.number === unit.number)?.legacyTheory)} />
+  const summaryUnit = course.summary.units.find(item => item.number === unit.number)
+  if (lesson) return <ModelLesson key={lesson.slug} lesson={lesson} legacyTheory={Boolean(summaryUnit?.legacyTheory)} legacyRules={summaryUnit?.legacyRules ?? []} />
   return <PublicShell>
     <Seo title={`A1 · Unidad ${unit.number}: ${unit.title}`} description={`Practica ${unit.title.toLowerCase()} en Munchira, con ejercicios y audios paso a paso.`} path={unit.path} noindex />
     <div className="mp-wrap ml-page"><h1>{unit.title}</h1><p role="status">{error ? 'No pudimos cargar la unidad. Comprueba tu conexión e inténtalo otra vez.' : 'Cargando tu unidad…'}</p>
