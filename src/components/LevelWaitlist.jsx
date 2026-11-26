@@ -2,8 +2,13 @@ import { Link } from 'react-router-dom'
 import { LEVEL_NAMES } from '../data/diagnosticBank'
 
 /** Pantalla del alumno cuyo nivel (A2–C2) está en preparación: lista de espera y A1 como práctica opcional. */
-export default function LevelWaitlist({ level }) {
+export default function LevelWaitlist({ level, passedA1Score = null }) {
+  // Quien llegó a A2 aprobando el Examen final de A1 ve su felicitación.
+  const passedA1 = level === 'A2' && passedA1Score !== null
   return <div className="page-shell waitlist" style={{ maxWidth: 640 }}>
+    {passedA1 && <div className="dash-actions waitlist-box fx-congrats" role="status" style={{ marginBottom: 16 }}>
+      <p><strong>🎉 ¡Aprobaste A1!</strong> Examen final de A1: {passedA1Score}%. Ahora estás en A2.</p>
+    </div>}
     <div className="cycle-header">
       <div className="cycle-level-badge">{level} · {LEVEL_NAMES[level]}</div>
       <h1 className="cycle-title">Tu nivel {level} está en preparación</h1>

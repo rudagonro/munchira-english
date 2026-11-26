@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useAuth } from '../contexts/auth-context'
-import { fetchContentStatus, fetchCourseDrafts, fetchCourseProgress, fetchLegacyA1Progress, fetchStudentDetail, fetchTeacherOverview } from '../services/teacherService'
+import { fetchContentStatus, fetchCourseDrafts, fetchCourseProgress, fetchFinalExams, fetchLegacyA1Progress, fetchStudentDetail, fetchTeacherOverview } from '../services/teacherService'
+import { finalExamStatus } from '../data/a1FinalExam'
 import { contentStatusBadge, mergeCourseProgress, UNIT_STATUS_LABELS } from '../data/courseProgress'
 import {
   INACTIVE_DAYS, LEVELS, NO_LEVEL, SKILL_LABELS, STATUS, STATUS_HELP, STATUS_LABELS,
@@ -31,13 +32,14 @@ export default function TeacherPanel() {
   const [selected, setSelected] = useState(null) // { id, trigger }
 
   const fetchRows = useCallback(async () => {
-    const [{ data, error }, course, legacy, drafts] = await Promise.all([fetchTeacherOverview(), fetchCourseProgress(), fetchLegacyA1Progress(), fetchCourseDrafts()])
+    const [{ data, error }, course, legacy, drafts, exams] = await Promise.all([fetchTeacherOverview(), fetchCourseProgress(), fetchLegacyA1Progress(), fetchCourseDrafts(), fetchFinalExams()])
     return {
       loading: false,
       error: error || course.error ? 'No se pudo cargar el panel. Verifica tu conexión e inténtalo de nuevo.' : '',
       // Misma regla que /cycle: avance antiguo A1 (si no se pudo leer, no se reconoce nada extra) y, con la
       // migración 20261126000500, el paso de cada borrador.
-      rows: mergeCourseProgress(data, course.missing || course.error ? null : course.data, { legacyByStudent: legacy.data, draftsByStudent: drafts.data }),
+      rows: mergeCourseProgress(data, course.missing || course.error ? null : course.data, { legacyByStudent: legacy.data, draftsByStudent: drafts.data })
+        .map(row => exams.data.has(row.student_id) ? { ...row, finalExam: exams.data.get(row.student_id) } : row),
       loadedAt: new Date(),
       courseMissing: course.missing,
     }
@@ -239,7 +241,7 @@ export default function TeacherPanel() {
                               <span className="tp-bar" aria-hidden="true"><span style={{ width: `${pct}%` }} /></span>
                               <span>{pct}%</span>
                             </div>
-                          ) : r.waitlisted ? <span className="tp-hint">Lista de espera</span> : '—'}
+                          ) : r.waitlisted ? <span className="tp-hint">Lista de espera{r.finalExam?.passed_at ? ' · aprobó A1' : ''}</span> : '—'}
                         </td>
                         <td><ScoreChip score={r.avg_quiz_score === null ? null : Number(r.avg_quiz_score)} /></td>
                         <td>{r.weakest_skill ? SKILL_LABELS[r.weakest_skill] ?? r.weakest_skill : '—'}</td>
@@ -269,6 +271,7 @@ export default function TeacherPanel() {
           studentId={selected.id}
           course={rows.find((r) => r.student_id === selected.id)?.course ?? null}
           waitlisted={Boolean(rows.find((r) => r.student_id === selected.id)?.waitlisted)}
+          finalExam={rows.find((r) => r.student_id === selected.id)?.finalExam ?? null}
           now={now}
           onClose={() => { const t = selected.trigger; setSelected(null); t?.focus() }}
         />
@@ -295,7 +298,23 @@ function ScoreChip({ score }) {
   return <span className={`tp-score ${band}`} title={`Rendimiento ${word}`}>{formatScore(score)} <span className="sr-only">({word})</span></span>
 }
 
-function StudentDetail({ studentId, course, waitlisted, now, onClose }) {
+/** Examen final de A1: estado, nota y fecha (solo lectura). */
+function FinalExamLine({ row, course }) {
+  const unlocked = Boolean(course?.units?.filter((u) => u.number > 0).length) && course.units.filter((u) => u.number > 0).every((u) => u.status === 'completed')
+  const exam = finalExamStatus(row, { unlocked })
+  return <>
+    <h3>Examen final de A1</h3>
+    <p>
+      {exam.status === 'passed' || exam.status === 'failed'
+        ? <><ScoreChip score={Number(exam.score)} /> <span className="tp-hint">{exam.label}</span></>
+        : <span className="tp-hint">{exam.label}</span>}
+      {row?.passed_at && <><br /><span className="tp-hint">Aprobado el {formatDate(row.passed_at)} · pasó a A2 (lista de espera)</span></>}
+      {row && !row.passed_at && <><br /><span className="tp-hint">Último intento: {formatDate(row.last_attempt_at)} · {row.last_score}%</span></>}
+    </p>
+  </>
+}
+
+function StudentDetail({ studentId, course, waitlisted, finalExam, now, onClose }) {
   const [state, setState] = useState({ loading: true, error: '', data: null })
   const headingRef = useRef(null)
 
@@ -361,6 +380,7 @@ function StudentDetail({ studentId, course, waitlisted, now, onClose }) {
               </ol>
               <p className="tp-hint">{course.wordsStudied} palabras de {course.level} estudiadas · {course.wordsDue} por repasar hoy</p>
             </>}
+            {(finalExam || course?.level === 'A1') && <FinalExamLine row={finalExam} course={course} />}
             {waitlisted && <p className="tp-hint">Su nivel está en preparación: está en la lista de espera. Su avance anterior se conserva.</p>}
             <details open={!course && !waitlisted}>
             <summary><h3 style={{ display: 'inline' }}>Curso anterior (módulos)</h3></summary>

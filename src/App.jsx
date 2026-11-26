@@ -26,6 +26,7 @@ import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
 import Account from './pages/Account'
 import CompleteProfile from './pages/CompleteProfile'
+import A1FinalExam, { A1FinalExamReview } from './pages/A1FinalExam'
 import { CourseIndex, CourseLevel } from './public/Curriculum'
 
 function AppRoutes() {
@@ -39,6 +40,7 @@ function AppRoutes() {
         <Route path="/" element={<PublicHome />} />
         <Route path="/cursos" element={<CourseIndex />} />
         <Route path="/cursos/A1/unidad/:number" element={<CurriculumLesson />} />
+        <Route path="/cursos/A1/examen-final" element={<ProtectedRoute><Layout><A1FinalExam /></Layout></ProtectedRoute>} />
         <Route path="/cursos/:level" element={<CourseLevel />} />
         <Route path="/blog" element={<BlogIndex />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
@@ -64,6 +66,7 @@ function AppRoutes() {
         <Route path="/usuarios" element={<ProtectedRoute allowedRoles={['admin']}><Layout><AdminUsers /></Layout></ProtectedRoute>} />
         <Route path="/revisor" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><ReviewerMode /></Layout></ProtectedRoute>} />
         <Route path="/revisor/modulo/:moduleId" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><ModuleView preview /></Layout></ProtectedRoute>} />
+        <Route path="/revisor/A1/examen-final" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><A1FinalExamReview /></Layout></ProtectedRoute>} />
         <Route path="/revisor/A1/unidad/:number" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><ReviewerUnit /></Layout></ProtectedRoute>} />
         <Route path="/revisor/diagnostico" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Diagnostic preview /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/cycle" replace />} />

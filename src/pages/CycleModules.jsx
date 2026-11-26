@@ -6,6 +6,7 @@ import CurriculumOutline from '../components/CurriculumOutline'
 import LevelWaitlist from '../components/LevelWaitlist'
 import { useA1Course } from '../data/useA1Course'
 import { isWaitlisted } from '../data/levelAccess'
+import { useA1FinalExamRow } from '../data/useA1FinalExam'
 
 // «Mi curso»: el curso del nivel del alumno. A1 tiene su Unidad 0 y sus Unidades 1–8; los niveles en
 // preparación muestran la lista de espera. Los módulos antiguos solo se consultan desde el revisor (Archivo).
@@ -44,8 +45,14 @@ export default function CycleModules() {
     </div>
   }
   const level = cycleData.enrollment.cycles.cefr_level
-  if (isWaitlisted(level)) return <LevelWaitlist level={level} />
+  if (isWaitlisted(level)) return <Waitlist level={level} />
   return <A1CourseView course={course} />
+}
+
+/** Lista de espera; quien llegó a A2 aprobando el Examen final de A1 ve su felicitación (solo lectura). */
+function Waitlist({ level }) {
+  const exam = useA1FinalExamRow({ enabled: level === 'A2' })
+  return <LevelWaitlist level={level} passedA1Score={exam.row?.passed_at ? exam.row.best_score : null} />
 }
 
 function A1CourseView({ course }) {

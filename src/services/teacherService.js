@@ -58,6 +58,20 @@ export async function fetchLegacyA1Progress() {
   }
 }
 
+/**
+ * Examen final de A1 de los alumnos visibles (migración 20261126000700; la RLS limita a los del docente, todos si
+ * es admin). Solo lectura. Si la tabla aún no existe o falla, devuelve un mapa vacío y el panel sigue igual.
+ */
+export async function fetchFinalExams() {
+  try {
+    const { data, error } = await supabase.from('a1_final_exam_progress').select('user_id,best_score,last_score,attempts,last_attempt_at,passed_at')
+    if (error) return { data: new Map(), error: isMissingCourseBackend(error) ? null : error }
+    return { data: new Map((data ?? []).map(row => [row.user_id, row])), error: null }
+  } catch (error) {
+    return { data: new Map(), error }
+  }
+}
+
 /** Borradores con su paso (migración 20261126000500). `data: null` = aún no aplicada: se usa la lectura básica. */
 export async function fetchCourseDrafts() {
   const { data, error } = await supabase.rpc('teacher_course_drafts')

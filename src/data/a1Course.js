@@ -1,6 +1,7 @@
 import cycle from '../../content/cycles/A1.json' with { type: 'json' }
 import { LESSON_STEPS } from '../public/model-lesson.js'
 import { A1_UNIT0 } from './a1Starter.js'
+import { A1_FINAL_EXAM_PATH } from './a1FinalExam.js'
 
 export const A1_UNIT_COUNT = cycle.modules.length
 export const A1_COURSE_UNITS = cycle.modules.map(unit => ({
@@ -136,7 +137,8 @@ export function unit0Action(unit0) {
 }
 
 export function nextAction(next, total = A1_UNIT_COUNT) {
-  if (!next) return { text: `Completaste las ${total} unidades de A1`, cta: 'Repasar el curso', path: '/cycle' }
+  // Con todas las unidades aprobadas, lo siguiente es el Examen final de A1 (al aprobarlo se pasa a A2).
+  if (!next) return { text: `Completaste las ${total} unidades de A1: te falta el Examen final de A1`, cta: 'Hacer el examen final de A1', path: A1_FINAL_EXAM_PATH }
   // Explicit quiz entry: the player opens the final quiz even if a review left an earlier step saved.
   const quizPath = `${next.path}?${A1_QUIZ_PARAM}`
   if (next.status === 'quiz-pending' && next.fromLegacy) return { text: `Tu teoría de la Unidad ${next.number} está reconocida: solo te falta su cuestionario final`, cta: `Hacer el cuestionario de la Unidad ${next.number}`, path: quizPath }
