@@ -2,6 +2,8 @@ import exam from '../../content/a1/final-exam.json' with { type: 'json' }
 
 // Examen final de A1 (fase 4). Se califica en el servidor (submit_a1_final_exam, migración 20261126000700);
 // aquí solo se decide qué mostrar. Aprobar pasa al alumno a A2, que está en preparación (lista de espera).
+// Este archivo NO trae las respuestas: la clave solo vive en el servidor; el revisor la pide con
+// staff_a1_final_exam_key().
 export const A1_FINAL_EXAM = exam
 export const A1_FINAL_EXAM_PATH = '/cursos/A1/examen-final'
 export const A1_FINAL_EXAM_REVIEW_PATH = '/revisor/A1/examen-final'
@@ -13,10 +15,15 @@ export function finalExamUnlocked(summary) {
   return Boolean(summary) && summary.total > 0 && summary.completed === summary.total && (!summary.unit0 || summary.unit0.cleared)
 }
 
-/** Puntaje local (revisor o vista previa): mismo cálculo que el servidor. */
-export function scoreFinalExam(answers, questions = exam.questions) {
-  const correct = questions.filter((question, index) => answers[index] === question.correct_idx).length
-  return { correct, total: questions.length, score: Math.round((correct * 100) / questions.length) }
+/** Puntaje local (revisor o personal, con la clave del servidor): mismo cálculo que el servidor. */
+export function scoreFinalExam(answers, key) {
+  const correct = key.filter((value, index) => answers[index] === value).length
+  return { correct, total: key.length, score: Math.round((correct * 100) / key.length) }
+}
+
+/** Códigos de «la función o la tabla aún no existe» (migración sin aplicar). */
+export function isMissingFinalExamBackend(error) {
+  return ['PGRST202', 'PGRST205', '42P01', '42883'].includes(error?.code)
 }
 
 /** ¿Cuándo puede repetirlo? null si ya puede (o si aprobó). */
@@ -36,10 +43,11 @@ export function finalExamStatus(row, { unlocked = false } = {}) {
 
 export function finalExamError(error) {
   const text = `${error?.message ?? ''} ${error?.details ?? ''}`
-  if (['PGRST202', 'PGRST205', '42P01', '42883'].includes(error?.code)) return 'El examen final aún no está habilitado. Vuelve a intentarlo cuando se active.'
+  if (isMissingFinalExamBackend(error)) return 'El examen final aún no está habilitado. Vuelve a intentarlo cuando se active.'
   if (text.includes('final_exam_cooldown')) return `Ya presentaste el examen hace poco. Puedes repetirlo ${A1_FINAL_EXAM_COOLDOWN_MIN} minutos después de tu último intento.`
   if (text.includes('final_exam_locked')) return 'El examen se abre cuando apruebes las Unidades 1 a 8.'
   if (text.includes('no_active_a1_enrollment')) return 'El examen final es para quien está inscrito en A1.'
+  if (text.includes('account_suspended')) return 'Tu cuenta está suspendida.'
   if (text.includes('staff_no_write')) return 'Las cuentas del personal no presentan el examen: revísalo en el revisor.'
   return 'No pudimos enviar tu examen. Comprueba tu conexión y vuelve a intentarlo.'
 }

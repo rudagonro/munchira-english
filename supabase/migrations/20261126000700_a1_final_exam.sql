@@ -5,12 +5,16 @@
 -- 2. level_waitlist: marca «en lista de espera» de un nivel en preparación (por ahora solo un indicador en la
 --    app; no se envía ningún correo). notified_at queda vacío hasta que exista un aviso.
 -- 3. submit_a1_final_exam(p_answers): califica en el servidor las 30 preguntas de content/a1/final-exam.json.
+--    La clave (content/a1/final-exam-key.json) solo vive aquí: el navegador del alumno no la recibe. El revisor
+--    la pide con staff_a1_final_exam_key() (solo admin o docente activos).
 --    · Se abre con las Unidades 1–8 aprobadas (con ellas la Unidad 0 queda reconocida, como en /cycle) y una
 --      inscripción A1 activa. El personal (admin o docente) no lo presenta: lo revisa en /revisor sin guardar.
 --    · 70% o más aprueba. Tras un intento no aprobado hay que esperar 15 minutos para repetirlo.
 --    · Al aprobar: se guarda el aprobado, la inscripción A1 pasa a «completed» (con su historial intacto), se
 --      abre una inscripción A2 activa (o se reactiva una A2 en pausa) y el alumno queda en la lista de espera de A2.
---    · Aprobado una vez, no se vuelve a calificar: devuelve el resultado guardado.
+--    · Aprobado una vez, no se vuelve a calificar: devuelve el resultado guardado. Si después volvió a A1 (por
+--      ejemplo, repitió la prueba de nivel), lo devuelve a A2 sin pedirle otra vez el examen.
+--    · Una cuenta suspendida no lo presenta ni consulta su resultado.
 -- No modifica tablas, filas, funciones ni permisos existentes.
 
 create table if not exists public.a1_final_exam_progress (
@@ -66,6 +70,68 @@ begin
 end;
 $$;
 
+-- Clave privada (nadie la ejecuta directamente).
+create or replace function public.a1_final_exam_key()
+returns jsonb
+language sql
+immutable
+set search_path = ''
+as $$ select '[1,3,0,3,1,0,2,3,3,0,2,2,1,2,0,0,2,3,3,3,2,0,1,0,0,2,1,1,2,0]'::jsonb $$;
+revoke all on function public.a1_final_exam_key() from public, anon, authenticated;
+
+-- Revisor: la clave para ver las respuestas y corregir sin guardar. Solo personal activo.
+create or replace function public.staff_a1_final_exam_key()
+returns jsonb
+language plpgsql
+stable
+security definer
+set search_path = ''
+as $$
+begin
+  if auth.uid() is null or not public.is_staff() or not public.is_active_user() then
+    raise exception 'forbidden' using errcode = '42501';
+  end if;
+  return public.a1_final_exam_key();
+end;
+$$;
+revoke all on function public.staff_a1_final_exam_key() from public, anon;
+grant execute on function public.staff_a1_final_exam_key() to authenticated;
+
+-- Paso a A2 (privada): A1 activa → completed (con su historial) y A2 activa (reactiva una en pausa o crea una),
+-- más la marca de lista de espera. Devuelve false si no había una inscripción A1 activa (ya está en A2).
+create or replace function public.a1_final_exam_promote(p_uid uuid)
+returns boolean
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_enrollment uuid;
+  v_a2_cycle uuid;
+  v_a2 uuid;
+begin
+  select e.id into v_enrollment
+    from public.enrollments e join public.cycles c on c.id = e.cycle_id
+   where e.user_id = p_uid and e.status = 'active' and c.cefr_level = 'A1'
+   for update of e;
+  if v_enrollment is null then return false; end if;
+  select id into v_a2_cycle from public.cycles where cefr_level = 'A2';
+  if v_a2_cycle is null then raise exception 'a2_cycle_missing' using errcode = 'P0002'; end if;
+  update public.enrollments set status = 'completed', completed_at = now() where id = v_enrollment;
+  update public.enrollments set status = 'active'
+   where id = (select id from public.enrollments where user_id = p_uid and cycle_id = v_a2_cycle and status = 'paused'
+                order by started_at desc limit 1)
+  returning id into v_a2;
+  if v_a2 is null then
+    insert into public.enrollments(user_id, cycle_id, status) values (p_uid, v_a2_cycle, 'active');
+  end if;
+  insert into public.level_waitlist(user_id, level, source) values (p_uid, 'A2', 'a1_final_exam')
+  on conflict (user_id, level) do nothing;
+  return true;
+end;
+$$;
+revoke all on function public.a1_final_exam_promote(uuid) from public, anon, authenticated;
+
 create or replace function public.submit_a1_final_exam(p_answers jsonb)
 returns jsonb
 language plpgsql
@@ -74,8 +140,7 @@ set search_path = ''
 as $$
 declare
   v_uid uuid := auth.uid();
-  -- Clave de content/a1/final-exam.json (30 preguntas de 4 opciones); una prueba comprueba que coincide.
-  v_key jsonb := '[1,3,0,3,1,0,2,3,3,0,2,2,1,2,0,0,2,3,3,3,2,0,1,0,0,2,1,1,2,0]'::jsonb;
+  v_key jsonb := public.a1_final_exam_key();
   v_options integer := 4;
   v_pass integer := 70;
   v_cooldown interval := interval '15 minutes';
@@ -84,25 +149,26 @@ declare
   v_correct integer := 0;
   v_score integer;
   v_row public.a1_final_exam_progress%rowtype;
-  v_enrollment uuid;
-  v_a2_cycle uuid;
-  v_a2 uuid;
   v_units integer;
+  v_has_a1 boolean;
 begin
   if v_uid is null then raise exception 'not_authenticated' using errcode = '28000'; end if;
+  if not public.is_active_user() then raise exception 'account_suspended' using errcode = '42501'; end if;
   if public.is_staff() then raise exception 'staff_no_write' using errcode = '42501'; end if;
 
   select * into v_row from public.a1_final_exam_progress where user_id = v_uid for update;
   if v_row.passed_at is not null then
+    -- Ya aprobó: no se recalifica. Si volvió a A1, vuelve a A2.
+    perform public.a1_final_exam_promote(v_uid);
     return jsonb_build_object('score', v_row.last_score, 'best_score', v_row.best_score, 'passed', true, 'already_passed', true,
       'attempts', v_row.attempts, 'passed_at', v_row.passed_at, 'promoted_to', 'A2');
   end if;
 
-  select e.id into v_enrollment
-    from public.enrollments e join public.cycles c on c.id = e.cycle_id
-   where e.user_id = v_uid and e.status = 'active' and c.cefr_level = 'A1'
-   for update of e;
-  if v_enrollment is null then raise exception 'no_active_a1_enrollment' using errcode = '22023'; end if;
+  select exists (
+    select 1 from public.enrollments e join public.cycles c on c.id = e.cycle_id
+     where e.user_id = v_uid and e.status = 'active' and c.cefr_level = 'A1'
+  ) into v_has_a1;
+  if not v_has_a1 then raise exception 'no_active_a1_enrollment' using errcode = '22023'; end if;
 
   select count(*) into v_units from public.a1_unit_progress
    where user_id = v_uid and unit_number between 1 and 8 and completed_at is not null;
@@ -135,21 +201,7 @@ begin
         updated_at = now()
   returning * into v_row;
 
-  if v_score >= v_pass then
-    -- A1 queda «completada» con todo su historial; A2 (en preparación) pasa a ser su inscripción activa.
-    update public.enrollments set status = 'completed', completed_at = now() where id = v_enrollment;
-    select id into v_a2_cycle from public.cycles where cefr_level = 'A2';
-    if v_a2_cycle is null then raise exception 'a2_cycle_missing' using errcode = 'P0002'; end if;
-    update public.enrollments set status = 'active'
-     where id = (select id from public.enrollments where user_id = v_uid and cycle_id = v_a2_cycle and status = 'paused'
-                  order by started_at desc limit 1)
-    returning id into v_a2;
-    if v_a2 is null then
-      insert into public.enrollments(user_id, cycle_id, status) values (v_uid, v_a2_cycle, 'active') returning id into v_a2;
-    end if;
-    insert into public.level_waitlist(user_id, level, source) values (v_uid, 'A2', 'a1_final_exam')
-    on conflict (user_id, level) do nothing;
-  end if;
+  if v_score >= v_pass then perform public.a1_final_exam_promote(v_uid); end if;
 
   return jsonb_build_object(
     'score', v_score, 'correct', v_correct, 'total', v_count, 'passed', v_score >= v_pass, 'already_passed', false,

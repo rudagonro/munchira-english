@@ -8,7 +8,9 @@ import { renderToString } from 'react-dom/server'
 import { MemoryRouter } from 'react-router-dom'
 import { createServer } from 'vite'
 import { addUser, asAnon, asUser, createDb } from './helpers/db.js'
+import { readdirSync, statSync } from 'node:fs'
 import cycle from '../content/cycles/A1.json' with { type: 'json' }
+import answerKey from '../content/a1/final-exam-key.json' with { type: 'json' }
 import { A1_FINAL_EXAM, A1_FINAL_EXAM_PATH, finalExamStatus, finalExamUnlocked, nextAttemptAt, scoreFinalExam } from '../src/data/a1FinalExam.js'
 import { summarizeA1Course } from '../src/data/a1Course.js'
 import { lessonAudioClip, registerLessonRecordings } from '../src/public/lessonRecordings.js'
@@ -16,7 +18,7 @@ import { lessonAudioClip, registerLessonRecordings } from '../src/public/lessonR
 const src = path => readFileSync(new URL(`../src/${path}`, import.meta.url), 'utf8')
 const MIGRATION = readFileSync(new URL('../supabase/migrations/20261126000700_a1_final_exam.sql', import.meta.url), 'utf8')
 const { questions } = A1_FINAL_EXAM
-const KEY = questions.map(question => question.correct_idx)
+const KEY = answerKey.key
 
 test('contenido: 30 preguntas de las Unidades 1–8 en vocabulario, gramática, escucha y lectura, 70% para aprobar', () => {
   assert.equal(questions.length, 30)
@@ -29,12 +31,21 @@ test('contenido: 30 preguntas de las Unidades 1–8 en vocabulario, gramática, 
   for (const question of questions) {
     assert.equal(question.options.length, 4, question.id)
     assert.equal(new Set(question.options).size, 4, `${question.id}: opciones distintas`)
-    assert.ok(Number.isInteger(question.correct_idx) && question.correct_idx >= 0 && question.correct_idx < 4, question.id)
-    assert.ok(question.why, `${question.id}: explica la respuesta`)
+    assert.ok(answerKey.why[question.id], `${question.id}: explica la respuesta (en la clave)`)
+    assert.equal('correct_idx' in question || 'why' in question, false, `${question.id}: sin respuesta en el navegador`)
     if (question.section === 'reading') assert.ok(A1_FINAL_EXAM.passages[question.passage], question.id)
   }
+  assert.equal(KEY.length, 30)
+  assert.ok(KEY.every(value => Number.isInteger(value) && value >= 0 && value < 4))
   // La clave no es siempre la misma posición.
   assert.ok(new Set(KEY).size === 4)
+})
+
+test('la clave del examen no llega al navegador: ningún archivo de src/ la importa', () => {
+  const walk = dir => readdirSync(dir).flatMap(name => { const path = `${dir}/${name}`; return statSync(path).isDirectory() ? walk(path) : [path] })
+  const files = walk(new URL('../src', import.meta.url).pathname).filter(path => /\.(jsx?|json)$/.test(path))
+  for (const file of files) assert.doesNotMatch(readFileSync(file, 'utf8'), /final-exam-key/, file)
+  assert.doesNotMatch(src('data/a1FinalExam.js'), /correct_idx/)
 })
 
 test('lectura: los textos son los de las unidades A1 (sin contenido nuevo inventado)', () => {
@@ -56,7 +67,7 @@ test('escucha: cada audio ya está grabado en su unidad, con acento US y UK (sin
 })
 
 test('la clave del servidor coincide con content/a1/final-exam.json', () => {
-  const sqlKey = JSON.parse(/v_key jsonb := '(\[[0-9,]+\])'::jsonb/.exec(MIGRATION)[1])
+  const sqlKey = JSON.parse(/as \$\$ select '(\[[0-9,]+\])'::jsonb \$\$;/.exec(MIGRATION)[1])
   assert.deepEqual(sqlKey, KEY)
   assert.match(MIGRATION, /v_pass integer := 70;/)
   assert.match(MIGRATION, /v_cooldown interval := interval '15 minutes';/)
@@ -83,8 +94,8 @@ test('cliente: se abre con las Unidades 0–8 aprobadas y entonces /cycle lleva 
   assert.equal(finalExamUnlocked(all), true)
   assert.equal(all.nextAction.path, A1_FINAL_EXAM_PATH)
   assert.equal(all.nextAction.cta, 'Hacer el examen final de A1')
-  assert.deepEqual(scoreFinalExam(KEY), { correct: 30, total: 30, score: 100 })
-  assert.equal(scoreFinalExam(KEY.map((value, index) => index < 21 ? value : (value + 1) % 4)).score, 70)
+  assert.deepEqual(scoreFinalExam(KEY, KEY), { correct: 30, total: 30, score: 100 })
+  assert.equal(scoreFinalExam(KEY.map((value, index) => index < 21 ? value : (value + 1) % 4), KEY).score, 70)
   const failed = { best_score: 60, last_score: 60, attempts: 1, last_attempt_at: '2026-11-26T12:00:00Z', passed_at: null }
   assert.equal(nextAttemptAt(failed, Date.parse('2026-11-26T12:10:00Z')).toISOString(), '2026-11-26T12:15:00.000Z')
   assert.equal(nextAttemptAt(failed, Date.parse('2026-11-26T12:16:00Z')), null)
@@ -95,9 +106,11 @@ test('cliente: se abre con las Unidades 0–8 aprobadas y entonces /cycle lleva 
 
 test('cliente: el alumno envía al servidor; el personal y el revisor corrigen aquí sin guardar', () => {
   const page = src('pages/A1FinalExam.jsx')
-  assert.match(page, /supabase\.rpc\('submit_a1_final_exam', \{ p_answers: selected \}\)/)
+  assert.match(page, /supabase\.rpc\('submit_a1_final_exam', \{ p_answers: answers \}\)/)
   assert.equal((page.match(/\.rpc\(/g) ?? []).length, 1)
-  assert.match(page, /if \(noSave\) return .*<StaffNoSaveNote \/><ExamForm local \/>/)
+  assert.match(page, /if \(noSave\) return .*<StaffNoSaveNote \/><StaffExam \/>/)
+  assert.match(src('data/useA1FinalExam.js'), /supabase\.rpc\('staff_a1_final_exam_key'\)/)
+  assert.match(page, /if \(exam\.error\) return/, 'sin la migración no se muestra un examen que no se puede enviar')
   assert.doesNotMatch(page, /generate|elevenlabs|tts/i, 'solo audio ya grabado')
   const app = src('App.jsx')
   assert.match(app, /path="\/cursos\/A1\/examen-final" element=\{<ProtectedRoute><Layout><A1FinalExam \/><\/Layout><\/ProtectedRoute>\}/)
@@ -128,11 +141,14 @@ test('lista de espera de A2: felicita a quien aprobó A1; sin aprobado, igual qu
 
 test('revisor: el examen completo con las respuestas a la vista y «no se guarda»', async () => {
   const { AuthContext } = await server.ssrLoadModule('/src/contexts/auth-context.js')
-  const { A1FinalExamReview } = await server.ssrLoadModule('/src/pages/A1FinalExam.jsx')
+  const { A1FinalExamReview, ExamForm } = await server.ssrLoadModule('/src/pages/A1FinalExam.jsx')
+  const { ReviewModeContext } = await server.ssrLoadModule('/src/contexts/review-mode-context.js')
   const auth = { user: { id: 'staff-1' }, session: {}, loading: false, role: 'admin', profile: { role: 'admin' } }
-  const html = renderToString(h(AuthContext.Provider, { value: auth }, h(MemoryRouter, null, h(A1FinalExamReview))))
-  assert.match(html, /Modo revisor · Examen final de A1/)
-  assert.match(html, /Nada se guarda/)
+  const shell = renderToString(h(AuthContext.Provider, { value: auth }, h(MemoryRouter, null, h(A1FinalExamReview))))
+  assert.match(shell, /Modo revisor · Examen final de A1/)
+  assert.match(shell, /Nada se guarda/)
+  assert.match(shell, /Cargando el examen/, 'la clave se pide al servidor')
+  const html = renderToString(h(AuthContext.Provider, { value: auth }, h(ReviewModeContext.Provider, { value: true }, h(MemoryRouter, null, h(ExamForm, { answerKey: KEY })))))
   assert.equal((html.match(/class="rv-answer"/g) ?? []).length, 30)
   assert.match(html, /Comprobar \(no se guarda\)/)
   for (const title of ['Vocabulario', 'Gramática', 'Escucha', 'Lectura']) assert.match(html, new RegExp(`>${title}<`))
@@ -194,6 +210,26 @@ test('PostgreSQL: bloqueado sin las 8 unidades; un intento fallido espera 15 min
   } finally { await db.close() }
 })
 
+test('PostgreSQL: si una prueba de nivel lo devuelve a A1, vuelve a A2 sin recalificar; suspendido no consulta', async () => {
+  const { db, student, a1, a2 } = await setup()
+  try {
+    await passUnits(db, student)
+    await asUser(db, student, async c => { assert.equal((await submit(c, KEY)).passed, true) })
+    // Simula la prueba de nivel con resultado A1: A2 en pausa y una A1 nueva activa.
+    await db.query("update public.enrollments set status = 'paused' where user_id = $1 and cycle_id = $2", [student, a2])
+    await db.query("insert into public.enrollments(user_id,cycle_id,status) values ($1,$2,'active')", [student, a1])
+    await asUser(db, student, async c => {
+      const again = await submit(c, [])
+      assert.equal(again.already_passed, true); assert.equal(again.promoted_to, 'A2'); assert.equal(again.attempts, 1)
+    })
+    const active = (await db.query("select c.cefr_level::text level from public.enrollments e join public.cycles c on c.id = e.cycle_id where e.user_id = $1 and e.status = 'active'", [student])).rows
+    assert.deepEqual(active, [{ level: 'A2' }])
+    assert.equal((await db.query("select count(*)::int n from public.enrollments where user_id = $1 and cycle_id = $2", [student, a2])).rows[0].n, 1, 'reactiva la A2, no la duplica')
+    await db.query('update public.profiles set suspended_at = now() where id = $1', [student])
+    await asUser(db, student, async c => { await assert.rejects(submit(c, []), /account_suspended/) })
+  } finally { await db.close() }
+})
+
 test('PostgreSQL: una inscripción A2 en pausa se reactiva en vez de duplicarse', async () => {
   const { db, student, a2 } = await setup()
   try {
@@ -221,10 +257,20 @@ test('PostgreSQL: el personal no lo presenta; solo alumnos de A1; cada quien ve 
     await asUser(db, teacher, async c => { assert.deepEqual((await c.query('select user_id, best_score from public.a1_final_exam_progress')).rows, [{ user_id: student, best_score: 50 }]) })
     await asUser(db, otherTeacher, async c => { assert.equal((await c.query('select * from public.a1_final_exam_progress')).rows.length, 0) })
     await asUser(db, admin, async c => { assert.equal((await c.query('select * from public.a1_final_exam_progress')).rows.length, 1) })
-    await asAnon(db, async c => { await assert.rejects(submit(c, KEY), /permission denied/) })
+    await asAnon(db, async c => {
+      await assert.rejects(submit(c, KEY), /permission denied/)
+      await assert.rejects(c.query('select public.staff_a1_final_exam_key()'), /permission denied/)
+    })
+    // La clave: solo el personal la pide; la función privada no la ejecuta nadie directamente.
+    await asUser(db, teacher, async c => { assert.deepEqual((await c.query('select public.staff_a1_final_exam_key() k')).rows[0].k, KEY) })
+    await asUser(db, student, async c => {
+      await assert.rejects(c.query('select public.staff_a1_final_exam_key()'), /forbidden/)
+      await assert.rejects(c.query('select public.a1_final_exam_key()'), /permission denied/)
+      await assert.rejects(c.query('select public.a1_final_exam_promote($1)', [student]), /permission denied/)
+    })
     // Una cuenta suspendida no presenta el examen.
     await db.query('update public.profiles set suspended_at = now() where id = $1', [other])
     await passUnits(db, other)
-    await asUser(db, other, async c => { await assert.rejects(submit(c, KEY), /account_suspended|permission|row-level/) })
+    await asUser(db, other, async c => { await assert.rejects(submit(c, KEY), /account_suspended/) })
   } finally { await db.close() }
 })

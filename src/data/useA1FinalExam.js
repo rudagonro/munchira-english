@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
+import { isMissingFinalExamBackend } from './a1FinalExam'
 
 /**
  * Registro del examen final de A1 de quien inició sesión (solo lectura). Si la tabla aún no existe
@@ -22,7 +23,22 @@ export function useA1FinalExamRow({ enabled = true } = {}) {
   return {
     row: current ? state.row : null,
     error: current ? state.error : null,
+    missing: current && isMissingFinalExamBackend(state.error),
     loading: Boolean(key) && !current,
     setRow: row => setState({ key, row, error: null }),
   }
+}
+
+/** Clave del examen para el revisor o el personal (staff_a1_final_exam_key). Solo lectura. */
+export function useA1FinalExamKey({ enabled = true } = {}) {
+  const [state, setState] = useState({ done: false, key: null, error: null })
+  useEffect(() => {
+    if (!enabled) return
+    let active = true
+    Promise.resolve(supabase.rpc('staff_a1_final_exam_key'))
+      .then(({ data, error }) => { if (active) setState({ done: true, key: Array.isArray(data) ? data : null, error: error ?? null }) },
+        error => { if (active) setState({ done: true, key: null, error }) })
+    return () => { active = false }
+  }, [enabled])
+  return { ...state, loading: enabled && !state.done, missing: isMissingFinalExamBackend(state.error) }
 }

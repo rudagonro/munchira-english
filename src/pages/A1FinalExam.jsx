@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/auth-context'
 import { ReviewModeContext, useNoSave, useReviewMode } from '../contexts/review-mode-context'
 import { supabase } from '../lib/supabase'
 import { useA1Course } from '../data/useA1Course'
-import { useA1FinalExamRow } from '../data/useA1FinalExam'
+import { useA1FinalExamKey, useA1FinalExamRow } from '../data/useA1FinalExam'
 import {
   A1_FINAL_EXAM, A1_FINAL_EXAM_COOLDOWN_MIN, A1_FINAL_EXAM_PASS, finalExamError, finalExamUnlocked, nextAttemptAt, scoreFinalExam,
 } from '../data/a1FinalExam'
@@ -18,6 +18,7 @@ import '../public/unit-quiz.css'
 const { questions, sections, passages } = A1_FINAL_EXAM
 const SECTION_ORDER = Object.keys(sections)
 const unitAudio = number => cycle.modules.find(unit => unit.order === number)?.practice?.audio ?? null
+const NOT_READY = 'El examen final aún no está habilitado. Vuelve cuando se active; tu avance de A1 se conserva.'
 
 function formatTime(date) {
   return new Intl.DateTimeFormat('es-CO', { hour: 'numeric', minute: '2-digit' }).format(date)
@@ -33,15 +34,19 @@ function ListenClip({ question }) {
   </p>
 }
 
-function sectionScores(answers) {
+function sectionScores(answers, key) {
   return SECTION_ORDER.map(section => {
     const items = questions.map((question, index) => ({ question, index })).filter(item => item.question.section === section)
-    return { section, label: sections[section], correct: items.filter(item => answers[item.index] === item.question.correct_idx).length, total: items.length }
+    return { section, label: sections[section], correct: items.filter(item => answers[item.index] === key[item.index]).length, total: items.length }
   })
 }
 
-/** Las 30 preguntas, agrupadas por sección. `local` = se corrige aquí y no se guarda (revisor o personal). */
-function ExamForm({ local, onSubmit, busy }) {
+/**
+ * Las 30 preguntas, agrupadas por sección. Con `answerKey` (revisor o personal, pedida al servidor) se corrige
+ * aquí y no se guarda nada; sin ella se envía al servidor, que es quien califica.
+ */
+export function ExamForm({ answerKey = null, onSubmit, busy }) {
+  const local = Boolean(answerKey)
   const [answers, setAnswers] = useState({})
   const [checked, setChecked] = useState(null)
   useEffect(() => () => { stopLessonAudio(); registerLessonRecordings(null) }, [])
@@ -50,7 +55,7 @@ function ExamForm({ local, onSubmit, busy }) {
     event.preventDefault()
     if (!complete) return
     const selected = questions.map((_, index) => answers[index])
-    if (local) setChecked({ ...scoreFinalExam(selected), bySection: sectionScores(selected) })
+    if (local) setChecked({ ...scoreFinalExam(selected, answerKey), bySection: sectionScores(selected, answerKey) })
     else onSubmit(selected)
   }
   let shownPassage = null
@@ -71,7 +76,7 @@ function ExamForm({ local, onSubmit, busy }) {
                 onChange={() => { setChecked(null); setAnswers(previous => ({ ...previous, [index]: value })) }} />
               <span>{option}</span>
             </label>)}
-            <ReviewAnswer>{question.options[question.correct_idx]}{question.audio ? ` · audio: «${question.audio}»` : ''}</ReviewAnswer>
+            {local && <ReviewAnswer>{question.options[answerKey[index]]}{question.audio ? ` · audio: «${question.audio}»` : ''}</ReviewAnswer>}
           </fieldset>
         </div>
       })}
@@ -95,13 +100,21 @@ function Intro() {
   </div>
 }
 
+/** Personal: el examen con la clave del servidor; se corrige aquí y no se guarda nada. */
+function StaffExam() {
+  const key = useA1FinalExamKey()
+  if (key.loading) return <p className="loading-text">Cargando el examen…</p>
+  if (!key.key) return <p className="ml-feedback ml-bad" role="alert">{key.missing ? NOT_READY : 'No pudimos cargar las respuestas del examen. Inténtalo de nuevo.'}</p>
+  return <ExamForm answerKey={key.key} />
+}
+
 /** Revisor: el examen completo con las respuestas a la vista; se corrige aquí y no se guarda nada. */
 export function A1FinalExamReview() {
   return <ReviewModeContext.Provider value={true}>
     <div className="page-shell rv-page" style={{ maxWidth: 760 }}>
       <div className="rv-banner" role="note"><strong>Modo revisor · Examen final de A1.</strong> Respuestas a la vista. Nada se guarda. <Link to="/revisor">← Volver al revisor</Link></div>
       <Intro />
-      <ExamForm local />
+      <StaffExam />
     </div>
   </ReviewModeContext.Provider>
 }
@@ -110,37 +123,66 @@ export function A1FinalExamReview() {
 export default function A1FinalExam() {
   const review = useReviewMode()
   const noSave = useNoSave()
-  const { user } = useAuth()
+  const { user, getActiveCycleData } = useAuth()
   const course = useA1Course()
   const exam = useA1FinalExamRow({ enabled: !noSave })
+  const [level, setLevel] = useState(null)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [result, setResult] = useState(null)
+  const [backToA2, setBackToA2] = useState(false)
+  const passed = Boolean(exam.row?.passed_at)
+  useEffect(() => {
+    if (!passed || !getActiveCycleData) return
+    let active = true
+    Promise.resolve(getActiveCycleData()).then(({ data }) => { if (active) setLevel(data?.enrollment?.cycles?.cefr_level ?? null) }, () => {})
+    return () => { active = false }
+  }, [passed, getActiveCycleData])
   if (review) return <A1FinalExamReview />
-  if (noSave) return <div className="page-shell" style={{ maxWidth: 760 }}><Intro /><StaffNoSaveNote /><ExamForm local /></div>
+  if (noSave) return <div className="page-shell" style={{ maxWidth: 760 }}><Intro /><StaffNoSaveNote /><StaffExam /></div>
   if (!user || course.loading || exam.loading) return <div className="screen-center"><p className="loading-text">Cargando tu examen…</p></div>
 
-  async function submit(selected) {
+  async function send(answers) {
     setError(''); setBusy(true)
     try {
-      const { data, error: rpcError } = await supabase.rpc('submit_a1_final_exam', { p_answers: selected })
-      if (rpcError) { setError(finalExamError(rpcError)); return }
-      setResult(data)
-      exam.setRow({ best_score: data.best_score, last_score: data.score, attempts: data.attempts, last_attempt_at: new Date().toISOString(), passed_at: data.passed_at })
-      window.scrollTo?.({ top: 0 })
-    } catch { setError(finalExamError(null)) }
+      const { data, error: rpcError } = await supabase.rpc('submit_a1_final_exam', { p_answers: answers })
+      if (rpcError) { setError(finalExamError(rpcError)); return null }
+      return data
+    } catch { setError(finalExamError(null)); return null }
     finally { setBusy(false) }
+  }
+  async function submit(selected) {
+    const data = await send(selected)
+    if (!data) return
+    setResult(data)
+    exam.setRow({ best_score: data.best_score, last_score: data.score, attempts: data.attempts, last_attempt_at: new Date().toISOString(), passed_at: data.passed_at })
+    window.scrollTo?.({ top: 0 })
+  }
+  // Ya aprobó A1 y una prueba de nivel lo devolvió a A1: el servidor lo pasa otra vez a A2 sin recalificar.
+  async function returnToA2() {
+    const data = await send([])
+    if (data?.promoted_to === 'A2') { setBackToA2(true); setLevel('A2') }
   }
 
   const row = exam.row
   const back = <Link to="/cycle" className="btn-primary" style={{ textDecoration: 'none', textAlign: 'center', maxWidth: 280 }}>Ir a mi curso</Link>
-  if (row?.passed_at) return <div className="page-shell" style={{ maxWidth: 640 }}>
+  if (exam.error) return <div className="page-shell" style={{ maxWidth: 640 }}>
+    <Intro />
+    <div className="dash-actions" role="status"><p>{exam.missing ? NOT_READY : 'No pudimos consultar tu examen. Comprueba tu conexión e inténtalo de nuevo.'}</p>{back}</div>
+  </div>
+  if (passed) return <div className="page-shell" style={{ maxWidth: 640 }}>
     <Intro />
     <div className="dash-actions waitlist-box" role="status">
       <p><strong>🎉 ¡Aprobaste A1! Mejor nota: {row.best_score}%.</strong></p>
-      <p>Ya estás en A2. El curso A2 está en preparación: quedaste en su lista de espera y te avisaremos aquí cuando esté listo.</p>
+      {level === 'A1' && !backToA2
+        ? <p>Una prueba de nivel te devolvió a A1. Tu aprobado del examen final se conserva: puedes volver a A2 sin repetirlo.</p>
+        : <p>Ya estás en A2. El curso A2 está en preparación: quedaste en su lista de espera y te avisaremos aquí cuando esté listo.</p>}
     </div>
-    <div className="dash-actions">{back}</div>
+    {error && <p className="ml-feedback ml-bad" role="alert">{error}</p>}
+    <div className="dash-actions">
+      {level === 'A1' && !backToA2 && <button type="button" className="btn-primary" style={{ maxWidth: 280 }} disabled={busy} onClick={returnToA2}>{busy ? 'Un momento…' : 'Volver a A2'}</button>}
+      {back}
+    </div>
   </div>
   if (!finalExamUnlocked(course.summary)) return <div className="page-shell" style={{ maxWidth: 640 }}>
     <Intro />
