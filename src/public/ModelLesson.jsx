@@ -14,6 +14,7 @@ import UnitCompletion from './UnitCompletion'
 import A1DraftProvider from '../components/A1DraftProvider'
 import { useDraftFields, useDraftState } from '../contexts/a1-draft-context'
 import { restoreLessonProgress } from './lessonDraftProgress'
+import { ExtraGuided, ExtraTables, ExtraVocab, FreeChallenge, RescuedDialogues } from './RescuedPractice'
 import './model-lesson.css'
 
 function ListenButtons({ text, accent, voice }) {
@@ -179,6 +180,7 @@ function StepContent({ id, accent, lesson, onComplete, legacyRules = [] }) {
     case 'vocab': return <>
       <h2>Palabras de esta lección</h2><p>Escucha cada una. La pronunciación está escrita como suena en español.</p>
       <ul className="ml-vocab">{lesson.vocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{displayForm(v.es)}</span><em>«{v.say}»</em><ListenButtons text={v.en} accent={accent} /></li>)}</ul>
+      <ExtraVocab lesson={lesson} accent={accent} />
     </>
     case 'explain': return <>
       {lesson.theory?.length > 0 && <>
@@ -199,12 +201,13 @@ function StepContent({ id, accent, lesson, onComplete, legacyRules = [] }) {
       <p>{lesson.tableIntro ?? <>Se forma con el <strong>pronombre personal</strong> + el <strong>verbo «to be» conjugado</strong>. «I» es el pronombre personal «yo» y «am» es «to be» conjugado para «I». Juntos, «I am», significan «yo soy» o «yo estoy». En inglés el pronombre nunca se omite.</>}</p>
       <div className="ml-table-wrap"><table className="ml-table"><caption>{lesson.table.caption}</caption><thead><tr>{lesson.table.head.map(h => <th key={h} scope="col">{h}</th>)}</tr></thead><tbody>{lesson.table.rows.map(r => <tr key={r[0]}>{r.map((c, i) => i === 0 ? <th key={i} scope="row">{c}</th> : <td key={i}>{c}</td>)}</tr>)}</tbody></table></div>
       <p className="ml-tip">{lesson.tableTip ?? "En la conversación casi siempre se usa la contracción: «I’m», «you’re»."}</p>
+      <ExtraTables lesson={lesson} />
     </>
     case 'mistakes': return <>
       <h2>Errores típicos de hispanohablantes</h2>
       <ul className="ml-mistakes">{[...(lesson.mistakes ?? []), ...(lesson.theory ?? []).flatMap(rule => rule.mistake ? [rule.mistake] : [])].map(m => <li key={m.wrong}><p className="ml-wrong">✗ {m.wrong}</p><p className="ml-right">✓ {m.right} <ListenButtons text={m.right} accent={accent} /></p><p>{m.why}</p></li>)}</ul>
     </>
-    case 'guided': return <><h2>Práctica guiada</h2><p>Primero con pistas. Si fallas, verás por qué.</p><ExerciseBlock draftKey="guided" exercises={lesson.guided} onComplete={onComplete} onAttempt={exerciseAttempt} />{warning}</>
+    case 'guided': return <><h2>Práctica guiada</h2><p>Primero con pistas. Si fallas, verás por qué.</p><ExerciseBlock draftKey="guided" exercises={lesson.guided} onComplete={onComplete} onAttempt={exerciseAttempt} />{warning}<ExtraGuided lesson={lesson} /></>
     case 'cards': return <><h2>Repaso en dos direcciones</h2><p>Cada palabra aparece de inglés a español y de español a inglés. Así se queda en la memoria.</p><TwoWayCards accent={accent} lesson={lesson} onComplete={onComplete} /></>
     case 'reading': return <>
       <h2>Lectura: {lesson.reading.title}</h2>
@@ -228,6 +231,7 @@ function StepContent({ id, accent, lesson, onComplete, legacyRules = [] }) {
         </p>
         <ul className="ml-dialogue">{d.lines.map((t, i) => <li key={i} className={t.speaker !== d.lines[0].speaker ? 'ml-me' : ''}><strong>{t.speaker}</strong><p>{t.text}</p>{t.es && <p className="ml-dialogue-es">{t.es}</p>}<ListenButtons text={t.text} accent={accent} voice={t.voice} /></li>)}</ul>
       </div>)}
+      <RescuedDialogues lesson={lesson} accent={accent} />
     </>
     case 'translate': return <><h2>Traducción</h2><p>Escribe cada frase en inglés. Si te equivocas, corrige e inténtalo otra vez.</p><WriteCheck draftKey="translate" items={lesson.translations.map(t => ({ prompt: t.es, answer: t.en }))} accent={accent} onComplete={onComplete} onAttempt={attempt} />{warning}</>
     case 'dictation': return <><h2>Dictado</h2><p>Escucha la frase (puedes repetirla y ponerla despacio) y escríbela en inglés.</p><WriteCheck draftKey="dictation" items={lesson.dictation.map(t => ({ answer: t, listen: true }))} accent={accent} onComplete={onComplete} onAttempt={attempt} />{warning}</>
@@ -261,6 +265,7 @@ function FreeTask({ lesson, onComplete }) {
     </div>}
     {shown && <p className="ml-example">{lesson.freeModel}</p>}
     {lesson.number > 1 && <button type="button" className="mp-button mp-button-dark" disabled={!text.trim()} onClick={() => onComplete?.(true)}>He escrito mi texto y revisado los puntos</button>}
+    <FreeChallenge lesson={lesson} />
   </>
 }
 

@@ -1949,6 +1949,193 @@
               "why": "La edad se dice con to be, no con have."
             }
           }
+        ],
+        "extraGuided": [
+          {
+            "type": "choice",
+            "q": "¿Cuál es el orden normal de una frase afirmativa en inglés?",
+            "opts": [
+              "Verbo + sujeto + complemento",
+              "Sujeto + verbo + complemento",
+              "Complemento + sujeto + verbo",
+              "Sujeto + complemento + verbo"
+            ],
+            "correct": 1,
+            "why": "En una frase afirmativa el orden es sujeto → verbo → complemento.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 1: Estructura de la oración en inglés"
+          },
+          {
+            "type": "fill",
+            "sentence": "___ eat rice every day. (nosotros)",
+            "answer": "We",
+            "hint": "«Nosotros» es «we». En inglés el sujeto no se omite.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 1: Estructura de la oración en inglés"
+          },
+          {
+            "type": "fill",
+            "sentence": "She ___ my best friend.",
+            "answer": "is",
+            "hint": "Con he, she e it se usa «is».",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 2: El verbo To Be"
+          },
+          {
+            "type": "choice",
+            "q": "¿Cuál es la contracción correcta de «They are students»?",
+            "opts": [
+              "They're students",
+              "Theyre students",
+              "They students",
+              "Theys students"
+            ],
+            "correct": 0,
+            "why": "They + are = they’re. El apóstrofo reemplaza la letra que se quita.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 2: El verbo To Be"
+          },
+          {
+            "type": "choice",
+            "q": "Alguien te dice «Nice to meet you». ¿Qué respondes?",
+            "opts": [
+              "Yes, I am.",
+              "Nice to meet you too.",
+              "I am fine.",
+              "Where are you?"
+            ],
+            "correct": 1,
+            "why": "La respuesta habitual es «Nice to meet you too».",
+            "source": "Listening guiado con apoyo · Lección 1: Presentaciones personales"
+          },
+          {
+            "type": "choice",
+            "q": "Son las 8 de la noche y llegas a una reunión. ¿Cómo saludas?",
+            "opts": [
+              "Good morning",
+              "Good afternoon",
+              "Good evening",
+              "Good night"
+            ],
+            "correct": 2,
+            "why": "«Good evening» saluda por la noche; «Good night» es para despedirse o ir a dormir.",
+            "source": "Frases básicas de supervivencia · Lección 1: Saludos y cortesía"
+          },
+          {
+            "type": "fill",
+            "sentence": "A: How are you? B: I am ___, thanks.",
+            "answer": "fine|good|great|well",
+            "hint": "Puedes responder fine, good, great o well.",
+            "source": "Frases básicas de supervivencia · Lección 1: Saludos y cortesía"
+          },
+          {
+            "type": "choice",
+            "q": "¿Cuál es la forma correcta de decir tu ciudad?",
+            "opts": [
+              "I am from in Bogotá.",
+              "I live at Bogotá.",
+              "I am from Bogotá.",
+              "I from Bogotá."
+            ],
+            "correct": 2,
+            "why": "Se dice «I am from» + lugar, sin otra preposición; y «I live in» + ciudad.",
+            "source": "Frases básicas de supervivencia · Lección 2: Presentarte por escrito"
+          },
+          {
+            "type": "order",
+            "words": [
+              "old",
+              "I",
+              "24",
+              "am",
+              "years"
+            ],
+            "answer": "I am 24 years old",
+            "hint": "La edad se dice con «I am» + número + «years old».",
+            "source": "Frases básicas de supervivencia · Lección 2: Presentarte por escrito"
+          }
+        ],
+        "rescuedDialogues": [
+          {
+            "title": "Escucha guiada · Laura y Carlos",
+            "source": "Listening guiado con apoyo · Lección 1: Presentaciones personales",
+            "audioPending": true,
+            "lines": [
+              {
+                "speaker": "Laura",
+                "voice": "nova",
+                "text": "Hi! My name is Laura. What is your name?",
+                "es": "¡Hola! Me llamo Laura. ¿Cómo te llamas?"
+              },
+              {
+                "speaker": "Carlos",
+                "voice": "onyx",
+                "text": "Hello, Laura! My name is Carlos. Nice to meet you.",
+                "es": "¡Hola, Laura! Me llamo Carlos. Mucho gusto."
+              },
+              {
+                "speaker": "Laura",
+                "voice": "nova",
+                "text": "Nice to meet you too! Where are you from, Carlos?",
+                "es": "¡Igualmente! ¿De dónde eres, Carlos?"
+              },
+              {
+                "speaker": "Carlos",
+                "voice": "onyx",
+                "text": "I am from Mexico. And you?",
+                "es": "Soy de México. ¿Y tú?"
+              },
+              {
+                "speaker": "Laura",
+                "voice": "nova",
+                "text": "I am from Colombia. I live in a small house with my family.",
+                "es": "Soy de Colombia. Vivo en una casa pequeña con mi familia."
+              }
+            ],
+            "questions": [
+              {
+                "type": "choice",
+                "q": "Where is Laura from?",
+                "opts": [
+                  "Mexico",
+                  "Colombia",
+                  "Spain",
+                  "Peru"
+                ],
+                "correct": 1,
+                "why": "Laura dice: «I am from Colombia»."
+              },
+              {
+                "type": "choice",
+                "q": "Who does Laura live with?",
+                "opts": [
+                  "With Carlos",
+                  "With her friends",
+                  "With her family",
+                  "Alone"
+                ],
+                "correct": 2,
+                "why": "«I live in a small house with my family»."
+              },
+              {
+                "type": "choice",
+                "q": "Where is Carlos from?",
+                "opts": [
+                  "Mexico",
+                  "Colombia",
+                  "The United States",
+                  "Chile"
+                ],
+                "correct": 0,
+                "why": "Carlos dice: «I am from Mexico»."
+              }
+            ]
+          }
+        ],
+        "extraVocab": [
+          {
+            "en": "live",
+            "es": "vivir",
+            "say": "liv",
+            "source": "Frases básicas de supervivencia · Lección 2: Presentarte por escrito",
+            "example": "I live in Bogotá."
+          }
         ]
       }
     },
@@ -4776,6 +4963,72 @@
               "why": "El adjetivo no lleva plural."
             }
           }
+        ],
+        "extraGuided": [
+          {
+            "type": "choice",
+            "q": "¿Cómo conviertes «She is happy» en pregunta?",
+            "opts": [
+              "She is happy?",
+              "Is she happy?",
+              "Happy is she?",
+              "Does she happy?"
+            ],
+            "correct": 1,
+            "why": "Con to be, el verbo va antes del sujeto: Is she…?",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 4: Preguntas con To Be"
+          },
+          {
+            "type": "fill",
+            "sentence": "___ you a student?",
+            "answer": "Are",
+            "hint": "Con you se usa «are», y en la pregunta va primero.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 4: Preguntas con To Be"
+          },
+          {
+            "type": "order",
+            "words": [
+              "from",
+              "you",
+              "are",
+              "Where"
+            ],
+            "answer": "Where are you from",
+            "hint": "Palabra de pregunta + are + sujeto + resto.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 4: Preguntas con To Be"
+          },
+          {
+            "type": "fill",
+            "sentence": "She is ___ and kind. (inteligente)",
+            "answer": "intelligent|smart",
+            "hint": "«Intelligent» o «smart»: el adjetivo no cambia con el género.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 6: Adjetivos descriptivos básicos"
+          },
+          {
+            "type": "choice",
+            "q": "¿Cuál es la frase correcta?",
+            "opts": [
+              "He is a tall man.",
+              "He is man tall.",
+              "Tall he is a man.",
+              "He tall is a man."
+            ],
+            "correct": 0,
+            "why": "El adjetivo va antes del sustantivo: a tall man.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 6: Adjetivos descriptivos básicos"
+          },
+          {
+            "type": "order",
+            "words": [
+              "very",
+              "is",
+              "She",
+              "intelligent"
+            ],
+            "answer": "She is very intelligent",
+            "hint": "Sujeto + to be + very + adjetivo.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 6: Adjetivos descriptivos básicos"
+          }
         ]
       }
     },
@@ -7277,6 +7530,148 @@
               "es": "Me levanto a las siete."
             }
           }
+        ],
+        "extraGuided": [
+          {
+            "type": "fill",
+            "sentence": "She ___ in a bank. (work)",
+            "answer": "works",
+            "hint": "Con she el verbo lleva -s: works.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 3: Presente simple con otros verbos"
+          },
+          {
+            "type": "fill",
+            "sentence": "They ___ in Medellín. (live)",
+            "answer": "live",
+            "hint": "Con they el verbo no lleva -s.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 3: Presente simple con otros verbos"
+          },
+          {
+            "type": "fill",
+            "sentence": "My dog ___ a lot. (sleep)",
+            "answer": "sleeps",
+            "hint": "My dog = it, así que el verbo lleva -s.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 3: Presente simple con otros verbos"
+          },
+          {
+            "type": "choice",
+            "q": "¿Cuándo se añade -s al verbo en presente simple?",
+            "opts": [
+              "Siempre",
+              "Con I y you",
+              "Con he, she e it",
+              "Con we y they"
+            ],
+            "correct": 2,
+            "why": "Solo con he, she e it: he works, she eats.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 3: Presente simple con otros verbos"
+          },
+          {
+            "type": "choice",
+            "q": "¿Cuál es la negación correcta de «I am hungry»?",
+            "opts": [
+              "I not am hungry.",
+              "I am not hungry.",
+              "I no hungry.",
+              "Not I am hungry."
+            ],
+            "correct": 1,
+            "why": "Con to be, «not» va después de am, is o are.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 5: Negación con To Be y presente simple"
+          },
+          {
+            "type": "fill",
+            "sentence": "He ___ work on Sundays. (negación)",
+            "answer": "doesn’t|does not",
+            "hint": "Con he/she/it se niega con doesn’t + verbo base.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 5: Negación con To Be y presente simple"
+          },
+          {
+            "type": "order",
+            "words": [
+              "not",
+              "She",
+              "tired",
+              "is"
+            ],
+            "answer": "She is not tired",
+            "hint": "Sujeto + is + not + adjetivo.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 5: Negación con To Be y presente simple"
+          },
+          {
+            "type": "fill",
+            "sentence": "I usually ___ to bed at 10 p.m.",
+            "answer": "go",
+            "hint": "Con I el verbo va sin -s: go.",
+            "source": "Frases básicas de supervivencia · Lección 5: Describir tu rutina diaria"
+          },
+          {
+            "type": "choice",
+            "q": "¿Cuál frase describe bien tu rutina?",
+            "opts": [
+              "I does exercise every morning.",
+              "I do exercise every morning.",
+              "I am do exercise every morning.",
+              "I exercising every morning."
+            ],
+            "correct": 1,
+            "why": "Con I se usa la forma base: I do. No pongas am antes de otro verbo.",
+            "source": "Frases básicas de supervivencia · Lección 5: Describir tu rutina diaria"
+          }
+        ],
+        "freeChallenge": {
+          "source": "Frases básicas de supervivencia · Lección 5: Describir tu rutina diaria",
+          "task": "Reto de escritura: escribe un párrafo de 8 frases sobre un día de trabajo o de estudio típico. Empieza con «On a typical weekday…».",
+          "checklist": [
+            "¿Usé al menos 4 marcadores de tiempo distintos (in the morning, first, then, after that, finally…)?",
+            "¿Mencioné al menos 6 actividades distintas?",
+            "¿Dije la hora en al menos 2 actividades (at 7 a.m., at noon)?",
+            "Si hablé de otra persona (he, she), ¿puse la -s al verbo?"
+          ],
+          "model": "On a typical weekday, I wake up at six. First, I take a shower. Then I have breakfast with my family. After that, I go to work by bus. I start work at eight. In the afternoon, I have lunch at one. At night, I study English for thirty minutes. Finally, I go to bed at ten."
+        },
+        "extraTables": [
+          {
+            "source": "Frases básicas de supervivencia · Lección 5: Describir tu rutina diaria",
+            "caption": "Marcadores de tiempo para ordenar tu rutina",
+            "head": [
+              "Marcador",
+              "Significa",
+              "Ejemplo"
+            ],
+            "rows": [
+              [
+                "in the morning",
+                "en la mañana",
+                "In the morning, I wake up at 7."
+              ],
+              [
+                "in the afternoon",
+                "en la tarde",
+                "In the afternoon, I have lunch."
+              ],
+              [
+                "at night",
+                "en la noche",
+                "At night, I study English."
+              ],
+              [
+                "first / then",
+                "primero / luego",
+                "First I shower, then I have breakfast."
+              ],
+              [
+                "after that",
+                "después de eso",
+                "After that, I go to work."
+              ],
+              [
+                "finally",
+                "al final",
+                "Finally, I go to bed at 11."
+              ]
+            ]
+          }
         ]
       }
     },
@@ -9563,6 +9958,54 @@
               "answer": "The school is near my house.",
               "es": "La escuela está cerca de mi casa."
             }
+          }
+        ],
+        "extraGuided": [
+          {
+            "type": "fill",
+            "sentence": "She is ___ engineer. (una)",
+            "answer": "an",
+            "hint": "«Engineer» empieza con sonido de vocal, por eso va «an».",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 7: A, AN y THE — Los artículos en inglés"
+          },
+          {
+            "type": "choice",
+            "q": "¿Cuándo se usa «an» en lugar de «a»?",
+            "opts": [
+              "Antes de palabras cortas",
+              "Antes de una palabra que empieza con sonido de vocal",
+              "Siempre con profesiones",
+              "Antes de una palabra que empieza con sonido de consonante"
+            ],
+            "correct": 1,
+            "why": "Depende del sonido, no de la letra: a university (suena «yu»), an hour (la h no suena).",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 7: A, AN y THE — Los artículos en inglés"
+          },
+          {
+            "type": "choice",
+            "q": "¿Cuál es correcta?",
+            "opts": [
+              "I am doctor.",
+              "I am a doctor.",
+              "I am an doctor.",
+              "I am doctor a."
+            ],
+            "correct": 1,
+            "why": "Las profesiones en singular llevan a o an: I am a doctor.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 7: A, AN y THE — Los artículos en inglés"
+          },
+          {
+            "type": "order",
+            "words": [
+              "the",
+              "in",
+              "She",
+              "works",
+              "hospital"
+            ],
+            "answer": "She works in the hospital",
+            "hint": "«The» porque hablas de un hospital concreto que ya se conoce.",
+            "source": "Gramática núcleo: To Be y presente simple · Lección 7: A, AN y THE — Los artículos en inglés"
           }
         ]
       }
@@ -11936,6 +12379,155 @@
               "why": "I like = me gusta. Para pedir se usa I’d like = quisiera."
             }
           }
+        ],
+        "extraGuided": [
+          {
+            "type": "fill",
+            "sentence": "___ I have the menu, please?",
+            "answer": "Can|Could",
+            "hint": "«Can I have…?» o «Could I have…?» para pedir con cortesía.",
+            "source": "Listening guiado con apoyo · Lección 3: En el restaurante"
+          },
+          {
+            "type": "choice",
+            "q": "El mesero pregunta: «Are you ready to order?» ¿Qué significa?",
+            "opts": [
+              "¿Quiere la cuenta?",
+              "¿Está listo para pedir?",
+              "¿Le gustó la comida?",
+              "¿Quiere agua?"
+            ],
+            "correct": 1,
+            "why": "«Order» = pedir en un restaurante.",
+            "source": "Listening guiado con apoyo · Lección 3: En el restaurante"
+          },
+          {
+            "type": "fill",
+            "sentence": "I would ___ the chicken, please.",
+            "answer": "like",
+            "hint": "«I would like» (I’d like) = quisiera.",
+            "source": "Listening guiado con apoyo · Lección 3: En el restaurante"
+          },
+          {
+            "type": "order",
+            "words": [
+              "please",
+              "the",
+              "bill",
+              "like",
+              "I",
+              "would"
+            ],
+            "answer": "I would like the bill please",
+            "hint": "Para pedir la cuenta: I would like the bill, please.",
+            "source": "Listening guiado con apoyo · Lección 3: En el restaurante"
+          },
+          {
+            "type": "choice",
+            "q": "¿Cómo preguntas si un plato tiene gluten?",
+            "opts": [
+              "Does it have gluten?",
+              "It has gluten?",
+              "Has it gluten?",
+              "Gluten has it?"
+            ],
+            "correct": 0,
+            "why": "Pregunta en presente simple: Does + it + have…?",
+            "source": "Listening guiado con apoyo · Lección 3: En el restaurante"
+          }
+        ],
+        "rescuedDialogues": [
+          {
+            "title": "Escucha guiada · En el restaurante",
+            "source": "Listening guiado con apoyo · Lección 3: En el restaurante",
+            "audioPending": true,
+            "lines": [
+              {
+                "speaker": "Waitress",
+                "voice": "nova",
+                "text": "Good evening! Welcome. Can I help you?",
+                "es": "¡Buenas noches! Bienvenido. ¿Le puedo ayudar?"
+              },
+              {
+                "speaker": "Carlos",
+                "voice": "onyx",
+                "text": "Yes, please. Can I have some chicken and rice?",
+                "es": "Sí, por favor. ¿Me trae pollo con arroz?"
+              },
+              {
+                "speaker": "Waitress",
+                "voice": "nova",
+                "text": "Of course. And to drink?",
+                "es": "Claro. ¿Y para tomar?"
+              },
+              {
+                "speaker": "Carlos",
+                "voice": "onyx",
+                "text": "Water, please. That is all, thank you.",
+                "es": "Agua, por favor. Eso es todo, gracias."
+              },
+              {
+                "speaker": "Waitress",
+                "voice": "nova",
+                "text": "Perfect. Your order will be ready in a few minutes.",
+                "es": "Perfecto. Su pedido estará listo en unos minutos."
+              }
+            ],
+            "questions": [
+              {
+                "type": "choice",
+                "q": "What does Carlos order to eat?",
+                "opts": [
+                  "Fish and rice",
+                  "Chicken and rice",
+                  "A sandwich",
+                  "Vegetables"
+                ],
+                "correct": 1,
+                "why": "«Can I have some chicken and rice?»"
+              },
+              {
+                "type": "choice",
+                "q": "What does Carlos want to drink?",
+                "opts": [
+                  "Coffee",
+                  "Juice",
+                  "Water",
+                  "Tea"
+                ],
+                "correct": 2,
+                "why": "«Water, please»."
+              },
+              {
+                "type": "choice",
+                "q": "¿Qué significa «That is all»?",
+                "opts": [
+                  "Eso es todo",
+                  "Todo está bien",
+                  "Quiero todo",
+                  "Es para todos"
+                ],
+                "correct": 0,
+                "why": "«That is all» = eso es todo; ya no quiere nada más."
+              }
+            ]
+          }
+        ],
+        "extraVocab": [
+          {
+            "en": "order",
+            "es": "pedir (en un restaurante) | pedido",
+            "say": "órder",
+            "source": "Listening guiado con apoyo · Lección 3: En el restaurante",
+            "example": "Are you ready to order?"
+          },
+          {
+            "en": "recommend",
+            "es": "recomendar",
+            "say": "rekoménd",
+            "source": "Listening guiado con apoyo · Lección 3: En el restaurante",
+            "example": "What do you recommend?"
+          }
         ]
       }
     },
@@ -14285,6 +14877,80 @@
               "es": "¿Estás libre esta noche?"
             }
           }
+        ],
+        "extraGuided": [
+          {
+            "type": "choice",
+            "q": "¿Cómo empiezas un mensaje informal a un amigo?",
+            "opts": [
+              "Dear Sir or Madam,",
+              "To whom it may concern,",
+              "Hey! / Hi!",
+              "Good morning, I hope this message finds you well."
+            ],
+            "correct": 2,
+            "why": "Con amigos se usa Hi! o Hey!; «Dear Sir or Madam» es muy formal.",
+            "source": "Frases básicas de supervivencia · Lección 6: Escribir mensajes informales en inglés"
+          },
+          {
+            "type": "fill",
+            "sentence": "Hey! How ___ you?",
+            "answer": "are",
+            "hint": "«How are you?» es la pregunta más común para saludar.",
+            "source": "Frases básicas de supervivencia · Lección 6: Escribir mensajes informales en inglés"
+          },
+          {
+            "type": "fill",
+            "sentence": "In my free time, I ___ music and play football.",
+            "answer": "listen to|love|like|enjoy",
+            "hint": "listen to, love, like o enjoy + music.",
+            "source": "Frases básicas de supervivencia · Lección 2: Presentarte por escrito"
+          }
+        ],
+        "freeChallenge": {
+          "source": "Frases básicas de supervivencia · Lección 6: Escribir mensajes informales en inglés",
+          "task": "Reto de escritura: escribe un mensaje informal de 6 a 8 frases a un amigo de intercambio que vive en Londres. Cuéntale cómo estás, qué haces en tu tiempo libre y qué te gusta de tu ciudad; hazle una pregunta y despídete.",
+          "checklist": [
+            "¿Empecé con un saludo informal (Hi! / Hey!)?",
+            "¿Usé contracciones (I’m, it’s, don’t)?",
+            "¿Usé like, love o hate + una actividad?",
+            "¿Hice al menos una pregunta (Do you like…? / What do you do…?)?",
+            "¿Terminé con un cierre amistoso (See you! / Take care!)?"
+          ],
+          "model": "Hi Tom! How are you? I’m fine, thanks. I’m very busy this week, but I’m happy. In my free time, I play football with my friends. I love my city because it has big parks. Do you like sports? Write soon. Take care!"
+        },
+        "extraTables": [
+          {
+            "source": "Frases básicas de supervivencia · Lección 6: Escribir mensajes informales en inglés",
+            "caption": "Saludos y cierres: mensaje informal o formal",
+            "head": [
+              "Para…",
+              "Informal (amigos)",
+              "Formal (trabajo, desconocidos)"
+            ],
+            "rows": [
+              [
+                "Saludar",
+                "Hi! / Hey! / Hello!",
+                "Dear Ms. Smith, / Good morning,"
+              ],
+              [
+                "Preguntar cómo está",
+                "How are you? / How’s it going?",
+                "I hope you are well."
+              ],
+              [
+                "Responder",
+                "I’m great! / Not bad! / Pretty good, thanks!",
+                "I am well, thank you."
+              ],
+              [
+                "Despedirse",
+                "Talk soon! / Take care! / See you! / Bye!",
+                "Best regards, / Kind regards,"
+              ]
+            ]
+          }
         ]
       }
     },
@@ -16544,6 +17210,212 @@
               "es": "¿Me podría ayudar?"
             }
           }
+        ],
+        "extraGuided": [
+          {
+            "type": "fill",
+            "sentence": "Excuse me, ___ is the supermarket?",
+            "answer": "where",
+            "hint": "Para preguntar por un lugar: where.",
+            "source": "Listening guiado con apoyo · Lección 2: Pidiendo direcciones"
+          },
+          {
+            "type": "choice",
+            "q": "Escuchas «Turn left at the traffic lights». ¿Qué haces?",
+            "opts": [
+              "Giras a la derecha",
+              "Sigues recto",
+              "Giras a la izquierda",
+              "Das la vuelta"
+            ],
+            "correct": 2,
+            "why": "Left = izquierda. Turn left = gira a la izquierda.",
+            "source": "Listening guiado con apoyo · Lección 2: Pidiendo direcciones"
+          },
+          {
+            "type": "fill",
+            "sentence": "Go ___ for two blocks, then turn right.",
+            "answer": "straight|straight ahead",
+            "hint": "«Go straight» o «go straight ahead» = sigue recto.",
+            "source": "Listening guiado con apoyo · Lección 2: Pidiendo direcciones"
+          },
+          {
+            "type": "order",
+            "words": [
+              "is",
+              "far",
+              "it",
+              "How"
+            ],
+            "answer": "How far is it",
+            "hint": "«How far» pregunta por la distancia.",
+            "source": "Listening guiado con apoyo · Lección 2: Pidiendo direcciones"
+          },
+          {
+            "type": "choice",
+            "q": "¿Qué significa «It’s on your right»?",
+            "opts": [
+              "Está a tu izquierda",
+              "Está detrás de ti",
+              "Está a tu derecha",
+              "Está adelante"
+            ],
+            "correct": 2,
+            "why": "Right = derecha. On your right = a tu derecha.",
+            "source": "Listening guiado con apoyo · Lección 2: Pidiendo direcciones"
+          },
+          {
+            "type": "fill",
+            "sentence": "___ me, where is the bathroom?",
+            "answer": "Excuse",
+            "hint": "«Excuse me» para llamar la atención antes de preguntar.",
+            "source": "Listening guiado con apoyo · Lección 4: Frases de supervivencia en situaciones reales"
+          },
+          {
+            "type": "choice",
+            "q": "¿Cómo pides que repitan algo que no entendiste?",
+            "opts": [
+              "I understand.",
+              "Sorry, could you repeat that?",
+              "Yes, of course.",
+              "No problem."
+            ],
+            "correct": 1,
+            "why": "«Could you repeat that, please?» siempre funciona.",
+            "source": "Listening guiado con apoyo · Lección 4: Frases de supervivencia en situaciones reales"
+          },
+          {
+            "type": "order",
+            "words": [
+              "me",
+              "help",
+              "please",
+              "Can",
+              "you"
+            ],
+            "answer": "Can you help me please",
+            "hint": "Can you + verbo base + me, please?",
+            "source": "Listening guiado con apoyo · Lección 4: Frases de supervivencia en situaciones reales"
+          },
+          {
+            "type": "choice",
+            "q": "¿Cuál es la diferencia entre «Excuse me» y «Sorry»?",
+            "opts": [
+              "Son idénticas",
+              "«Excuse me» llama la atención o pide paso; «Sorry» pide perdón por algo que pasó",
+              "«Sorry» es más formal",
+              "«Excuse me» solo se usa en restaurantes"
+            ],
+            "correct": 1,
+            "why": "Excuse me va antes (pedir paso, preguntar); Sorry, después de un error o una molestia.",
+            "source": "Frases básicas de supervivencia · Lección 3: Pedir ayuda y disculparte"
+          },
+          {
+            "type": "fill",
+            "sentence": "Could you ___ me? I am lost.",
+            "answer": "help",
+            "hint": "«Could you help me?» = ¿me podría ayudar?",
+            "source": "Frases básicas de supervivencia · Lección 3: Pedir ayuda y disculparte"
+          }
+        ],
+        "rescuedDialogues": [
+          {
+            "title": "Escucha guiada · ¿Dónde está el supermercado?",
+            "source": "Listening guiado con apoyo · Lección 2: Pidiendo direcciones",
+            "audioPending": true,
+            "lines": [
+              {
+                "speaker": "Carlos",
+                "voice": "onyx",
+                "text": "Excuse me. Where is the supermarket?",
+                "es": "Disculpe. ¿Dónde está el supermercado?"
+              },
+              {
+                "speaker": "Laura",
+                "voice": "nova",
+                "text": "The supermarket? Turn left at the bank.",
+                "es": "¿El supermercado? Gire a la izquierda en el banco."
+              },
+              {
+                "speaker": "Carlos",
+                "voice": "onyx",
+                "text": "Turn left at the bank. And then?",
+                "es": "Girar a la izquierda en el banco. ¿Y luego?"
+              },
+              {
+                "speaker": "Laura",
+                "voice": "nova",
+                "text": "Then go straight. It is near the park, on the right.",
+                "es": "Luego siga recto. Está cerca del parque, a la derecha."
+              },
+              {
+                "speaker": "Carlos",
+                "voice": "onyx",
+                "text": "Near the park. Thank you very much!",
+                "es": "Cerca del parque. ¡Muchas gracias!"
+              },
+              {
+                "speaker": "Laura",
+                "voice": "nova",
+                "text": "You are welcome. Have a good day!",
+                "es": "De nada. ¡Que tenga un buen día!"
+              }
+            ],
+            "questions": [
+              {
+                "type": "choice",
+                "q": "Where does Carlos turn left?",
+                "opts": [
+                  "At the park",
+                  "At the bank",
+                  "At the school",
+                  "At the hospital"
+                ],
+                "correct": 1,
+                "why": "«Turn left at the bank»."
+              },
+              {
+                "type": "choice",
+                "q": "Where is the supermarket?",
+                "opts": [
+                  "Near the bank, on the left",
+                  "Near the park, on the right",
+                  "Far from the park",
+                  "Next to the school"
+                ],
+                "correct": 1,
+                "why": "«It is near the park, on the right»."
+              },
+              {
+                "type": "choice",
+                "q": "Si escuchas «Turn left, then go straight», ¿qué haces?",
+                "opts": [
+                  "Giro a la derecha y sigo recto",
+                  "Giro a la izquierda y luego sigo recto",
+                  "Sigo recto y giro a la izquierda",
+                  "Doy la vuelta"
+                ],
+                "correct": 1,
+                "why": "Left = izquierda; then = luego; straight = recto."
+              }
+            ]
+          }
+        ],
+        "extraVocab": [
+          {
+            "en": "straight ahead",
+            "es": "todo recto",
+            "say": "stréit ajéd",
+            "source": "Listening guiado con apoyo · Lección 2: Pidiendo direcciones",
+            "example": "The bank is straight ahead."
+          },
+          {
+            "en": "on the corner",
+            "es": "en la esquina",
+            "say": "on de córner",
+            "source": "Listening guiado con apoyo · Lección 2: Pidiendo direcciones",
+            "example": "The bank is on the corner."
+          }
         ]
       }
     },
@@ -18687,6 +19559,76 @@
               "answer": "The train is at three.",
               "es": "El tren sale a las tres."
             }
+          }
+        ],
+        "extraGuided": [
+          {
+            "type": "choice",
+            "q": "Escuchas algo rápido y no entiendes todo. ¿Qué haces primero?",
+            "opts": [
+              "Te rindes",
+              "Buscas las palabras clave que reconoces",
+              "Finges que entendiste",
+              "Intentas traducir cada palabra"
+            ],
+            "correct": 1,
+            "why": "Las palabras clave (lugares, números, verbos) te dan la idea principal.",
+            "source": "Listening guiado con apoyo · Lección 5: Estrategia: escuchar sin entender todo"
+          },
+          {
+            "type": "choice",
+            "q": "Escuchas «The meeting is at THREE». ¿Qué hora es la reunión?",
+            "opts": [
+              "A la una",
+              "A las dos",
+              "A las tres",
+              "A las cuatro"
+            ],
+            "correct": 2,
+            "why": "La información importante suele ir con más fuerza: THREE = tres.",
+            "source": "Listening guiado con apoyo · Lección 5: Estrategia: escuchar sin entender todo"
+          },
+          {
+            "type": "fill",
+            "sentence": "Could you speak more ___, please?",
+            "answer": "slowly",
+            "hint": "«More slowly» = más despacio.",
+            "source": "Listening guiado con apoyo · Lección 5: Estrategia: escuchar sin entender todo"
+          },
+          {
+            "type": "choice",
+            "q": "¿Cómo terminas una presentación escrita de forma amable?",
+            "opts": [
+              "That is all.",
+              "Nice to meet you!",
+              "I am done.",
+              "Goodbye forever."
+            ],
+            "correct": 1,
+            "why": "«Nice to meet you!» cierra con calidez.",
+            "source": "Frases básicas de supervivencia · Lección 4: Tu presentación personal en inglés"
+          },
+          {
+            "type": "order",
+            "words": [
+              "cooking",
+              "love",
+              "free",
+              "I",
+              "time",
+              "In",
+              "my"
+            ],
+            "answer": "In my free time I love cooking|I love cooking in my free time",
+            "hint": "In my free time + I + love + actividad con -ing.",
+            "source": "Frases básicas de supervivencia · Lección 4: Tu presentación personal en inglés"
+          },
+          {
+            "type": "fill",
+            "sentence": "I am ___ student. I study engineering.",
+            "answer": "a",
+            "hint": "«Student» empieza con sonido de consonante: a student.",
+            "source": "Frases básicas de supervivencia · Lección 4: Tu presentación personal en inglés"
           }
         ]
       }
