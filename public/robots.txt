@@ -1,0 +1,21 @@
+# Munchira English — https://munchira.com
+User-agent: *
+Allow: /
+
+# Zonas privadas de la app (cuenta, curso en curso, administración) y pantallas de acceso
+Disallow: /app
+Disallow: /cuenta
+Disallow: /completar-datos
+Disallow: /diagnostic
+Disallow: /cycle
+Disallow: /module/
+Disallow: /review
+Disallow: /teacher
+Disallow: /usuarios
+Disallow: /revisor
+Disallow: /login
+Disallow: /register
+Disallow: /recuperar
+Disallow: /restablecer
+
+Sitemap: https://munchira.com/sitemap.xml
