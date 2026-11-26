@@ -44,3 +44,5 @@
 
 - A1 unfinished work uses the shared draft context and additive owner-only draft RPC; revision checks prevent stale-device overwrites while account-scoped local outboxes retry unsent changes, without changing grading or A2–C2.
 - Restore unit drafts through lessonDraftProgress and legacy module positions through moduleDraftProgress; remembered positions must respect required practice and authoritative lesson completion, including older drafts without completion lists.
+
+- Resolve fixed Unit 1 grammar clips from the dedicated unit1Theory manifest before legacy recordings; exact text, voice alias and accent lookup keeps both accents local without changing dialogue voices.
