@@ -5,7 +5,7 @@ import { canListen, sayEnglish } from './lessonSpeech'
 import { displayForm } from './model-lesson'
 
 // Content rescued from the four old A1 modules (see A1_UNIFICACION.md). It is optional practice:
-// it never gates a step, never records grades and never writes to Repaso.
+// it never gates a step or records grades. Only the rescued words reach Repaso, through the cards step.
 
 function Listen({ text, accent, voice }) {
   const [silent, setSilent] = useState(false)
@@ -23,7 +23,7 @@ export function ExtraVocab({ lesson, accent, legacy = false }) {
   if (!lesson.extraVocab?.length) return null
   return <>
     <h3>Más palabras útiles</h3>
-    <p className="ml-tip">{legacy ? 'Vienen de tus módulos anteriores. ' : ''}Son de consulta: todavía no entran en «Repaso».</p>
+    <p className="ml-tip">{legacy ? 'Vienen de tus módulos anteriores. ' : ''}También aparecen en las tarjetas y entran en «Repaso».</p>
     <ul className="ml-vocab">{lesson.extraVocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{displayForm(v.es)}</span><em>«{v.say}»</em>{v.example && <span>{v.example}</span>}<Listen text={v.en} accent={accent} /></li>)}</ul>
   </>
 }

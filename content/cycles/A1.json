@@ -714,103 +714,114 @@
       ],
       "quiz": [
         {
-          "question": "Hello! My name ___ Ana.",
+          "question": "Son las 8 de la mañana y saludas a tu profesora. ¿Qué dices?",
           "options": [
-            "am",
-            "is",
-            "are",
-            "be"
+            "Good night.",
+            "Goodbye.",
+            "See you later.",
+            "Good morning."
           ],
-          "correct_idx": 1
+          "correct_idx": 3,
+          "why": "Good morning se usa para saludar por la mañana; good night es para despedirte por la noche."
         },
         {
-          "question": "___ are you from?",
+          "question": "A: What’s your name? B: ___",
           "options": [
-            "What",
-            "Where",
-            "Who",
-            "How"
+            "I’m from Chile.",
+            "I’m fine, thanks.",
+            "My name is Daniel.",
+            "Nice to meet you."
           ],
-          "correct_idx": 1
+          "correct_idx": 2,
+          "why": "Te preguntan el nombre: My name is… o I’m…"
         },
         {
-          "question": "Nice to ___ you.",
-          "options": [
-            "meet",
-            "met",
-            "meeting",
-            "meets"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "I ___ a student.",
+          "question": "Ana ___ from Peru.",
           "options": [
             "is",
             "am",
             "are",
             "be"
           ],
-          "correct_idx": 1
+          "correct_idx": 0,
+          "why": "Ana = she; con he, she e it se usa is."
         },
         {
-          "question": "Good ___. (por la mañana)",
+          "question": "We ___ students.",
           "options": [
-            "night",
-            "evening",
-            "morning",
-            "afternoon"
+            "is",
+            "are",
+            "am",
+            "be"
           ],
-          "correct_idx": 2
+          "correct_idx": 1,
+          "why": "Con we, you y they se usa are."
         },
         {
-          "question": "___ you a teacher?",
+          "question": "¿Cuál responde a «Where are you from?»?",
           "options": [
-            "Is",
-            "Am",
-            "Are",
-            "Be"
+            "I’m fine, thanks.",
+            "My name is Luis.",
+            "I’m from Ecuador.",
+            "I’m 20 years old."
           ],
-          "correct_idx": 2
+          "correct_idx": 2,
+          "why": "Where are you from? pregunta por tu origen: I’m from + país."
         },
         {
-          "question": "I'm fine, ___ you.",
+          "question": "¿Cómo dices «Tengo 30 años»?",
           "options": [
-            "please",
-            "thanks",
-            "thank",
-            "hello"
+            "I have 30 years.",
+            "I have 30 years old.",
+            "My years are 30.",
+            "I’m 30 years old."
           ],
-          "correct_idx": 2
+          "correct_idx": 3,
+          "why": "En inglés la edad va con to be: I’m 30 (years old)."
         },
         {
-          "question": "See you ___.",
+          "question": "A: How are you? B: ___",
           "options": [
-            "later",
-            "morning",
-            "name",
-            "from"
+            "Nice to meet you.",
+            "Fine, thank you.",
+            "I’m from Spain.",
+            "Goodbye."
           ],
-          "correct_idx": 0
+          "correct_idx": 1,
+          "why": "How are you? pregunta cómo estás: Fine, thank you."
         },
         {
-          "question": "My name is Carlos. ___ you?",
+          "question": "Elige la frase correcta.",
           "options": [
-            "What",
-            "And",
-            "Where",
-            "How"
+            "She is a teacher.",
+            "She is teacher.",
+            "She a teacher.",
+            "Is a teacher."
           ],
-          "correct_idx": 1
+          "correct_idx": 0,
+          "why": "Con una profesión va a o an, y el sujeto y el verbo no se omiten."
         },
         {
-          "question": "Tienes 25 años. ¿Cómo lo dices?",
+          "question": "Te despides de tu familia antes de dormir. ¿Qué dices?",
           "options": [
-            "I have 25 years.",
-            "I'm 25 years old.",
-            "I 25 years old."
+            "Good evening!",
+            "Good night!",
+            "Good morning!",
+            "Hello!"
           ],
-          "correct_idx": 1
+          "correct_idx": 1,
+          "why": "Good evening saluda al llegar; good night es para despedirte o antes de dormir."
+        },
+        {
+          "question": "«Nice to meet you» significa…",
+          "options": [
+            "Mucho gusto",
+            "¿Cómo estás?",
+            "Nos vemos",
+            "Buenas tardes"
+          ],
+          "correct_idx": 0,
+          "why": "Nice to meet you se dice al conocer a alguien: mucho gusto."
         }
       ],
       "vocab": [
@@ -2783,104 +2794,114 @@
       ],
       "quiz": [
         {
-          "question": "This is ___ mother.",
+          "question": "Te presento a mi amigo Leo. ___ mother is a doctor.",
           "options": [
-            "I",
-            "my",
-            "me",
-            "mine"
+            "Her",
+            "He",
+            "His",
+            "Him"
           ],
-          "correct_idx": 1
+          "correct_idx": 2,
+          "why": "Hablas de la madre de un hombre: his."
         },
         {
-          "question": "How old ___ you?",
+          "question": "¿Cómo dices «Mi hermana tiene 20 años»?",
           "options": [
-            "is",
-            "am",
-            "are",
-            "have"
+            "My sister has 20 years.",
+            "My sister is 20 years old.",
+            "My sister have 20 years old.",
+            "My sister are 20."
           ],
-          "correct_idx": 2
+          "correct_idx": 1,
+          "why": "La edad va con to be: my sister = she, así que is."
         },
         {
-          "question": "She ___ 30 years old.",
+          "question": "Carlos ___ two daughters.",
           "options": [
-            "have",
             "has",
+            "have",
             "is",
             "are"
           ],
-          "correct_idx": 2
+          "correct_idx": 0,
+          "why": "Tener con he, she o it es has."
         },
         {
-          "question": "___ name is Carlos. (hablando de un hombre)",
+          "question": "The son of my parents is my…",
           "options": [
-            "Her",
-            "His",
+            "sister",
+            "husband",
+            "brother",
+            "daughter"
+          ],
+          "correct_idx": 2,
+          "why": "El hijo de tus padres es tu hermano: brother."
+        },
+        {
+          "question": "Laura is married. Her ___ is Pedro.",
+          "options": [
+            "wife",
+            "husband",
+            "son",
+            "sister"
+          ],
+          "correct_idx": 1,
+          "why": "El esposo de Laura es su husband; wife es esposa."
+        },
+        {
+          "question": "¿Qué pregunta tiene la respuesta «I’m 35»?",
+          "options": [
+            "How are you?",
+            "Where are you from?",
+            "What’s your name?",
+            "How old are you?"
+          ],
+          "correct_idx": 3,
+          "why": "How old are you? pregunta la edad."
+        },
+        {
+          "question": "Ana and Leo are my parents. ___ house is big.",
+          "options": [
             "Their",
-            "My"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "I ___ a brother.",
-          "options": [
-            "has",
-            "have",
-            "am",
-            "is"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "Are you ___? (casado/a)",
-          "options": [
-            "marry",
-            "married",
-            "marriage",
-            "marrying"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "This is my sister. ___ name is Ana.",
-          "options": [
-            "His",
+            "They",
             "Her",
-            "Their",
-            "My"
+            "His"
           ],
-          "correct_idx": 1
+          "correct_idx": 0,
+          "why": "La casa de ellos: their."
         },
         {
-          "question": "I am 25 ___ old.",
+          "question": "«Single» significa…",
           "options": [
-            "year",
-            "years",
-            "old",
-            "age"
+            "casado o casada",
+            "soltero o soltera",
+            "hijo o hija",
+            "hermano o hermana"
           ],
-          "correct_idx": 1
+          "correct_idx": 1,
+          "why": "Single es soltero o soltera; married es casado o casada."
         },
         {
-          "question": "Do you ___ children?",
+          "question": "A: What’s your phone number? B: ___",
           "options": [
-            "has",
-            "have",
-            "are",
-            "is"
+            "It’s María.",
+            "I’m 25.",
+            "It’s 555-0192.",
+            "It’s Colombia."
           ],
-          "correct_idx": 1
+          "correct_idx": 2,
+          "why": "Te piden un número de teléfono: It’s + número."
         },
         {
-          "question": "My parents ___ from Mexico.",
+          "question": "Elige la pregunta correcta.",
           "options": [
-            "is",
-            "am",
-            "are",
-            "has"
+            "Do you has children?",
+            "Does you have children?",
+            "Are you have children?",
+            "Do you have children?"
           ],
-          "correct_idx": 2
+          "correct_idx": 3,
+          "why": "Con you la pregunta es Do you have…?"
         }
       ],
       "vocab": [
@@ -5629,104 +5650,114 @@
       ],
       "quiz": [
         {
-          "question": "I ___ up at 7 every day.",
+          "question": "My sister ___ at 6 o’clock.",
           "options": [
-            "gets",
-            "get",
-            "getting",
-            "am get"
+            "gets up",
+            "get up",
+            "getting up",
+            "is get up"
           ],
-          "correct_idx": 1
+          "correct_idx": 0,
+          "why": "My sister = she: el verbo lleva -s (gets up)."
         },
         {
-          "question": "She ___ to work at 8.",
-          "options": [
-            "go",
-            "goes",
-            "going",
-            "is go"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "What time ___ you have lunch?",
-          "options": [
-            "do",
-            "does",
-            "are",
-            "is"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "He ___ breakfast at 7:30.",
-          "options": [
-            "have",
-            "has",
-            "having",
-            "is have"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "I ___ work on Sunday.",
-          "options": [
-            "don’t",
-            "doesn’t",
-            "not",
-            "am not"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "___ she study in the evening?",
+          "question": "___ your father work on Sundays?",
           "options": [
             "Do",
-            "Does",
             "Is",
+            "Does",
             "Are"
           ],
-          "correct_idx": 1
+          "correct_idx": 2,
+          "why": "Your father = he: la pregunta usa does."
         },
         {
-          "question": "They ___ TV at night.",
+          "question": "We ___ have lunch at home. (negativa)",
           "options": [
-            "watches",
+            "doesn’t",
+            "don’t",
+            "aren’t",
+            "not"
+          ],
+          "correct_idx": 1,
+          "why": "Con we se niega con don’t + verbo base."
+        },
+        {
+          "question": "«Usually» significa…",
+          "options": [
+            "nunca",
+            "siempre",
+            "normalmente",
+            "a veces"
+          ],
+          "correct_idx": 2,
+          "why": "Usually = normalmente; always = siempre; never = nunca."
+        },
+        {
+          "question": "He ___ TV every night.",
+          "options": [
             "watch",
-            "watching",
-            "is watch"
+            "watches",
+            "watchs",
+            "watching"
           ],
-          "correct_idx": 1
+          "correct_idx": 1,
+          "why": "Con he, watch añade -es: watches."
         },
         {
-          "question": "I usually ___ to bed early.",
+          "question": "Elige la frase correcta.",
           "options": [
-            "goes",
-            "go",
-            "going",
-            "am go"
+            "I have always breakfast at 7.",
+            "I always has breakfast at 7.",
+            "I always breakfast have at 7.",
+            "I always have breakfast at 7."
           ],
-          "correct_idx": 1
+          "correct_idx": 3,
+          "why": "Always va antes del verbo principal, y con I el verbo es have."
         },
         {
-          "question": "What ___ he do in the morning?",
+          "question": "A: What time do you go to bed? B: ___",
+          "options": [
+            "At eleven o’clock.",
+            "Every day.",
+            "In my bedroom.",
+            "Yes, I do."
+          ],
+          "correct_idx": 0,
+          "why": "What time pregunta la hora: At + hora."
+        },
+        {
+          "question": "Does she study English? — Yes, she ___.",
           "options": [
             "do",
-            "does",
             "is",
-            "are"
+            "does",
+            "has"
           ],
-          "correct_idx": 1
+          "correct_idx": 2,
+          "why": "La respuesta corta repite el auxiliar: Yes, she does."
         },
         {
-          "question": "She doesn’t ___ at night.",
+          "question": "My parents ___ in Cali.",
           "options": [
-            "works",
-            "work",
-            "working",
-            "to work"
+            "lives",
+            "living",
+            "is live",
+            "live"
           ],
-          "correct_idx": 1
+          "correct_idx": 3,
+          "why": "My parents = they: el verbo va sin -s."
+        },
+        {
+          "question": "¿Cómo dices «Me acuesto a las 10»?",
+          "options": [
+            "I go to the bed at 10.",
+            "I goes to bed at 10.",
+            "I am go to bed at 10.",
+            "I go to bed at 10."
+          ],
+          "correct_idx": 3,
+          "why": "Acostarse es go to bed, sin the; con I, go no cambia."
         }
       ],
       "vocab": [
@@ -8265,104 +8296,114 @@
       ],
       "quiz": [
         {
-          "question": "There ___ a kitchen in my house.",
-          "options": [
-            "are",
-            "is",
-            "have",
-            "has"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "There ___ two bedrooms.",
+          "question": "There ___ two bathrooms in my house.",
           "options": [
             "is",
+            "be",
             "are",
-            "am",
-            "be"
+            "am"
           ],
-          "correct_idx": 1
+          "correct_idx": 2,
+          "why": "Dos baños: plural, there are."
         },
         {
-          "question": "The bank is ___ the supermarket.",
+          "question": "___ there a garden?",
           "options": [
-            "next",
-            "next to",
-            "near to",
-            "on"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "___ there a park near here?",
-          "options": [
-            "Is",
             "Are",
             "Do",
-            "Does"
+            "Does",
+            "Is"
           ],
-          "correct_idx": 0
+          "correct_idx": 3,
+          "why": "Un jardín es singular: Is there…?"
         },
         {
-          "question": "Go ___ and turn left. (sigue derecho)",
+          "question": "The keys are ___ the bag. (dentro)",
           "options": [
-            "straight",
-            "right",
-            "left",
-            "near"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "The book is ___ the table. (sobre la mesa)",
-          "options": [
-            "in",
             "on",
+            "in",
             "under",
             "next"
           ],
-          "correct_idx": 1
+          "correct_idx": 1,
+          "why": "Dentro de algo: in."
         },
         {
-          "question": "My apartment is ___.",
+          "question": "«Kitchen» es…",
           "options": [
-            "big",
-            "a big",
-            "is big",
-            "have big"
+            "la cocina",
+            "el baño",
+            "el dormitorio",
+            "la sala"
           ],
-          "correct_idx": 0
+          "correct_idx": 0,
+          "why": "Kitchen = cocina; bathroom = baño; bedroom = dormitorio."
         },
         {
-          "question": "There ___ a garden.",
+          "question": "Elige la frase correcta.",
           "options": [
-            "isn’t",
+            "There are three chairs in the kitchen.",
+            "There is three chairs in the kitchen.",
+            "There are three chair in the kitchen.",
+            "There three chairs are in the kitchen."
+          ],
+          "correct_idx": 0,
+          "why": "Varias cosas: There are + plural."
+        },
+        {
+          "question": "¿Qué significa «Turn right»?",
+          "options": [
+            "Gira a la izquierda",
+            "Sigue derecho",
+            "Está a la izquierda",
+            "Gira a la derecha"
+          ],
+          "correct_idx": 3,
+          "why": "Turn = gira; right = derecha."
+        },
+        {
+          "question": "My apartment is ___ the school. (cerca de)",
+          "options": [
+            "far",
+            "under",
+            "in",
+            "near"
+          ],
+          "correct_idx": 3,
+          "why": "Cerca de: near, sin to."
+        },
+        {
+          "question": "Is there a hospital near here? — No, there ___.",
+          "options": [
             "aren’t",
+            "isn’t",
             "don’t",
-            "doesn’t"
+            "not"
           ],
-          "correct_idx": 0
+          "correct_idx": 1,
+          "why": "La respuesta corta con singular: No, there isn’t."
         },
         {
-          "question": "The school is ___ the hospital.",
+          "question": "«Bedroom» es…",
           "options": [
-            "next",
-            "near",
-            "on",
-            "in"
+            "el dormitorio",
+            "la cocina",
+            "el jardín",
+            "el baño"
           ],
-          "correct_idx": 1
+          "correct_idx": 0,
+          "why": "Bedroom = dormitorio, cuarto o habitación."
         },
         {
-          "question": "Turn ___ at the bank.",
+          "question": "¿Cómo dices «La sala es pequeña»?",
           "options": [
-            "straight",
-            "right",
-            "near",
-            "far"
+            "The living room is a small.",
+            "The small is living room.",
+            "The living room is small.",
+            "Is small the living room."
           ],
-          "correct_idx": 1
+          "correct_idx": 2,
+          "why": "Sujeto + is + adjetivo, sin a."
         }
       ],
       "vocab": [
@@ -10641,104 +10682,114 @@
       ],
       "quiz": [
         {
-          "question": "I ___ coffee.",
+          "question": "My brother ___ eat meat. He is vegetarian.",
           "options": [
-            "like",
-            "likes",
-            "am like",
-            "liking"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "She ___ like fish.",
-          "options": [
-            "don’t",
             "doesn’t",
-            "not",
-            "isn’t"
+            "don’t",
+            "isn’t",
+            "not"
           ],
-          "correct_idx": 1
+          "correct_idx": 0,
+          "why": "My brother = he: se niega con doesn’t + verbo base."
         },
         {
-          "question": "___ you like tea?",
+          "question": "En un café, ¿cómo pides con cortesía?",
           "options": [
-            "Do",
-            "Does",
-            "Are",
-            "Is"
+            "I’d like a juice, please.",
+            "I like a juice, please.",
+            "I’d likes a juice, please.",
+            "I’d like is a juice, please."
           ],
-          "correct_idx": 0
+          "correct_idx": 0,
+          "why": "I’d like = quisiera; I like = me gusta."
         },
         {
-          "question": "I’d ___ a sandwich, please.",
-          "options": [
-            "like",
-            "likes",
-            "want",
-            "have"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "How much ___ it?",
+          "question": "How much ___ the sandwiches?",
           "options": [
             "is",
             "are",
-            "do",
-            "does"
+            "does",
+            "do"
           ],
-          "correct_idx": 0
+          "correct_idx": 1,
+          "why": "Sandwiches es plural: How much are…?"
         },
         {
-          "question": "Can I ___ the menu?",
+          "question": "Do you like eggs? — No, I ___.",
           "options": [
-            "has",
-            "have",
-            "having",
-            "am"
+            "doesn’t",
+            "not",
+            "am not",
+            "don’t"
           ],
-          "correct_idx": 1
+          "correct_idx": 3,
+          "why": "La respuesta corta repite el auxiliar: No, I don’t."
         },
         {
-          "question": "I don’t ___ meat.",
+          "question": "«Vegetables» es…",
           "options": [
-            "likes",
-            "like",
-            "liking",
-            "to like"
+            "verduras",
+            "frutas",
+            "carne",
+            "pescado"
           ],
-          "correct_idx": 1
+          "correct_idx": 0,
+          "why": "Vegetables = verduras; fruit = fruta."
         },
         {
-          "question": "¿Cómo dices «Me gusta la fruta» en general?",
+          "question": "Elige la pregunta correcta.",
           "options": [
-            "I am like fruit.",
-            "I like fruit.",
-            "I liking fruit.",
-            "I likes fruit."
+            "Do your sister like tea?",
+            "Does your sister like tea?",
+            "Does your sister likes tea?",
+            "Your sister does like tea?"
           ],
-          "correct_idx": 1
+          "correct_idx": 1,
+          "why": "Your sister = she: Does + sujeto + verbo base."
         },
         {
-          "question": "I’d like some ___, please.",
+          "question": "A: How much is the coffee? B: ___",
           "options": [
-            "water",
-            "a water",
-            "the water",
-            "waters"
+            "Yes, please.",
+            "It’s three dollars.",
+            "I like coffee.",
+            "It’s very good."
           ],
-          "correct_idx": 0
+          "correct_idx": 1,
+          "why": "How much pregunta el precio: It’s + precio."
         },
         {
-          "question": "How much is the ___?",
+          "question": "«Bread» es…",
           "options": [
-            "chicken",
-            "a chicken",
-            "chickens",
-            "the chickens"
+            "arroz",
+            "queso",
+            "leche",
+            "pan"
           ],
-          "correct_idx": 0
+          "correct_idx": 3,
+          "why": "Bread = pan; rice = arroz; cheese = queso."
+        },
+        {
+          "question": "They ___ pizza. It’s their favorite food.",
+          "options": [
+            "loves",
+            "doesn’t like",
+            "love",
+            "don’t love"
+          ],
+          "correct_idx": 2,
+          "why": "Con they el verbo va sin -s, y es su comida favorita."
+        },
+        {
+          "question": "¿Cómo dices «¿Me das un vaso de agua?»?",
+          "options": [
+            "Can I a glass of water?",
+            "Can I has a glass of water?",
+            "Can I have a glass of water?",
+            "Have I can a glass of water?"
+          ],
+          "correct_idx": 2,
+          "why": "Para pedir: Can I have…? con have en forma base."
         }
       ],
       "vocab": [
@@ -13162,104 +13213,114 @@
       ],
       "quiz": [
         {
-          "question": "I ___ football on Sunday.",
+          "question": "She ___ tennis on Fridays.",
+          "options": [
+            "play",
+            "plays",
+            "goes",
+            "does"
+          ],
+          "correct_idx": 1,
+          "why": "Con deportes de pelota se usa play; con she, plays."
+        },
+        {
+          "question": "I ___ go to the cinema. (nunca)",
+          "options": [
+            "always",
+            "often",
+            "usually",
+            "never"
+          ],
+          "correct_idx": 3,
+          "why": "Nunca = never."
+        },
+        {
+          "question": "A: What do you do in your free time? B: ___",
+          "options": [
+            "Yes, I do.",
+            "At the weekend.",
+            "I read and listen to music.",
+            "I’m fine."
+          ],
+          "correct_idx": 2,
+          "why": "Te preguntan qué haces: responde con actividades."
+        },
+        {
+          "question": "Elige la frase correcta.",
+          "options": [
+            "He always is happy.",
+            "He is always happy.",
+            "Always he is happy.",
+            "He happy is always."
+          ],
+          "correct_idx": 1,
+          "why": "Con to be, always va después: He is always…"
+        },
+        {
+          "question": "«Hobby» significa…",
+          "options": [
+            "pasatiempo",
+            "trabajo",
+            "horario",
+            "fin de semana"
+          ],
+          "correct_idx": 0,
+          "why": "Hobby = pasatiempo o afición."
+        },
+        {
+          "question": "We ___ swimming on Sundays.",
+          "options": [
+            "play",
+            "goes",
+            "are",
+            "go"
+          ],
+          "correct_idx": 3,
+          "why": "Con actividades en -ing se usa go: go swimming. Con we, go."
+        },
+        {
+          "question": "Do you like dancing? — Yes, I ___.",
+          "options": [
+            "like",
+            "am",
+            "do",
+            "does"
+          ],
+          "correct_idx": 2,
+          "why": "La respuesta corta repite el auxiliar: Yes, I do."
+        },
+        {
+          "question": "My friends ___ video games every day.",
           "options": [
             "plays",
             "play",
             "playing",
-            "am play"
+            "goes"
           ],
-          "correct_idx": 1
+          "correct_idx": 1,
+          "why": "My friends = they: play sin -s."
         },
         {
-          "question": "She ___ to music every day.",
+          "question": "«A veces» en inglés es…",
           "options": [
-            "listen",
-            "listens",
-            "listening",
-            "is listen"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "What ___ you do in your free time?",
-          "options": [
-            "do",
-            "does",
-            "are",
-            "is"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "I ___ reading.",
-          "options": [
-            "love",
-            "loves",
-            "loving",
-            "am love"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "Do you ___ sports?",
-          "options": [
-            "likes",
-            "like",
-            "liking",
-            "to like"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "He ___ out on Saturday.",
-          "options": [
-            "go",
-            "goes",
-            "going",
-            "is go"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "I ___ stay home at the weekend. (normalmente)",
-          "options": [
-            "usually",
-            "usual",
+            "sometimes",
             "never",
-            "yesterday"
+            "always",
+            "often"
           ],
-          "correct_idx": 0
+          "correct_idx": 0,
+          "why": "A veces = sometimes; often = a menudo."
         },
         {
-          "question": "We play tennis ___ friends.",
+          "question": "Juan listens ___ music in the car.",
           "options": [
-            "with",
-            "and",
-            "to",
-            "of"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "I don’t ___ football.",
-          "options": [
-            "likes",
-            "like",
-            "liking",
-            "to like"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "What do you do ___ the weekend? (forma británica)",
-          "options": [
-            "in",
-            "on",
             "at",
-            "to"
+            "on",
+            "to",
+            "with"
           ],
-          "correct_idx": 2
+          "correct_idx": 2,
+          "why": "Escuchar algo: listen to."
         }
       ],
       "vocab": [
@@ -15629,104 +15690,114 @@
       ],
       "quiz": [
         {
-          "question": "Excuse me, ___ is the station?",
+          "question": "A: How do you go to work? B: ___",
           "options": [
-            "what",
-            "where",
-            "how",
-            "who"
+            "In car.",
+            "With car.",
+            "By car.",
+            "On car."
           ],
-          "correct_idx": 1
+          "correct_idx": 2,
+          "why": "El medio de transporte va con by y sin the: by car, by bus."
         },
         {
-          "question": "How ___ I get to the airport?",
+          "question": "«I’m lost» significa…",
           "options": [
-            "do",
-            "does",
-            "am",
-            "is"
+            "Estoy cansado o cansada",
+            "Llego tarde",
+            "Estoy cerca",
+            "Estoy perdido o perdida"
           ],
-          "correct_idx": 0
+          "correct_idx": 3,
+          "why": "Lost = perdido."
         },
         {
-          "question": "Go ___ and turn left. (sigue derecho)",
+          "question": "Elige la indicación correcta.",
           "options": [
-            "straight",
-            "right",
-            "left",
-            "near"
+            "Turn to left at the bank.",
+            "Left turn at the bank.",
+            "Turn left at the bank.",
+            "You turn the left at the bank."
           ],
-          "correct_idx": 0
+          "correct_idx": 2,
+          "why": "Turn left / turn right, sin to ni the."
         },
         {
-          "question": "The bank is ___ the right.",
+          "question": "«Take the bus» significa…",
           "options": [
-            "in",
-            "on",
-            "at",
-            "to"
+            "perder el bus",
+            "esperar el bus",
+            "tomar el bus",
+            "bajarse del bus"
           ],
-          "correct_idx": 1
+          "correct_idx": 2,
+          "why": "Take = tomar un transporte; get off = bajarse."
         },
         {
-          "question": "I ___ the bus to work.",
+          "question": "A: Where is the hotel? B: ___",
+          "options": [
+            "It’s by car.",
+            "Yes, it is.",
+            "It’s ten o’clock.",
+            "It’s next to the park."
+          ],
+          "correct_idx": 3,
+          "why": "Where pregunta por un lugar: It’s + preposición + lugar."
+        },
+        {
+          "question": "¿Cómo pides ayuda con cortesía?",
+          "options": [
+            "Could you help me, please?",
+            "You help me, please?",
+            "Could you helps me, please?",
+            "Help me you could?"
+          ],
+          "correct_idx": 0,
+          "why": "Could you + verbo base…? es la forma cortés."
+        },
+        {
+          "question": "«Walk» significa…",
+          "options": [
+            "caminar",
+            "manejar",
+            "viajar",
+            "correr"
+          ],
+          "correct_idx": 0,
+          "why": "Walk = caminar; travel = viajar."
+        },
+        {
+          "question": "The airport is ___ from here. Take a taxi.",
+          "options": [
+            "near",
+            "far",
+            "next",
+            "straight"
+          ],
+          "correct_idx": 1,
+          "why": "Si necesitas un taxi, está lejos: far from here."
+        },
+        {
+          "question": "I ___ off the bus at the station.",
           "options": [
             "take",
-            "takes",
-            "taking",
-            "am take"
+            "get",
+            "go",
+            "do"
           ],
-          "correct_idx": 0
+          "correct_idx": 1,
+          "why": "Bajarse de un transporte: get off."
         },
         {
-          "question": "___ me, where is the park?",
+          "question": "¿Qué significa «It’s on the corner»?",
           "options": [
-            "Excuse",
-            "Sorry",
-            "Please",
-            "Hello"
+            "Está al lado",
+            "Está derecho",
+            "Está lejos",
+            "Está en la esquina"
           ],
-          "correct_idx": 0
-        },
-        {
-          "question": "It’s ___ to the supermarket.",
-          "options": [
-            "next",
-            "nearby",
-            "on",
-            "between"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "Turn ___ at the school.",
-          "options": [
-            "straight",
-            "left",
-            "near",
-            "far"
-          ],
-          "correct_idx": 1
-        },
-        {
-          "question": "I go ___ train.",
-          "options": [
-            "by",
-            "in",
-            "on",
-            "with"
-          ],
-          "correct_idx": 0
-        },
-        {
-          "question": "The station is ___ the left.",
-          "options": [
-            "in",
-            "on",
-            "at",
-            "to"
-          ],
-          "correct_idx": 1
+          "correct_idx": 3,
+          "why": "On the corner = en la esquina."
         }
       ],
       "vocab": [
@@ -18162,104 +18233,114 @@
       ],
       "quiz": [
         {
-          "question": "My name ___ Ana.",
+          "question": "My name ___ Pablo and I ___ 30.",
           "options": [
-            "am",
-            "is",
-            "are",
-            "be"
+            "is / am",
+            "am / is",
+            "are / is",
+            "is / have"
           ],
-          "correct_idx": 1
+          "correct_idx": 0,
+          "why": "My name = it: is. La edad con I: am."
         },
         {
-          "question": "I ___ 28 years old.",
+          "question": "¿Cómo dices «Mi hermano trabaja en un hospital»?",
           "options": [
-            "have",
-            "am",
-            "has",
-            "is"
+            "My brother work in a hospital.",
+            "My brother works in a hospital.",
+            "My brother is work in a hospital.",
+            "My brother working in a hospital."
           ],
-          "correct_idx": 1
+          "correct_idx": 1,
+          "why": "My brother = he: works, con -s."
         },
         {
-          "question": "She ___ to work at 8.",
+          "question": "___ there two parks in your city?",
           "options": [
-            "go",
-            "goes",
-            "going",
-            "is go"
+            "Are",
+            "Is",
+            "Do",
+            "Have"
           ],
-          "correct_idx": 1
+          "correct_idx": 0,
+          "why": "Dos parques: plural, Are there…?"
         },
         {
-          "question": "There ___ two bedrooms.",
+          "question": "What does she do on Saturdays? — She ___ football.",
           "options": [
-            "is",
-            "are",
-            "have",
-            "has"
+            "play",
+            "plays",
+            "is play",
+            "playing"
           ],
-          "correct_idx": 1
+          "correct_idx": 1,
+          "why": "Con she el verbo lleva -s: plays."
         },
         {
-          "question": "I ___ like fish.",
+          "question": "Elige la frase correcta.",
           "options": [
-            "don’t",
-            "doesn’t",
-            "not",
-            "am not"
+            "I like would a sandwich, please.",
+            "I’d liking a sandwich, please.",
+            "I’d like a sandwich, please.",
+            "I’d likes a sandwich, please."
           ],
-          "correct_idx": 0
+          "correct_idx": 2,
+          "why": "I’d like + cosa: quisiera."
         },
         {
-          "question": "How ___ I get to the station?",
+          "question": "This is my father. ___ name is Luis.",
           "options": [
-            "do",
-            "does",
-            "am",
-            "is"
+            "Her",
+            "My",
+            "Their",
+            "His"
           ],
-          "correct_idx": 0
+          "correct_idx": 3,
+          "why": "Hablas de tu padre: his."
         },
         {
-          "question": "This is ___ mother.",
+          "question": "A: How do I get to the bank? B: ___",
           "options": [
-            "I",
-            "my",
-            "me",
-            "mine"
+            "Go straight and turn right.",
+            "By bus every day.",
+            "It’s three dollars.",
+            "I get up at 7."
           ],
-          "correct_idx": 1
+          "correct_idx": 0,
+          "why": "Te piden una dirección: responde con indicaciones."
         },
         {
-          "question": "Do you ___ coffee?",
+          "question": "Elige la pregunta correcta.",
           "options": [
-            "likes",
-            "like",
-            "liking",
-            "to like"
+            "Where you live?",
+            "Where does you live?",
+            "Where do you live?",
+            "Where are you live?"
           ],
-          "correct_idx": 1
+          "correct_idx": 2,
+          "why": "Pregunta con you: Where do you + verbo base?"
         },
         {
-          "question": "I get up ___ 7.",
+          "question": "«I don’t like coffee» significa…",
           "options": [
-            "in",
-            "on",
-            "at",
-            "to"
+            "Me gusta el café",
+            "No tomo café hoy",
+            "¿Te gusta el café?",
+            "No me gusta el café"
           ],
-          "correct_idx": 2
+          "correct_idx": 3,
+          "why": "Don’t like = no me gusta."
         },
         {
-          "question": "The bank is ___ to the park.",
+          "question": "¿Cómo dices «Hay una cocina y dos dormitorios»?",
           "options": [
-            "next",
-            "nearby",
-            "on",
-            "between"
+            "There are a kitchen and two bedroom.",
+            "Is a kitchen and two bedrooms.",
+            "There is kitchen and two bedrooms.",
+            "There is a kitchen and two bedrooms."
           ],
-          "correct_idx": 0
+          "correct_idx": 3,
+          "why": "There is + a kitchen (el primer elemento es singular), y two bedrooms en plural."
         }
       ],
       "vocab": [
