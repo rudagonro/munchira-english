@@ -12,145 +12,144 @@
         "letter": "A",
         "guide": "éi",
         "tip": "No es «a»: suena como «ei» en «rey».",
-        "say": "Letter A."
+        "say": "A"
       },
       {
         "letter": "B",
         "guide": "bi",
-        "say": "Letter B."
+        "say": "B"
       },
       {
         "letter": "C",
         "guide": "si",
-        "say": "Letter C."
+        "say": "C"
       },
       {
         "letter": "D",
         "guide": "di",
-        "say": "Letter D."
+        "say": "D"
       },
       {
         "letter": "E",
         "guide": "i",
         "tip": "La E en inglés suena «i». Es la que más se confunde con la I.",
-        "say": "Letter E."
+        "say": "E"
       },
       {
         "letter": "F",
         "guide": "ef",
-        "say": "Letter F."
+        "say": "F"
       },
       {
         "letter": "G",
         "guide": "yi",
         "tip": "Suena como «yi» suave (casi «dyi»). No la confundas con la J.",
-        "say": "Letter G."
+        "say": "G"
       },
       {
         "letter": "H",
         "guide": "éich",
         "tip": "Se dice «éich»; nunca es muda al deletrear.",
-        "say": "Letter H."
+        "say": "H"
       },
       {
         "letter": "I",
         "guide": "ái",
         "tip": "La I en inglés suena «ai», como en «hay».",
-        "say": "Letter I."
+        "say": "I"
       },
       {
         "letter": "J",
         "guide": "yéi",
         "tip": "Suena «yei». La G es «yi» y la J es «yei».",
-        "say": "Letter J."
+        "say": "J"
       },
       {
         "letter": "K",
         "guide": "kéi",
-        "say": "Letter K."
+        "say": "K"
       },
       {
         "letter": "L",
         "guide": "el",
-        "say": "Letter L."
+        "say": "L"
       },
       {
         "letter": "M",
         "guide": "em",
-        "say": "Letter M."
+        "say": "M"
       },
       {
         "letter": "N",
         "guide": "en",
-        "say": "Letter N."
+        "say": "N"
       },
       {
         "letter": "O",
         "guide": "óu",
         "tip": "Como «ou», con la boca redonda.",
-        "say": "Letter O."
+        "say": "O"
       },
       {
         "letter": "P",
         "guide": "pi",
-        "say": "Letter P."
+        "say": "P"
       },
       {
         "letter": "Q",
         "guide": "kiú",
-        "say": "Letter Q."
+        "say": "Q"
       },
       {
         "letter": "R",
         "guide": "ar",
         "tip": "En americano se oye la r al final («ar»); en británico casi no («a»).",
-        "say": "Letter R."
+        "say": "R"
       },
       {
         "letter": "S",
         "guide": "es",
-        "say": "Letter S."
+        "say": "S"
       },
       {
         "letter": "T",
         "guide": "ti",
-        "say": "Letter T."
+        "say": "T"
       },
       {
         "letter": "U",
         "guide": "iú",
         "tip": "Suena «iu», como en «you».",
-        "say": "Letter U."
+        "say": "U"
       },
       {
         "letter": "V",
         "guide": "vi",
         "tip": "Muerde suave el labio de abajo; no es «bi».",
-        "say": "Letter V."
+        "say": "V"
       },
       {
         "letter": "W",
         "guide": "dábel-iu",
         "tip": "Literalmente «doble u».",
-        "say": "Letter W."
+        "say": "W"
       },
       {
         "letter": "X",
         "guide": "eks",
-        "say": "Letter X."
+        "say": "X"
       },
       {
         "letter": "Y",
         "guide": "uái",
         "tip": "Suena «uai». No es «i griega».",
-        "say": "Letter Y."
+        "say": "Y"
       },
       {
         "letter": "Z",
         "guide": "zi (EE. UU.) / zed (Reino Unido)",
         "tip": "Es la única letra que cambia de nombre: zee en EE. UU., zed en el Reino Unido.",
-        "sayGb": "Letter zed.",
-        "say": "Letter Z."
+        "say": "Z"
       }
     ],
     "confusions": [
