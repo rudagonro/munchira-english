@@ -11,21 +11,24 @@ export const STATUS = {
   ACTIVE: 'active',
   AT_RISK: 'at_risk',
   BLOCKED: 'checkpoint_blocked',
+  WAITLIST: 'waitlist',
   NO_DIAGNOSTIC: 'no_diagnostic',
 }
 
 export const STATUS_LABELS = {
   [STATUS.ACTIVE]: 'Al día',
   [STATUS.AT_RISK]: 'En riesgo',
-  [STATUS.BLOCKED]: 'Checkpoint pendiente',
-  [STATUS.NO_DIAGNOSTIC]: 'Sin diagnóstico',
+  [STATUS.BLOCKED]: 'Examen pendiente (curso anterior)',
+  [STATUS.WAITLIST]: 'Lista de espera',
+  [STATUS.NO_DIAGNOSTIC]: 'Sin nivel',
 }
 
 export const STATUS_HELP = {
-  [STATUS.ACTIVE]: `Tuvo actividad en los últimos ${INACTIVE_DAYS} días y no tiene checkpoints pendientes.`,
+  [STATUS.ACTIVE]: `Tuvo actividad en los últimos ${INACTIVE_DAYS} días.`,
   [STATUS.AT_RISK]: `Sin actividad en ${INACTIVE_DAYS} días o más (o nunca ha estudiado).`,
-  [STATUS.BLOCKED]: 'Reprobó un checkpoint y aún no lo aprueba: no puede avanzar de módulo.',
-  [STATUS.NO_DIAGNOSTIC]: 'Todavía no tiene ciclo asignado porque no ha hecho el diagnóstico.',
+  [STATUS.BLOCKED]: 'Solo con el avance anterior (sin la fase 2 aplicada): reprobó un examen intermedio del curso anterior.',
+  [STATUS.WAITLIST]: 'Su nivel (A2–C2) está en preparación: espera el nuevo curso por unidades. Su avance anterior se conserva.',
+  [STATUS.NO_DIAGNOSTIC]: 'Todavía no empezó: no eligió A1 ni hizo la prueba de nivel.',
 }
 
 const DAY_MS = 24 * 60 * 60 * 1000
@@ -44,12 +47,23 @@ export function formatLastActivity(iso, now = new Date()) {
   return `Hace ${days} días`
 }
 
+/** Avance del nivel en %: unidades aprobadas si hay avance por unidades; null en lista de espera. */
 export function progressPct(row) {
+  if (row.waitlisted) return null
+  if (row.course) return row.course.total > 0 ? Math.round((100 * row.course.completed) / row.course.total) : 0
   return row.modules_total > 0 ? Math.round((100 * row.modules_completed) / row.modules_total) : 0
+}
+
+/** «3 de 9 unidades» o, sin la fase 2, «1 de 4 módulos». */
+export function progressLabel(row) {
+  if (row.waitlisted) return 'En lista de espera'
+  if (row.course) return `${row.course.completed} de ${row.course.total} unidades`
+  return `${row.modules_completed} de ${row.modules_total} módulos (curso anterior)`
 }
 
 export function statusOf(row, now = new Date()) {
   if (!row.cefr_level) return STATUS.NO_DIAGNOSTIC
+  if (row.waitlisted) return STATUS.WAITLIST
   const days = daysSince(row.last_activity, now)
   if (days === null || days >= INACTIVE_DAYS) return STATUS.AT_RISK
   if (row.checkpoint_blocked) return STATUS.BLOCKED
@@ -61,7 +75,7 @@ const mean = (values) => (values.length ? values.reduce((a, b) => a + b, 0) / va
 export function computeKpis(rows, now = new Date()) {
   const statuses = rows.map((r) => statusOf(r, now))
   const enrolled = rows.filter((r) => r.cefr_level)
-  const avgProgress = mean(enrolled.map(progressPct))
+  const avgProgress = mean(enrolled.map(progressPct).filter((pct) => pct !== null))
   const avgScore = mean(rows.filter((r) => r.avg_quiz_score !== null).map((r) => Number(r.avg_quiz_score)))
   return {
     total: rows.length,
@@ -71,6 +85,7 @@ export function computeKpis(rows, now = new Date()) {
     }).length,
     atRisk: statuses.filter((s) => s === STATUS.AT_RISK).length,
     blocked: statuses.filter((s) => s === STATUS.BLOCKED).length,
+    waitlist: statuses.filter((s) => s === STATUS.WAITLIST).length,
     noDiagnostic: statuses.filter((s) => s === STATUS.NO_DIAGNOSTIC).length,
     avgProgress: avgProgress === null ? null : Math.round(avgProgress),
     avgScore: avgScore === null ? null : Math.round(avgScore * 10) / 10,
@@ -130,12 +145,12 @@ function csvCell(value) {
 
 export function toCsv(rows, now = new Date()) {
   const header = [
-    'Estudiante', 'Nivel', 'Módulos completados', 'Módulos totales', 'Avance %',
-    'Promedio quizzes', 'Habilidad más débil', 'Palabras estudiadas', 'Palabras por repasar',
+    'Estudiante', 'Nivel', 'Avance', 'Avance %',
+    'Promedio cuestionarios', 'Habilidad más débil', 'Palabras estudiadas', 'Palabras por repasar',
     'Estado', 'Última actividad',
   ]
   const lines = rows.map((r) => [
-    r.full_name, r.cefr_level ?? '', r.modules_completed, r.modules_total, progressPct(r),
+    r.full_name, r.cefr_level ?? '', r.cefr_level ? progressLabel(r) : '', progressPct(r) ?? '',
     r.avg_quiz_score ?? '', r.weakest_skill ?? '', r.words_studied, r.words_due,
     STATUS_LABELS[statusOf(r, now)], r.last_activity ? new Date(r.last_activity).toISOString().slice(0, 10) : '',
   ])
@@ -145,10 +160,10 @@ export function toCsv(rows, now = new Date()) {
 export const SKILL_LABELS = {
   grammar: 'Gramática',
   vocabulary: 'Vocabulario',
-  reading: 'Reading',
-  listening: 'Listening',
-  writing: 'Writing',
-  speaking: 'Speaking',
+  reading: 'Lectura',
+  listening: 'Escucha',
+  writing: 'Escritura',
+  speaking: 'Expresión oral',
   pronunciation: 'Pronunciación',
 }
 

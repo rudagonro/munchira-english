@@ -1,22 +1,23 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useAuth } from '../contexts/auth-context'
-import { fetchContentStatus, fetchStudentDetail, fetchTeacherOverview } from '../services/teacherService'
+import { fetchContentStatus, fetchCourseProgress, fetchStudentDetail, fetchTeacherOverview } from '../services/teacherService'
+import { mergeCourseProgress, UNIT_STATUS_LABELS } from '../data/courseProgress'
 import {
   INACTIVE_DAYS, LEVELS, NO_LEVEL, SKILL_LABELS, STATUS, STATUS_HELP, STATUS_LABELS,
-  computeKpis, filterRows, formatLastActivity, levelDistribution, progressPct, scoreBand,
+  computeKpis, filterRows, formatLastActivity, levelDistribution, progressLabel, progressPct, scoreBand,
   sortRows, statusOf, toCsv,
 } from '../data/teacherStats'
 import { LEVEL_NAMES } from '../data/diagnosticBank'
 
 const COLUMNS = [
   { key: 'name', label: 'Estudiante', help: 'Nombre del estudiante. Pulsa para ver el detalle.' },
-  { key: 'level', label: 'Nivel', help: 'Nivel CEFR del ciclo en el que está inscrito.' },
-  { key: 'progress', label: 'Avance', help: 'Módulos completados del ciclo actual.' },
-  { key: 'score', label: 'Promedio', help: 'Promedio de los quizzes de módulo (0–100).' },
+  { key: 'level', label: 'Nivel', help: 'Nivel MCER en el que está inscrito.' },
+  { key: 'progress', label: 'Avance', help: 'Unidades aprobadas de su nivel (Unidad 0 y Unidades 1 a 8).' },
+  { key: 'score', label: 'Promedio', help: 'Promedio de los cuestionarios de unidad (0–100).' },
   { key: 'weak', label: 'Punto débil', help: 'Habilidad con el promedio más bajo.', sortable: false },
   { key: 'wordsDue', label: 'Por repasar', help: 'Palabras de vocabulario cuyo repaso ya toca.' },
   { key: 'activity', label: 'Actividad', help: 'Última vez que estudió algo.' },
-  { key: 'status', label: 'Estado', help: 'Resumen: al día, en riesgo o con checkpoint pendiente.', sortable: false },
+  { key: 'status', label: 'Estado', help: 'Resumen: al día, en riesgo o en lista de espera.', sortable: false },
 ]
 
 const formatDate = (iso) => (iso ? new Date(iso).toLocaleDateString('es', { day: '2-digit', month: 'short', year: 'numeric' }) : '—')
@@ -24,18 +25,19 @@ const formatScore = (n) => (n === null || n === undefined ? '—' : `${Number(n)
 
 export default function TeacherPanel() {
   const { profile, role } = useAuth()
-  const [state, setState] = useState({ loading: true, error: '', rows: [], loadedAt: null })
+  const [state, setState] = useState({ loading: true, error: '', rows: [], loadedAt: null, courseMissing: false })
   const [filters, setFilters] = useState({ query: '', level: '', status: '' })
   const [sort, setSort] = useState({ key: 'activity', dir: 'asc' })
   const [selected, setSelected] = useState(null) // { id, trigger }
 
   const fetchRows = useCallback(async () => {
-    const { data, error } = await fetchTeacherOverview()
+    const [{ data, error }, course] = await Promise.all([fetchTeacherOverview(), fetchCourseProgress()])
     return {
       loading: false,
-      error: error ? 'No se pudo cargar el panel. Verifica tu conexión e inténtalo de nuevo.' : '',
-      rows: data,
+      error: error || course.error ? 'No se pudo cargar el panel. Verifica tu conexión e inténtalo de nuevo.' : '',
+      rows: mergeCourseProgress(data, course.missing || course.error ? null : course.data),
       loadedAt: new Date(),
+      courseMissing: course.missing,
     }
   }, [])
 
@@ -105,6 +107,7 @@ export default function TeacherPanel() {
       </header>
 
       {state.error && <div className="error-banner" role="alert">{state.error}</div>}
+      {state.courseMissing && <div className="error-banner" role="status">El avance por unidades todavía no está habilitado en la base de datos (migración de la fase 2 pendiente). Mientras tanto se muestra el avance del curso anterior.</div>}
 
       {!state.error && rows.length === 0 && (
         <div className="tp-empty">
@@ -126,13 +129,16 @@ export default function TeacherPanel() {
             <Kpi label="En riesgo" value={kpis.atRisk} tone={kpis.atRisk ? 'warn' : ''}
               help={STATUS_HELP[STATUS.AT_RISK]} active={filters.status === STATUS.AT_RISK}
               onClick={() => setStatusFilter(STATUS.AT_RISK)} />
-            <Kpi label="Checkpoint pendiente" value={kpis.blocked} tone={kpis.blocked ? 'warn' : ''}
+            <Kpi label="Lista de espera" value={kpis.waitlist}
+              help={STATUS_HELP[STATUS.WAITLIST]} active={filters.status === STATUS.WAITLIST}
+              onClick={() => setStatusFilter(STATUS.WAITLIST)} />
+            {kpis.blocked > 0 && <Kpi label="Examen pendiente" value={kpis.blocked} tone="warn"
               help={STATUS_HELP[STATUS.BLOCKED]} active={filters.status === STATUS.BLOCKED}
-              onClick={() => setStatusFilter(STATUS.BLOCKED)} />
+              onClick={() => setStatusFilter(STATUS.BLOCKED)} />}
             <Kpi label="Avance medio" value={kpis.avgProgress === null ? '—' : `${kpis.avgProgress}%`}
-              help="Promedio de módulos completados entre los estudiantes con ciclo." />
-            <Kpi label="Promedio quizzes" value={kpis.avgScore === null ? '—' : `${kpis.avgScore}%`}
-              help="Promedio de las notas de quiz de todos los estudiantes." />
+              help="Promedio de unidades aprobadas entre los estudiantes que estudian su nivel." />
+            <Kpi label="Promedio cuestionarios" value={kpis.avgScore === null ? '—' : `${kpis.avgScore}%`}
+              help="Promedio de las notas de cuestionario de todos los estudiantes." />
           </section>
 
           <section className="tp-card" aria-labelledby="tp-dist-title">
@@ -226,12 +232,12 @@ export default function TeacherPanel() {
                         </th>
                         <td>{r.cefr_level ? <span className="tp-level">{r.cefr_level}</span> : '—'}</td>
                         <td>
-                          {r.cefr_level ? (
-                            <div className="tp-progress" title={`${r.modules_completed} de ${r.modules_total} módulos`}>
+                          {r.cefr_level && pct !== null ? (
+                            <div className="tp-progress" title={progressLabel(r)}>
                               <span className="tp-bar" aria-hidden="true"><span style={{ width: `${pct}%` }} /></span>
                               <span>{pct}%</span>
                             </div>
-                          ) : '—'}
+                          ) : r.waitlisted ? <span className="tp-hint">Lista de espera</span> : '—'}
                         </td>
                         <td><ScoreChip score={r.avg_quiz_score === null ? null : Number(r.avg_quiz_score)} /></td>
                         <td>{r.weakest_skill ? SKILL_LABELS[r.weakest_skill] ?? r.weakest_skill : '—'}</td>
@@ -259,6 +265,8 @@ export default function TeacherPanel() {
         <StudentDetail
           key={selected.id}
           studentId={selected.id}
+          course={rows.find((r) => r.student_id === selected.id)?.course ?? null}
+          waitlisted={Boolean(rows.find((r) => r.student_id === selected.id)?.waitlisted)}
           now={now}
           onClose={() => { const t = selected.trigger; setSelected(null); t?.focus() }}
         />
@@ -285,7 +293,7 @@ function ScoreChip({ score }) {
   return <span className={`tp-score ${band}`} title={`Rendimiento ${word}`}>{formatScore(score)} <span className="sr-only">({word})</span></span>
 }
 
-function StudentDetail({ studentId, now, onClose }) {
+function StudentDetail({ studentId, course, waitlisted, now, onClose }) {
   const [state, setState] = useState({ loading: true, error: '', data: null })
   const headingRef = useRef(null)
 
@@ -315,19 +323,20 @@ function StudentDetail({ studentId, now, onClose }) {
 
       {state.loading && <p className="loading-text">Cargando detalle…</p>}
       {state.error && <div className="error-banner" role="alert">{state.error}</div>}
+      {state.courseMissing && <div className="error-banner" role="status">El avance por unidades todavía no está habilitado en la base de datos (migración de la fase 2 pendiente). Mientras tanto se muestra el avance del curso anterior.</div>}
 
       {d && (
         <div className="tp-detail-grid">
           <div className="tp-panel">
-            <h3>Ciclo actual</h3>
+            <h3>Nivel actual</h3>
             {d.enrollment?.cefr_level ? (
               <p><strong>{d.enrollment.cefr_level}</strong> · {d.enrollment.title}<br />
-                <span className="tp-hint">Inscrito desde {formatDate(d.enrollment.started_at)} · {d.enrollment.status === 'active' ? 'en curso' : 'finalizado'}</span></p>
-            ) : <p className="tp-hint">Todavía no hizo el diagnóstico.</p>}
+                <span className="tp-hint">Inscrito desde {formatDate(d.enrollment.started_at)} · {waitlisted ? 'en lista de espera' : d.enrollment.status === 'active' ? 'en curso' : 'finalizado'}</span></p>
+            ) : <p className="tp-hint">Todavía no empezó: no eligió A1 ni hizo la prueba de nivel.</p>}
             {latest && (
               <>
-                <h3>Último diagnóstico · {latest.cefr_level} ({Number(latest.final_score).toFixed(0)}/100)</h3>
-                {[['Gramática/Vocab.', latest.gv_pct], ['Reading', latest.reading_pct], ['Listening', latest.listening_pct], ['Writing', latest.writing_pct]].map(([label, pct]) => (
+                <h3>Última prueba de nivel · {latest.cefr_level} ({Number(latest.final_score).toFixed(0)}/100)</h3>
+                {[['Gramática y vocabulario', latest.gv_pct], ['Lectura', latest.reading_pct], ['Escucha', latest.listening_pct], ['Escritura', latest.writing_pct]].map(([label, pct]) => (
                   <MiniBar key={label} label={label} pct={Number(pct)} />
                 ))}
                 <p className="tp-hint">{formatDate(latest.taken_at)} · {d.diagnostics.length} intento(s) recientes</p>
@@ -336,7 +345,23 @@ function StudentDetail({ studentId, now, onClose }) {
           </div>
 
           <div className="tp-panel">
-            <h3>Módulos</h3>
+            {course && <>
+              <h3>Unidades de {course.level} · {course.completed} de {course.total} aprobadas</h3>
+              <ol className="tp-list" start={0}>
+                {course.units.map((u) => (
+                  <li key={u.number}>
+                    <span>Unidad {u.number}</span>
+                    {u.status === 'completed'
+                      ? <ScoreChip score={u.bestScore === null ? null : Number(u.bestScore)} />
+                      : <span className="tp-hint">{UNIT_STATUS_LABELS[u.status]}{u.bestScore !== null ? ` · mejor nota ${u.bestScore}%` : ''}</span>}
+                  </li>
+                ))}
+              </ol>
+              <p className="tp-hint">{course.wordsStudied} palabras de {course.level} estudiadas · {course.wordsDue} por repasar hoy</p>
+            </>}
+            {waitlisted && <p className="tp-hint">Su nivel está en preparación: está en la lista de espera. Su avance anterior se conserva.</p>}
+            <details open={!course && !waitlisted}>
+            <summary><h3 style={{ display: 'inline' }}>Curso anterior (módulos)</h3></summary>
             {d.modules.length === 0 ? <p className="tp-hint">Sin módulos.</p> : (
               <ol className="tp-list">
                 {d.modules.map((m) => (
@@ -351,7 +376,7 @@ function StudentDetail({ studentId, now, onClose }) {
             )}
             {d.checkpoints.length > 0 && (
               <>
-                <h3>Checkpoints</h3>
+                <h3>Exámenes intermedios del curso anterior</h3>
                 <ul className="tp-list">
                   {d.checkpoints.map((c) => {
                     const passed = c.attempts.some((a) => a.passed)
@@ -367,16 +392,17 @@ function StudentDetail({ studentId, now, onClose }) {
                 </ul>
               </>
             )}
+            </details>
           </div>
 
           <div className="tp-panel">
-            <h3>Habilidades (promedio de quizzes)</h3>
-            {d.skills.length === 0 ? <p className="tp-hint">Aún no hay quizzes completados.</p> : (
+            <h3>Habilidades (curso anterior)</h3>
+            {d.skills.length === 0 ? <p className="tp-hint">Sin cuestionarios del curso anterior.</p> : (
               d.skills.map((s, i) => (
                 <MiniBar key={s.skill_type} label={`${SKILL_LABELS[s.skill_type] ?? s.skill_type}${i === 0 && d.skills.length > 1 ? ' · punto débil' : ''}`} pct={Number(s.avg_score)} />
               ))
             )}
-            <h3>Vocabulario</h3>
+            <h3>Vocabulario{course ? ' (curso anterior)' : ''}</h3>
             {vocab && Number(vocab.studied) > 0 ? (
               <ul className="tp-stats">
                 <li><strong>{vocab.studied}</strong> palabras estudiadas</li>
@@ -449,7 +475,7 @@ function ContentStatus() {
             <li key={row.cefr_level}>
               <div className="tp-content-row">
                 <strong>{row.cefr_level}</strong>
-                <span className="tp-hint">{row.published_modules} de {row.total_modules} módulos publicados</span>
+                <span className="tp-hint">{row.cefr_level === 'A1' ? 'Curso por unidades publicado (Unidad 0 y 1–8) · ' : 'Nivel en preparación (lista de espera) · '}{row.published_modules} de {row.total_modules} módulos anteriores</span>
                 <span className={`tp-badge ${tone}`}>{label}</span>
               </div>
               {!live && row.problems.length > 0 && (
