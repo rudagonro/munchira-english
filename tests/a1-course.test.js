@@ -62,7 +62,19 @@ test('el progreso antiguo se reconoce pero nunca completa una unidad: queda list
   assert.ok(summary.units.every(unit => unitStatusText(unit) === 'Teoría reconocida · lista para el cuestionario'))
   assert.equal(A1_LEGACY_LABEL, 'Reconocido de tus módulos anteriores')
   assert.equal(summary.nextAction.text, 'Tu teoría de la Unidad 1 está reconocida: solo te falta su cuestionario final')
-  assert.equal(summary.nextAction.path, '/cursos/A1/unidad/1')
+  assert.equal(summary.nextAction.path, '/cursos/A1/unidad/1?paso=cuestionario')
+})
+
+test('el botón del cuestionario abre el cuestionario aunque haya un paso anterior guardado, sin saltarse práctica pendiente', async () => {
+  const { restoreLessonProgress } = await import('../src/public/lessonDraftProgress.js')
+  const all = new Set(LESSON_STEPS.filter(step => step.id !== 'summary').map(step => step.id))
+  assert.equal(LESSON_STEPS[restoreLessonProgress(LESSON_STEPS.length - 1, LESSON_STEPS, all).step].id, 'summary')
+  const partial = new Set(['goal', 'vocab', 'explain'])
+  const { step } = restoreLessonProgress(LESSON_STEPS.length - 1, LESSON_STEPS, partial)
+  assert.notEqual(LESSON_STEPS[step].id, 'summary')
+  const completed = LESSON_STEPS.filter(s => s.id !== 'summary').map(s => s.id)
+  const pending = summarizeA1Course({ drafts: [{ lesson_key: 'unit:1', fields: { step: 2, 'step.completed': completed } }] })
+  assert.equal(pending.nextAction.path, '/cursos/A1/unidad/1?paso=cuestionario')
 })
 
 test('aprobar 3 de 4 módulos antiguos ya no marca 4 de 8 unidades como completadas', () => {

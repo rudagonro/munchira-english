@@ -83,12 +83,15 @@ export function summarizeA1Course({ unitRows = [], drafts = [], legacy = new Map
 
 export function nextAction(next, total = A1_UNIT_COUNT) {
   if (!next) return { text: `Completaste las ${total} unidades de A1`, cta: 'Repasar el curso', path: '/cycle' }
-  if (next.status === 'quiz-pending' && next.fromLegacy) return { text: `Tu teoría de la Unidad ${next.number} está reconocida: solo te falta su cuestionario final`, cta: `Hacer el cuestionario de la Unidad ${next.number}`, path: next.path }
-  if (next.status === 'quiz-pending') return { text: `Te falta el cuestionario final de la Unidad ${next.number}`, cta: `Hacer el cuestionario de la Unidad ${next.number}`, path: next.path }
+  // Explicit quiz entry: the player opens the final quiz even if a review left an earlier step saved.
+  const quizPath = `${next.path}?${A1_QUIZ_PARAM}`
+  if (next.status === 'quiz-pending' && next.fromLegacy) return { text: `Tu teoría de la Unidad ${next.number} está reconocida: solo te falta su cuestionario final`, cta: `Hacer el cuestionario de la Unidad ${next.number}`, path: quizPath }
+  if (next.status === 'quiz-pending') return { text: `Te falta el cuestionario final de la Unidad ${next.number}`, cta: `Hacer el cuestionario de la Unidad ${next.number}`, path: quizPath }
   if (next.status === 'in-progress') return { text: `Vas por la ${next.label}`, cta: `Continuar Unidad ${next.number}`, path: next.path }
   return { text: `Tu siguiente paso es la ${next.label}`, cta: `Empezar Unidad ${next.number}`, path: next.path }
 }
 
+export const A1_QUIZ_PARAM = 'paso=cuestionario'
 export const A1_LEGACY_LABEL = 'Reconocido de tus módulos anteriores'
 const A1_STATUS = { completed: 'Completada', 'quiz-pending': 'Falta el cuestionario final', 'in-progress': 'En curso', 'not-started': 'Sin empezar' }
 
