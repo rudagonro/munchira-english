@@ -51,7 +51,7 @@ test('una unidad empezada continúa en el paso guardado', () => {
 })
 
 test('el progreso antiguo se conserva: módulos aprobados completan sus unidades sin tocar los registros', () => {
-  const moduleProgress = [1, 2, 3, 4].map(order => ({ module_id: `m${order}`, status: 'completed', best_score: 90 }))
+  const moduleProgress = [1, 2, 3, 4].map(order => ({ module_id: `m${order}`, status: 'completed', quiz_score: 90 }))
   const input = { modules, lessons, completedLessonIds: [], moduleProgress }
   const snapshot = JSON.stringify(input)
   const legacy = legacyUnitCredit(input)
@@ -72,7 +72,7 @@ test('lecciones antiguas estudiadas sin el cuestionario dejan la unidad lista pa
 })
 
 test('una nota nueva de unidad no se pierde frente al crédito antiguo', () => {
-  const legacy = legacyUnitCredit({ modules, lessons, completedLessonIds: [], moduleProgress: [{ module_id: 'm1', status: 'completed' }] })
+  const legacy = legacyUnitCredit({ modules, lessons, completedLessonIds: [], moduleProgress: [{ module_id: 'm1', status: 'completed', quiz_score: 80 }] })
   const summary = summarizeA1Course({ legacy, unitRows: [{ unit_number: 2, best_score: 95, completed_at: '2026-11-25' }] })
   assert.equal(summary.units[1].status, 'completed')
   assert.equal(summary.units[1].bestScore, 95)
@@ -91,4 +91,10 @@ test('cada unidad enseña a construir frases: regla, forma, afirmativa/negativa/
       assert.ok(isCorrectAnswer(rule.apply.answer.toLowerCase().replace(/[.?!]/g, ''), rule.apply.answer))
     }
   }
+})
+
+test('un cuestionario antiguo suspendido (menos de 70%) no da la unidad por aprobada', () => {
+  const moduleProgress = [1, 2, 3, 4].map(order => ({ module_id: `m${order}`, status: 'completed', quiz_score: 40 }))
+  const summary = summarizeA1Course({ legacy: legacyUnitCredit({ modules, lessons, completedLessonIds: [], moduleProgress }) })
+  assert.equal(summary.completed, 0)
 })

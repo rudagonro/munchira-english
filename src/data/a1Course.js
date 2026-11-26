@@ -24,7 +24,7 @@ export const A1_LEGACY_LESSON_MAP = {
 export function legacyUnitCredit({ modules = [], lessons = [], completedLessonIds = [], moduleProgress = [] } = {}, map = A1_LEGACY_LESSON_MAP) {
   const done = new Set(completedLessonIds)
   const moduleById = new Map(modules.map(module => [module.id, module]))
-  const passedModules = new Set(moduleProgress.filter(row => row.status === 'completed').map(row => row.module_id))
+  const passedModules = new Set(moduleProgress.filter(row => row.status === 'completed' && Number(row.quiz_score) >= 70).map(row => row.module_id))
   const credit = new Map()
   for (const lesson of lessons) {
     const module = moduleById.get(lesson.module_id)
