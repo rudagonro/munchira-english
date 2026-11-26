@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import PublicShell from './PublicShell'
 import Seo from './Seo'
 import ExerciseBlock from '../components/ExerciseBlock'
@@ -308,7 +308,9 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
   const steps = LESSON_STEPS.map(s => s.id === 'free' && lesson.number ? { ...s, label: 'Ponlo en práctica' } : s)
   const fields = useDraftFields()
   const credited = legacyTheory ? steps.filter(s => s.id !== 'summary').map(s => s.id) : []
-  const resumeStep = legacyTheory && !Object.hasOwn(fields, 'step') ? steps.length - 1 : savedStep
+  const wantsQuiz = new URLSearchParams(useLocation().search).get('paso') === 'cuestionario'
+  // restoreLessonProgress still steps back if required practice is pending, so the link never skips work.
+  const resumeStep = wantsQuiz || (legacyTheory && !Object.hasOwn(fields, 'step')) ? steps.length - 1 : savedStep
   const { step, completed } = restoreLessonProgress(resumeStep, steps, new Set([...completedIds, ...credited]), fields, lesson)
   const [visited, setVisited] = useState(() => new Set(Array.from({ length: step + 1 }, (_, index) => index)))
   const current = steps[step]
