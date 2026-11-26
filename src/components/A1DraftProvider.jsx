@@ -23,8 +23,12 @@ function DraftSession({ store, children }) {
     <Link to="/app">← Volver a mi panel</Link>
   </div>
   const labels = { 'load-error': 'No pudimos recuperar tu punto guardado: seguimos desde tu último avance confirmado. Lo intentaremos de nuevo automáticamente.', saved: '✓ Punto guardado en tu cuenta', saving: 'Guardando tu punto…', pending: 'Cambios pendientes de guardar…', offline: 'Sin guardar en el servidor. Tus cambios se conservan en este dispositivo y se reintentarán con conexión.', conflict: 'Hay otro avance guardado desde otra sesión. Tus cambios siguen en este dispositivo; no hemos sobrescrito el servidor.' }
+  // Al abrir sin cambios no se guardó nada: solo se dice «guardado» después de una escritura real.
+  const label = snapshot.status === 'saved'
+    ? snapshot.wrote ? labels.saved : snapshot.restored ? '✓ Seguimos desde tu punto guardado' : ''
+    : labels[snapshot.status]
   return <A1DraftContext.Provider value={store}>
-    <p className="ml-tip" role="status">{labels[snapshot.status]}</p>
+    {label && <p className="ml-tip" role="status">{label}</p>}
     {snapshot.status === 'conflict' && <button className="mp-button" type="button" onClick={() => { if (window.confirm('¿Cargar el punto del servidor y descartar los cambios pendientes de este dispositivo?')) void store.reloadServer() }}>Recuperar punto del servidor</button>}
     {children}
   </A1DraftContext.Provider>

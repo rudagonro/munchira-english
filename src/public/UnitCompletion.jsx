@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
 import { useDraftState } from '../contexts/a1-draft-context'
-import { useReviewMode } from '../contexts/review-mode-context'
+import { useNoSave } from '../contexts/review-mode-context'
 import ReviewAnswer from '../components/ReviewAnswer'
 import cycle from '../../content/cycles/A1.json'
 import './unit-quiz.css'
@@ -24,7 +24,7 @@ export default function UnitCompletion({ number, onPassed }) {
   const passedCallback = useRef(onPassed)
   useEffect(() => { passedCallback.current = onPassed }, [onPassed])
   const { user, loading } = useAuth()
-  const review = useReviewMode()
+  const review = useNoSave() // revisor o cuenta del personal: se corrige aquí y no se guarda nada
   const questions = cycle.modules.find(unit => unit.order === number)?.quiz ?? []
   const [answers, setAnswers] = useDraftState('quizV2.answers', {}) // «quiz.answers» era el cuestionario anterior: sus índices no valen aquí
   const [progress, setProgress] = useState(null)

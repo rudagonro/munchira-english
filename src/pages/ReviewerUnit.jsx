@@ -46,21 +46,24 @@ export default function ReviewerUnit() {
   const { number } = useParams()
   const starter = number === '0'
   const unit = starter ? null : getA1Unit(number)
-  // La barra queda fija arriba: su altura real (cambia al envolver en varias filas) desplaza el menú de pasos
-  // fijo y los destinos de los enlaces de sección, para que nada quede tapado.
+  // La barra queda fija bajo la navegación de la app (también fija). Sus alturas reales (cambian al envolver en
+  // varias filas o al abrir el menú en el celular) desplazan el menú de pasos y los destinos de las secciones.
   const bar = useRef(null)
-  const [barHeight, setBarHeight] = useState(0)
+  const [offsets, setOffsets] = useState({ nav: 0, bar: 0 })
   useEffect(() => {
     const element = bar.current
     if (!element || typeof ResizeObserver === 'undefined') return
-    const observer = new ResizeObserver(() => setBarHeight(Math.ceil(element.getBoundingClientRect().height)))
+    const nav = document.querySelector('.nav-header')
+    const measure = () => setOffsets({ nav: Math.ceil(nav?.getBoundingClientRect().height ?? 0), bar: Math.ceil(element.getBoundingClientRect().height) })
+    const observer = new ResizeObserver(measure)
     observer.observe(element)
+    if (nav) observer.observe(nav)
     return () => observer.disconnect()
   }, [])
   if (!starter && !unit) return <div className="page-shell"><h1>Unidad no encontrada</h1><Link to="/revisor">← Volver al revisor</Link></div>
   const current = starter ? 0 : unit.number
   return <ReviewModeContext.Provider value={true}>
-    <div className="rv-review" style={{ '--rv-bar-h': `${barHeight}px` }}>
+    <div className="rv-review" style={{ '--rv-nav-h': `${offsets.nav}px`, '--rv-bar-h': `${offsets.bar}px` }}>
       <div className="rv-unit-wrap rv-unit-sticky" ref={bar}><ReviewBar number={current} /></div>
       {starter ? <StarterUnit /> : <UnitPreview key={unit.number} unit={unit} />}
     </div>

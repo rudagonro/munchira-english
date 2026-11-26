@@ -14,8 +14,9 @@ import UnitCompletion from './UnitCompletion'
 import A1DraftProvider from '../components/A1DraftProvider'
 import { useDraftFields, useDraftState } from '../contexts/a1-draft-context'
 import { restoreLessonProgress } from './lessonDraftProgress'
-import { useReviewMode } from '../contexts/review-mode-context'
+import { useNoSave, useReviewMode } from '../contexts/review-mode-context'
 import ReviewAnswer from '../components/ReviewAnswer'
+import StaffNoSaveNote from '../components/StaffNoSaveNote'
 import { ExtraGuided, ExtraTables, ExtraVocab, FreeChallenge, RescuedDialogues } from './RescuedPractice'
 import './model-lesson.css'
 
@@ -47,11 +48,11 @@ function TwoWayCards({ accent, lesson, onComplete }) {
   const [tries, setTries] = useDraftState(`${CARDS_DRAFT}.tries`, 0)
   const [score, setScore] = useDraftState(`${CARDS_DRAFT}.score`, 0)
   const { user } = useAuth()
-  const review = useReviewMode()
+  const noSave = useNoSave()
   const [saveError, setSaveError] = useState('')
   const reported = useRef(new Set())
   const saveWord = (known) => {
-    if (review || !user || reported.current.has(idx)) return
+    if (noSave || !user || reported.current.has(idx)) return
     reported.current.add(idx)
     void recordA1Word(lesson.number ?? 1, cards[idx].word, known).then(({ error }) => { if (error) { reported.current.delete(idx); setSaveError('No pudimos guardar esta palabra en Repaso. Comprueba tu conexión y vuelve a practicarla.') } else setSaveError('') })
   }
@@ -171,10 +172,10 @@ function SpeakPractice({ item, accent }) {
 
 function StepContent({ id, accent, lesson, onComplete, legacyRules = [], legacy = false }) {
   const { user } = useAuth()
-  const review = useReviewMode()
+  const noSave = useNoSave()
   const [saveError, setSaveError] = useState('')
   const attempt = (text, known) => {
-    if (review || !user) return
+    if (noSave || !user) return
     void recordA1Text(lesson, text, known).then(({ error }) => setSaveError(error ? 'No pudimos guardar estas palabras en Repaso. Comprueba tu conexión y vuelve a practicar.' : ''))
   }
   const exerciseAttempt = (ex, known) => attempt(ex.type === 'choice' ? `${ex.q} ${ex.opts[ex.correct]}` : ex.sentence?.replace('___', displayForm(ex.answer)) ?? ex.answer, known)
@@ -313,8 +314,8 @@ function TheoryRule({ rule, index, accent, recognised = false, showLegacy = fals
 }
 
 export default function ModelLesson({ lesson = defaultLesson, legacyTheory = false, legacyRules = [] }) {
-  const review = useReviewMode()
-  return <A1DraftProvider lessonKey={`unit:${lesson.number ?? 1}`} enabled={!review}><ModelLessonContent lesson={lesson} legacyTheory={legacyTheory} legacyRules={legacyRules} /></A1DraftProvider>
+  const noSave = useNoSave()
+  return <A1DraftProvider lessonKey={`unit:${lesson.number ?? 1}`} enabled={!noSave}><ModelLessonContent lesson={lesson} legacyTheory={legacyTheory} legacyRules={legacyRules} /></A1DraftProvider>
 }
 
 function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
@@ -350,6 +351,7 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
           <label className="ml-accent">Acento <select value={accent} onChange={e => setAccent(e.target.value)}><option value="en-US">Americano</option><option value="en-GB">Británico</option></select></label>
         </div>
       <LessonBackLinks />
+      <StaffNoSaveNote />
       </header>
       <div className="ml-layout">
         <nav className="ml-steps" aria-label="Pasos de la unidad"><ol>{steps.map((s, i) => <li key={s.id}><button type="button" aria-current={i === step ? 'step' : undefined} className={completed.has(s.id) ? 'ml-step-done' : ''} disabled={!canOpenStep(i, steps, completed)} onClick={() => go(i)}><span>{completed.has(s.id) ? '✓' : i + 1}</span>{s.label}</button></li>)}</ol></nav>

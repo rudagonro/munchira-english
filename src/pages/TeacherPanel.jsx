@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useAuth } from '../contexts/auth-context'
-import { fetchContentStatus, fetchCourseProgress, fetchStudentDetail, fetchTeacherOverview } from '../services/teacherService'
-import { mergeCourseProgress, UNIT_STATUS_LABELS } from '../data/courseProgress'
+import { fetchContentStatus, fetchCourseDrafts, fetchCourseProgress, fetchLegacyA1Progress, fetchStudentDetail, fetchTeacherOverview } from '../services/teacherService'
+import { contentStatusBadge, mergeCourseProgress, UNIT_STATUS_LABELS } from '../data/courseProgress'
 import {
   INACTIVE_DAYS, LEVELS, NO_LEVEL, SKILL_LABELS, STATUS, STATUS_HELP, STATUS_LABELS,
   computeKpis, filterRows, formatLastActivity, levelDistribution, progressLabel, progressPct, scoreBand,
@@ -31,11 +31,13 @@ export default function TeacherPanel() {
   const [selected, setSelected] = useState(null) // { id, trigger }
 
   const fetchRows = useCallback(async () => {
-    const [{ data, error }, course] = await Promise.all([fetchTeacherOverview(), fetchCourseProgress()])
+    const [{ data, error }, course, legacy, drafts] = await Promise.all([fetchTeacherOverview(), fetchCourseProgress(), fetchLegacyA1Progress(), fetchCourseDrafts()])
     return {
       loading: false,
       error: error || course.error ? 'No se pudo cargar el panel. Verifica tu conexión e inténtalo de nuevo.' : '',
-      rows: mergeCourseProgress(data, course.missing || course.error ? null : course.data),
+      // Misma regla que /cycle: avance antiguo A1 (si no se pudo leer, no se reconoce nada extra) y, con la
+      // migración 20261126000500, el paso de cada borrador.
+      rows: mergeCourseProgress(data, course.missing || course.error ? null : course.data, { legacyByStudent: legacy.data, draftsByStudent: drafts.data }),
       loadedAt: new Date(),
       courseMissing: course.missing,
     }
@@ -353,7 +355,7 @@ function StudentDetail({ studentId, course, waitlisted, now, onClose }) {
                     <span>Unidad {u.number}</span>
                     {u.status === 'completed'
                       ? <ScoreChip score={u.bestScore === null ? null : Number(u.bestScore)} />
-                      : <span className="tp-hint">{UNIT_STATUS_LABELS[u.status]}{u.bestScore !== null ? ` · mejor nota ${u.bestScore}%` : ''}</span>}
+                      : <span className="tp-hint">{u.label ?? UNIT_STATUS_LABELS[u.status]}{u.bestScore !== null ? ` · mejor nota ${u.bestScore}%` : ''}</span>}
                   </li>
                 ))}
               </ol>
@@ -468,9 +470,7 @@ function ContentStatus() {
       <ul className="tp-content">
         {state.rows.map((row) => {
           const live = row.total_modules > 0 && row.published_modules === row.total_modules
-          const ready = !live && row.problems.length === 0
-          const label = live ? 'Publicado' : ready ? 'Listo para publicar' : 'Incompleto'
-          const tone = live ? 'active' : ready ? 'checkpoint_blocked' : 'no_diagnostic'
+          const { label, tone } = contentStatusBadge(row)
           return (
             <li key={row.cefr_level}>
               <div className="tp-content-row">

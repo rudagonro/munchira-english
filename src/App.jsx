@@ -64,7 +64,7 @@ function AppRoutes() {
         <Route path="/usuarios" element={<ProtectedRoute allowedRoles={['admin']}><Layout><AdminUsers /></Layout></ProtectedRoute>} />
         <Route path="/revisor" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><ReviewerMode /></Layout></ProtectedRoute>} />
         <Route path="/revisor/modulo/:moduleId" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><ModuleView preview /></Layout></ProtectedRoute>} />
-        <Route path="/revisor/A1/unidad/:number" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><ReviewerUnit /></ProtectedRoute>} />
+        <Route path="/revisor/A1/unidad/:number" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Layout><ReviewerUnit /></Layout></ProtectedRoute>} />
         <Route path="/revisor/diagnostico" element={<ProtectedRoute allowedRoles={['teacher', 'admin']}><Diagnostic preview /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/cycle" replace />} />
       </Routes>

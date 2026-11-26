@@ -1,7 +1,8 @@
 // Server-authoritative drafts; local storage is only an account-scoped offline outbox.
 export function createDraftStore({ client, userId, lessonKey, storage, notify = () => {}, delay = 500 }) {
   const cacheKey = `munchira:a1-draft:v1:${userId}:${lessonKey}`
-  let view = { ready: false, fields: {}, status: 'loading' }
+  // restored: había un punto guardado al abrir · wrote: esta sesión sí guardó algo en el servidor.
+  let view = { ready: false, fields: {}, status: 'loading', restored: false, wrote: false }
   let revision = 0, serial = 0, savedSerial = 0, timer, running, blocked = false, started, unverified = false
   const listeners = new Set()
   const emit = changes => { view = { ...view, ...changes }; listeners.forEach(fn => fn()); notify(view) }
@@ -23,7 +24,7 @@ export function createDraftStore({ client, userId, lessonKey, storage, notify = 
     if (error) throw error
     const serverRevision = data?.revision ?? 0
     unverified = false
-    if (serial === savedSerial) { revision = serverRevision; emit({ fields: data?.fields ?? view.fields, status: 'saved' }); return }
+    if (serial === savedSerial) { revision = serverRevision; emit({ fields: data?.fields ?? view.fields, status: 'saved', restored: Boolean(data) || view.restored }); return }
     if (serverRevision !== revision) { blocked = true; emit({ status: 'conflict' }); cache() }
   }
   async function start() {
@@ -40,7 +41,7 @@ export function createDraftStore({ client, userId, lessonKey, storage, notify = 
           emit({ ready: true, fields: pending.fields, status: 'conflict' })
           return
         }
-        emit({ ready: true, fields: validPending ? pending.fields : data?.fields ?? {}, status: validPending ? 'pending' : 'saved' })
+        emit({ ready: true, fields: validPending ? pending.fields : data?.fields ?? {}, status: validPending ? 'pending' : 'saved', restored: Boolean(data) })
         if (validPending) { serial++; schedule() }
       } catch {
         started = null
@@ -81,8 +82,8 @@ export function createDraftStore({ client, userId, lessonKey, storage, notify = 
         const { data, error } = await request(signal => client.rpc('save_a1_learning_draft', { p_key: lessonKey, p_fields: fields, p_revision: revision, p_user: userId }).abortSignal(signal))
         if (error) throw error
         revision = data.revision; savedSerial = sentSerial
-        if (serial === sentSerial) { removeCache(); emit({ status: 'saved' }) }
-        else { cache(); emit({ status: 'pending' }); schedule() }
+        if (serial === sentSerial) { removeCache(); emit({ status: 'saved', wrote: true }) }
+        else { cache(); emit({ status: 'pending', wrote: true }); schedule() }
       } catch (error) {
         blocked = error?.message?.includes('draft_conflict') ?? false
         emit({ status: blocked ? 'conflict' : 'offline' }); cache()

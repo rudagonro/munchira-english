@@ -11,6 +11,7 @@ import { useAuth } from '../contexts/auth-context'
 import { A1_UNIT0, unitGate } from '../data/a1Starter'
 import { useLocalUnit0Pass } from './useLocalUnit0Pass'
 import StarterUnit from './StarterUnit'
+import { isStaffRole } from '../contexts/review-mode-context'
 
 /** Pantalla de las unidades 1–8 mientras la Unidad 0 no está aprobada ni reconocida. */
 function Unit0Gate({ unit }) {
@@ -35,7 +36,7 @@ function Unit0Gate({ unit }) {
 
 function UnitLoader({ unit }) {
   const course = useA1Course()
-  const { user } = useAuth()
+  const { user, role } = useAuth()
   const localPassed = useLocalUnit0Pass()
   const [lesson, setLesson] = useState(null)
   const [error, setError] = useState(false)
@@ -50,7 +51,8 @@ function UnitLoader({ unit }) {
     return () => { active = false; stopLessonAudio(); registerLessonRecordings(null) }
   }, [unit.number, unit.path, retry])
   const summaryUnit = course.summary.units.find(item => item.number === unit.number)
-  const gate = localPassed === null ? 'loading' : unitGate({ number: unit.number, signedIn: Boolean(user), loading: course.loading, unit0: course.summary.unit0, localPassed })
+  // El personal no guarda nada (ni el aprobado de la Unidad 0), así que la puerta no lo detiene.
+  const gate = isStaffRole(role) ? 'open' : localPassed === null ? 'loading' : unitGate({ number: unit.number, signedIn: Boolean(user), loading: course.loading, unit0: course.summary.unit0, localPassed })
   if (gate === 'locked') return <Unit0Gate unit={unit} />
   if (lesson && gate === 'open') return <ModelLesson key={lesson.slug} lesson={lesson} legacyTheory={Boolean(summaryUnit?.legacyTheory)} legacyRules={summaryUnit?.legacyRules ?? []} />
   return <PublicShell>

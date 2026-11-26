@@ -21,6 +21,7 @@ const { ReviewModeContext } = await load('/src/contexts/review-mode-context.js')
 const staff = { user: { id: 'staff-1' }, session: { user: { id: 'staff-1' } }, loading: false, profile: { role: 'admin' } }
 
 const visitor = { user: null, session: null, loading: false, profile: null }
+const student = { user: { id: 'student-1' }, session: { user: { id: 'student-1' } }, loading: false, role: 'student', profile: { role: 'student' } }
 
 function render(element, { url = '/', review = false, path = '*', auth = staff } = {}) {
   return renderToString(h(AuthContext.Provider, { value: auth },
@@ -37,7 +38,7 @@ test('el revisor lista la Unidad 0 y las Unidades 1–8, en el orden del alumno'
 
 test('la ruta del revisor de unidades es solo para docentes y administradores', () => {
   const app = src('App.jsx')
-  assert.match(app, /path="\/revisor\/A1\/unidad\/:number" element=\{<ProtectedRoute allowedRoles=\{\['teacher', 'admin'\]\}><ReviewerUnit \/>/)
+  assert.match(app, /path="\/revisor\/A1\/unidad\/:number" element=\{<ProtectedRoute allowedRoles=\{\['teacher', 'admin'\]\}><Layout><ReviewerUnit \/><\/Layout>/, 'con la navegación de la app, como /revisor')
   assert.match(app, /path="\/revisor\/modulo\/:moduleId"/, 'el Archivo sigue abriendo los módulos antiguos')
 })
 
@@ -82,16 +83,19 @@ test('la Unidad 0 en el revisor: respuestas visibles, Unidad 1 abierta y sin gua
   assert.match(reviewHtml, /Comprobar \(no se guarda\)/)
   assert.match(reviewHtml, /href="\/revisor\/A1\/unidad\/1"/)
   assert.doesNotMatch(reviewHtml, /Guardar este grupo en mi Repaso/)
-  const studentHtml = render(h(StarterUnit), { url: '/cursos/A1/unidad/0' })
+  const studentHtml = render(h(StarterUnit), { url: '/cursos/A1/unidad/0', auth: student })
   assert.doesNotMatch(studentHtml, /rv-answer/)
   assert.match(studentHtml, /Guardar este grupo en mi Repaso/)
 })
 
 test('en el modo revisor ninguna escritura se ejecuta', () => {
   const lesson = src('public/ModelLesson.jsx')
-  assert.match(lesson, /if \(review \|\| !user \|\| reported\.current\.has\(idx\)\) return/, 'tarjetas: no van al Repaso')
-  assert.match(lesson, /if \(review \|\| !user\) return\n\s+void recordA1Text/, 'ejercicios: no van al Repaso')
-  assert.match(lesson, /enabled=\{!review\}/, 'sin borrador guardado')
+  // noSave = revisor o cuenta del personal (useNoSave).
+  assert.match(lesson, /if \(noSave \|\| !user \|\| reported\.current\.has\(idx\)\) return/, 'tarjetas: no van al Repaso')
+  assert.match(lesson, /if \(noSave \|\| !user\) return\n\s+void recordA1Text/, 'ejercicios: no van al Repaso')
+  assert.match(lesson, /enabled=\{!noSave\}/, 'sin borrador guardado')
+  assert.match(src('public/UnitCompletion.jsx'), /const review = useNoSave\(\)/)
+  assert.match(src('public/StarterUnit.jsx'), /const review = useNoSave\(\) \/\/ revisor o cuenta del personal/)
   const quiz = src('public/UnitCompletion.jsx')
   assert.match(quiz, /if \(!user \|\| review\) \{\n\s+setReviewed\(selected\)/, 'cuestionario: se corrige aquí, sin RPC')
   const starter = src('public/StarterUnit.jsx')
@@ -116,10 +120,11 @@ test('al terminar los ejercicios, el revisor sigue viendo el solucionario y pued
 
 test('la barra del revisor queda pegada arriba mientras se baja por la unidad', () => {
   assert.match(src('pages/ReviewerUnit.jsx'), /className="rv-unit-wrap rv-unit-sticky"/)
-  assert.match(src('index.css'), /\.rv-unit-sticky \{ position: sticky; top: 0;/)
-  // La altura real de la barra desplaza el menú de pasos fijo y los destinos de los enlaces (comprobado en Playwright a 1280 y 390 px).
-  assert.match(src('pages/ReviewerUnit.jsx'), /style=\{\{ '--rv-bar-h': `\$\{barHeight\}px` \}\}/)
-  assert.match(src('index.css'), /\.rv-review \.ml-steps \{ top: calc\(var\(--rv-bar-h, 0px\) \+ 16px\); \}/)
-  assert.match(src('index.css'), /\.rv-review \.su-section, \.rv-review \[id\] \{ scroll-margin-top: calc\(var\(--rv-bar-h, 0px\) \+ 12px\); \}/)
+  // Queda bajo la navegación fija de la app; las alturas reales de ambas desplazan el menú de pasos y los
+  // destinos de los enlaces (comprobado en Playwright a 1280 y 390 px).
+  assert.match(src('index.css'), /\.rv-unit-sticky \{ position: sticky; top: var\(--rv-nav-h, 0px\);/)
+  assert.match(src('pages/ReviewerUnit.jsx'), /'--rv-nav-h': `\$\{offsets\.nav\}px`, '--rv-bar-h': `\$\{offsets\.bar\}px`/)
+  assert.match(src('index.css'), /\.rv-review \.ml-steps \{ top: calc\(var\(--rv-nav-h, 0px\) \+ var\(--rv-bar-h, 0px\) \+ 16px\); \}/)
+  assert.match(src('index.css'), /scroll-margin-top: calc\(var\(--rv-nav-h, 0px\) \+ var\(--rv-bar-h, 0px\) \+ 12px\)/)
 })
 
