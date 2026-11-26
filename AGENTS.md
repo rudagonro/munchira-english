@@ -49,3 +49,5 @@
 
 - Resolve fixed Unit 2–8 grammar clips from the units2to8Theory manifest after corrections and the unit's own recordings; per-unit folders and exact text, voice alias and accent lookup fill only unrecorded theory phrases, so existing unit sprites and dialogue voices never change.
 - Old A1 module work only recognises unit theory (legacyUnitCredit); a unit is completed solely by its own server-graded quiz (>=70) in a1_unit_progress, so displayed progress is always real and old rows are read, never rewritten.
+
+- A1 Unidad 0 (content/a1/unit0.json) vive fuera de A1.json y abre la Unidad 1; nunca bloquees a quien ya tiene avance A1 ni por un fallo de lectura. Reutiliza content/a1/card-bank.json con index estables (nunca los cambies) e ilustraciones locales con su atribución CC BY.

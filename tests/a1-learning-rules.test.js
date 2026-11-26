@@ -22,10 +22,10 @@ test('all eight units require the same guided, translation, cards, comprehension
     assert.equal(cards.length, unit.practice.vocab.length * 2)
   }
 })
-test('209 catalog words exist, but practicing one word enrolls only that word', async () => {
+test('214 catalog words exist (209 + 5 rescued), but practicing one word enrolls only that word', async () => {
   const db = await createDb()
   try {
-    assert.equal((await db.query('select count(*)::int n from public.a1_vocab_items')).rows[0].n, 209)
+    assert.equal((await db.query('select count(*)::int n from public.a1_vocab_items where unit_number between 1 and 8')).rows[0].n, 214)
     const uid = await addUser(db, { email: 'a1-review@example.test' })
     await asUser(db, uid, async db => {
       assert.equal((await db.query('select * from public.get_due_vocab(20)')).rows.length, 0)

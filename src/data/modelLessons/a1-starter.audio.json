@@ -1,0 +1,3570 @@
+{
+ "unit": 0,
+ "provider": "ElevenLabs",
+ "model": "eleven_multilingual_v2",
+ "speed": 0.9,
+ "voiceSettings": {
+  "stability": 0.6,
+  "similarity_boost": 0.75,
+  "style": 0.15,
+  "use_speaker_boost": true
+ },
+ "generatedAt": "2026-11-26",
+ "sprites": {
+  "unit0-00500da8-gb": "/audio/a1/unit0/00500da8-gb.mp3",
+  "unit0-00500da8-us": "/audio/a1/unit0/00500da8-us.mp3",
+  "unit0-011ca01f-gb": "/audio/a1/unit0/011ca01f-gb.mp3",
+  "unit0-011ca01f-us": "/audio/a1/unit0/011ca01f-us.mp3",
+  "unit0-011decbc-gb": "/audio/a1/unit0/011decbc-gb.mp3",
+  "unit0-011decbc-us": "/audio/a1/unit0/011decbc-us.mp3",
+  "unit0-01901e93-gb": "/audio/a1/unit0/01901e93-gb.mp3",
+  "unit0-01901e93-us": "/audio/a1/unit0/01901e93-us.mp3",
+  "unit0-01a53a61-gb": "/audio/a1/unit0/01a53a61-gb.mp3",
+  "unit0-01a53a61-us": "/audio/a1/unit0/01a53a61-us.mp3",
+  "unit0-027455bb-gb": "/audio/a1/unit0/027455bb-gb.mp3",
+  "unit0-027455bb-us": "/audio/a1/unit0/027455bb-us.mp3",
+  "unit0-0279d299-gb": "/audio/a1/unit0/0279d299-gb.mp3",
+  "unit0-0279d299-us": "/audio/a1/unit0/0279d299-us.mp3",
+  "unit0-02e9cfcc-gb": "/audio/a1/unit0/02e9cfcc-gb.mp3",
+  "unit0-02e9cfcc-us": "/audio/a1/unit0/02e9cfcc-us.mp3",
+  "unit0-03285dfc-gb": "/audio/a1/unit0/03285dfc-gb.mp3",
+  "unit0-03285dfc-us": "/audio/a1/unit0/03285dfc-us.mp3",
+  "unit0-03b1d87b-gb": "/audio/a1/unit0/03b1d87b-gb.mp3",
+  "unit0-03b1d87b-us": "/audio/a1/unit0/03b1d87b-us.mp3",
+  "unit0-047458e1-gb": "/audio/a1/unit0/047458e1-gb.mp3",
+  "unit0-047458e1-us": "/audio/a1/unit0/047458e1-us.mp3",
+  "unit0-0552c2b0-gb": "/audio/a1/unit0/0552c2b0-gb.mp3",
+  "unit0-0552c2b0-us": "/audio/a1/unit0/0552c2b0-us.mp3",
+  "unit0-05bf6449-gb": "/audio/a1/unit0/05bf6449-gb.mp3",
+  "unit0-05bf6449-us": "/audio/a1/unit0/05bf6449-us.mp3",
+  "unit0-07cc2b2a-gb": "/audio/a1/unit0/07cc2b2a-gb.mp3",
+  "unit0-07cc2b2a-us": "/audio/a1/unit0/07cc2b2a-us.mp3",
+  "unit0-0a0a25b5-gb": "/audio/a1/unit0/0a0a25b5-gb.mp3",
+  "unit0-0a0a25b5-us": "/audio/a1/unit0/0a0a25b5-us.mp3",
+  "unit0-0ba81191-gb": "/audio/a1/unit0/0ba81191-gb.mp3",
+  "unit0-0ba81191-us": "/audio/a1/unit0/0ba81191-us.mp3",
+  "unit0-0cfb455b-gb": "/audio/a1/unit0/0cfb455b-gb.mp3",
+  "unit0-0cfb455b-us": "/audio/a1/unit0/0cfb455b-us.mp3",
+  "unit0-0d29de90-gb": "/audio/a1/unit0/0d29de90-gb.mp3",
+  "unit0-0d29de90-us": "/audio/a1/unit0/0d29de90-us.mp3",
+  "unit0-0d38e91a-gb": "/audio/a1/unit0/0d38e91a-gb.mp3",
+  "unit0-0d38e91a-us": "/audio/a1/unit0/0d38e91a-us.mp3",
+  "unit0-0d3d6648-gb": "/audio/a1/unit0/0d3d6648-gb.mp3",
+  "unit0-0d3d6648-us": "/audio/a1/unit0/0d3d6648-us.mp3",
+  "unit0-0d5b7b5c-gb": "/audio/a1/unit0/0d5b7b5c-gb.mp3",
+  "unit0-0d5b7b5c-us": "/audio/a1/unit0/0d5b7b5c-us.mp3",
+  "unit0-0e5e77a9-gb": "/audio/a1/unit0/0e5e77a9-gb.mp3",
+  "unit0-0e5e77a9-us": "/audio/a1/unit0/0e5e77a9-us.mp3",
+  "unit0-0e68b936-gb": "/audio/a1/unit0/0e68b936-gb.mp3",
+  "unit0-0e68b936-us": "/audio/a1/unit0/0e68b936-us.mp3",
+  "unit0-0eaa25e3-gb": "/audio/a1/unit0/0eaa25e3-gb.mp3",
+  "unit0-0eaa25e3-us": "/audio/a1/unit0/0eaa25e3-us.mp3",
+  "unit0-0f189895-gb": "/audio/a1/unit0/0f189895-gb.mp3",
+  "unit0-0f189895-us": "/audio/a1/unit0/0f189895-us.mp3",
+  "unit0-0f1d15c3-gb": "/audio/a1/unit0/0f1d15c3-gb.mp3",
+  "unit0-0f1d15c3-us": "/audio/a1/unit0/0f1d15c3-us.mp3",
+  "unit0-0f2c204d-gb": "/audio/a1/unit0/0f2c204d-gb.mp3",
+  "unit0-0f2c204d-us": "/audio/a1/unit0/0f2c204d-us.mp3",
+  "unit0-0f4a3561-gb": "/audio/a1/unit0/0f4a3561-gb.mp3",
+  "unit0-0f4a3561-us": "/audio/a1/unit0/0f4a3561-us.mp3",
+  "unit0-100e165b-gb": "/audio/a1/unit0/100e165b-gb.mp3",
+  "unit0-100e165b-us": "/audio/a1/unit0/100e165b-us.mp3",
+  "unit0-10bc2abf-gb": "/audio/a1/unit0/10bc2abf-gb.mp3",
+  "unit0-10bc2abf-us": "/audio/a1/unit0/10bc2abf-us.mp3",
+  "unit0-116b77dc-gb": "/audio/a1/unit0/116b77dc-gb.mp3",
+  "unit0-116b77dc-us": "/audio/a1/unit0/116b77dc-us.mp3",
+  "unit0-16266f55-gb": "/audio/a1/unit0/16266f55-gb.mp3",
+  "unit0-16266f55-us": "/audio/a1/unit0/16266f55-us.mp3",
+  "unit0-16fb7f77-gb": "/audio/a1/unit0/16fb7f77-gb.mp3",
+  "unit0-16fb7f77-us": "/audio/a1/unit0/16fb7f77-us.mp3",
+  "unit0-1852361a-gb": "/audio/a1/unit0/1852361a-gb.mp3",
+  "unit0-1852361a-us": "/audio/a1/unit0/1852361a-us.mp3",
+  "unit0-1a956a35-gb": "/audio/a1/unit0/1a956a35-gb.mp3",
+  "unit0-1a956a35-us": "/audio/a1/unit0/1a956a35-us.mp3",
+  "unit0-1dd883e7-gb": "/audio/a1/unit0/1dd883e7-gb.mp3",
+  "unit0-1dd883e7-us": "/audio/a1/unit0/1dd883e7-us.mp3",
+  "unit0-21f5b729-gb": "/audio/a1/unit0/21f5b729-gb.mp3",
+  "unit0-21f5b729-us": "/audio/a1/unit0/21f5b729-us.mp3",
+  "unit0-225e036d-gb": "/audio/a1/unit0/225e036d-gb.mp3",
+  "unit0-225e036d-us": "/audio/a1/unit0/225e036d-us.mp3",
+  "unit0-23e3d71a-gb": "/audio/a1/unit0/23e3d71a-gb.mp3",
+  "unit0-23e3d71a-us": "/audio/a1/unit0/23e3d71a-us.mp3",
+  "unit0-2483ee0e-gb": "/audio/a1/unit0/2483ee0e-gb.mp3",
+  "unit0-2483ee0e-us": "/audio/a1/unit0/2483ee0e-us.mp3",
+  "unit0-2535db85-gb": "/audio/a1/unit0/2535db85-gb.mp3",
+  "unit0-2535db85-us": "/audio/a1/unit0/2535db85-us.mp3",
+  "unit0-25a7329d-gb": "/audio/a1/unit0/25a7329d-gb.mp3",
+  "unit0-25a7329d-us": "/audio/a1/unit0/25a7329d-us.mp3",
+  "unit0-25d4a652-gb": "/audio/a1/unit0/25d4a652-gb.mp3",
+  "unit0-25d4a652-us": "/audio/a1/unit0/25d4a652-us.mp3",
+  "unit0-2775a9e5-gb": "/audio/a1/unit0/2775a9e5-gb.mp3",
+  "unit0-2775a9e5-us": "/audio/a1/unit0/2775a9e5-us.mp3",
+  "unit0-28128f49-gb": "/audio/a1/unit0/28128f49-gb.mp3",
+  "unit0-28128f49-us": "/audio/a1/unit0/28128f49-us.mp3",
+  "unit0-2ba4b5cb-gb": "/audio/a1/unit0/2ba4b5cb-gb.mp3",
+  "unit0-2ba4b5cb-us": "/audio/a1/unit0/2ba4b5cb-us.mp3",
+  "unit0-2ce2dae7-gb": "/audio/a1/unit0/2ce2dae7-gb.mp3",
+  "unit0-2ce2dae7-us": "/audio/a1/unit0/2ce2dae7-us.mp3",
+  "unit0-2d505a99-gb": "/audio/a1/unit0/2d505a99-gb.mp3",
+  "unit0-2d505a99-us": "/audio/a1/unit0/2d505a99-us.mp3",
+  "unit0-2f69f5a5-gb": "/audio/a1/unit0/2f69f5a5-gb.mp3",
+  "unit0-2f69f5a5-us": "/audio/a1/unit0/2f69f5a5-us.mp3",
+  "unit0-2f9d9b64-gb": "/audio/a1/unit0/2f9d9b64-gb.mp3",
+  "unit0-2f9d9b64-us": "/audio/a1/unit0/2f9d9b64-us.mp3",
+  "unit0-2fc941c2-gb": "/audio/a1/unit0/2fc941c2-gb.mp3",
+  "unit0-2fc941c2-us": "/audio/a1/unit0/2fc941c2-us.mp3",
+  "unit0-3044938a-gb": "/audio/a1/unit0/3044938a-gb.mp3",
+  "unit0-3044938a-us": "/audio/a1/unit0/3044938a-us.mp3",
+  "unit0-30be372f-gb": "/audio/a1/unit0/30be372f-gb.mp3",
+  "unit0-30be372f-us": "/audio/a1/unit0/30be372f-us.mp3",
+  "unit0-32694bc3-gb": "/audio/a1/unit0/32694bc3-gb.mp3",
+  "unit0-32694bc3-us": "/audio/a1/unit0/32694bc3-us.mp3",
+  "unit0-33e6572f-gb": "/audio/a1/unit0/33e6572f-gb.mp3",
+  "unit0-33e6572f-us": "/audio/a1/unit0/33e6572f-us.mp3",
+  "unit0-3583acfe-gb": "/audio/a1/unit0/3583acfe-gb.mp3",
+  "unit0-3583acfe-us": "/audio/a1/unit0/3583acfe-us.mp3",
+  "unit0-35bc1205-gb": "/audio/a1/unit0/35bc1205-gb.mp3",
+  "unit0-35bc1205-us": "/audio/a1/unit0/35bc1205-us.mp3",
+  "unit0-37348a60-gb": "/audio/a1/unit0/37348a60-gb.mp3",
+  "unit0-37348a60-us": "/audio/a1/unit0/37348a60-us.mp3",
+  "unit0-386f27b5-gb": "/audio/a1/unit0/386f27b5-gb.mp3",
+  "unit0-386f27b5-us": "/audio/a1/unit0/386f27b5-us.mp3",
+  "unit0-3979c528-gb": "/audio/a1/unit0/3979c528-gb.mp3",
+  "unit0-3979c528-us": "/audio/a1/unit0/3979c528-us.mp3",
+  "unit0-3a56e759-gb": "/audio/a1/unit0/3a56e759-gb.mp3",
+  "unit0-3a56e759-us": "/audio/a1/unit0/3a56e759-us.mp3",
+  "unit0-3ba7e226-gb": "/audio/a1/unit0/3ba7e226-gb.mp3",
+  "unit0-3ba7e226-us": "/audio/a1/unit0/3ba7e226-us.mp3",
+  "unit0-3c694558-gb": "/audio/a1/unit0/3c694558-gb.mp3",
+  "unit0-3c694558-us": "/audio/a1/unit0/3c694558-us.mp3",
+  "unit0-3ea53a3f-gb": "/audio/a1/unit0/3ea53a3f-gb.mp3",
+  "unit0-3ea53a3f-us": "/audio/a1/unit0/3ea53a3f-us.mp3",
+  "unit0-3f6ae937-gb": "/audio/a1/unit0/3f6ae937-gb.mp3",
+  "unit0-3f6ae937-us": "/audio/a1/unit0/3f6ae937-us.mp3",
+  "unit0-40f480dc-gb": "/audio/a1/unit0/40f480dc-gb.mp3",
+  "unit0-40f480dc-us": "/audio/a1/unit0/40f480dc-us.mp3",
+  "unit0-42cfce77-gb": "/audio/a1/unit0/42cfce77-gb.mp3",
+  "unit0-42cfce77-us": "/audio/a1/unit0/42cfce77-us.mp3",
+  "unit0-43e36503-gb": "/audio/a1/unit0/43e36503-gb.mp3",
+  "unit0-43e36503-us": "/audio/a1/unit0/43e36503-us.mp3",
+  "unit0-44f1708a-gb": "/audio/a1/unit0/44f1708a-gb.mp3",
+  "unit0-44f1708a-us": "/audio/a1/unit0/44f1708a-us.mp3",
+  "unit0-45b1c069-gb": "/audio/a1/unit0/45b1c069-gb.mp3",
+  "unit0-45b1c069-us": "/audio/a1/unit0/45b1c069-us.mp3",
+  "unit0-45b473eb-gb": "/audio/a1/unit0/45b473eb-gb.mp3",
+  "unit0-45b473eb-us": "/audio/a1/unit0/45b473eb-us.mp3",
+  "unit0-46d72f50-gb": "/audio/a1/unit0/46d72f50-gb.mp3",
+  "unit0-46d72f50-us": "/audio/a1/unit0/46d72f50-us.mp3",
+  "unit0-493624ad-gb": "/audio/a1/unit0/493624ad-gb.mp3",
+  "unit0-493624ad-us": "/audio/a1/unit0/493624ad-us.mp3",
+  "unit0-49c69a10-gb": "/audio/a1/unit0/49c69a10-gb.mp3",
+  "unit0-49c69a10-us": "/audio/a1/unit0/49c69a10-us.mp3",
+  "unit0-4ada6b9d-gb": "/audio/a1/unit0/4ada6b9d-gb.mp3",
+  "unit0-4ada6b9d-us": "/audio/a1/unit0/4ada6b9d-us.mp3",
+  "unit0-4dd58d63-gb": "/audio/a1/unit0/4dd58d63-gb.mp3",
+  "unit0-4dd58d63-us": "/audio/a1/unit0/4dd58d63-us.mp3",
+  "unit0-4f5dda2b-gb": "/audio/a1/unit0/4f5dda2b-gb.mp3",
+  "unit0-4f5dda2b-us": "/audio/a1/unit0/4f5dda2b-us.mp3",
+  "unit0-4f9f2cab-gb": "/audio/a1/unit0/4f9f2cab-gb.mp3",
+  "unit0-4f9f2cab-us": "/audio/a1/unit0/4f9f2cab-us.mp3",
+  "unit0-51a134df-gb": "/audio/a1/unit0/51a134df-gb.mp3",
+  "unit0-51a134df-us": "/audio/a1/unit0/51a134df-us.mp3",
+  "unit0-521d0429-gb": "/audio/a1/unit0/521d0429-gb.mp3",
+  "unit0-521d0429-us": "/audio/a1/unit0/521d0429-us.mp3",
+  "unit0-547125cb-gb": "/audio/a1/unit0/547125cb-gb.mp3",
+  "unit0-547125cb-us": "/audio/a1/unit0/547125cb-us.mp3",
+  "unit0-568f4ba4-gb": "/audio/a1/unit0/568f4ba4-gb.mp3",
+  "unit0-568f4ba4-us": "/audio/a1/unit0/568f4ba4-us.mp3",
+  "unit0-597d11c6-gb": "/audio/a1/unit0/597d11c6-gb.mp3",
+  "unit0-597d11c6-us": "/audio/a1/unit0/597d11c6-us.mp3",
+  "unit0-5cb49d8a-gb": "/audio/a1/unit0/5cb49d8a-gb.mp3",
+  "unit0-5cb49d8a-us": "/audio/a1/unit0/5cb49d8a-us.mp3",
+  "unit0-5ddb609c-gb": "/audio/a1/unit0/5ddb609c-gb.mp3",
+  "unit0-5ddb609c-us": "/audio/a1/unit0/5ddb609c-us.mp3",
+  "unit0-5fd56df9-gb": "/audio/a1/unit0/5fd56df9-gb.mp3",
+  "unit0-5fd56df9-us": "/audio/a1/unit0/5fd56df9-us.mp3",
+  "unit0-6232229c-gb": "/audio/a1/unit0/6232229c-gb.mp3",
+  "unit0-6232229c-us": "/audio/a1/unit0/6232229c-us.mp3",
+  "unit0-63374a36-gb": "/audio/a1/unit0/63374a36-gb.mp3",
+  "unit0-63374a36-us": "/audio/a1/unit0/63374a36-us.mp3",
+  "unit0-63b75f31-gb": "/audio/a1/unit0/63b75f31-gb.mp3",
+  "unit0-63b75f31-us": "/audio/a1/unit0/63b75f31-us.mp3",
+  "unit0-662dcc9e-gb": "/audio/a1/unit0/662dcc9e-gb.mp3",
+  "unit0-662dcc9e-us": "/audio/a1/unit0/662dcc9e-us.mp3",
+  "unit0-666e1bb3-gb": "/audio/a1/unit0/666e1bb3-gb.mp3",
+  "unit0-666e1bb3-us": "/audio/a1/unit0/666e1bb3-us.mp3",
+  "unit0-66a07610-gb": "/audio/a1/unit0/66a07610-gb.mp3",
+  "unit0-66a07610-us": "/audio/a1/unit0/66a07610-us.mp3",
+  "unit0-6815c86c-gb": "/audio/a1/unit0/6815c86c-gb.mp3",
+  "unit0-6815c86c-us": "/audio/a1/unit0/6815c86c-us.mp3",
+  "unit0-68e41ef0-gb": "/audio/a1/unit0/68e41ef0-gb.mp3",
+  "unit0-68e41ef0-us": "/audio/a1/unit0/68e41ef0-us.mp3",
+  "unit0-69f7b773-gb": "/audio/a1/unit0/69f7b773-gb.mp3",
+  "unit0-69f7b773-us": "/audio/a1/unit0/69f7b773-us.mp3",
+  "unit0-6bf0ef3b-gb": "/audio/a1/unit0/6bf0ef3b-gb.mp3",
+  "unit0-6bf0ef3b-us": "/audio/a1/unit0/6bf0ef3b-us.mp3",
+  "unit0-6d10ddca-gb": "/audio/a1/unit0/6d10ddca-gb.mp3",
+  "unit0-6d10ddca-us": "/audio/a1/unit0/6d10ddca-us.mp3",
+  "unit0-6d2ef2de-gb": "/audio/a1/unit0/6d2ef2de-gb.mp3",
+  "unit0-6d2ef2de-us": "/audio/a1/unit0/6d2ef2de-us.mp3",
+  "unit0-6d33700c-gb": "/audio/a1/unit0/6d33700c-gb.mp3",
+  "unit0-6d33700c-us": "/audio/a1/unit0/6d33700c-us.mp3",
+  "unit0-6f403f25-gb": "/audio/a1/unit0/6f403f25-gb.mp3",
+  "unit0-6f403f25-us": "/audio/a1/unit0/6f403f25-us.mp3",
+  "unit0-6f44bc53-gb": "/audio/a1/unit0/6f44bc53-gb.mp3",
+  "unit0-6f44bc53-us": "/audio/a1/unit0/6f44bc53-us.mp3",
+  "unit0-710d24c2-gb": "/audio/a1/unit0/710d24c2-gb.mp3",
+  "unit0-710d24c2-us": "/audio/a1/unit0/710d24c2-us.mp3",
+  "unit0-713baa5f-gb": "/audio/a1/unit0/713baa5f-gb.mp3",
+  "unit0-713baa5f-us": "/audio/a1/unit0/713baa5f-us.mp3",
+  "unit0-72131c0e-gb": "/audio/a1/unit0/72131c0e-gb.mp3",
+  "unit0-72131c0e-us": "/audio/a1/unit0/72131c0e-us.mp3",
+  "unit0-73a6862a-gb": "/audio/a1/unit0/73a6862a-gb.mp3",
+  "unit0-73a6862a-us": "/audio/a1/unit0/73a6862a-us.mp3",
+  "unit0-742581dc-gb": "/audio/a1/unit0/742581dc-gb.mp3",
+  "unit0-742581dc-us": "/audio/a1/unit0/742581dc-us.mp3",
+  "unit0-765bb4cb-gb": "/audio/a1/unit0/765bb4cb-gb.mp3",
+  "unit0-765bb4cb-us": "/audio/a1/unit0/765bb4cb-us.mp3",
+  "unit0-775718f4-gb": "/audio/a1/unit0/775718f4-gb.mp3",
+  "unit0-775718f4-us": "/audio/a1/unit0/775718f4-us.mp3",
+  "unit0-77688e8b-gb": "/audio/a1/unit0/77688e8b-gb.mp3",
+  "unit0-77688e8b-us": "/audio/a1/unit0/77688e8b-us.mp3",
+  "unit0-78556c69-gb": "/audio/a1/unit0/78556c69-gb.mp3",
+  "unit0-78556c69-us": "/audio/a1/unit0/78556c69-us.mp3",
+  "unit0-7a930b5b-gb": "/audio/a1/unit0/7a930b5b-gb.mp3",
+  "unit0-7a930b5b-us": "/audio/a1/unit0/7a930b5b-us.mp3",
+  "unit0-7bcf1d1c-gb": "/audio/a1/unit0/7bcf1d1c-gb.mp3",
+  "unit0-7bcf1d1c-us": "/audio/a1/unit0/7bcf1d1c-us.mp3",
+  "unit0-7f33e096-gb": "/audio/a1/unit0/7f33e096-gb.mp3",
+  "unit0-7f33e096-us": "/audio/a1/unit0/7f33e096-us.mp3",
+  "unit0-7f5f6abe-gb": "/audio/a1/unit0/7f5f6abe-gb.mp3",
+  "unit0-7f5f6abe-us": "/audio/a1/unit0/7f5f6abe-us.mp3",
+  "unit0-8151aa7d-gb": "/audio/a1/unit0/8151aa7d-gb.mp3",
+  "unit0-8151aa7d-us": "/audio/a1/unit0/8151aa7d-us.mp3",
+  "unit0-82138fe3-gb": "/audio/a1/unit0/82138fe3-gb.mp3",
+  "unit0-82138fe3-us": "/audio/a1/unit0/82138fe3-us.mp3",
+  "unit0-825d8b1f-gb": "/audio/a1/unit0/825d8b1f-gb.mp3",
+  "unit0-825d8b1f-us": "/audio/a1/unit0/825d8b1f-us.mp3",
+  "unit0-82fbf5cd-gb": "/audio/a1/unit0/82fbf5cd-gb.mp3",
+  "unit0-82fbf5cd-us": "/audio/a1/unit0/82fbf5cd-us.mp3",
+  "unit0-8457ee5d-gb": "/audio/a1/unit0/8457ee5d-gb.mp3",
+  "unit0-8457ee5d-us": "/audio/a1/unit0/8457ee5d-us.mp3",
+  "unit0-8583378f-gb": "/audio/a1/unit0/8583378f-gb.mp3",
+  "unit0-8583378f-us": "/audio/a1/unit0/8583378f-us.mp3",
+  "unit0-862561c5-gb": "/audio/a1/unit0/862561c5-gb.mp3",
+  "unit0-862561c5-us": "/audio/a1/unit0/862561c5-us.mp3",
+  "unit0-888603c3-gb": "/audio/a1/unit0/888603c3-gb.mp3",
+  "unit0-888603c3-us": "/audio/a1/unit0/888603c3-us.mp3",
+  "unit0-888e7aa2-gb": "/audio/a1/unit0/888e7aa2-gb.mp3",
+  "unit0-888e7aa2-us": "/audio/a1/unit0/888e7aa2-us.mp3",
+  "unit0-88de06b2-gb": "/audio/a1/unit0/88de06b2-gb.mp3",
+  "unit0-88de06b2-us": "/audio/a1/unit0/88de06b2-us.mp3",
+  "unit0-8ad033d4-gb": "/audio/a1/unit0/8ad033d4-gb.mp3",
+  "unit0-8ad033d4-us": "/audio/a1/unit0/8ad033d4-us.mp3",
+  "unit0-8ba8ed1a-gb": "/audio/a1/unit0/8ba8ed1a-gb.mp3",
+  "unit0-8ba8ed1a-us": "/audio/a1/unit0/8ba8ed1a-us.mp3",
+  "unit0-8d201ab4-gb": "/audio/a1/unit0/8d201ab4-gb.mp3",
+  "unit0-8d201ab4-us": "/audio/a1/unit0/8d201ab4-us.mp3",
+  "unit0-8d2497e2-gb": "/audio/a1/unit0/8d2497e2-gb.mp3",
+  "unit0-8d2497e2-us": "/audio/a1/unit0/8d2497e2-us.mp3",
+  "unit0-8d42acf6-gb": "/audio/a1/unit0/8d42acf6-gb.mp3",
+  "unit0-8d42acf6-us": "/audio/a1/unit0/8d42acf6-us.mp3",
+  "unit0-8e2c7aa1-gb": "/audio/a1/unit0/8e2c7aa1-gb.mp3",
+  "unit0-8e2c7aa1-us": "/audio/a1/unit0/8e2c7aa1-us.mp3",
+  "unit0-8f1351e7-gb": "/audio/a1/unit0/8f1351e7-gb.mp3",
+  "unit0-8f1351e7-us": "/audio/a1/unit0/8f1351e7-us.mp3",
+  "unit0-8f3166fb-gb": "/audio/a1/unit0/8f3166fb-gb.mp3",
+  "unit0-8f3166fb-us": "/audio/a1/unit0/8f3166fb-us.mp3",
+  "unit0-8f35e429-gb": "/audio/a1/unit0/8f35e429-gb.mp3",
+  "unit0-8f35e429-us": "/audio/a1/unit0/8f35e429-us.mp3",
+  "unit0-8ff53680-gb": "/audio/a1/unit0/8ff53680-gb.mp3",
+  "unit0-8ff53680-us": "/audio/a1/unit0/8ff53680-us.mp3",
+  "unit0-8ff9071d-gb": "/audio/a1/unit0/8ff9071d-gb.mp3",
+  "unit0-8ff9071d-us": "/audio/a1/unit0/8ff9071d-us.mp3",
+  "unit0-914f96c5-gb": "/audio/a1/unit0/914f96c5-gb.mp3",
+  "unit0-914f96c5-us": "/audio/a1/unit0/914f96c5-us.mp3",
+  "unit0-918d404a-gb": "/audio/a1/unit0/918d404a-gb.mp3",
+  "unit0-918d404a-us": "/audio/a1/unit0/918d404a-us.mp3",
+  "unit0-95917493-gb": "/audio/a1/unit0/95917493-gb.mp3",
+  "unit0-95917493-us": "/audio/a1/unit0/95917493-us.mp3",
+  "unit0-98dbac97-gb": "/audio/a1/unit0/98dbac97-gb.mp3",
+  "unit0-98dbac97-us": "/audio/a1/unit0/98dbac97-us.mp3",
+  "unit0-99eb4fd7-gb": "/audio/a1/unit0/99eb4fd7-gb.mp3",
+  "unit0-99eb4fd7-us": "/audio/a1/unit0/99eb4fd7-us.mp3",
+  "unit0-9a6e02ff-gb": "/audio/a1/unit0/9a6e02ff-gb.mp3",
+  "unit0-9a6e02ff-us": "/audio/a1/unit0/9a6e02ff-us.mp3",
+  "unit0-9afb6297-gb": "/audio/a1/unit0/9afb6297-gb.mp3",
+  "unit0-9afb6297-us": "/audio/a1/unit0/9afb6297-us.mp3",
+  "unit0-9d2cfb7d-gb": "/audio/a1/unit0/9d2cfb7d-gb.mp3",
+  "unit0-9d2cfb7d-us": "/audio/a1/unit0/9d2cfb7d-us.mp3",
+  "unit0-9d2ee900-gb": "/audio/a1/unit0/9d2ee900-gb.mp3",
+  "unit0-9d2ee900-us": "/audio/a1/unit0/9d2ee900-us.mp3",
+  "unit0-9d9ecbcf-gb": "/audio/a1/unit0/9d9ecbcf-gb.mp3",
+  "unit0-9d9ecbcf-us": "/audio/a1/unit0/9d9ecbcf-us.mp3",
+  "unit0-9e725352-gb": "/audio/a1/unit0/9e725352-gb.mp3",
+  "unit0-9e725352-us": "/audio/a1/unit0/9e725352-us.mp3",
+  "unit0-9ea5de9c-gb": "/audio/a1/unit0/9ea5de9c-gb.mp3",
+  "unit0-9ea5de9c-us": "/audio/a1/unit0/9ea5de9c-us.mp3",
+  "unit0-a172b7dd-gb": "/audio/a1/unit0/a172b7dd-gb.mp3",
+  "unit0-a172b7dd-us": "/audio/a1/unit0/a172b7dd-us.mp3",
+  "unit0-a202f41d-gb": "/audio/a1/unit0/a202f41d-gb.mp3",
+  "unit0-a202f41d-us": "/audio/a1/unit0/a202f41d-us.mp3",
+  "unit0-a20c85a8-gb": "/audio/a1/unit0/a20c85a8-gb.mp3",
+  "unit0-a20c85a8-us": "/audio/a1/unit0/a20c85a8-us.mp3",
+  "unit0-a3c91014-gb": "/audio/a1/unit0/a3c91014-gb.mp3",
+  "unit0-a3c91014-us": "/audio/a1/unit0/a3c91014-us.mp3",
+  "unit0-a45b05cc-gb": "/audio/a1/unit0/a45b05cc-gb.mp3",
+  "unit0-a45b05cc-us": "/audio/a1/unit0/a45b05cc-us.mp3",
+  "unit0-a4c6ff66-gb": "/audio/a1/unit0/a4c6ff66-gb.mp3",
+  "unit0-a4c6ff66-us": "/audio/a1/unit0/a4c6ff66-us.mp3",
+  "unit0-a57e9c10-gb": "/audio/a1/unit0/a57e9c10-gb.mp3",
+  "unit0-a57e9c10-us": "/audio/a1/unit0/a57e9c10-us.mp3",
+  "unit0-a6ad93e2-gb": "/audio/a1/unit0/a6ad93e2-gb.mp3",
+  "unit0-a6ad93e2-us": "/audio/a1/unit0/a6ad93e2-us.mp3",
+  "unit0-a6ca5e08-gb": "/audio/a1/unit0/a6ca5e08-gb.mp3",
+  "unit0-a6ca5e08-us": "/audio/a1/unit0/a6ca5e08-us.mp3",
+  "unit0-a717822a-gb": "/audio/a1/unit0/a717822a-gb.mp3",
+  "unit0-a717822a-us": "/audio/a1/unit0/a717822a-us.mp3",
+  "unit0-a7262d15-gb": "/audio/a1/unit0/a7262d15-gb.mp3",
+  "unit0-a7262d15-us": "/audio/a1/unit0/a7262d15-us.mp3",
+  "unit0-a8136946-gb": "/audio/a1/unit0/a8136946-gb.mp3",
+  "unit0-a8136946-us": "/audio/a1/unit0/a8136946-us.mp3",
+  "unit0-aa2f7652-gb": "/audio/a1/unit0/aa2f7652-gb.mp3",
+  "unit0-aa2f7652-us": "/audio/a1/unit0/aa2f7652-us.mp3",
+  "unit0-aa7a8694-gb": "/audio/a1/unit0/aa7a8694-gb.mp3",
+  "unit0-aa7a8694-us": "/audio/a1/unit0/aa7a8694-us.mp3",
+  "unit0-aeb44395-gb": "/audio/a1/unit0/aeb44395-gb.mp3",
+  "unit0-aeb44395-us": "/audio/a1/unit0/aeb44395-us.mp3",
+  "unit0-afad8963-gb": "/audio/a1/unit0/afad8963-gb.mp3",
+  "unit0-afad8963-us": "/audio/a1/unit0/afad8963-us.mp3",
+  "unit0-b0fee263-gb": "/audio/a1/unit0/b0fee263-gb.mp3",
+  "unit0-b0fee263-us": "/audio/a1/unit0/b0fee263-us.mp3",
+  "unit0-b1c7ff79-gb": "/audio/a1/unit0/b1c7ff79-gb.mp3",
+  "unit0-b1c7ff79-us": "/audio/a1/unit0/b1c7ff79-us.mp3",
+  "unit0-b3068a53-gb": "/audio/a1/unit0/b3068a53-gb.mp3",
+  "unit0-b3068a53-us": "/audio/a1/unit0/b3068a53-us.mp3",
+  "unit0-b38c6bf0-gb": "/audio/a1/unit0/b38c6bf0-gb.mp3",
+  "unit0-b38c6bf0-us": "/audio/a1/unit0/b38c6bf0-us.mp3",
+  "unit0-ba2719ef-gb": "/audio/a1/unit0/ba2719ef-gb.mp3",
+  "unit0-ba2719ef-us": "/audio/a1/unit0/ba2719ef-us.mp3",
+  "unit0-ba9ab39a-gb": "/audio/a1/unit0/ba9ab39a-gb.mp3",
+  "unit0-ba9ab39a-us": "/audio/a1/unit0/ba9ab39a-us.mp3",
+  "unit0-bc09cf52-gb": "/audio/a1/unit0/bc09cf52-gb.mp3",
+  "unit0-bc09cf52-us": "/audio/a1/unit0/bc09cf52-us.mp3",
+  "unit0-bd01f454-gb": "/audio/a1/unit0/bd01f454-gb.mp3",
+  "unit0-bd01f454-us": "/audio/a1/unit0/bd01f454-us.mp3",
+  "unit0-bd93ede1-gb": "/audio/a1/unit0/bd93ede1-gb.mp3",
+  "unit0-bd93ede1-us": "/audio/a1/unit0/bd93ede1-us.mp3",
+  "unit0-be248829-gb": "/audio/a1/unit0/be248829-gb.mp3",
+  "unit0-be248829-us": "/audio/a1/unit0/be248829-us.mp3",
+  "unit0-c0846390-gb": "/audio/a1/unit0/c0846390-gb.mp3",
+  "unit0-c0846390-us": "/audio/a1/unit0/c0846390-us.mp3",
+  "unit0-c1faa93e-gb": "/audio/a1/unit0/c1faa93e-gb.mp3",
+  "unit0-c1faa93e-us": "/audio/a1/unit0/c1faa93e-us.mp3",
+  "unit0-c212b600-gb": "/audio/a1/unit0/c212b600-gb.mp3",
+  "unit0-c212b600-us": "/audio/a1/unit0/c212b600-us.mp3",
+  "unit0-c445c174-gb": "/audio/a1/unit0/c445c174-gb.mp3",
+  "unit0-c445c174-us": "/audio/a1/unit0/c445c174-us.mp3",
+  "unit0-c4602668-gb": "/audio/a1/unit0/c4602668-gb.mp3",
+  "unit0-c4602668-us": "/audio/a1/unit0/c4602668-us.mp3",
+  "unit0-c4ba2f20-gb": "/audio/a1/unit0/c4ba2f20-gb.mp3",
+  "unit0-c4ba2f20-us": "/audio/a1/unit0/c4ba2f20-us.mp3",
+  "unit0-c5d13fab-gb": "/audio/a1/unit0/c5d13fab-gb.mp3",
+  "unit0-c5d13fab-us": "/audio/a1/unit0/c5d13fab-us.mp3",
+  "unit0-c637de55-gb": "/audio/a1/unit0/c637de55-gb.mp3",
+  "unit0-c637de55-us": "/audio/a1/unit0/c637de55-us.mp3",
+  "unit0-c75defa6-gb": "/audio/a1/unit0/c75defa6-gb.mp3",
+  "unit0-c75defa6-us": "/audio/a1/unit0/c75defa6-us.mp3",
+  "unit0-c8647fe5-gb": "/audio/a1/unit0/c8647fe5-gb.mp3",
+  "unit0-c8647fe5-us": "/audio/a1/unit0/c8647fe5-us.mp3",
+  "unit0-ca3007ab-gb": "/audio/a1/unit0/ca3007ab-gb.mp3",
+  "unit0-ca3007ab-us": "/audio/a1/unit0/ca3007ab-us.mp3",
+  "unit0-cccb0055-gb": "/audio/a1/unit0/cccb0055-gb.mp3",
+  "unit0-cccb0055-us": "/audio/a1/unit0/cccb0055-us.mp3",
+  "unit0-ce64d281-gb": "/audio/a1/unit0/ce64d281-gb.mp3",
+  "unit0-ce64d281-us": "/audio/a1/unit0/ce64d281-us.mp3",
+  "unit0-d0f065f9-gb": "/audio/a1/unit0/d0f065f9-gb.mp3",
+  "unit0-d0f065f9-us": "/audio/a1/unit0/d0f065f9-us.mp3",
+  "unit0-d4fa8470-gb": "/audio/a1/unit0/d4fa8470-gb.mp3",
+  "unit0-d4fa8470-us": "/audio/a1/unit0/d4fa8470-us.mp3",
+  "unit0-d7cb823b-gb": "/audio/a1/unit0/d7cb823b-gb.mp3",
+  "unit0-d7cb823b-us": "/audio/a1/unit0/d7cb823b-us.mp3",
+  "unit0-d9889f50-gb": "/audio/a1/unit0/d9889f50-gb.mp3",
+  "unit0-d9889f50-us": "/audio/a1/unit0/d9889f50-us.mp3",
+  "unit0-da88b63d-gb": "/audio/a1/unit0/da88b63d-gb.mp3",
+  "unit0-da88b63d-us": "/audio/a1/unit0/da88b63d-us.mp3",
+  "unit0-db90e18f-gb": "/audio/a1/unit0/db90e18f-gb.mp3",
+  "unit0-db90e18f-us": "/audio/a1/unit0/db90e18f-us.mp3",
+  "unit0-dcb746fb-gb": "/audio/a1/unit0/dcb746fb-gb.mp3",
+  "unit0-dcb746fb-us": "/audio/a1/unit0/dcb746fb-us.mp3",
+  "unit0-de020766-gb": "/audio/a1/unit0/de020766-gb.mp3",
+  "unit0-de020766-us": "/audio/a1/unit0/de020766-us.mp3",
+  "unit0-de2337e1-gb": "/audio/a1/unit0/de2337e1-gb.mp3",
+  "unit0-de2337e1-us": "/audio/a1/unit0/de2337e1-us.mp3",
+  "unit0-e0363a7b-gb": "/audio/a1/unit0/e0363a7b-gb.mp3",
+  "unit0-e0363a7b-us": "/audio/a1/unit0/e0363a7b-us.mp3",
+  "unit0-e0af926f-gb": "/audio/a1/unit0/e0af926f-gb.mp3",
+  "unit0-e0af926f-us": "/audio/a1/unit0/e0af926f-us.mp3",
+  "unit0-e1df1d41-gb": "/audio/a1/unit0/e1df1d41-gb.mp3",
+  "unit0-e1df1d41-us": "/audio/a1/unit0/e1df1d41-us.mp3",
+  "unit0-e21ee631-gb": "/audio/a1/unit0/e21ee631-gb.mp3",
+  "unit0-e21ee631-us": "/audio/a1/unit0/e21ee631-us.mp3",
+  "unit0-e729e4f3-gb": "/audio/a1/unit0/e729e4f3-gb.mp3",
+  "unit0-e729e4f3-us": "/audio/a1/unit0/e729e4f3-us.mp3",
+  "unit0-e8239b77-gb": "/audio/a1/unit0/e8239b77-gb.mp3",
+  "unit0-e8239b77-us": "/audio/a1/unit0/e8239b77-us.mp3",
+  "unit0-e920f785-gb": "/audio/a1/unit0/e920f785-gb.mp3",
+  "unit0-e920f785-us": "/audio/a1/unit0/e920f785-us.mp3",
+  "unit0-eb48cdb9-gb": "/audio/a1/unit0/eb48cdb9-gb.mp3",
+  "unit0-eb48cdb9-us": "/audio/a1/unit0/eb48cdb9-us.mp3",
+  "unit0-ebb76fff-gb": "/audio/a1/unit0/ebb76fff-gb.mp3",
+  "unit0-ebb76fff-us": "/audio/a1/unit0/ebb76fff-us.mp3",
+  "unit0-ecf21807-gb": "/audio/a1/unit0/ecf21807-gb.mp3",
+  "unit0-ecf21807-us": "/audio/a1/unit0/ecf21807-us.mp3",
+  "unit0-ed162478-gb": "/audio/a1/unit0/ed162478-gb.mp3",
+  "unit0-ed162478-us": "/audio/a1/unit0/ed162478-us.mp3",
+  "unit0-ed1aa1a6-gb": "/audio/a1/unit0/ed1aa1a6-gb.mp3",
+  "unit0-ed1aa1a6-us": "/audio/a1/unit0/ed1aa1a6-us.mp3",
+  "unit0-ed47c144-gb": "/audio/a1/unit0/ed47c144-gb.mp3",
+  "unit0-ed47c144-us": "/audio/a1/unit0/ed47c144-us.mp3",
+  "unit0-ef2770bf-gb": "/audio/a1/unit0/ef2770bf-gb.mp3",
+  "unit0-ef2770bf-us": "/audio/a1/unit0/ef2770bf-us.mp3",
+  "unit0-ef3af877-gb": "/audio/a1/unit0/ef3af877-gb.mp3",
+  "unit0-ef3af877-us": "/audio/a1/unit0/ef3af877-us.mp3",
+  "unit0-ef590d8b-gb": "/audio/a1/unit0/ef590d8b-gb.mp3",
+  "unit0-ef590d8b-us": "/audio/a1/unit0/ef590d8b-us.mp3",
+  "unit0-ef5d8ab9-gb": "/audio/a1/unit0/ef5d8ab9-gb.mp3",
+  "unit0-ef5d8ab9-us": "/audio/a1/unit0/ef5d8ab9-us.mp3",
+  "unit0-f161ff1c-gb": "/audio/a1/unit0/f161ff1c-gb.mp3",
+  "unit0-f161ff1c-us": "/audio/a1/unit0/f161ff1c-us.mp3",
+  "unit0-f17ab010-gb": "/audio/a1/unit0/f17ab010-gb.mp3",
+  "unit0-f17ab010-us": "/audio/a1/unit0/f17ab010-us.mp3",
+  "unit0-f5352bb4-gb": "/audio/a1/unit0/f5352bb4-gb.mp3",
+  "unit0-f5352bb4-us": "/audio/a1/unit0/f5352bb4-us.mp3",
+  "unit0-f542bdc8-gb": "/audio/a1/unit0/f542bdc8-gb.mp3",
+  "unit0-f542bdc8-us": "/audio/a1/unit0/f542bdc8-us.mp3",
+  "unit0-f624f702-gb": "/audio/a1/unit0/f624f702-gb.mp3",
+  "unit0-f624f702-us": "/audio/a1/unit0/f624f702-us.mp3",
+  "unit0-f90cbb4b-gb": "/audio/a1/unit0/f90cbb4b-gb.mp3",
+  "unit0-f90cbb4b-us": "/audio/a1/unit0/f90cbb4b-us.mp3",
+  "unit0-fca77633-gb": "/audio/a1/unit0/fca77633-gb.mp3",
+  "unit0-fca77633-us": "/audio/a1/unit0/fca77633-us.mp3",
+  "unit0-fd7df61f-gb": "/audio/a1/unit0/fd7df61f-gb.mp3",
+  "unit0-fd7df61f-us": "/audio/a1/unit0/fd7df61f-us.mp3",
+  "unit0-fe18fbb0-gb": "/audio/a1/unit0/fe18fbb0-gb.mp3",
+  "unit0-fe18fbb0-us": "/audio/a1/unit0/fe18fbb0-us.mp3",
+  "unit0-fe691321-gb": "/audio/a1/unit0/fe691321-gb.mp3",
+  "unit0-fe691321-us": "/audio/a1/unit0/fe691321-us.mp3"
+ },
+ "clips": {
+  "95917493": {
+   "nova": {
+    "gb": [
+     "unit0-95917493-gb",
+     0,
+     1.48898
+    ],
+    "us": [
+     "unit0-95917493-us",
+     0,
+     1.906939
+    ]
+   }
+  },
+  "00500da8": {
+   "nova": {
+    "gb": [
+     "unit0-00500da8-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-00500da8-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "011ca01f": {
+   "nova": {
+    "gb": [
+     "unit0-011ca01f-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-011ca01f-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "011decbc": {
+   "nova": {
+    "gb": [
+     "unit0-011decbc-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-011decbc-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "01901e93": {
+   "nova": {
+    "gb": [
+     "unit0-01901e93-gb",
+     0,
+     1.38449
+    ],
+    "us": [
+     "unit0-01901e93-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "01a53a61": {
+   "nova": {
+    "gb": [
+     "unit0-01a53a61-gb",
+     0,
+     1.253878
+    ],
+    "us": [
+     "unit0-01a53a61-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "027455bb": {
+   "nova": {
+    "gb": [
+     "unit0-027455bb-gb",
+     0,
+     0.679184
+    ],
+    "us": [
+     "unit0-027455bb-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "0279d299": {
+   "nova": {
+    "gb": [
+     "unit0-0279d299-gb",
+     0,
+     1.671837
+    ],
+    "us": [
+     "unit0-0279d299-us",
+     0,
+     1.697959
+    ]
+   }
+  },
+  "02e9cfcc": {
+   "nova": {
+    "gb": [
+     "unit0-02e9cfcc-gb",
+     0,
+     1.332245
+    ],
+    "us": [
+     "unit0-02e9cfcc-us",
+     0,
+     1.253878
+    ]
+   }
+  },
+  "03285dfc": {
+   "nova": {
+    "gb": [
+     "unit0-03285dfc-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-03285dfc-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "03b1d87b": {
+   "nova": {
+    "gb": [
+     "unit0-03b1d87b-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-03b1d87b-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "047458e1": {
+   "nova": {
+    "gb": [
+     "unit0-047458e1-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-047458e1-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "0552c2b0": {
+   "nova": {
+    "gb": [
+     "unit0-0552c2b0-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-0552c2b0-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "05bf6449": {
+   "nova": {
+    "gb": [
+     "unit0-05bf6449-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-05bf6449-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "07cc2b2a": {
+   "nova": {
+    "gb": [
+     "unit0-07cc2b2a-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-07cc2b2a-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "0a0a25b5": {
+   "nova": {
+    "gb": [
+     "unit0-0a0a25b5-gb",
+     0,
+     0.835918
+    ],
+    "us": [
+     "unit0-0a0a25b5-us",
+     0,
+     0.679184
+    ]
+   }
+  },
+  "0ba81191": {
+   "nova": {
+    "gb": [
+     "unit0-0ba81191-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-0ba81191-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "0cfb455b": {
+   "nova": {
+    "gb": [
+     "unit0-0cfb455b-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-0cfb455b-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "0d29de90": {
+   "nova": {
+    "gb": [
+     "unit0-0d29de90-gb",
+     0,
+     1.253878
+    ],
+    "us": [
+     "unit0-0d29de90-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "0d38e91a": {
+   "nova": {
+    "gb": [
+     "unit0-0d38e91a-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "unit0-0d38e91a-us",
+     0,
+     1.28
+    ]
+   }
+  },
+  "0d3d6648": {
+   "nova": {
+    "gb": [
+     "unit0-0d3d6648-gb",
+     0,
+     1.38449
+    ],
+    "us": [
+     "unit0-0d3d6648-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "0d5b7b5c": {
+   "nova": {
+    "gb": [
+     "unit0-0d5b7b5c-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "unit0-0d5b7b5c-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "0e5e77a9": {
+   "nova": {
+    "gb": [
+     "unit0-0e5e77a9-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-0e5e77a9-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "0e68b936": {
+   "nova": {
+    "gb": [
+     "unit0-0e68b936-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-0e68b936-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "0eaa25e3": {
+   "nova": {
+    "gb": [
+     "unit0-0eaa25e3-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-0eaa25e3-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "0f189895": {
+   "nova": {
+    "gb": [
+     "unit0-0f189895-gb",
+     0,
+     1.201633
+    ],
+    "us": [
+     "unit0-0f189895-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "0f1d15c3": {
+   "nova": {
+    "gb": [
+     "unit0-0f1d15c3-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-0f1d15c3-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "0f2c204d": {
+   "nova": {
+    "gb": [
+     "unit0-0f2c204d-gb",
+     0,
+     1.149388
+    ],
+    "us": [
+     "unit0-0f2c204d-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "0f4a3561": {
+   "nova": {
+    "gb": [
+     "unit0-0f4a3561-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-0f4a3561-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "100e165b": {
+   "nova": {
+    "gb": [
+     "unit0-100e165b-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-100e165b-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "10bc2abf": {
+   "nova": {
+    "gb": [
+     "unit0-10bc2abf-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-10bc2abf-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "116b77dc": {
+   "nova": {
+    "gb": [
+     "unit0-116b77dc-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-116b77dc-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "16266f55": {
+   "nova": {
+    "gb": [
+     "unit0-16266f55-gb",
+     0,
+     0.731429
+    ],
+    "us": [
+     "unit0-16266f55-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "16fb7f77": {
+   "nova": {
+    "gb": [
+     "unit0-16fb7f77-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-16fb7f77-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "1852361a": {
+   "nova": {
+    "gb": [
+     "unit0-1852361a-gb",
+     0,
+     1.201633
+    ],
+    "us": [
+     "unit0-1852361a-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "1a956a35": {
+   "nova": {
+    "gb": [
+     "unit0-1a956a35-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-1a956a35-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "1dd883e7": {
+   "nova": {
+    "gb": [
+     "unit0-1dd883e7-gb",
+     0,
+     1.253878
+    ],
+    "us": [
+     "unit0-1dd883e7-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "21f5b729": {
+   "nova": {
+    "gb": [
+     "unit0-21f5b729-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-21f5b729-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "225e036d": {
+   "nova": {
+    "gb": [
+     "unit0-225e036d-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-225e036d-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "23e3d71a": {
+   "nova": {
+    "gb": [
+     "unit0-23e3d71a-gb",
+     0,
+     0.835918
+    ],
+    "us": [
+     "unit0-23e3d71a-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "2483ee0e": {
+   "nova": {
+    "gb": [
+     "unit0-2483ee0e-gb",
+     0,
+     1.149388
+    ],
+    "us": [
+     "unit0-2483ee0e-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "2535db85": {
+   "nova": {
+    "gb": [
+     "unit0-2535db85-gb",
+     0,
+     1.253878
+    ],
+    "us": [
+     "unit0-2535db85-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "25a7329d": {
+   "nova": {
+    "gb": [
+     "unit0-25a7329d-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-25a7329d-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "25d4a652": {
+   "nova": {
+    "gb": [
+     "unit0-25d4a652-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-25d4a652-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "2775a9e5": {
+   "nova": {
+    "gb": [
+     "unit0-2775a9e5-gb",
+     0,
+     1.38449
+    ],
+    "us": [
+     "unit0-2775a9e5-us",
+     0,
+     1.201633
+    ]
+   }
+  },
+  "28128f49": {
+   "nova": {
+    "gb": [
+     "unit0-28128f49-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "unit0-28128f49-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "2ba4b5cb": {
+   "nova": {
+    "gb": [
+     "unit0-2ba4b5cb-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-2ba4b5cb-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "2ce2dae7": {
+   "nova": {
+    "gb": [
+     "unit0-2ce2dae7-gb",
+     0,
+     5.041633
+    ],
+    "us": [
+     "unit0-2ce2dae7-us",
+     0,
+     3.996735
+    ]
+   }
+  },
+  "2d505a99": {
+   "nova": {
+    "gb": [
+     "unit0-2d505a99-gb",
+     0,
+     0.783673
+    ],
+    "us": [
+     "unit0-2d505a99-us",
+     0,
+     0.731429
+    ]
+   }
+  },
+  "2f69f5a5": {
+   "nova": {
+    "gb": [
+     "unit0-2f69f5a5-gb",
+     0,
+     0.835918
+    ],
+    "us": [
+     "unit0-2f69f5a5-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "2f9d9b64": {
+   "nova": {
+    "gb": [
+     "unit0-2f9d9b64-gb",
+     0,
+     1.201633
+    ],
+    "us": [
+     "unit0-2f9d9b64-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "2fc941c2": {
+   "nova": {
+    "gb": [
+     "unit0-2fc941c2-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-2fc941c2-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "3044938a": {
+   "nova": {
+    "gb": [
+     "unit0-3044938a-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-3044938a-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "30be372f": {
+   "nova": {
+    "gb": [
+     "unit0-30be372f-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-30be372f-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "32694bc3": {
+   "nova": {
+    "gb": [
+     "unit0-32694bc3-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-32694bc3-us",
+     0,
+     0.731429
+    ]
+   }
+  },
+  "33e6572f": {
+   "nova": {
+    "gb": [
+     "unit0-33e6572f-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-33e6572f-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "3583acfe": {
+   "nova": {
+    "gb": [
+     "unit0-3583acfe-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-3583acfe-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "35bc1205": {
+   "nova": {
+    "gb": [
+     "unit0-35bc1205-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-35bc1205-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "37348a60": {
+   "nova": {
+    "gb": [
+     "unit0-37348a60-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "unit0-37348a60-us",
+     0,
+     1.253878
+    ]
+   }
+  },
+  "386f27b5": {
+   "nova": {
+    "gb": [
+     "unit0-386f27b5-gb",
+     0,
+     0.783673
+    ],
+    "us": [
+     "unit0-386f27b5-us",
+     0,
+     0.731429
+    ]
+   }
+  },
+  "3979c528": {
+   "nova": {
+    "gb": [
+     "unit0-3979c528-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-3979c528-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "3a56e759": {
+   "nova": {
+    "gb": [
+     "unit0-3a56e759-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-3a56e759-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "3ba7e226": {
+   "nova": {
+    "gb": [
+     "unit0-3ba7e226-gb",
+     0,
+     0.835918
+    ],
+    "us": [
+     "unit0-3ba7e226-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "3c694558": {
+   "nova": {
+    "gb": [
+     "unit0-3c694558-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-3c694558-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "3ea53a3f": {
+   "nova": {
+    "gb": [
+     "unit0-3ea53a3f-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-3ea53a3f-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "3f6ae937": {
+   "nova": {
+    "gb": [
+     "unit0-3f6ae937-gb",
+     0,
+     0.835918
+    ],
+    "us": [
+     "unit0-3f6ae937-us",
+     0,
+     0.679184
+    ]
+   }
+  },
+  "40f480dc": {
+   "nova": {
+    "gb": [
+     "unit0-40f480dc-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-40f480dc-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "42cfce77": {
+   "nova": {
+    "gb": [
+     "unit0-42cfce77-gb",
+     0,
+     1.332245
+    ],
+    "us": [
+     "unit0-42cfce77-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "43e36503": {
+   "nova": {
+    "gb": [
+     "unit0-43e36503-gb",
+     0,
+     0.731429
+    ],
+    "us": [
+     "unit0-43e36503-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "44f1708a": {
+   "nova": {
+    "gb": [
+     "unit0-44f1708a-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-44f1708a-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "45b1c069": {
+   "nova": {
+    "gb": [
+     "unit0-45b1c069-gb",
+     0,
+     0.653061
+    ],
+    "us": [
+     "unit0-45b1c069-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "45b473eb": {
+   "nova": {
+    "gb": [
+     "unit0-45b473eb-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-45b473eb-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "46d72f50": {
+   "nova": {
+    "gb": [
+     "unit0-46d72f50-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-46d72f50-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "493624ad": {
+   "nova": {
+    "gb": [
+     "unit0-493624ad-gb",
+     0,
+     1.201633
+    ],
+    "us": [
+     "unit0-493624ad-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "49c69a10": {
+   "nova": {
+    "gb": [
+     "unit0-49c69a10-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-49c69a10-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "4ada6b9d": {
+   "nova": {
+    "gb": [
+     "unit0-4ada6b9d-gb",
+     0,
+     1.332245
+    ],
+    "us": [
+     "unit0-4ada6b9d-us",
+     0,
+     1.201633
+    ]
+   }
+  },
+  "4dd58d63": {
+   "nova": {
+    "gb": [
+     "unit0-4dd58d63-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-4dd58d63-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "4f5dda2b": {
+   "nova": {
+    "gb": [
+     "unit0-4f5dda2b-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-4f5dda2b-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "4f9f2cab": {
+   "nova": {
+    "gb": [
+     "unit0-4f9f2cab-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-4f9f2cab-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "51a134df": {
+   "nova": {
+    "gb": [
+     "unit0-51a134df-gb",
+     0,
+     1.567347
+    ],
+    "us": [
+     "unit0-51a134df-us",
+     0,
+     1.436735
+    ]
+   }
+  },
+  "521d0429": {
+   "nova": {
+    "gb": [
+     "unit0-521d0429-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-521d0429-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "547125cb": {
+   "nova": {
+    "gb": [
+     "unit0-547125cb-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-547125cb-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "568f4ba4": {
+   "nova": {
+    "gb": [
+     "unit0-568f4ba4-gb",
+     0,
+     0.835918
+    ],
+    "us": [
+     "unit0-568f4ba4-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "597d11c6": {
+   "nova": {
+    "gb": [
+     "unit0-597d11c6-gb",
+     0,
+     0.731429
+    ],
+    "us": [
+     "unit0-597d11c6-us",
+     0,
+     0.548571
+    ]
+   }
+  },
+  "5cb49d8a": {
+   "nova": {
+    "gb": [
+     "unit0-5cb49d8a-gb",
+     0,
+     0.679184
+    ],
+    "us": [
+     "unit0-5cb49d8a-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "5ddb609c": {
+   "nova": {
+    "gb": [
+     "unit0-5ddb609c-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-5ddb609c-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "5fd56df9": {
+   "nova": {
+    "gb": [
+     "unit0-5fd56df9-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-5fd56df9-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "6232229c": {
+   "nova": {
+    "gb": [
+     "unit0-6232229c-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-6232229c-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "63374a36": {
+   "nova": {
+    "gb": [
+     "unit0-63374a36-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-63374a36-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "63b75f31": {
+   "nova": {
+    "gb": [
+     "unit0-63b75f31-gb",
+     0,
+     0.731429
+    ],
+    "us": [
+     "unit0-63b75f31-us",
+     0,
+     0.731429
+    ]
+   }
+  },
+  "662dcc9e": {
+   "nova": {
+    "gb": [
+     "unit0-662dcc9e-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-662dcc9e-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "666e1bb3": {
+   "nova": {
+    "gb": [
+     "unit0-666e1bb3-gb",
+     0,
+     0.731429
+    ],
+    "us": [
+     "unit0-666e1bb3-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "66a07610": {
+   "nova": {
+    "gb": [
+     "unit0-66a07610-gb",
+     0,
+     1.567347
+    ],
+    "us": [
+     "unit0-66a07610-us",
+     0,
+     1.436735
+    ]
+   }
+  },
+  "6815c86c": {
+   "nova": {
+    "gb": [
+     "unit0-6815c86c-gb",
+     0,
+     0.835918
+    ],
+    "us": [
+     "unit0-6815c86c-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "68e41ef0": {
+   "nova": {
+    "gb": [
+     "unit0-68e41ef0-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-68e41ef0-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "69f7b773": {
+   "nova": {
+    "gb": [
+     "unit0-69f7b773-gb",
+     0,
+     1.750204
+    ],
+    "us": [
+     "unit0-69f7b773-us",
+     0,
+     1.697959
+    ]
+   }
+  },
+  "6bf0ef3b": {
+   "nova": {
+    "gb": [
+     "unit0-6bf0ef3b-gb",
+     0,
+     0.653061
+    ],
+    "us": [
+     "unit0-6bf0ef3b-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "6d10ddca": {
+   "nova": {
+    "gb": [
+     "unit0-6d10ddca-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-6d10ddca-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "6d2ef2de": {
+   "nova": {
+    "gb": [
+     "unit0-6d2ef2de-gb",
+     0,
+     1.149388
+    ],
+    "us": [
+     "unit0-6d2ef2de-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "6d33700c": {
+   "nova": {
+    "gb": [
+     "unit0-6d33700c-gb",
+     0,
+     1.253878
+    ],
+    "us": [
+     "unit0-6d33700c-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "6f403f25": {
+   "nova": {
+    "gb": [
+     "unit0-6f403f25-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-6f403f25-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "6f44bc53": {
+   "nova": {
+    "gb": [
+     "unit0-6f44bc53-gb",
+     0,
+     1.201633
+    ],
+    "us": [
+     "unit0-6f44bc53-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "710d24c2": {
+   "nova": {
+    "gb": [
+     "unit0-710d24c2-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "unit0-710d24c2-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "713baa5f": {
+   "nova": {
+    "gb": [
+     "unit0-713baa5f-gb",
+     0,
+     1.436735
+    ],
+    "us": [
+     "unit0-713baa5f-us",
+     0,
+     1.515102
+    ]
+   }
+  },
+  "72131c0e": {
+   "nova": {
+    "gb": [
+     "unit0-72131c0e-gb",
+     0,
+     0.835918
+    ],
+    "us": [
+     "unit0-72131c0e-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "73a6862a": {
+   "nova": {
+    "gb": [
+     "unit0-73a6862a-gb",
+     0,
+     0.835918
+    ],
+    "us": [
+     "unit0-73a6862a-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "742581dc": {
+   "nova": {
+    "gb": [
+     "unit0-742581dc-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-742581dc-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "765bb4cb": {
+   "nova": {
+    "gb": [
+     "unit0-765bb4cb-gb",
+     0,
+     1.854694
+    ],
+    "us": [
+     "unit0-765bb4cb-us",
+     0,
+     1.515102
+    ]
+   }
+  },
+  "775718f4": {
+   "nova": {
+    "gb": [
+     "unit0-775718f4-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-775718f4-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "77688e8b": {
+   "nova": {
+    "gb": [
+     "unit0-77688e8b-gb",
+     0,
+     1.201633
+    ],
+    "us": [
+     "unit0-77688e8b-us",
+     0,
+     1.201633
+    ]
+   }
+  },
+  "78556c69": {
+   "nova": {
+    "gb": [
+     "unit0-78556c69-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-78556c69-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "7a930b5b": {
+   "nova": {
+    "gb": [
+     "unit0-7a930b5b-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-7a930b5b-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "7bcf1d1c": {
+   "nova": {
+    "gb": [
+     "unit0-7bcf1d1c-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "unit0-7bcf1d1c-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "7f33e096": {
+   "nova": {
+    "gb": [
+     "unit0-7f33e096-gb",
+     0,
+     1.750204
+    ],
+    "us": [
+     "unit0-7f33e096-us",
+     0,
+     1.567347
+    ]
+   }
+  },
+  "7f5f6abe": {
+   "nova": {
+    "gb": [
+     "unit0-7f5f6abe-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-7f5f6abe-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "8151aa7d": {
+   "nova": {
+    "gb": [
+     "unit0-8151aa7d-gb",
+     0,
+     1.436735
+    ],
+    "us": [
+     "unit0-8151aa7d-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "82138fe3": {
+   "nova": {
+    "gb": [
+     "unit0-82138fe3-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-82138fe3-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "825d8b1f": {
+   "nova": {
+    "gb": [
+     "unit0-825d8b1f-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "unit0-825d8b1f-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "82fbf5cd": {
+   "nova": {
+    "gb": [
+     "unit0-82fbf5cd-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-82fbf5cd-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "8457ee5d": {
+   "nova": {
+    "gb": [
+     "unit0-8457ee5d-gb",
+     0,
+     1.933061
+    ],
+    "us": [
+     "unit0-8457ee5d-us",
+     0,
+     1.933061
+    ]
+   }
+  },
+  "8583378f": {
+   "nova": {
+    "gb": [
+     "unit0-8583378f-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-8583378f-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "862561c5": {
+   "nova": {
+    "gb": [
+     "unit0-862561c5-gb",
+     0,
+     1.201633
+    ],
+    "us": [
+     "unit0-862561c5-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "888603c3": {
+   "nova": {
+    "gb": [
+     "unit0-888603c3-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-888603c3-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "888e7aa2": {
+   "nova": {
+    "gb": [
+     "unit0-888e7aa2-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-888e7aa2-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "88de06b2": {
+   "nova": {
+    "gb": [
+     "unit0-88de06b2-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-88de06b2-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "8ad033d4": {
+   "nova": {
+    "gb": [
+     "unit0-8ad033d4-gb",
+     0,
+     1.149388
+    ],
+    "us": [
+     "unit0-8ad033d4-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "8ba8ed1a": {
+   "nova": {
+    "gb": [
+     "unit0-8ba8ed1a-gb",
+     0,
+     0.731429
+    ],
+    "us": [
+     "unit0-8ba8ed1a-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "8d201ab4": {
+   "nova": {
+    "gb": [
+     "unit0-8d201ab4-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-8d201ab4-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "8d2497e2": {
+   "nova": {
+    "gb": [
+     "unit0-8d2497e2-gb",
+     0,
+     1.149388
+    ],
+    "us": [
+     "unit0-8d2497e2-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "8d42acf6": {
+   "nova": {
+    "gb": [
+     "unit0-8d42acf6-gb",
+     0,
+     1.201633
+    ],
+    "us": [
+     "unit0-8d42acf6-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "8e2c7aa1": {
+   "nova": {
+    "gb": [
+     "unit0-8e2c7aa1-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-8e2c7aa1-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "8f1351e7": {
+   "nova": {
+    "gb": [
+     "unit0-8f1351e7-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-8f1351e7-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "8f3166fb": {
+   "nova": {
+    "gb": [
+     "unit0-8f3166fb-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-8f3166fb-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "8f35e429": {
+   "nova": {
+    "gb": [
+     "unit0-8f35e429-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "unit0-8f35e429-us",
+     0,
+     1.201633
+    ]
+   }
+  },
+  "8ff53680": {
+   "nova": {
+    "gb": [
+     "unit0-8ff53680-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-8ff53680-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "8ff9071d": {
+   "nova": {
+    "gb": [
+     "unit0-8ff9071d-gb",
+     0,
+     1.201633
+    ],
+    "us": [
+     "unit0-8ff9071d-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "914f96c5": {
+   "nova": {
+    "gb": [
+     "unit0-914f96c5-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-914f96c5-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "918d404a": {
+   "nova": {
+    "gb": [
+     "unit0-918d404a-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-918d404a-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "98dbac97": {
+   "nova": {
+    "gb": [
+     "unit0-98dbac97-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-98dbac97-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "99eb4fd7": {
+   "nova": {
+    "gb": [
+     "unit0-99eb4fd7-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-99eb4fd7-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "9a6e02ff": {
+   "nova": {
+    "gb": [
+     "unit0-9a6e02ff-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-9a6e02ff-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "9afb6297": {
+   "nova": {
+    "gb": [
+     "unit0-9afb6297-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-9afb6297-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "9d2cfb7d": {
+   "nova": {
+    "gb": [
+     "unit0-9d2cfb7d-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-9d2cfb7d-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "9d2ee900": {
+   "nova": {
+    "gb": [
+     "unit0-9d2ee900-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-9d2ee900-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "9d9ecbcf": {
+   "nova": {
+    "gb": [
+     "unit0-9d9ecbcf-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "unit0-9d9ecbcf-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "9e725352": {
+   "nova": {
+    "gb": [
+     "unit0-9e725352-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-9e725352-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "9ea5de9c": {
+   "nova": {
+    "gb": [
+     "unit0-9ea5de9c-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-9ea5de9c-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "a172b7dd": {
+   "nova": {
+    "gb": [
+     "unit0-a172b7dd-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-a172b7dd-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "a202f41d": {
+   "nova": {
+    "gb": [
+     "unit0-a202f41d-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "unit0-a202f41d-us",
+     0,
+     1.28
+    ]
+   }
+  },
+  "a20c85a8": {
+   "nova": {
+    "gb": [
+     "unit0-a20c85a8-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-a20c85a8-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "a3c91014": {
+   "nova": {
+    "gb": [
+     "unit0-a3c91014-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-a3c91014-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "a45b05cc": {
+   "nova": {
+    "gb": [
+     "unit0-a45b05cc-gb",
+     0,
+     1.253878
+    ],
+    "us": [
+     "unit0-a45b05cc-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "a4c6ff66": {
+   "nova": {
+    "gb": [
+     "unit0-a4c6ff66-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-a4c6ff66-us",
+     0,
+     1.28
+    ]
+   }
+  },
+  "a57e9c10": {
+   "nova": {
+    "gb": [
+     "unit0-a57e9c10-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-a57e9c10-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "a6ad93e2": {
+   "nova": {
+    "gb": [
+     "unit0-a6ad93e2-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-a6ad93e2-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "a6ca5e08": {
+   "nova": {
+    "gb": [
+     "unit0-a6ca5e08-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-a6ca5e08-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "a717822a": {
+   "nova": {
+    "gb": [
+     "unit0-a717822a-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "unit0-a717822a-us",
+     0,
+     1.38449
+    ]
+   }
+  },
+  "a7262d15": {
+   "nova": {
+    "gb": [
+     "unit0-a7262d15-gb",
+     0,
+     0.731429
+    ],
+    "us": [
+     "unit0-a7262d15-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "a8136946": {
+   "nova": {
+    "gb": [
+     "unit0-a8136946-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-a8136946-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "aa2f7652": {
+   "nova": {
+    "gb": [
+     "unit0-aa2f7652-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-aa2f7652-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "aa7a8694": {
+   "nova": {
+    "gb": [
+     "unit0-aa7a8694-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-aa7a8694-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "aeb44395": {
+   "nova": {
+    "gb": [
+     "unit0-aeb44395-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-aeb44395-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "afad8963": {
+   "nova": {
+    "gb": [
+     "unit0-afad8963-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-afad8963-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "b0fee263": {
+   "nova": {
+    "gb": [
+     "unit0-b0fee263-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-b0fee263-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "b1c7ff79": {
+   "nova": {
+    "gb": [
+     "unit0-b1c7ff79-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-b1c7ff79-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "b3068a53": {
+   "nova": {
+    "gb": [
+     "unit0-b3068a53-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-b3068a53-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "b38c6bf0": {
+   "nova": {
+    "gb": [
+     "unit0-b38c6bf0-gb",
+     0,
+     1.201633
+    ],
+    "us": [
+     "unit0-b38c6bf0-us",
+     0,
+     1.201633
+    ]
+   }
+  },
+  "ba2719ef": {
+   "nova": {
+    "gb": [
+     "unit0-ba2719ef-gb",
+     0,
+     0.731429
+    ],
+    "us": [
+     "unit0-ba2719ef-us",
+     0,
+     0.417959
+    ]
+   }
+  },
+  "ba9ab39a": {
+   "nova": {
+    "gb": [
+     "unit0-ba9ab39a-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-ba9ab39a-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "bc09cf52": {
+   "nova": {
+    "gb": [
+     "unit0-bc09cf52-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-bc09cf52-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "bd01f454": {
+   "nova": {
+    "gb": [
+     "unit0-bd01f454-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-bd01f454-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "bd93ede1": {
+   "nova": {
+    "gb": [
+     "unit0-bd93ede1-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-bd93ede1-us",
+     0,
+     0.731429
+    ]
+   }
+  },
+  "be248829": {
+   "nova": {
+    "gb": [
+     "unit0-be248829-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-be248829-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "c0846390": {
+   "nova": {
+    "gb": [
+     "unit0-c0846390-gb",
+     0,
+     0.783673
+    ],
+    "us": [
+     "unit0-c0846390-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "c1faa93e": {
+   "nova": {
+    "gb": [
+     "unit0-c1faa93e-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-c1faa93e-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "c212b600": {
+   "nova": {
+    "gb": [
+     "unit0-c212b600-gb",
+     0,
+     1.149388
+    ],
+    "us": [
+     "unit0-c212b600-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "c445c174": {
+   "nova": {
+    "gb": [
+     "unit0-c445c174-gb",
+     0,
+     0.835918
+    ],
+    "us": [
+     "unit0-c445c174-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "c4602668": {
+   "nova": {
+    "gb": [
+     "unit0-c4602668-gb",
+     0,
+     0.783673
+    ],
+    "us": [
+     "unit0-c4602668-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "c4ba2f20": {
+   "nova": {
+    "gb": [
+     "unit0-c4ba2f20-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-c4ba2f20-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "c5d13fab": {
+   "nova": {
+    "gb": [
+     "unit0-c5d13fab-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-c5d13fab-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "c637de55": {
+   "nova": {
+    "gb": [
+     "unit0-c637de55-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-c637de55-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "c75defa6": {
+   "nova": {
+    "gb": [
+     "unit0-c75defa6-gb",
+     0,
+     1.985306
+    ],
+    "us": [
+     "unit0-c75defa6-us",
+     0,
+     1.671837
+    ]
+   }
+  },
+  "c8647fe5": {
+   "nova": {
+    "gb": [
+     "unit0-c8647fe5-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-c8647fe5-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "ca3007ab": {
+   "nova": {
+    "gb": [
+     "unit0-ca3007ab-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-ca3007ab-us",
+     0,
+     0.679184
+    ]
+   }
+  },
+  "cccb0055": {
+   "nova": {
+    "gb": [
+     "unit0-cccb0055-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-cccb0055-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "ce64d281": {
+   "nova": {
+    "gb": [
+     "unit0-ce64d281-gb",
+     0,
+     1.671837
+    ],
+    "us": [
+     "unit0-ce64d281-us",
+     0,
+     2.272653
+    ]
+   }
+  },
+  "d0f065f9": {
+   "nova": {
+    "gb": [
+     "unit0-d0f065f9-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-d0f065f9-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "d4fa8470": {
+   "nova": {
+    "gb": [
+     "unit0-d4fa8470-gb",
+     0,
+     0.783673
+    ],
+    "us": [
+     "unit0-d4fa8470-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "d7cb823b": {
+   "nova": {
+    "gb": [
+     "unit0-d7cb823b-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-d7cb823b-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "d9889f50": {
+   "nova": {
+    "gb": [
+     "unit0-d9889f50-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-d9889f50-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "da88b63d": {
+   "nova": {
+    "gb": [
+     "unit0-da88b63d-gb",
+     0,
+     1.149388
+    ],
+    "us": [
+     "unit0-da88b63d-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "db90e18f": {
+   "nova": {
+    "gb": [
+     "unit0-db90e18f-gb",
+     0,
+     0.862041
+    ],
+    "us": [
+     "unit0-db90e18f-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "dcb746fb": {
+   "nova": {
+    "gb": [
+     "unit0-dcb746fb-gb",
+     0,
+     0.835918
+    ],
+    "us": [
+     "unit0-dcb746fb-us",
+     0,
+     0.653061
+    ]
+   }
+  },
+  "de020766": {
+   "nova": {
+    "gb": [
+     "unit0-de020766-gb",
+     0,
+     0.783673
+    ],
+    "us": [
+     "unit0-de020766-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "de2337e1": {
+   "nova": {
+    "gb": [
+     "unit0-de2337e1-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-de2337e1-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "e0363a7b": {
+   "nova": {
+    "gb": [
+     "unit0-e0363a7b-gb",
+     0,
+     0.783673
+    ],
+    "us": [
+     "unit0-e0363a7b-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "e0af926f": {
+   "nova": {
+    "gb": [
+     "unit0-e0af926f-gb",
+     0,
+     1.149388
+    ],
+    "us": [
+     "unit0-e0af926f-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "e1df1d41": {
+   "nova": {
+    "gb": [
+     "unit0-e1df1d41-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-e1df1d41-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "e21ee631": {
+   "nova": {
+    "gb": [
+     "unit0-e21ee631-gb",
+     0,
+     1.149388
+    ],
+    "us": [
+     "unit0-e21ee631-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "e729e4f3": {
+   "nova": {
+    "gb": [
+     "unit0-e729e4f3-gb",
+     0,
+     1.515102
+    ],
+    "us": [
+     "unit0-e729e4f3-us",
+     0,
+     1.28
+    ]
+   }
+  },
+  "e8239b77": {
+   "nova": {
+    "gb": [
+     "unit0-e8239b77-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-e8239b77-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "e920f785": {
+   "nova": {
+    "gb": [
+     "unit0-e920f785-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-e920f785-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "eb48cdb9": {
+   "nova": {
+    "gb": [
+     "unit0-eb48cdb9-gb",
+     0,
+     1.253878
+    ],
+    "us": [
+     "unit0-eb48cdb9-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "ebb76fff": {
+   "nova": {
+    "gb": [
+     "unit0-ebb76fff-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-ebb76fff-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "ecf21807": {
+   "nova": {
+    "gb": [
+     "unit0-ecf21807-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-ecf21807-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "ed162478": {
+   "nova": {
+    "gb": [
+     "unit0-ed162478-gb",
+     0,
+     1.149388
+    ],
+    "us": [
+     "unit0-ed162478-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "ed1aa1a6": {
+   "nova": {
+    "gb": [
+     "unit0-ed1aa1a6-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-ed1aa1a6-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "ed47c144": {
+   "nova": {
+    "gb": [
+     "unit0-ed47c144-gb",
+     0,
+     1.149388
+    ],
+    "us": [
+     "unit0-ed47c144-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "ef2770bf": {
+   "nova": {
+    "gb": [
+     "unit0-ef2770bf-gb",
+     0,
+     1.149388
+    ],
+    "us": [
+     "unit0-ef2770bf-us",
+     0,
+     1.201633
+    ]
+   }
+  },
+  "ef3af877": {
+   "nova": {
+    "gb": [
+     "unit0-ef3af877-gb",
+     0,
+     1.07102
+    ],
+    "us": [
+     "unit0-ef3af877-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "ef590d8b": {
+   "nova": {
+    "gb": [
+     "unit0-ef590d8b-gb",
+     0,
+     1.253878
+    ],
+    "us": [
+     "unit0-ef590d8b-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "ef5d8ab9": {
+   "nova": {
+    "gb": [
+     "unit0-ef5d8ab9-gb",
+     0,
+     1.253878
+    ],
+    "us": [
+     "unit0-ef5d8ab9-us",
+     0,
+     1.201633
+    ]
+   }
+  },
+  "f161ff1c": {
+   "nova": {
+    "gb": [
+     "unit0-f161ff1c-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-f161ff1c-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "f17ab010": {
+   "nova": {
+    "gb": [
+     "unit0-f17ab010-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-f17ab010-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "f5352bb4": {
+   "nova": {
+    "gb": [
+     "unit0-f5352bb4-gb",
+     0,
+     1.018776
+    ],
+    "us": [
+     "unit0-f5352bb4-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "f542bdc8": {
+   "nova": {
+    "gb": [
+     "unit0-f542bdc8-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-f542bdc8-us",
+     0,
+     0.731429
+    ]
+   }
+  },
+  "f624f702": {
+   "nova": {
+    "gb": [
+     "unit0-f624f702-gb",
+     0,
+     0.835918
+    ],
+    "us": [
+     "unit0-f624f702-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "f90cbb4b": {
+   "nova": {
+    "gb": [
+     "unit0-f90cbb4b-gb",
+     0,
+     0.783673
+    ],
+    "us": [
+     "unit0-f90cbb4b-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "fca77633": {
+   "nova": {
+    "gb": [
+     "unit0-fca77633-gb",
+     0,
+     1.097143
+    ],
+    "us": [
+     "unit0-fca77633-us",
+     0,
+     1.201633
+    ]
+   }
+  },
+  "fd7df61f": {
+   "nova": {
+    "gb": [
+     "unit0-fd7df61f-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "unit0-fd7df61f-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "fe18fbb0": {
+   "nova": {
+    "gb": [
+     "unit0-fe18fbb0-gb",
+     0,
+     0.966531
+    ],
+    "us": [
+     "unit0-fe18fbb0-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "fe691321": {
+   "nova": {
+    "gb": [
+     "unit0-fe691321-gb",
+     0,
+     0.914286
+    ],
+    "us": [
+     "unit0-fe691321-us",
+     0,
+     0.862041
+    ]
+   }
+  }
+ },
+ "inventoryFile": "content/a1/unit0-audio-inventory.json"
+}

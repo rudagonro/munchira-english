@@ -7,6 +7,8 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { validateCycleFile, summarize } from '../content/lib/validate.js'
 import { buildCycleSql } from '../content/lib/sql.js'
+import { validateUnit0 } from '../content/lib/starter.js'
+import { audioKey } from '../src/public/speechText.js'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const cyclesDir = join(root, 'content', 'cycles')
@@ -30,6 +32,15 @@ if (command === 'validate') {
       const s = summarize(cycle)
       console.log(`✓ ${s.level}: ${s.ready} módulo(s) listo(s), ${s.outline} en esquema`)
     }
+  }
+  if (!args.length) {
+    // Unidad 0 de A1 y banco de tarjetas (fuera de cycles/: no cuentan como unidades del curso).
+    const unit0 = load(join(root, 'content', 'a1', 'unit0.json'))
+    const bank = load(join(root, 'content', 'a1', 'card-bank.json'))
+    const audio = load(join(root, 'src', 'data', 'modelLessons', 'a1-starter.audio.json'))
+    const errors = validateUnit0(unit0, bank, { publicDir: join(root, 'public'), audio, audioKey })
+    if (errors.length) { failed = true; console.error('✗ content/a1/unit0.json + card-bank.json'); errors.forEach((e) => console.error(`    - ${e}`)) }
+    else console.log(`✓ A1 Unidad 0: ${bank.sets.reduce((n, s) => n + s.cards.length, 0)} tarjetas en ${bank.sets.length} grupos, ${unit0.quiz.length} preguntas, audio US/UK completo`)
   }
   process.exit(failed ? 1 : 0)
 } else if (command === 'sql') {

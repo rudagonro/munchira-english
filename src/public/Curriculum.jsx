@@ -83,9 +83,10 @@ export function CourseLevel() {
         <p className="mp-eyebrow">Munchira English · {level.label}</p>
         <h1>Inglés {level.code}</h1>
         <p>{level.description}</p>
-        <p className="mc-plan-note">{level.code === 'A1' ? 'Las ocho unidades tienen práctica disponible. Con tu cuenta guardas el avance A1 al aprobar el cuestionario de cada unidad; las notas de tus módulos anteriores se conservan.' : '8 unidades planificadas. Los módulos actuales y sus avances se conservan; las unidades completas del nuevo temario siguen en desarrollo.'}</p>
+        <p className="mc-plan-note">{level.code === 'A1' ? 'Si empiezas desde cero, la Unidad 0 (abecedario, números y primeras palabras) abre el curso. Las ocho unidades tienen práctica disponible. Con tu cuenta guardas el avance A1 al aprobar el cuestionario de cada unidad; las notas de tus módulos anteriores se conservan.' : '8 unidades planificadas. Los módulos actuales y sus avances se conservan; las unidades completas del nuevo temario siguen en desarrollo.'}</p>
         <div className="mc-plan-actions">
           <AccountCta className="mp-button mp-button-dark" signedOut="Crear cuenta" signedIn="Ir a mi panel" />
+          {level.code === 'A1' && <Link className="mp-text-link" to="/cursos/A1/unidad/0">Empezar desde cero: Unidad 0 →</Link>}
           {level.code === 'A1' && <Link className="mp-text-link" to="/leccion-modelo">Probar la lección de muestra →</Link>}
         </div>
       </div>

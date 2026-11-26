@@ -1,0 +1,1240 @@
+{
+  "note": "Banco de tarjetas reutilizable (Unidad 0 y Repaso). index es estable: base del grupo (orden × 100) + posición. Nunca reutilices ni cambies un index publicado; añade al final del grupo.",
+  "images": {
+    "source": "Twemoji (jdecked/twemoji v17.0.3)",
+    "license": "CC BY 4.0",
+    "url": "https://github.com/jdecked/twemoji",
+    "path": "/media/cards/twemoji/"
+  },
+  "sets": [
+    {
+      "key": "numbers",
+      "order": 0,
+      "title": "Números",
+      "intro": "Los números del 1 al 20 y las decenas, para repasar.",
+      "cards": [
+        {
+          "id": "numbers.0",
+          "index": 0,
+          "en": "one",
+          "es": "uno",
+          "label": "1"
+        },
+        {
+          "id": "numbers.1",
+          "index": 1,
+          "en": "two",
+          "es": "dos",
+          "label": "2"
+        },
+        {
+          "id": "numbers.2",
+          "index": 2,
+          "en": "three",
+          "es": "tres",
+          "label": "3"
+        },
+        {
+          "id": "numbers.3",
+          "index": 3,
+          "en": "four",
+          "es": "cuatro",
+          "label": "4"
+        },
+        {
+          "id": "numbers.4",
+          "index": 4,
+          "en": "five",
+          "es": "cinco",
+          "label": "5"
+        },
+        {
+          "id": "numbers.5",
+          "index": 5,
+          "en": "six",
+          "es": "seis",
+          "label": "6"
+        },
+        {
+          "id": "numbers.6",
+          "index": 6,
+          "en": "seven",
+          "es": "siete",
+          "label": "7"
+        },
+        {
+          "id": "numbers.7",
+          "index": 7,
+          "en": "eight",
+          "es": "ocho",
+          "label": "8"
+        },
+        {
+          "id": "numbers.8",
+          "index": 8,
+          "en": "nine",
+          "es": "nueve",
+          "label": "9"
+        },
+        {
+          "id": "numbers.9",
+          "index": 9,
+          "en": "ten",
+          "es": "diez",
+          "label": "10"
+        },
+        {
+          "id": "numbers.10",
+          "index": 10,
+          "en": "eleven",
+          "es": "once",
+          "label": "11"
+        },
+        {
+          "id": "numbers.11",
+          "index": 11,
+          "en": "twelve",
+          "es": "doce",
+          "label": "12"
+        },
+        {
+          "id": "numbers.12",
+          "index": 12,
+          "en": "thirteen",
+          "es": "trece",
+          "label": "13"
+        },
+        {
+          "id": "numbers.13",
+          "index": 13,
+          "en": "fourteen",
+          "es": "catorce",
+          "label": "14"
+        },
+        {
+          "id": "numbers.14",
+          "index": 14,
+          "en": "fifteen",
+          "es": "quince",
+          "label": "15"
+        },
+        {
+          "id": "numbers.15",
+          "index": 15,
+          "en": "sixteen",
+          "es": "dieciséis",
+          "label": "16"
+        },
+        {
+          "id": "numbers.16",
+          "index": 16,
+          "en": "seventeen",
+          "es": "diecisiete",
+          "label": "17"
+        },
+        {
+          "id": "numbers.17",
+          "index": 17,
+          "en": "eighteen",
+          "es": "dieciocho",
+          "label": "18"
+        },
+        {
+          "id": "numbers.18",
+          "index": 18,
+          "en": "nineteen",
+          "es": "diecinueve",
+          "label": "19"
+        },
+        {
+          "id": "numbers.19",
+          "index": 19,
+          "en": "twenty",
+          "es": "veinte",
+          "label": "20"
+        },
+        {
+          "id": "numbers.20",
+          "index": 20,
+          "en": "thirty",
+          "es": "treinta",
+          "label": "30"
+        },
+        {
+          "id": "numbers.21",
+          "index": 21,
+          "en": "forty",
+          "es": "cuarenta",
+          "label": "40"
+        },
+        {
+          "id": "numbers.22",
+          "index": 22,
+          "en": "fifty",
+          "es": "cincuenta",
+          "label": "50"
+        },
+        {
+          "id": "numbers.23",
+          "index": 23,
+          "en": "sixty",
+          "es": "sesenta",
+          "label": "60"
+        },
+        {
+          "id": "numbers.24",
+          "index": 24,
+          "en": "seventy",
+          "es": "setenta",
+          "label": "70"
+        },
+        {
+          "id": "numbers.25",
+          "index": 25,
+          "en": "eighty",
+          "es": "ochenta",
+          "label": "80"
+        },
+        {
+          "id": "numbers.26",
+          "index": 26,
+          "en": "ninety",
+          "es": "noventa",
+          "label": "90"
+        },
+        {
+          "id": "numbers.27",
+          "index": 27,
+          "en": "one hundred",
+          "es": "cien",
+          "label": "100"
+        },
+        {
+          "id": "numbers.28",
+          "index": 28,
+          "en": "one thousand",
+          "es": "mil",
+          "label": "1000"
+        }
+      ]
+    },
+    {
+      "key": "colors",
+      "order": 1,
+      "title": "Colores",
+      "intro": "Los colores básicos. En inglés el color va antes de la cosa: a red car (un carro rojo).",
+      "cards": [
+        {
+          "id": "colors.0",
+          "index": 100,
+          "en": "red",
+          "es": "rojo",
+          "emoji": "2764"
+        },
+        {
+          "id": "colors.1",
+          "index": 101,
+          "en": "orange",
+          "es": "naranja / anaranjado",
+          "emoji": "1f9e1"
+        },
+        {
+          "id": "colors.2",
+          "index": 102,
+          "en": "yellow",
+          "es": "amarillo",
+          "emoji": "1f49b"
+        },
+        {
+          "id": "colors.3",
+          "index": 103,
+          "en": "green",
+          "es": "verde",
+          "emoji": "1f49a"
+        },
+        {
+          "id": "colors.4",
+          "index": 104,
+          "en": "blue",
+          "es": "azul",
+          "emoji": "1f499"
+        },
+        {
+          "id": "colors.5",
+          "index": 105,
+          "en": "light blue",
+          "es": "azul claro / celeste",
+          "emoji": "1fa75"
+        },
+        {
+          "id": "colors.6",
+          "index": 106,
+          "en": "purple",
+          "es": "morado",
+          "emoji": "1f49c"
+        },
+        {
+          "id": "colors.7",
+          "index": 107,
+          "en": "pink",
+          "es": "rosado",
+          "emoji": "1fa77"
+        },
+        {
+          "id": "colors.8",
+          "index": 108,
+          "en": "brown",
+          "es": "café / marrón",
+          "emoji": "1f90e"
+        },
+        {
+          "id": "colors.9",
+          "index": 109,
+          "en": "black",
+          "es": "negro",
+          "emoji": "1f5a4"
+        },
+        {
+          "id": "colors.10",
+          "index": 110,
+          "en": "white",
+          "es": "blanco",
+          "emoji": "1f90d"
+        },
+        {
+          "id": "colors.11",
+          "index": 111,
+          "en": "gray",
+          "es": "gris",
+          "emoji": "1fa76"
+        }
+      ]
+    },
+    {
+      "key": "body",
+      "order": 2,
+      "title": "Partes del cuerpo",
+      "intro": "Para decir qué te duele o describir a alguien.",
+      "cards": [
+        {
+          "id": "body.0",
+          "index": 200,
+          "en": "head",
+          "es": "cabeza",
+          "emoji": "1f9d1"
+        },
+        {
+          "id": "body.1",
+          "index": 201,
+          "en": "face",
+          "es": "cara",
+          "emoji": "1f600"
+        },
+        {
+          "id": "body.2",
+          "index": 202,
+          "en": "eye",
+          "es": "ojo",
+          "emoji": "1f441"
+        },
+        {
+          "id": "body.3",
+          "index": 203,
+          "en": "ear",
+          "es": "oreja / oído",
+          "emoji": "1f442"
+        },
+        {
+          "id": "body.4",
+          "index": 204,
+          "en": "nose",
+          "es": "nariz",
+          "emoji": "1f443"
+        },
+        {
+          "id": "body.5",
+          "index": 205,
+          "en": "mouth",
+          "es": "boca",
+          "emoji": "1f444"
+        },
+        {
+          "id": "body.6",
+          "index": 206,
+          "en": "tooth",
+          "es": "diente",
+          "emoji": "1f9b7"
+        },
+        {
+          "id": "body.7",
+          "index": 207,
+          "en": "tongue",
+          "es": "lengua",
+          "emoji": "1f445"
+        },
+        {
+          "id": "body.8",
+          "index": 208,
+          "en": "hand",
+          "es": "mano",
+          "emoji": "270b"
+        },
+        {
+          "id": "body.9",
+          "index": 209,
+          "en": "finger",
+          "es": "dedo",
+          "emoji": "261d"
+        },
+        {
+          "id": "body.10",
+          "index": 210,
+          "en": "arm",
+          "es": "brazo",
+          "emoji": "1f4aa"
+        },
+        {
+          "id": "body.11",
+          "index": 211,
+          "en": "leg",
+          "es": "pierna",
+          "emoji": "1f9b5"
+        },
+        {
+          "id": "body.12",
+          "index": 212,
+          "en": "foot",
+          "es": "pie",
+          "emoji": "1f9b6"
+        },
+        {
+          "id": "body.13",
+          "index": 213,
+          "en": "heart",
+          "es": "corazón",
+          "emoji": "1fac0"
+        },
+        {
+          "id": "body.14",
+          "index": 214,
+          "en": "bone",
+          "es": "hueso",
+          "emoji": "1f9b4"
+        }
+      ]
+    },
+    {
+      "key": "house",
+      "order": 3,
+      "title": "Partes de la casa",
+      "intro": "Los espacios y cosas de la casa.",
+      "cards": [
+        {
+          "id": "house.0",
+          "index": 300,
+          "en": "house",
+          "es": "casa",
+          "emoji": "1f3e0"
+        },
+        {
+          "id": "house.1",
+          "index": 301,
+          "en": "door",
+          "es": "puerta",
+          "emoji": "1f6aa"
+        },
+        {
+          "id": "house.2",
+          "index": 302,
+          "en": "window",
+          "es": "ventana",
+          "emoji": "1fa9f"
+        },
+        {
+          "id": "house.3",
+          "index": 303,
+          "en": "wall",
+          "es": "pared",
+          "emoji": "1f9f1"
+        },
+        {
+          "id": "house.4",
+          "index": 304,
+          "en": "bedroom",
+          "es": "cuarto / habitación",
+          "emoji": "1f6cf"
+        },
+        {
+          "id": "house.5",
+          "index": 305,
+          "en": "bathroom",
+          "es": "baño",
+          "emoji": "1f6c1"
+        },
+        {
+          "id": "house.6",
+          "index": 306,
+          "en": "kitchen",
+          "es": "cocina",
+          "emoji": "1f373"
+        },
+        {
+          "id": "house.7",
+          "index": 307,
+          "en": "living room",
+          "es": "sala",
+          "emoji": "1f6cb"
+        },
+        {
+          "id": "house.8",
+          "index": 308,
+          "en": "dining room",
+          "es": "comedor",
+          "emoji": "1f37d"
+        },
+        {
+          "id": "house.9",
+          "index": 309,
+          "en": "garden",
+          "es": "jardín",
+          "emoji": "1f333"
+        },
+        {
+          "id": "house.10",
+          "index": 310,
+          "en": "key",
+          "es": "llave",
+          "emoji": "1f511"
+        },
+        {
+          "id": "house.11",
+          "index": 311,
+          "en": "chair",
+          "es": "silla",
+          "emoji": "1fa91"
+        },
+        {
+          "id": "house.12",
+          "index": 312,
+          "en": "toilet",
+          "es": "sanitario / inodoro",
+          "emoji": "1f6bd"
+        },
+        {
+          "id": "house.13",
+          "index": 313,
+          "en": "shower",
+          "es": "ducha",
+          "emoji": "1f6bf"
+        },
+        {
+          "id": "house.14",
+          "index": 314,
+          "en": "mirror",
+          "es": "espejo",
+          "emoji": "1fa9e"
+        },
+        {
+          "id": "house.15",
+          "index": 315,
+          "en": "lamp",
+          "es": "lámpara",
+          "emoji": "1f4a1"
+        }
+      ]
+    },
+    {
+      "key": "transport",
+      "order": 4,
+      "title": "Transporte",
+      "intro": "Para decir cómo te mueves: I go by bus (voy en bus).",
+      "cards": [
+        {
+          "id": "transport.0",
+          "index": 400,
+          "en": "car",
+          "es": "carro",
+          "emoji": "1f697"
+        },
+        {
+          "id": "transport.1",
+          "index": 401,
+          "en": "bus",
+          "es": "bus",
+          "emoji": "1f68c"
+        },
+        {
+          "id": "transport.2",
+          "index": 402,
+          "en": "taxi",
+          "es": "taxi",
+          "emoji": "1f695"
+        },
+        {
+          "id": "transport.3",
+          "index": 403,
+          "en": "bike",
+          "es": "bicicleta",
+          "emoji": "1f6b2"
+        },
+        {
+          "id": "transport.4",
+          "index": 404,
+          "en": "motorcycle",
+          "es": "moto",
+          "emoji": "1f3cd"
+        },
+        {
+          "id": "transport.5",
+          "index": 405,
+          "en": "truck",
+          "es": "camión",
+          "emoji": "1f69a"
+        },
+        {
+          "id": "transport.6",
+          "index": 406,
+          "en": "train",
+          "es": "tren",
+          "emoji": "1f686"
+        },
+        {
+          "id": "transport.7",
+          "index": 407,
+          "en": "subway",
+          "es": "metro",
+          "emoji": "1f687"
+        },
+        {
+          "id": "transport.8",
+          "index": 408,
+          "en": "cable car",
+          "es": "metrocable / teleférico",
+          "emoji": "1f6a1"
+        },
+        {
+          "id": "transport.9",
+          "index": 409,
+          "en": "plane",
+          "es": "avión",
+          "emoji": "2708"
+        },
+        {
+          "id": "transport.10",
+          "index": 410,
+          "en": "boat",
+          "es": "barco / lancha",
+          "emoji": "26f5"
+        },
+        {
+          "id": "transport.11",
+          "index": 411,
+          "en": "helicopter",
+          "es": "helicóptero",
+          "emoji": "1f681"
+        },
+        {
+          "id": "transport.12",
+          "index": 412,
+          "en": "ambulance",
+          "es": "ambulancia",
+          "emoji": "1f691"
+        },
+        {
+          "id": "transport.13",
+          "index": 413,
+          "en": "on foot",
+          "es": "a pie",
+          "emoji": "1f6b6"
+        }
+      ]
+    },
+    {
+      "key": "greetings",
+      "order": 5,
+      "title": "Saludos y cortesía",
+      "intro": "Las frases que usas todos los días para saludar y ser amable.",
+      "cards": [
+        {
+          "id": "greetings.0",
+          "index": 500,
+          "en": "hello",
+          "es": "hola",
+          "emoji": "1f64b"
+        },
+        {
+          "id": "greetings.1",
+          "index": 501,
+          "en": "good morning",
+          "es": "buenos días",
+          "emoji": "1f305"
+        },
+        {
+          "id": "greetings.2",
+          "index": 502,
+          "en": "good afternoon",
+          "es": "buenas tardes",
+          "emoji": "2600"
+        },
+        {
+          "id": "greetings.3",
+          "index": 503,
+          "en": "good evening",
+          "es": "buenas noches (al llegar)",
+          "emoji": "1f306"
+        },
+        {
+          "id": "greetings.4",
+          "index": 504,
+          "en": "good night",
+          "es": "buenas noches (al despedirte)",
+          "emoji": "1f319"
+        },
+        {
+          "id": "greetings.5",
+          "index": 505,
+          "en": "goodbye",
+          "es": "adiós",
+          "emoji": "1f44b"
+        },
+        {
+          "id": "greetings.6",
+          "index": 506,
+          "en": "see you later",
+          "es": "nos vemos",
+          "emoji": "1f51c"
+        },
+        {
+          "id": "greetings.7",
+          "index": 507,
+          "en": "how are you?",
+          "es": "¿cómo estás?",
+          "emoji": "1f642"
+        },
+        {
+          "id": "greetings.8",
+          "index": 508,
+          "en": "I'm fine",
+          "es": "estoy bien",
+          "emoji": "1f44d"
+        },
+        {
+          "id": "greetings.9",
+          "index": 509,
+          "en": "please",
+          "es": "por favor",
+          "emoji": "1f932"
+        },
+        {
+          "id": "greetings.10",
+          "index": 510,
+          "en": "thank you",
+          "es": "gracias",
+          "emoji": "1f64f"
+        },
+        {
+          "id": "greetings.11",
+          "index": 511,
+          "en": "you're welcome",
+          "es": "de nada",
+          "emoji": "1f60a"
+        },
+        {
+          "id": "greetings.12",
+          "index": 512,
+          "en": "sorry",
+          "es": "perdón / lo siento",
+          "emoji": "1f614"
+        },
+        {
+          "id": "greetings.13",
+          "index": 513,
+          "en": "excuse me",
+          "es": "disculpa / con permiso",
+          "emoji": "1f481"
+        },
+        {
+          "id": "greetings.14",
+          "index": 514,
+          "en": "nice to meet you",
+          "es": "mucho gusto",
+          "emoji": "1f91d"
+        }
+      ]
+    },
+    {
+      "key": "family",
+      "order": 6,
+      "title": "Familia",
+      "intro": "Las personas de tu familia.",
+      "cards": [
+        {
+          "id": "family.0",
+          "index": 600,
+          "en": "family",
+          "es": "familia",
+          "emoji": "1f46a"
+        },
+        {
+          "id": "family.1",
+          "index": 601,
+          "en": "parents",
+          "es": "papás / padres",
+          "emoji": "1f46b"
+        },
+        {
+          "id": "family.2",
+          "index": 602,
+          "en": "mother",
+          "es": "mamá / madre",
+          "emoji": "1f469"
+        },
+        {
+          "id": "family.3",
+          "index": 603,
+          "en": "father",
+          "es": "papá / padre",
+          "emoji": "1f468"
+        },
+        {
+          "id": "family.4",
+          "index": 604,
+          "en": "brother",
+          "es": "hermano",
+          "emoji": "1f466"
+        },
+        {
+          "id": "family.5",
+          "index": 605,
+          "en": "sister",
+          "es": "hermana",
+          "emoji": "1f467"
+        },
+        {
+          "id": "family.6",
+          "index": 606,
+          "en": "son",
+          "es": "hijo",
+          "emoji": "1f468-200d-1f466"
+        },
+        {
+          "id": "family.7",
+          "index": 607,
+          "en": "daughter",
+          "es": "hija",
+          "emoji": "1f469-200d-1f467"
+        },
+        {
+          "id": "family.8",
+          "index": 608,
+          "en": "grandmother",
+          "es": "abuela",
+          "emoji": "1f475"
+        },
+        {
+          "id": "family.9",
+          "index": 609,
+          "en": "grandfather",
+          "es": "abuelo",
+          "emoji": "1f474"
+        },
+        {
+          "id": "family.10",
+          "index": 610,
+          "en": "baby",
+          "es": "bebé",
+          "emoji": "1f476"
+        },
+        {
+          "id": "family.11",
+          "index": 611,
+          "en": "husband",
+          "es": "esposo",
+          "emoji": "1f935"
+        },
+        {
+          "id": "family.12",
+          "index": 612,
+          "en": "wife",
+          "es": "esposa",
+          "emoji": "1f470"
+        }
+      ]
+    },
+    {
+      "key": "clothes",
+      "order": 7,
+      "title": "Ropa",
+      "intro": "Lo que te pones. Ojo: pants es plural (unos pantalones).",
+      "cards": [
+        {
+          "id": "clothes.0",
+          "index": 700,
+          "en": "T-shirt",
+          "es": "camiseta",
+          "emoji": "1f455"
+        },
+        {
+          "id": "clothes.1",
+          "index": 701,
+          "en": "shirt",
+          "es": "camisa",
+          "emoji": "1f454"
+        },
+        {
+          "id": "clothes.2",
+          "index": 702,
+          "en": "pants",
+          "es": "pantalón",
+          "emoji": "1f456"
+        },
+        {
+          "id": "clothes.3",
+          "index": 703,
+          "en": "shorts",
+          "es": "pantaloneta",
+          "emoji": "1fa73"
+        },
+        {
+          "id": "clothes.4",
+          "index": 704,
+          "en": "dress",
+          "es": "vestido",
+          "emoji": "1f457"
+        },
+        {
+          "id": "clothes.5",
+          "index": 705,
+          "en": "jacket",
+          "es": "chaqueta",
+          "emoji": "1f9e5"
+        },
+        {
+          "id": "clothes.6",
+          "index": 706,
+          "en": "shoes",
+          "es": "zapatos",
+          "emoji": "1f45e"
+        },
+        {
+          "id": "clothes.7",
+          "index": 707,
+          "en": "sneakers",
+          "es": "tenis",
+          "emoji": "1f45f"
+        },
+        {
+          "id": "clothes.8",
+          "index": 708,
+          "en": "socks",
+          "es": "medias",
+          "emoji": "1f9e6"
+        },
+        {
+          "id": "clothes.9",
+          "index": 709,
+          "en": "cap",
+          "es": "gorra",
+          "emoji": "1f9e2"
+        },
+        {
+          "id": "clothes.10",
+          "index": 710,
+          "en": "scarf",
+          "es": "bufanda",
+          "emoji": "1f9e3"
+        },
+        {
+          "id": "clothes.11",
+          "index": 711,
+          "en": "gloves",
+          "es": "guantes",
+          "emoji": "1f9e4"
+        },
+        {
+          "id": "clothes.12",
+          "index": 712,
+          "en": "glasses",
+          "es": "gafas",
+          "emoji": "1f453"
+        },
+        {
+          "id": "clothes.13",
+          "index": 713,
+          "en": "bag",
+          "es": "bolso",
+          "emoji": "1f45c"
+        }
+      ]
+    },
+    {
+      "key": "food",
+      "order": 8,
+      "title": "Comida y bebidas",
+      "intro": "Lo básico para pedir y comprar comida.",
+      "cards": [
+        {
+          "id": "food.0",
+          "index": 800,
+          "en": "water",
+          "es": "agua",
+          "emoji": "1f4a7"
+        },
+        {
+          "id": "food.1",
+          "index": 801,
+          "en": "bread",
+          "es": "pan",
+          "emoji": "1f35e"
+        },
+        {
+          "id": "food.2",
+          "index": 802,
+          "en": "rice",
+          "es": "arroz",
+          "emoji": "1f35a"
+        },
+        {
+          "id": "food.3",
+          "index": 803,
+          "en": "egg",
+          "es": "huevo",
+          "emoji": "1f95a"
+        },
+        {
+          "id": "food.4",
+          "index": 804,
+          "en": "chicken",
+          "es": "pollo",
+          "emoji": "1f357"
+        },
+        {
+          "id": "food.5",
+          "index": 805,
+          "en": "meat",
+          "es": "carne",
+          "emoji": "1f969"
+        },
+        {
+          "id": "food.6",
+          "index": 806,
+          "en": "fish",
+          "es": "pescado",
+          "emoji": "1f41f"
+        },
+        {
+          "id": "food.7",
+          "index": 807,
+          "en": "cheese",
+          "es": "queso",
+          "emoji": "1f9c0"
+        },
+        {
+          "id": "food.8",
+          "index": 808,
+          "en": "milk",
+          "es": "leche",
+          "emoji": "1f95b"
+        },
+        {
+          "id": "food.9",
+          "index": 809,
+          "en": "coffee",
+          "es": "café",
+          "emoji": "2615"
+        },
+        {
+          "id": "food.10",
+          "index": 810,
+          "en": "juice",
+          "es": "jugo",
+          "emoji": "1f9c3"
+        },
+        {
+          "id": "food.11",
+          "index": 811,
+          "en": "apple",
+          "es": "manzana",
+          "emoji": "1f34e"
+        },
+        {
+          "id": "food.12",
+          "index": 812,
+          "en": "banana",
+          "es": "banano",
+          "emoji": "1f34c"
+        },
+        {
+          "id": "food.13",
+          "index": 813,
+          "en": "potato",
+          "es": "papa",
+          "emoji": "1f954"
+        },
+        {
+          "id": "food.14",
+          "index": 814,
+          "en": "soup",
+          "es": "sopa",
+          "emoji": "1f372"
+        },
+        {
+          "id": "food.15",
+          "index": 815,
+          "en": "salad",
+          "es": "ensalada",
+          "emoji": "1f957"
+        }
+      ]
+    },
+    {
+      "key": "days",
+      "order": 9,
+      "title": "Días de la semana",
+      "intro": "En inglés los días se escriben siempre con mayúscula inicial.",
+      "cards": [
+        {
+          "id": "days.0",
+          "index": 900,
+          "en": "Monday",
+          "es": "lunes",
+          "tile": "Mon"
+        },
+        {
+          "id": "days.1",
+          "index": 901,
+          "en": "Tuesday",
+          "es": "martes",
+          "tile": "Tue"
+        },
+        {
+          "id": "days.2",
+          "index": 902,
+          "en": "Wednesday",
+          "es": "miércoles",
+          "tile": "Wed"
+        },
+        {
+          "id": "days.3",
+          "index": 903,
+          "en": "Thursday",
+          "es": "jueves",
+          "tile": "Thu"
+        },
+        {
+          "id": "days.4",
+          "index": 904,
+          "en": "Friday",
+          "es": "viernes",
+          "tile": "Fri"
+        },
+        {
+          "id": "days.5",
+          "index": 905,
+          "en": "Saturday",
+          "es": "sábado",
+          "tile": "Sat"
+        },
+        {
+          "id": "days.6",
+          "index": 906,
+          "en": "Sunday",
+          "es": "domingo",
+          "tile": "Sun"
+        }
+      ]
+    },
+    {
+      "key": "months",
+      "order": 10,
+      "title": "Meses del año",
+      "intro": "Los meses también llevan mayúscula inicial: in May (en mayo).",
+      "cards": [
+        {
+          "id": "months.0",
+          "index": 1000,
+          "en": "January",
+          "es": "enero",
+          "tile": "Jan"
+        },
+        {
+          "id": "months.1",
+          "index": 1001,
+          "en": "February",
+          "es": "febrero",
+          "tile": "Feb"
+        },
+        {
+          "id": "months.2",
+          "index": 1002,
+          "en": "March",
+          "es": "marzo",
+          "tile": "Mar"
+        },
+        {
+          "id": "months.3",
+          "index": 1003,
+          "en": "April",
+          "es": "abril",
+          "tile": "Apr"
+        },
+        {
+          "id": "months.4",
+          "index": 1004,
+          "en": "May",
+          "es": "mayo",
+          "tile": "May"
+        },
+        {
+          "id": "months.5",
+          "index": 1005,
+          "en": "June",
+          "es": "junio",
+          "tile": "Jun"
+        },
+        {
+          "id": "months.6",
+          "index": 1006,
+          "en": "July",
+          "es": "julio",
+          "tile": "Jul"
+        },
+        {
+          "id": "months.7",
+          "index": 1007,
+          "en": "August",
+          "es": "agosto",
+          "tile": "Aug"
+        },
+        {
+          "id": "months.8",
+          "index": 1008,
+          "en": "September",
+          "es": "septiembre",
+          "tile": "Sep"
+        },
+        {
+          "id": "months.9",
+          "index": 1009,
+          "en": "October",
+          "es": "octubre",
+          "tile": "Oct"
+        },
+        {
+          "id": "months.10",
+          "index": 1010,
+          "en": "November",
+          "es": "noviembre",
+          "tile": "Nov"
+        },
+        {
+          "id": "months.11",
+          "index": 1011,
+          "en": "December",
+          "es": "diciembre",
+          "tile": "Dec"
+        }
+      ]
+    }
+  ]
+}
