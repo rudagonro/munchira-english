@@ -83,6 +83,10 @@ test('la migración 0700 es aditiva: tablas y función nuevas, nada existente se
   assert.match(outside, /create table if not exists public\.level_waitlist/)
   assert.match(outside, /revoke all on function public\.submit_a1_final_exam\(jsonb\) from public, anon;/)
   assert.match(MIGRATION, /security definer\s+set search_path = ''/)
+  // Envíos simultáneos: se toma el mismo bloqueo por alumno que save_diagnostic antes de leer nada.
+  const body = MIGRATION.split('create or replace function public.submit_a1_final_exam')[1]
+  assert.ok(body.indexOf("pg_advisory_xact_lock(hashtext('nivelo:' || v_uid::text))") > 0)
+  assert.ok(body.indexOf('pg_advisory_xact_lock') < body.indexOf('from public.a1_final_exam_progress where user_id = v_uid'))
 })
 
 test('cliente: se abre con las Unidades 0–8 aprobadas y entonces /cycle lleva al examen', () => {

@@ -156,6 +156,10 @@ begin
   if not public.is_active_user() then raise exception 'account_suspended' using errcode = '42501'; end if;
   if public.is_staff() then raise exception 'staff_no_write' using errcode = '42501'; end if;
 
+  -- Mismo bloqueo por alumno que save_diagnostic: dos envíos (dos pestañas) o una prueba de nivel a la vez se
+  -- atienden de uno en uno, así el segundo ve el aprobado del primero y no se recalifica.
+  perform pg_advisory_xact_lock(hashtext('nivelo:' || v_uid::text));
+
   select * into v_row from public.a1_final_exam_progress where user_id = v_uid for update;
   if v_row.passed_at is not null then
     -- Ya aprobó: no se recalifica. Si volvió a A1, vuelve a A2.
