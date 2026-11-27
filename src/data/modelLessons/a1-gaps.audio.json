@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T09:26:31-05:00",
+  "generatedAt": "2026-11-27T09:35:07-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -1146,7 +1146,27 @@
     "gaps-457fd396-us": "/audio/a1/gaps/457fd396-us.mp3",
     "gaps-457fd396-gb": "/audio/a1/gaps/457fd396-gb.mp3",
     "gaps-f8ff0b65-us": "/audio/a1/gaps/f8ff0b65-us.mp3",
-    "gaps-f8ff0b65-gb": "/audio/a1/gaps/f8ff0b65-gb.mp3"
+    "gaps-f8ff0b65-gb": "/audio/a1/gaps/f8ff0b65-gb.mp3",
+    "gaps-85a725c8-us": "/audio/a1/gaps/85a725c8-us.mp3",
+    "gaps-85a725c8-gb": "/audio/a1/gaps/85a725c8-gb.mp3",
+    "gaps-41bb098e-us": "/audio/a1/gaps/41bb098e-us.mp3",
+    "gaps-41bb098e-gb": "/audio/a1/gaps/41bb098e-gb.mp3",
+    "gaps-de308084-us": "/audio/a1/gaps/de308084-us.mp3",
+    "gaps-de308084-gb": "/audio/a1/gaps/de308084-gb.mp3",
+    "gaps-4186242d-us": "/audio/a1/gaps/4186242d-us.mp3",
+    "gaps-4186242d-gb": "/audio/a1/gaps/4186242d-gb.mp3",
+    "gaps-061bfc39-us": "/audio/a1/gaps/061bfc39-us.mp3",
+    "gaps-061bfc39-gb": "/audio/a1/gaps/061bfc39-gb.mp3",
+    "gaps-2eb82744-us": "/audio/a1/gaps/2eb82744-us.mp3",
+    "gaps-2eb82744-gb": "/audio/a1/gaps/2eb82744-gb.mp3",
+    "gaps-36abf3dd-us": "/audio/a1/gaps/36abf3dd-us.mp3",
+    "gaps-36abf3dd-gb": "/audio/a1/gaps/36abf3dd-gb.mp3",
+    "gaps-aa8c7cc3-us": "/audio/a1/gaps/aa8c7cc3-us.mp3",
+    "gaps-aa8c7cc3-gb": "/audio/a1/gaps/aa8c7cc3-gb.mp3",
+    "gaps-860c2f52-us": "/audio/a1/gaps/860c2f52-us.mp3",
+    "gaps-860c2f52-gb": "/audio/a1/gaps/860c2f52-gb.mp3",
+    "gaps-72800168-us": "/audio/a1/gaps/72800168-us.mp3",
+    "gaps-72800168-gb": "/audio/a1/gaps/72800168-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -9098,6 +9118,146 @@
           "gaps-f8ff0b65-gb",
           0,
           1.750204
+        ]
+      }
+    },
+    "85a725c8": {
+      "nova": {
+        "us": [
+          "gaps-85a725c8-us",
+          0,
+          1.906939
+        ],
+        "gb": [
+          "gaps-85a725c8-gb",
+          0,
+          1.854694
+        ]
+      }
+    },
+    "41bb098e": {
+      "nova": {
+        "us": [
+          "gaps-41bb098e-us",
+          0,
+          1.567347
+        ],
+        "gb": [
+          "gaps-41bb098e-gb",
+          0,
+          1.906939
+        ]
+      }
+    },
+    "de308084": {
+      "nova": {
+        "us": [
+          "gaps-de308084-us",
+          0,
+          2.35102
+        ],
+        "gb": [
+          "gaps-de308084-gb",
+          0,
+          2.507755
+        ]
+      }
+    },
+    "4186242d": {
+      "nova": {
+        "us": [
+          "gaps-4186242d-us",
+          0,
+          2.037551
+        ],
+        "gb": [
+          "gaps-4186242d-gb",
+          0,
+          2.220408
+        ]
+      }
+    },
+    "061bfc39": {
+      "nova": {
+        "us": [
+          "gaps-061bfc39-us",
+          0,
+          2.76898
+        ],
+        "gb": [
+          "gaps-061bfc39-gb",
+          0,
+          3.186939
+        ]
+      }
+    },
+    "2eb82744": {
+      "nova": {
+        "us": [
+          "gaps-2eb82744-us",
+          0,
+          1.933061
+        ],
+        "gb": [
+          "gaps-2eb82744-gb",
+          0,
+          1.906939
+        ]
+      }
+    },
+    "36abf3dd": {
+      "nova": {
+        "us": [
+          "gaps-36abf3dd-us",
+          0,
+          2.037551
+        ],
+        "gb": [
+          "gaps-36abf3dd-gb",
+          0,
+          1.750204
+        ]
+      }
+    },
+    "aa8c7cc3": {
+      "nova": {
+        "us": [
+          "gaps-aa8c7cc3-us",
+          0,
+          2.533878
+        ],
+        "gb": [
+          "gaps-aa8c7cc3-gb",
+          0,
+          2.115918
+        ]
+      }
+    },
+    "860c2f52": {
+      "nova": {
+        "us": [
+          "gaps-860c2f52-us",
+          0,
+          1.515102
+        ],
+        "gb": [
+          "gaps-860c2f52-gb",
+          0,
+          1.567347
+        ]
+      }
+    },
+    "72800168": {
+      "nova": {
+        "us": [
+          "gaps-72800168-us",
+          0,
+          1.750204
+        ],
+        "gb": [
+          "gaps-72800168-gb",
+          0,
+          1.906939
         ]
       }
     }
@@ -30059,6 +30219,372 @@
         "units": [
           "4",
           "8"
+        ]
+      },
+      {
+        "key": "85a725c8",
+        "text": "There aren't any gardens",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/85a725c8-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "85a725c8",
+        "text": "There aren't any gardens",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.854694,
+        "url": "/audio/a1/gaps/85a725c8-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "41bb098e",
+        "text": "Are there two rooms?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/41bb098e-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "41bb098e",
+        "text": "Are there two rooms?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/41bb098e-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "de308084",
+        "text": "There ___ a kitchen in my house.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.35102,
+        "url": "/audio/a1/gaps/de308084-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "de308084",
+        "text": "There ___ a kitchen in my house.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.507755,
+        "url": "/audio/a1/gaps/de308084-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "4186242d",
+        "text": "There ___ two bedrooms.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.037551,
+        "url": "/audio/a1/gaps/4186242d-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4",
+          "8"
+        ]
+      },
+      {
+        "key": "4186242d",
+        "text": "There ___ two bedrooms.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.220408,
+        "url": "/audio/a1/gaps/4186242d-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4",
+          "8"
+        ]
+      },
+      {
+        "key": "061bfc39",
+        "text": "The bank is ___ the supermarket.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.76898,
+        "url": "/audio/a1/gaps/061bfc39-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "061bfc39",
+        "text": "The bank is ___ the supermarket.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 3.186939,
+        "url": "/audio/a1/gaps/061bfc39-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "2eb82744",
+        "text": "___ there a park near here?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/2eb82744-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "2eb82744",
+        "text": "___ there a park near here?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/2eb82744-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "36abf3dd",
+        "text": "Go ___ and turn left.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.037551,
+        "url": "/audio/a1/gaps/36abf3dd-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4",
+          "7",
+          "8"
+        ]
+      },
+      {
+        "key": "36abf3dd",
+        "text": "Go ___ and turn left.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/36abf3dd-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4",
+          "7",
+          "8"
+        ]
+      },
+      {
+        "key": "aa8c7cc3",
+        "text": "The book is ___ the table.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.533878,
+        "url": "/audio/a1/gaps/aa8c7cc3-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "aa8c7cc3",
+        "text": "The book is ___ the table.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.115918,
+        "url": "/audio/a1/gaps/aa8c7cc3-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "860c2f52",
+        "text": "My apartment is ___.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/860c2f52-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "860c2f52",
+        "text": "My apartment is ___.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/860c2f52-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "72800168",
+        "text": "There ___ a garden.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/72800168-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "72800168",
+        "text": "There ___ a garden.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/72800168-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
         ]
       }
     ]
