@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T07:00:42-05:00",
+  "generatedAt": "2026-11-27T07:02:28-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -836,7 +836,27 @@
     "gaps-ba360671-us": "/audio/a1/gaps/ba360671-us.mp3",
     "gaps-ba360671-gb": "/audio/a1/gaps/ba360671-gb.mp3",
     "gaps-7e9e6e97-us": "/audio/a1/gaps/7e9e6e97-us.mp3",
-    "gaps-7e9e6e97-gb": "/audio/a1/gaps/7e9e6e97-gb.mp3"
+    "gaps-7e9e6e97-gb": "/audio/a1/gaps/7e9e6e97-gb.mp3",
+    "gaps-72201598-us": "/audio/a1/gaps/72201598-us.mp3",
+    "gaps-72201598-gb": "/audio/a1/gaps/72201598-gb.mp3",
+    "gaps-caa293f4-us": "/audio/a1/gaps/caa293f4-us.mp3",
+    "gaps-caa293f4-gb": "/audio/a1/gaps/caa293f4-gb.mp3",
+    "gaps-1f51c82e-us": "/audio/a1/gaps/1f51c82e-us.mp3",
+    "gaps-1f51c82e-gb": "/audio/a1/gaps/1f51c82e-gb.mp3",
+    "gaps-214c6578-us": "/audio/a1/gaps/214c6578-us.mp3",
+    "gaps-214c6578-gb": "/audio/a1/gaps/214c6578-gb.mp3",
+    "gaps-a5a17ead-us": "/audio/a1/gaps/a5a17ead-us.mp3",
+    "gaps-a5a17ead-gb": "/audio/a1/gaps/a5a17ead-gb.mp3",
+    "gaps-8bc67e08-us": "/audio/a1/gaps/8bc67e08-us.mp3",
+    "gaps-8bc67e08-gb": "/audio/a1/gaps/8bc67e08-gb.mp3",
+    "gaps-5ac6dec0-us": "/audio/a1/gaps/5ac6dec0-us.mp3",
+    "gaps-5ac6dec0-gb": "/audio/a1/gaps/5ac6dec0-gb.mp3",
+    "gaps-15dbe23a-us": "/audio/a1/gaps/15dbe23a-us.mp3",
+    "gaps-15dbe23a-gb": "/audio/a1/gaps/15dbe23a-gb.mp3",
+    "gaps-c7c65ead-us": "/audio/a1/gaps/c7c65ead-us.mp3",
+    "gaps-c7c65ead-gb": "/audio/a1/gaps/c7c65ead-gb.mp3",
+    "gaps-b8944c2e-us": "/audio/a1/gaps/b8944c2e-us.mp3",
+    "gaps-b8944c2e-gb": "/audio/a1/gaps/b8944c2e-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -6620,12 +6640,152 @@
           3.369796
         ]
       }
+    },
+    "72201598": {
+      "nova": {
+        "us": [
+          "gaps-72201598-us",
+          0,
+          3.578776
+        ],
+        "gb": [
+          "gaps-72201598-gb",
+          0,
+          3.343673
+        ]
+      }
+    },
+    "caa293f4": {
+      "nova": {
+        "us": [
+          "gaps-caa293f4-us",
+          0,
+          2.324898
+        ],
+        "gb": [
+          "gaps-caa293f4-gb",
+          0,
+          2.220408
+        ]
+      }
+    },
+    "1f51c82e": {
+      "nova": {
+        "us": [
+          "gaps-1f51c82e-us",
+          0,
+          2.586122
+        ],
+        "gb": [
+          "gaps-1f51c82e-gb",
+          0,
+          2.507755
+        ]
+      }
+    },
+    "214c6578": {
+      "nova": {
+        "us": [
+          "gaps-214c6578-us",
+          0,
+          3.108571
+        ],
+        "gb": [
+          "gaps-214c6578-gb",
+          0,
+          3.291429
+        ]
+      }
+    },
+    "a5a17ead": {
+      "nova": {
+        "us": [
+          "gaps-a5a17ead-us",
+          0,
+          3.239184
+        ],
+        "gb": [
+          "gaps-a5a17ead-gb",
+          0,
+          3.160816
+        ]
+      }
+    },
+    "8bc67e08": {
+      "nova": {
+        "us": [
+          "gaps-8bc67e08-us",
+          0,
+          2.35102
+        ],
+        "gb": [
+          "gaps-8bc67e08-gb",
+          0,
+          2.951837
+        ]
+      }
+    },
+    "5ac6dec0": {
+      "nova": {
+        "us": [
+          "gaps-5ac6dec0-us",
+          0,
+          2.272653
+        ],
+        "gb": [
+          "gaps-5ac6dec0-gb",
+          0,
+          1.933061
+        ]
+      }
+    },
+    "15dbe23a": {
+      "nova": {
+        "us": [
+          "gaps-15dbe23a-us",
+          0,
+          3.709388
+        ],
+        "gb": [
+          "gaps-15dbe23a-gb",
+          0,
+          3.004082
+        ]
+      }
+    },
+    "c7c65ead": {
+      "nova": {
+        "us": [
+          "gaps-c7c65ead-us",
+          0,
+          2.690612
+        ],
+        "gb": [
+          "gaps-c7c65ead-gb",
+          0,
+          2.586122
+        ]
+      }
+    },
+    "b8944c2e": {
+      "nova": {
+        "us": [
+          "gaps-b8944c2e-us",
+          0,
+          2.76898
+        ],
+        "gb": [
+          "gaps-b8944c2e-gb",
+          0,
+          2.742857
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Incluye clips de enunciados y opciones de cuestionario A1. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 60,
-    "clips_missing_files": 52,
+    "clips_written": 80,
+    "clips_missing_files": 32,
     "items": [
       {
         "key": "f7b20218",
@@ -21981,6 +22141,366 @@
         ],
         "units": [
           "4"
+        ]
+      },
+      {
+        "key": "72201598",
+        "text": "My brother ___ eat meat. He is vegetarian.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 3.578776,
+        "url": "/audio/a1/gaps/72201598-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "72201598",
+        "text": "My brother ___ eat meat. He is vegetarian.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 3.343673,
+        "url": "/audio/a1/gaps/72201598-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "caa293f4",
+        "text": "How much ___ the sandwiches?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.324898,
+        "url": "/audio/a1/gaps/caa293f4-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "caa293f4",
+        "text": "How much ___ the sandwiches?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.220408,
+        "url": "/audio/a1/gaps/caa293f4-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "1f51c82e",
+        "text": "Do you like eggs? — No, I ___.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.586122,
+        "url": "/audio/a1/gaps/1f51c82e-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "1f51c82e",
+        "text": "Do you like eggs? — No, I ___.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.507755,
+        "url": "/audio/a1/gaps/1f51c82e-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "214c6578",
+        "text": "A: How much is the coffee? B: ___",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 3.108571,
+        "url": "/audio/a1/gaps/214c6578-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "214c6578",
+        "text": "A: How much is the coffee? B: ___",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 3.291429,
+        "url": "/audio/a1/gaps/214c6578-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "a5a17ead",
+        "text": "They ___ pizza. It’s their favorite food.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 3.239184,
+        "url": "/audio/a1/gaps/a5a17ead-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "a5a17ead",
+        "text": "They ___ pizza. It’s their favorite food.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 3.160816,
+        "url": "/audio/a1/gaps/a5a17ead-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "8bc67e08",
+        "text": "She ___ tennis on Fridays.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.35102,
+        "url": "/audio/a1/gaps/8bc67e08-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "8bc67e08",
+        "text": "She ___ tennis on Fridays.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.951837,
+        "url": "/audio/a1/gaps/8bc67e08-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "5ac6dec0",
+        "text": "I ___ go to the cinema.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.272653,
+        "url": "/audio/a1/gaps/5ac6dec0-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "5ac6dec0",
+        "text": "I ___ go to the cinema.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/5ac6dec0-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "15dbe23a",
+        "text": "A: What do you do in your free time? B: ___",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 3.709388,
+        "url": "/audio/a1/gaps/15dbe23a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "15dbe23a",
+        "text": "A: What do you do in your free time? B: ___",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 3.004082,
+        "url": "/audio/a1/gaps/15dbe23a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "c7c65ead",
+        "text": "We ___ swimming on Sundays.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.690612,
+        "url": "/audio/a1/gaps/c7c65ead-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "c7c65ead",
+        "text": "We ___ swimming on Sundays.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.586122,
+        "url": "/audio/a1/gaps/c7c65ead-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "b8944c2e",
+        "text": "Do you like dancing? — Yes, I ___.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.76898,
+        "url": "/audio/a1/gaps/b8944c2e-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "b8944c2e",
+        "text": "Do you like dancing? — Yes, I ___.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.742857,
+        "url": "/audio/a1/gaps/b8944c2e-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "6"
         ]
       }
     ]
