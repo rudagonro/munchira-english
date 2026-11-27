@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T02:53:46-05:00",
+  "generatedAt": "2026-11-27T02:55:23-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -710,7 +710,27 @@
     "gaps-137af091-us": "/audio/a1/gaps/137af091-us.mp3",
     "gaps-137af091-gb": "/audio/a1/gaps/137af091-gb.mp3",
     "gaps-4eb26aaa-us": "/audio/a1/gaps/4eb26aaa-us.mp3",
-    "gaps-4eb26aaa-gb": "/audio/a1/gaps/4eb26aaa-gb.mp3"
+    "gaps-4eb26aaa-gb": "/audio/a1/gaps/4eb26aaa-gb.mp3",
+    "gaps-a521c1ff-us": "/audio/a1/gaps/a521c1ff-us.mp3",
+    "gaps-a521c1ff-gb": "/audio/a1/gaps/a521c1ff-gb.mp3",
+    "gaps-1d31d982-us": "/audio/a1/gaps/1d31d982-us.mp3",
+    "gaps-1d31d982-gb": "/audio/a1/gaps/1d31d982-gb.mp3",
+    "gaps-812e5d77-us": "/audio/a1/gaps/812e5d77-us.mp3",
+    "gaps-812e5d77-gb": "/audio/a1/gaps/812e5d77-gb.mp3",
+    "gaps-c2075ec9-us": "/audio/a1/gaps/c2075ec9-us.mp3",
+    "gaps-c2075ec9-gb": "/audio/a1/gaps/c2075ec9-gb.mp3",
+    "gaps-c73d9c8b-us": "/audio/a1/gaps/c73d9c8b-us.mp3",
+    "gaps-c73d9c8b-gb": "/audio/a1/gaps/c73d9c8b-gb.mp3",
+    "gaps-67149c81-us": "/audio/a1/gaps/67149c81-us.mp3",
+    "gaps-67149c81-gb": "/audio/a1/gaps/67149c81-gb.mp3",
+    "gaps-75d5287d-us": "/audio/a1/gaps/75d5287d-us.mp3",
+    "gaps-75d5287d-gb": "/audio/a1/gaps/75d5287d-gb.mp3",
+    "gaps-d9ae6a75-us": "/audio/a1/gaps/d9ae6a75-us.mp3",
+    "gaps-d9ae6a75-gb": "/audio/a1/gaps/d9ae6a75-gb.mp3",
+    "gaps-fed5dd11-us": "/audio/a1/gaps/fed5dd11-us.mp3",
+    "gaps-fed5dd11-gb": "/audio/a1/gaps/fed5dd11-gb.mp3",
+    "gaps-59c25d8e-us": "/audio/a1/gaps/59c25d8e-us.mp3",
+    "gaps-59c25d8e-gb": "/audio/a1/gaps/59c25d8e-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -5612,12 +5632,152 @@
           2.45551
         ]
       }
+    },
+    "a521c1ff": {
+      "nova": {
+        "us": [
+          "gaps-a521c1ff-us",
+          0,
+          0.862041
+        ],
+        "gb": [
+          "gaps-a521c1ff-gb",
+          0,
+          0.966531
+        ]
+      }
+    },
+    "1d31d982": {
+      "nova": {
+        "us": [
+          "gaps-1d31d982-us",
+          0,
+          1.436735
+        ],
+        "gb": [
+          "gaps-1d31d982-gb",
+          0,
+          1.515102
+        ]
+      }
+    },
+    "812e5d77": {
+      "nova": {
+        "us": [
+          "gaps-812e5d77-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-812e5d77-gb",
+          0,
+          1.28
+        ]
+      }
+    },
+    "c2075ec9": {
+      "nova": {
+        "us": [
+          "gaps-c2075ec9-us",
+          0,
+          1.149388
+        ],
+        "gb": [
+          "gaps-c2075ec9-gb",
+          0,
+          1.28
+        ]
+      }
+    },
+    "c73d9c8b": {
+      "nova": {
+        "us": [
+          "gaps-c73d9c8b-us",
+          0,
+          1.201633
+        ],
+        "gb": [
+          "gaps-c73d9c8b-gb",
+          0,
+          1.149388
+        ]
+      }
+    },
+    "67149c81": {
+      "nova": {
+        "us": [
+          "gaps-67149c81-us",
+          0,
+          1.38449
+        ],
+        "gb": [
+          "gaps-67149c81-gb",
+          0,
+          1.854694
+        ]
+      }
+    },
+    "75d5287d": {
+      "nova": {
+        "us": [
+          "gaps-75d5287d-us",
+          0,
+          1.436735
+        ],
+        "gb": [
+          "gaps-75d5287d-gb",
+          0,
+          1.567347
+        ]
+      }
+    },
+    "d9ae6a75": {
+      "nova": {
+        "us": [
+          "gaps-d9ae6a75-us",
+          0,
+          1.28
+        ],
+        "gb": [
+          "gaps-d9ae6a75-gb",
+          0,
+          1.38449
+        ]
+      }
+    },
+    "fed5dd11": {
+      "nova": {
+        "us": [
+          "gaps-fed5dd11-us",
+          0,
+          1.253878
+        ],
+        "gb": [
+          "gaps-fed5dd11-gb",
+          0,
+          1.38449
+        ]
+      }
+    },
+    "59c25d8e": {
+      "nova": {
+        "us": [
+          "gaps-59c25d8e-us",
+          0,
+          1.018776
+        ],
+        "gb": [
+          "gaps-59c25d8e-gb",
+          0,
+          1.201633
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Clips generados para textos que npm run audio:check listaba como faltantes. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 700,
-    "clips_missing_files": 66,
+    "clips_written": 720,
+    "clips_missing_files": 46,
     "items": [
       {
         "key": "f7b20218",
@@ -18705,6 +18865,366 @@
         ],
         "units": [
           "8"
+        ]
+      },
+      {
+        "key": "a521c1ff",
+        "text": "Hello.",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.862041,
+        "url": "/audio/a1/gaps/a521c1ff-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "a521c1ff",
+        "text": "Hello.",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/a521c1ff-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "1d31d982",
+        "text": "have breakfast",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/1d31d982-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "1d31d982",
+        "text": "have breakfast",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/1d31d982-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "812e5d77",
+        "text": "go to bed",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/812e5d77-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "812e5d77",
+        "text": "go to bed",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/812e5d77-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "c2075ec9",
+        "text": "have dinner",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/c2075ec9-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "c2075ec9",
+        "text": "have dinner",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/c2075ec9-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "c73d9c8b",
+        "text": "have lunch",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.201633,
+        "url": "/audio/a1/gaps/c73d9c8b-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "c73d9c8b",
+        "text": "have lunch",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/c73d9c8b-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "67149c81",
+        "text": "In the living room.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/67149c81-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "67149c81",
+        "text": "In the living room.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.854694,
+        "url": "/audio/a1/gaps/67149c81-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "75d5287d",
+        "text": "In the bathroom.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/75d5287d-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "75d5287d",
+        "text": "In the bathroom.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/75d5287d-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "d9ae6a75",
+        "text": "In the bedroom.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/d9ae6a75-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "d9ae6a75",
+        "text": "In the bedroom.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/d9ae6a75-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "fed5dd11",
+        "text": "In the kitchen.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/fed5dd11-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "fed5dd11",
+        "text": "In the kitchen.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/fed5dd11-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "59c25d8e",
+        "text": "far from",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.018776,
+        "url": "/audio/a1/gaps/59c25d8e-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "59c25d8e",
+        "text": "far from",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.201633,
+        "url": "/audio/a1/gaps/59c25d8e-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
         ]
       }
     ]
