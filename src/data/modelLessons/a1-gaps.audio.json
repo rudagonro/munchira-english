@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T01:05:43-05:00",
+  "generatedAt": "2026-11-27T01:17:40-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -210,7 +210,27 @@
     "gaps-2c41499c-us": "/audio/a1/gaps/2c41499c-us.mp3",
     "gaps-2c41499c-gb": "/audio/a1/gaps/2c41499c-gb.mp3",
     "gaps-76e263ea-us": "/audio/a1/gaps/76e263ea-us.mp3",
-    "gaps-76e263ea-gb": "/audio/a1/gaps/76e263ea-gb.mp3"
+    "gaps-76e263ea-gb": "/audio/a1/gaps/76e263ea-gb.mp3",
+    "gaps-d1993f86-us": "/audio/a1/gaps/d1993f86-us.mp3",
+    "gaps-d1993f86-gb": "/audio/a1/gaps/d1993f86-gb.mp3",
+    "gaps-1ac4200a-us": "/audio/a1/gaps/1ac4200a-us.mp3",
+    "gaps-1ac4200a-gb": "/audio/a1/gaps/1ac4200a-gb.mp3",
+    "gaps-bc71037d-us": "/audio/a1/gaps/bc71037d-us.mp3",
+    "gaps-bc71037d-gb": "/audio/a1/gaps/bc71037d-gb.mp3",
+    "gaps-faee5c6a-us": "/audio/a1/gaps/faee5c6a-us.mp3",
+    "gaps-faee5c6a-gb": "/audio/a1/gaps/faee5c6a-gb.mp3",
+    "gaps-aca2128d-us": "/audio/a1/gaps/aca2128d-us.mp3",
+    "gaps-aca2128d-gb": "/audio/a1/gaps/aca2128d-gb.mp3",
+    "gaps-37a11efa-us": "/audio/a1/gaps/37a11efa-us.mp3",
+    "gaps-37a11efa-gb": "/audio/a1/gaps/37a11efa-gb.mp3",
+    "gaps-61095272-us": "/audio/a1/gaps/61095272-us.mp3",
+    "gaps-61095272-gb": "/audio/a1/gaps/61095272-gb.mp3",
+    "gaps-04145367-us": "/audio/a1/gaps/04145367-us.mp3",
+    "gaps-04145367-gb": "/audio/a1/gaps/04145367-gb.mp3",
+    "gaps-6e5d5e75-us": "/audio/a1/gaps/6e5d5e75-us.mp3",
+    "gaps-6e5d5e75-gb": "/audio/a1/gaps/6e5d5e75-gb.mp3",
+    "gaps-9e923777-us": "/audio/a1/gaps/9e923777-us.mp3",
+    "gaps-9e923777-gb": "/audio/a1/gaps/9e923777-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -1612,12 +1632,152 @@
           1.436735
         ]
       }
+    },
+    "d1993f86": {
+      "nova": {
+        "us": [
+          "gaps-d1993f86-us",
+          0,
+          1.253878
+        ],
+        "gb": [
+          "gaps-d1993f86-gb",
+          0,
+          1.515102
+        ]
+      }
+    },
+    "1ac4200a": {
+      "nova": {
+        "us": [
+          "gaps-1ac4200a-us",
+          0,
+          1.332245
+        ],
+        "gb": [
+          "gaps-1ac4200a-gb",
+          0,
+          1.38449
+        ]
+      }
+    },
+    "bc71037d": {
+      "nova": {
+        "us": [
+          "gaps-bc71037d-us",
+          0,
+          1.38449
+        ],
+        "gb": [
+          "gaps-bc71037d-gb",
+          0,
+          1.48898
+        ]
+      }
+    },
+    "faee5c6a": {
+      "nova": {
+        "us": [
+          "gaps-faee5c6a-us",
+          0,
+          1.671837
+        ],
+        "gb": [
+          "gaps-faee5c6a-gb",
+          0,
+          1.854694
+        ]
+      }
+    },
+    "aca2128d": {
+      "nova": {
+        "us": [
+          "gaps-aca2128d-us",
+          0,
+          1.436735
+        ],
+        "gb": [
+          "gaps-aca2128d-gb",
+          0,
+          1.750204
+        ]
+      }
+    },
+    "37a11efa": {
+      "nova": {
+        "us": [
+          "gaps-37a11efa-us",
+          0,
+          1.567347
+        ],
+        "gb": [
+          "gaps-37a11efa-gb",
+          0,
+          1.619592
+        ]
+      }
+    },
+    "61095272": {
+      "nova": {
+        "us": [
+          "gaps-61095272-us",
+          0,
+          1.619592
+        ],
+        "gb": [
+          "gaps-61095272-gb",
+          0,
+          1.671837
+        ]
+      }
+    },
+    "04145367": {
+      "nova": {
+        "us": [
+          "gaps-04145367-us",
+          0,
+          1.253878
+        ],
+        "gb": [
+          "gaps-04145367-gb",
+          0,
+          1.253878
+        ]
+      }
+    },
+    "6e5d5e75": {
+      "nova": {
+        "us": [
+          "gaps-6e5d5e75-us",
+          0,
+          1.018776
+        ],
+        "gb": [
+          "gaps-6e5d5e75-gb",
+          0,
+          0.914286
+        ]
+      }
+    },
+    "9e923777": {
+      "nova": {
+        "us": [
+          "gaps-9e923777-us",
+          0,
+          1.906939
+        ],
+        "gb": [
+          "gaps-9e923777-gb",
+          0,
+          1.854694
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Clips generados para textos que npm run audio:check listaba como faltantes. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 200,
-    "clips_missing_files": 566,
+    "clips_written": 220,
+    "clips_missing_files": 546,
     "items": [
       {
         "key": "f7b20218",
@@ -5396,6 +5556,366 @@
         "speed": 0.8,
         "areas": [
           "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "d1993f86",
+        "text": "Is she happy?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/d1993f86-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "d1993f86",
+        "text": "Is she happy?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/d1993f86-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "1ac4200a",
+        "text": "Happy is she?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.332245,
+        "url": "/audio/a1/gaps/1ac4200a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "1ac4200a",
+        "text": "Happy is she?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/1ac4200a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "bc71037d",
+        "text": "Does she happy?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/bc71037d-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "bc71037d",
+        "text": "Does she happy?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/bc71037d-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "faee5c6a",
+        "text": "He is a tall man.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.671837,
+        "url": "/audio/a1/gaps/faee5c6a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "faee5c6a",
+        "text": "He is a tall man.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.854694,
+        "url": "/audio/a1/gaps/faee5c6a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "aca2128d",
+        "text": "He is man tall.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/aca2128d-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "aca2128d",
+        "text": "He is man tall.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/aca2128d-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "37a11efa",
+        "text": "Tall he is a man.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/37a11efa-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "37a11efa",
+        "text": "Tall he is a man.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/37a11efa-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "61095272",
+        "text": "He tall is a man.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/61095272-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "61095272",
+        "text": "He tall is a man.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.671837,
+        "url": "/audio/a1/gaps/61095272-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "04145367",
+        "text": "Carmen",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/04145367-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "04145367",
+        "text": "Carmen",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/04145367-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "6e5d5e75",
+        "text": "Him",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.018776,
+        "url": "/audio/a1/gaps/6e5d5e75-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "6e5d5e75",
+        "text": "Him",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 0.914286,
+        "url": "/audio/a1/gaps/6e5d5e75-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "9e923777",
+        "text": "My sister has 20 years.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/9e923777-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "9e923777",
+        "text": "My sister has 20 years.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.854694,
+        "url": "/audio/a1/gaps/9e923777-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
         ],
         "units": [
           "2"
