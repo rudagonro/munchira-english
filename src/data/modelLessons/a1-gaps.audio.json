@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T02:07:49-05:00",
+  "generatedAt": "2026-11-27T02:08:59-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -490,7 +490,27 @@
     "gaps-e739b8c4-us": "/audio/a1/gaps/e739b8c4-us.mp3",
     "gaps-e739b8c4-gb": "/audio/a1/gaps/e739b8c4-gb.mp3",
     "gaps-dc6dd6cb-us": "/audio/a1/gaps/dc6dd6cb-us.mp3",
-    "gaps-dc6dd6cb-gb": "/audio/a1/gaps/dc6dd6cb-gb.mp3"
+    "gaps-dc6dd6cb-gb": "/audio/a1/gaps/dc6dd6cb-gb.mp3",
+    "gaps-ad9de625-us": "/audio/a1/gaps/ad9de625-us.mp3",
+    "gaps-ad9de625-gb": "/audio/a1/gaps/ad9de625-gb.mp3",
+    "gaps-2f4bd506-us": "/audio/a1/gaps/2f4bd506-us.mp3",
+    "gaps-2f4bd506-gb": "/audio/a1/gaps/2f4bd506-gb.mp3",
+    "gaps-588bd686-us": "/audio/a1/gaps/588bd686-us.mp3",
+    "gaps-588bd686-gb": "/audio/a1/gaps/588bd686-gb.mp3",
+    "gaps-d52792d1-us": "/audio/a1/gaps/d52792d1-us.mp3",
+    "gaps-d52792d1-gb": "/audio/a1/gaps/d52792d1-gb.mp3",
+    "gaps-d0ed1675-us": "/audio/a1/gaps/d0ed1675-us.mp3",
+    "gaps-d0ed1675-gb": "/audio/a1/gaps/d0ed1675-gb.mp3",
+    "gaps-2ee4d022-us": "/audio/a1/gaps/2ee4d022-us.mp3",
+    "gaps-2ee4d022-gb": "/audio/a1/gaps/2ee4d022-gb.mp3",
+    "gaps-f04340e6-us": "/audio/a1/gaps/f04340e6-us.mp3",
+    "gaps-f04340e6-gb": "/audio/a1/gaps/f04340e6-gb.mp3",
+    "gaps-808d4b38-us": "/audio/a1/gaps/808d4b38-us.mp3",
+    "gaps-808d4b38-gb": "/audio/a1/gaps/808d4b38-gb.mp3",
+    "gaps-7e70556a-us": "/audio/a1/gaps/7e70556a-us.mp3",
+    "gaps-7e70556a-gb": "/audio/a1/gaps/7e70556a-gb.mp3",
+    "gaps-2e3e57fb-us": "/audio/a1/gaps/2e3e57fb-us.mp3",
+    "gaps-2e3e57fb-gb": "/audio/a1/gaps/2e3e57fb-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -3852,12 +3872,152 @@
           1.802449
         ]
       }
+    },
+    "ad9de625": {
+      "nova": {
+        "us": [
+          "gaps-ad9de625-us",
+          0,
+          1.436735
+        ],
+        "gb": [
+          "gaps-ad9de625-gb",
+          0,
+          1.619592
+        ]
+      }
+    },
+    "2f4bd506": {
+      "nova": {
+        "us": [
+          "gaps-2f4bd506-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-2f4bd506-gb",
+          0,
+          1.018776
+        ]
+      }
+    },
+    "588bd686": {
+      "nova": {
+        "us": [
+          "gaps-588bd686-us",
+          0,
+          1.149388
+        ],
+        "gb": [
+          "gaps-588bd686-gb",
+          0,
+          1.38449
+        ]
+      }
+    },
+    "d52792d1": {
+      "nova": {
+        "us": [
+          "gaps-d52792d1-us",
+          0,
+          0.966531
+        ],
+        "gb": [
+          "gaps-d52792d1-gb",
+          0,
+          0.966531
+        ]
+      }
+    },
+    "d0ed1675": {
+      "nova": {
+        "us": [
+          "gaps-d0ed1675-us",
+          0,
+          1.149388
+        ],
+        "gb": [
+          "gaps-d0ed1675-gb",
+          0,
+          1.515102
+        ]
+      }
+    },
+    "2ee4d022": {
+      "nova": {
+        "us": [
+          "gaps-2ee4d022-us",
+          0,
+          1.48898
+        ],
+        "gb": [
+          "gaps-2ee4d022-gb",
+          0,
+          1.697959
+        ]
+      }
+    },
+    "f04340e6": {
+      "nova": {
+        "us": [
+          "gaps-f04340e6-us",
+          0,
+          1.567347
+        ],
+        "gb": [
+          "gaps-f04340e6-gb",
+          0,
+          1.906939
+        ]
+      }
+    },
+    "808d4b38": {
+      "nova": {
+        "us": [
+          "gaps-808d4b38-us",
+          0,
+          1.567347
+        ],
+        "gb": [
+          "gaps-808d4b38-gb",
+          0,
+          1.802449
+        ]
+      }
+    },
+    "7e70556a": {
+      "nova": {
+        "us": [
+          "gaps-7e70556a-us",
+          0,
+          1.619592
+        ],
+        "gb": [
+          "gaps-7e70556a-gb",
+          0,
+          1.906939
+        ]
+      }
+    },
+    "2e3e57fb": {
+      "nova": {
+        "us": [
+          "gaps-2e3e57fb-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-2e3e57fb-gb",
+          0,
+          1.07102
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Clips generados para textos que npm run audio:check listaba como faltantes. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 480,
-    "clips_missing_files": 286,
+    "clips_written": 500,
+    "clips_missing_files": 266,
     "items": [
       {
         "key": "f7b20218",
@@ -12931,6 +13091,380 @@
         "units": [
           "5",
           "8"
+        ]
+      },
+      {
+        "key": "ad9de625",
+        "text": "It’s very good.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/ad9de625-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "ad9de625",
+        "text": "It’s very good.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/ad9de625-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "2f4bd506",
+        "text": "loves",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/2f4bd506-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario",
+          "leccion"
+        ],
+        "units": [
+          "5",
+          "6"
+        ]
+      },
+      {
+        "key": "2f4bd506",
+        "text": "loves",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.018776,
+        "url": "/audio/a1/gaps/2f4bd506-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario",
+          "leccion"
+        ],
+        "units": [
+          "5",
+          "6"
+        ]
+      },
+      {
+        "key": "588bd686",
+        "text": "doesn’t like",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/588bd686-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "588bd686",
+        "text": "doesn’t like",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/588bd686-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "d52792d1",
+        "text": "love",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/d52792d1-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario",
+          "leccion"
+        ],
+        "units": [
+          "5",
+          "6"
+        ]
+      },
+      {
+        "key": "d52792d1",
+        "text": "love",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/d52792d1-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario",
+          "leccion"
+        ],
+        "units": [
+          "5",
+          "6"
+        ]
+      },
+      {
+        "key": "d0ed1675",
+        "text": "don’t love",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/d0ed1675-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "d0ed1675",
+        "text": "don’t love",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/d0ed1675-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "2ee4d022",
+        "text": "Can I a glass of water?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/2ee4d022-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "2ee4d022",
+        "text": "Can I a glass of water?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.697959,
+        "url": "/audio/a1/gaps/2ee4d022-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "f04340e6",
+        "text": "Can I has a glass of water?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/f04340e6-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "f04340e6",
+        "text": "Can I has a glass of water?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/f04340e6-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "808d4b38",
+        "text": "Can I have a glass of water?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/808d4b38-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "808d4b38",
+        "text": "Can I have a glass of water?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.802449,
+        "url": "/audio/a1/gaps/808d4b38-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "7e70556a",
+        "text": "Have I can a glass of water?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/7e70556a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "7e70556a",
+        "text": "Have I can a glass of water?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/7e70556a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "2e3e57fb",
+        "text": "reading",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/2e3e57fb-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "examen",
+          "leccion",
+          "repaso"
+        ],
+        "units": [
+          "6",
+          "examen"
+        ]
+      },
+      {
+        "key": "2e3e57fb",
+        "text": "reading",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.07102,
+        "url": "/audio/a1/gaps/2e3e57fb-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "examen",
+          "leccion",
+          "repaso"
+        ],
+        "units": [
+          "6",
+          "examen"
         ]
       }
     ]
