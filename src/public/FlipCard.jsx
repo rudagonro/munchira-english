@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { cardImage } from '../data/a1Starter'
 import CardMedia from './CardMedia'
+import { colorSwatch } from './colorSwatches'
 import { CardAudioButton, FlipHint } from './CardControls'
 
 /**
@@ -14,9 +15,12 @@ export default function FlipCard({ card, accent = 'en-US', front = 'en', initial
   const showEnglish = front === 'en' ? !flipped : flipped
   const sideLabel = showEnglish ? `${card.en}: toca para ${flipped ? 'volver' : 'ver qué significa'}` : `${card.es}: toca para ${flipped ? 'volver' : 'ver la palabra en inglés'}`
   const fallback = card.tile ?? card.label ?? card.en.slice(0, 1)
+  const color = colorSwatch(card)
+  // El nombre de la muestra va en el idioma del lado visible, para no adelantar la respuesta.
+  const swatch = color && { color, label: `Muestra de color: ${showEnglish ? card.en : card.es}` }
   return <li className={`fc ${flipped ? 'fc-flipped' : ''}`} data-card={card.id}>
     <button type="button" className="fc-face" aria-pressed={flipped} aria-label={sideLabel} onClick={() => setFlipped(value => !value)}>
-      <CardMedia image={card.image ?? null} art={cardImage(card)} fallback={fallback} variant={card.tile ? 'cal' : card.emoji ? '' : 'num'} />
+      <CardMedia image={card.image ?? null} art={swatch ? null : cardImage(card)} swatch={swatch} fallback={fallback} variant={card.tile ? 'cal' : card.emoji ? '' : 'num'} />
       {showEnglish
         ? <><span className="fc-en" lang="en">{card.en}</span>{front === 'es' && <span className="fc-es fc-sub">{card.es}</span>}</>
         : <span className="fc-es">{card.es}</span>}

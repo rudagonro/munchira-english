@@ -35,6 +35,9 @@
 .fc-media-fallback { font-weight: 800; color: var(--mp-teal); font-size: clamp(14px, 4.4vw, 22px); line-height: 1; }
 .fc-media-cal { border-top: 7px solid oklch(.62 .16 25); }
 .fc-media-num .fc-media-fallback { font-size: clamp(16px, 5vw, 26px); }
+.fc-media-swatch { background: transparent; border: 0; }
+.fc-swatch { width: 82%; height: 82%; border-radius: 10px; border: 1px solid oklch(.3 .02 180 / .28); box-shadow: inset 0 0 0 1px oklch(1 0 0 / .35); }
+@media (forced-colors: active) { .fc-swatch { forced-color-adjust: none; border-color: CanvasText; } }
 .fc-media-topic { width: 56px; max-width: none; }
 .fc-media-topic .fc-media-fallback { font-size: 28px; }
 .su-topic-wide .fc-media-topic { width: 64px; }

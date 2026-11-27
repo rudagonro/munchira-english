@@ -106,7 +106,9 @@ test('Vocabulario: el volteo se anuncia con «Toca para voltear» / «Toca para 
   const cards = cardsOf(html).filter(card => /data-card="colors\.\d+"/.test(card))
   assert.equal(cards.length, 12)
   for (const card of cards) {
-    assert.match(card, /<span class="fc-media[^"]*" aria-hidden="true"><img src="\/media\/cards\/twemoji\/[0-9a-f-]+\.svg"/, 'arte actual como respaldo de la imagen grande')
+    // Colores: cuadro de muestra con el color real (sin corazones de Twemoji) y nombre accesible.
+    assert.match(card, /<span class="fc-media fc-media-swatch"><span class="fc-swatch" role="img" aria-label="Muestra de color: [^"]+" title="[^"]+" style="background-color:#[0-9A-F]{6}"><\/span><\/span>/)
+    assert.doesNotMatch(card, /twemoji/)
     assert.match(card, /class="fc-en" lang="en">[^<]+</)
     assert.match(card, /Toca para voltear/)
     assert.match(card, /class="fc-audio" aria-label="Escuchar «[^»]+» \(americano\)"/)
@@ -115,9 +117,22 @@ test('Vocabulario: el volteo se anuncia con «Toca para voltear» / «Toca para 
   const card = { id: 'colors.0', index: 100, en: 'red', es: 'rojo', emoji: '2764' }
   const back = renderToString(h(FlipCard, { card, initialFlipped: true }))
   assert.match(back, /aria-pressed="true" aria-label="rojo: toca para volver"/)
+  assert.match(back, /aria-label="Muestra de color: rojo"/, 'el nombre de la muestra sigue el lado visible')
+  const other = { id: 'body.0', index: 200, en: 'head', es: 'cabeza', emoji: '1f9d1' }
+  assert.match(renderToString(h(FlipCard, { card: other })), /<span class="fc-media" aria-hidden="true"><img src="\/media\/cards\/twemoji\/1f9d1\.svg"/, 'otros grupos: arte actual')
   assert.match(back, /Toca para volver/)
   // Una imagen propia futura ocupa el mismo espacio, por delante del arte actual.
   assert.match(renderToString(h(FlipCard, { card: { ...card, image: '/media/cards/u0/red.webp' } })), /fc-media fc-media-image[^"]*"[^>]*><img src="\/media\/cards\/u0\/red\.webp"/)
+})
+
+test('muestras de color: una por tarjeta de Colores, sin cambiar las palabras del banco', async () => {
+  const { COLOR_SWATCHES } = await load('/src/public/colorSwatches.js')
+  const colors = unit0VocabularySets().find(set => set.key === 'colors').cards
+  assert.deepEqual(Object.keys(COLOR_SWATCHES).sort(), colors.map(card => card.id).sort())
+  for (const hex of Object.values(COLOR_SWATCHES)) assert.match(hex, /^#[0-9A-F]{6}$/)
+  assert.equal(COLOR_SWATCHES['colors.10'], '#FFFFFF')
+  assert.deepEqual(colors.slice(0, 3).map(card => [card.en, card.es]), [['red', 'rojo'], ['orange', 'naranja / anaranjado'], ['yellow', 'amarillo']])
+  assert.match(src('public/starter-unit.css'), /\.fc-swatch \{[^}]*border: 1px solid/, 'borde sutil para que el blanco se vea')
 })
 
 test('Días, meses y años abren su tema con tarjetas', () => {
