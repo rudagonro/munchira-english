@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T02:06:10-05:00",
+  "generatedAt": "2026-11-27T02:07:49-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -470,7 +470,27 @@
     "gaps-c02c5b9f-us": "/audio/a1/gaps/c02c5b9f-us.mp3",
     "gaps-c02c5b9f-gb": "/audio/a1/gaps/c02c5b9f-gb.mp3",
     "gaps-61070d5c-us": "/audio/a1/gaps/61070d5c-us.mp3",
-    "gaps-61070d5c-gb": "/audio/a1/gaps/61070d5c-gb.mp3"
+    "gaps-61070d5c-gb": "/audio/a1/gaps/61070d5c-gb.mp3",
+    "gaps-9168edb5-us": "/audio/a1/gaps/9168edb5-us.mp3",
+    "gaps-9168edb5-gb": "/audio/a1/gaps/9168edb5-gb.mp3",
+    "gaps-ab877ff4-us": "/audio/a1/gaps/ab877ff4-us.mp3",
+    "gaps-ab877ff4-gb": "/audio/a1/gaps/ab877ff4-gb.mp3",
+    "gaps-08a51b3a-us": "/audio/a1/gaps/08a51b3a-us.mp3",
+    "gaps-08a51b3a-gb": "/audio/a1/gaps/08a51b3a-gb.mp3",
+    "gaps-609e3b7d-us": "/audio/a1/gaps/609e3b7d-us.mp3",
+    "gaps-609e3b7d-gb": "/audio/a1/gaps/609e3b7d-gb.mp3",
+    "gaps-65eab053-us": "/audio/a1/gaps/65eab053-us.mp3",
+    "gaps-65eab053-gb": "/audio/a1/gaps/65eab053-gb.mp3",
+    "gaps-a97ce867-us": "/audio/a1/gaps/a97ce867-us.mp3",
+    "gaps-a97ce867-gb": "/audio/a1/gaps/a97ce867-gb.mp3",
+    "gaps-99d0abb8-us": "/audio/a1/gaps/99d0abb8-us.mp3",
+    "gaps-99d0abb8-gb": "/audio/a1/gaps/99d0abb8-gb.mp3",
+    "gaps-4f58f6d0-us": "/audio/a1/gaps/4f58f6d0-us.mp3",
+    "gaps-4f58f6d0-gb": "/audio/a1/gaps/4f58f6d0-gb.mp3",
+    "gaps-e739b8c4-us": "/audio/a1/gaps/e739b8c4-us.mp3",
+    "gaps-e739b8c4-gb": "/audio/a1/gaps/e739b8c4-gb.mp3",
+    "gaps-dc6dd6cb-us": "/audio/a1/gaps/dc6dd6cb-us.mp3",
+    "gaps-dc6dd6cb-gb": "/audio/a1/gaps/dc6dd6cb-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -3692,12 +3712,152 @@
           1.697959
         ]
       }
+    },
+    "9168edb5": {
+      "nova": {
+        "us": [
+          "gaps-9168edb5-us",
+          0,
+          1.48898
+        ],
+        "gb": [
+          "gaps-9168edb5-gb",
+          0,
+          1.619592
+        ]
+      }
+    },
+    "ab877ff4": {
+      "nova": {
+        "us": [
+          "gaps-ab877ff4-us",
+          0,
+          1.750204
+        ],
+        "gb": [
+          "gaps-ab877ff4-gb",
+          0,
+          1.933061
+        ]
+      }
+    },
+    "08a51b3a": {
+      "nova": {
+        "us": [
+          "gaps-08a51b3a-us",
+          0,
+          1.671837
+        ],
+        "gb": [
+          "gaps-08a51b3a-gb",
+          0,
+          1.697959
+        ]
+      }
+    },
+    "609e3b7d": {
+      "nova": {
+        "us": [
+          "gaps-609e3b7d-us",
+          0,
+          1.619592
+        ],
+        "gb": [
+          "gaps-609e3b7d-gb",
+          0,
+          1.697959
+        ]
+      }
+    },
+    "65eab053": {
+      "nova": {
+        "us": [
+          "gaps-65eab053-us",
+          0,
+          1.697959
+        ],
+        "gb": [
+          "gaps-65eab053-gb",
+          0,
+          2.089796
+        ]
+      }
+    },
+    "a97ce867": {
+      "nova": {
+        "us": [
+          "gaps-a97ce867-us",
+          0,
+          1.697959
+        ],
+        "gb": [
+          "gaps-a97ce867-gb",
+          0,
+          2.115918
+        ]
+      }
+    },
+    "99d0abb8": {
+      "nova": {
+        "us": [
+          "gaps-99d0abb8-us",
+          0,
+          1.854694
+        ],
+        "gb": [
+          "gaps-99d0abb8-gb",
+          0,
+          2.089796
+        ]
+      }
+    },
+    "4f58f6d0": {
+      "nova": {
+        "us": [
+          "gaps-4f58f6d0-us",
+          0,
+          1.619592
+        ],
+        "gb": [
+          "gaps-4f58f6d0-gb",
+          0,
+          1.985306
+        ]
+      }
+    },
+    "e739b8c4": {
+      "nova": {
+        "us": [
+          "gaps-e739b8c4-us",
+          0,
+          1.253878
+        ],
+        "gb": [
+          "gaps-e739b8c4-gb",
+          0,
+          1.149388
+        ]
+      }
+    },
+    "dc6dd6cb": {
+      "nova": {
+        "us": [
+          "gaps-dc6dd6cb-us",
+          0,
+          1.619592
+        ],
+        "gb": [
+          "gaps-dc6dd6cb-gb",
+          0,
+          1.802449
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Clips generados para textos que npm run audio:check listaba como faltantes. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 460,
-    "clips_missing_files": 306,
+    "clips_written": 480,
+    "clips_missing_files": 286,
     "items": [
       {
         "key": "f7b20218",
@@ -12405,6 +12565,368 @@
         "areas": [
           "cuestionario",
           "leccion"
+        ],
+        "units": [
+          "5",
+          "8"
+        ]
+      },
+      {
+        "key": "9168edb5",
+        "text": "I’d like a juice, please.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/9168edb5-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "9168edb5",
+        "text": "I’d like a juice, please.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/9168edb5-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "ab877ff4",
+        "text": "I like a juice, please.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/ab877ff4-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "ab877ff4",
+        "text": "I like a juice, please.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/ab877ff4-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "08a51b3a",
+        "text": "I’d likes a juice, please.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.671837,
+        "url": "/audio/a1/gaps/08a51b3a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "08a51b3a",
+        "text": "I’d likes a juice, please.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.697959,
+        "url": "/audio/a1/gaps/08a51b3a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "609e3b7d",
+        "text": "I’d like is a juice, please.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/609e3b7d-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "609e3b7d",
+        "text": "I’d like is a juice, please.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.697959,
+        "url": "/audio/a1/gaps/609e3b7d-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "65eab053",
+        "text": "Do your sister like tea?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.697959,
+        "url": "/audio/a1/gaps/65eab053-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "65eab053",
+        "text": "Do your sister like tea?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.089796,
+        "url": "/audio/a1/gaps/65eab053-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "a97ce867",
+        "text": "Does your sister like tea?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.697959,
+        "url": "/audio/a1/gaps/a97ce867-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "a97ce867",
+        "text": "Does your sister like tea?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.115918,
+        "url": "/audio/a1/gaps/a97ce867-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "99d0abb8",
+        "text": "Does your sister likes tea?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.854694,
+        "url": "/audio/a1/gaps/99d0abb8-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "99d0abb8",
+        "text": "Does your sister likes tea?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.089796,
+        "url": "/audio/a1/gaps/99d0abb8-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "4f58f6d0",
+        "text": "Does your sister to like tea?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/4f58f6d0-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "4f58f6d0",
+        "text": "Does your sister to like tea?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/4f58f6d0-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "e739b8c4",
+        "text": "Yes, please.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/e739b8c4-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "e739b8c4",
+        "text": "Yes, please.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/e739b8c4-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "dc6dd6cb",
+        "text": "It’s three dollars.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/dc6dd6cb-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5",
+          "8"
+        ]
+      },
+      {
+        "key": "dc6dd6cb",
+        "text": "It’s three dollars.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.802449,
+        "url": "/audio/a1/gaps/dc6dd6cb-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
         ],
         "units": [
           "5",
