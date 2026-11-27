@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { Navigate, useParams, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { computeModuleAvailability } from '../data/moduleAvailability'
 import { resumeModuleStage } from '../data/moduleLessonProgress'
@@ -12,6 +12,7 @@ import { getLessonAudioTurns } from '../data/lessonAudio'
 import A1DraftProvider from '../components/A1DraftProvider'
 import { useDraftFields, useDraftState } from '../contexts/a1-draft-context'
 import { supabase } from '../lib/supabase'
+import { isStaffRole } from '../contexts/review-mode-context'
 import { lessonAudioStatus, prepareLessonsAudio } from '../lib/audioPublisher'
 
 function quizErrorMessage(error) {
@@ -25,6 +26,9 @@ function quizErrorMessage(error) {
 
 export default function ModuleView({ preview = false }) {
   const { moduleId } = useParams()
+  const { role, profile } = useAuth()
+  // El personal nunca guarda avance de módulo: abre la vista previa del revisor (todo visible, nada se guarda).
+  if (!preview && isStaffRole(role ?? profile?.role)) return <Navigate to={`/revisor/modulo/${moduleId}`} replace />
   return <ModuleDraftGate key={moduleId} moduleId={moduleId} preview={preview} />
 }
 
