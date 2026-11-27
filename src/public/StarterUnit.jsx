@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/auth-context'
 import { supabase } from '../lib/supabase'
-import { A1_UNIT0, CARD_BANK, CARD_BANK_UNIT, UNIT0, UNIT0_PASS_SCORE, isMissingUnit0Backend, markLocalUnit0Pass, scoreUnit0, unit0VocabularySets } from '../data/a1Starter'
+import { A1_UNIT0, CARD_BANK, CARD_BANK_UNIT, UNIT0, UNIT0_PASS_SCORE, isMissingUnit0Backend, markLocalUnit0Pass, scoreUnit0 } from '../data/a1Starter'
+import CardMedia from './CardMedia'
 import FlipCard from './FlipCard'
+import StudyCard from './StudyCard'
+import { calendarSet, numberTopicBlocks, openTopic, unit0QuizTopic, unit0Topics, vocabularyTopicSets, yearsBlock } from './unit0Topics'
 import PublicShell from './PublicShell'
 import Seo from './Seo'
 import { QuestionFeedback } from './UnitCompletion'
@@ -16,26 +19,58 @@ import './model-lesson.css'
 import './unit-quiz.css'
 import './starter-unit.css'
 
-const SECTIONS = [['abecedario', 'Abecedario'], ['numeros', 'Números'], ['vocabulario', 'Vocabulario'], ['cuestionario', 'Cuestionario']]
+// Portada por temas: cada tarjeta abre su tema con «?tema=…» (los enlaces antiguos con ancla siguen sirviendo).
+// El cuestionario queda siempre a la vista, debajo, para que «#cuestionario» funcione como antes.
 
 function Listen({ text, accent, label }) {
   return <button type="button" className="su-listen" onClick={() => sayEnglish(text, { accent })} aria-label={`Escuchar «${label ?? text}»`}>🔊</button>
 }
 
+function TopicCover({ open }) {
+  const topics = unit0Topics()
+  const quiz = unit0QuizTopic()
+  return <nav className="su-cover" aria-label="Temas de la Unidad 0">
+    <p className="su-cover-help">Toca un tema para abrirlo. En cada tarjeta, tocarla la voltea y el altavoz, aparte, reproduce el inglés.</p>
+    <ul className="su-topics">
+      {topics.map(topic => <li key={topic.id} className={topic.id === 'vocabulario' ? 'su-topic-wide' : undefined}>
+        <Link className="su-topic" to={`?tema=${topic.id}`} aria-current={open === topic.id ? 'true' : undefined} data-topic={topic.id}>
+          <CardMedia image={topic.image} fallback={topic.emoji} variant="topic" />
+          <span className="su-topic-text">
+            <strong>{topic.title}</strong>
+            <span>{topic.summary}</span>
+            {topic.groups && <span className="su-topic-groups">{topic.groups.map(group => <span key={group}>{group}</span>)}</span>}
+            <span className="su-topic-cue">{open === topic.id ? 'Abierto' : 'Toca para abrir'}</span>
+          </span>
+        </Link>
+      </li>)}
+      <li className="su-topic-wide">
+        <a className="su-topic su-topic-quiz" href="#cuestionario" data-topic={quiz.id}>
+          <CardMedia fallback={quiz.emoji} variant="topic" />
+          <span className="su-topic-text"><strong>{quiz.title}</strong><span>{quiz.summary}</span><span className="su-topic-cue">Ir al cuestionario</span></span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+}
+
+function TopicPanel({ id, title, children }) {
+  return <section id={id} className="su-section su-panel" aria-labelledby={`su-${id}-title`} tabIndex={-1}>
+    <p className="su-back"><Link to={{ search: '' }} className="mp-text-link">← Volver a la portada</Link></p>
+    <h2 id={`su-${id}-title`}>{title}</h2>
+    {children}
+  </section>
+}
+
 function Alphabet({ accent }) {
   const { alphabet } = UNIT0
-  return <section id="abecedario" className="su-section" aria-labelledby="su-alphabet-title">
-    <h2 id="su-alphabet-title">1. {alphabet.title}</h2>
+  return <TopicPanel id="abecedario" title={alphabet.title}>
     <p>{alphabet.intro}</p>
-    <ul className="su-letters">
-      {alphabet.letters.map(item => <li key={item.letter} className={item.tip ? 'su-letter su-letter-tip' : 'su-letter'}>
-        <button type="button" className="su-letter-main" onClick={() => sayEnglish(item.say, { accent })} aria-label={`Escuchar la letra ${item.letter}`}>
-          <strong lang="en">{item.letter}<span>{item.letter.toLowerCase()}</span></strong>
-          <span className="su-guide">«{item.guide}»</span>
-          <span aria-hidden="true" className="su-mini">🔊</span>
-        </button>
-        {item.tip && <p>{item.tip}</p>}
-      </li>)}
+    <ul className="su-letters fc-study-grid">
+      {alphabet.letters.map(item => <StudyCard key={item.letter} id={`letra-${item.letter}`} accent={accent} tone={item.tip ? 'tip' : ''} image={item.image ?? null}
+        front={<strong className="su-letter-big" lang="en">{item.letter}<span>{item.letter.toLowerCase()}</span></strong>}
+        back={<><strong className="su-letter-small" lang="en">{item.letter}<span>{item.letter.toLowerCase()}</span></strong><span className="su-guide">«{item.guide}»</span>{item.tip && <span className="su-tip">{item.tip}</span>}</>}
+        frontLabel={`Letra ${item.letter}`} backLabel={`Letra ${item.letter}: se dice «${item.guide}»${item.tip ? `. ${item.tip}` : ''}`}
+        audio={item.say} audioLabel={`la letra ${item.letter}`} />)}
     </ul>
     <h3>Las letras que más confundimos</h3>
     <ul className="su-confusions">{alphabet.confusions.map(item => <li key={item.pair}><strong>{item.pair}</strong><p>{item.explain}</p></li>)}</ul>
@@ -46,25 +81,45 @@ function Alphabet({ accent }) {
       <p className="su-example"><span>Ejemplo: {alphabet.spelling.example.name} →</span> <strong lang="en">{alphabet.spelling.example.spelled}</strong> <em>«{alphabet.spelling.example.guide}»</em> <Listen text={alphabet.spelling.example.say} accent={accent} label={alphabet.spelling.example.spelled} /></p>
       <p className="su-note">{alphabet.spelling.example.note}</p>
     </div>
-  </section>
+  </TopicPanel>
+}
+
+const WIDE_BLOCKS = new Set(['phone', 'combos', 'years', 'thousands'])
+
+function NumberCards({ items, accent, wide, contrast = false }) {
+  return <ul className={`su-numbers fc-study-grid ${wide ? 'su-numbers-wide' : ''} ${contrast ? 'su-contrast' : ''}`}>
+    {items.map(item => <StudyCard key={item.label} id={`numero-${item.label}`} accent={accent} wide={wide} image={item.image ?? null}
+      front={<strong className="su-number-big">{item.label}</strong>}
+      back={<><strong className="su-number-small">{item.label}</strong><span className="su-number-en" lang="en">{item.en}</span></>}
+      frontLabel={item.label} backLabel={`${item.label}: ${item.en}`}
+      audio={item.en} audioLabel={`${item.label}: ${item.en}`} />)}
+  </ul>
+}
+
+function NumberBlock({ block, accent }) {
+  return <div className="su-number-block">
+    <h3>{block.title}</h3>
+    <p>{block.explain}</p>
+    <NumberCards items={block.items} accent={accent} wide={WIDE_BLOCKS.has(block.id)} />
+    {block.contrast && <><p className="su-contrast-title">Escucha la diferencia:</p><NumberCards items={block.contrast} accent={accent} contrast /></>}
+  </div>
 }
 
 function Numbers({ accent }) {
   const { numbers } = UNIT0
-  return <section id="numeros" className="su-section" aria-labelledby="su-numbers-title">
-    <h2 id="su-numbers-title">2. {numbers.title}</h2>
+  return <TopicPanel id="numeros" title={numbers.title}>
     <p>{numbers.intro}</p>
-    {numbers.blocks.map(block => <div key={block.id} className="su-number-block">
-      <h3>{block.title}</h3>
-      <p>{block.explain}</p>
-      <ul className={`su-numbers ${block.id === 'phone' || block.id === 'combos' || block.id === 'years' || block.id === 'thousands' ? 'su-numbers-wide' : ''}`}>
-        {block.items.map(item => <li key={item.label}><button type="button" onClick={() => sayEnglish(item.en, { accent })} aria-label={`Escuchar ${item.label}: ${item.en}`}><strong>{item.label}</strong><span lang="en">{item.en}</span></button></li>)}
-      </ul>
-      {block.contrast && <><p className="su-contrast-title">Escucha la diferencia:</p><ul className="su-numbers su-contrast">
-        {block.contrast.map(item => <li key={item.label}><button type="button" onClick={() => sayEnglish(item.en, { accent })} aria-label={`Escuchar ${item.label}: ${item.en}`}><strong>{item.label}</strong><span lang="en">{item.en}</span></button></li>)}
-      </ul></>}
-    </div>)}
-  </section>
+    <p className="su-howto">Toca una cifra para ver cómo se dice en inglés. El altavoz la reproduce sin voltear la tarjeta.</p>
+    {numberTopicBlocks().map(block => <NumberBlock key={block.id} block={block} accent={accent} />)}
+  </TopicPanel>
+}
+
+function Years({ accent }) {
+  const block = yearsBlock()
+  return <TopicPanel id="anos" title={block.title}>
+    <p>{block.explain}</p>
+    <NumberCards items={block.items} accent={accent} wide />
+  </TopicPanel>
 }
 
 function SaveToReview({ set }) {
@@ -87,29 +142,42 @@ function SaveToReview({ set }) {
   </p>
 }
 
+function CardSet({ set, accent, front, setFront }) {
+  return <>
+    <div className="su-cards-head">
+      <p>{set.intro}</p>
+      <div className="su-front" role="group" aria-label="Qué lado ves primero">
+        <button type="button" aria-pressed={front === 'en'} onClick={() => setFront('en')}>Primero inglés</button>
+        <button type="button" aria-pressed={front === 'es'} onClick={() => setFront('es')}>Primero español</button>
+      </div>
+    </div>
+    <ul className="fc-grid" key={`${set.key}-${front}`}>{set.cards.map(card => <FlipCard key={card.id} card={card} accent={accent} front={front} />)}</ul>
+    <SaveToReview key={set.key} set={set} />
+  </>
+}
+
+function Calendar({ topic, accent }) {
+  const set = calendarSet(topic)
+  const [front, setFront] = useState('en')
+  return <TopicPanel id={topic} title={set.title}>
+    <CardSet set={set} accent={accent} front={front} setFront={setFront} />
+  </TopicPanel>
+}
+
 function Vocabulary({ accent }) {
-  const sets = unit0VocabularySets()
+  const sets = vocabularyTopicSets()
   const [active, setActive] = useState(sets[0].key)
   const [front, setFront] = useState('en')
   const set = sets.find(item => item.key === active) ?? sets[0]
-  return <section id="vocabulario" className="su-section" aria-labelledby="su-vocab-title">
-    <h2 id="su-vocab-title">3. {UNIT0.vocabulary.title}</h2>
+  return <TopicPanel id="vocabulario" title={UNIT0.vocabulary.title}>
     <p>{UNIT0.vocabulary.intro}</p>
     <div className="su-tabs" role="tablist" aria-label="Grupos de palabras">
       {sets.map(item => <button key={item.key} type="button" role="tab" id={`su-tab-${item.key}`} aria-selected={item.key === set.key} aria-controls="su-cards" onClick={() => setActive(item.key)}>{item.title} <small>{item.cards.length}</small></button>)}
     </div>
     <div id="su-cards" role="tabpanel" aria-labelledby={`su-tab-${set.key}`}>
-      <div className="su-cards-head">
-        <p>{set.intro}</p>
-        <div className="su-front" role="group" aria-label="Qué lado ves primero">
-          <button type="button" aria-pressed={front === 'en'} onClick={() => setFront('en')}>Primero inglés</button>
-          <button type="button" aria-pressed={front === 'es'} onClick={() => setFront('es')}>Primero español</button>
-        </div>
-      </div>
-      <ul className="fc-grid" key={`${set.key}-${front}`}>{set.cards.map(card => <FlipCard key={card.id} card={card} accent={accent} front={front} />)}</ul>
-      <SaveToReview key={set.key} set={set} />
+      <CardSet set={set} accent={accent} front={front} setFront={setFront} />
     </div>
-  </section>
+  </TopicPanel>
 }
 
 function StarterQuiz({ onPassed }) {
@@ -155,7 +223,7 @@ function StarterQuiz({ onPassed }) {
   }
   const passed = result ? result.score >= UNIT0_PASS_SCORE : false
   return <section id="cuestionario" className="su-section" aria-labelledby="su-quiz-title">
-    <h2 id="su-quiz-title">4. Cuestionario de la Unidad 0</h2>
+    <h2 id="su-quiz-title">Cuestionario de la Unidad 0</h2>
     <p>{questions.length} preguntas. Con {UNIT0_PASS_SCORE}% o más se abre la Unidad 1. Puedes repetirlo las veces que quieras; tu mejor resultado se conserva.</p>
     {progress?.completed_at && <p className="ml-feedback ml-ok" role="status">Unidad 0 aprobada · Mejor resultado: {progress.best_score}% · Guardado en tu cuenta.</p>}
     <form onSubmit={submit} className="ml-quiz">
@@ -172,6 +240,15 @@ function StarterQuiz({ onPassed }) {
   </section>
 }
 
+const TOPIC_PANELS = {
+  abecedario: Alphabet,
+  numeros: Numbers,
+  dias: props => <Calendar topic="dias" {...props} />,
+  meses: props => <Calendar topic="meses" {...props} />,
+  anos: Years,
+  vocabulario: Vocabulary,
+}
+
 export default function StarterUnit() {
   const [accent, setAccent] = useState('en-US')
   const [serverPassed, setPassed] = useState(false)
@@ -180,9 +257,18 @@ export default function StarterUnit() {
   const passed = review || serverPassed || localPassed === true
   useEffect(() => () => stopLessonAudio(), [])
   const markPassed = useState(() => () => setPassed(true))[0]
-  const { hash } = useLocation()
-  // Enlaces como «/cursos/A1/unidad/0#cuestionario»: el enrutador no baja solo hasta la sección.
-  useEffect(() => { if (hash) document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView() }, [hash])
+  const { hash, search } = useLocation()
+  const topic = openTopic(search, hash)
+  const Panel = topic ? TOPIC_PANELS[topic] : null
+  // Al abrir un tema (o con enlaces como «#cuestionario») se baja hasta él: el enrutador no lo hace solo.
+  useEffect(() => {
+    const target = hash ? decodeURIComponent(hash.slice(1)) : topic
+    const node = target && document.getElementById(target)
+    if (!node) return
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    node.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
+    if (!hash && topic) node.focus({ preventScroll: true })
+  }, [hash, topic])
   return <PublicShell>
     <Seo title={`A1 · ${A1_UNIT0.label}`} description="Unidad 0 de inglés A1 en Munchira: el abecedario, los números y tus primeras palabras con tarjetas, audio americano y británico y un cuestionario." path={A1_UNIT0.path} noindex />
     <div className="mp-wrap ml-page su-page">
@@ -193,13 +279,11 @@ export default function StarterUnit() {
         <p>{UNIT0.intro}</p>
         <StaffNoSaveNote />
         <div className="ml-head-row">
-          <nav className="su-jump" aria-label="Secciones de la unidad">{SECTIONS.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav>
           <label className="ml-accent">Acento <select value={accent} onChange={event => setAccent(event.target.value)}><option value="en-US">Americano</option><option value="en-GB">Británico</option></select></label>
         </div>
       </header>
-      <Alphabet accent={accent} />
-      <Numbers accent={accent} />
-      <Vocabulary accent={accent} />
+      <TopicCover open={topic} />
+      {Panel && <Panel key={topic} accent={accent} />}
       <StarterQuiz onPassed={markPassed} />
       <div className="su-next">
         {passed
