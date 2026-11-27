@@ -22,9 +22,13 @@ export function audioKey(text) {
 const SPANISH_WORDS = /\b(el|la|los|las|una|unos|unas|del|al|que|qué|es|está|están|soy|eres|son|tiene|tengo|tienes|mi|mis|tu|tus|su|sus|yo|ella|ellos|nosotros|usted|ustedes|con|para|por|pero|muy|también|hay|de|y|en|se|lo|le|no sé|cómo|dónde|cuándo|ayer|hoy|mañana|un|o|estoy|estás|lee|leo|ninguno|ninguna|sigue|llego|tarde|cerca|lejos|derecho|izquierda|derecha|frutas|verduras|horario|trabajo|pasatiempo|manejar|correr|caminar|sujeto|verbo|complemento|intentas|traducir|cada|palabra)\b/i
 export function isEnglishText(text) {
   const value = String(text ?? '').trim()
+  // Una letra mayúscula (A–Z) es el nombre de esa letra, no la conjunción «y» ni la «o».
+  if (/^[A-Z]$/.test(value)) return true
   if (!value || !/[a-z]/i.test(value)) return false
-  if (/[áéíóúñü¿¡]/i.test(value)) return false
-  const words = value.toLowerCase().match(/[a-z']+/g) ?? []
+  // Solo para detectar el idioma: no cambia speechText ni audioKey (las grabaciones siguen la grafía original).
+  const plain = value.replace(/[‘’ʼ]/g, "'")
+  if (/[áéíóúñü¿¡]/i.test(plain)) return false
+  const words = plain.toLowerCase().match(/[a-z']+/g) ?? []
   const spanish = words.filter(word => SPANISH_WORDS.test(word)).length
   return spanish === 0 || spanish / words.length < 0.25
 }

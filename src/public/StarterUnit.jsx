@@ -11,7 +11,7 @@ import PublicShell from './PublicShell'
 import Seo from './Seo'
 import { QuestionFeedback } from './UnitCompletion'
 import { stopLessonAudio } from './lessonSpeech'
-import AccentSpeakers, { OptionRow } from './AccentSpeakers'
+import AccentSpeakers, { OptionRow, QuizLegend } from './AccentSpeakers'
 import { useLocalUnit0Pass } from './useLocalUnit0Pass'
 import { useNoSave, useReviewMode } from '../contexts/review-mode-context'
 import ReviewAnswer from '../components/ReviewAnswer'
@@ -229,7 +229,7 @@ function StarterQuiz({ onPassed }) {
     {progress?.completed_at && <p className="ml-feedback ml-ok" role="status">Unidad 0 aprobada · Mejor resultado: {progress.best_score}% · Guardado en tu cuenta.</p>}
     <form onSubmit={submit} className="ml-quiz">
       {questions.map((question, index) => <fieldset key={index} className="ml-quiz-q">
-        <legend>{index + 1}. {question.question}</legend>
+        <QuizLegend index={index} question={question} />
         {question.options.map((option, value) => <OptionRow key={value} option={option}><label className="ml-quiz-opt"><input type="radio" name={`u0-question-${index}`} value={value} checked={answers[index] === value} onChange={() => { setReviewed(null); setResult(null); setAnswers(previous => ({ ...previous, [index]: value })) }} disabled={busy} required /><span>{option}</span></label></OptionRow>)}
         <ReviewAnswer>{question.options[question.correct_idx]}</ReviewAnswer>
         {reviewed && <QuestionFeedback question={question} answer={reviewed[index]} />}

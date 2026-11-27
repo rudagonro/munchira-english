@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { hasRecording, reportMissingAudio, sayEnglish } from './lessonSpeech'
 import { isEnglishOption } from './optionLanguage'
+import { splitQuestionForSpeech } from './quizSpeech.js'
 import './accent-speakers.css'
 
 const ACCENT_INFO = {
@@ -56,4 +57,12 @@ export function AccentToggle({ value, onChange, label = 'Acento del diálogo' })
 export function OptionRow({ option, voice, source, children }) {
   if (!isEnglishOption(option)) return children
   return <div className="as-opt-row">{children}<AccentSpeakers text={String(option)} voice={voice} source={source} /></div>
+}
+
+/** Enunciado del cuestionario: bocinas US/UK junto a cada trozo en inglés (no junto a las guías fonéticas ni al español). */
+export function QuizLegend({ index, question, voice, source }) {
+  const parts = splitQuestionForSpeech(question.question)
+  return <legend>{index + 1}. {parts.map((part, i) => part.listen
+    ? <span key={i} className="as-prompt-bit">{part.display}<AccentSpeakers text={part.listen} voice={voice} source={source} /></span>
+    : <span key={i}>{part.display}</span>)}</legend>
 }

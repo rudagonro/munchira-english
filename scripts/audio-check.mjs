@@ -12,6 +12,7 @@ import { bankListening } from '../src/data/diagnosticBank.js'
 import { lessonCards } from '../src/public/model-lesson.js'
 import { audioKey } from '../src/public/speechText.js'
 import { isEnglishOption } from '../src/public/optionLanguage.js'
+import { quizSpokenTexts } from '../src/public/quizSpeech.js'
 import { registerLessonRecordings } from '../src/public/lessonRecordings.js'
 import { recordedAudioUrl } from '../src/public/lessonSpeech.js'
 
@@ -40,7 +41,10 @@ UNIT0.alphabet.spelling.phrases.forEach(phrase => add(phrase.en, u0))
 add(UNIT0.alphabet.spelling.example.say, u0)
 UNIT0.numbers.blocks.forEach(block => [...block.items, ...(block.contrast ?? [])].forEach(item => add(item.en, u0)))
 CARD_SETS.forEach(set => set.cards.forEach(card => { add(card.en, u0); add(card.en, { area: 'repaso', unit: 0 }) }))
-options(UNIT0.quiz.flatMap(q => q.options), { area: 'cuestionario', unit: 0 })
+UNIT0.quiz.forEach(q => {
+  quizSpokenTexts(q).forEach(text => add(text, { area: 'cuestionario', unit: 0 }))
+  options(q.options, { area: 'cuestionario', unit: 0 })
+})
 
 // Unidades 1–8: cada paso con audio, opciones en inglés, cuestionario y lo que llega a Repaso.
 const unitSources = new Map()
@@ -71,7 +75,10 @@ for (const module of cycle.modules) {
   })
   ;(l.dictation ?? []).forEach(t => add(t, ctx))
   ;(l.pronunciation ?? []).forEach(p => add(p.en, ctx))
-  options((module.quiz ?? []).flatMap(q => q.options), { area: 'cuestionario', unit, source: unit })
+  for (const q of module.quiz ?? []) {
+    quizSpokenTexts(q).forEach(text => add(text, { area: 'cuestionario', unit, source: unit }))
+    options(q.options, { area: 'cuestionario', unit, source: unit })
+  }
 }
 
 // Examen final A1: audios de escucha y opciones en inglés.
