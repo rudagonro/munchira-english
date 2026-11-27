@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T01:47:05-05:00",
+  "generatedAt": "2026-11-27T01:50:23-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -330,7 +330,27 @@
     "gaps-aa2ec25e-us": "/audio/a1/gaps/aa2ec25e-us.mp3",
     "gaps-aa2ec25e-gb": "/audio/a1/gaps/aa2ec25e-gb.mp3",
     "gaps-008aa19c-us": "/audio/a1/gaps/008aa19c-us.mp3",
-    "gaps-008aa19c-gb": "/audio/a1/gaps/008aa19c-gb.mp3"
+    "gaps-008aa19c-gb": "/audio/a1/gaps/008aa19c-gb.mp3",
+    "gaps-092dc541-us": "/audio/a1/gaps/092dc541-us.mp3",
+    "gaps-092dc541-gb": "/audio/a1/gaps/092dc541-gb.mp3",
+    "gaps-5f74a7f4-us": "/audio/a1/gaps/5f74a7f4-us.mp3",
+    "gaps-5f74a7f4-gb": "/audio/a1/gaps/5f74a7f4-gb.mp3",
+    "gaps-b2538e66-us": "/audio/a1/gaps/b2538e66-us.mp3",
+    "gaps-b2538e66-gb": "/audio/a1/gaps/b2538e66-gb.mp3",
+    "gaps-3a6f471c-us": "/audio/a1/gaps/3a6f471c-us.mp3",
+    "gaps-3a6f471c-gb": "/audio/a1/gaps/3a6f471c-gb.mp3",
+    "gaps-55f37732-us": "/audio/a1/gaps/55f37732-us.mp3",
+    "gaps-55f37732-gb": "/audio/a1/gaps/55f37732-gb.mp3",
+    "gaps-d464b878-us": "/audio/a1/gaps/d464b878-us.mp3",
+    "gaps-d464b878-gb": "/audio/a1/gaps/d464b878-gb.mp3",
+    "gaps-d2cf19b6-us": "/audio/a1/gaps/d2cf19b6-us.mp3",
+    "gaps-d2cf19b6-gb": "/audio/a1/gaps/d2cf19b6-gb.mp3",
+    "gaps-7e228af6-us": "/audio/a1/gaps/7e228af6-us.mp3",
+    "gaps-7e228af6-gb": "/audio/a1/gaps/7e228af6-gb.mp3",
+    "gaps-5af58f54-us": "/audio/a1/gaps/5af58f54-us.mp3",
+    "gaps-5af58f54-gb": "/audio/a1/gaps/5af58f54-gb.mp3",
+    "gaps-05bfb038-us": "/audio/a1/gaps/05bfb038-us.mp3",
+    "gaps-05bfb038-gb": "/audio/a1/gaps/05bfb038-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -2572,12 +2592,152 @@
           1.018776
         ]
       }
+    },
+    "092dc541": {
+      "nova": {
+        "us": [
+          "gaps-092dc541-us",
+          0,
+          0.783673
+        ],
+        "gb": [
+          "gaps-092dc541-gb",
+          0,
+          1.149388
+        ]
+      }
+    },
+    "5f74a7f4": {
+      "nova": {
+        "us": [
+          "gaps-5f74a7f4-us",
+          0,
+          2.220408
+        ],
+        "gb": [
+          "gaps-5f74a7f4-gb",
+          0,
+          2.533878
+        ]
+      }
+    },
+    "b2538e66": {
+      "nova": {
+        "us": [
+          "gaps-b2538e66-us",
+          0,
+          1.933061
+        ],
+        "gb": [
+          "gaps-b2538e66-gb",
+          0,
+          2.324898
+        ]
+      }
+    },
+    "3a6f471c": {
+      "nova": {
+        "us": [
+          "gaps-3a6f471c-us",
+          0,
+          1.985306
+        ],
+        "gb": [
+          "gaps-3a6f471c-gb",
+          0,
+          2.115918
+        ]
+      }
+    },
+    "55f37732": {
+      "nova": {
+        "us": [
+          "gaps-55f37732-us",
+          0,
+          1.906939
+        ],
+        "gb": [
+          "gaps-55f37732-gb",
+          0,
+          2.089796
+        ]
+      }
+    },
+    "d464b878": {
+      "nova": {
+        "us": [
+          "gaps-d464b878-us",
+          0,
+          1.149388
+        ],
+        "gb": [
+          "gaps-d464b878-gb",
+          0,
+          1.332245
+        ]
+      }
+    },
+    "d2cf19b6": {
+      "nova": {
+        "us": [
+          "gaps-d2cf19b6-us",
+          0,
+          1.332245
+        ],
+        "gb": [
+          "gaps-d2cf19b6-gb",
+          0,
+          1.515102
+        ]
+      }
+    },
+    "7e228af6": {
+      "nova": {
+        "us": [
+          "gaps-7e228af6-us",
+          0,
+          1.253878
+        ],
+        "gb": [
+          "gaps-7e228af6-gb",
+          0,
+          1.48898
+        ]
+      }
+    },
+    "5af58f54": {
+      "nova": {
+        "us": [
+          "gaps-5af58f54-us",
+          0,
+          1.201633
+        ],
+        "gb": [
+          "gaps-5af58f54-gb",
+          0,
+          1.097143
+        ]
+      }
+    },
+    "05bfb038": {
+      "nova": {
+        "us": [
+          "gaps-05bfb038-us",
+          0,
+          1.018776
+        ],
+        "gb": [
+          "gaps-05bfb038-gb",
+          0,
+          1.07102
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Clips generados para textos que npm run audio:check listaba como faltantes. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 320,
-    "clips_missing_files": 446,
+    "clips_written": 340,
+    "clips_missing_files": 426,
     "items": [
       {
         "key": "f7b20218",
@@ -8669,6 +8829,368 @@
         "units": [
           "3",
           "4"
+        ]
+      },
+      {
+        "key": "092dc541",
+        "text": "watchs",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.783673,
+        "url": "/audio/a1/gaps/092dc541-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "092dc541",
+        "text": "watchs",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/092dc541-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "5f74a7f4",
+        "text": "I have always breakfast at 7.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.220408,
+        "url": "/audio/a1/gaps/5f74a7f4-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "5f74a7f4",
+        "text": "I have always breakfast at 7.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.533878,
+        "url": "/audio/a1/gaps/5f74a7f4-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "b2538e66",
+        "text": "I always has breakfast at 7.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/b2538e66-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "b2538e66",
+        "text": "I always has breakfast at 7.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.324898,
+        "url": "/audio/a1/gaps/b2538e66-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "3a6f471c",
+        "text": "I always breakfast have at 7.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/3a6f471c-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "3a6f471c",
+        "text": "I always breakfast have at 7.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.115918,
+        "url": "/audio/a1/gaps/3a6f471c-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "55f37732",
+        "text": "I always have breakfast at 7.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/55f37732-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "55f37732",
+        "text": "I always have breakfast at 7.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.089796,
+        "url": "/audio/a1/gaps/55f37732-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "d464b878",
+        "text": "Every day.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/d464b878-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "d464b878",
+        "text": "Every day.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.332245,
+        "url": "/audio/a1/gaps/d464b878-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "d2cf19b6",
+        "text": "In my bedroom.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.332245,
+        "url": "/audio/a1/gaps/d2cf19b6-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "d2cf19b6",
+        "text": "In my bedroom.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/d2cf19b6-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "7e228af6",
+        "text": "Yes, I do.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/7e228af6-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3",
+          "6"
+        ]
+      },
+      {
+        "key": "7e228af6",
+        "text": "Yes, I do.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/7e228af6-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3",
+          "6"
+        ]
+      },
+      {
+        "key": "5af58f54",
+        "text": "lives",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.201633,
+        "url": "/audio/a1/gaps/5af58f54-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "5af58f54",
+        "text": "lives",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/5af58f54-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "05bfb038",
+        "text": "living",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.018776,
+        "url": "/audio/a1/gaps/05bfb038-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "05bfb038",
+        "text": "living",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.07102,
+        "url": "/audio/a1/gaps/05bfb038-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
         ]
       }
     ]
