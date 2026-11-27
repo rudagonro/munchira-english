@@ -13,7 +13,7 @@ import ReviewAnswer from '../components/ReviewAnswer'
 import StaffNoSaveNote from '../components/StaffNoSaveNote'
 import { registerLessonRecordings } from '../public/lessonRecordings'
 import { stopLessonAudio } from '../public/lessonSpeech'
-import AccentSpeakers, { OptionRow } from '../public/AccentSpeakers'
+import AccentSpeakers, { OptionRow, QuizLegend } from '../public/AccentSpeakers'
 import '../public/unit-quiz.css'
 
 const { questions, sections, passages } = A1_FINAL_EXAM
@@ -63,11 +63,11 @@ export function ExamForm({ answerKey = null, onSubmit, busy }) {
         const passage = question.passage && question.passage !== shownPassage ? passages[question.passage] : null
         if (passage) shownPassage = question.passage
         return <div key={question.id}>
-          {passage && <article className="fx-passage"><h3>{passage.title}</h3><p lang="en">{passage.text}</p></article>}
+          {passage && <article className="fx-passage"><h3>{passage.title}</h3><p lang="en">{passage.text} <AccentSpeakers text={passage.text} source={unitAudio(passage.unit)} label={`el texto «${passage.title}»`} slow /></p></article>}
           <fieldset className="ml-quiz-q">
-            <legend>{index + 1}. {question.question}</legend>
+            <QuizLegend index={index} question={question} source={unitAudio(question.unit_audio ?? question.unit)} />
             {question.audio && <ListenClip question={question} />}
-            {question.options.map((option, value) => <OptionRow key={value} option={option} source={unitAudio(question.unit_audio)}><label className="ml-quiz-opt">
+            {question.options.map((option, value) => <OptionRow key={value} option={option} source={unitAudio(question.unit_audio ?? question.unit)}><label className="ml-quiz-opt">
               <input type="radio" name={`fx-${question.id}`} value={value} checked={answers[index] === value} disabled={busy} required
                 onChange={() => { setChecked(null); setAnswers(previous => ({ ...previous, [index]: value })) }} />
               <span>{option}</span>

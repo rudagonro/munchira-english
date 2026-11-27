@@ -1,6 +1,6 @@
 import ExerciseBlock from '../components/ExerciseBlock'
 import { useDraftState } from '../contexts/a1-draft-context'
-import AccentSpeakers from './AccentSpeakers'
+import AccentSpeakers, { SpokenCell } from './AccentSpeakers'
 import DialogueBlock from './DialogueBlock'
 import { displayForm } from './model-lesson'
 
@@ -17,7 +17,7 @@ export function ExtraVocab({ lesson, legacy = false }) {
   return <>
     <h3>Más palabras útiles</h3>
     <p className="ml-tip">{legacy ? 'Vienen del curso anterior. ' : ''}También aparecen en las tarjetas y entran en «Repaso».</p>
-    <ul className="ml-vocab">{lesson.extraVocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{displayForm(v.es)}</span><em>«{v.say}»</em>{v.example && <span>{v.example}</span>}<Listen text={v.en} /></li>)}</ul>
+    <ul className="ml-vocab">{lesson.extraVocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{displayForm(v.es)}</span><em>«{v.say}»</em>{v.example && <span>{v.example} <Listen text={v.example} /></span>}<Listen text={v.en} /></li>)}</ul>
   </>
 }
 
@@ -25,7 +25,7 @@ export function ExtraTables({ lesson }) {
   if (!lesson.extraTables?.length) return null
   return lesson.extraTables.map(table => <div key={table.caption} className="ml-table-wrap"><table className="ml-table"><caption>{table.caption}</caption>
     <thead><tr>{table.head.map(h => <th key={h} scope="col">{h}</th>)}</tr></thead>
-    <tbody>{table.rows.map(r => <tr key={r[0]}>{r.map((cell, i) => i === 0 ? <th key={i} scope="row">{cell}</th> : <td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>)
+    <tbody>{table.rows.map(r => <tr key={r[0]}>{r.map((cell, i) => i === 0 ? <th key={i} scope="row">{cell}</th> : <td key={i}><SpokenCell text={cell} /></td>)}</tr>)}</tbody></table></div>)
 }
 
 export function ExtraGuided({ lesson, legacy = false }) {
@@ -57,7 +57,7 @@ export function FreeChallenge({ lesson }) {
     <label className="ml-free">Escribe aquí<textarea rows={6} value={text} maxLength={2000} lang="en" spellCheck onChange={e => setText(e.target.value)} /></label>
     <h4>Revisa tu texto</h4><ul className="ml-summary">{challenge.checklist.map(item => <li key={item}>{item}</li>)}</ul>
     <button type="button" className="mp-button" onClick={() => setShown(true)}>Ver un modelo</button>
-    {shown && <p className="ml-example">{challenge.model}</p>}
+    {shown && <p className="ml-example">{challenge.model} <Listen text={challenge.model} /></p>}
     <p className="ml-tip">Este reto no recibe nota ni corrección automática.</p>
   </>
 }

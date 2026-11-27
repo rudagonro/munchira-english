@@ -8,11 +8,11 @@ import { writeFileSync } from 'node:fs'
 import cycle from '../content/cycles/A1.json' with { type: 'json' }
 import { UNIT0, CARD_SETS } from '../src/data/a1Starter.js'
 import { A1_FINAL_EXAM } from '../src/data/a1FinalExam.js'
-import { bankListening } from '../src/data/diagnosticBank.js'
+import { bankGV, bankListening } from '../src/data/diagnosticBank.js'
 import { lessonCards } from '../src/public/model-lesson.js'
 import { audioKey } from '../src/public/speechText.js'
 import { isEnglishOption } from '../src/public/optionLanguage.js'
-import { quizSpokenTexts } from '../src/public/quizSpeech.js'
+import { quizSpokenTexts, spokenTableCell } from '../src/public/quizSpeech.js'
 import { registerLessonRecordings } from '../src/public/lessonRecordings.js'
 import { recordedAudioUrl } from '../src/public/lessonSpeech.js'
 
@@ -32,7 +32,28 @@ function add(text, { area, unit, voice = 'nova', source = null }) {
   entries.set(id, entry)
 }
 const options = (list, ctx) => (list ?? []).forEach(option => { if (isEnglishOption(option)) add(option, ctx) })
-const choiceOptions = (exercises, ctx) => (exercises ?? []).forEach(ex => { if (ex.type === 'choice' || ex.opts) options(ex.opts, ctx) })
+const spoken = (text, ctx) => quizSpokenTexts(typeof text === 'string' || text == null ? { question: text } : text).forEach(part => add(part, ctx))
+const englishAnswer = (value, ctx) => {
+  const answer = String(value ?? '').split('|')[0].trim()
+  if (answer && isEnglishOption(answer)) add(answer, ctx)
+}
+const collectTable = (table, ctx) => {
+  for (const row of table?.rows ?? []) {
+    // La primera columna es la etiqueta (a menudo en español); las bocinas van en las celdas de datos.
+    row.slice(1).forEach(cell => spokenTableCell(cell).forEach(part => add(part, ctx)))
+  }
+}
+const collectExercises = (exercises, ctx) => {
+  for (const ex of exercises ?? []) {
+    if (ex.q) spoken(ex.q, ctx)
+    if (ex.sentence) spoken(ex.sentence, ctx)
+    if (ex.instruction) spoken(ex.instruction, ctx)
+    if (ex.type === 'choice' || ex.opts) options(ex.opts, ctx)
+    englishAnswer(ex.answer, ctx)
+    if (ex.why) spoken(ex.why, ctx)
+    if (ex.hint) spoken(ex.hint, ctx)
+  }
+}
 
 // Unidad 0: letras, deletreo, números (y años), tarjetas del banco y cuestionario.
 const u0 = { area: 'unidad0', unit: 0 }
@@ -42,8 +63,9 @@ add(UNIT0.alphabet.spelling.example.say, u0)
 UNIT0.numbers.blocks.forEach(block => [...block.items, ...(block.contrast ?? [])].forEach(item => add(item.en, u0)))
 CARD_SETS.forEach(set => set.cards.forEach(card => { add(card.en, u0); add(card.en, { area: 'repaso', unit: 0 }) }))
 UNIT0.quiz.forEach(q => {
-  quizSpokenTexts(q).forEach(text => add(text, { area: 'cuestionario', unit: 0 }))
+  spoken(q, { area: 'cuestionario', unit: 0 })
   options(q.options, { area: 'cuestionario', unit: 0 })
+  if (q.why) spoken(q.why, { area: 'cuestionario', unit: 0 })
 })
 
 // Unidades 1–8: cada paso con audio, opciones en inglés, cuestionario y lo que llega a Repaso.
@@ -54,7 +76,14 @@ for (const module of cycle.modules) {
   unitSources.set(unit, l.audio ?? null)
   const ctx = { area: 'leccion', unit, source: unit }
   l.vocab.forEach(v => { add(v.en, ctx); add(v.en, { area: 'repaso', unit }) })
-  ;(l.extraVocab ?? []).forEach(v => { add(v.en, ctx); add(v.en, { area: 'repaso', unit }) })
+  ;(l.extraVocab ?? []).forEach(v => {
+    add(v.en, ctx); add(v.en, { area: 'repaso', unit })
+    if (v.example) add(v.example, ctx)
+  })
+  if (l.freeModel) add(l.freeModel, ctx)
+  if (l.freeChallenge?.model) add(l.freeChallenge.model, ctx)
+  collectTable(l.table, ctx)
+  ;(l.extraTables ?? []).forEach(table => collectTable(table, ctx))
   ;(l.explanation ?? []).forEach(p => add(p.example, ctx))
   ;(l.examples ?? []).forEach(e => add(e.en, ctx))
   ;[...(l.mistakes ?? []), ...(l.theory ?? []).flatMap(rule => rule.mistake ? [rule.mistake] : [])].forEach(m => add(m.right, ctx))
@@ -64,32 +93,43 @@ for (const module of cycle.modules) {
     if (rule.apply?.answer) add(rule.apply.answer, ctx)
   })
   lessonCards(l).forEach(card => add(card.audio, ctx))
-  choiceOptions(l.guided, ctx)
-  choiceOptions(l.extraGuided, ctx)
+  collectExercises(l.guided, ctx)
+  collectExercises(l.extraGuided, ctx)
   if (l.reading?.segments) l.reading.segments.forEach(t => add(t.text, { ...ctx, voice: t.voice ?? 'nova' }))
   else if (l.reading) add(l.reading.text, { ...ctx, voice: l.reading.voice ?? 'nova' })
   options((l.reading?.questions ?? []).flatMap(q => q.opts ?? []), ctx)
   ;[...(l.dialogues ?? []), ...(l.rescuedDialogues ?? [])].forEach(d => {
     d.lines.forEach(t => add(t.text, { ...ctx, voice: t.voice ?? 'nova' }))
-    choiceOptions(d.questions, ctx)
+    collectExercises(d.questions, ctx)
   })
   ;(l.dictation ?? []).forEach(t => add(t, ctx))
   ;(l.pronunciation ?? []).forEach(p => add(p.en, ctx))
   for (const q of module.quiz ?? []) {
-    quizSpokenTexts(q).forEach(text => add(text, { area: 'cuestionario', unit, source: unit }))
-    options(q.options, { area: 'cuestionario', unit, source: unit })
+    const quizCtx = { area: 'cuestionario', unit, source: unit }
+    spoken(q, quizCtx)
+    options(q.options, quizCtx)
+    if (q.why) spoken(q.why, quizCtx)
   }
 }
 
-// Examen final A1: audios de escucha y opciones en inglés.
+// Examen final A1: enunciados en inglés, textos de lectura, audios de escucha y opciones en inglés.
+for (const passage of Object.values(A1_FINAL_EXAM.passages ?? {})) {
+  add(passage.text, { area: 'examen', unit: passage.unit ?? 'examen', source: passage.unit ?? null })
+}
 for (const question of A1_FINAL_EXAM.questions) {
-  const ctx = { area: 'examen', unit: question.unit_audio ?? 'examen', source: question.unit_audio ?? null }
+  const ctx = { area: 'examen', unit: question.unit_audio ?? question.unit ?? 'examen', source: question.unit_audio ?? question.unit ?? null }
   if (question.audio) add(question.audio, ctx)
+  spoken(question.question, ctx)
   options(question.options, ctx)
 }
 
-// Diagnóstico de nivel: los audios de escucha.
+// Diagnóstico de nivel: audios de escucha (todos los niveles) y gramática A1 (los demás niveles se oyen en la UI si hay MP3, pero no se exigen aquí).
 for (const [level, data] of Object.entries(bankListening)) add(data.transcript, { area: 'diagnostico', unit: level })
+for (const item of bankGV.A1 ?? []) {
+  const ctx = { area: 'diagnostico', unit: 'A1' }
+  spoken(item.q, ctx)
+  options(item.opts, ctx)
+}
 
 // Comprobación: el mismo buscador que usa la app. Cada zona consulta lo que esa pantalla tiene cargado:
 // la lección y el examen, el manifiesto de su unidad; Repaso, todos los de A1; Unidad 0 y diagnóstico, los generales.

@@ -8,7 +8,7 @@ import { canOpenStep, isPracticeStep } from './lessonProgress'
 import { recordA1Word, recordA1Text } from './a1Review'
 import { LESSON_STEPS, cardDraftKey, checkPresentation, lessonCards, contractionTip, displayForm, isCorrectAnswer, quoteForm } from './model-lesson'
 import { sayEnglish, stopLessonAudio } from './lessonSpeech'
-import AccentSpeakers from './AccentSpeakers'
+import AccentSpeakers, { SpokenBits, SpokenCell } from './AccentSpeakers'
 import DialogueBlock from './DialogueBlock'
 import { playFeedback } from './feedbackSounds'
 import { useAuth } from '../contexts/auth-context'
@@ -125,10 +125,10 @@ function WriteCheck({ items, onComplete, onAttempt, draftKey }) {
       <input value={value} onChange={e => setValue(e.target.value)} disabled={finished} autoComplete="off" autoCapitalize="none" spellCheck={false} lang="en" />
     </label>
     <ReviewAnswer>{quoteForm(shown)}</ReviewAnswer>
-    {result === 'ok' && <p className="ml-feedback ml-ok" role="status">{tries === 0 ? '¡Correcto!' : '¡Muy bien! Lo lograste.'} {item.listen ? '' : shown}</p>}
+    {result === 'ok' && <p className="ml-feedback ml-ok" role="status">{tries === 0 ? '¡Correcto!' : '¡Muy bien! Lo lograste.'} {item.listen ? '' : <>{shown} <ListenButtons text={item.answer} /></>}</p>}
     {result === 'ok' && contractionTip(value, item.answer) && <p className="ml-feedback ml-ok">💡 En inglés hablado es más común la contracción: <strong>{quoteForm(contractionTip(value, item.answer))}</strong>.</p>}
     {result === 'retry' && <p className="ml-feedback ml-bad" role="status">Casi. Revisa la frase e inténtalo otra vez — tú puedes.</p>}
-    {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{quoteForm(shown)}</strong>. Corrígela y comprueba de nuevo.</p>}
+    {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{quoteForm(shown)}</strong>{!item.listen && <> <ListenButtons text={item.answer} /></>}. Corrígela y comprueba de nuevo.</p>}
     <button className="mp-button mp-button-dark" type="submit" disabled={!finished && !value.trim()}>{finished ? 'Siguiente →' : result === 'retry' || result === 'bad' ? 'Comprobar de nuevo' : 'Comprobar'}</button>
     {result === 'retry' && <button type="button" className="mp-button" onClick={() => setResult('bad')}>Ver respuesta</button>}
   </form>
@@ -207,13 +207,13 @@ function StepContent({ id, lesson, onComplete, legacyRules = [], legacy = false 
     case 'table': return <>
       <h2>Cómo se forma</h2>
       <p>{lesson.tableIntro ?? <>Se forma con el <strong>pronombre personal</strong> + el <strong>verbo «to be» conjugado</strong>. «I» es el pronombre personal «yo» y «am» es «to be» conjugado para «I». Juntos, «I am», significan «yo soy» o «yo estoy». En inglés el pronombre nunca se omite.</>}</p>
-      <div className="ml-table-wrap"><table className="ml-table"><caption>{lesson.table.caption}</caption><thead><tr>{lesson.table.head.map(h => <th key={h} scope="col">{h}</th>)}</tr></thead><tbody>{lesson.table.rows.map(r => <tr key={r[0]}>{r.map((c, i) => i === 0 ? <th key={i} scope="row">{c}</th> : <td key={i}>{c}</td>)}</tr>)}</tbody></table></div>
+      <div className="ml-table-wrap"><table className="ml-table"><caption>{lesson.table.caption}</caption><thead><tr>{lesson.table.head.map(h => <th key={h} scope="col">{h}</th>)}</tr></thead><tbody>{lesson.table.rows.map(r => <tr key={r[0]}>{r.map((c, i) => i === 0 ? <th key={i} scope="row">{c}</th> : <td key={i}><SpokenCell text={c} /></td>)}</tr>)}</tbody></table></div>
       <p className="ml-tip">{lesson.tableTip ?? "En la conversación casi siempre se usa la contracción: «I’m», «you’re»."}</p>
       <ExtraTables lesson={lesson} />
     </>
     case 'mistakes': return <>
       <h2>Errores típicos de hispanohablantes</h2>
-      <ul className="ml-mistakes">{[...(lesson.mistakes ?? []), ...(lesson.theory ?? []).flatMap(rule => rule.mistake ? [rule.mistake] : [])].map(m => <li key={m.wrong}><p className="ml-wrong">✗ {m.wrong}</p><p className="ml-right">✓ {m.right} <ListenButtons text={m.right} /></p><p>{m.why}</p></li>)}</ul>
+      <ul className="ml-mistakes">{[...(lesson.mistakes ?? []), ...(lesson.theory ?? []).flatMap(rule => rule.mistake ? [rule.mistake] : [])].map(m => <li key={m.wrong}><p className="ml-wrong">✗ {m.wrong}</p><p className="ml-right">✓ {m.right} <ListenButtons text={m.right} /></p><p><SpokenBits text={m.why} /></p></li>)}</ul>
     </>
     case 'guided': return <><h2>Práctica guiada</h2><p>Primero con pistas. Si fallas, verás por qué.</p><ExerciseBlock speakOptions draftKey="guided" exercises={lesson.guided} onComplete={onComplete} onAttempt={exerciseAttempt} />{warning}<ExtraGuided lesson={lesson} legacy={legacy} /></>
     case 'cards': return <><h2>Repaso en dos direcciones</h2><p>Cada palabra aparece de inglés a español y de español a inglés. Así se queda en la memoria.</p><TwoWayCards lesson={lesson} onComplete={onComplete} /></>
@@ -263,7 +263,7 @@ function FreeTask({ lesson, onComplete }) {
       <p className={`ml-feedback ${review.ok ? 'ml-ok' : 'ml-bad'}`}><strong>{review.ok ? '¡Bien! Has usado correctamente las estructuras de esta unidad.' : 'Tú puedes: corrige los puntos marcados y vuelve a revisar.'}</strong></p>
       <p className="ml-tip">Revisión de estructuras A1; no comprueba todos los errores de ortografía ni los nombres propios.</p>
     </div>}
-    {shown && <p className="ml-example">{lesson.freeModel}</p>}
+    {shown && <p className="ml-example">{lesson.freeModel} <ListenButtons text={lesson.freeModel} /></p>}
     {lesson.number > 1 && <button type="button" className="mp-button mp-button-dark" disabled={!text.trim()} onClick={() => onComplete?.(true)}>He escrito mi texto y revisado los puntos</button>}
     <FreeChallenge lesson={lesson} />
   </>
@@ -297,7 +297,7 @@ function TheoryRule({ rule, index, recognised = false, showLegacy = false }) {
       <button type="button" className="mp-button" disabled={!value.trim()} onClick={check}>Comprobar</button>
       {fails > 0 && !checked && <button type="button" className="mp-button" onClick={() => setShown(true)}>Ver respuesta</button>}
     </p>
-    {checked === true && <p className="ml-feedback ml-ok" role="status">¡Bien construida! {rule.apply.answer}</p>}
+    {checked === true && <p className="ml-feedback ml-ok" role="status">¡Bien construida! {rule.apply.answer} <ListenButtons text={rule.apply.answer} /></p>}
     {checked === false && <p className="ml-feedback ml-bad" role="status">Todavía no. Revisa el orden: {rule.form}.</p>}
     {shown && !checked && <p className="ml-example">{rule.apply.answer} <ListenButtons text={rule.apply.answer} /></p>}
     {showLegacy && rule.source.some(line => line.includes(' · Lección ')) && <p className="ml-tip">{recognised && <strong>✓ Reconocido de tu avance anterior · </strong>}Antes en: {rule.source.join(' · ')}</p>}

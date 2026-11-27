@@ -24,6 +24,8 @@ const tokens = text => String(text ?? '').toLowerCase().replace(/[.,!?¿¡«»"'
 export function isPhoneticGuide(text) {
   const value = String(text ?? '').trim()
   if (!value || /^[A-Z]$/.test(value)) return false
+  // «i», «e»: guía fonética en español, no la palabra inglesa «I» ni el artículo «a».
+  if (/^[b-z]$/.test(value)) return true
   if (LETTER_NAMES.has(value.toLowerCase())) return false
   const parts = tokens(value)
   if (!parts.length) return false
@@ -125,4 +127,19 @@ export function splitQuestionForSpeech(question) {
   flush()
   if (spoken.some(part => part.listen)) return spoken
   return [{ display: q }]
+}
+
+/** Celdas de tablas de teoría: frases o formas en inglés que el alumno debe oír. No las fórmulas con «+ lugar». */
+export function spokenTableCell(cell) {
+  const value = String(cell ?? '').trim()
+  if (!value) return []
+  if (/\b(lugar|verbo|singular|plural|sujeto|nombre|medio|actividad|complemento)\b/i.test(value) || value.includes(' + ')) return []
+  const spoken = isQuizSpokenEnglish(value) ? [value] : quizSpokenTexts({ question: value })
+  return spoken.filter(text => {
+    if (!/[a-z]/i.test(text)) return false
+    if (!/[.!?]/.test(text) && !/\s/.test(text)) return false
+    const slashes = (text.match(/\//g) ?? []).length
+    if (slashes >= 2 && !/[.!?]$/.test(text) && !/Hi!|Hey!|Hello!|Bye!/.test(text)) return false
+    return true
+  })
 }

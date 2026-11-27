@@ -19,7 +19,7 @@ export function audioKey(text) {
  * ¿Es inglés este texto? Sirve para decidir qué opciones de un ejercicio llevan bocinas: las que están en
  * español (tildes, ñ, ¿¡ o palabras muy comunes del español) no se graban.
  */
-const SPANISH_WORDS = /\b(el|la|los|las|una|unos|unas|del|al|que|qué|es|está|están|soy|eres|son|tiene|tengo|tienes|mi|mis|tu|tus|su|sus|yo|ella|ellos|nosotros|usted|ustedes|con|para|por|pero|muy|también|hay|de|y|en|se|lo|le|no sé|cómo|dónde|cuándo|ayer|hoy|mañana|un|o|estoy|estás|lee|leo|ninguno|ninguna|sigue|llego|tarde|cerca|lejos|derecho|izquierda|derecha|frutas|verduras|horario|trabajo|pasatiempo|manejar|correr|caminar|sujeto|verbo|complemento|intentas|traducir|cada|palabra)\b/i
+const SPANISH_WORDS = /\b(el|la|los|las|una|unos|unas|del|al|que|qué|es|está|están|soy|eres|son|tiene|tengo|tienes|mi|mis|tu|tus|su|sus|yo|ella|ellos|nosotros|usted|ustedes|con|para|por|pero|muy|también|hay|de|y|en|se|lo|le|no sé|cómo|dónde|cuándo|ayer|hoy|mañana|un|o|estoy|estás|lee|leo|ninguno|ninguna|sigue|llego|tarde|cerca|lejos|derecho|izquierda|derecha|frutas|verduras|horario|trabajo|pasatiempo|manejar|correr|caminar|sujeto|verbo|complemento|intentas|traducir|cada|palabra|escucha|escribe|indica|elige|busca|revisa|compara|completa|dice|dicen|decir|dijo|nombre|nombres|pregunta|preguntas|preguntan|preguntar|respuesta|respuestas|correcto|correcta|incorrecto|incorrecta|forma|formas|usamos|usan|usar|auxiliar|enunciado|significa|significan|significado|nunca|siempre|despues|después|tambien|conocer|alguien|gusto|mucho|poca|poco|decena|unidad|guion|repite|repiten|repetir|corta|corto|conocer|te|nos|les|eso|ello|esa|ese|esos|esas|aqui|alli|allí|aquí|asi|así|bien|mal|ahora|antes|porque|porqué|cuando|donde|quien|quién|cual|cuál|reemplaza|letra|letras|quita|apostrofo|apóstrofo|contraccion|contracción|opcion|opción|ejercicio|leccion|lección|solo|sin|ni|cosa|cosas|varias|varios|tomar|transporte|bajarse|quisiera|gusta|gustan|acostarse|cambia|parque|parques|actividad|actividades)\b/i
 export function isEnglishText(text) {
   const value = String(text ?? '').trim()
   // Una letra mayúscula (A–Z) es el nombre de esa letra, no la conjunción «y» ni la «o».
@@ -30,5 +30,5 @@ export function isEnglishText(text) {
   if (/[áéíóúñü¿¡]/i.test(plain)) return false
   const words = plain.toLowerCase().match(/[a-z']+/g) ?? []
   const spanish = words.filter(word => SPANISH_WORDS.test(word)).length
-  return spanish === 0 || spanish / words.length < 0.25
+  return spanish === 0 || spanish / words.length < 0.15
 }
