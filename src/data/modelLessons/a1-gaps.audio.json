@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T02:46:59-05:00",
+  "generatedAt": "2026-11-27T02:51:53-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -670,7 +670,27 @@
     "gaps-2ca17ce3-us": "/audio/a1/gaps/2ca17ce3-us.mp3",
     "gaps-2ca17ce3-gb": "/audio/a1/gaps/2ca17ce3-gb.mp3",
     "gaps-8cfd1141-us": "/audio/a1/gaps/8cfd1141-us.mp3",
-    "gaps-8cfd1141-gb": "/audio/a1/gaps/8cfd1141-gb.mp3"
+    "gaps-8cfd1141-gb": "/audio/a1/gaps/8cfd1141-gb.mp3",
+    "gaps-c5952bf5-us": "/audio/a1/gaps/c5952bf5-us.mp3",
+    "gaps-c5952bf5-gb": "/audio/a1/gaps/c5952bf5-gb.mp3",
+    "gaps-ab1cbebf-us": "/audio/a1/gaps/ab1cbebf-us.mp3",
+    "gaps-ab1cbebf-gb": "/audio/a1/gaps/ab1cbebf-gb.mp3",
+    "gaps-8577ade5-us": "/audio/a1/gaps/8577ade5-us.mp3",
+    "gaps-8577ade5-gb": "/audio/a1/gaps/8577ade5-gb.mp3",
+    "gaps-0038d84e-us": "/audio/a1/gaps/0038d84e-us.mp3",
+    "gaps-0038d84e-gb": "/audio/a1/gaps/0038d84e-gb.mp3",
+    "gaps-6c93ea3d-us": "/audio/a1/gaps/6c93ea3d-us.mp3",
+    "gaps-6c93ea3d-gb": "/audio/a1/gaps/6c93ea3d-gb.mp3",
+    "gaps-9a63e124-us": "/audio/a1/gaps/9a63e124-us.mp3",
+    "gaps-9a63e124-gb": "/audio/a1/gaps/9a63e124-gb.mp3",
+    "gaps-7cd6b902-us": "/audio/a1/gaps/7cd6b902-us.mp3",
+    "gaps-7cd6b902-gb": "/audio/a1/gaps/7cd6b902-gb.mp3",
+    "gaps-c2f4a2fd-us": "/audio/a1/gaps/c2f4a2fd-us.mp3",
+    "gaps-c2f4a2fd-gb": "/audio/a1/gaps/c2f4a2fd-gb.mp3",
+    "gaps-62de906e-us": "/audio/a1/gaps/62de906e-us.mp3",
+    "gaps-62de906e-gb": "/audio/a1/gaps/62de906e-gb.mp3",
+    "gaps-2fe3211f-us": "/audio/a1/gaps/2fe3211f-us.mp3",
+    "gaps-2fe3211f-gb": "/audio/a1/gaps/2fe3211f-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -5292,12 +5312,152 @@
           1.619592
         ]
       }
+    },
+    "c5952bf5": {
+      "nova": {
+        "us": [
+          "gaps-c5952bf5-us",
+          0,
+          1.567347
+        ],
+        "gb": [
+          "gaps-c5952bf5-gb",
+          0,
+          1.48898
+        ]
+      }
+    },
+    "ab1cbebf": {
+      "nova": {
+        "us": [
+          "gaps-ab1cbebf-us",
+          0,
+          1.48898
+        ],
+        "gb": [
+          "gaps-ab1cbebf-gb",
+          0,
+          1.619592
+        ]
+      }
+    },
+    "8577ade5": {
+      "nova": {
+        "us": [
+          "gaps-8577ade5-us",
+          0,
+          1.619592
+        ],
+        "gb": [
+          "gaps-8577ade5-gb",
+          0,
+          1.436735
+        ]
+      }
+    },
+    "0038d84e": {
+      "nova": {
+        "us": [
+          "gaps-0038d84e-us",
+          0,
+          1.854694
+        ],
+        "gb": [
+          "gaps-0038d84e-gb",
+          0,
+          2.220408
+        ]
+      }
+    },
+    "6c93ea3d": {
+      "nova": {
+        "us": [
+          "gaps-6c93ea3d-us",
+          0,
+          1.802449
+        ],
+        "gb": [
+          "gaps-6c93ea3d-gb",
+          0,
+          2.272653
+        ]
+      }
+    },
+    "9a63e124": {
+      "nova": {
+        "us": [
+          "gaps-9a63e124-us",
+          0,
+          1.985306
+        ],
+        "gb": [
+          "gaps-9a63e124-gb",
+          0,
+          2.403265
+        ]
+      }
+    },
+    "7cd6b902": {
+      "nova": {
+        "us": [
+          "gaps-7cd6b902-us",
+          0,
+          1.906939
+        ],
+        "gb": [
+          "gaps-7cd6b902-gb",
+          0,
+          2.533878
+        ]
+      }
+    },
+    "c2f4a2fd": {
+      "nova": {
+        "us": [
+          "gaps-c2f4a2fd-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-c2f4a2fd-gb",
+          0,
+          1.253878
+        ]
+      }
+    },
+    "62de906e": {
+      "nova": {
+        "us": [
+          "gaps-62de906e-us",
+          0,
+          1.933061
+        ],
+        "gb": [
+          "gaps-62de906e-gb",
+          0,
+          2.272653
+        ]
+      }
+    },
+    "2fe3211f": {
+      "nova": {
+        "us": [
+          "gaps-2fe3211f-us",
+          0,
+          1.750204
+        ],
+        "gb": [
+          "gaps-2fe3211f-gb",
+          0,
+          1.985306
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Clips generados para textos que npm run audio:check listaba como faltantes. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 660,
-    "clips_missing_files": 106,
+    "clips_written": 680,
+    "clips_missing_files": 86,
     "items": [
       {
         "key": "f7b20218",
@@ -17660,6 +17820,366 @@
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "c5952bf5",
+        "text": "am / is",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/c5952bf5-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "c5952bf5",
+        "text": "am / is",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/c5952bf5-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "ab1cbebf",
+        "text": "are / is",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/ab1cbebf-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "ab1cbebf",
+        "text": "are / is",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/ab1cbebf-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "8577ade5",
+        "text": "is / have",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/8577ade5-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "8577ade5",
+        "text": "is / have",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/8577ade5-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "0038d84e",
+        "text": "My brother work in a hospital.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.854694,
+        "url": "/audio/a1/gaps/0038d84e-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "0038d84e",
+        "text": "My brother work in a hospital.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.220408,
+        "url": "/audio/a1/gaps/0038d84e-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "6c93ea3d",
+        "text": "My brother works in a hospital.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.802449,
+        "url": "/audio/a1/gaps/6c93ea3d-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "6c93ea3d",
+        "text": "My brother works in a hospital.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.272653,
+        "url": "/audio/a1/gaps/6c93ea3d-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "9a63e124",
+        "text": "My brother is work in a hospital.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/9a63e124-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "9a63e124",
+        "text": "My brother is work in a hospital.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.403265,
+        "url": "/audio/a1/gaps/9a63e124-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "7cd6b902",
+        "text": "My brother working in a hospital.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/7cd6b902-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "7cd6b902",
+        "text": "My brother working in a hospital.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.533878,
+        "url": "/audio/a1/gaps/7cd6b902-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "c2f4a2fd",
+        "text": "is play",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/c2f4a2fd-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "c2f4a2fd",
+        "text": "is play",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/c2f4a2fd-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "62de906e",
+        "text": "I like would a sandwich, please.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/62de906e-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "62de906e",
+        "text": "I like would a sandwich, please.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.272653,
+        "url": "/audio/a1/gaps/62de906e-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "2fe3211f",
+        "text": "I’d liking a sandwich, please.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/2fe3211f-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "2fe3211f",
+        "text": "I’d liking a sandwich, please.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/2fe3211f-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
         "areas": [
           "cuestionario"
         ],
