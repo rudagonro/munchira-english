@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T01:44:20-05:00",
+  "generatedAt": "2026-11-27T01:47:05-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -310,7 +310,27 @@
     "gaps-b1f0722a-us": "/audio/a1/gaps/b1f0722a-us.mp3",
     "gaps-b1f0722a-gb": "/audio/a1/gaps/b1f0722a-gb.mp3",
     "gaps-6e31ff54-us": "/audio/a1/gaps/6e31ff54-us.mp3",
-    "gaps-6e31ff54-gb": "/audio/a1/gaps/6e31ff54-gb.mp3"
+    "gaps-6e31ff54-gb": "/audio/a1/gaps/6e31ff54-gb.mp3",
+    "gaps-da8cba08-us": "/audio/a1/gaps/da8cba08-us.mp3",
+    "gaps-da8cba08-gb": "/audio/a1/gaps/da8cba08-gb.mp3",
+    "gaps-ce4a3e34-us": "/audio/a1/gaps/ce4a3e34-us.mp3",
+    "gaps-ce4a3e34-gb": "/audio/a1/gaps/ce4a3e34-gb.mp3",
+    "gaps-f1f0cd3a-us": "/audio/a1/gaps/f1f0cd3a-us.mp3",
+    "gaps-f1f0cd3a-gb": "/audio/a1/gaps/f1f0cd3a-gb.mp3",
+    "gaps-8a2a649c-us": "/audio/a1/gaps/8a2a649c-us.mp3",
+    "gaps-8a2a649c-gb": "/audio/a1/gaps/8a2a649c-gb.mp3",
+    "gaps-61e6be1a-us": "/audio/a1/gaps/61e6be1a-us.mp3",
+    "gaps-61e6be1a-gb": "/audio/a1/gaps/61e6be1a-gb.mp3",
+    "gaps-6c84c2c9-us": "/audio/a1/gaps/6c84c2c9-us.mp3",
+    "gaps-6c84c2c9-gb": "/audio/a1/gaps/6c84c2c9-gb.mp3",
+    "gaps-91336f30-us": "/audio/a1/gaps/91336f30-us.mp3",
+    "gaps-91336f30-gb": "/audio/a1/gaps/91336f30-gb.mp3",
+    "gaps-28e85980-us": "/audio/a1/gaps/28e85980-us.mp3",
+    "gaps-28e85980-gb": "/audio/a1/gaps/28e85980-gb.mp3",
+    "gaps-aa2ec25e-us": "/audio/a1/gaps/aa2ec25e-us.mp3",
+    "gaps-aa2ec25e-gb": "/audio/a1/gaps/aa2ec25e-gb.mp3",
+    "gaps-008aa19c-us": "/audio/a1/gaps/008aa19c-us.mp3",
+    "gaps-008aa19c-gb": "/audio/a1/gaps/008aa19c-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -2412,12 +2432,152 @@
           1.671837
         ]
       }
+    },
+    "da8cba08": {
+      "nova": {
+        "us": [
+          "gaps-da8cba08-us",
+          0,
+          2.403265
+        ],
+        "gb": [
+          "gaps-da8cba08-gb",
+          0,
+          2.45551
+        ]
+      }
+    },
+    "ce4a3e34": {
+      "nova": {
+        "us": [
+          "gaps-ce4a3e34-us",
+          0,
+          2.220408
+        ],
+        "gb": [
+          "gaps-ce4a3e34-gb",
+          0,
+          2.507755
+        ]
+      }
+    },
+    "f1f0cd3a": {
+      "nova": {
+        "us": [
+          "gaps-f1f0cd3a-us",
+          0,
+          2.220408
+        ],
+        "gb": [
+          "gaps-f1f0cd3a-gb",
+          0,
+          2.324898
+        ]
+      }
+    },
+    "8a2a649c": {
+      "nova": {
+        "us": [
+          "gaps-8a2a649c-us",
+          0,
+          2.115918
+        ],
+        "gb": [
+          "gaps-8a2a649c-gb",
+          0,
+          2.324898
+        ]
+      }
+    },
+    "61e6be1a": {
+      "nova": {
+        "us": [
+          "gaps-61e6be1a-us",
+          0,
+          0.731429
+        ],
+        "gb": [
+          "gaps-61e6be1a-gb",
+          0,
+          0.862041
+        ]
+      }
+    },
+    "6c84c2c9": {
+      "nova": {
+        "us": [
+          "gaps-6c84c2c9-us",
+          0,
+          1.07102
+        ],
+        "gb": [
+          "gaps-6c84c2c9-gb",
+          0,
+          1.149388
+        ]
+      }
+    },
+    "91336f30": {
+      "nova": {
+        "us": [
+          "gaps-91336f30-us",
+          0,
+          1.018776
+        ],
+        "gb": [
+          "gaps-91336f30-gb",
+          0,
+          1.07102
+        ]
+      }
+    },
+    "28e85980": {
+      "nova": {
+        "us": [
+          "gaps-28e85980-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-28e85980-gb",
+          0,
+          1.332245
+        ]
+      }
+    },
+    "aa2ec25e": {
+      "nova": {
+        "us": [
+          "gaps-aa2ec25e-us",
+          0,
+          1.07102
+        ],
+        "gb": [
+          "gaps-aa2ec25e-gb",
+          0,
+          1.38449
+        ]
+      }
+    },
+    "008aa19c": {
+      "nova": {
+        "us": [
+          "gaps-008aa19c-us",
+          0,
+          0.835918
+        ],
+        "gb": [
+          "gaps-008aa19c-gb",
+          0,
+          1.018776
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Clips generados para textos que npm run audio:check listaba como faltantes. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 300,
-    "clips_missing_files": 466,
+    "clips_written": 320,
+    "clips_missing_files": 446,
     "items": [
       {
         "key": "f7b20218",
@@ -8141,6 +8301,374 @@
         ],
         "units": [
           "3"
+        ]
+      },
+      {
+        "key": "da8cba08",
+        "text": "I does exercise every morning.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.403265,
+        "url": "/audio/a1/gaps/da8cba08-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "da8cba08",
+        "text": "I does exercise every morning.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.45551,
+        "url": "/audio/a1/gaps/da8cba08-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "ce4a3e34",
+        "text": "I do exercise every morning.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.220408,
+        "url": "/audio/a1/gaps/ce4a3e34-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "ce4a3e34",
+        "text": "I do exercise every morning.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.507755,
+        "url": "/audio/a1/gaps/ce4a3e34-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "f1f0cd3a",
+        "text": "I am do exercise every morning.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.220408,
+        "url": "/audio/a1/gaps/f1f0cd3a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "f1f0cd3a",
+        "text": "I am do exercise every morning.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.324898,
+        "url": "/audio/a1/gaps/f1f0cd3a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "8a2a649c",
+        "text": "I exercising every morning.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.115918,
+        "url": "/audio/a1/gaps/8a2a649c-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "8a2a649c",
+        "text": "I exercising every morning.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.324898,
+        "url": "/audio/a1/gaps/8a2a649c-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "61e6be1a",
+        "text": "No",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.731429,
+        "url": "/audio/a1/gaps/61e6be1a-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3",
+          "4",
+          "6"
+        ]
+      },
+      {
+        "key": "61e6be1a",
+        "text": "No",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 0.862041,
+        "url": "/audio/a1/gaps/61e6be1a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3",
+          "4",
+          "6"
+        ]
+      },
+      {
+        "key": "6c84c2c9",
+        "text": "gets up",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.07102,
+        "url": "/audio/a1/gaps/6c84c2c9-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "6c84c2c9",
+        "text": "gets up",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/6c84c2c9-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "91336f30",
+        "text": "get up",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.018776,
+        "url": "/audio/a1/gaps/91336f30-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "91336f30",
+        "text": "get up",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.07102,
+        "url": "/audio/a1/gaps/91336f30-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "28e85980",
+        "text": "getting up",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/28e85980-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "28e85980",
+        "text": "getting up",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.332245,
+        "url": "/audio/a1/gaps/28e85980-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "aa2ec25e",
+        "text": "is get up",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.07102,
+        "url": "/audio/a1/gaps/aa2ec25e-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "aa2ec25e",
+        "text": "is get up",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/aa2ec25e-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "008aa19c",
+        "text": "aren’t",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 0.835918,
+        "url": "/audio/a1/gaps/008aa19c-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario",
+          "leccion"
+        ],
+        "units": [
+          "3",
+          "4"
+        ]
+      },
+      {
+        "key": "008aa19c",
+        "text": "aren’t",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.018776,
+        "url": "/audio/a1/gaps/008aa19c-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario",
+          "leccion"
+        ],
+        "units": [
+          "3",
+          "4"
         ]
       }
     ]
