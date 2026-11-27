@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T09:13:54-05:00",
+  "generatedAt": "2026-11-27T09:19:51-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -1106,7 +1106,27 @@
     "gaps-39c0b05f-us": "/audio/a1/gaps/39c0b05f-us.mp3",
     "gaps-39c0b05f-gb": "/audio/a1/gaps/39c0b05f-gb.mp3",
     "gaps-3dff1b00-us": "/audio/a1/gaps/3dff1b00-us.mp3",
-    "gaps-3dff1b00-gb": "/audio/a1/gaps/3dff1b00-gb.mp3"
+    "gaps-3dff1b00-gb": "/audio/a1/gaps/3dff1b00-gb.mp3",
+    "gaps-77b7ca01-us": "/audio/a1/gaps/77b7ca01-us.mp3",
+    "gaps-77b7ca01-gb": "/audio/a1/gaps/77b7ca01-gb.mp3",
+    "gaps-ae5f752b-us": "/audio/a1/gaps/ae5f752b-us.mp3",
+    "gaps-ae5f752b-gb": "/audio/a1/gaps/ae5f752b-gb.mp3",
+    "gaps-bbfb7ec5-us": "/audio/a1/gaps/bbfb7ec5-us.mp3",
+    "gaps-bbfb7ec5-gb": "/audio/a1/gaps/bbfb7ec5-gb.mp3",
+    "gaps-69b0596d-us": "/audio/a1/gaps/69b0596d-us.mp3",
+    "gaps-69b0596d-gb": "/audio/a1/gaps/69b0596d-gb.mp3",
+    "gaps-757bb388-us": "/audio/a1/gaps/757bb388-us.mp3",
+    "gaps-757bb388-gb": "/audio/a1/gaps/757bb388-gb.mp3",
+    "gaps-2e70bb6b-us": "/audio/a1/gaps/2e70bb6b-us.mp3",
+    "gaps-2e70bb6b-gb": "/audio/a1/gaps/2e70bb6b-gb.mp3",
+    "gaps-c362ced7-us": "/audio/a1/gaps/c362ced7-us.mp3",
+    "gaps-c362ced7-gb": "/audio/a1/gaps/c362ced7-gb.mp3",
+    "gaps-122dd6a3-us": "/audio/a1/gaps/122dd6a3-us.mp3",
+    "gaps-122dd6a3-gb": "/audio/a1/gaps/122dd6a3-gb.mp3",
+    "gaps-5b36cd78-us": "/audio/a1/gaps/5b36cd78-us.mp3",
+    "gaps-5b36cd78-gb": "/audio/a1/gaps/5b36cd78-gb.mp3",
+    "gaps-a853ca4e-us": "/audio/a1/gaps/a853ca4e-us.mp3",
+    "gaps-a853ca4e-gb": "/audio/a1/gaps/a853ca4e-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -8778,6 +8798,146 @@
           "gaps-3dff1b00-gb",
           0,
           2.638367
+        ]
+      }
+    },
+    "77b7ca01": {
+      "nova": {
+        "us": [
+          "gaps-77b7ca01-us",
+          0,
+          2.089796
+        ],
+        "gb": [
+          "gaps-77b7ca01-gb",
+          0,
+          1.985306
+        ]
+      }
+    },
+    "ae5f752b": {
+      "nova": {
+        "us": [
+          "gaps-ae5f752b-us",
+          0,
+          2.690612
+        ],
+        "gb": [
+          "gaps-ae5f752b-gb",
+          0,
+          2.272653
+        ]
+      }
+    },
+    "bbfb7ec5": {
+      "nova": {
+        "us": [
+          "gaps-bbfb7ec5-us",
+          0,
+          2.220408
+        ],
+        "gb": [
+          "gaps-bbfb7ec5-gb",
+          0,
+          2.220408
+        ]
+      }
+    },
+    "69b0596d": {
+      "nova": {
+        "us": [
+          "gaps-69b0596d-us",
+          0,
+          0.731429
+        ],
+        "gb": [
+          "gaps-69b0596d-gb",
+          0,
+          1.018776
+        ]
+      }
+    },
+    "757bb388": {
+      "nova": {
+        "us": [
+          "gaps-757bb388-us",
+          0,
+          1.671837
+        ],
+        "gb": [
+          "gaps-757bb388-gb",
+          0,
+          1.985306
+        ]
+      }
+    },
+    "2e70bb6b": {
+      "nova": {
+        "us": [
+          "gaps-2e70bb6b-us",
+          0,
+          1.985306
+        ],
+        "gb": [
+          "gaps-2e70bb6b-gb",
+          0,
+          1.933061
+        ]
+      }
+    },
+    "c362ced7": {
+      "nova": {
+        "us": [
+          "gaps-c362ced7-us",
+          0,
+          2.272653
+        ],
+        "gb": [
+          "gaps-c362ced7-gb",
+          0,
+          2.35102
+        ]
+      }
+    },
+    "122dd6a3": {
+      "nova": {
+        "us": [
+          "gaps-122dd6a3-us",
+          0,
+          2.586122
+        ],
+        "gb": [
+          "gaps-122dd6a3-gb",
+          0,
+          2.168163
+        ]
+      }
+    },
+    "5b36cd78": {
+      "nova": {
+        "us": [
+          "gaps-5b36cd78-us",
+          0,
+          2.324898
+        ],
+        "gb": [
+          "gaps-5b36cd78-gb",
+          0,
+          2.089796
+        ]
+      }
+    },
+    "a853ca4e": {
+      "nova": {
+        "us": [
+          "gaps-a853ca4e-us",
+          0,
+          2.089796
+        ],
+        "gb": [
+          "gaps-a853ca4e-gb",
+          0,
+          2.089796
         ]
       }
     }
@@ -29007,6 +29167,368 @@
         "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
         "duration": 2.638367,
         "url": "/audio/a1/gaps/3dff1b00-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "77b7ca01",
+        "text": "What time ___ you go to work?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.089796,
+        "url": "/audio/a1/gaps/77b7ca01-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "77b7ca01",
+        "text": "What time ___ you go to work?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/77b7ca01-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "ae5f752b",
+        "text": "He ___ TV in the evening.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.690612,
+        "url": "/audio/a1/gaps/ae5f752b-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "ae5f752b",
+        "text": "He ___ TV in the evening.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.272653,
+        "url": "/audio/a1/gaps/ae5f752b-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "bbfb7ec5",
+        "text": "I ___ study at night.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.220408,
+        "url": "/audio/a1/gaps/bbfb7ec5-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "bbfb7ec5",
+        "text": "I ___ study at night.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.220408,
+        "url": "/audio/a1/gaps/bbfb7ec5-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "69b0596d",
+        "text": "don't",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.731429,
+        "url": "/audio/a1/gaps/69b0596d-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3",
+          "8"
+        ]
+      },
+      {
+        "key": "69b0596d",
+        "text": "don't",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.018776,
+        "url": "/audio/a1/gaps/69b0596d-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3",
+          "8"
+        ]
+      },
+      {
+        "key": "757bb388",
+        "text": "___ she work on Saturday?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.671837,
+        "url": "/audio/a1/gaps/757bb388-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "757bb388",
+        "text": "___ she work on Saturday?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/757bb388-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "2e70bb6b",
+        "text": "We ___ dinner at 8.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/2e70bb6b-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "2e70bb6b",
+        "text": "We ___ dinner at 8.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/2e70bb6b-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "c362ced7",
+        "text": "My brother ___ to school at 7.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.272653,
+        "url": "/audio/a1/gaps/c362ced7-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "c362ced7",
+        "text": "My brother ___ to school at 7.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.35102,
+        "url": "/audio/a1/gaps/c362ced7-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "122dd6a3",
+        "text": "I always ___ to bed early.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.586122,
+        "url": "/audio/a1/gaps/122dd6a3-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "122dd6a3",
+        "text": "I always ___ to bed early.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.168163,
+        "url": "/audio/a1/gaps/122dd6a3-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "5b36cd78",
+        "text": "They ___ work on Sunday.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.324898,
+        "url": "/audio/a1/gaps/5b36cd78-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "5b36cd78",
+        "text": "They ___ work on Sunday.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.089796,
+        "url": "/audio/a1/gaps/5b36cd78-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "a853ca4e",
+        "text": "She ___ in a bank.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.089796,
+        "url": "/audio/a1/gaps/a853ca4e-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "a853ca4e",
+        "text": "She ___ in a bank.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.089796,
+        "url": "/audio/a1/gaps/a853ca4e-gb.mp3",
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
