@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T01:04:29-05:00",
+  "generatedAt": "2026-11-27T01:05:43-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -190,7 +190,27 @@
     "gaps-7e89edb6-us": "/audio/a1/gaps/7e89edb6-us.mp3",
     "gaps-7e89edb6-gb": "/audio/a1/gaps/7e89edb6-gb.mp3",
     "gaps-f5ce03fb-us": "/audio/a1/gaps/f5ce03fb-us.mp3",
-    "gaps-f5ce03fb-gb": "/audio/a1/gaps/f5ce03fb-gb.mp3"
+    "gaps-f5ce03fb-gb": "/audio/a1/gaps/f5ce03fb-gb.mp3",
+    "gaps-edbf0fe3-us": "/audio/a1/gaps/edbf0fe3-us.mp3",
+    "gaps-edbf0fe3-gb": "/audio/a1/gaps/edbf0fe3-gb.mp3",
+    "gaps-e3b31da6-us": "/audio/a1/gaps/e3b31da6-us.mp3",
+    "gaps-e3b31da6-gb": "/audio/a1/gaps/e3b31da6-gb.mp3",
+    "gaps-3ff89157-us": "/audio/a1/gaps/3ff89157-us.mp3",
+    "gaps-3ff89157-gb": "/audio/a1/gaps/3ff89157-gb.mp3",
+    "gaps-9b12d8e9-us": "/audio/a1/gaps/9b12d8e9-us.mp3",
+    "gaps-9b12d8e9-gb": "/audio/a1/gaps/9b12d8e9-gb.mp3",
+    "gaps-85e338ea-us": "/audio/a1/gaps/85e338ea-us.mp3",
+    "gaps-85e338ea-gb": "/audio/a1/gaps/85e338ea-gb.mp3",
+    "gaps-ae7f4d1c-us": "/audio/a1/gaps/ae7f4d1c-us.mp3",
+    "gaps-ae7f4d1c-gb": "/audio/a1/gaps/ae7f4d1c-gb.mp3",
+    "gaps-2166e5bd-us": "/audio/a1/gaps/2166e5bd-us.mp3",
+    "gaps-2166e5bd-gb": "/audio/a1/gaps/2166e5bd-gb.mp3",
+    "gaps-bd2b9bd6-us": "/audio/a1/gaps/bd2b9bd6-us.mp3",
+    "gaps-bd2b9bd6-gb": "/audio/a1/gaps/bd2b9bd6-gb.mp3",
+    "gaps-2c41499c-us": "/audio/a1/gaps/2c41499c-us.mp3",
+    "gaps-2c41499c-gb": "/audio/a1/gaps/2c41499c-gb.mp3",
+    "gaps-76e263ea-us": "/audio/a1/gaps/76e263ea-us.mp3",
+    "gaps-76e263ea-gb": "/audio/a1/gaps/76e263ea-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -1452,12 +1472,152 @@
           0.835918
         ]
       }
+    },
+    "edbf0fe3": {
+      "nova": {
+        "us": [
+          "gaps-edbf0fe3-us",
+          0,
+          0.914286
+        ],
+        "gb": [
+          "gaps-edbf0fe3-gb",
+          0,
+          0.966531
+        ]
+      }
+    },
+    "e3b31da6": {
+      "nova": {
+        "us": [
+          "gaps-e3b31da6-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-e3b31da6-gb",
+          0,
+          1.07102
+        ]
+      }
+    },
+    "3ff89157": {
+      "nova": {
+        "us": [
+          "gaps-3ff89157-us",
+          0,
+          1.253878
+        ],
+        "gb": [
+          "gaps-3ff89157-gb",
+          0,
+          1.149388
+        ]
+      }
+    },
+    "9b12d8e9": {
+      "nova": {
+        "us": [
+          "gaps-9b12d8e9-us",
+          0,
+          1.149388
+        ],
+        "gb": [
+          "gaps-9b12d8e9-gb",
+          0,
+          1.201633
+        ]
+      }
+    },
+    "85e338ea": {
+      "nova": {
+        "us": [
+          "gaps-85e338ea-us",
+          0,
+          1.28
+        ],
+        "gb": [
+          "gaps-85e338ea-gb",
+          0,
+          1.38449
+        ]
+      }
+    },
+    "ae7f4d1c": {
+      "nova": {
+        "us": [
+          "gaps-ae7f4d1c-us",
+          0,
+          0.914286
+        ],
+        "gb": [
+          "gaps-ae7f4d1c-gb",
+          0,
+          0.966531
+        ]
+      }
+    },
+    "2166e5bd": {
+      "nova": {
+        "us": [
+          "gaps-2166e5bd-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-2166e5bd-gb",
+          0,
+          1.097143
+        ]
+      }
+    },
+    "bd2b9bd6": {
+      "nova": {
+        "us": [
+          "gaps-bd2b9bd6-us",
+          0,
+          0.835918
+        ],
+        "gb": [
+          "gaps-bd2b9bd6-gb",
+          0,
+          0.862041
+        ]
+      }
+    },
+    "2c41499c": {
+      "nova": {
+        "us": [
+          "gaps-2c41499c-us",
+          0,
+          0.862041
+        ],
+        "gb": [
+          "gaps-2c41499c-gb",
+          0,
+          0.966531
+        ]
+      }
+    },
+    "76e263ea": {
+      "nova": {
+        "us": [
+          "gaps-76e263ea-us",
+          0,
+          1.253878
+        ],
+        "gb": [
+          "gaps-76e263ea-gb",
+          0,
+          1.436735
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Clips generados para textos que npm run audio:check listaba como faltantes. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 180,
-    "clips_missing_files": 586,
+    "clips_written": 200,
+    "clips_missing_files": 566,
     "items": [
       {
         "key": "f7b20218",
@@ -4865,6 +5025,380 @@
           "5",
           "8",
           "examen"
+        ]
+      },
+      {
+        "key": "edbf0fe3",
+        "text": "has",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.914286,
+        "url": "/audio/a1/gaps/edbf0fe3-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario",
+          "examen",
+          "leccion"
+        ],
+        "units": [
+          "2",
+          "3",
+          "4",
+          "5",
+          "8",
+          "examen"
+        ]
+      },
+      {
+        "key": "edbf0fe3",
+        "text": "has",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/edbf0fe3-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario",
+          "examen",
+          "leccion"
+        ],
+        "units": [
+          "2",
+          "3",
+          "4",
+          "5",
+          "8",
+          "examen"
+        ]
+      },
+      {
+        "key": "e3b31da6",
+        "text": "marry",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/e3b31da6-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "e3b31da6",
+        "text": "marry",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.07102,
+        "url": "/audio/a1/gaps/e3b31da6-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "3ff89157",
+        "text": "married",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/3ff89157-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "3ff89157",
+        "text": "married",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/3ff89157-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "9b12d8e9",
+        "text": "marriage",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/9b12d8e9-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "9b12d8e9",
+        "text": "marriage",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.201633,
+        "url": "/audio/a1/gaps/9b12d8e9-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "85e338ea",
+        "text": "marrying",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/85e338ea-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "85e338ea",
+        "text": "marrying",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/85e338ea-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "ae7f4d1c",
+        "text": "year",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.914286,
+        "url": "/audio/a1/gaps/ae7f4d1c-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "ae7f4d1c",
+        "text": "year",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/ae7f4d1c-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "2166e5bd",
+        "text": "years",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/2166e5bd-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "2166e5bd",
+        "text": "years",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/2166e5bd-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "bd2b9bd6",
+        "text": "old",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.835918,
+        "url": "/audio/a1/gaps/bd2b9bd6-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "bd2b9bd6",
+        "text": "old",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 0.862041,
+        "url": "/audio/a1/gaps/bd2b9bd6-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "2c41499c",
+        "text": "age",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.862041,
+        "url": "/audio/a1/gaps/2c41499c-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "2c41499c",
+        "text": "age",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/2c41499c-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "76e263ea",
+        "text": "She is happy?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/76e263ea-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "76e263ea",
+        "text": "She is happy?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/76e263ea-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "2"
         ]
       }
     ]
