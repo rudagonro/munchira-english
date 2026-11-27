@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T11:53:22-05:00",
+  "generatedAt": "2026-11-27T11:58:42-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -1306,7 +1306,27 @@
     "gaps-f4237db0-us": "/audio/a1/gaps/f4237db0-us.mp3",
     "gaps-f4237db0-gb": "/audio/a1/gaps/f4237db0-gb.mp3",
     "gaps-a6207bfc-us": "/audio/a1/gaps/a6207bfc-us.mp3",
-    "gaps-a6207bfc-gb": "/audio/a1/gaps/a6207bfc-gb.mp3"
+    "gaps-a6207bfc-gb": "/audio/a1/gaps/a6207bfc-gb.mp3",
+    "gaps-5d0dae72-us": "/audio/a1/gaps/5d0dae72-us.mp3",
+    "gaps-5d0dae72-gb": "/audio/a1/gaps/5d0dae72-gb.mp3",
+    "gaps-1b2d8bd6-us": "/audio/a1/gaps/1b2d8bd6-us.mp3",
+    "gaps-1b2d8bd6-gb": "/audio/a1/gaps/1b2d8bd6-gb.mp3",
+    "gaps-6cf49571-us": "/audio/a1/gaps/6cf49571-us.mp3",
+    "gaps-6cf49571-gb": "/audio/a1/gaps/6cf49571-gb.mp3",
+    "gaps-72acf1ca-us": "/audio/a1/gaps/72acf1ca-us.mp3",
+    "gaps-72acf1ca-gb": "/audio/a1/gaps/72acf1ca-gb.mp3",
+    "gaps-fbf1d3b4-us": "/audio/a1/gaps/fbf1d3b4-us.mp3",
+    "gaps-fbf1d3b4-gb": "/audio/a1/gaps/fbf1d3b4-gb.mp3",
+    "gaps-7050befc-us": "/audio/a1/gaps/7050befc-us.mp3",
+    "gaps-7050befc-gb": "/audio/a1/gaps/7050befc-gb.mp3",
+    "gaps-65c99340-us": "/audio/a1/gaps/65c99340-us.mp3",
+    "gaps-65c99340-gb": "/audio/a1/gaps/65c99340-gb.mp3",
+    "gaps-33110f96-us": "/audio/a1/gaps/33110f96-us.mp3",
+    "gaps-33110f96-gb": "/audio/a1/gaps/33110f96-gb.mp3",
+    "gaps-4556370c-us": "/audio/a1/gaps/4556370c-us.mp3",
+    "gaps-4556370c-gb": "/audio/a1/gaps/4556370c-gb.mp3",
+    "gaps-68329c94-us": "/audio/a1/gaps/68329c94-us.mp3",
+    "gaps-68329c94-gb": "/audio/a1/gaps/68329c94-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -10380,11 +10400,151 @@
           2.533878
         ]
       }
+    },
+    "5d0dae72": {
+      "nova": {
+        "us": [
+          "gaps-5d0dae72-us",
+          0,
+          1.985306
+        ],
+        "gb": [
+          "gaps-5d0dae72-gb",
+          0,
+          2.037551
+        ]
+      }
+    },
+    "1b2d8bd6": {
+      "nova": {
+        "us": [
+          "gaps-1b2d8bd6-us",
+          0,
+          2.272653
+        ],
+        "gb": [
+          "gaps-1b2d8bd6-gb",
+          0,
+          1.697959
+        ]
+      }
+    },
+    "6cf49571": {
+      "nova": {
+        "us": [
+          "gaps-6cf49571-us",
+          0,
+          2.115918
+        ],
+        "gb": [
+          "gaps-6cf49571-gb",
+          0,
+          2.220408
+        ]
+      }
+    },
+    "72acf1ca": {
+      "nova": {
+        "us": [
+          "gaps-72acf1ca-us",
+          0,
+          1.854694
+        ],
+        "gb": [
+          "gaps-72acf1ca-gb",
+          0,
+          1.906939
+        ]
+      }
+    },
+    "fbf1d3b4": {
+      "nova": {
+        "us": [
+          "gaps-fbf1d3b4-us",
+          0,
+          2.037551
+        ],
+        "gb": [
+          "gaps-fbf1d3b4-gb",
+          0,
+          2.089796
+        ]
+      }
+    },
+    "7050befc": {
+      "nova": {
+        "us": [
+          "gaps-7050befc-us",
+          0,
+          1.906939
+        ],
+        "gb": [
+          "gaps-7050befc-gb",
+          0,
+          2.220408
+        ]
+      }
+    },
+    "65c99340": {
+      "nova": {
+        "us": [
+          "gaps-65c99340-us",
+          0,
+          2.115918
+        ],
+        "gb": [
+          "gaps-65c99340-gb",
+          0,
+          2.115918
+        ]
+      }
+    },
+    "33110f96": {
+      "nova": {
+        "us": [
+          "gaps-33110f96-us",
+          0,
+          2.586122
+        ],
+        "gb": [
+          "gaps-33110f96-gb",
+          0,
+          2.403265
+        ]
+      }
+    },
+    "4556370c": {
+      "nova": {
+        "us": [
+          "gaps-4556370c-us",
+          0,
+          2.925714
+        ],
+        "gb": [
+          "gaps-4556370c-gb",
+          0,
+          3.108571
+        ]
+      }
+    },
+    "68329c94": {
+      "nova": {
+        "us": [
+          "gaps-68329c94-us",
+          0,
+          2.089796
+        ],
+        "gb": [
+          "gaps-68329c94-gb",
+          0,
+          1.933061
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Incluye clips de enunciados y opciones de cuestionario A1. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 14,
+    "clips_written": 20,
     "clips_missing_files": 0,
     "items": [
       {
@@ -34223,6 +34383,366 @@
         "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
         "duration": 1.697959,
         "url": "/audio/a1/gaps/efe4120d-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "5d0dae72",
+        "text": "I don’t ___ football.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/5d0dae72-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "5d0dae72",
+        "text": "I don’t ___ football.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.037551,
+        "url": "/audio/a1/gaps/5d0dae72-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "1b2d8bd6",
+        "text": "What do you do ___ the weekend?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.272653,
+        "url": "/audio/a1/gaps/1b2d8bd6-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "1b2d8bd6",
+        "text": "What do you do ___ the weekend?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.697959,
+        "url": "/audio/a1/gaps/1b2d8bd6-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "6cf49571",
+        "text": "I ___ books in my free time.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.115918,
+        "url": "/audio/a1/gaps/6cf49571-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "6cf49571",
+        "text": "I ___ books in my free time.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.220408,
+        "url": "/audio/a1/gaps/6cf49571-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "72acf1ca",
+        "text": "She ___ to music.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.854694,
+        "url": "/audio/a1/gaps/72acf1ca-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "72acf1ca",
+        "text": "She ___ to music.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/72acf1ca-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "fbf1d3b4",
+        "text": "What ___ you do at the weekend?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.037551,
+        "url": "/audio/a1/gaps/fbf1d3b4-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "fbf1d3b4",
+        "text": "What ___ you do at the weekend?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.089796,
+        "url": "/audio/a1/gaps/fbf1d3b4-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "7050befc",
+        "text": "I ___ playing football.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/7050befc-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "7050befc",
+        "text": "I ___ playing football.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.220408,
+        "url": "/audio/a1/gaps/7050befc-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "65c99340",
+        "text": "He ___ out with friends.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.115918,
+        "url": "/audio/a1/gaps/65c99340-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "65c99340",
+        "text": "He ___ out with friends.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.115918,
+        "url": "/audio/a1/gaps/65c99340-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "33110f96",
+        "text": "I ___ stay home on Sunday.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.586122,
+        "url": "/audio/a1/gaps/33110f96-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "33110f96",
+        "text": "I ___ stay home on Sunday.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.403265,
+        "url": "/audio/a1/gaps/33110f96-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "4556370c",
+        "text": "We watch movies ___ the weekend.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.925714,
+        "url": "/audio/a1/gaps/4556370c-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "4556370c",
+        "text": "We watch movies ___ the weekend.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 3.108571,
+        "url": "/audio/a1/gaps/4556370c-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "68329c94",
+        "text": "I don’t ___ tennis.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.089796,
+        "url": "/audio/a1/gaps/68329c94-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "68329c94",
+        "text": "I don’t ___ tennis.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/68329c94-gb.mp3",
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
