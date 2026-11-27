@@ -18,6 +18,16 @@ export function ttsText(text) {
   let s = String(text ?? '')
     .replace(/_{3,}/g, '...')
     .replace(/…/g, '...')
+  // Variantes de acento: no se dicen las etiquetas (GB)/(US); cada forma se dice con el complemento.
+  // «at (GB) / on (US) the weekend» → «at the weekend. on the weekend.»
+  s = s.replace(
+    /\b([A-Za-z][A-Za-z'’-]*)\s*\(\s*(?:GB|UK|US)\s*\)\s*\/\s*([A-Za-z][A-Za-z'’-]*)\s*\(\s*(?:GB|UK|US)\s*\)(?:\s+([^/·•]+))?/gi,
+    (_, a, b, rest) => {
+      const tail = (rest ?? '').trim().replace(/[.,;:]+$/, '')
+      return tail ? `${a} ${tail}. ${b} ${tail}.` : `${a}. ${b}`
+    },
+  )
+  s = s
     // Etiquetas de diálogo u opción: «A:», «B:», «A)», «a)» (no la letra suelta del abecedario).
     .replace(/(^|[\s.?!])([A-Da-d])\s*[:)]\s+/g, '$1')
     .replace(/([.!?])\s*\/\s*/g, '$1 ')

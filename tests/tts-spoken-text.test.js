@@ -29,8 +29,12 @@ test('ttsText: no se leen «plus», «equals» ni paréntesis', () => {
   assert.equal(ttsText('They + are = they’re.'), 'They are. they’re.')
   assert.equal(ttsText('thirteen = 13. thirty = 30.'), 'thirteen is 13. thirty is 30.')
   assert.equal(ttsText('forty = 40, seven = 7: 47.'), 'forty is 40, seven is 7: 47.')
-  assert.equal(ttsText('at (GB) / on (US) the weekend'), 'at, GB. on, US the weekend')
   assert.equal(ttsText("This is my ___ (mother's brother)."), "This is my ..., mother's brother.")
+})
+
+test('ttsText: no se dicen las etiquetas (GB)/(US); cada variante se dice con el complemento', () => {
+  assert.equal(ttsText('at (GB) / on (US) the weekend'), 'at the weekend. on the weekend.')
+  assert.ok(!hasReadAloudMarks(ttsText('at (GB) / on (US) the weekend')))
 })
 
 test('ttsText: no se leen las etiquetas de hablante «A:» y «B:»', () => {
