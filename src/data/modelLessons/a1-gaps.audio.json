@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T09:19:51-05:00",
+  "generatedAt": "2026-11-27T09:26:31-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -1126,7 +1126,27 @@
     "gaps-5b36cd78-us": "/audio/a1/gaps/5b36cd78-us.mp3",
     "gaps-5b36cd78-gb": "/audio/a1/gaps/5b36cd78-gb.mp3",
     "gaps-a853ca4e-us": "/audio/a1/gaps/a853ca4e-us.mp3",
-    "gaps-a853ca4e-gb": "/audio/a1/gaps/a853ca4e-gb.mp3"
+    "gaps-a853ca4e-gb": "/audio/a1/gaps/a853ca4e-gb.mp3",
+    "gaps-28f1c1c8-us": "/audio/a1/gaps/28f1c1c8-us.mp3",
+    "gaps-28f1c1c8-gb": "/audio/a1/gaps/28f1c1c8-gb.mp3",
+    "gaps-978522a1-us": "/audio/a1/gaps/978522a1-us.mp3",
+    "gaps-978522a1-gb": "/audio/a1/gaps/978522a1-gb.mp3",
+    "gaps-cbcb897f-us": "/audio/a1/gaps/cbcb897f-us.mp3",
+    "gaps-cbcb897f-gb": "/audio/a1/gaps/cbcb897f-gb.mp3",
+    "gaps-05bfca90-us": "/audio/a1/gaps/05bfca90-us.mp3",
+    "gaps-05bfca90-gb": "/audio/a1/gaps/05bfca90-gb.mp3",
+    "gaps-23271c6c-us": "/audio/a1/gaps/23271c6c-us.mp3",
+    "gaps-23271c6c-gb": "/audio/a1/gaps/23271c6c-gb.mp3",
+    "gaps-3691f993-us": "/audio/a1/gaps/3691f993-us.mp3",
+    "gaps-3691f993-gb": "/audio/a1/gaps/3691f993-gb.mp3",
+    "gaps-23df6a18-us": "/audio/a1/gaps/23df6a18-us.mp3",
+    "gaps-23df6a18-gb": "/audio/a1/gaps/23df6a18-gb.mp3",
+    "gaps-06bab67e-us": "/audio/a1/gaps/06bab67e-us.mp3",
+    "gaps-06bab67e-gb": "/audio/a1/gaps/06bab67e-gb.mp3",
+    "gaps-457fd396-us": "/audio/a1/gaps/457fd396-us.mp3",
+    "gaps-457fd396-gb": "/audio/a1/gaps/457fd396-gb.mp3",
+    "gaps-f8ff0b65-us": "/audio/a1/gaps/f8ff0b65-us.mp3",
+    "gaps-f8ff0b65-gb": "/audio/a1/gaps/f8ff0b65-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -8938,6 +8958,146 @@
           "gaps-a853ca4e-gb",
           0,
           2.089796
+        ]
+      }
+    },
+    "28f1c1c8": {
+      "nova": {
+        "us": [
+          "gaps-28f1c1c8-us",
+          0,
+          1.854694
+        ],
+        "gb": [
+          "gaps-28f1c1c8-gb",
+          0,
+          2.115918
+        ]
+      }
+    },
+    "978522a1": {
+      "nova": {
+        "us": [
+          "gaps-978522a1-us",
+          0,
+          0.914286
+        ],
+        "gb": [
+          "gaps-978522a1-gb",
+          0,
+          1.07102
+        ]
+      }
+    },
+    "cbcb897f": {
+      "nova": {
+        "us": [
+          "gaps-cbcb897f-us",
+          0,
+          1.38449
+        ],
+        "gb": [
+          "gaps-cbcb897f-gb",
+          0,
+          1.515102
+        ]
+      }
+    },
+    "05bfca90": {
+      "nova": {
+        "us": [
+          "gaps-05bfca90-us",
+          0,
+          2.45551
+        ],
+        "gb": [
+          "gaps-05bfca90-gb",
+          0,
+          2.115918
+        ]
+      }
+    },
+    "23271c6c": {
+      "nova": {
+        "us": [
+          "gaps-23271c6c-us",
+          0,
+          1.567347
+        ],
+        "gb": [
+          "gaps-23271c6c-gb",
+          0,
+          1.671837
+        ]
+      }
+    },
+    "3691f993": {
+      "nova": {
+        "us": [
+          "gaps-3691f993-us",
+          0,
+          2.586122
+        ],
+        "gb": [
+          "gaps-3691f993-gb",
+          0,
+          2.638367
+        ]
+      }
+    },
+    "23df6a18": {
+      "nova": {
+        "us": [
+          "gaps-23df6a18-us",
+          0,
+          1.48898
+        ],
+        "gb": [
+          "gaps-23df6a18-gb",
+          0,
+          2.168163
+        ]
+      }
+    },
+    "06bab67e": {
+      "nova": {
+        "us": [
+          "gaps-06bab67e-us",
+          0,
+          1.671837
+        ],
+        "gb": [
+          "gaps-06bab67e-gb",
+          0,
+          1.906939
+        ]
+      }
+    },
+    "457fd396": {
+      "nova": {
+        "us": [
+          "gaps-457fd396-us",
+          0,
+          1.436735
+        ],
+        "gb": [
+          "gaps-457fd396-gb",
+          0,
+          1.750204
+        ]
+      }
+    },
+    "f8ff0b65": {
+      "nova": {
+        "us": [
+          "gaps-f8ff0b65-us",
+          0,
+          1.48898
+        ],
+        "gb": [
+          "gaps-f8ff0b65-gb",
+          0,
+          1.750204
         ]
       }
     }
@@ -29537,6 +29697,368 @@
         ],
         "units": [
           "3"
+        ]
+      },
+      {
+        "key": "28f1c1c8",
+        "text": "My dog ___ a lot.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.854694,
+        "url": "/audio/a1/gaps/28f1c1c8-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "28f1c1c8",
+        "text": "My dog ___ a lot.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.115918,
+        "url": "/audio/a1/gaps/28f1c1c8-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "978522a1",
+        "text": "sleeps",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.914286,
+        "url": "/audio/a1/gaps/978522a1-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "978522a1",
+        "text": "sleeps",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.07102,
+        "url": "/audio/a1/gaps/978522a1-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "cbcb897f",
+        "text": "I am hungry",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/cbcb897f-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "cbcb897f",
+        "text": "I am hungry",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/cbcb897f-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "05bfca90",
+        "text": "He ___ work on Sundays.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.45551,
+        "url": "/audio/a1/gaps/05bfca90-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "05bfca90",
+        "text": "He ___ work on Sundays.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.115918,
+        "url": "/audio/a1/gaps/05bfca90-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "23271c6c",
+        "text": "She is not tired",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/23271c6c-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "23271c6c",
+        "text": "She is not tired",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.671837,
+        "url": "/audio/a1/gaps/23271c6c-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "3691f993",
+        "text": "I usually ___ to bed at 10 p.m.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.586122,
+        "url": "/audio/a1/gaps/3691f993-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "3691f993",
+        "text": "I usually ___ to bed at 10 p.m.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.638367,
+        "url": "/audio/a1/gaps/3691f993-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "23df6a18",
+        "text": "There is a kitchen",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/23df6a18-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "23df6a18",
+        "text": "There is a kitchen",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.168163,
+        "url": "/audio/a1/gaps/23df6a18-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "06bab67e",
+        "text": "There is not a garden",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.671837,
+        "url": "/audio/a1/gaps/06bab67e-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "06bab67e",
+        "text": "There is not a garden",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/06bab67e-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "457fd396",
+        "text": "Is there a garden?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/457fd396-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "457fd396",
+        "text": "Is there a garden?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/457fd396-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "f8ff0b65",
+        "text": "There are two rooms",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/f8ff0b65-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4",
+          "8"
+        ]
+      },
+      {
+        "key": "f8ff0b65",
+        "text": "There are two rooms",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/f8ff0b65-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4",
+          "8"
         ]
       }
     ]
