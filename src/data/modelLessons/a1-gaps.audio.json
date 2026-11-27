@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T07:09:38-05:00",
+  "generatedAt": "2026-11-27T07:13:59-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -876,7 +876,19 @@
     "gaps-43dde71d-us": "/audio/a1/gaps/43dde71d-us.mp3",
     "gaps-43dde71d-gb": "/audio/a1/gaps/43dde71d-gb.mp3",
     "gaps-5a057a6b-us": "/audio/a1/gaps/5a057a6b-us.mp3",
-    "gaps-5a057a6b-gb": "/audio/a1/gaps/5a057a6b-gb.mp3"
+    "gaps-5a057a6b-gb": "/audio/a1/gaps/5a057a6b-gb.mp3",
+    "gaps-acfbe009-us": "/audio/a1/gaps/acfbe009-us.mp3",
+    "gaps-acfbe009-gb": "/audio/a1/gaps/acfbe009-gb.mp3",
+    "gaps-3e2db7fa-us": "/audio/a1/gaps/3e2db7fa-us.mp3",
+    "gaps-3e2db7fa-gb": "/audio/a1/gaps/3e2db7fa-gb.mp3",
+    "gaps-1bd3e5e6-us": "/audio/a1/gaps/1bd3e5e6-us.mp3",
+    "gaps-1bd3e5e6-gb": "/audio/a1/gaps/1bd3e5e6-gb.mp3",
+    "gaps-c4cb0b89-us": "/audio/a1/gaps/c4cb0b89-us.mp3",
+    "gaps-c4cb0b89-gb": "/audio/a1/gaps/c4cb0b89-gb.mp3",
+    "gaps-8edcceb8-us": "/audio/a1/gaps/8edcceb8-us.mp3",
+    "gaps-8edcceb8-gb": "/audio/a1/gaps/8edcceb8-gb.mp3",
+    "gaps-31417eed-us": "/audio/a1/gaps/31417eed-us.mp3",
+    "gaps-31417eed-gb": "/audio/a1/gaps/31417eed-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -6940,12 +6952,96 @@
           2.45551
         ]
       }
+    },
+    "acfbe009": {
+      "nova": {
+        "us": [
+          "gaps-acfbe009-us",
+          0,
+          3.761633
+        ],
+        "gb": [
+          "gaps-acfbe009-gb",
+          0,
+          3.761633
+        ]
+      }
+    },
+    "3e2db7fa": {
+      "nova": {
+        "us": [
+          "gaps-3e2db7fa-us",
+          0,
+          3.004082
+        ],
+        "gb": [
+          "gaps-3e2db7fa-gb",
+          0,
+          3.160816
+        ]
+      }
+    },
+    "1bd3e5e6": {
+      "nova": {
+        "us": [
+          "gaps-1bd3e5e6-us",
+          0,
+          3.056327
+        ],
+        "gb": [
+          "gaps-1bd3e5e6-gb",
+          0,
+          2.638367
+        ]
+      }
+    },
+    "c4cb0b89": {
+      "nova": {
+        "us": [
+          "gaps-c4cb0b89-us",
+          0,
+          1.567347
+        ],
+        "gb": [
+          "gaps-c4cb0b89-gb",
+          0,
+          1.48898
+        ]
+      }
+    },
+    "8edcceb8": {
+      "nova": {
+        "us": [
+          "gaps-8edcceb8-us",
+          0,
+          0.835918
+        ],
+        "gb": [
+          "gaps-8edcceb8-gb",
+          0,
+          0.862041
+        ]
+      }
+    },
+    "31417eed": {
+      "nova": {
+        "us": [
+          "gaps-31417eed-us",
+          0,
+          0.966531
+        ],
+        "gb": [
+          "gaps-31417eed-gb",
+          0,
+          1.332245
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Incluye clips de enunciados y opciones de cuestionario A1. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 100,
-    "clips_missing_files": 12,
+    "clips_written": 112,
+    "clips_missing_files": 0,
     "items": [
       {
         "key": "f7b20218",
@@ -23021,6 +23117,222 @@
         ],
         "units": [
           "8"
+        ]
+      },
+      {
+        "key": "acfbe009",
+        "text": "What does she do on Saturdays? — She ___ football.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 3.761633,
+        "url": "/audio/a1/gaps/acfbe009-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "acfbe009",
+        "text": "What does she do on Saturdays? — She ___ football.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 3.761633,
+        "url": "/audio/a1/gaps/acfbe009-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "3e2db7fa",
+        "text": "This is my father. ___ name is Luis.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 3.004082,
+        "url": "/audio/a1/gaps/3e2db7fa-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "3e2db7fa",
+        "text": "This is my father. ___ name is Luis.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 3.160816,
+        "url": "/audio/a1/gaps/3e2db7fa-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "1bd3e5e6",
+        "text": "A: How do I get to the bank? B: ___",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 3.056327,
+        "url": "/audio/a1/gaps/1bd3e5e6-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "1bd3e5e6",
+        "text": "A: How do I get to the bank? B: ___",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.638367,
+        "url": "/audio/a1/gaps/1bd3e5e6-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "c4cb0b89",
+        "text": "I don’t like coffee",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/c4cb0b89-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "c4cb0b89",
+        "text": "I don’t like coffee",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/c4cb0b89-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "8edcceb8",
+        "text": "It is",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 0.835918,
+        "url": "/audio/a1/gaps/8edcceb8-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "8edcceb8",
+        "text": "It is",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 0.862041,
+        "url": "/audio/a1/gaps/8edcceb8-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "31417eed",
+        "text": "They is",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/31417eed-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
+        ]
+      },
+      {
+        "key": "31417eed",
+        "text": "They is",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.332245,
+        "url": "/audio/a1/gaps/31417eed-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "examen"
+        ],
+        "units": [
+          "examen"
         ]
       }
     ]
