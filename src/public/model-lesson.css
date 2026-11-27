@@ -3,8 +3,6 @@
 .ml-progress { height: 10px; border-radius: 99px; background: var(--mp-mint); overflow: hidden; }
 .ml-progress span { display: block; height: 100%; background: var(--mp-teal); border-radius: 99px; transition: width .3s ease; }
 .ml-head-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 14px; color: var(--mp-muted); }
-.ml-accent { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
-.ml-accent select { font: inherit; min-height: 40px; padding: 6px 10px; border: 1px solid var(--mp-border); border-radius: 6px; background: var(--mp-paper); color: var(--mp-ink); }
 .ml-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 32px; margin-top: 28px; align-items: start; }
 .ml-steps { position: sticky; top: 16px; }
 .ml-steps ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
@@ -22,9 +20,7 @@
 .ml-tip { color: var(--mp-muted); font-size: 15px; }
 .ml-big { font-size: 20px; font-weight: 600; }
 .ml-big mark { background: var(--mp-accent); color: inherit; padding: 0 3px; border-radius: 3px; }
-.ml-listen { display: inline-flex; gap: 6px; vertical-align: middle; margin-left: 6px; flex-wrap: wrap; }
-.ml-listen button { min-height: 36px; padding: 4px 10px; border: 1px solid var(--mp-border); border-radius: 99px; background: var(--mp-soft); color: var(--mp-ink); font: inherit; font-size: 13px; cursor: pointer; }
-.ml-listen button:hover { border-color: var(--mp-teal); }
+.ml-listen { vertical-align: middle; }
 .ml-reading-turns { list-style: none; margin: 20px 0; padding: 0; display: grid; gap: 20px; }
 .ml-reading-turns li { display: grid; gap: 4px; }
 .ml-reading-turns p { margin: 0; }

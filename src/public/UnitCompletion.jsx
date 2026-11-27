@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase'
 import { useDraftState } from '../contexts/a1-draft-context'
 import { useNoSave } from '../contexts/review-mode-context'
 import ReviewAnswer from '../components/ReviewAnswer'
+import { OptionRow } from './AccentSpeakers'
 import cycle from '../../content/cycles/A1.json'
 import './unit-quiz.css'
 
@@ -69,7 +70,7 @@ export default function UnitCompletion({ number, onPassed }) {
     <form onSubmit={submit} className="ml-quiz">
       {questions.map((question, index) => <fieldset key={index} className="ml-quiz-q">
         <legend>{index + 1}. {question.question}</legend>
-        {question.options.map((option, value) => <label key={value} className="ml-quiz-opt"><input type="radio" name={`a1-question-${index}`} value={value} checked={answers[index] === value} onChange={() => { setReviewed(null); setAnswers(previous => ({ ...previous, [index]: value })) }} disabled={busy} required /><span>{option}</span></label>)}
+        {question.options.map((option, value) => <OptionRow key={value} option={option}><label className="ml-quiz-opt"><input type="radio" name={`a1-question-${index}`} value={value} checked={answers[index] === value} onChange={() => { setReviewed(null); setAnswers(previous => ({ ...previous, [index]: value })) }} disabled={busy} required /><span>{option}</span></label></OptionRow>)}
         <ReviewAnswer>{question.options[question.correct_idx]}</ReviewAnswer>
         {reviewed && <QuestionFeedback question={question} answer={reviewed[index]} />}
       </fieldset>)}

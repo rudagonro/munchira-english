@@ -4,6 +4,7 @@ import { useDraftState } from '../contexts/a1-draft-context'
 import { canReveal, countsForScore, retryMessage, successMessage } from './exerciseRetry'
 import './exercise-retry.css'
 import ReviewAnswer from './ReviewAnswer'
+import { OptionRow } from '../public/AccentSpeakers'
 import { useReviewMode } from '../contexts/review-mode-context'
 
 /* Retroalimentación común: si fallas ves el porqué, un ánimo y «Inténtalo otra vez». */
@@ -52,7 +53,7 @@ function useAttempts(draftKey, onAttempt) {
   return { state, setState, fails, mark }
 }
 
-export default function ExerciseBlock({ exercises, onComplete, onAttempt, draftKey = 'exercise' }) {
+export default function ExerciseBlock({ exercises, onComplete, onAttempt, draftKey = 'exercise', speakOptions = false }) {
   const [idx, setIdx] = useDraftState(`${draftKey}.idx`, 0)
   const [score, setScore] = useDraftState(`${draftKey}.score`, 0)
   const [done, setDone] = useDraftState(`${draftKey}.done`, false)
@@ -101,7 +102,7 @@ export default function ExerciseBlock({ exercises, onComplete, onAttempt, draftK
       </div>
 
       {ex.type === 'fill' && <FillEx key={idx} draftKey={`${draftKey}.${idx}`} ex={ex} onNext={next} onAttempt={known => onAttempt?.(ex, known)} />}
-      {ex.type === 'choice' && <ChoiceEx key={idx} draftKey={`${draftKey}.${idx}`} ex={ex} onNext={next} onAttempt={known => onAttempt?.(ex, known)} />}
+      {ex.type === 'choice' && <ChoiceEx key={idx} draftKey={`${draftKey}.${idx}`} ex={ex} speakOptions={speakOptions} onNext={next} onAttempt={known => onAttempt?.(ex, known)} />}
       {ex.type === 'order' && <OrderEx key={idx} draftKey={`${draftKey}.${idx}`} ex={ex} onNext={next} onAttempt={known => onAttempt?.(ex, known)} />}
     </div>
   )
@@ -151,7 +152,7 @@ function FillEx({ ex, onNext, onAttempt, draftKey }) {
 }
 
 /* ---- Multiple choice ---- */
-function ChoiceEx({ ex, onNext, onAttempt, draftKey }) {
+function ChoiceEx({ ex, onNext, onAttempt, draftKey, speakOptions = false }) {
   const [selected, setSelected] = useDraftState(`${draftKey}.selected`, null)
   const { state, setState, fails, mark } = useAttempts(draftKey, onAttempt)
 
@@ -173,12 +174,14 @@ function ChoiceEx({ ex, onNext, onAttempt, draftKey }) {
           if (state === 'correct' && i === ex.correct) cls += ' correct'
           if (state === 'revealed' && i === ex.correct) cls += ' correct'
           if ((state === 'wrong' || state === 'revealed') && i === selected) cls += ' wrong'
-          return (
+          const button = (
             <button key={i} className={cls} onClick={() => pick(i)} disabled={state !== 'idle'} aria-pressed={i === selected}>
               <span className="ex-opt-letter">{String.fromCharCode(65 + i)}</span>
               {opt}
             </button>
           )
+          // En A1, las opciones en inglés llevan sus bocinas 🇺🇸/🇬🇧 al lado (fuera del botón de respuesta).
+          return speakOptions ? <OptionRow key={i} option={opt}>{button}</OptionRow> : button
         })}
       </div>
       <ReviewAnswer>{ex.opts[ex.correct]}</ReviewAnswer>

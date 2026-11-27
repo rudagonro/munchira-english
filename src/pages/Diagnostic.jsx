@@ -7,6 +7,7 @@ import { useDiagnostic } from '../hooks/useDiagnostic'
 import { LEVEL_NAMES, bankReading, bankListening, bankWriting } from '../data/diagnosticBank'
 import { getCurriculum } from '../data/curriculum'
 import { isWaitlisted, unit0For } from '../data/levelAccess'
+import AccentSpeakers from '../public/AccentSpeakers'
 
 // Duración orientativa de cada nivel (semanas de estudio constante).
 const LEVEL_DURATION = { A1: '8–10 semanas', A2: '10–12 semanas', B1: '12–14 semanas', B2: '14–16 semanas', C1: '16–18 semanas', C2: 'Programa abierto' }
@@ -69,16 +70,6 @@ export default function Diagnostic({ preview = false }) {
     if (error) {
       console.error(error)
       setSaveError('El diagnóstico se calculó pero no se pudo guardar. Intenta de nuevo más tarde.')
-    }
-  }
-
-  function playAudio(transcript) {
-    if ('speechSynthesis' in window) {
-      const utter = new SpeechSynthesisUtterance(transcript)
-      utter.lang = 'en-US'
-      utter.rate = 0.95
-      window.speechSynthesis.cancel()
-      window.speechSynthesis.speak(utter)
     }
   }
 
@@ -225,7 +216,7 @@ export default function Diagnostic({ preview = false }) {
       return (
         <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 3 · Escucha — nivel ${diag.listeningLevel}`}>
           <div className="diag-tag">Comprensión auditiva</div>
-          <AudioBox transcript={data.transcript} onPlay={playAudio} />
+          <AudioBox transcript={data.transcript} />
           <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>
             Escucha con atención antes de continuar. Puedes reproducirlo varias veces.
           </p>
@@ -237,7 +228,7 @@ export default function Diagnostic({ preview = false }) {
     return (
       <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 3 · Escucha — nivel ${diag.listeningLevel}`}>
         <div className="diag-tag">Pregunta {diag.listeningStep} de {data.questions.length}</div>
-        <AudioBox transcript={data.transcript} onPlay={playAudio} />
+        <AudioBox transcript={data.transcript} />
         <h1 className="diag-question">{q.q}</h1>
         <OptionsList options={q.opts} selectedIdx={selectedIdx} onSelect={handleSelect} />
         <NextButton disabled={!preview && selectedIdx === null} onClick={handleNext} />
@@ -309,11 +300,12 @@ function NextButton({ disabled, onClick, label = 'Siguiente →' }) {
   )
 }
 
-function AudioBox({ transcript, onPlay }) {
+// Solo MP3 de ElevenLabs, 🇺🇸 por defecto y 🇬🇧; sin grabación la bocina queda deshabilitada (sin voz del dispositivo).
+function AudioBox({ transcript }) {
   return (
     <div className="diag-audio-box">
-      <button className="diag-play-btn" onClick={() => onPlay(transcript)} type="button" aria-label="Reproducir audio">▶</button>
-      <div className="diag-audio-meta">Pulsa play para escuchar el audio.</div>
+      <AccentSpeakers text={transcript} label="el audio" />
+      <div className="diag-audio-meta">Toca una bocina para escuchar el audio: 🇺🇸 americano o 🇬🇧 británico.</div>
     </div>
   )
 }

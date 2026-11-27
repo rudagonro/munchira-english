@@ -7,7 +7,9 @@ import { lessonA1Presentarte as defaultLesson } from '../data/modelLessons/a1-pr
 import { canOpenStep, isPracticeStep } from './lessonProgress'
 import { recordA1Word, recordA1Text } from './a1Review'
 import { LESSON_STEPS, cardDraftKey, checkPresentation, lessonCards, contractionTip, displayForm, isCorrectAnswer, quoteForm } from './model-lesson'
-import { sayEnglish, sayDialogue, stopLessonAudio, canListen } from './lessonSpeech'
+import { sayEnglish, stopLessonAudio } from './lessonSpeech'
+import AccentSpeakers from './AccentSpeakers'
+import DialogueBlock from './DialogueBlock'
 import { playFeedback } from './feedbackSounds'
 import { useAuth } from '../contexts/auth-context'
 import UnitCompletion from './UnitCompletion'
@@ -20,12 +22,9 @@ import StaffNoSaveNote from '../components/StaffNoSaveNote'
 import { ExtraGuided, ExtraTables, ExtraVocab, FreeChallenge, RescuedDialogues } from './RescuedPractice'
 import './model-lesson.css'
 
-function ListenButtons({ text, accent, voice }) {
-  if (!canListen()) return null
-  return <span className="ml-listen">
-    <button type="button" onClick={() => sayEnglish(text, { accent, voice })} aria-label={`Escuchar «${text}»`}>🔊 Escuchar</button>
-    <button type="button" onClick={() => sayEnglish(text, { accent, voice, slow: true })} aria-label={`Escuchar despacio «${text}»`}>🐢 Despacio</button>
-  </span>
+/** Bocinas 🇺🇸 (por defecto) y 🇬🇧 y «Despacio». Solo MP3 de ElevenLabs: sin grabación, la bocina se deshabilita. */
+function ListenButtons({ text, voice }) {
+  return <AccentSpeakers text={text} voice={voice} slow className="ml-listen" />
 }
 
 function Highlight({ text, focus }) {
@@ -35,10 +34,10 @@ function Highlight({ text, focus }) {
 }
 
 function ChoiceQuestions({ questions, onComplete, onAttempt }) {
-  return <ExerciseBlock draftKey="reading" onComplete={onComplete} onAttempt={onAttempt} exercises={questions.map(q => ({ ...q, type: 'choice', why: q.why ?? 'Vuelve a leer el texto y busca la información de la pregunta.' }))} />
+  return <ExerciseBlock speakOptions draftKey="reading" onComplete={onComplete} onAttempt={onAttempt} exercises={questions.map(q => ({ ...q, type: 'choice', why: q.why ?? 'Vuelve a leer el texto y busca la información de la pregunta.' }))} />
 }
 
-function TwoWayCards({ accent, lesson, onComplete }) {
+function TwoWayCards({ lesson, onComplete }) {
   const cards = useMemo(() => lessonCards(lesson), [lesson])
   // Si la baraja cambió, un borrador de la anterior no se reinterpreta (ver cardDraftKey).
   const CARDS_DRAFT = cardDraftKey(lesson)
@@ -69,20 +68,20 @@ function TwoWayCards({ accent, lesson, onComplete }) {
     if (ok) {
       setResult('ok')
       if (tries === 0) setScore(s => s + 1)
-      sayEnglish(card.audio, { accent })
+      sayEnglish(card.audio)
       return
     }
     const attempt = tries + 1
     setTries(attempt)
     if (attempt >= 2) {
       setResult('bad')
-      if (toEnglish) sayEnglish(card.audio, { accent })
+      if (toEnglish) sayEnglish(card.audio)
     } else {
       setResult('retry')
     }
   }}>
     <p className="ml-card-meta">Tarjeta {idx + 1} de {cards.length} · {toEnglish ? 'Español → Inglés' : 'Inglés → Español'}</p>
-    <p className="ml-card-prompt">{card.prompt} {!toEnglish && <ListenButtons text={card.audio} accent={accent} />}</p>
+    <p className="ml-card-prompt">{card.prompt} {!toEnglish && <ListenButtons text={card.audio} />}</p>
     <label>{toEnglish ? 'Escríbelo en inglés' : 'Escríbelo en español'}
       <input value={value} onChange={e => setValue(e.target.value)} disabled={finished} autoComplete="off" autoCapitalize="none" spellCheck={false} />
     </label>
@@ -98,7 +97,7 @@ function TwoWayCards({ accent, lesson, onComplete }) {
 }
 
 /** Escribir y comprobar con reintento: traducción y dictado. */
-function WriteCheck({ items, accent, onComplete, onAttempt, draftKey }) {
+function WriteCheck({ items, onComplete, onAttempt, draftKey }) {
   const [idx, setIdx] = useDraftState(`${draftKey}.idx`, 0)
   const [value, setValue] = useDraftState(`${draftKey}.value`, '')
   const [result, setResult] = useDraftState(`${draftKey}.result`, null) // null | 'retry' | 'ok' | 'bad'
@@ -121,7 +120,7 @@ function WriteCheck({ items, accent, onComplete, onAttempt, draftKey }) {
     if (attempt < 2) playFeedback(false)
   }}>
     <p className="ml-card-meta">Frase {idx + 1} de {items.length}</p>
-    {item.listen ? <p className="ml-card-prompt"><ListenButtons text={item.answer} accent={accent} /></p> : <p className="ml-card-prompt">{item.prompt}</p>}
+    {item.listen ? <p className="ml-card-prompt"><ListenButtons text={item.answer} /></p> : <p className="ml-card-prompt">{item.prompt}</p>}
     <label>Escríbelo en inglés
       <input value={value} onChange={e => setValue(e.target.value)} disabled={finished} autoComplete="off" autoCapitalize="none" spellCheck={false} lang="en" />
     </label>
@@ -135,7 +134,7 @@ function WriteCheck({ items, accent, onComplete, onAttempt, draftKey }) {
   </form>
 }
 
-function SpeakPractice({ item, accent }) {
+function SpeakPractice({ item }) {
   const [recording, setRecording] = useState(false)
   const [url, setUrl] = useState('')
   const [error, setError] = useState('')
@@ -161,7 +160,7 @@ function SpeakPractice({ item, accent }) {
   }
   const supported = typeof MediaRecorder !== 'undefined' && Boolean(navigator.mediaDevices?.getUserMedia)
   return <li className="ml-speak">
-    <p className="ml-big">{item.en} <ListenButtons text={item.en} accent={accent} /></p>
+    <p className="ml-big">{item.en} <ListenButtons text={item.en} /></p>
     {item.say && <p className="ml-say">Se pronuncia: <strong>{item.say}</strong></p>}{item.tip && <p className="ml-tip">{item.tip}</p>}
     {supported && <button className="mp-button mp-button-dark" type="button" onClick={record}>{recording ? 'Detener grabación' : 'Grabar mi repetición'}</button>}
     {url && <audio src={url} controls aria-label="Mi repetición" />}
@@ -170,7 +169,7 @@ function SpeakPractice({ item, accent }) {
   </li>
 }
 
-function StepContent({ id, accent, lesson, onComplete, legacyRules = [], legacy = false }) {
+function StepContent({ id, lesson, onComplete, legacyRules = [], legacy = false }) {
   const { user } = useAuth()
   const noSave = useNoSave()
   const [saveError, setSaveError] = useState('')
@@ -188,22 +187,22 @@ function StepContent({ id, accent, lesson, onComplete, legacyRules = [], legacy 
     </>
     case 'vocab': return <>
       <h2>Palabras de esta unidad</h2><p>Escucha cada una. La pronunciación está escrita como suena en español.</p>
-      <ul className="ml-vocab">{lesson.vocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{displayForm(v.es)}</span><em>«{v.say}»</em><ListenButtons text={v.en} accent={accent} /></li>)}</ul>
-      <ExtraVocab lesson={lesson} accent={accent} legacy={legacy} />
+      <ul className="ml-vocab">{lesson.vocab.map(v => <li key={v.en}><strong>{v.en}</strong><span>{displayForm(v.es)}</span><em>«{v.say}»</em><ListenButtons text={v.en} /></li>)}</ul>
+      <ExtraVocab lesson={lesson} legacy={legacy} />
     </>
     case 'explain': return <>
       {lesson.theory?.length > 0 && <>
         <h2>La regla, paso a paso</h2>
         <p>Primero entiende cómo se construye la frase; después aplícala con palabras nuevas.</p>
-        {lesson.theory.map((rule, index) => <TheoryRule key={rule.title} rule={rule} index={index} accent={accent} recognised={legacyRules.includes(index)} showLegacy={legacy} />)}
+        {lesson.theory.map((rule, index) => <TheoryRule key={rule.title} rule={rule} index={index} recognised={legacyRules.includes(index)} showLegacy={legacy} />)}
         <h2>Más detalles de la unidad</h2>
       </>}
       {!lesson.theory?.length && <h2>Paso a paso</h2>}
-      <ol className="ml-explain">{lesson.explanation.map(p => <li key={p.title}><h3>{p.title}</h3><p>{p.text}</p>{p.example && <p className="ml-example">{p.example} <ListenButtons text={p.example} accent={accent} /></p>}</li>)}</ol>
+      <ol className="ml-explain">{lesson.explanation.map(p => <li key={p.title}><h3>{p.title}</h3><p>{p.text}</p>{p.example && <p className="ml-example">{p.example} <ListenButtons text={p.example} /></p>}</li>)}</ol>
     </>
     case 'examples': return <>
       <h2>Ejemplos con audio</h2><p>La parte resaltada es lo que acabas de aprender.</p>
-      <ul className="ml-examples">{lesson.examples.map(e => <li key={e.en}><p className="ml-big"><Highlight text={e.en} focus={e.focus} /></p><p>{e.es}</p><ListenButtons text={e.en} accent={accent} /></li>)}</ul>
+      <ul className="ml-examples">{lesson.examples.map(e => <li key={e.en}><p className="ml-big"><Highlight text={e.en} focus={e.focus} /></p><p>{e.es}</p><ListenButtons text={e.en} /></li>)}</ul>
     </>
     case 'table': return <>
       <h2>Cómo se forma</h2>
@@ -214,16 +213,16 @@ function StepContent({ id, accent, lesson, onComplete, legacyRules = [], legacy 
     </>
     case 'mistakes': return <>
       <h2>Errores típicos de hispanohablantes</h2>
-      <ul className="ml-mistakes">{[...(lesson.mistakes ?? []), ...(lesson.theory ?? []).flatMap(rule => rule.mistake ? [rule.mistake] : [])].map(m => <li key={m.wrong}><p className="ml-wrong">✗ {m.wrong}</p><p className="ml-right">✓ {m.right} <ListenButtons text={m.right} accent={accent} /></p><p>{m.why}</p></li>)}</ul>
+      <ul className="ml-mistakes">{[...(lesson.mistakes ?? []), ...(lesson.theory ?? []).flatMap(rule => rule.mistake ? [rule.mistake] : [])].map(m => <li key={m.wrong}><p className="ml-wrong">✗ {m.wrong}</p><p className="ml-right">✓ {m.right} <ListenButtons text={m.right} /></p><p>{m.why}</p></li>)}</ul>
     </>
-    case 'guided': return <><h2>Práctica guiada</h2><p>Primero con pistas. Si fallas, verás por qué.</p><ExerciseBlock draftKey="guided" exercises={lesson.guided} onComplete={onComplete} onAttempt={exerciseAttempt} />{warning}<ExtraGuided lesson={lesson} legacy={legacy} /></>
-    case 'cards': return <><h2>Repaso en dos direcciones</h2><p>Cada palabra aparece de inglés a español y de español a inglés. Así se queda en la memoria.</p><TwoWayCards accent={accent} lesson={lesson} onComplete={onComplete} /></>
+    case 'guided': return <><h2>Práctica guiada</h2><p>Primero con pistas. Si fallas, verás por qué.</p><ExerciseBlock speakOptions draftKey="guided" exercises={lesson.guided} onComplete={onComplete} onAttempt={exerciseAttempt} />{warning}<ExtraGuided lesson={lesson} legacy={legacy} /></>
+    case 'cards': return <><h2>Repaso en dos direcciones</h2><p>Cada palabra aparece de inglés a español y de español a inglés. Así se queda en la memoria.</p><TwoWayCards lesson={lesson} onComplete={onComplete} /></>
     case 'reading': return <>
       <h2>Lectura: {lesson.reading.title}</h2>
       <blockquote className="ml-reading">
         {lesson.reading.segments ? <>
-          <ol className="ml-reading-turns">{lesson.reading.segments.map((t, i) => <li key={i} className={t.speaker ? undefined : 'ml-reading-narration'}>{t.speaker && <strong>{t.speaker}:</strong>}<p>{t.text}</p><ListenButtons text={t.text} accent={accent} voice={t.voice} /></li>)}</ol>
-        </> : <>{lesson.reading.text} <ListenButtons text={lesson.reading.text} accent={accent} voice={lesson.reading.voice} /></>}
+          <ol className="ml-reading-turns">{lesson.reading.segments.map((t, i) => <li key={i} className={t.speaker ? undefined : 'ml-reading-narration'}>{t.speaker && <strong>{t.speaker}:</strong>}<p>{t.text}</p><ListenButtons text={t.text} voice={t.voice} /></li>)}</ol>
+        </> : <>{lesson.reading.text} <ListenButtons text={lesson.reading.text} voice={lesson.reading.voice} /></>}
       </blockquote>
       <details className="ml-translation"><summary>Ver traducción</summary>{lesson.reading.segments ? <>
         <ol className="ml-reading-turns">{lesson.reading.segments.map((t, i) => <li key={i} className={t.speaker ? undefined : 'ml-reading-narration'}>{t.speaker && <strong>{t.speaker}:</strong>}<p>{t.es}</p></li>)}</ol>
@@ -232,19 +231,12 @@ function StepContent({ id, accent, lesson, onComplete, legacyRules = [], legacy 
     </>
     case 'dialogue': return <>
       <h2>Diálogos: {lesson.title.toLowerCase()}</h2><p>Escucha cada conversación completa y luego léela en voz alta. Las mujeres hablan con voz de mujer y los hombres con voz de hombre.</p>
-      {lesson.dialogues.map(d => <div key={d.title} className="ml-dialogue-block">
-        <h3>{d.title}</h3>
-        <p className="ml-dialogue-all">
-          <button type="button" onClick={() => sayDialogue(d.lines, { accent })} aria-label={`Escuchar completo: ${d.title}`}>🔊 Escuchar</button>
-          <button type="button" onClick={() => sayDialogue(d.lines, { accent, slow: true })} aria-label={`Escuchar despacio: ${d.title}`}>🐢 Despacio</button>
-        </p>
-        <ul className="ml-dialogue">{d.lines.map((t, i) => <li key={i} className={t.speaker !== d.lines[0].speaker ? 'ml-me' : ''}><strong>{t.speaker}</strong><p>{t.text}</p>{t.es && <p className="ml-dialogue-es">{t.es}</p>}<ListenButtons text={t.text} accent={accent} voice={t.voice} /></li>)}</ul>
-      </div>)}
-      <RescuedDialogues lesson={lesson} accent={accent} />
+      {lesson.dialogues.map(d => <DialogueBlock key={d.title} dialogue={d} />)}
+      <RescuedDialogues lesson={lesson} />
     </>
-    case 'translate': return <><h2>Traducción</h2><p>Escribe cada frase en inglés. Si te equivocas, corrige e inténtalo otra vez.</p><WriteCheck draftKey="translate" items={lesson.translations.map(t => ({ prompt: t.es, answer: t.en }))} accent={accent} onComplete={onComplete} onAttempt={attempt} />{warning}</>
-    case 'dictation': return <><h2>Dictado</h2><p>Escucha la frase (puedes repetirla y ponerla despacio) y escríbela en inglés.</p><WriteCheck draftKey="dictation" items={lesson.dictation.map(t => ({ answer: t, listen: true }))} accent={accent} onComplete={onComplete} onAttempt={attempt} />{warning}</>
-    case 'speak': return <><h2>Escucha y repite</h2><p>Escucha cada frase, repítela igual (shadowing) y compara con tu voz. Munchira no guarda tus grabaciones.</p><ul className="ml-speak-list">{lesson.pronunciation.map(p => <SpeakPractice key={p.en} item={p} accent={accent} />)}</ul></>
+    case 'translate': return <><h2>Traducción</h2><p>Escribe cada frase en inglés. Si te equivocas, corrige e inténtalo otra vez.</p><WriteCheck draftKey="translate" items={lesson.translations.map(t => ({ prompt: t.es, answer: t.en }))} onComplete={onComplete} onAttempt={attempt} />{warning}</>
+    case 'dictation': return <><h2>Dictado</h2><p>Escucha la frase (puedes repetirla y ponerla despacio) y escríbela en inglés.</p><WriteCheck draftKey="dictation" items={lesson.dictation.map(t => ({ answer: t, listen: true }))} onComplete={onComplete} onAttempt={attempt} />{warning}</>
+    case 'speak': return <><h2>Escucha y repite</h2><p>Escucha cada frase, repítela igual (shadowing) y compara con tu voz. Munchira no guarda tus grabaciones.</p><ul className="ml-speak-list">{lesson.pronunciation.map(p => <SpeakPractice key={p.en} item={p} />)}</ul></>
     case 'free': return <FreeTask lesson={lesson} onComplete={onComplete} />
     case 'summary': return <>
       <h2>Lo que aprendiste</h2><ul className="ml-summary">{lesson.summary.map(s => <li key={s}>✓ {s}</li>)}</ul>
@@ -263,7 +255,6 @@ function FreeTask({ lesson, onComplete }) {
     <label className="ml-free">Escribe aquí<textarea rows={4} value={text} maxLength={1000} lang="en" spellCheck onChange={e => { setText(e.target.value); setReview(null); onComplete?.(false) }} /></label>
     <div className="ml-row">
       {lesson.number <= 1 && <button type="button" className="mp-button mp-button-dark" disabled={!text.trim()} onClick={() => { const result = checkPresentation(text); setReview(result); onComplete?.(result.ok) }}>✓ Revisar mi presentación</button>}
-      {text.trim() && <button type="button" className="mp-button" onClick={() => sayEnglish(text)}>🔊 Escuchar lo que escribiste</button>}
       <button type="button" className="mp-button" onClick={() => setShown(true)}>Ver un modelo</button>
     </div>
     {lesson.freeChecklist && <><h3>Revisa tu texto</h3><ul className="ml-summary">{lesson.freeChecklist.map(item => <li key={item}>{item}</li>)}</ul><p>Compara con el modelo. Esta tarea no recibe una nota ni una corrección automática completa.</p></>}
@@ -278,7 +269,7 @@ function FreeTask({ lesson, onComplete }) {
   </>
 }
 
-function TheoryRule({ rule, index, accent, recognised = false, showLegacy = false }) {
+function TheoryRule({ rule, index, recognised = false, showLegacy = false }) {
   const [value, setValue] = useDraftState(`theory.${index}.val`, '')
   const [fails, setFails] = useDraftState(`theory.${index}.fails`, 0)
   const [checked, setChecked] = useState(null)
@@ -295,9 +286,9 @@ function TheoryRule({ rule, index, accent, recognised = false, showLegacy = fals
     <p><strong>{rule.kind === 'strategy' ? 'Estrategia:' : 'Regla:'}</strong> {rule.rule}</p>
     <p><strong>Cómo se forma:</strong> <span className="ml-formula">{rule.form}</span></p>
     <ol>{rule.steps.map(step => <li key={step}>{step}</li>)}</ol>
-    <div className="ml-table-wrap"><table className="ml-table"><caption>Afirmativa, negativa y pregunta</caption><tbody>{rule.forms.map(form => <tr key={form.label}><th scope="row">{form.label}</th><td>{form.en} <ListenButtons text={form.en.split(' / ')[0]} accent={accent} /></td><td>{form.es}</td></tr>)}</tbody></table></div>
+    <div className="ml-table-wrap"><table className="ml-table"><caption>Afirmativa, negativa y pregunta</caption><tbody>{rule.forms.map(form => <tr key={form.label}><th scope="row">{form.label}</th><td>{form.en} <ListenButtons text={form.en.split(' / ')[0]} /></td><td>{form.es}</td></tr>)}</tbody></table></div>
     <h4>Ejemplos</h4>
-    <ul className="ml-examples">{rule.examples.map(example => <li key={example.en}><p className="ml-big">{example.en}</p><p>{example.es}</p><ListenButtons text={example.en} accent={accent} /></li>)}</ul>
+    <ul className="ml-examples">{rule.examples.map(example => <li key={example.en}><p className="ml-big">{example.en}</p><p>{example.es}</p><ListenButtons text={example.en} /></li>)}</ul>
     <h4>Aplica la regla con palabras nuevas</h4>
     <p>Ordena estas palabras y escribe la frase: <strong>{rule.apply.words.join(' + ')}</strong> <span>({rule.apply.es})</span></p>
     <ReviewAnswer>{rule.apply.answer}</ReviewAnswer>
@@ -308,7 +299,7 @@ function TheoryRule({ rule, index, accent, recognised = false, showLegacy = fals
     </p>
     {checked === true && <p className="ml-feedback ml-ok" role="status">¡Bien construida! {rule.apply.answer}</p>}
     {checked === false && <p className="ml-feedback ml-bad" role="status">Todavía no. Revisa el orden: {rule.form}.</p>}
-    {shown && !checked && <p className="ml-example">{rule.apply.answer} <ListenButtons text={rule.apply.answer} accent={accent} /></p>}
+    {shown && !checked && <p className="ml-example">{rule.apply.answer} <ListenButtons text={rule.apply.answer} /></p>}
     {showLegacy && rule.source.some(line => line.includes(' · Lección ')) && <p className="ml-tip">{recognised && <strong>✓ Reconocido de tu avance anterior · </strong>}Antes en: {rule.source.join(' · ')}</p>}
   </section>
 }
@@ -320,7 +311,6 @@ export default function ModelLesson({ lesson = defaultLesson, legacyTheory = fal
 
 function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
   const [savedStep, setStep] = useDraftState('step', 0)
-  const [accent, setAccent] = useDraftState('accent', 'en-US')
   const [completedIds, setCompletedIds] = useDraftState('step.completed', [])
   const steps = LESSON_STEPS.map(s => s.id === 'free' && lesson.number ? { ...s, label: 'Ponlo en práctica' } : s)
   const fields = useDraftFields()
@@ -350,14 +340,13 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
         <div className="ml-progress" role="progressbar" aria-valuemin={0} aria-valuemax={steps.length} aria-valuenow={completed.size} aria-label="Avance de la unidad"><span style={{ width: `${(completed.size / steps.length) * 100}%` }} /></div>
         <div className="ml-head-row">
           <p>Paso {step + 1} de {steps.length}: <strong>{current.label}</strong></p>
-          <label className="ml-accent">Acento <select value={accent} onChange={e => setAccent(e.target.value)}><option value="en-US">Americano</option><option value="en-GB">Británico</option></select></label>
         </div>
       <LessonBackLinks />
       <StaffNoSaveNote />
       </header>
       <div className="ml-layout">
         <nav className="ml-steps" aria-label="Pasos de la unidad"><ol>{steps.map((s, i) => <li key={s.id}><button type="button" aria-current={i === step ? 'step' : undefined} className={completed.has(s.id) ? 'ml-step-done' : ''} disabled={!canOpenStep(i, steps, completed)} onClick={() => go(i)}><span>{completed.has(s.id) ? '✓' : i + 1}</span>{s.label}</button></li>)}</ol></nav>
-        <section className="ml-panel" aria-live="polite"><>{steps.map((s, i) => (visited.has(i) || i === step) && <div className="ml-step-content" hidden={i !== step} key={s.id}><StepContent id={s.id} accent={accent} lesson={lesson} legacyRules={legacyRules} legacy={legacyTheory || legacyRules.length > 0} onComplete={done => mark(s.id, done ?? true)} /></div>)}</>
+        <section className="ml-panel" aria-live="polite"><>{steps.map((s, i) => (visited.has(i) || i === step) && <div className="ml-step-content" hidden={i !== step} key={s.id}><StepContent id={s.id} lesson={lesson} legacyRules={legacyRules} legacy={legacyTheory || legacyRules.length > 0} onComplete={done => mark(s.id, done ?? true)} /></div>)}</>
           {isPracticeStep(current.id) && !completed.has(current.id) && current.id !== 'summary' && <p className="ml-tip" role="status">Completa esta actividad antes de continuar.</p>}
           <div className="ml-nav">
             {step > 0 && <button type="button" className="mp-button" onClick={() => go(step - 1)}>← Anterior</button>}

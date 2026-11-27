@@ -2,13 +2,12 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { getLessonAudioTurns } from '../data/lessonAudio'
 import { voiceInfo } from '../data/voices'
 import { accessToken, fetchAudioUrl } from '../lib/ttsClient'
-import { canSpeak, cancelSpeech, speakTurns } from '../lib/browserSpeech'
 
 /**
  * Reproductor didáctico de un diálogo: quién habla, frase resaltada, repetir una frase,
  * velocidad lenta y transcripción opcional.
  * Usa el archivo fijo de cada frase (audioUrl) si existe: es instantáneo y no gasta nada.
- * Si no existe lo pide a la función y, si eso falla, lee con la voz del dispositivo.
+ * Si no existe lo pide a la función (ElevenLabs). Nunca se usa la voz del dispositivo: si falla, se avisa.
  */
 export default function DialoguePlayer({ lesson }) {
   const turns = useMemo(() => getLessonAudioTurns(lesson), [lesson])
@@ -21,7 +20,6 @@ export default function DialoguePlayer({ lesson }) {
 
   const run = useRef(0)
   const audioRef = useRef(null)
-  const stopSpeech = useRef(null)
   const jobs = useRef(new Map())
   const blobUrls = useRef([])
   const slowRef = useRef(false)
@@ -30,9 +28,6 @@ export default function DialoguePlayer({ lesson }) {
     run.current++
     audioRef.current?.pause()
     audioRef.current = null
-    stopSpeech.current?.()
-    stopSpeech.current = null
-    cancelSpeech()
     setPlaying(-1)
     setLoading(false)
   }
@@ -40,8 +35,6 @@ export default function DialoguePlayer({ lesson }) {
   useEffect(() => () => {
     run.current++
     audioRef.current?.pause()
-    stopSpeech.current?.()
-    cancelSpeech()
     blobUrls.current.forEach((url) => URL.revokeObjectURL(url))
     blobUrls.current = []
   }, [])
@@ -74,18 +67,6 @@ export default function DialoguePlayer({ lesson }) {
     })
   }
 
-  function speakFallback(from, to, my) {
-    if (my !== run.current) return
-    if (!canSpeak()) { setError('No se pudo reproducir el audio. Intenta de nuevo.'); setPlaying(-1); return }
-    setNotice('Reproduciendo con la voz de tu dispositivo.')
-    stopSpeech.current = speakTurns(turns.slice(from, to), {
-      rate: slowRef.current ? 0.7 : 0.95,
-      onTurn: (k) => setPlaying(from + k),
-      onEnd: () => setPlaying(-1),
-      onError: () => { setNotice(''); setError('No se pudo reproducir el audio.'); setPlaying(-1) },
-    })
-  }
-
   async function playFrom(start, single = false) {
     stop()
     const my = ++run.current
@@ -113,7 +94,8 @@ export default function DialoguePlayer({ lesson }) {
       if (my !== run.current) return
       console.error(err)
       setLoading(false)
-      speakFallback(i, end, my)
+      setPlaying(-1)
+      setError('No se pudo reproducir el audio. Intenta de nuevo.')
     }
   }
 
