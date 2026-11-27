@@ -4,7 +4,9 @@ import { useDraftState } from '../contexts/a1-draft-context'
 import { canReveal, countsForScore, retryMessage, successMessage } from './exerciseRetry'
 import './exercise-retry.css'
 import ReviewAnswer from './ReviewAnswer'
-import { OptionRow } from '../public/AccentSpeakers'
+import AccentSpeakers, { OptionRow, SpokenBits } from '../public/AccentSpeakers'
+import { isEnglishOption } from '../public/optionLanguage.js'
+import { quizSpokenTexts } from '../public/quizSpeech.js'
 import { useReviewMode } from '../contexts/review-mode-context'
 
 /* Retroalimentación común: si fallas ves el porqué, un ánimo y «Inténtalo otra vez». */
@@ -14,7 +16,7 @@ function Feedback({ state, fails, why, answer, onRetry, onReveal, onNext }) {
       <span className="ex-fb-icon" aria-hidden="true">✓</span>
       <div className="ex-fb-main">
         <strong className="ex-fb-title">{successMessage(fails)}</strong>
-        {why && <span className="ex-hint"> {why}</span>}
+        {why && <span className="ex-hint"> <SpokenBits text={why} /></span>}
       </div>
       <button className="ex-next-btn" onClick={() => onNext(countsForScore(fails))}>Siguiente →</button>
     </div>
@@ -23,8 +25,8 @@ function Feedback({ state, fails, why, answer, onRetry, onReveal, onNext }) {
     <div className="ex-feedback wrong" role="status">
       <span className="ex-fb-icon" aria-hidden="true">✗</span>
       <div className="ex-fb-main">
-        <strong className="ex-fb-title">La respuesta correcta es: {answer}</strong>
-        {why && <span className="ex-fb-why"><b>Por qué:</b> {why}</span>}
+        <strong className="ex-fb-title">La respuesta correcta es: {answer}{isEnglishOption(String(answer)) && <AccentSpeakers text={String(answer)} />}</strong>
+        {why && <span className="ex-fb-why"><b>Por qué:</b> <SpokenBits text={why} /></span>}
         <span className="ex-fb-motivation">Guárdala: la volverás a ver en el repaso.</span>
       </div>
       <button className="ex-retry-btn" onClick={onRetry}>Practicar la respuesta ↻</button>
@@ -35,7 +37,7 @@ function Feedback({ state, fails, why, answer, onRetry, onReveal, onNext }) {
       <span className="ex-fb-icon" aria-hidden="true">✗</span>
       <div className="ex-fb-main">
         <strong className="ex-fb-title">Incorrecto</strong>
-        {why && <span className="ex-fb-why"><b>Por qué:</b> {why}</span>}
+        {why && <span className="ex-fb-why"><b>Por qué:</b> <SpokenBits text={why} /></span>}
         <span className="ex-fb-motivation">{retryMessage(fails)}</span>
       </div>
       <div className="ex-fb-actions">
@@ -124,7 +126,7 @@ function FillEx({ ex, onNext, onAttempt, draftKey }) {
 
   return (
     <div className="ex-body">
-      {ex.instruction && <p className="ex-instruction">{ex.instruction}</p>}
+      {ex.instruction && <p className="ex-instruction"><SpokenBits text={ex.instruction} /></p>}
       <div className="ex-fill-row">
         <span className="ex-fill-text">{parts[0]}</span>
         <input
@@ -138,6 +140,7 @@ function FillEx({ ex, onNext, onAttempt, draftKey }) {
           aria-label="Tu respuesta"
         />
         {parts[1] && <span className="ex-fill-text">{parts[1]}</span>}
+        {quizSpokenTexts({ question: ex.sentence }).map(text => <AccentSpeakers key={text} text={text} />)}
       </div>
 
       {state === 'idle' && (
@@ -166,8 +169,8 @@ function ChoiceEx({ ex, onNext, onAttempt, draftKey, speakOptions = false }) {
 
   return (
     <div className="ex-body">
-      {ex.instruction && <p className="ex-instruction">{ex.instruction}</p>}
-      <p className="ex-question">{ex.q}</p>
+      {ex.instruction && <p className="ex-instruction"><SpokenBits text={ex.instruction} /></p>}
+      <p className="ex-question"><SpokenBits text={ex.q} /></p>
       <div className="ex-opts">
         {ex.opts.map((opt, i) => {
           let cls = 'ex-opt'
@@ -215,7 +218,7 @@ function OrderEx({ ex, onNext, onAttempt, draftKey }) {
 
   return (
     <div className="ex-body">
-      {ex.instruction && <p className="ex-instruction">{ex.instruction}</p>}
+      {ex.instruction && <p className="ex-instruction"><SpokenBits text={ex.instruction} /></p>}
       {!ex.instruction && <p className="ex-instruction">Ordena las palabras para formar la oración correcta:</p>}
 
       <div className={`ex-order-area ${placed.length === 0 ? 'empty' : ''}`}>

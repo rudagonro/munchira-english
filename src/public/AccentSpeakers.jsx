@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { hasRecording, reportMissingAudio, sayEnglish } from './lessonSpeech'
 import { isEnglishOption } from './optionLanguage'
+import { splitQuestionForSpeech, spokenTableCell } from './quizSpeech.js'
 import './accent-speakers.css'
 
 const ACCENT_INFO = {
@@ -42,6 +43,26 @@ export default function AccentSpeakers({ text, voice = 'nova', label, slow = fal
   </span>
 }
 
+/** Pinta un texto y pone bocinas US/UK junto a cada trozo en inglés. El español y las guías fonéticas quedan sin audio. */
+export function SpokenBits({ text, voice, source, className }) {
+  const value = String(text ?? '')
+  const parts = splitQuestionForSpeech(value)
+  if (!parts.some(part => part.listen)) return value
+  return <span className={className}>{parts.map((part, i) => part.listen
+    ? <span key={i} className="as-prompt-bit">{part.display}<AccentSpeakers text={part.listen} voice={voice} source={source} /></span>
+    : <span key={i}>{part.display}</span>)}</span>
+}
+
+/** Celda de tabla: si hay inglés que se deba oír, las bocinas van al lado. */
+export function SpokenCell({ text, voice, source }) {
+  const spoken = spokenTableCell(text)
+  if (!spoken.length) return text
+  if (spoken.length === 1 && spoken[0] === String(text).trim()) {
+    return <span className="as-opt-row">{text}<AccentSpeakers text={spoken[0]} voice={voice} source={source} /></span>
+  }
+  return <SpokenBits text={text} voice={voice} source={source} />
+}
+
 /** Selector US/UK para escuchar un diálogo completo. */
 export function AccentToggle({ value, onChange, label = 'Acento del diálogo' }) {
   return <span className="as-toggle" role="radiogroup" aria-label={label}>
@@ -56,4 +77,9 @@ export function AccentToggle({ value, onChange, label = 'Acento del diálogo' })
 export function OptionRow({ option, voice, source, children }) {
   if (!isEnglishOption(option)) return children
   return <div className="as-opt-row">{children}<AccentSpeakers text={String(option)} voice={voice} source={source} /></div>
+}
+
+/** Enunciado del cuestionario: bocinas US/UK junto a cada trozo en inglés (no junto a las guías fonéticas ni al español). */
+export function QuizLegend({ index, question, voice, source }) {
+  return <legend>{index + 1}. <SpokenBits text={question.question} voice={voice} source={source} /></legend>
 }

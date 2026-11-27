@@ -7,7 +7,7 @@ import { useDiagnostic } from '../hooks/useDiagnostic'
 import { LEVEL_NAMES, bankReading, bankListening, bankWriting } from '../data/diagnosticBank'
 import { getCurriculum } from '../data/curriculum'
 import { isWaitlisted, unit0For } from '../data/levelAccess'
-import AccentSpeakers from '../public/AccentSpeakers'
+import AccentSpeakers, { OptionRow, SpokenBits } from '../public/AccentSpeakers'
 
 // Duración orientativa de cada nivel (semanas de estudio constante).
 const LEVEL_DURATION = { A1: '8–10 semanas', A2: '10–12 semanas', B1: '12–14 semanas', B2: '14–16 semanas', C1: '16–18 semanas', C2: 'Programa abierto' }
@@ -175,7 +175,7 @@ export default function Diagnostic({ preview = false }) {
     return (
       <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 1 · Gramática y vocabulario — calibrando: ${diag.gvCurrentLevel}`}>
         <div className="diag-tag">Pregunta {diag.gvQuestionNumber} de hasta 15</div>
-        <h1 className="diag-question">{q.q}</h1>
+        <h1 className="diag-question"><SpokenBits text={q.q} /></h1>
         <OptionsList options={q.opts} selectedIdx={selectedIdx} onSelect={handleSelect} />
         <NextButton disabled={!preview && selectedIdx === null} onClick={handleNext} />
       </DiagShell>
@@ -189,7 +189,7 @@ export default function Diagnostic({ preview = false }) {
       return (
         <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 2 · Lectura — nivel ${diag.readingLevel}`}>
           <div className="diag-tag">Comprensión de lectura</div>
-          <div className="diag-passage">{data.passage}</div>
+          <div className="diag-passage">{data.passage} <AccentSpeakers text={data.passage} label="el texto de lectura" slow /></div>
           <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>
             Lee el texto con atención. Pulsa "Siguiente" cuando estés listo.
           </p>
@@ -201,8 +201,8 @@ export default function Diagnostic({ preview = false }) {
     return (
       <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 2 · Lectura — nivel ${diag.readingLevel}`}>
         <div className="diag-tag">Pregunta {diag.readingStep} de {data.questions.length}</div>
-        <div className="diag-passage diag-passage-small">{data.passage}</div>
-        <h1 className="diag-question">{q.q}</h1>
+        <div className="diag-passage diag-passage-small">{data.passage} <AccentSpeakers text={data.passage} label="el texto de lectura" slow /></div>
+        <h1 className="diag-question"><SpokenBits text={q.q} /></h1>
         <OptionsList options={q.opts} selectedIdx={selectedIdx} onSelect={handleSelect} />
         <NextButton disabled={!preview && selectedIdx === null} onClick={handleNext} />
       </DiagShell>
@@ -229,7 +229,7 @@ export default function Diagnostic({ preview = false }) {
       <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 3 · Escucha — nivel ${diag.listeningLevel}`}>
         <div className="diag-tag">Pregunta {diag.listeningStep} de {data.questions.length}</div>
         <AudioBox transcript={data.transcript} />
-        <h1 className="diag-question">{q.q}</h1>
+        <h1 className="diag-question"><SpokenBits text={q.q} /></h1>
         <OptionsList options={q.opts} selectedIdx={selectedIdx} onSelect={handleSelect} />
         <NextButton disabled={!preview && selectedIdx === null} onClick={handleNext} />
       </DiagShell>
@@ -244,7 +244,7 @@ export default function Diagnostic({ preview = false }) {
     return (
       <DiagShell onExit={handleExit} banner={previewBanner} stageLabel={`Bloque 4 · Escritura — nivel ${diag.writingLevel}`}>
         <div className="diag-tag">Expresión escrita</div>
-        <p className="diag-writing-prompt">{prompt}</p>
+        <p className="diag-writing-prompt"><SpokenBits text={prompt} /></p>
         <textarea
           className="diag-writing-area"
           placeholder="Escribe tu respuesta en inglés..."
@@ -276,18 +276,20 @@ function DiagShell({ stageLabel, banner, children, onExit }) {
 function OptionsList({ options, selectedIdx, onSelect }) {
   return (
     <div className="diag-options" role="radiogroup" aria-label="Opciones de respuesta">
-      {options.map((opt, i) => (
-        <button
-          key={i}
-          className={`diag-opt ${selectedIdx === i ? 'selected' : ''}`}
-          onClick={() => onSelect(i)}
-          type="button"
-          role="radio"
-          aria-checked={selectedIdx === i}
-        >
-          {opt}
-        </button>
-      ))}
+      {options.map((opt, i) => {
+        const button = (
+          <button
+            className={`diag-opt ${selectedIdx === i ? 'selected' : ''}`}
+            onClick={() => onSelect(i)}
+            type="button"
+            role="radio"
+            aria-checked={selectedIdx === i}
+          >
+            {opt}
+          </button>
+        )
+        return <OptionRow key={i} option={opt}>{button}</OptionRow>
+      })}
     </div>
   )
 }

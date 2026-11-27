@@ -39,3 +39,7 @@
 .ml-dialogue li.ml-now { outline: 2px solid var(--mp-teal); }
 .ml-dialogue li .as-speakers { justify-self: start; }
 .ml-listen.as-speakers { margin-left: 6px; }
+
+/* Enunciado del cuestionario: las bocinas van junto al trozo en inglés. */
+.as-prompt-bit { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.ml-quiz-q legend .as-speakers { margin-left: 2px; }
