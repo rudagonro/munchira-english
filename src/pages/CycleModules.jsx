@@ -6,6 +6,7 @@ import CurriculumOutline from '../components/CurriculumOutline'
 import LevelWaitlist from '../components/LevelWaitlist'
 import { useA1Course } from '../data/useA1Course'
 import { isWaitlisted } from '../data/levelAccess'
+import { A1_ESTIMATED_DURATION } from '../data/a1Course'
 import { useA1FinalExamRow } from '../data/useA1FinalExam'
 
 // «Mi curso»: el curso del nivel del alumno. A1 tiene su Unidad 0 y sus Unidades 1–8; los niveles en
@@ -63,6 +64,7 @@ function A1CourseView({ course }) {
       <div className="cycle-level-badge">A1 · {LEVEL_NAMES.A1}</div>
       <h1 className="cycle-title">Mi curso A1</h1>
       <p className="cycle-subtitle">{summary.progressLabel} · {summary.pct}%</p>
+      <p className="cycle-subtitle"><strong>{A1_ESTIMATED_DURATION.label}</strong><br />{A1_ESTIMATED_DURATION.pace}</p>
     </div>
     {course.error && <div className="error-banner" role="alert">No pudimos consultar todo tu avance. Lo que ya completaste sigue guardado.</div>}
     <div className="dash-actions"><p><strong>{summary.nextAction.text}.</strong></p><Link to={summary.nextAction.path} className="btn-primary" style={{ textDecoration: 'none', textAlign: 'center', maxWidth: 320 }}>{summary.nextAction.cta}</Link></div>
