@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T08:38:24-05:00",
+  "generatedAt": "2026-11-27T08:40:00-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -1068,7 +1068,27 @@
     "gaps-def636d8-us": "/audio/a1/gaps/def636d8-us.mp3",
     "gaps-def636d8-gb": "/audio/a1/gaps/def636d8-gb.mp3",
     "gaps-bbfac479-us": "/audio/a1/gaps/bbfac479-us.mp3",
-    "gaps-bbfac479-gb": "/audio/a1/gaps/bbfac479-gb.mp3"
+    "gaps-bbfac479-gb": "/audio/a1/gaps/bbfac479-gb.mp3",
+    "gaps-bfb2ed97-us": "/audio/a1/gaps/bfb2ed97-us.mp3",
+    "gaps-bfb2ed97-gb": "/audio/a1/gaps/bfb2ed97-gb.mp3",
+    "gaps-e75d66b5-us": "/audio/a1/gaps/e75d66b5-us.mp3",
+    "gaps-e75d66b5-gb": "/audio/a1/gaps/e75d66b5-gb.mp3",
+    "gaps-01ec1a27-us": "/audio/a1/gaps/01ec1a27-us.mp3",
+    "gaps-01ec1a27-gb": "/audio/a1/gaps/01ec1a27-gb.mp3",
+    "gaps-88135ed9-us": "/audio/a1/gaps/88135ed9-us.mp3",
+    "gaps-88135ed9-gb": "/audio/a1/gaps/88135ed9-gb.mp3",
+    "gaps-b7368bdf-us": "/audio/a1/gaps/b7368bdf-us.mp3",
+    "gaps-b7368bdf-gb": "/audio/a1/gaps/b7368bdf-gb.mp3",
+    "gaps-1a679488-us": "/audio/a1/gaps/1a679488-us.mp3",
+    "gaps-1a679488-gb": "/audio/a1/gaps/1a679488-gb.mp3",
+    "gaps-54740ddf-us": "/audio/a1/gaps/54740ddf-us.mp3",
+    "gaps-54740ddf-gb": "/audio/a1/gaps/54740ddf-gb.mp3",
+    "gaps-4d874420-us": "/audio/a1/gaps/4d874420-us.mp3",
+    "gaps-4d874420-gb": "/audio/a1/gaps/4d874420-gb.mp3",
+    "gaps-5883edc5-us": "/audio/a1/gaps/5883edc5-us.mp3",
+    "gaps-5883edc5-gb": "/audio/a1/gaps/5883edc5-gb.mp3",
+    "gaps-a446feb5-us": "/audio/a1/gaps/a446feb5-us.mp3",
+    "gaps-a446feb5-gb": "/audio/a1/gaps/a446feb5-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -8474,6 +8494,146 @@
           "gaps-bbfac479-gb",
           0,
           1.149388
+        ]
+      }
+    },
+    "bfb2ed97": {
+      "nova": {
+        "us": [
+          "gaps-bfb2ed97-us",
+          0,
+          2.168163
+        ],
+        "gb": [
+          "gaps-bfb2ed97-gb",
+          0,
+          2.45551
+        ]
+      }
+    },
+    "e75d66b5": {
+      "nova": {
+        "us": [
+          "gaps-e75d66b5-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-e75d66b5-gb",
+          0,
+          1.38449
+        ]
+      }
+    },
+    "01ec1a27": {
+      "nova": {
+        "us": [
+          "gaps-01ec1a27-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-01ec1a27-gb",
+          0,
+          1.253878
+        ]
+      }
+    },
+    "88135ed9": {
+      "nova": {
+        "us": [
+          "gaps-88135ed9-us",
+          0,
+          2.873469
+        ],
+        "gb": [
+          "gaps-88135ed9-gb",
+          0,
+          2.533878
+        ]
+      }
+    },
+    "b7368bdf": {
+      "nova": {
+        "us": [
+          "gaps-b7368bdf-us",
+          0,
+          1.985306
+        ],
+        "gb": [
+          "gaps-b7368bdf-gb",
+          0,
+          2.507755
+        ]
+      }
+    },
+    "1a679488": {
+      "nova": {
+        "us": [
+          "gaps-1a679488-us",
+          0,
+          1.985306
+        ],
+        "gb": [
+          "gaps-1a679488-gb",
+          0,
+          2.037551
+        ]
+      }
+    },
+    "54740ddf": {
+      "nova": {
+        "us": [
+          "gaps-54740ddf-us",
+          0,
+          1.515102
+        ],
+        "gb": [
+          "gaps-54740ddf-gb",
+          0,
+          1.750204
+        ]
+      }
+    },
+    "4d874420": {
+      "nova": {
+        "us": [
+          "gaps-4d874420-us",
+          0,
+          2.089796
+        ],
+        "gb": [
+          "gaps-4d874420-gb",
+          0,
+          2.324898
+        ]
+      }
+    },
+    "5883edc5": {
+      "nova": {
+        "us": [
+          "gaps-5883edc5-us",
+          0,
+          1.802449
+        ],
+        "gb": [
+          "gaps-5883edc5-gb",
+          0,
+          2.403265
+        ]
+      }
+    },
+    "a446feb5": {
+      "nova": {
+        "us": [
+          "gaps-a446feb5-us",
+          0,
+          2.168163
+        ],
+        "gb": [
+          "gaps-a446feb5-gb",
+          0,
+          2.35102
         ]
       }
     }
@@ -28023,6 +28183,368 @@
         ],
         "units": [
           "3"
+        ]
+      },
+      {
+        "key": "bfb2ed97",
+        "text": "I do not work / I don’t work",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.168163,
+        "url": "/audio/a1/gaps/bfb2ed97-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "bfb2ed97",
+        "text": "I do not work / I don’t work",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.45551,
+        "url": "/audio/a1/gaps/bfb2ed97-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "e75d66b5",
+        "text": "Do you work?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/e75d66b5-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "e75d66b5",
+        "text": "Do you work?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/e75d66b5-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "01ec1a27",
+        "text": "She works",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/01ec1a27-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "01ec1a27",
+        "text": "She works",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/01ec1a27-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "88135ed9",
+        "text": "She does not work / She doesn’t work",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.873469,
+        "url": "/audio/a1/gaps/88135ed9-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "88135ed9",
+        "text": "She does not work / She doesn’t work",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.533878,
+        "url": "/audio/a1/gaps/88135ed9-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "b7368bdf",
+        "text": "In the morning, I wake up at 7.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/b7368bdf-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "b7368bdf",
+        "text": "In the morning, I wake up at 7.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.507755,
+        "url": "/audio/a1/gaps/b7368bdf-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "1a679488",
+        "text": "In the afternoon, I have lunch.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/1a679488-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "1a679488",
+        "text": "In the afternoon, I have lunch.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.037551,
+        "url": "/audio/a1/gaps/1a679488-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "54740ddf",
+        "text": "After that, I go to work.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/54740ddf-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "54740ddf",
+        "text": "After that, I go to work.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/54740ddf-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "4d874420",
+        "text": "Finally, I go to bed at 11.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.089796,
+        "url": "/audio/a1/gaps/4d874420-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "4d874420",
+        "text": "Finally, I go to bed at 11.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.324898,
+        "url": "/audio/a1/gaps/4d874420-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "5883edc5",
+        "text": "I ___ up at 7 every day.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.802449,
+        "url": "/audio/a1/gaps/5883edc5-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "5883edc5",
+        "text": "I ___ up at 7 every day.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.403265,
+        "url": "/audio/a1/gaps/5883edc5-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "a446feb5",
+        "text": "She ___ to work at 8.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.168163,
+        "url": "/audio/a1/gaps/a446feb5-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3",
+          "8"
+        ]
+      },
+      {
+        "key": "a446feb5",
+        "text": "She ___ to work at 8.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.35102,
+        "url": "/audio/a1/gaps/a446feb5-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3",
+          "8"
         ]
       }
     ]
