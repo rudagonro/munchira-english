@@ -4,7 +4,7 @@
 // Cada personaje del diálogo tiene su voz: mujer (nova) u hombre (onyx).
 import { mkdirSync, existsSync, writeFileSync } from 'node:fs'
 import { lessonA1Presentarte as lesson } from '../src/data/modelLessons/a1-presentarte.js'
-import { speechText, audioKey } from '../src/public/speechText.js'
+import { ttsText, audioKey } from '../src/public/speechText.js'
 import { displayForm } from '../src/public/model-lesson.js'
 
 const VOICES = {
@@ -30,9 +30,9 @@ export function lessonSpokenTexts(l) {
   ]
   const byKey = new Map()
   for (const item of single) {
-    const spoken = speechText(item.text)
+    const spoken = ttsText(item.text)
     if (!spoken) continue
-    const key = audioKey(spoken)
+    const key = audioKey(item.text)
     if (!byKey.has(key)) byKey.set(key, { ...item, text: spoken })
   }
   return [...byKey.values()]

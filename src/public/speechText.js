@@ -1,4 +1,5 @@
-// Texto que se envía a la voz: la barra «/» separa alternativas y no debe leerse.
+// Forma usada solo para la clave del archivo. No añadir aquí normalizaciones nuevas:
+// cambiar esto renombra los MP3. El texto que se envía a la voz es ttsText.
 export function speechText(text) {
   return String(text ?? '')
     .replace(/([.!?])\s*\/\s*/g, '$1 ')
@@ -6,6 +7,45 @@ export function speechText(text) {
     .replace(/…/g, '...')
     .replace(/\s+/g, ' ')
     .trim()
+}
+
+/**
+ * Texto que se envía a ElevenLabs. El texto en pantalla no cambia.
+ * La barra «/» es una pausa entre alternativas; los huecos «___» son una pausa corta;
+ * no se leen «slash», «underscore», «equals», ni las etiquetas de hablante «A:» / «B:».
+ */
+export function ttsText(text) {
+  let s = String(text ?? '')
+    .replace(/_{3,}/g, '...')
+    .replace(/…/g, '...')
+    // Etiquetas de diálogo u opción: «A:», «B:», «A)», «a)» (no la letra suelta del abecedario).
+    .replace(/(^|[\s.?!])([A-Da-d])\s*[:)]\s+/g, '$1')
+    .replace(/([.!?])\s*\/\s*/g, '$1 ')
+    .replace(/,\s*\/\s*/g, '. ')
+    .replace(/\s*\/\s*/g, '. ')
+    .replace(/\s*\+\s*/g, ' ')
+    .replace(/\s*=\s*(?=\d)/g, ' is ')
+    .replace(/\s*=\s*/g, '. ')
+    .replace(/\s*→\s*/g, '. ')
+    .replace(/\s*\|\s*/g, '. ')
+    .replace(/\s*&\s*/g, ' and ')
+    .replace(/[([{]/g, ', ')
+    .replace(/[)\]}]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([,;:!?])/g, '$1')
+    .replace(/\s+\.(?!\.)/g, '.')
+    .replace(/,(?:\s*,)+/g, ',')
+    .replace(/(^|[.!?]\s+)[,;]\s*/g, '$1')
+    .trim()
+  return s
+}
+
+/** True si el texto hablado todavía tiene un símbolo o etiqueta que el TTS podría leer en voz alta. */
+export function hasReadAloudMarks(spoken) {
+  const s = String(spoken ?? '')
+  if (/[/+=→|&()[\]{}…]|_{2,}/.test(s)) return true
+  if (/(^|[\s.?!])[A-Da-d]\s*[:)]\s+/.test(s)) return true
+  return false
 }
 
 /** Clave estable de un texto hablado (FNV-1a, 8 hex) para nombrar su archivo de audio. */

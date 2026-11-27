@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T10:23:01-05:00",
+  "generatedAt": "2026-11-27T10:47:38-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -5108,12 +5108,12 @@
         "us": [
           "gaps-997b2baa-us",
           0,
-          1.567347
+          1.38449
         ],
         "gb": [
           "gaps-997b2baa-gb",
           0,
-          1.854694
+          1.201633
         ]
       }
     },
@@ -5920,12 +5920,12 @@
         "us": [
           "gaps-8cfd1141-us",
           0,
-          1.671837
+          1.07102
         ],
         "gb": [
           "gaps-8cfd1141-gb",
           0,
-          1.619592
+          1.28
         ]
       }
     },
@@ -5939,7 +5939,7 @@
         "gb": [
           "gaps-c5952bf5-gb",
           0,
-          1.48898
+          1.253878
         ]
       }
     },
@@ -5948,12 +5948,12 @@
         "us": [
           "gaps-ab1cbebf-us",
           0,
-          1.48898
+          1.201633
         ],
         "gb": [
           "gaps-ab1cbebf-gb",
           0,
-          1.619592
+          1.38449
         ]
       }
     },
@@ -5962,12 +5962,12 @@
         "us": [
           "gaps-8577ade5-us",
           0,
-          1.619592
+          1.48898
         ],
         "gb": [
           "gaps-8577ade5-gb",
           0,
-          1.436735
+          1.332245
         ]
       }
     },
@@ -6774,12 +6774,12 @@
         "us": [
           "gaps-52a907d1-us",
           0,
-          2.45551
+          1.253878
         ],
         "gb": [
           "gaps-52a907d1-gb",
           0,
-          2.272653
+          1.436735
         ]
       }
     },
@@ -6858,12 +6858,12 @@
         "us": [
           "gaps-8129b980-us",
           0,
-          1.802449
+          1.750204
         ],
         "gb": [
           "gaps-8129b980-gb",
           0,
-          1.933061
+          1.802449
         ]
       }
     },
@@ -6914,12 +6914,12 @@
         "us": [
           "gaps-223d7a64-us",
           0,
-          3.578776
+          1.201633
         ],
         "gb": [
           "gaps-223d7a64-gb",
           0,
-          2.324898
+          1.48898
         ]
       }
     },
@@ -6984,12 +6984,12 @@
         "us": [
           "gaps-031f7f51-us",
           0,
-          3.709388
+          1.567347
         ],
         "gb": [
           "gaps-031f7f51-gb",
           0,
-          2.638367
+          1.750204
         ]
       }
     },
@@ -7138,12 +7138,12 @@
         "us": [
           "gaps-214c6578-us",
           0,
-          3.108571
+          1.436735
         ],
         "gb": [
           "gaps-214c6578-gb",
           0,
-          3.291429
+          1.48898
         ]
       }
     },
@@ -7194,12 +7194,12 @@
         "us": [
           "gaps-15dbe23a-us",
           0,
-          3.709388
+          1.802449
         ],
         "gb": [
           "gaps-15dbe23a-gb",
           0,
-          3.004082
+          2.403265
         ]
       }
     },
@@ -7264,12 +7264,12 @@
         "us": [
           "gaps-3f0c4506-us",
           0,
-          3.291429
+          1.28
         ],
         "gb": [
           "gaps-3f0c4506-gb",
           0,
-          2.45551
+          1.619592
         ]
       }
     },
@@ -7404,12 +7404,12 @@
         "us": [
           "gaps-1bd3e5e6-us",
           0,
-          3.056327
+          1.515102
         ],
         "gb": [
           "gaps-1bd3e5e6-gb",
           0,
-          2.638367
+          1.619592
         ]
       }
     },
@@ -7479,7 +7479,7 @@
         "gb": [
           "gaps-b3b88625-gb",
           0,
-          4.414694
+          3.94449
         ]
       }
     },
@@ -7488,12 +7488,12 @@
         "us": [
           "gaps-40bfe2a6-us",
           0,
-          5.250612
+          3.709388
         ],
         "gb": [
           "gaps-40bfe2a6-gb",
           0,
-          4.963265
+          4.832653
         ]
       }
     },
@@ -7502,12 +7502,12 @@
         "us": [
           "gaps-8dfd959c-us",
           0,
-          2.690612
+          2.821224
         ],
         "gb": [
           "gaps-8dfd959c-gb",
           0,
-          3.160816
+          3.186939
         ]
       }
     },
@@ -7717,7 +7717,7 @@
         "gb": [
           "gaps-42266eb9-gb",
           0,
-          0.862041
+          0.966531
         ]
       }
     },
@@ -8020,12 +8020,12 @@
         "us": [
           "gaps-343c55a3-us",
           0,
-          1.985306
+          1.750204
         ],
         "gb": [
           "gaps-343c55a3-gb",
           0,
-          1.933061
+          1.802449
         ]
       }
     },
@@ -8048,12 +8048,12 @@
         "us": [
           "gaps-57fb77eb-us",
           0,
-          5.146122
+          3.761633
         ],
         "gb": [
           "gaps-57fb77eb-gb",
           0,
-          3.761633
+          2.403265
         ]
       }
     },
@@ -8132,12 +8132,12 @@
         "us": [
           "gaps-66164599-us",
           0,
-          1.515102
+          1.567347
         ],
         "gb": [
           "gaps-66164599-gb",
           0,
-          1.38449
+          1.515102
         ]
       }
     },
@@ -8748,12 +8748,12 @@
         "us": [
           "gaps-88135ed9-us",
           0,
-          2.873469
+          2.690612
         ],
         "gb": [
           "gaps-88135ed9-gb",
           0,
-          2.533878
+          3.160816
         ]
       }
     },
@@ -10148,12 +10148,12 @@
         "us": [
           "gaps-2e7e8b8f-us",
           0,
-          4.022857
+          3.578776
         ],
         "gb": [
           "gaps-2e7e8b8f-gb",
           0,
-          3.239184
+          3.369796
         ]
       }
     },
@@ -10176,7 +10176,7 @@
         "us": [
           "gaps-ae2bb0e5-us",
           0,
-          2.742857
+          2.403265
         ],
         "gb": [
           "gaps-ae2bb0e5-gb",
@@ -10190,12 +10190,12 @@
         "us": [
           "gaps-1b86790b-us",
           0,
-          2.533878
+          1.802449
         ],
         "gb": [
           "gaps-1b86790b-gb",
           0,
-          2.507755
+          1.933061
         ]
       }
     },
@@ -10218,7 +10218,7 @@
         "us": [
           "gaps-a4fd525e-us",
           0,
-          7.131429
+          3.108571
         ],
         "gb": [
           "gaps-a4fd525e-gb",
@@ -10246,12 +10246,12 @@
         "us": [
           "gaps-3419657a-us",
           0,
-          8.202449
+          2.742857
         ],
         "gb": [
           "gaps-3419657a-gb",
           0,
-          4.205714
+          2.873469
         ]
       }
     },
@@ -10260,12 +10260,12 @@
         "us": [
           "gaps-74c0ba03-us",
           0,
-          2.742857
+          3.056327
         ],
         "gb": [
           "gaps-74c0ba03-gb",
           0,
-          3.056327
+          2.821224
         ]
       }
     },
@@ -10384,7 +10384,7 @@
   },
   "inventory": {
     "note": "Incluye clips de enunciados y opciones de cuestionario A1. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 20,
+    "clips_written": 10,
     "clips_missing_files": 0,
     "items": [
       {
@@ -20622,42 +20622,6 @@
         ]
       },
       {
-        "key": "997b2baa",
-        "text": "Hey! / Hi!",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 1.567347,
-        "url": "/audio/a1/gaps/997b2baa-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
-        "key": "997b2baa",
-        "text": "Hey! / Hi!",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 1.854694,
-        "url": "/audio/a1/gaps/997b2baa-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
         "key": "782de843",
         "text": "Good morning, I hope this message finds you well.",
         "accent": "us",
@@ -22720,42 +22684,6 @@
         ]
       },
       {
-        "key": "8cfd1141",
-        "text": "is / am",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 1.671837,
-        "url": "/audio/a1/gaps/8cfd1141-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "8"
-        ]
-      },
-      {
-        "key": "8cfd1141",
-        "text": "is / am",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 1.619592,
-        "url": "/audio/a1/gaps/8cfd1141-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "8"
-        ]
-      },
-      {
         "key": "c5952bf5",
         "text": "am / is",
         "accent": "us",
@@ -22763,96 +22691,6 @@
         "voiceId": "cgSgspJ2msm6clMCkdW9",
         "duration": 1.567347,
         "url": "/audio/a1/gaps/c5952bf5-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "8"
-        ]
-      },
-      {
-        "key": "c5952bf5",
-        "text": "am / is",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 1.48898,
-        "url": "/audio/a1/gaps/c5952bf5-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "8"
-        ]
-      },
-      {
-        "key": "ab1cbebf",
-        "text": "are / is",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 1.48898,
-        "url": "/audio/a1/gaps/ab1cbebf-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "8"
-        ]
-      },
-      {
-        "key": "ab1cbebf",
-        "text": "are / is",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 1.619592,
-        "url": "/audio/a1/gaps/ab1cbebf-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "8"
-        ]
-      },
-      {
-        "key": "8577ade5",
-        "text": "is / have",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 1.619592,
-        "url": "/audio/a1/gaps/8577ade5-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "8"
-        ]
-      },
-      {
-        "key": "8577ade5",
-        "text": "is / have",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 1.436735,
-        "url": "/audio/a1/gaps/8577ade5-gb.mp3",
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
@@ -24916,42 +24754,6 @@
         ]
       },
       {
-        "key": "52a907d1",
-        "text": "A: How are you? B: ___",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 2.45551,
-        "url": "/audio/a1/gaps/52a907d1-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "1"
-        ]
-      },
-      {
-        "key": "52a907d1",
-        "text": "A: How are you? B: ___",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 2.272653,
-        "url": "/audio/a1/gaps/52a907d1-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "1"
-        ]
-      },
-      {
         "key": "05814c9e",
         "text": "She a teacher.",
         "accent": "us",
@@ -25132,42 +24934,6 @@
         ]
       },
       {
-        "key": "8129b980",
-        "text": "The son of my parents is my…",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 1.802449,
-        "url": "/audio/a1/gaps/8129b980-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "2"
-        ]
-      },
-      {
-        "key": "8129b980",
-        "text": "The son of my parents is my…",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 1.933061,
-        "url": "/audio/a1/gaps/8129b980-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "2"
-        ]
-      },
-      {
         "key": "32556497",
         "text": "Laura is married to Pedro. Pedro is her ___.",
         "accent": "us",
@@ -25268,42 +25034,6 @@
         "clipVoice": "nova",
         "role": "palabra-suelta",
         "speed": 0.75,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "2"
-        ]
-      },
-      {
-        "key": "223d7a64",
-        "text": "A: What’s your phone number? B: ___",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 3.578776,
-        "url": "/audio/a1/gaps/223d7a64-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "2"
-        ]
-      },
-      {
-        "key": "223d7a64",
-        "text": "A: What’s your phone number? B: ___",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 2.324898,
-        "url": "/audio/a1/gaps/223d7a64-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
         "areas": [
           "cuestionario"
         ],
@@ -25448,42 +25178,6 @@
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "3"
-        ]
-      },
-      {
-        "key": "031f7f51",
-        "text": "A: What time do you go to bed? B: ___",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 3.709388,
-        "url": "/audio/a1/gaps/031f7f51-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "3"
-        ]
-      },
-      {
-        "key": "031f7f51",
-        "text": "A: What time do you go to bed? B: ___",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 2.638367,
-        "url": "/audio/a1/gaps/031f7f51-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
         "areas": [
           "cuestionario"
         ],
@@ -25852,42 +25546,6 @@
         ]
       },
       {
-        "key": "214c6578",
-        "text": "A: How much is the coffee? B: ___",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 3.108571,
-        "url": "/audio/a1/gaps/214c6578-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "5"
-        ]
-      },
-      {
-        "key": "214c6578",
-        "text": "A: How much is the coffee? B: ___",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 3.291429,
-        "url": "/audio/a1/gaps/214c6578-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "5"
-        ]
-      },
-      {
         "key": "a5a17ead",
         "text": "They ___ pizza. It’s their favorite food.",
         "accent": "us",
@@ -25988,42 +25646,6 @@
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
-        "key": "15dbe23a",
-        "text": "A: What do you do in your free time? B: ___",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 3.709388,
-        "url": "/audio/a1/gaps/15dbe23a-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
-        "key": "15dbe23a",
-        "text": "A: What do you do in your free time? B: ___",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 3.004082,
-        "url": "/audio/a1/gaps/15dbe23a-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
         "areas": [
           "cuestionario"
         ],
@@ -26173,42 +25795,6 @@
         ],
         "units": [
           "6"
-        ]
-      },
-      {
-        "key": "3f0c4506",
-        "text": "A: How do you go to work? B: ___",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 3.291429,
-        "url": "/audio/a1/gaps/3f0c4506-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "7"
-        ]
-      },
-      {
-        "key": "3f0c4506",
-        "text": "A: How do you go to work? B: ___",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 2.45551,
-        "url": "/audio/a1/gaps/3f0c4506-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "7"
         ]
       },
       {
@@ -26536,42 +26122,6 @@
         ]
       },
       {
-        "key": "1bd3e5e6",
-        "text": "A: How do I get to the bank? B: ___",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 3.056327,
-        "url": "/audio/a1/gaps/1bd3e5e6-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "8"
-        ]
-      },
-      {
-        "key": "1bd3e5e6",
-        "text": "A: How do I get to the bank? B: ___",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 2.638367,
-        "url": "/audio/a1/gaps/1bd3e5e6-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "8"
-        ]
-      },
-      {
         "key": "c4cb0b89",
         "text": "I don’t like coffee",
         "accent": "us",
@@ -26723,96 +26273,6 @@
         "voiceId": "cgSgspJ2msm6clMCkdW9",
         "duration": 4.858776,
         "url": "/audio/a1/gaps/b3b88625-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "0"
-        ]
-      },
-      {
-        "key": "b3b88625",
-        "text": "thirteen = 13. thirty = 30.",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 4.414694,
-        "url": "/audio/a1/gaps/b3b88625-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "0"
-        ]
-      },
-      {
-        "key": "40bfe2a6",
-        "text": "forty = 40, seven = 7: 47.",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 5.250612,
-        "url": "/audio/a1/gaps/40bfe2a6-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "0"
-        ]
-      },
-      {
-        "key": "40bfe2a6",
-        "text": "forty = 40, seven = 7: 47.",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 4.963265,
-        "url": "/audio/a1/gaps/40bfe2a6-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "0"
-        ]
-      },
-      {
-        "key": "8dfd959c",
-        "text": "Monday, Tuesday, Wednesday, Thursday…",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 2.690612,
-        "url": "/audio/a1/gaps/8dfd959c-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "cuestionario"
-        ],
-        "units": [
-          "0"
-        ]
-      },
-      {
-        "key": "8dfd959c",
-        "text": "Monday, Tuesday, Wednesday, Thursday…",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 3.160816,
-        "url": "/audio/a1/gaps/8dfd959c-gb.mp3",
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
@@ -27329,42 +26789,6 @@
         "units": [
           "1",
           "3"
-        ]
-      },
-      {
-        "key": "42266eb9",
-        "text": "Are you…?",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 0.966531,
-        "url": "/audio/a1/gaps/42266eb9-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "1"
-        ]
-      },
-      {
-        "key": "42266eb9",
-        "text": "Are you…?",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 0.862041,
-        "url": "/audio/a1/gaps/42266eb9-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "1"
         ]
       },
       {
@@ -28128,42 +27552,6 @@
         ]
       },
       {
-        "key": "343c55a3",
-        "text": "They + are = they’re.",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 1.985306,
-        "url": "/audio/a1/gaps/343c55a3-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "1"
-        ]
-      },
-      {
-        "key": "343c55a3",
-        "text": "They + are = they’re.",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 1.933061,
-        "url": "/audio/a1/gaps/343c55a3-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "1"
-        ]
-      },
-      {
         "key": "3bce4675",
         "text": "Nice to meet you too",
         "accent": "us",
@@ -28192,42 +27580,6 @@
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "1"
-        ]
-      },
-      {
-        "key": "57fb77eb",
-        "text": "A: How are you? B: I am ___, thanks.",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 5.146122,
-        "url": "/audio/a1/gaps/57fb77eb-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "1"
-        ]
-      },
-      {
-        "key": "57fb77eb",
-        "text": "A: How are you? B: I am ___, thanks.",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 3.761633,
-        "url": "/audio/a1/gaps/57fb77eb-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
         "areas": [
           "leccion"
         ],
@@ -28405,42 +27757,6 @@
         "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
         "duration": 1.802449,
         "url": "/audio/a1/gaps/08133404-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "1"
-        ]
-      },
-      {
-        "key": "66164599",
-        "text": "Laura lives with…",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 1.515102,
-        "url": "/audio/a1/gaps/66164599-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "1"
-        ]
-      },
-      {
-        "key": "66164599",
-        "text": "Laura lives with…",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 1.38449,
-        "url": "/audio/a1/gaps/66164599-gb.mp3",
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
@@ -29994,42 +29310,6 @@
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "3"
-        ]
-      },
-      {
-        "key": "88135ed9",
-        "text": "She does not work / She doesn’t work",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 2.873469,
-        "url": "/audio/a1/gaps/88135ed9-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "3"
-        ]
-      },
-      {
-        "key": "88135ed9",
-        "text": "She does not work / She doesn’t work",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 2.533878,
-        "url": "/audio/a1/gaps/88135ed9-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
         "areas": [
           "leccion"
         ],
@@ -33622,42 +32902,6 @@
         ]
       },
       {
-        "key": "2e7e8b8f",
-        "text": "I read at the weekend / I read on the weekend",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 4.022857,
-        "url": "/audio/a1/gaps/2e7e8b8f-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
-        "key": "2e7e8b8f",
-        "text": "I read at the weekend / I read on the weekend",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 3.239184,
-        "url": "/audio/a1/gaps/2e7e8b8f-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
         "key": "efe4120d",
         "text": "Hi! / Hey! / Hello!",
         "accent": "us",
@@ -33696,24 +32940,6 @@
       {
         "key": "ae2bb0e5",
         "text": "Dear Ms. Smith, / Good morning,",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 2.742857,
-        "url": "/audio/a1/gaps/ae2bb0e5-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
-        "key": "ae2bb0e5",
-        "text": "Dear Ms. Smith, / Good morning,",
         "accent": "gb",
         "voice": "alice",
         "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
@@ -33722,42 +32948,6 @@
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
-        "key": "1b86790b",
-        "text": "How are you? / How’s it going?",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 2.533878,
-        "url": "/audio/a1/gaps/1b86790b-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
-        "key": "1b86790b",
-        "text": "How are you? / How’s it going?",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 2.507755,
-        "url": "/audio/a1/gaps/1b86790b-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
         "areas": [
           "leccion"
         ],
@@ -33794,24 +32984,6 @@
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
-        "key": "a4fd525e",
-        "text": "I’m great! / Not bad! / Pretty good, thanks!",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 7.131429,
-        "url": "/audio/a1/gaps/a4fd525e-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
         "areas": [
           "leccion"
         ],
@@ -33863,78 +33035,6 @@
         "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
         "duration": 1.671837,
         "url": "/audio/a1/gaps/82ff9301-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
-        "key": "3419657a",
-        "text": "Talk soon! / Take care! / See you! / Bye!",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 8.202449,
-        "url": "/audio/a1/gaps/3419657a-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
-        "key": "3419657a",
-        "text": "Talk soon! / Take care! / See you! / Bye!",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 4.205714,
-        "url": "/audio/a1/gaps/3419657a-gb.mp3",
-        "clipVoice": "nova",
-        "role": "frase-larga",
-        "speed": 0.9,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
-        "key": "74c0ba03",
-        "text": "Best regards, / Kind regards,",
-        "accent": "us",
-        "voice": "jessica",
-        "voiceId": "cgSgspJ2msm6clMCkdW9",
-        "duration": 2.742857,
-        "url": "/audio/a1/gaps/74c0ba03-us.mp3",
-        "clipVoice": "nova",
-        "role": "frase-corta-o-pregunta",
-        "speed": 0.8,
-        "areas": [
-          "leccion"
-        ],
-        "units": [
-          "6"
-        ]
-      },
-      {
-        "key": "74c0ba03",
-        "text": "Best regards, / Kind regards,",
-        "accent": "gb",
-        "voice": "alice",
-        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-        "duration": 3.056327,
-        "url": "/audio/a1/gaps/74c0ba03-gb.mp3",
         "clipVoice": "nova",
         "role": "frase-corta-o-pregunta",
         "speed": 0.8,
@@ -34231,6 +33331,906 @@
         ],
         "units": [
           "6"
+        ]
+      },
+      {
+        "key": "031f7f51",
+        "text": "A: What time do you go to bed? B: ___",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/031f7f51-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "031f7f51",
+        "text": "A: What time do you go to bed? B: ___",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/031f7f51-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "15dbe23a",
+        "text": "A: What do you do in your free time? B: ___",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.802449,
+        "url": "/audio/a1/gaps/15dbe23a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "15dbe23a",
+        "text": "A: What do you do in your free time? B: ___",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.403265,
+        "url": "/audio/a1/gaps/15dbe23a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "1b86790b",
+        "text": "How are you? / How’s it going?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.802449,
+        "url": "/audio/a1/gaps/1b86790b-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "1b86790b",
+        "text": "How are you? / How’s it going?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/1b86790b-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "1bd3e5e6",
+        "text": "A: How do I get to the bank? B: ___",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/1bd3e5e6-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "1bd3e5e6",
+        "text": "A: How do I get to the bank? B: ___",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/1bd3e5e6-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "214c6578",
+        "text": "A: How much is the coffee? B: ___",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/214c6578-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "214c6578",
+        "text": "A: How much is the coffee? B: ___",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/214c6578-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "223d7a64",
+        "text": "A: What’s your phone number? B: ___",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.201633,
+        "url": "/audio/a1/gaps/223d7a64-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "223d7a64",
+        "text": "A: What’s your phone number? B: ___",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/223d7a64-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "2e7e8b8f",
+        "text": "I read at the weekend / I read on the weekend",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 3.578776,
+        "url": "/audio/a1/gaps/2e7e8b8f-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "2e7e8b8f",
+        "text": "I read at the weekend / I read on the weekend",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 3.369796,
+        "url": "/audio/a1/gaps/2e7e8b8f-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "3419657a",
+        "text": "Talk soon! / Take care! / See you! / Bye!",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.742857,
+        "url": "/audio/a1/gaps/3419657a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "3419657a",
+        "text": "Talk soon! / Take care! / See you! / Bye!",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.873469,
+        "url": "/audio/a1/gaps/3419657a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "343c55a3",
+        "text": "They + are = they’re.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/343c55a3-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "1"
+        ]
+      },
+      {
+        "key": "343c55a3",
+        "text": "They + are = they’re.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.802449,
+        "url": "/audio/a1/gaps/343c55a3-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "1"
+        ]
+      },
+      {
+        "key": "3f0c4506",
+        "text": "A: How do you go to work? B: ___",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/3f0c4506-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "7"
+        ]
+      },
+      {
+        "key": "3f0c4506",
+        "text": "A: How do you go to work? B: ___",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/3f0c4506-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "7"
+        ]
+      },
+      {
+        "key": "40bfe2a6",
+        "text": "forty = 40, seven = 7: 47.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 3.709388,
+        "url": "/audio/a1/gaps/40bfe2a6-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "40bfe2a6",
+        "text": "forty = 40, seven = 7: 47.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 4.832653,
+        "url": "/audio/a1/gaps/40bfe2a6-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "42266eb9",
+        "text": "Are you…?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/42266eb9-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "1"
+        ]
+      },
+      {
+        "key": "42266eb9",
+        "text": "Are you…?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/42266eb9-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "1"
+        ]
+      },
+      {
+        "key": "52a907d1",
+        "text": "A: How are you? B: ___",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/52a907d1-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "1"
+        ]
+      },
+      {
+        "key": "52a907d1",
+        "text": "A: How are you? B: ___",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/52a907d1-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "1"
+        ]
+      },
+      {
+        "key": "57fb77eb",
+        "text": "A: How are you? B: I am ___, thanks.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 3.761633,
+        "url": "/audio/a1/gaps/57fb77eb-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "1"
+        ]
+      },
+      {
+        "key": "57fb77eb",
+        "text": "A: How are you? B: I am ___, thanks.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.403265,
+        "url": "/audio/a1/gaps/57fb77eb-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "1"
+        ]
+      },
+      {
+        "key": "66164599",
+        "text": "Laura lives with…",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/66164599-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "1"
+        ]
+      },
+      {
+        "key": "66164599",
+        "text": "Laura lives with…",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/66164599-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "1"
+        ]
+      },
+      {
+        "key": "74c0ba03",
+        "text": "Best regards, / Kind regards,",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 3.056327,
+        "url": "/audio/a1/gaps/74c0ba03-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "74c0ba03",
+        "text": "Best regards, / Kind regards,",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.821224,
+        "url": "/audio/a1/gaps/74c0ba03-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "8129b980",
+        "text": "The son of my parents is my…",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/8129b980-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "8129b980",
+        "text": "The son of my parents is my…",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.802449,
+        "url": "/audio/a1/gaps/8129b980-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "2"
+        ]
+      },
+      {
+        "key": "8577ade5",
+        "text": "is / have",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/8577ade5-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "8577ade5",
+        "text": "is / have",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.332245,
+        "url": "/audio/a1/gaps/8577ade5-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "88135ed9",
+        "text": "She does not work / She doesn’t work",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.690612,
+        "url": "/audio/a1/gaps/88135ed9-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "88135ed9",
+        "text": "She does not work / She doesn’t work",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 3.160816,
+        "url": "/audio/a1/gaps/88135ed9-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "3"
+        ]
+      },
+      {
+        "key": "8cfd1141",
+        "text": "is / am",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.07102,
+        "url": "/audio/a1/gaps/8cfd1141-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "8cfd1141",
+        "text": "is / am",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/8cfd1141-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "8dfd959c",
+        "text": "Monday, Tuesday, Wednesday, Thursday…",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.821224,
+        "url": "/audio/a1/gaps/8dfd959c-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "8dfd959c",
+        "text": "Monday, Tuesday, Wednesday, Thursday…",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 3.186939,
+        "url": "/audio/a1/gaps/8dfd959c-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "997b2baa",
+        "text": "Hey! / Hi!",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/997b2baa-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "997b2baa",
+        "text": "Hey! / Hi!",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.201633,
+        "url": "/audio/a1/gaps/997b2baa-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "a4fd525e",
+        "text": "I’m great! / Not bad! / Pretty good, thanks!",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 3.108571,
+        "url": "/audio/a1/gaps/a4fd525e-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "ab1cbebf",
+        "text": "are / is",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.201633,
+        "url": "/audio/a1/gaps/ab1cbebf-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "ab1cbebf",
+        "text": "are / is",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/ab1cbebf-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "ae2bb0e5",
+        "text": "Dear Ms. Smith, / Good morning,",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.403265,
+        "url": "/audio/a1/gaps/ae2bb0e5-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "b3b88625",
+        "text": "thirteen = 13. thirty = 30.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 3.94449,
+        "url": "/audio/a1/gaps/b3b88625-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "c5952bf5",
+        "text": "am / is",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/c5952bf5-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
         ]
       }
     ]
