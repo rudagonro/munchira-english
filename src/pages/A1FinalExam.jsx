@@ -12,7 +12,8 @@ import {
 import ReviewAnswer from '../components/ReviewAnswer'
 import StaffNoSaveNote from '../components/StaffNoSaveNote'
 import { registerLessonRecordings } from '../public/lessonRecordings'
-import { canListen, sayEnglish, stopLessonAudio } from '../public/lessonSpeech'
+import { stopLessonAudio } from '../public/lessonSpeech'
+import AccentSpeakers, { OptionRow } from '../public/AccentSpeakers'
 import '../public/unit-quiz.css'
 
 const { questions, sections, passages } = A1_FINAL_EXAM
@@ -24,14 +25,9 @@ function formatTime(date) {
   return new Intl.DateTimeFormat('es-CO', { hour: 'numeric', minute: '2-digit' }).format(date)
 }
 
-/** Escucha: solo audio ya grabado de las unidades A1 (sin generar voces nuevas). */
+/** Escucha: solo audio ya grabado de las unidades A1, con bocinas 🇺🇸/🇬🇧 (sin voz del dispositivo). */
 function ListenClip({ question }) {
-  if (!canListen()) return <p className="tp-hint">Tu navegador no puede reproducir audio.</p>
-  const play = (slow) => { registerLessonRecordings(unitAudio(question.unit_audio)); sayEnglish(question.audio, { slow }) }
-  return <p className="fx-listen">
-    <button type="button" onClick={() => play(false)} aria-label={`Escuchar el audio de la pregunta ${question.id}`}>🔊 Escuchar</button>
-    <button type="button" onClick={() => play(true)} aria-label={`Escuchar despacio el audio de la pregunta ${question.id}`}>🐢 Despacio</button>
-  </p>
+  return <p className="fx-listen"><AccentSpeakers text={question.audio} source={unitAudio(question.unit_audio)} label={`el audio de la pregunta ${question.id}`} slow /></p>
 }
 
 function sectionScores(answers, key) {
@@ -71,11 +67,11 @@ export function ExamForm({ answerKey = null, onSubmit, busy }) {
           <fieldset className="ml-quiz-q">
             <legend>{index + 1}. {question.question}</legend>
             {question.audio && <ListenClip question={question} />}
-            {question.options.map((option, value) => <label key={value} className="ml-quiz-opt">
+            {question.options.map((option, value) => <OptionRow key={value} option={option} source={unitAudio(question.unit_audio)}><label className="ml-quiz-opt">
               <input type="radio" name={`fx-${question.id}`} value={value} checked={answers[index] === value} disabled={busy} required
                 onChange={() => { setChecked(null); setAnswers(previous => ({ ...previous, [index]: value })) }} />
               <span>{option}</span>
-            </label>)}
+            </label></OptionRow>)}
             {local && <ReviewAnswer>{question.options[answerKey[index]]}{question.audio ? ` · audio: «${question.audio}»` : ''}</ReviewAnswer>}
           </fieldset>
         </div>

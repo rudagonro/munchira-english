@@ -1,4 +1,4 @@
-// Unidad 0 rediseñada: portada por temas y tarjetas que se voltean al tocarlas, con el altavoz aparte.
+// Unidad 0 rediseñada: portada por temas y tarjetas que se voltean al tocarlas, con las bocinas 🇺🇸/🇬🇧 aparte.
 import test, { after } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
@@ -76,11 +76,13 @@ test('Números: tocar la tarjeta la voltea y el altavoz aparte la reproduce (acc
   const cards = cardsOf(html)
   assert.ok(cards.length >= 50)
   for (const card of cards) {
-    // Dos botones nativos (Enter/Espacio con teclado), uno al lado del otro: nunca uno dentro del otro.
+    // Tres botones nativos (Enter/Espacio con teclado), uno al lado del otro: nunca uno dentro del otro.
     const buttons = card.match(/<button type="button"/g) ?? []
-    assert.equal(buttons.length, 2)
+    assert.equal(buttons.length, 3)
     assert.match(card, /<button type="button" class="fc-face" aria-pressed="false" aria-label="[^"]+\. Toca para voltear">/)
-    assert.match(card, /<\/button><button type="button" class="fc-audio" aria-label="Escuchar [^"]+ \(americano\)">/)
+    assert.match(card, /<\/button><span class="as-speakers as-card"[^>]*><button type="button" class="as-btn as-us" aria-label="Escuchar en acento americano" title="Escuchar en acento americano: [^"]+"><img class="as-icon" src="\/icons\/speaker-us\.webp" alt=""/)
+    assert.match(card, /<button type="button" class="as-btn as-uk" aria-label="Escuchar en acento británico" title="[^"]+"><img class="as-icon" src="\/icons\/speaker-uk\.webp" alt=""/)
+    assert.doesNotMatch(card, /disabled=""/, 'la Unidad 0 ya tiene MP3 en ambos acentos')
     assert.match(card, /Toca para voltear/)
   }
   // Al frente solo la cifra; el inglés aparece al voltear.
@@ -93,7 +95,7 @@ test('Abecedario: 26 tarjetas; al voltear se ve cómo suena la letra y su pista'
   const html = render(h(StarterUnit), '/cursos/A1/unidad/0#abecedario')
   const cards = cardsOf(html).filter(card => card.includes('data-card="letra-'))
   assert.equal(cards.length, 26)
-  assert.match(cards[0], /aria-label="Escuchar la letra A \(americano\)"/)
+  assert.match(cards[0], /aria-label="Escuchar en acento americano" title="Escuchar en acento americano: la letra A"/)
   const a = unit0.alphabet.letters[0]
   const back = renderToString(h(StudyCard, { id: 'letra-A', front: 'A', back: `«${a.guide}» ${a.tip}`, frontLabel: 'Letra A', backLabel: `Letra A: se dice «${a.guide}»`, audio: a.say, audioLabel: 'la letra A', initialFlipped: true }))
   assert.match(back, /class="fc fc-study fc-flipped"/)
@@ -111,7 +113,8 @@ test('Vocabulario: el volteo se anuncia con «Toca para voltear» / «Toca para 
     assert.doesNotMatch(card, /twemoji/)
     assert.match(card, /class="fc-en" lang="en">[^<]+</)
     assert.match(card, /Toca para voltear/)
-    assert.match(card, /class="fc-audio" aria-label="Escuchar «[^»]+» \(americano\)"/)
+    assert.match(card, /class="as-btn as-us" aria-label="Escuchar en acento americano" title="Escuchar en acento americano: «[^»]+»"/)
+    assert.match(card, /class="as-btn as-uk" aria-label="Escuchar en acento británico"/)
   }
   assert.doesNotMatch(html, /su-tab-days|su-tab-months/, 'días y meses tienen su propio tema')
   const card = { id: 'colors.0', index: 100, en: 'red', es: 'rojo', emoji: '2764' }
@@ -148,7 +151,8 @@ test('volteo y audio son acciones separadas; el giro respeta «reducir movimient
     assert.match(code, /className="fc-face"[^>]*onClick=\{\(\) => setFlipped\(value => !value\)\}/)
     assert.doesNotMatch(code, /sayEnglish/, 'tocar la tarjeta no reproduce audio')
   }
-  assert.match(src('public/CardControls.jsx'), /className="fc-audio" onClick=\{\(\) => sayEnglish\(text, \{ accent \}\)\}/)
+  assert.match(src('public/CardControls.jsx'), /<AccentSpeakers text=\{text\} label=\{label\} className="as-card" \/>/)
+  assert.match(src('public/AccentSpeakers.jsx'), /event\.stopPropagation\(\)/, 'tocar una bocina no voltea la tarjeta')
   assert.match(src('public/starter-unit.css'), /@media \(prefers-reduced-motion: reduce\) \{ \.fc-face \{ transition: none; \} \.fc-flipped \.fc-face \{ animation: none; \} \}/)
   assert.match(src('public/StarterUnit.jsx'), /prefers-reduced-motion: reduce/)
 })

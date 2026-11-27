@@ -15,23 +15,16 @@ export function audioKey(text) {
   return h.toString(16).padStart(8, '0')
 }
 
-/** Elige la voz más natural del dispositivo (Natural/Online/Google antes que las robóticas). */
-export function bestVoice(voices, accent = 'en-US') {
-  const lang = accent.toLowerCase()
-  const score = v => {
-    const n = v.name.toLowerCase(); const l = (v.lang || '').toLowerCase().replace('_', '-')
-    let s = l === lang ? 100 : l.startsWith('en') ? 40 : -1000
-    if (n.includes('natural')) s += 50
-    if (n.includes('online')) s += 30
-    if (n.includes('google')) s += 25
-    if (n.includes('neural') || n.includes('premium') || n.includes('enhanced')) s += 20
-    if (v.localService === false) s += 5
-    return s
-  }
-  return [...voices].sort((a, b) => score(b) - score(a)).find(v => score(v) > 0) ?? null
-}
-
-/** Un texto TODO EN MAYÚSCULAS se lee mejor en minúsculas (evita que lo deletree). */
-export function calmCaps(text) {
-  return text === text.toUpperCase() && /[A-Z]{4}/.test(text) ? text.toLowerCase() : text
+/**
+ * ¿Es inglés este texto? Sirve para decidir qué opciones de un ejercicio llevan bocinas: las que están en
+ * español (tildes, ñ, ¿¡ o palabras muy comunes del español) no se graban.
+ */
+const SPANISH_WORDS = /\b(el|la|los|las|una|unos|unas|del|al|que|qué|es|está|están|soy|eres|son|tiene|tengo|tienes|mi|mis|tu|tus|su|sus|yo|ella|ellos|nosotros|usted|ustedes|con|para|por|pero|muy|también|hay|de|y|en|se|lo|le|no sé|cómo|dónde|cuándo|ayer|hoy|mañana|un|o|estoy|estás|lee|leo|ninguno|ninguna|sigue|llego|tarde|cerca|lejos|derecho|izquierda|derecha|frutas|verduras|horario|trabajo|pasatiempo|manejar|correr|caminar|sujeto|verbo|complemento|intentas|traducir|cada|palabra)\b/i
+export function isEnglishText(text) {
+  const value = String(text ?? '').trim()
+  if (!value || !/[a-z]/i.test(value)) return false
+  if (/[áéíóúñü¿¡]/i.test(value)) return false
+  const words = value.toLowerCase().match(/[a-z']+/g) ?? []
+  const spanish = words.filter(word => SPANISH_WORDS.test(word)).length
+  return spanish === 0 || spanish / words.length < 0.25
 }

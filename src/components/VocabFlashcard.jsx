@@ -1,5 +1,7 @@
 import { useState, useCallback, useRef } from 'react'
 import { useDraftState } from '../contexts/a1-draft-context'
+import AccentSpeakers from '../public/AccentSpeakers'
+import { A1_UNIT_AUDIO } from '../public/a1UnitAudio'
 
 export default function VocabFlashcard({ vocabItems, onComplete, onReview, doneLabel = 'Empezar las lecciones →' }) {
   const [queue, setQueue] = useDraftState('vocab.queue', () => vocabItems.map((v, i) => ({ ...v, _key: i })))
@@ -119,6 +121,11 @@ export default function VocabFlashcard({ vocabItems, onComplete, onReview, doneL
             )}
           </div>
         </button>
+      </div>
+
+      {/* Audio: 🇺🇸 por defecto y 🇬🇧, fuera de la tarjeta para que tocarlas no la voltee. Solo MP3 de ElevenLabs. */}
+      <div className="fc-speakers">
+        <AccentSpeakers text={current.english} label={`«${current.english}»`} source={A1_UNIT_AUDIO} />
       </div>
 
       {/* Actions */}

@@ -36,7 +36,12 @@ for (const number of [2, 3, 4, 5, 6, 7, 8]) {
         assert.ok(clip.end > clip.start)
         assert.ok(clip.url.startsWith('/audio/a1/'))
         const expected = l.audio.clips[audioKey(text)][voice][accent === 'en-GB' ? 'gb' : 'us']
-        assert.equal(clip.url, l.audio.sprites[expected[0]])
+        const lessonUrl = l.audio.sprites[expected[0]]
+        // Dedicated ElevenLabs clips in /audio/a1/gaps/ are consulted before the lesson sprite.
+        assert.ok(
+          clip.url === lessonUrl || clip.url.startsWith('/audio/a1/gaps/'),
+          `${text} ${accent}: ${clip.url}`,
+        )
       }
     }
     registerLessonRecordings(null)

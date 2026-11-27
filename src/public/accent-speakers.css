@@ -1,0 +1,34 @@
+/* Bocinas US/UK (megáfonos con bandera). Ícono de ~28–30 px dentro de un área táctil de 44 px. */
+.as-speakers { display: inline-flex; align-items: center; gap: 4px; vertical-align: middle; flex-wrap: wrap; }
+.as-btn { min-width: 44px; min-height: 44px; display: inline-grid; place-items: center; padding: 0 4px; border: 1px solid var(--mp-border, #dbe5df); border-radius: 12px; background: var(--mp-paper, #fff); cursor: pointer; line-height: 0; }
+.as-btn:hover:not(:disabled), .as-btn:focus-visible { border-color: var(--mp-teal, #16665c); }
+.as-btn:focus-visible, .as-slow:focus-visible, .as-toggle button:focus-visible { outline: 3px solid var(--mp-teal, #16665c); outline-offset: 2px; }
+.as-btn:disabled { cursor: not-allowed; opacity: .35; filter: grayscale(1); }
+.as-icon { display: block; height: 28px; width: auto; max-width: 46px; object-fit: contain; pointer-events: none; user-select: none; }
+.as-slow { min-height: 44px; padding: 4px 10px; border: 1px solid var(--mp-border, #dbe5df); border-radius: 99px; background: var(--mp-soft, #f5f8f5); color: inherit; font: inherit; font-size: 13px; cursor: pointer; }
+.as-slow:disabled { cursor: not-allowed; opacity: .45; }
+.as-toggle { display: inline-flex; border: 1px solid var(--mp-border, #dbe5df); border-radius: 99px; overflow: hidden; vertical-align: middle; }
+.as-toggle button { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px 4px 8px; border: 0; background: var(--mp-paper, #fff); color: inherit; font: inherit; font-size: 13px; cursor: pointer; }
+.as-toggle button .as-icon { height: 24px; }
+.as-toggle button[aria-checked="true"] { background: var(--mp-mint, #e6f4ec); font-weight: 700; box-shadow: inset 0 -3px 0 var(--mp-teal, #16665c); }
+
+/* En las tarjetas que se voltean: fila inferior, fuera del botón de la cara. */
+.fc .as-card { position: absolute; left: 2px; right: 2px; bottom: 3px; justify-content: center; gap: 2px; flex-wrap: nowrap; }
+.fc .as-card .as-btn { min-width: 44px; padding: 0 2px; border-radius: 10px; }
+.fc .as-card .as-icon { height: 26px; max-width: 40px; }
+
+/* Repaso (VocabFlashcard) */
+.fc-speakers { display: flex; justify-content: center; margin: 10px 0 2px; }
+.fc-speakers .as-btn { min-width: 56px; }
+
+/* Opciones de ejercicios y cuestionarios */
+.as-opt-row { display: flex; align-items: center; gap: 6px; }
+.as-opt-row > :first-child { flex: 1; min-width: 0; }
+
+/* Diálogos: selector US/UK + escuchar todo; la línea que suena se resalta. */
+.ml-dialogue-all { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0; }
+.ml-dialogue-all > button { min-height: 44px; padding: 4px 12px; border: 1px solid var(--mp-border); border-radius: 99px; background: var(--mp-soft); color: var(--mp-ink); font: inherit; font-size: 13px; cursor: pointer; }
+.ml-dialogue-all > button:hover { border-color: var(--mp-teal); }
+.ml-dialogue li.ml-now { outline: 2px solid var(--mp-teal); }
+.ml-dialogue li .as-speakers { justify-self: start; }
+.ml-listen.as-speakers { margin-left: 6px; }

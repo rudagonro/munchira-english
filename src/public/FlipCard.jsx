@@ -7,10 +7,10 @@ import { CardAudioButton, FlipHint } from './CardControls'
 /**
  * Tarjeta del banco: imagen, palabra en inglés, significado y audio US/UK.
  * Al tocarla se voltea: con «primero inglés» muestra el español; con «primero español» oculta el
- * inglés hasta voltearla, para recordarlo. El altavoz, aparte, reproduce el inglés sin voltearla.
+ * inglés hasta voltearla, para recordarlo. Las bocinas 🇺🇸 y 🇬🇧, aparte, reproducen el inglés sin voltearla.
  * La imagen usa `card.image` cuando exista; si no, el arte actual (Twemoji) o el rótulo de calendario.
  */
-export default function FlipCard({ card, accent = 'en-US', front = 'en', initialFlipped = false }) {
+export default function FlipCard({ card, front = 'en', initialFlipped = false }) {
   const [flipped, setFlipped] = useState(initialFlipped)
   const showEnglish = front === 'en' ? !flipped : flipped
   const sideLabel = showEnglish ? `${card.en}: toca para ${flipped ? 'volver' : 'ver qué significa'}` : `${card.es}: toca para ${flipped ? 'volver' : 'ver la palabra en inglés'}`
@@ -26,6 +26,6 @@ export default function FlipCard({ card, accent = 'en-US', front = 'en', initial
         : <span className="fc-es">{card.es}</span>}
       <FlipHint flipped={flipped} />
     </button>
-    <CardAudioButton text={card.en} accent={accent} label={`«${card.en}»`} />
+    <CardAudioButton text={card.en} label={`«${card.en}»`} />
   </li>
 }

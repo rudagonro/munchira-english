@@ -10,7 +10,8 @@ import { calendarSet, numberTopicBlocks, openTopic, unit0QuizTopic, unit0Topics,
 import PublicShell from './PublicShell'
 import Seo from './Seo'
 import { QuestionFeedback } from './UnitCompletion'
-import { sayEnglish, stopLessonAudio } from './lessonSpeech'
+import { stopLessonAudio } from './lessonSpeech'
+import AccentSpeakers, { OptionRow } from './AccentSpeakers'
 import { useLocalUnit0Pass } from './useLocalUnit0Pass'
 import { useNoSave, useReviewMode } from '../contexts/review-mode-context'
 import ReviewAnswer from '../components/ReviewAnswer'
@@ -22,15 +23,15 @@ import './starter-unit.css'
 // Portada por temas: cada tarjeta abre su tema con «?tema=…» (los enlaces antiguos con ancla siguen sirviendo).
 // El cuestionario queda siempre a la vista, debajo, para que «#cuestionario» funcione como antes.
 
-function Listen({ text, accent, label }) {
-  return <button type="button" className="su-listen" onClick={() => sayEnglish(text, { accent })} aria-label={`Escuchar «${label ?? text}»`}>🔊</button>
+function Listen({ text, label }) {
+  return <AccentSpeakers text={text} label={label ? `«${label}»` : undefined} />
 }
 
 function TopicCover({ open }) {
   const topics = unit0Topics()
   const quiz = unit0QuizTopic()
   return <nav className="su-cover" aria-label="Temas de la Unidad 0">
-    <p className="su-cover-help">Toca un tema para abrirlo. En cada tarjeta, tocarla la voltea y el altavoz, aparte, reproduce el inglés.</p>
+    <p className="su-cover-help">Toca un tema para abrirlo. En cada tarjeta, tocarla la voltea; las bocinas 🇺🇸 (americano) y 🇬🇧 (británico), aparte, reproducen el inglés.</p>
     <ul className="su-topics">
       {topics.map(topic => <li key={topic.id} className={topic.id === 'vocabulario' ? 'su-topic-wide' : undefined}>
         <Link className="su-topic" to={`?tema=${topic.id}`} aria-current={open === topic.id ? 'true' : undefined} data-topic={topic.id}>
@@ -61,12 +62,12 @@ function TopicPanel({ id, title, children }) {
   </section>
 }
 
-function Alphabet({ accent }) {
+function Alphabet() {
   const { alphabet } = UNIT0
   return <TopicPanel id="abecedario" title={alphabet.title}>
     <p>{alphabet.intro}</p>
     <ul className="su-letters fc-study-grid">
-      {alphabet.letters.map(item => <StudyCard key={item.letter} id={`letra-${item.letter}`} accent={accent} tone={item.tip ? 'tip' : ''} image={item.image ?? null}
+      {alphabet.letters.map(item => <StudyCard key={item.letter} id={`letra-${item.letter}`} tone={item.tip ? 'tip' : ''} image={item.image ?? null}
         front={<strong className="su-letter-big" lang="en">{item.letter}<span>{item.letter.toLowerCase()}</span></strong>}
         back={<><strong className="su-letter-small" lang="en">{item.letter}<span>{item.letter.toLowerCase()}</span></strong><span className="su-guide">«{item.guide}»</span>{item.tip && <span className="su-tip">{item.tip}</span>}</>}
         frontLabel={`Letra ${item.letter}`} backLabel={`Letra ${item.letter}: se dice «${item.guide}»${item.tip ? `. ${item.tip}` : ''}`}
@@ -77,8 +78,8 @@ function Alphabet({ accent }) {
     <div className="su-spelling">
       <h3>{alphabet.spelling.title}</h3>
       <p>{alphabet.spelling.explain}</p>
-      <ul className="su-phrases">{alphabet.spelling.phrases.map(phrase => <li key={phrase.en}><span lang="en"><strong>{phrase.en}</strong></span><span>{phrase.es}</span><Listen text={phrase.en} accent={accent} /></li>)}</ul>
-      <p className="su-example"><span>Ejemplo: {alphabet.spelling.example.name} →</span> <strong lang="en">{alphabet.spelling.example.spelled}</strong> <em>«{alphabet.spelling.example.guide}»</em> <Listen text={alphabet.spelling.example.say} accent={accent} label={alphabet.spelling.example.spelled} /></p>
+      <ul className="su-phrases">{alphabet.spelling.phrases.map(phrase => <li key={phrase.en}><span lang="en"><strong>{phrase.en}</strong></span><span>{phrase.es}</span><Listen text={phrase.en} /></li>)}</ul>
+      <p className="su-example"><span>Ejemplo: {alphabet.spelling.example.name} →</span> <strong lang="en">{alphabet.spelling.example.spelled}</strong> <em>«{alphabet.spelling.example.guide}»</em> <Listen text={alphabet.spelling.example.say} label={alphabet.spelling.example.spelled} /></p>
       <p className="su-note">{alphabet.spelling.example.note}</p>
     </div>
   </TopicPanel>
@@ -86,9 +87,9 @@ function Alphabet({ accent }) {
 
 const WIDE_BLOCKS = new Set(['phone', 'combos', 'years', 'thousands'])
 
-function NumberCards({ items, accent, wide, contrast = false }) {
+function NumberCards({ items, wide, contrast = false }) {
   return <ul className={`su-numbers fc-study-grid ${wide ? 'su-numbers-wide' : ''} ${contrast ? 'su-contrast' : ''}`}>
-    {items.map(item => <StudyCard key={item.label} id={`numero-${item.label}`} accent={accent} wide={wide} image={item.image ?? null}
+    {items.map(item => <StudyCard key={item.label} id={`numero-${item.label}`} wide={wide} image={item.image ?? null}
       front={<strong className="su-number-big">{item.label}</strong>}
       back={<><strong className="su-number-small">{item.label}</strong><span className="su-number-en" lang="en">{item.en}</span></>}
       frontLabel={item.label} backLabel={`${item.label}: ${item.en}`}
@@ -96,29 +97,29 @@ function NumberCards({ items, accent, wide, contrast = false }) {
   </ul>
 }
 
-function NumberBlock({ block, accent }) {
+function NumberBlock({ block }) {
   return <div className="su-number-block">
     <h3>{block.title}</h3>
     <p>{block.explain}</p>
-    <NumberCards items={block.items} accent={accent} wide={WIDE_BLOCKS.has(block.id)} />
-    {block.contrast && <><p className="su-contrast-title">Escucha la diferencia:</p><NumberCards items={block.contrast} accent={accent} contrast /></>}
+    <NumberCards items={block.items} wide={WIDE_BLOCKS.has(block.id)} />
+    {block.contrast && <><p className="su-contrast-title">Escucha la diferencia:</p><NumberCards items={block.contrast} contrast /></>}
   </div>
 }
 
-function Numbers({ accent }) {
+function Numbers() {
   const { numbers } = UNIT0
   return <TopicPanel id="numeros" title={numbers.title}>
     <p>{numbers.intro}</p>
     <p className="su-howto">Toca una cifra para ver cómo se dice en inglés. El altavoz la reproduce sin voltear la tarjeta.</p>
-    {numberTopicBlocks().map(block => <NumberBlock key={block.id} block={block} accent={accent} />)}
+    {numberTopicBlocks().map(block => <NumberBlock key={block.id} block={block} />)}
   </TopicPanel>
 }
 
-function Years({ accent }) {
+function Years() {
   const block = yearsBlock()
   return <TopicPanel id="anos" title={block.title}>
     <p>{block.explain}</p>
-    <NumberCards items={block.items} accent={accent} wide />
+    <NumberCards items={block.items} wide />
   </TopicPanel>
 }
 
@@ -142,7 +143,7 @@ function SaveToReview({ set }) {
   </p>
 }
 
-function CardSet({ set, accent, front, setFront }) {
+function CardSet({ set, front, setFront }) {
   return <>
     <div className="su-cards-head">
       <p>{set.intro}</p>
@@ -151,20 +152,20 @@ function CardSet({ set, accent, front, setFront }) {
         <button type="button" aria-pressed={front === 'es'} onClick={() => setFront('es')}>Primero español</button>
       </div>
     </div>
-    <ul className="fc-grid" key={`${set.key}-${front}`}>{set.cards.map(card => <FlipCard key={card.id} card={card} accent={accent} front={front} />)}</ul>
+    <ul className="fc-grid" key={`${set.key}-${front}`}>{set.cards.map(card => <FlipCard key={card.id} card={card} front={front} />)}</ul>
     <SaveToReview key={set.key} set={set} />
   </>
 }
 
-function Calendar({ topic, accent }) {
+function Calendar({ topic }) {
   const set = calendarSet(topic)
   const [front, setFront] = useState('en')
   return <TopicPanel id={topic} title={set.title}>
-    <CardSet set={set} accent={accent} front={front} setFront={setFront} />
+    <CardSet set={set} front={front} setFront={setFront} />
   </TopicPanel>
 }
 
-function Vocabulary({ accent }) {
+function Vocabulary() {
   const sets = vocabularyTopicSets()
   const [active, setActive] = useState(sets[0].key)
   const [front, setFront] = useState('en')
@@ -175,7 +176,7 @@ function Vocabulary({ accent }) {
       {sets.map(item => <button key={item.key} type="button" role="tab" id={`su-tab-${item.key}`} aria-selected={item.key === set.key} aria-controls="su-cards" onClick={() => setActive(item.key)}>{item.title} <small>{item.cards.length}</small></button>)}
     </div>
     <div id="su-cards" role="tabpanel" aria-labelledby={`su-tab-${set.key}`}>
-      <CardSet set={set} accent={accent} front={front} setFront={setFront} />
+      <CardSet set={set} front={front} setFront={setFront} />
     </div>
   </TopicPanel>
 }
@@ -229,7 +230,7 @@ function StarterQuiz({ onPassed }) {
     <form onSubmit={submit} className="ml-quiz">
       {questions.map((question, index) => <fieldset key={index} className="ml-quiz-q">
         <legend>{index + 1}. {question.question}</legend>
-        {question.options.map((option, value) => <label key={value} className="ml-quiz-opt"><input type="radio" name={`u0-question-${index}`} value={value} checked={answers[index] === value} onChange={() => { setReviewed(null); setResult(null); setAnswers(previous => ({ ...previous, [index]: value })) }} disabled={busy} required /><span>{option}</span></label>)}
+        {question.options.map((option, value) => <OptionRow key={value} option={option}><label className="ml-quiz-opt"><input type="radio" name={`u0-question-${index}`} value={value} checked={answers[index] === value} onChange={() => { setReviewed(null); setResult(null); setAnswers(previous => ({ ...previous, [index]: value })) }} disabled={busy} required /><span>{option}</span></label></OptionRow>)}
         <ReviewAnswer>{question.options[question.correct_idx]}</ReviewAnswer>
         {reviewed && <QuestionFeedback question={question} answer={reviewed[index]} />}
       </fieldset>)}
@@ -250,7 +251,6 @@ const TOPIC_PANELS = {
 }
 
 export default function StarterUnit() {
-  const [accent, setAccent] = useState('en-US')
   const [serverPassed, setPassed] = useState(false)
   const localPassed = useLocalUnit0Pass()
   const review = useReviewMode()
@@ -279,11 +279,10 @@ export default function StarterUnit() {
         <p>{UNIT0.intro}</p>
         <StaffNoSaveNote />
         <div className="ml-head-row">
-          <label className="ml-accent">Acento <select value={accent} onChange={event => setAccent(event.target.value)}><option value="en-US">Americano</option><option value="en-GB">Británico</option></select></label>
         </div>
       </header>
       <TopicCover open={topic} />
-      {Panel && <Panel key={topic} accent={accent} />}
+      {Panel && <Panel key={topic} />}
       <StarterQuiz onPassed={markPassed} />
       <div className="su-next">
         {passed
