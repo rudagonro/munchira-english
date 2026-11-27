@@ -82,7 +82,8 @@ test('los módulos antiguos no se abren desde la cuenta del alumno: /module/:id 
 
 test('A2–C2: «Mi curso» y el panel muestran la lista de espera y no el plan «en desarrollo»', () => {
   const cycle = src('pages/CycleModules.jsx')
-  assert.match(cycle, /if \(isWaitlisted\(level\)\) return <LevelWaitlist level=\{level\} \/>/)
+  assert.match(cycle, /if \(isWaitlisted\(level\)\) return <Waitlist level=\{level\} \/>/)
+  assert.match(cycle, /return <LevelWaitlist level=\{level\} passedA1Score=/)
   const home = src('pages/AppHome.jsx')
   assert.match(home, /const waiting = started && isWaitlisted\(level\)/)
   assert.match(home, /lista de espera/)

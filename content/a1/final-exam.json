@@ -1,0 +1,406 @@
+{
+  "level": "A1",
+  "title": "Examen final de A1",
+  "pass_score": 70,
+  "cooldown_minutes": 15,
+  "intro": "30 preguntas de las Unidades 1 a 8: vocabulario, gramática, escucha y lectura. Con 70% o más apruebas A1 y pasas a A2.",
+  "sections": {
+    "vocab": "Vocabulario",
+    "grammar": "Gramática",
+    "listening": "Escucha",
+    "reading": "Lectura"
+  },
+  "passages": {
+    "routine": {
+      "unit": 3,
+      "title": "La rutina de Ana",
+      "text": "My name is Ana. I have a simple routine. I wake up at 6:30 every day. I get up and I have breakfast at 7. I go to work at 8. I work in the morning and in the afternoon. I have lunch at 1. In the evening I go home. I have dinner at 7:30. Then I watch TV. I usually go to bed at 11. On Sunday I don’t work. I get up late and I sometimes study. My brother has a different routine. He goes to school at 7:30. He doesn’t work. He is a student."
+    },
+    "home": {
+      "unit": 4,
+      "title": "El apartamento de Leo",
+      "text": "My name is Leo. I live in a small apartment. There is a living room and a kitchen. There are two bedrooms and one bathroom. My apartment is near the park. There is a supermarket next to my building. The bank is on the same street. To go to the hospital, go straight and turn left. It is near the school. I like my apartment. It is small but it is nice."
+    }
+  },
+  "questions": [
+    {
+      "id": "q01",
+      "section": "vocab",
+      "unit": 1,
+      "question": "Son las 9 de la noche y te despides para ir a dormir. ¿Qué dices?",
+      "options": [
+        "Hello.",
+        "Good night.",
+        "Good morning.",
+        "Nice to meet you."
+      ]
+    },
+    {
+      "id": "q02",
+      "section": "vocab",
+      "unit": 2,
+      "question": "¿Cómo se dice «hermana» en inglés?",
+      "options": [
+        "daughter",
+        "mother",
+        "brother",
+        "sister"
+      ]
+    },
+    {
+      "id": "q03",
+      "section": "vocab",
+      "unit": 3,
+      "question": "¿Cómo se dice «desayunar»?",
+      "options": [
+        "have breakfast",
+        "go to bed",
+        "have dinner",
+        "have lunch"
+      ]
+    },
+    {
+      "id": "q04",
+      "section": "vocab",
+      "unit": 4,
+      "question": "¿En qué parte de la casa cocinas?",
+      "options": [
+        "In the living room.",
+        "In the bathroom.",
+        "In the bedroom.",
+        "In the kitchen."
+      ]
+    },
+    {
+      "id": "q05",
+      "section": "vocab",
+      "unit": 4,
+      "question": "¿Cómo se dice «al lado de»?",
+      "options": [
+        "far from",
+        "next to",
+        "behind",
+        "under"
+      ]
+    },
+    {
+      "id": "q06",
+      "section": "vocab",
+      "unit": 5,
+      "question": "Quieres saber el precio de algo. ¿Qué preguntas?",
+      "options": [
+        "How much is it?",
+        "What time is it?",
+        "How many is it?",
+        "How old is it?"
+      ]
+    },
+    {
+      "id": "q07",
+      "section": "vocab",
+      "unit": 6,
+      "question": "¿Cómo se dice «tiempo libre»?",
+      "options": [
+        "work time",
+        "weekend",
+        "free time",
+        "every day"
+      ]
+    },
+    {
+      "id": "q08",
+      "section": "vocab",
+      "unit": 7,
+      "question": "¿Cómo se dice «todo derecho»?",
+      "options": [
+        "turn left",
+        "on the corner",
+        "turn right",
+        "straight ahead"
+      ]
+    },
+    {
+      "id": "q09",
+      "section": "vocab",
+      "unit": 7,
+      "question": "Eres pasajero y vas al trabajo en bus todos los días. ¿Qué dices?",
+      "options": [
+        "I go the bus to work.",
+        "I walk the bus to work.",
+        "I take bus of work.",
+        "I take the bus to work."
+      ]
+    },
+    {
+      "id": "q10",
+      "section": "grammar",
+      "unit": 1,
+      "question": "They ___ from Brazil.",
+      "options": [
+        "are",
+        "is",
+        "be",
+        "am"
+      ]
+    },
+    {
+      "id": "q11",
+      "section": "grammar",
+      "unit": 2,
+      "question": "This is my brother. ___ name is Carlos.",
+      "options": [
+        "Its",
+        "Her",
+        "His",
+        "Your"
+      ]
+    },
+    {
+      "id": "q12",
+      "section": "grammar",
+      "unit": 2,
+      "question": "She ___ two children.",
+      "options": [
+        "have",
+        "is have",
+        "has",
+        "haves"
+      ]
+    },
+    {
+      "id": "q13",
+      "section": "grammar",
+      "unit": 3,
+      "question": "He ___ to school at 7:30.",
+      "options": [
+        "going",
+        "goes",
+        "go",
+        "is go"
+      ]
+    },
+    {
+      "id": "q14",
+      "section": "grammar",
+      "unit": 3,
+      "question": "I ___ work on Sunday.",
+      "options": [
+        "am not",
+        "not",
+        "don’t",
+        "doesn’t"
+      ]
+    },
+    {
+      "id": "q15",
+      "section": "grammar",
+      "unit": 3,
+      "question": "___ she work in the morning?",
+      "options": [
+        "Does",
+        "Are",
+        "Do",
+        "Is"
+      ]
+    },
+    {
+      "id": "q16",
+      "section": "grammar",
+      "unit": 4,
+      "question": "___ two bedrooms in my apartment.",
+      "options": [
+        "There are",
+        "There is",
+        "It is",
+        "They is"
+      ]
+    },
+    {
+      "id": "q17",
+      "section": "grammar",
+      "unit": 5,
+      "question": "My mother is ___ engineer.",
+      "options": [
+        "a",
+        "some",
+        "an",
+        "two"
+      ]
+    },
+    {
+      "id": "q18",
+      "section": "grammar",
+      "unit": 6,
+      "question": "I like ___ books in my free time.",
+      "options": [
+        "reads",
+        "to reads",
+        "read",
+        "reading"
+      ]
+    },
+    {
+      "id": "q19",
+      "section": "listening",
+      "unit": 2,
+      "question": "Escucha. ¿Qué te preguntan?",
+      "options": [
+        "¿De dónde eres?",
+        "¿Cómo te llamas?",
+        "¿Cómo estás?",
+        "¿Cuántos años tienes?"
+      ],
+      "audio": "How old are you?",
+      "unit_audio": 2
+    },
+    {
+      "id": "q20",
+      "section": "listening",
+      "unit": 3,
+      "question": "Escucha. ¿Sobre qué preguntan?",
+      "options": [
+        "Qué come en la cena.",
+        "Dónde almuerza.",
+        "La hora de levantarse.",
+        "La hora del almuerzo."
+      ],
+      "audio": "What time do you have lunch?",
+      "unit_audio": 3
+    },
+    {
+      "id": "q21",
+      "section": "listening",
+      "unit": 4,
+      "question": "Escucha. ¿Qué busca la persona?",
+      "options": [
+        "Un parque.",
+        "Un banco.",
+        "Un supermercado.",
+        "Un hospital."
+      ],
+      "audio": "Is there a supermarket near here?",
+      "unit_audio": 4
+    },
+    {
+      "id": "q22",
+      "section": "listening",
+      "unit": 5,
+      "question": "Escucha. ¿Qué pide la persona?",
+      "options": [
+        "Un café y pan.",
+        "Un té y pan.",
+        "Un café y un sándwich.",
+        "Agua y fruta."
+      ],
+      "audio": "I'd like a coffee and some bread, please.",
+      "unit_audio": 5
+    },
+    {
+      "id": "q23",
+      "section": "listening",
+      "unit": 6,
+      "question": "Escucha. ¿Qué hace ella todos los días?",
+      "options": [
+        "Lee libros.",
+        "Escucha música.",
+        "Juega fútbol.",
+        "Ve películas."
+      ],
+      "audio": "She listens to music every day.",
+      "unit_audio": 6
+    },
+    {
+      "id": "q24",
+      "section": "listening",
+      "unit": 8,
+      "question": "Escucha. ¿Qué lugar busca la persona?",
+      "options": [
+        "El banco.",
+        "La estación de tren.",
+        "El parque.",
+        "El supermercado."
+      ],
+      "audio": "Excuse me, where is the bank?",
+      "unit_audio": 8
+    },
+    {
+      "id": "q25",
+      "section": "reading",
+      "unit": 3,
+      "question": "¿A qué hora desayuna Ana?",
+      "options": [
+        "A las 7.",
+        "A las 8.",
+        "A la 1.",
+        "A las 6:30."
+      ],
+      "passage": "routine"
+    },
+    {
+      "id": "q26",
+      "section": "reading",
+      "unit": 3,
+      "question": "¿Qué hace Ana el domingo?",
+      "options": [
+        "Va al colegio a las 7:30.",
+        "Ve televisión todo el día.",
+        "No trabaja y se levanta tarde.",
+        "Trabaja por la mañana."
+      ],
+      "passage": "routine"
+    },
+    {
+      "id": "q27",
+      "section": "reading",
+      "unit": 3,
+      "question": "¿Por qué el hermano de Ana no trabaja?",
+      "options": [
+        "Porque es profesor.",
+        "Porque es estudiante.",
+        "Porque trabaja en casa.",
+        "Porque está enfermo."
+      ],
+      "passage": "routine"
+    },
+    {
+      "id": "q28",
+      "section": "reading",
+      "unit": 4,
+      "question": "¿Cuántos dormitorios tiene el apartamento de Leo?",
+      "options": [
+        "Tres.",
+        "Dos.",
+        "Uno.",
+        "Ninguno."
+      ],
+      "passage": "home"
+    },
+    {
+      "id": "q29",
+      "section": "reading",
+      "unit": 4,
+      "question": "¿Qué hay al lado del edificio de Leo?",
+      "options": [
+        "Un parque.",
+        "Un banco.",
+        "Un supermercado.",
+        "Un hospital."
+      ],
+      "passage": "home"
+    },
+    {
+      "id": "q30",
+      "section": "reading",
+      "unit": 4,
+      "question": "¿Cómo se llega al hospital?",
+      "options": [
+        "Todo derecho y luego a la izquierda.",
+        "Está al lado del banco.",
+        "Todo derecho y luego a la derecha.",
+        "En bus, porque está lejos."
+      ],
+      "passage": "home"
+    }
+  ],
+  "note": "Sin respuestas: la clave está en final-exam-key.json (solo servidor y pruebas). El revisor la pide con staff_a1_final_exam_key()."
+}

@@ -3,6 +3,7 @@ import { getCurriculum } from '../data/curriculum'
 import { A1_LEGACY_LABEL, unit0StatusText, unitStatusText } from '../data/a1Course'
 import { useAuth } from '../contexts/auth-context'
 import { isStaffRole } from '../contexts/review-mode-context'
+import { A1_FINAL_EXAM, A1_FINAL_EXAM_PATH, finalExamUnlocked } from '../data/a1FinalExam'
 import '../public/curriculum.css'
 
 export default function CurriculumOutline({ level, course }) {
@@ -30,6 +31,13 @@ export default function CurriculumOutline({ level, course }) {
           {open && <Link to={unit.path}>{unit.status === 'completed' ? 'Repasar unidad' : unit.status === 'not-started' ? 'Empezar unidad' : 'Continuar unidad'} →</Link>}
         </div>
       </li>)}
+      <li key="final" className="mc-final-exam">
+        <span>✓</span>
+        <div><strong>{A1_FINAL_EXAM.title}</strong>
+          <small>{finalExamUnlocked(course) ? `Disponible · ${A1_FINAL_EXAM.questions.length} preguntas · se aprueba con ${A1_FINAL_EXAM.pass_score}% y pasas a A2` : 'Se abre al aprobar las Unidades 0–8'}</small>
+          {finalExamUnlocked(course) && <Link to={A1_FINAL_EXAM_PATH}>Hacer el examen final →</Link>}
+        </div>
+      </li>
     </ol>
   </section>
   // Los niveles en preparación no muestran un plan aquí: su alumno ve la lista de espera.

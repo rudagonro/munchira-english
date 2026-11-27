@@ -8,3 +8,12 @@
 .ml-quiz-opt input { flex: none; width: 20px; height: 20px; min-height: 0; margin: 0; padding: 0; accent-color: var(--mp-teal); }
 .ml-quiz-opt span { flex: 1; text-align: left; }
 @media (min-width: 640px) { .ml-quiz-q { grid-template-columns: 1fr 1fr; } .ml-quiz-q legend { grid-column: 1 / -1; } }
+
+/* Examen final de A1 */
+.fx-exam section + section { margin-top: 28px; }
+.fx-passage { background: var(--surface-muted, #F5F7FA); border-radius: 12px; padding: 16px 18px; margin: 12px 0; }
+.fx-passage h3 { margin: 0 0 8px; font-size: 1.05rem; }
+.fx-passage p { margin: 0; line-height: 1.6; overflow-wrap: anywhere; }
+.fx-listen { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 10px; }
+.fx-listen button { min-height: 40px; padding: 6px 14px; border: 1px solid #CBD5E1; border-radius: 99px; background: #F1F5F9; color: inherit; font: inherit; font-size: 14px; cursor: pointer; }
+.fx-listen button:hover, .fx-listen button:focus-visible { border-color: #0F766E; }

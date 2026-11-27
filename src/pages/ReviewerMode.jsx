@@ -4,6 +4,7 @@ import { useAuth } from '../contexts/auth-context'
 import { LEVELS, LEVEL_NAMES, bankGV, bankReading, bankListening, bankWriting } from '../data/diagnosticBank'
 import { lessonAudioStatus, prepareLessonsAudio } from '../lib/audioPublisher'
 import { ARCHIVE_AUDIO_LEVELS, REVIEW_UNITS, reviewUnitPath } from '../data/reviewerUnits'
+import { A1_FINAL_EXAM, A1_FINAL_EXAM_REVIEW_PATH } from '../data/a1FinalExam'
 
 const SKILL_LABELS = {
   grammar: 'Gramática', vocabulary: 'Vocabulario', reading: 'Reading', listening: 'Listening', writing: 'Writing',
@@ -75,6 +76,16 @@ export default function ReviewerMode() {
               </Link>
             </li>
           ))}
+          <li key="final">
+            <Link to={A1_FINAL_EXAM_REVIEW_PATH} className="rv-module">
+              <span className="rv-module-icon" aria-hidden="true">✓</span>
+              <span className="rv-module-text">
+                <span className="rv-module-title">{A1_FINAL_EXAM.title}</span>
+                <span className="rv-module-skill">{A1_FINAL_EXAM.questions.length} preguntas · vocabulario, gramática, escucha y lectura · {A1_FINAL_EXAM.pass_score}% para pasar a A2</span>
+              </span>
+              <span className="rv-badge pub">Vista previa</span>
+            </Link>
+          </li>
         </ul>
       </section>
 
