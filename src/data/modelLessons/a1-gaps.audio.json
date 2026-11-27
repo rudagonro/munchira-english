@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T02:04:17-05:00",
+  "generatedAt": "2026-11-27T02:06:10-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -450,7 +450,27 @@
     "gaps-6c451bbd-us": "/audio/a1/gaps/6c451bbd-us.mp3",
     "gaps-6c451bbd-gb": "/audio/a1/gaps/6c451bbd-gb.mp3",
     "gaps-10c58770-us": "/audio/a1/gaps/10c58770-us.mp3",
-    "gaps-10c58770-gb": "/audio/a1/gaps/10c58770-gb.mp3"
+    "gaps-10c58770-gb": "/audio/a1/gaps/10c58770-gb.mp3",
+    "gaps-49c81913-us": "/audio/a1/gaps/49c81913-us.mp3",
+    "gaps-49c81913-gb": "/audio/a1/gaps/49c81913-gb.mp3",
+    "gaps-b452fe7a-us": "/audio/a1/gaps/b452fe7a-us.mp3",
+    "gaps-b452fe7a-gb": "/audio/a1/gaps/b452fe7a-gb.mp3",
+    "gaps-7150e936-us": "/audio/a1/gaps/7150e936-us.mp3",
+    "gaps-7150e936-gb": "/audio/a1/gaps/7150e936-gb.mp3",
+    "gaps-52f9d1ee-us": "/audio/a1/gaps/52f9d1ee-us.mp3",
+    "gaps-52f9d1ee-gb": "/audio/a1/gaps/52f9d1ee-gb.mp3",
+    "gaps-2799747a-us": "/audio/a1/gaps/2799747a-us.mp3",
+    "gaps-2799747a-gb": "/audio/a1/gaps/2799747a-gb.mp3",
+    "gaps-20d11b2a-us": "/audio/a1/gaps/20d11b2a-us.mp3",
+    "gaps-20d11b2a-gb": "/audio/a1/gaps/20d11b2a-gb.mp3",
+    "gaps-36a28cf3-us": "/audio/a1/gaps/36a28cf3-us.mp3",
+    "gaps-36a28cf3-gb": "/audio/a1/gaps/36a28cf3-gb.mp3",
+    "gaps-5c3f35aa-us": "/audio/a1/gaps/5c3f35aa-us.mp3",
+    "gaps-5c3f35aa-gb": "/audio/a1/gaps/5c3f35aa-gb.mp3",
+    "gaps-c02c5b9f-us": "/audio/a1/gaps/c02c5b9f-us.mp3",
+    "gaps-c02c5b9f-gb": "/audio/a1/gaps/c02c5b9f-gb.mp3",
+    "gaps-61070d5c-us": "/audio/a1/gaps/61070d5c-us.mp3",
+    "gaps-61070d5c-gb": "/audio/a1/gaps/61070d5c-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -3532,12 +3552,152 @@
           1.253878
         ]
       }
+    },
+    "49c81913": {
+      "nova": {
+        "us": [
+          "gaps-49c81913-us",
+          0,
+          1.567347
+        ],
+        "gb": [
+          "gaps-49c81913-gb",
+          0,
+          1.985306
+        ]
+      }
+    },
+    "b452fe7a": {
+      "nova": {
+        "us": [
+          "gaps-b452fe7a-us",
+          0,
+          1.28
+        ],
+        "gb": [
+          "gaps-b452fe7a-gb",
+          0,
+          1.750204
+        ]
+      }
+    },
+    "7150e936": {
+      "nova": {
+        "us": [
+          "gaps-7150e936-us",
+          0,
+          1.28
+        ],
+        "gb": [
+          "gaps-7150e936-gb",
+          0,
+          1.567347
+        ]
+      }
+    },
+    "52f9d1ee": {
+      "nova": {
+        "us": [
+          "gaps-52f9d1ee-us",
+          0,
+          1.38449
+        ],
+        "gb": [
+          "gaps-52f9d1ee-gb",
+          0,
+          1.750204
+        ]
+      }
+    },
+    "2799747a": {
+      "nova": {
+        "us": [
+          "gaps-2799747a-us",
+          0,
+          1.567347
+        ],
+        "gb": [
+          "gaps-2799747a-gb",
+          0,
+          1.802449
+        ]
+      }
+    },
+    "20d11b2a": {
+      "nova": {
+        "us": [
+          "gaps-20d11b2a-us",
+          0,
+          1.436735
+        ],
+        "gb": [
+          "gaps-20d11b2a-gb",
+          0,
+          1.697959
+        ]
+      }
+    },
+    "36a28cf3": {
+      "nova": {
+        "us": [
+          "gaps-36a28cf3-us",
+          0,
+          1.332245
+        ],
+        "gb": [
+          "gaps-36a28cf3-gb",
+          0,
+          1.48898
+        ]
+      }
+    },
+    "5c3f35aa": {
+      "nova": {
+        "us": [
+          "gaps-5c3f35aa-us",
+          0,
+          1.48898
+        ],
+        "gb": [
+          "gaps-5c3f35aa-gb",
+          0,
+          1.671837
+        ]
+      }
+    },
+    "c02c5b9f": {
+      "nova": {
+        "us": [
+          "gaps-c02c5b9f-us",
+          0,
+          0.835918
+        ],
+        "gb": [
+          "gaps-c02c5b9f-gb",
+          0,
+          1.018776
+        ]
+      }
+    },
+    "61070d5c": {
+      "nova": {
+        "us": [
+          "gaps-61070d5c-us",
+          0,
+          1.567347
+        ],
+        "gb": [
+          "gaps-61070d5c-gb",
+          0,
+          1.697959
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Clips generados para textos que npm run audio:check listaba como faltantes. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 440,
-    "clips_missing_files": 326,
+    "clips_written": 460,
+    "clips_missing_files": 306,
     "items": [
       {
         "key": "f7b20218",
@@ -11885,6 +12045,370 @@
         ],
         "units": [
           "5"
+        ]
+      },
+      {
+        "key": "49c81913",
+        "text": "Does it have gluten?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/49c81913-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "49c81913",
+        "text": "Does it have gluten?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/49c81913-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "b452fe7a",
+        "text": "It has gluten?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/b452fe7a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "b452fe7a",
+        "text": "It has gluten?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/b452fe7a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "7150e936",
+        "text": "Has it gluten?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/7150e936-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "7150e936",
+        "text": "Has it gluten?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/7150e936-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "52f9d1ee",
+        "text": "Gluten has it?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/52f9d1ee-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "52f9d1ee",
+        "text": "Gluten has it?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/52f9d1ee-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "2799747a",
+        "text": "I’d like the chicken, please",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/2799747a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "2799747a",
+        "text": "I’d like the chicken, please",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.802449,
+        "url": "/audio/a1/gaps/2799747a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "20d11b2a",
+        "text": "Can I have a ticket?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/20d11b2a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "20d11b2a",
+        "text": "Can I have a ticket?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.697959,
+        "url": "/audio/a1/gaps/20d11b2a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "36a28cf3",
+        "text": "Fish and rice",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.332245,
+        "url": "/audio/a1/gaps/36a28cf3-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "36a28cf3",
+        "text": "Fish and rice",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/36a28cf3-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "5c3f35aa",
+        "text": "Chicken and rice",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/5c3f35aa-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "5c3f35aa",
+        "text": "Chicken and rice",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.671837,
+        "url": "/audio/a1/gaps/5c3f35aa-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "c02c5b9f",
+        "text": "Juice",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.835918,
+        "url": "/audio/a1/gaps/c02c5b9f-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "c02c5b9f",
+        "text": "Juice",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.018776,
+        "url": "/audio/a1/gaps/c02c5b9f-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "61070d5c",
+        "text": "I’d like a sandwich, please.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/61070d5c-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario",
+          "leccion"
+        ],
+        "units": [
+          "5",
+          "8"
+        ]
+      },
+      {
+        "key": "61070d5c",
+        "text": "I’d like a sandwich, please.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.697959,
+        "url": "/audio/a1/gaps/61070d5c-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario",
+          "leccion"
+        ],
+        "units": [
+          "5",
+          "8"
         ]
       }
     ]
