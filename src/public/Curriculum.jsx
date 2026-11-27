@@ -8,6 +8,7 @@ import { CourseVisual } from './HomeMedia'
 import PublicShell from './PublicShell'
 import Seo from './Seo'
 import { AccountCta } from './LoginAccess'
+import { A1_ESTIMATED_DURATION } from '../data/a1Course'
 import './curriculum.css'
 
 const skillNames = { listening: 'Comprensión auditiva', speaking: 'Expresión e interacción oral', reading: 'Comprensión lectora', writing: 'Expresión escrita' }
@@ -88,6 +89,7 @@ export function CourseLevel() {
         <h1>Inglés {level.code}</h1>
         <p>{level.description}</p>
         <p className="mc-plan-note">{level.code === 'A1' ? 'Si empiezas desde cero, la Unidad 0 (abecedario, números y primeras palabras) abre el curso. Después siguen las Unidades 1 a 8. Con tu cuenta guardas tu avance al aprobar el cuestionario de cada unidad.' : `Nivel en preparación. Tendrá una Unidad 0 «Punto de partida», obligatoria para todos, y 8 unidades con pasos y cuestionario. Si te inscribes en ${level.code}, quedas en su lista de espera y te avisamos cuando esté listo.`}</p>
+        {level.code === 'A1' && <p className="mc-plan-note"><strong>{A1_ESTIMATED_DURATION.label}</strong><br />{A1_ESTIMATED_DURATION.pace}</p>}
         <div className="mc-plan-actions">
           <AccountCta className="mp-button mp-button-dark" signedOut="Crear cuenta" signedIn="Ir a mi panel" />
           {level.code === 'A1' && <Link className="mp-text-link" to="/cursos/A1/unidad/0">Empezar desde cero: Unidad 0 →</Link>}

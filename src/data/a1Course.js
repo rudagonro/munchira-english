@@ -4,6 +4,13 @@ import { A1_UNIT0 } from './a1Starter.js'
 import { A1_FINAL_EXAM_PATH } from './a1FinalExam.js'
 
 export const A1_UNIT_COUNT = cycle.modules.length
+
+// Duración estimada del curso A1 (Unidad 0 y Unidades 1–8). Es una estimación del equipo, no un dato de las
+// fuentes del contenido; content/cycles/A1.json (duration_weeks) no cambia.
+export const A1_ESTIMATED_DURATION = Object.freeze({
+  label: 'Duración estimada: 20–25 horas',
+  pace: 'A 1 hora al día, unas 3 a 4 semanas; a 30 minutos al día, unas 6 a 7 semanas. Si ya tienes algo de base en inglés.',
+})
 export const A1_COURSE_UNITS = cycle.modules.map(unit => ({
   number: unit.order,
   title: unit.title,
