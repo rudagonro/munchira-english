@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T01:56:51-05:00",
+  "generatedAt": "2026-11-27T01:59:06-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -390,7 +390,27 @@
     "gaps-21ee9367-us": "/audio/a1/gaps/21ee9367-us.mp3",
     "gaps-21ee9367-gb": "/audio/a1/gaps/21ee9367-gb.mp3",
     "gaps-92139615-us": "/audio/a1/gaps/92139615-us.mp3",
-    "gaps-92139615-gb": "/audio/a1/gaps/92139615-gb.mp3"
+    "gaps-92139615-gb": "/audio/a1/gaps/92139615-gb.mp3",
+    "gaps-16ed7b54-us": "/audio/a1/gaps/16ed7b54-us.mp3",
+    "gaps-16ed7b54-gb": "/audio/a1/gaps/16ed7b54-gb.mp3",
+    "gaps-bcf819ee-us": "/audio/a1/gaps/bcf819ee-us.mp3",
+    "gaps-bcf819ee-gb": "/audio/a1/gaps/bcf819ee-gb.mp3",
+    "gaps-f4d34429-us": "/audio/a1/gaps/f4d34429-us.mp3",
+    "gaps-f4d34429-gb": "/audio/a1/gaps/f4d34429-gb.mp3",
+    "gaps-b5a5510a-us": "/audio/a1/gaps/b5a5510a-us.mp3",
+    "gaps-b5a5510a-gb": "/audio/a1/gaps/b5a5510a-gb.mp3",
+    "gaps-528811ee-us": "/audio/a1/gaps/528811ee-us.mp3",
+    "gaps-528811ee-gb": "/audio/a1/gaps/528811ee-gb.mp3",
+    "gaps-af86fb54-us": "/audio/a1/gaps/af86fb54-us.mp3",
+    "gaps-af86fb54-gb": "/audio/a1/gaps/af86fb54-gb.mp3",
+    "gaps-1c9cca0c-us": "/audio/a1/gaps/1c9cca0c-us.mp3",
+    "gaps-1c9cca0c-gb": "/audio/a1/gaps/1c9cca0c-gb.mp3",
+    "gaps-e039b301-us": "/audio/a1/gaps/e039b301-us.mp3",
+    "gaps-e039b301-gb": "/audio/a1/gaps/e039b301-gb.mp3",
+    "gaps-405ae705-us": "/audio/a1/gaps/405ae705-us.mp3",
+    "gaps-405ae705-gb": "/audio/a1/gaps/405ae705-gb.mp3",
+    "gaps-06983998-us": "/audio/a1/gaps/06983998-us.mp3",
+    "gaps-06983998-gb": "/audio/a1/gaps/06983998-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -3052,12 +3072,152 @@
           1.149388
         ]
       }
+    },
+    "16ed7b54": {
+      "nova": {
+        "us": [
+          "gaps-16ed7b54-us",
+          0,
+          0.914286
+        ],
+        "gb": [
+          "gaps-16ed7b54-gb",
+          0,
+          1.018776
+        ]
+      }
+    },
+    "bcf819ee": {
+      "nova": {
+        "us": [
+          "gaps-bcf819ee-us",
+          0,
+          0.966531
+        ],
+        "gb": [
+          "gaps-bcf819ee-gb",
+          0,
+          0.966531
+        ]
+      }
+    },
+    "f4d34429": {
+      "nova": {
+        "us": [
+          "gaps-f4d34429-us",
+          0,
+          1.28
+        ],
+        "gb": [
+          "gaps-f4d34429-gb",
+          0,
+          1.515102
+        ]
+      }
+    },
+    "b5a5510a": {
+      "nova": {
+        "us": [
+          "gaps-b5a5510a-us",
+          0,
+          1.436735
+        ],
+        "gb": [
+          "gaps-b5a5510a-gb",
+          0,
+          1.619592
+        ]
+      }
+    },
+    "528811ee": {
+      "nova": {
+        "us": [
+          "gaps-528811ee-us",
+          0,
+          1.38449
+        ],
+        "gb": [
+          "gaps-528811ee-gb",
+          0,
+          1.515102
+        ]
+      }
+    },
+    "af86fb54": {
+      "nova": {
+        "us": [
+          "gaps-af86fb54-us",
+          0,
+          1.515102
+        ],
+        "gb": [
+          "gaps-af86fb54-gb",
+          0,
+          1.515102
+        ]
+      }
+    },
+    "1c9cca0c": {
+      "nova": {
+        "us": [
+          "gaps-1c9cca0c-us",
+          0,
+          1.38449
+        ],
+        "gb": [
+          "gaps-1c9cca0c-gb",
+          0,
+          1.619592
+        ]
+      }
+    },
+    "e039b301": {
+      "nova": {
+        "us": [
+          "gaps-e039b301-us",
+          0,
+          1.933061
+        ],
+        "gb": [
+          "gaps-e039b301-gb",
+          0,
+          2.168163
+        ]
+      }
+    },
+    "405ae705": {
+      "nova": {
+        "us": [
+          "gaps-405ae705-us",
+          0,
+          2.089796
+        ],
+        "gb": [
+          "gaps-405ae705-gb",
+          0,
+          2.35102
+        ]
+      }
+    },
+    "06983998": {
+      "nova": {
+        "us": [
+          "gaps-06983998-us",
+          0,
+          1.933061
+        ],
+        "gb": [
+          "gaps-06983998-gb",
+          0,
+          2.115918
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Clips generados para textos que npm run audio:check listaba como faltantes. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 380,
-    "clips_missing_files": 386,
+    "clips_written": 400,
+    "clips_missing_files": 366,
     "items": [
       {
         "key": "f7b20218",
@@ -10284,6 +10444,376 @@
         "speed": 0.8,
         "areas": [
           "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "16ed7b54",
+        "text": "isn’t",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 0.914286,
+        "url": "/audio/a1/gaps/16ed7b54-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario",
+          "leccion"
+        ],
+        "units": [
+          "4",
+          "5"
+        ]
+      },
+      {
+        "key": "16ed7b54",
+        "text": "isn’t",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.018776,
+        "url": "/audio/a1/gaps/16ed7b54-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario",
+          "leccion"
+        ],
+        "units": [
+          "4",
+          "5"
+        ]
+      },
+      {
+        "key": "bcf819ee",
+        "text": "far",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/bcf819ee-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario",
+          "leccion"
+        ],
+        "units": [
+          "4",
+          "7"
+        ]
+      },
+      {
+        "key": "bcf819ee",
+        "text": "far",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/bcf819ee-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "cuestionario",
+          "leccion"
+        ],
+        "units": [
+          "4",
+          "7"
+        ]
+      },
+      {
+        "key": "f4d34429",
+        "text": "I am doctor.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/f4d34429-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "f4d34429",
+        "text": "I am doctor.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/f4d34429-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "b5a5510a",
+        "text": "I am a doctor.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/b5a5510a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "b5a5510a",
+        "text": "I am a doctor.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/b5a5510a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "528811ee",
+        "text": "I am an doctor.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/528811ee-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "528811ee",
+        "text": "I am an doctor.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/528811ee-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "af86fb54",
+        "text": "I am doctor a.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/af86fb54-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "af86fb54",
+        "text": "I am doctor a.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/af86fb54-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "1c9cca0c",
+        "text": "Where is the bank?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/1c9cca0c-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4",
+          "5"
+        ]
+      },
+      {
+        "key": "1c9cca0c",
+        "text": "Where is the bank?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/1c9cca0c-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "4",
+          "5"
+        ]
+      },
+      {
+        "key": "e039b301",
+        "text": "There are three chairs in the kitchen.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/e039b301-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "e039b301",
+        "text": "There are three chairs in the kitchen.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.168163,
+        "url": "/audio/a1/gaps/e039b301-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "405ae705",
+        "text": "There is three chairs in the kitchen.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.089796,
+        "url": "/audio/a1/gaps/405ae705-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "405ae705",
+        "text": "There is three chairs in the kitchen.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.35102,
+        "url": "/audio/a1/gaps/405ae705-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "06983998",
+        "text": "There are three chair in the kitchen.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/06983998-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "4"
+        ]
+      },
+      {
+        "key": "06983998",
+        "text": "There are three chair in the kitchen.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.115918,
+        "url": "/audio/a1/gaps/06983998-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
         ],
         "units": [
           "4"
