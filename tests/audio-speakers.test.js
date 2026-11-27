@@ -73,7 +73,7 @@ test('opciones: solo las que están en inglés llevan bocinas', async () => {
 })
 
 test('enunciados del cuestionario: el inglés entre comillas lleva bocinas; las guías fonéticas no', async () => {
-  const { quizSpokenTexts, isPhoneticGuide, splitQuestionForSpeech } = await import('../src/public/quizSpeech.js')
+  const { quizSpokenTexts, isPhoneticGuide } = await import('../src/public/quizSpeech.js')
   const { UNIT0 } = await import('../src/data/a1Starter.js')
   assert.ok(isPhoneticGuide('uai'))
   assert.ok(isPhoneticGuide('yi – ou – ou – di'))
@@ -87,7 +87,7 @@ test('enunciados del cuestionario: el inglés entre comillas lleva bocinas; las 
   assert.deepEqual(byQ[9], ['My car is blue.'])
   assert.deepEqual(byQ[10], ['leg'])
   assert.deepEqual(byQ[12], ['Tuesday'])
-  const { default: AccentSpeakers, QuizLegend, OptionRow } = await load('/src/public/AccentSpeakers.jsx')
+  const { QuizLegend, OptionRow } = await load('/src/public/AccentSpeakers.jsx')
   const y = renderToString(h(OptionRow, { option: 'Y' }, h('span', null, 'Y')))
   assert.match(y, /class="as-btn as-us"/, 'la letra Y del cuestionario lleva bocinas')
   assert.doesNotMatch(y, /disabled/, 'Y ya tiene MP3 en ambos acentos')
