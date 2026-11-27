@@ -83,7 +83,8 @@ test('la Unidad 0 en el revisor: respuestas visibles, Unidad 1 abierta y sin gua
   assert.match(reviewHtml, /Comprobar \(no se guarda\)/)
   assert.match(reviewHtml, /href="\/revisor\/A1\/unidad\/1"/)
   assert.doesNotMatch(reviewHtml, /Guardar este grupo en mi Repaso/)
-  const studentHtml = render(h(StarterUnit), { url: '/cursos/A1/unidad/0', auth: student })
+  // Con la portada por temas, «Guardar este grupo» está dentro del tema Vocabulario.
+  const studentHtml = render(h(StarterUnit), { url: '/cursos/A1/unidad/0?tema=vocabulario', auth: student })
   assert.doesNotMatch(studentHtml, /rv-answer/)
   assert.match(studentHtml, /Guardar este grupo en mi Repaso/)
 })
