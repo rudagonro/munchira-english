@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T10:03:28-05:00",
+  "generatedAt": "2026-11-27T10:08:30-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -1246,7 +1246,27 @@
     "gaps-7eb2d48e-us": "/audio/a1/gaps/7eb2d48e-us.mp3",
     "gaps-7eb2d48e-gb": "/audio/a1/gaps/7eb2d48e-gb.mp3",
     "gaps-52fed105-us": "/audio/a1/gaps/52fed105-us.mp3",
-    "gaps-52fed105-gb": "/audio/a1/gaps/52fed105-gb.mp3"
+    "gaps-52fed105-gb": "/audio/a1/gaps/52fed105-gb.mp3",
+    "gaps-18e78237-us": "/audio/a1/gaps/18e78237-us.mp3",
+    "gaps-18e78237-gb": "/audio/a1/gaps/18e78237-gb.mp3",
+    "gaps-aab5d6e6-us": "/audio/a1/gaps/aab5d6e6-us.mp3",
+    "gaps-aab5d6e6-gb": "/audio/a1/gaps/aab5d6e6-gb.mp3",
+    "gaps-f894105a-us": "/audio/a1/gaps/f894105a-us.mp3",
+    "gaps-f894105a-gb": "/audio/a1/gaps/f894105a-gb.mp3",
+    "gaps-aadcf908-us": "/audio/a1/gaps/aadcf908-us.mp3",
+    "gaps-aadcf908-gb": "/audio/a1/gaps/aadcf908-gb.mp3",
+    "gaps-7a7b93f0-us": "/audio/a1/gaps/7a7b93f0-us.mp3",
+    "gaps-7a7b93f0-gb": "/audio/a1/gaps/7a7b93f0-gb.mp3",
+    "gaps-f98b571a-us": "/audio/a1/gaps/f98b571a-us.mp3",
+    "gaps-f98b571a-gb": "/audio/a1/gaps/f98b571a-gb.mp3",
+    "gaps-a0bb9f02-us": "/audio/a1/gaps/a0bb9f02-us.mp3",
+    "gaps-a0bb9f02-gb": "/audio/a1/gaps/a0bb9f02-gb.mp3",
+    "gaps-5368ff7f-us": "/audio/a1/gaps/5368ff7f-us.mp3",
+    "gaps-5368ff7f-gb": "/audio/a1/gaps/5368ff7f-gb.mp3",
+    "gaps-25f36866-us": "/audio/a1/gaps/25f36866-us.mp3",
+    "gaps-25f36866-gb": "/audio/a1/gaps/25f36866-gb.mp3",
+    "gaps-f4ec9213-us": "/audio/a1/gaps/f4ec9213-us.mp3",
+    "gaps-f4ec9213-gb": "/audio/a1/gaps/f4ec9213-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -9898,6 +9918,146 @@
           "gaps-52fed105-gb",
           0,
           0.914286
+        ]
+      }
+    },
+    "18e78237": {
+      "nova": {
+        "us": [
+          "gaps-18e78237-us",
+          0,
+          0.966531
+        ],
+        "gb": [
+          "gaps-18e78237-gb",
+          0,
+          0.966531
+        ]
+      }
+    },
+    "aab5d6e6": {
+      "nova": {
+        "us": [
+          "gaps-aab5d6e6-us",
+          0,
+          2.638367
+        ],
+        "gb": [
+          "gaps-aab5d6e6-gb",
+          0,
+          2.690612
+        ]
+      }
+    },
+    "f894105a": {
+      "nova": {
+        "us": [
+          "gaps-f894105a-us",
+          0,
+          1.750204
+        ],
+        "gb": [
+          "gaps-f894105a-gb",
+          0,
+          1.671837
+        ]
+      }
+    },
+    "aadcf908": {
+      "nova": {
+        "us": [
+          "gaps-aadcf908-us",
+          0,
+          1.985306
+        ],
+        "gb": [
+          "gaps-aadcf908-gb",
+          0,
+          2.115918
+        ]
+      }
+    },
+    "7a7b93f0": {
+      "nova": {
+        "us": [
+          "gaps-7a7b93f0-us",
+          0,
+          1.697959
+        ],
+        "gb": [
+          "gaps-7a7b93f0-gb",
+          0,
+          1.933061
+        ]
+      }
+    },
+    "f98b571a": {
+      "nova": {
+        "us": [
+          "gaps-f98b571a-us",
+          0,
+          1.802449
+        ],
+        "gb": [
+          "gaps-f98b571a-gb",
+          0,
+          1.933061
+        ]
+      }
+    },
+    "a0bb9f02": {
+      "nova": {
+        "us": [
+          "gaps-a0bb9f02-us",
+          0,
+          1.332245
+        ],
+        "gb": [
+          "gaps-a0bb9f02-gb",
+          0,
+          1.28
+        ]
+      }
+    },
+    "5368ff7f": {
+      "nova": {
+        "us": [
+          "gaps-5368ff7f-us",
+          0,
+          1.149388
+        ],
+        "gb": [
+          "gaps-5368ff7f-gb",
+          0,
+          1.28
+        ]
+      }
+    },
+    "25f36866": {
+      "nova": {
+        "us": [
+          "gaps-25f36866-us",
+          0,
+          17.084082
+        ],
+        "gb": [
+          "gaps-25f36866-gb",
+          0,
+          15.46449
+        ]
+      }
+    },
+    "f4ec9213": {
+      "nova": {
+        "us": [
+          "gaps-f4ec9213-us",
+          0,
+          1.436735
+        ],
+        "gb": [
+          "gaps-f4ec9213-gb",
+          0,
+          1.48898
         ]
       }
     }
@@ -32671,6 +32831,366 @@
         ],
         "units": [
           "5"
+        ]
+      },
+      {
+        "key": "18e78237",
+        "text": "Order",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/18e78237-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "18e78237",
+        "text": "Order",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/18e78237-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "aab5d6e6",
+        "text": "I would ___ the chicken, please.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.638367,
+        "url": "/audio/a1/gaps/aab5d6e6-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "aab5d6e6",
+        "text": "I would ___ the chicken, please.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.690612,
+        "url": "/audio/a1/gaps/aab5d6e6-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "f894105a",
+        "text": "I would like the bill please",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.750204,
+        "url": "/audio/a1/gaps/f894105a-us.mp3",
+        "clipVoice": "nova",
+        "role": "pedido",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "f894105a",
+        "text": "I would like the bill please",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.671837,
+        "url": "/audio/a1/gaps/f894105a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "pedido",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "aadcf908",
+        "text": "What does Carlos order to eat?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/aadcf908-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "aadcf908",
+        "text": "What does Carlos order to eat?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.115918,
+        "url": "/audio/a1/gaps/aadcf908-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "7a7b93f0",
+        "text": "Can I have some chicken and rice?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.697959,
+        "url": "/audio/a1/gaps/7a7b93f0-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "7a7b93f0",
+        "text": "Can I have some chicken and rice?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/7a7b93f0-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "f98b571a",
+        "text": "What does Carlos want to drink?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.802449,
+        "url": "/audio/a1/gaps/f98b571a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "f98b571a",
+        "text": "What does Carlos want to drink?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/f98b571a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "a0bb9f02",
+        "text": "Water, please",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.332245,
+        "url": "/audio/a1/gaps/a0bb9f02-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "a0bb9f02",
+        "text": "Water, please",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/a0bb9f02-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "5368ff7f",
+        "text": "That is all",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/5368ff7f-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "5368ff7f",
+        "text": "That is all",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/5368ff7f-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "5"
+        ]
+      },
+      {
+        "key": "25f36866",
+        "text": "Hi Tom! How are you? I’m fine, thanks. I’m very busy this week, but I’m happy. In my free time, I play football with my friends. I love my city because it has big parks. Do you like sports? Write soon. Take care!",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 17.084082,
+        "url": "/audio/a1/gaps/25f36866-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "25f36866",
+        "text": "Hi Tom! How are you? I’m fine, thanks. I’m very busy this week, but I’m happy. In my free time, I play football with my friends. I love my city because it has big parks. Do you like sports? Write soon. Take care!",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 15.46449,
+        "url": "/audio/a1/gaps/25f36866-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "f4ec9213",
+        "text": "I play football",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/f4ec9213-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
+        ]
+      },
+      {
+        "key": "f4ec9213",
+        "text": "I play football",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.48898,
+        "url": "/audio/a1/gaps/f4ec9213-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "leccion"
+        ],
+        "units": [
+          "6"
         ]
       }
     ]
