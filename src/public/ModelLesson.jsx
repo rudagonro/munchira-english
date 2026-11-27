@@ -81,7 +81,7 @@ function TwoWayCards({ lesson, onComplete }) {
     }
   }}>
     <p className="ml-card-meta">Tarjeta {idx + 1} de {cards.length} · {toEnglish ? 'Español → Inglés' : 'Inglés → Español'}</p>
-    <p className="ml-card-prompt">{card.prompt} {!toEnglish && <ListenButtons text={card.audio} />}</p>
+    <p className="ml-card-prompt"><span className="ml-card-word">{card.prompt}</span>{!toEnglish && <ListenButtons text={card.audio} />}</p>
     <label>{toEnglish ? 'Escríbelo en inglés' : 'Escríbelo en español'}
       <input value={value} onChange={e => setValue(e.target.value)} disabled={finished} autoComplete="off" autoCapitalize="none" spellCheck={false} />
     </label>

@@ -73,6 +73,8 @@ test('opciones: solo las que están en inglés llevan bocinas', async () => {
 })
 
 test('diálogos: selector US/UK para escucharlo completo y dos bocinas en cada línea', async () => {
+  const { resetDialogueAccents } = await load('/src/public/dialogueAccent.js')
+  resetDialogueAccents()
   const { default: DialogueBlock } = await load('/src/public/DialogueBlock.jsx')
   const dialogue = cycle.modules[0].practice.dialogues[1]
   const html = renderToString(h(DialogueBlock, { dialogue }))
@@ -81,6 +83,53 @@ test('diálogos: selector US/UK para escucharlo completo y dos bocinas en cada l
   assert.match(html, /role="radio" aria-checked="false"[^>]*>.*?Británico/)
   assert.equal((html.match(/class="as-btn as-us"/g) ?? []).length, dialogue.lines.length)
   assert.equal((html.match(/class="as-btn as-uk"/g) ?? []).length, dialogue.lines.length)
+})
+
+test('el acento del diálogo se conserva al remount y Escuchar todo usa el acento elegido', async () => {
+  const { readDialogueAccent, writeDialogueAccent, resetDialogueAccents } = await load('/src/public/dialogueAccent.js')
+  const { default: DialogueBlock } = await load('/src/public/DialogueBlock.jsx')
+  resetDialogueAccents()
+  const dialogue = cycle.modules[0].practice.dialogues[1]
+  writeDialogueAccent(dialogue.title, 'en-GB')
+  const html = renderToString(h(DialogueBlock, { dialogue }))
+  assert.match(html, /aria-checked="true"[^>]*><img class="as-icon" src="\/icons\/speaker-uk\.webp"[^>]*\/><span>Británico/, 'tras un remount sigue Británico')
+  assert.match(html, /aria-checked="false"[^>]*><img class="as-icon" src="\/icons\/speaker-us\.webp"[^>]*\/><span>Americano/)
+  assert.match(html, /aria-label="Escuchar completo en acento británico:/)
+
+  const played = []
+  globalThis.window = {}
+  globalThis.Audio = class {
+    constructor(url) { played.push(url); this.addEventListener = () => {} }
+    play() { this.onended?.(); return Promise.resolve() }
+    pause() {}
+  }
+  try {
+    const { sayDialogue } = await import('../src/public/lessonSpeech.js')
+    let line = -1
+    assert.equal(sayDialogue(dialogue.lines, { accent: readDialogueAccent(dialogue.title), onLine: i => { line = i } }), true)
+    assert.ok(played.length > 0, 'reproduce las líneas')
+    assert.ok(played.every(url => /-gb\.mp3/.test(url)), played.join(', '))
+    assert.equal(readDialogueAccent(dialogue.title), 'en-GB', 'reproducir no vuelve a Americano')
+    assert.equal(line, -1, 'al terminar quita el resaltado y no toca el acento')
+  } finally { delete globalThis.window; delete globalThis.Audio }
+
+  const src = readFileSync(new URL('../src/public/DialogueBlock.jsx', import.meta.url), 'utf8')
+  assert.match(src, /accent: accentRef\.current/)
+  assert.doesNotMatch(src, /setAccent(?:State)?\(['"]en-US['"]\)/, 'nada vuelve el acento a Americano')
+})
+
+test('Despacio no hereda los 28px de la tarjeta: gana a `.mp-home button { font: inherit }`', () => {
+  const css = readFileSync(new URL('../src/public/accent-speakers.css', import.meta.url), 'utf8')
+  const home = readFileSync(new URL('../src/public-home.css', import.meta.url), 'utf8')
+  const lesson = readFileSync(new URL('../src/public/model-lesson.css', import.meta.url), 'utf8')
+  const model = readFileSync(new URL('../src/public/ModelLesson.jsx', import.meta.url), 'utf8')
+  assert.match(home, /\.mp-home button, \.mp-home input \{ font: inherit; \}/)
+  assert.match(css, /\.mp-home button\.as-slow/)
+  assert.match(css, /button\.as-slow[^{]*\{[^}]*font-size:\s*13px/)
+  assert.match(css, /button\.as-slow[^{]*\{[^}]*max-height:\s*44px/)
+  assert.doesNotMatch(css, /button\.as-slow[^{]*\{[^}]*font:\s*inherit/)
+  assert.match(lesson, /\.ml-card-prompt \{ display: flex;/)
+  assert.match(model, /className="ml-card-word">\{card\.prompt\}/)
 })
 
 test('Repaso: las dos bocinas van fuera de la tarjeta (tocarlas no la voltea) y usan los audios de A1', async () => {
