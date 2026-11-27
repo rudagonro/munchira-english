@@ -1,13 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { sayDialogue, stopLessonAudio } from './lessonSpeech'
 import AccentSpeakers, { AccentToggle } from './AccentSpeakers'
+import { readDialogueAccent, writeDialogueAccent } from './dialogueAccent'
 
 /** Diálogo: selector US/UK para escucharlo completo y, en cada línea, sus dos bocinas. */
 export default function DialogueBlock({ dialogue: d, children = null }) {
-  const [accent, setAccent] = useState('en-US')
+  const [accent, setAccentState] = useState(() => readDialogueAccent(d.title))
   const [line, setLine] = useState(-1)
+  const accentRef = useRef(accent)
+  const setAccent = next => {
+    accentRef.current = next
+    writeDialogueAccent(d.title, next)
+    setAccentState(next)
+  }
   useEffect(() => () => stopLessonAudio(), [])
-  const play = slow => sayDialogue(d.lines, { accent, slow, onLine: setLine })
+  const play = slow => sayDialogue(d.lines, { accent: accentRef.current, slow, onLine: setLine })
   return <div className="ml-dialogue-block">
     <h3>{d.title}</h3>
     <div className="ml-dialogue-all">

@@ -5,10 +5,17 @@
 .as-btn:focus-visible, .as-slow:focus-visible, .as-toggle button:focus-visible { outline: 3px solid var(--mp-teal, #16665c); outline-offset: 2px; }
 .as-btn:disabled { cursor: not-allowed; opacity: .35; filter: grayscale(1); }
 .as-icon { display: block; height: 28px; width: auto; max-width: 46px; object-fit: contain; pointer-events: none; user-select: none; }
-.as-slow { min-height: 44px; padding: 4px 10px; border: 1px solid var(--mp-border, #dbe5df); border-radius: 99px; background: var(--mp-soft, #f5f8f5); color: inherit; font: inherit; font-size: 13px; cursor: pointer; }
+/* `.mp-home button { font: inherit }` (0,1,1) gana a `.as-slow` y hereda los 28px/700 de `.ml-card-prompt`. */
+.mp-home button.as-slow, button.as-slow {
+  display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+  box-sizing: border-box; height: 44px; min-height: 44px; max-height: 44px; padding: 0 10px;
+  border: 1px solid var(--mp-border, #dbe5df); border-radius: 99px; background: var(--mp-soft, #f5f8f5);
+  color: var(--mp-ink, inherit); font-family: inherit; font-size: 13px; font-weight: 600; font-style: normal;
+  line-height: 1; vertical-align: middle; cursor: pointer;
+}
 .as-slow:disabled { cursor: not-allowed; opacity: .45; }
 .as-toggle { display: inline-flex; border: 1px solid var(--mp-border, #dbe5df); border-radius: 99px; overflow: hidden; vertical-align: middle; }
-.as-toggle button { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px 4px 8px; border: 0; background: var(--mp-paper, #fff); color: inherit; font: inherit; font-size: 13px; cursor: pointer; }
+.mp-home .as-toggle button, .as-toggle button { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px 4px 8px; border: 0; background: var(--mp-paper, #fff); color: inherit; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
 .as-toggle button .as-icon { height: 24px; }
 .as-toggle button[aria-checked="true"] { background: var(--mp-mint, #e6f4ec); font-weight: 700; box-shadow: inset 0 -3px 0 var(--mp-teal, #16665c); }
 
@@ -27,7 +34,7 @@
 
 /* Diálogos: selector US/UK + escuchar todo; la línea que suena se resalta. */
 .ml-dialogue-all { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0; }
-.ml-dialogue-all > button { min-height: 44px; padding: 4px 12px; border: 1px solid var(--mp-border); border-radius: 99px; background: var(--mp-soft); color: var(--mp-ink); font: inherit; font-size: 13px; cursor: pointer; }
+.mp-home .ml-dialogue-all > button, .ml-dialogue-all > button { min-height: 44px; padding: 4px 12px; border: 1px solid var(--mp-border); border-radius: 99px; background: var(--mp-soft); color: var(--mp-ink); font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
 .ml-dialogue-all > button:hover { border-color: var(--mp-teal); }
 .ml-dialogue li.ml-now { outline: 2px solid var(--mp-teal); }
 .ml-dialogue li .as-speakers { justify-self: start; }

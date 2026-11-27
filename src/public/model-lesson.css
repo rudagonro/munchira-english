@@ -40,7 +40,8 @@
 .ml-right { color: var(--mp-teal); font-weight: 700; }
 .ml-card { display: grid; gap: 14px; border: 1px solid var(--mp-border); border-radius: 14px; padding: 20px; background: var(--mp-soft); max-width: 560px; }
 .ml-card-meta { font-size: 13px; color: var(--mp-muted); }
-.ml-card-prompt { font-size: 28px; font-weight: 700; }
+.ml-card-prompt { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font-size: 28px; font-weight: 700; }
+.ml-card-word { min-width: 0; }
 .ml-card label, .ml-free { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
 .ml-card input, .ml-free textarea { font: inherit; font-size: 18px; min-height: 48px; padding: 10px 12px; border: 1px solid var(--mp-border); border-radius: 8px; background: var(--mp-paper); color: var(--mp-ink); width: 100%; box-sizing: border-box; }
 .ml-feedback { font-weight: 600; padding: 10px 12px; border-radius: 8px; }
