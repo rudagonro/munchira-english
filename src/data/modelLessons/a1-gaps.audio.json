@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T02:58:30-05:00",
+  "generatedAt": "2026-11-27T02:59:29-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -770,7 +770,13 @@
     "gaps-b020d189-us": "/audio/a1/gaps/b020d189-us.mp3",
     "gaps-b020d189-gb": "/audio/a1/gaps/b020d189-gb.mp3",
     "gaps-cedfa3c5-us": "/audio/a1/gaps/cedfa3c5-us.mp3",
-    "gaps-cedfa3c5-gb": "/audio/a1/gaps/cedfa3c5-gb.mp3"
+    "gaps-cedfa3c5-gb": "/audio/a1/gaps/cedfa3c5-gb.mp3",
+    "gaps-7f2f6083-us": "/audio/a1/gaps/7f2f6083-us.mp3",
+    "gaps-7f2f6083-gb": "/audio/a1/gaps/7f2f6083-gb.mp3",
+    "gaps-01e13d78-us": "/audio/a1/gaps/01e13d78-us.mp3",
+    "gaps-01e13d78-gb": "/audio/a1/gaps/01e13d78-gb.mp3",
+    "gaps-eba225a3-us": "/audio/a1/gaps/eba225a3-us.mp3",
+    "gaps-eba225a3-gb": "/audio/a1/gaps/eba225a3-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -6092,12 +6098,54 @@
           0.862041
         ]
       }
+    },
+    "7f2f6083": {
+      "nova": {
+        "us": [
+          "gaps-7f2f6083-us",
+          0,
+          6.817959
+        ],
+        "gb": [
+          "gaps-7f2f6083-gb",
+          0,
+          6.530612
+        ]
+      }
+    },
+    "01e13d78": {
+      "nova": {
+        "us": [
+          "gaps-01e13d78-us",
+          0,
+          10.579592
+        ],
+        "gb": [
+          "gaps-01e13d78-gb",
+          0,
+          13.139592
+        ]
+      }
+    },
+    "eba225a3": {
+      "nova": {
+        "us": [
+          "gaps-eba225a3-us",
+          0,
+          11.180408
+        ],
+        "gb": [
+          "gaps-eba225a3-gb",
+          0,
+          14.027755
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Clips generados para textos que npm run audio:check listaba como faltantes. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 760,
-    "clips_missing_files": 6,
+    "clips_written": 766,
+    "clips_missing_files": 0,
     "items": [
       {
         "key": "f7b20218",
@@ -20265,6 +20313,114 @@
         ],
         "units": [
           "examen"
+        ]
+      },
+      {
+        "key": "7f2f6083",
+        "text": "Hi, my name is Tom. I live in a small apartment near the park. Every weekend I go shopping with my sister.",
+        "accent": "us",
+        "voice": "will",
+        "voiceId": "bIHbv24MWmeRgasZH58o",
+        "duration": 6.817959,
+        "url": "/audio/a1/gaps/7f2f6083-us.mp3",
+        "clipVoice": "nova",
+        "role": "diagnostico-tom-hombre",
+        "speed": 0.9,
+        "areas": [
+          "diagnostico"
+        ],
+        "units": [
+          "A2"
+        ]
+      },
+      {
+        "key": "7f2f6083",
+        "text": "Hi, my name is Tom. I live in a small apartment near the park. Every weekend I go shopping with my sister.",
+        "accent": "gb",
+        "voice": "george",
+        "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+        "duration": 6.530612,
+        "url": "/audio/a1/gaps/7f2f6083-gb.mp3",
+        "clipVoice": "nova",
+        "role": "diagnostico-tom-hombre",
+        "speed": 0.9,
+        "areas": [
+          "diagnostico"
+        ],
+        "units": [
+          "A2"
+        ]
+      },
+      {
+        "key": "01e13d78",
+        "text": "Good morning, passengers. Due to scheduled maintenance, the 9:15 train to Manchester has been delayed by twenty minutes. We apologize for any inconvenience caused.",
+        "accent": "us",
+        "voice": "brian",
+        "voiceId": "nPczCjzI2devNBz1zQrb",
+        "duration": 10.579592,
+        "url": "/audio/a1/gaps/01e13d78-us.mp3",
+        "clipVoice": "nova",
+        "role": "diagnostico-anuncio",
+        "speed": 0.9,
+        "areas": [
+          "diagnostico"
+        ],
+        "units": [
+          "B1"
+        ]
+      },
+      {
+        "key": "01e13d78",
+        "text": "Good morning, passengers. Due to scheduled maintenance, the 9:15 train to Manchester has been delayed by twenty minutes. We apologize for any inconvenience caused.",
+        "accent": "gb",
+        "voice": "daniel",
+        "voiceId": "onwK4e9ZLuTAKqWW03F9",
+        "duration": 13.139592,
+        "url": "/audio/a1/gaps/01e13d78-gb.mp3",
+        "clipVoice": "nova",
+        "role": "diagnostico-anuncio",
+        "speed": 0.9,
+        "areas": [
+          "diagnostico"
+        ],
+        "units": [
+          "B1"
+        ]
+      },
+      {
+        "key": "eba225a3",
+        "text": "What's fascinating about the study is that participants who multitasked reported feeling more productive, even though objective measurements showed a significant drop in actual output quality.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 11.180408,
+        "url": "/audio/a1/gaps/eba225a3-us.mp3",
+        "clipVoice": "nova",
+        "role": "diagnostico-narracion",
+        "speed": 0.9,
+        "areas": [
+          "diagnostico"
+        ],
+        "units": [
+          "B2"
+        ]
+      },
+      {
+        "key": "eba225a3",
+        "text": "What's fascinating about the study is that participants who multitasked reported feeling more productive, even though objective measurements showed a significant drop in actual output quality.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 14.027755,
+        "url": "/audio/a1/gaps/eba225a3-gb.mp3",
+        "clipVoice": "nova",
+        "role": "diagnostico-narracion",
+        "speed": 0.9,
+        "areas": [
+          "diagnostico"
+        ],
+        "units": [
+          "B2"
         ]
       }
     ]
