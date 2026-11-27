@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T02:51:53-05:00",
+  "generatedAt": "2026-11-27T02:53:46-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -690,7 +690,27 @@
     "gaps-62de906e-us": "/audio/a1/gaps/62de906e-us.mp3",
     "gaps-62de906e-gb": "/audio/a1/gaps/62de906e-gb.mp3",
     "gaps-2fe3211f-us": "/audio/a1/gaps/2fe3211f-us.mp3",
-    "gaps-2fe3211f-gb": "/audio/a1/gaps/2fe3211f-gb.mp3"
+    "gaps-2fe3211f-gb": "/audio/a1/gaps/2fe3211f-gb.mp3",
+    "gaps-eb511445-us": "/audio/a1/gaps/eb511445-us.mp3",
+    "gaps-eb511445-gb": "/audio/a1/gaps/eb511445-gb.mp3",
+    "gaps-2a6d0ca7-us": "/audio/a1/gaps/2a6d0ca7-us.mp3",
+    "gaps-2a6d0ca7-gb": "/audio/a1/gaps/2a6d0ca7-gb.mp3",
+    "gaps-ef238faf-us": "/audio/a1/gaps/ef238faf-us.mp3",
+    "gaps-ef238faf-gb": "/audio/a1/gaps/ef238faf-gb.mp3",
+    "gaps-72b0415c-us": "/audio/a1/gaps/72b0415c-us.mp3",
+    "gaps-72b0415c-gb": "/audio/a1/gaps/72b0415c-gb.mp3",
+    "gaps-03df6b5d-us": "/audio/a1/gaps/03df6b5d-us.mp3",
+    "gaps-03df6b5d-gb": "/audio/a1/gaps/03df6b5d-gb.mp3",
+    "gaps-891d226a-us": "/audio/a1/gaps/891d226a-us.mp3",
+    "gaps-891d226a-gb": "/audio/a1/gaps/891d226a-gb.mp3",
+    "gaps-c3286183-us": "/audio/a1/gaps/c3286183-us.mp3",
+    "gaps-c3286183-gb": "/audio/a1/gaps/c3286183-gb.mp3",
+    "gaps-200886f4-us": "/audio/a1/gaps/200886f4-us.mp3",
+    "gaps-200886f4-gb": "/audio/a1/gaps/200886f4-gb.mp3",
+    "gaps-137af091-us": "/audio/a1/gaps/137af091-us.mp3",
+    "gaps-137af091-gb": "/audio/a1/gaps/137af091-gb.mp3",
+    "gaps-4eb26aaa-us": "/audio/a1/gaps/4eb26aaa-us.mp3",
+    "gaps-4eb26aaa-gb": "/audio/a1/gaps/4eb26aaa-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -5452,12 +5472,152 @@
           1.985306
         ]
       }
+    },
+    "eb511445": {
+      "nova": {
+        "us": [
+          "gaps-eb511445-us",
+          0,
+          1.697959
+        ],
+        "gb": [
+          "gaps-eb511445-gb",
+          0,
+          1.933061
+        ]
+      }
+    },
+    "2a6d0ca7": {
+      "nova": {
+        "us": [
+          "gaps-2a6d0ca7-us",
+          0,
+          1.619592
+        ],
+        "gb": [
+          "gaps-2a6d0ca7-gb",
+          0,
+          1.567347
+        ]
+      }
+    },
+    "ef238faf": {
+      "nova": {
+        "us": [
+          "gaps-ef238faf-us",
+          0,
+          1.567347
+        ],
+        "gb": [
+          "gaps-ef238faf-gb",
+          0,
+          1.697959
+        ]
+      }
+    },
+    "72b0415c": {
+      "nova": {
+        "us": [
+          "gaps-72b0415c-us",
+          0,
+          1.332245
+        ],
+        "gb": [
+          "gaps-72b0415c-gb",
+          0,
+          1.515102
+        ]
+      }
+    },
+    "03df6b5d": {
+      "nova": {
+        "us": [
+          "gaps-03df6b5d-us",
+          0,
+          1.332245
+        ],
+        "gb": [
+          "gaps-03df6b5d-gb",
+          0,
+          1.671837
+        ]
+      }
+    },
+    "891d226a": {
+      "nova": {
+        "us": [
+          "gaps-891d226a-us",
+          0,
+          1.619592
+        ],
+        "gb": [
+          "gaps-891d226a-gb",
+          0,
+          1.854694
+        ]
+      }
+    },
+    "c3286183": {
+      "nova": {
+        "us": [
+          "gaps-c3286183-us",
+          0,
+          1.985306
+        ],
+        "gb": [
+          "gaps-c3286183-gb",
+          0,
+          2.45551
+        ]
+      }
+    },
+    "200886f4": {
+      "nova": {
+        "us": [
+          "gaps-200886f4-us",
+          0,
+          1.906939
+        ],
+        "gb": [
+          "gaps-200886f4-gb",
+          0,
+          2.586122
+        ]
+      }
+    },
+    "137af091": {
+      "nova": {
+        "us": [
+          "gaps-137af091-us",
+          0,
+          2.089796
+        ],
+        "gb": [
+          "gaps-137af091-gb",
+          0,
+          2.690612
+        ]
+      }
+    },
+    "4eb26aaa": {
+      "nova": {
+        "us": [
+          "gaps-4eb26aaa-us",
+          0,
+          2.220408
+        ],
+        "gb": [
+          "gaps-4eb26aaa-gb",
+          0,
+          2.45551
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Clips generados para textos que npm run audio:check listaba como faltantes. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 680,
-    "clips_missing_files": 86,
+    "clips_written": 700,
+    "clips_missing_files": 66,
     "items": [
       {
         "key": "f7b20218",
@@ -18177,6 +18337,366 @@
         "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
         "duration": 1.985306,
         "url": "/audio/a1/gaps/2fe3211f-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "eb511445",
+        "text": "I’d likes a sandwich, please.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.697959,
+        "url": "/audio/a1/gaps/eb511445-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "eb511445",
+        "text": "I’d likes a sandwich, please.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.933061,
+        "url": "/audio/a1/gaps/eb511445-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "2a6d0ca7",
+        "text": "By bus every day.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/2a6d0ca7-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "2a6d0ca7",
+        "text": "By bus every day.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/2a6d0ca7-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "ef238faf",
+        "text": "I get up at 7.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.567347,
+        "url": "/audio/a1/gaps/ef238faf-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "ef238faf",
+        "text": "I get up at 7.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.697959,
+        "url": "/audio/a1/gaps/ef238faf-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "72b0415c",
+        "text": "Where you live?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.332245,
+        "url": "/audio/a1/gaps/72b0415c-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "72b0415c",
+        "text": "Where you live?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.515102,
+        "url": "/audio/a1/gaps/72b0415c-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "03df6b5d",
+        "text": "Where does you live?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.332245,
+        "url": "/audio/a1/gaps/03df6b5d-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "03df6b5d",
+        "text": "Where does you live?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.671837,
+        "url": "/audio/a1/gaps/03df6b5d-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "891d226a",
+        "text": "Where are you live?",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.619592,
+        "url": "/audio/a1/gaps/891d226a-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "891d226a",
+        "text": "Where are you live?",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.854694,
+        "url": "/audio/a1/gaps/891d226a-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "c3286183",
+        "text": "There are a kitchen and two bedroom.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.985306,
+        "url": "/audio/a1/gaps/c3286183-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "c3286183",
+        "text": "There are a kitchen and two bedroom.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.45551,
+        "url": "/audio/a1/gaps/c3286183-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "200886f4",
+        "text": "Is a kitchen and two bedrooms.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.906939,
+        "url": "/audio/a1/gaps/200886f4-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "200886f4",
+        "text": "Is a kitchen and two bedrooms.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.586122,
+        "url": "/audio/a1/gaps/200886f4-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "137af091",
+        "text": "There is kitchen and two bedrooms.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.089796,
+        "url": "/audio/a1/gaps/137af091-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "137af091",
+        "text": "There is kitchen and two bedrooms.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.690612,
+        "url": "/audio/a1/gaps/137af091-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "4eb26aaa",
+        "text": "There is a kitchen and two bedrooms.",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.220408,
+        "url": "/audio/a1/gaps/4eb26aaa-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-larga",
+        "speed": 0.9,
+        "areas": [
+          "cuestionario"
+        ],
+        "units": [
+          "8"
+        ]
+      },
+      {
+        "key": "4eb26aaa",
+        "text": "There is a kitchen and two bedrooms.",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.45551,
+        "url": "/audio/a1/gaps/4eb26aaa-gb.mp3",
         "clipVoice": "nova",
         "role": "frase-larga",
         "speed": 0.9,
