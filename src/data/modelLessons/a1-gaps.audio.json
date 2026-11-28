@@ -9,7 +9,7 @@
     "style": 0.15,
     "use_speaker_boost": true
   },
-  "generatedAt": "2026-11-27T23:11:35-05:00",
+  "generatedAt": "2026-11-27T23:41:54-05:00",
   "sprites": {
     "gaps-f7b20218-us": "/audio/a1/gaps/f7b20218-us.mp3",
     "gaps-f7b20218-gb": "/audio/a1/gaps/f7b20218-gb.mp3",
@@ -1516,7 +1516,43 @@
     "gaps-fe695c0b-us": "/audio/a1/gaps/fe695c0b-us.mp3",
     "gaps-fe695c0b-gb": "/audio/a1/gaps/fe695c0b-gb.mp3",
     "gaps-021e3a39-us": "/audio/a1/gaps/021e3a39-us.mp3",
-    "gaps-021e3a39-gb": "/audio/a1/gaps/021e3a39-gb.mp3"
+    "gaps-021e3a39-gb": "/audio/a1/gaps/021e3a39-gb.mp3",
+    "gaps-8a8753c7-us": "/audio/a1/gaps/8a8753c7-us.mp3",
+    "gaps-8a8753c7-gb": "/audio/a1/gaps/8a8753c7-gb.mp3",
+    "gaps-3411daf5-us": "/audio/a1/gaps/3411daf5-us.mp3",
+    "gaps-3411daf5-gb": "/audio/a1/gaps/3411daf5-gb.mp3",
+    "gaps-aa2a6164-us": "/audio/a1/gaps/aa2a6164-us.mp3",
+    "gaps-aa2a6164-gb": "/audio/a1/gaps/aa2a6164-gb.mp3",
+    "gaps-db8e2326-us": "/audio/a1/gaps/db8e2326-us.mp3",
+    "gaps-db8e2326-gb": "/audio/a1/gaps/db8e2326-gb.mp3",
+    "gaps-12aca1ac-us": "/audio/a1/gaps/12aca1ac-us.mp3",
+    "gaps-12aca1ac-gb": "/audio/a1/gaps/12aca1ac-gb.mp3",
+    "gaps-a0eb0f08-us": "/audio/a1/gaps/a0eb0f08-us.mp3",
+    "gaps-a0eb0f08-gb": "/audio/a1/gaps/a0eb0f08-gb.mp3",
+    "gaps-cff1dc5c-us": "/audio/a1/gaps/cff1dc5c-us.mp3",
+    "gaps-cff1dc5c-gb": "/audio/a1/gaps/cff1dc5c-gb.mp3",
+    "gaps-c5f1cc9e-us": "/audio/a1/gaps/c5f1cc9e-us.mp3",
+    "gaps-c5f1cc9e-gb": "/audio/a1/gaps/c5f1cc9e-gb.mp3",
+    "gaps-65461636-us": "/audio/a1/gaps/65461636-us.mp3",
+    "gaps-65461636-gb": "/audio/a1/gaps/65461636-gb.mp3",
+    "gaps-d24a80b5-us": "/audio/a1/gaps/d24a80b5-us.mp3",
+    "gaps-d24a80b5-gb": "/audio/a1/gaps/d24a80b5-gb.mp3",
+    "gaps-7ee93563-us": "/audio/a1/gaps/7ee93563-us.mp3",
+    "gaps-7ee93563-gb": "/audio/a1/gaps/7ee93563-gb.mp3",
+    "gaps-e2d8d182-us": "/audio/a1/gaps/e2d8d182-us.mp3",
+    "gaps-e2d8d182-gb": "/audio/a1/gaps/e2d8d182-gb.mp3",
+    "gaps-0b2baa8d-us": "/audio/a1/gaps/0b2baa8d-us.mp3",
+    "gaps-0b2baa8d-gb": "/audio/a1/gaps/0b2baa8d-gb.mp3",
+    "gaps-8b6fe763-us": "/audio/a1/gaps/8b6fe763-us.mp3",
+    "gaps-8b6fe763-gb": "/audio/a1/gaps/8b6fe763-gb.mp3",
+    "gaps-67343942-us": "/audio/a1/gaps/67343942-us.mp3",
+    "gaps-5686e12d-us": "/audio/a1/gaps/5686e12d-us.mp3",
+    "gaps-5686e12d-gb": "/audio/a1/gaps/5686e12d-gb.mp3",
+    "gaps-915d2ab9-us": "/audio/a1/gaps/915d2ab9-us.mp3",
+    "gaps-915d2ab9-gb": "/audio/a1/gaps/915d2ab9-gb.mp3",
+    "gaps-d2a4845f-us": "/audio/a1/gaps/d2a4845f-us.mp3",
+    "gaps-d2a4845f-gb": "/audio/a1/gaps/d2a4845f-gb.mp3",
+    "gaps-67343942-gb": "/audio/a1/gaps/67343942-gb.mp3"
   },
   "clips": {
     "f7b20218": {
@@ -12060,11 +12096,263 @@
           0.783673
         ]
       }
+    },
+    "8a8753c7": {
+      "nova": {
+        "us": [
+          "gaps-8a8753c7-us",
+          0,
+          1.07102
+        ],
+        "gb": [
+          "gaps-8a8753c7-gb",
+          0,
+          1.149388
+        ]
+      }
+    },
+    "3411daf5": {
+      "nova": {
+        "us": [
+          "gaps-3411daf5-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-3411daf5-gb",
+          0,
+          1.097143
+        ]
+      }
+    },
+    "aa2a6164": {
+      "nova": {
+        "us": [
+          "gaps-aa2a6164-us",
+          0,
+          0.914286
+        ],
+        "gb": [
+          "gaps-aa2a6164-gb",
+          0,
+          1.149388
+        ]
+      }
+    },
+    "db8e2326": {
+      "nova": {
+        "us": [
+          "gaps-db8e2326-us",
+          0,
+          1.38449
+        ],
+        "gb": [
+          "gaps-db8e2326-gb",
+          0,
+          1.436735
+        ]
+      }
+    },
+    "12aca1ac": {
+      "nova": {
+        "us": [
+          "gaps-12aca1ac-us",
+          0,
+          1.802449
+        ],
+        "gb": [
+          "gaps-12aca1ac-gb",
+          0,
+          1.149388
+        ]
+      }
+    },
+    "a0eb0f08": {
+      "nova": {
+        "us": [
+          "gaps-a0eb0f08-us",
+          0,
+          0.966531
+        ],
+        "gb": [
+          "gaps-a0eb0f08-gb",
+          0,
+          0.966531
+        ]
+      }
+    },
+    "cff1dc5c": {
+      "nova": {
+        "us": [
+          "gaps-cff1dc5c-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-cff1dc5c-gb",
+          0,
+          1.436735
+        ]
+      }
+    },
+    "c5f1cc9e": {
+      "nova": {
+        "us": [
+          "gaps-c5f1cc9e-us",
+          0,
+          1.149388
+        ],
+        "gb": [
+          "gaps-c5f1cc9e-gb",
+          0,
+          1.38449
+        ]
+      }
+    },
+    "65461636": {
+      "nova": {
+        "us": [
+          "gaps-65461636-us",
+          0,
+          1.253878
+        ],
+        "gb": [
+          "gaps-65461636-gb",
+          0,
+          1.28
+        ]
+      }
+    },
+    "d24a80b5": {
+      "nova": {
+        "us": [
+          "gaps-d24a80b5-us",
+          0,
+          1.018776
+        ],
+        "gb": [
+          "gaps-d24a80b5-gb",
+          0,
+          1.28
+        ]
+      }
+    },
+    "7ee93563": {
+      "nova": {
+        "us": [
+          "gaps-7ee93563-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-7ee93563-gb",
+          0,
+          1.097143
+        ]
+      }
+    },
+    "e2d8d182": {
+      "nova": {
+        "us": [
+          "gaps-e2d8d182-us",
+          0,
+          1.097143
+        ],
+        "gb": [
+          "gaps-e2d8d182-gb",
+          0,
+          1.436735
+        ]
+      }
+    },
+    "0b2baa8d": {
+      "nova": {
+        "us": [
+          "gaps-0b2baa8d-us",
+          0,
+          2.220408
+        ],
+        "gb": [
+          "gaps-0b2baa8d-gb",
+          0,
+          2.168163
+        ]
+      }
+    },
+    "8b6fe763": {
+      "nova": {
+        "us": [
+          "gaps-8b6fe763-us",
+          0,
+          1.018776
+        ],
+        "gb": [
+          "gaps-8b6fe763-gb",
+          0,
+          1.097143
+        ]
+      }
+    },
+    "67343942": {
+      "nova": {
+        "us": [
+          "gaps-67343942-us",
+          0,
+          0.783673
+        ],
+        "gb": [
+          "gaps-67343942-gb",
+          0,
+          0.783673
+        ]
+      }
+    },
+    "5686e12d": {
+      "nova": {
+        "us": [
+          "gaps-5686e12d-us",
+          0,
+          1.28
+        ],
+        "gb": [
+          "gaps-5686e12d-gb",
+          0,
+          1.332245
+        ]
+      }
+    },
+    "915d2ab9": {
+      "nova": {
+        "us": [
+          "gaps-915d2ab9-us",
+          0,
+          1.38449
+        ],
+        "gb": [
+          "gaps-915d2ab9-gb",
+          0,
+          1.28
+        ]
+      }
+    },
+    "d2a4845f": {
+      "nova": {
+        "us": [
+          "gaps-d2a4845f-us",
+          0,
+          1.018776
+        ],
+        "gb": [
+          "gaps-d2a4845f-gb",
+          0,
+          0.914286
+        ]
+      }
     }
   },
   "inventory": {
     "note": "Incluye clips de enunciados y opciones de cuestionario A1. Archivos en /audio/a1/gaps/{key}-{us|gb}.mp3.",
-    "clips_written": 13,
+    "clips_written": 1,
     "clips_missing_files": 0,
     "items": [
       {
@@ -39695,6 +39983,654 @@
         ],
         "units": [
           "A1"
+        ]
+      },
+      {
+        "key": "8a8753c7",
+        "text": "email",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.07102,
+        "url": "/audio/a1/gaps/8a8753c7-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "8a8753c7",
+        "text": "email",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/8a8753c7-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "3411daf5",
+        "text": "Gmail",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/3411daf5-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "3411daf5",
+        "text": "Gmail",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/3411daf5-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "aa2a6164",
+        "text": "jeans",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.914286,
+        "url": "/audio/a1/gaps/aa2a6164-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "aa2a6164",
+        "text": "jeans",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/aa2a6164-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "db8e2326",
+        "text": "A, E, I",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/db8e2326-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "db8e2326",
+        "text": "A, E, I",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/db8e2326-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "12aca1ac",
+        "text": "www",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.802449,
+        "url": "/audio/a1/gaps/12aca1ac-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "12aca1ac",
+        "text": "www",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/12aca1ac-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "a0eb0f08",
+        "text": "double",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/a0eb0f08-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "a0eb0f08",
+        "text": "double",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 0.966531,
+        "url": "/audio/a1/gaps/a0eb0f08-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "cff1dc5c",
+        "text": "double L",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/cff1dc5c-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "cff1dc5c",
+        "text": "double L",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/cff1dc5c-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "c5f1cc9e",
+        "text": "double R",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.149388,
+        "url": "/audio/a1/gaps/c5f1cc9e-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "c5f1cc9e",
+        "text": "double R",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/c5f1cc9e-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "65461636",
+        "text": "thirTEEN",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.253878,
+        "url": "/audio/a1/gaps/65461636-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "65461636",
+        "text": "thirTEEN",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/65461636-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "d24a80b5",
+        "text": "THIRty",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.018776,
+        "url": "/audio/a1/gaps/d24a80b5-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "d24a80b5",
+        "text": "THIRty",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/d24a80b5-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "7ee93563",
+        "text": "hundred",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/7ee93563-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "7ee93563",
+        "text": "hundred",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/7ee93563-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "e2d8d182",
+        "text": "two hundreds",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/e2d8d182-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "e2d8d182",
+        "text": "two hundreds",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.436735,
+        "url": "/audio/a1/gaps/e2d8d182-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "0b2baa8d",
+        "text": "three hundred and forty-five",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 2.220408,
+        "url": "/audio/a1/gaps/0b2baa8d-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "0b2baa8d",
+        "text": "three hundred and forty-five",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 2.168163,
+        "url": "/audio/a1/gaps/0b2baa8d-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "8b6fe763",
+        "text": "zero",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 1.018776,
+        "url": "/audio/a1/gaps/8b6fe763-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "8b6fe763",
+        "text": "zero",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 1.097143,
+        "url": "/audio/a1/gaps/8b6fe763-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "67343942",
+        "text": "oh",
+        "accent": "us",
+        "voice": "sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "duration": 0.783673,
+        "url": "/audio/a1/gaps/67343942-us.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "5686e12d",
+        "text": "a red car",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/5686e12d-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "5686e12d",
+        "text": "a red car",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.332245,
+        "url": "/audio/a1/gaps/5686e12d-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "915d2ab9",
+        "text": "I go by bus",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.38449,
+        "url": "/audio/a1/gaps/915d2ab9-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "915d2ab9",
+        "text": "I go by bus",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 1.28,
+        "url": "/audio/a1/gaps/915d2ab9-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "d2a4845f",
+        "text": "in May",
+        "accent": "us",
+        "voice": "jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9",
+        "duration": 1.018776,
+        "url": "/audio/a1/gaps/d2a4845f-us.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "d2a4845f",
+        "text": "in May",
+        "accent": "gb",
+        "voice": "alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+        "duration": 0.914286,
+        "url": "/audio/a1/gaps/d2a4845f-gb.mp3",
+        "clipVoice": "nova",
+        "role": "frase-corta-o-pregunta",
+        "speed": 0.8,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
+        ]
+      },
+      {
+        "key": "67343942",
+        "text": "oh",
+        "accent": "gb",
+        "voice": "lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+        "duration": 0.783673,
+        "url": "/audio/a1/gaps/67343942-gb.mp3",
+        "clipVoice": "nova",
+        "role": "palabra-suelta",
+        "speed": 0.75,
+        "areas": [
+          "unidad0"
+        ],
+        "units": [
+          "0"
         ]
       }
     ]

@@ -11,7 +11,7 @@ import PublicShell from './PublicShell'
 import Seo from './Seo'
 import { QuestionFeedback } from './UnitCompletion'
 import { stopLessonAudio } from './lessonSpeech'
-import AccentSpeakers, { OptionRow, QuizLegend } from './AccentSpeakers'
+import AccentSpeakers, { OptionRow, QuizLegend, SpokenUnit0Explain } from './AccentSpeakers'
 import { unit0FeedbackWords } from './unit0Speech'
 import { useLocalUnit0Pass } from './useLocalUnit0Pass'
 import { useNoSave, useReviewMode } from '../contexts/review-mode-context'
@@ -66,22 +66,22 @@ function TopicPanel({ id, title, children }) {
 function Alphabet() {
   const { alphabet } = UNIT0
   return <TopicPanel id="abecedario" title={alphabet.title}>
-    <p>{alphabet.intro}</p>
+    <p><SpokenUnit0Explain text={alphabet.intro} /></p>
     <ul className="su-letters fc-study-grid">
       {alphabet.letters.map(item => <StudyCard key={item.letter} id={`letra-${item.letter}`} tone={item.tip ? 'tip' : ''} image={item.image ?? null}
         front={<strong className="su-letter-big" lang="en">{item.letter}<span>{item.letter.toLowerCase()}</span></strong>}
-        back={<><strong className="su-letter-small" lang="en">{item.letter}<span>{item.letter.toLowerCase()}</span></strong><span className="su-guide">«{item.guide}»</span>{item.tip && <span className="su-tip">{item.tip}</span>}</>}
+        back={<><strong className="su-letter-small" lang="en">{item.letter}<span>{item.letter.toLowerCase()}</span></strong><span className="su-guide">«{item.guide}»</span>{item.tip && <span className="su-tip"><SpokenUnit0Explain text={item.tip} /></span>}</>}
         frontLabel={`Letra ${item.letter}`} backLabel={`Letra ${item.letter}: se dice «${item.guide}»${item.tip ? `. ${item.tip}` : ''}`}
         audio={item.say} audioLabel={`la letra ${item.letter}`} />)}
     </ul>
     <h3>Las letras que más confundimos</h3>
-    <ul className="su-confusions">{alphabet.confusions.map(item => <li key={item.pair}><strong>{item.pair}</strong><p>{item.explain}</p></li>)}</ul>
+    <ul className="su-confusions">{alphabet.confusions.map(item => <li key={item.pair}><strong><SpokenUnit0Explain text={item.pair} /></strong><p><SpokenUnit0Explain text={item.explain} /></p></li>)}</ul>
     <div className="su-spelling">
       <h3>{alphabet.spelling.title}</h3>
-      <p>{alphabet.spelling.explain}</p>
+      <p><SpokenUnit0Explain text={alphabet.spelling.explain} /></p>
       <ul className="su-phrases">{alphabet.spelling.phrases.map(phrase => <li key={phrase.en}><span lang="en"><strong>{phrase.en}</strong></span><span>{phrase.es}</span><Listen text={phrase.en} /></li>)}</ul>
       <p className="su-example"><span>Ejemplo: {alphabet.spelling.example.name} →</span> <strong lang="en">{alphabet.spelling.example.spelled}</strong> <em>«{alphabet.spelling.example.guide}»</em> <Listen text={alphabet.spelling.example.say} label={alphabet.spelling.example.spelled} /></p>
-      <p className="su-note">{alphabet.spelling.example.note}</p>
+      <p className="su-note"><SpokenUnit0Explain text={alphabet.spelling.example.note} /></p>
     </div>
   </TopicPanel>
 }
@@ -101,7 +101,7 @@ function NumberCards({ items, wide, contrast = false }) {
 function NumberBlock({ block }) {
   return <div className="su-number-block">
     <h3>{block.title}</h3>
-    <p>{block.explain}</p>
+    <p><SpokenUnit0Explain text={block.explain} /></p>
     <NumberCards items={block.items} wide={WIDE_BLOCKS.has(block.id)} />
     {block.contrast && <><p className="su-contrast-title">Escucha la diferencia:</p><NumberCards items={block.contrast} contrast /></>}
   </div>
@@ -110,7 +110,7 @@ function NumberBlock({ block }) {
 function Numbers() {
   const { numbers } = UNIT0
   return <TopicPanel id="numeros" title={numbers.title}>
-    <p>{numbers.intro}</p>
+    <p><SpokenUnit0Explain text={numbers.intro} /></p>
     <p className="su-howto">Toca una cifra para ver cómo se dice en inglés. El altavoz la reproduce sin voltear la tarjeta.</p>
     {numberTopicBlocks().map(block => <NumberBlock key={block.id} block={block} />)}
   </TopicPanel>
@@ -119,7 +119,7 @@ function Numbers() {
 function Years() {
   const block = yearsBlock()
   return <TopicPanel id="anos" title={block.title}>
-    <p>{block.explain}</p>
+    <p><SpokenUnit0Explain text={block.explain} /></p>
     <NumberCards items={block.items} wide />
   </TopicPanel>
 }
@@ -147,7 +147,7 @@ function SaveToReview({ set }) {
 function CardSet({ set, front, setFront }) {
   return <>
     <div className="su-cards-head">
-      <p>{set.intro}</p>
+      <p><SpokenUnit0Explain text={set.intro} /></p>
       <div className="su-front" role="group" aria-label="Qué lado ves primero">
         <button type="button" aria-pressed={front === 'en'} onClick={() => setFront('en')}>Primero inglés</button>
         <button type="button" aria-pressed={front === 'es'} onClick={() => setFront('es')}>Primero español</button>
@@ -172,7 +172,7 @@ function Vocabulary() {
   const [front, setFront] = useState('en')
   const set = sets.find(item => item.key === active) ?? sets[0]
   return <TopicPanel id="vocabulario" title={UNIT0.vocabulary.title}>
-    <p>{UNIT0.vocabulary.intro}</p>
+    <p><SpokenUnit0Explain text={UNIT0.vocabulary.intro} /></p>
     <div className="su-tabs" role="tablist" aria-label="Grupos de palabras">
       {sets.map(item => <button key={item.key} type="button" role="tab" id={`su-tab-${item.key}`} aria-selected={item.key === set.key} aria-controls="su-cards" onClick={() => setActive(item.key)}>{item.title} <small>{item.cards.length}</small></button>)}
     </div>
