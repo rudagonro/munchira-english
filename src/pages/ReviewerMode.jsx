@@ -5,6 +5,7 @@ import { LEVELS, LEVEL_NAMES, bankGV, bankReading, bankListening, bankWriting } 
 import { lessonAudioStatus, prepareLessonsAudio } from '../lib/audioPublisher'
 import { ARCHIVE_AUDIO_LEVELS, REVIEW_UNITS, reviewUnitPath } from '../data/reviewerUnits'
 import { A1_FINAL_EXAM, A1_FINAL_EXAM_REVIEW_PATH } from '../data/a1FinalExam'
+import { A2_UNITS, A2_REVIEW_PATH } from '../data/modelLessons/a2-units'
 
 const SKILL_LABELS = {
   grammar: 'Gramática', vocabulary: 'Vocabulario', reading: 'Reading', listening: 'Listening', writing: 'Writing',
@@ -86,6 +87,25 @@ export default function ReviewerMode() {
               <span className="rv-badge pub">Vista previa</span>
             </Link>
           </li>
+        </ul>
+      </section>
+
+      <section className="rv-section" aria-labelledby="rv-a2">
+        <h2 id="rv-a2">Curso A2: vista previa (piloto)</h2>
+        <p className="au-help">Unidad 0 «{A2_UNITS[0].title}» (obligatoria) y Unidad 1. Solo el personal las ve: los alumnos A2 siguen en lista de espera.</p>
+        <ul className="rv-units">
+          {A2_UNITS.map((unit) => (
+            <li key={`a2-${unit.number}`}>
+              <Link to={A2_REVIEW_PATH(unit.number)} className="rv-module">
+                <span className="rv-module-icon" aria-hidden="true">{unit.number === 0 ? '🚪' : unit.number}</span>
+                <span className="rv-module-text">
+                  <span className="rv-module-title">Unidad {unit.number}: {unit.title}</span>
+                  <span className="rv-module-skill">{unit.number === 0 ? 'Cuestionario de entrada obligatorio' : 'Pasos y cuestionario'}</span>
+                </span>
+                <span className="rv-badge">Vista previa</span>
+              </Link>
+            </li>
+          ))}
         </ul>
       </section>
 

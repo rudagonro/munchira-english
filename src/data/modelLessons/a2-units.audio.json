@@ -1,0 +1,2823 @@
+{
+ "units": "A2 unidades 0–1 (piloto)",
+ "provider": "elevenlabs",
+ "model": "eleven_multilingual_v2",
+ "speed": "0.75 short words, 0.8 short phrases, 0.9 long phrases",
+ "voiceSettings": {
+  "stability": 0.6,
+  "similarity_boost": 0.75,
+  "style": 0.15,
+  "use_speaker_boost": true
+ },
+ "sprites": {
+  "a2-003ee3f2-gb": "/audio/a2/003ee3f2-gb.mp3",
+  "a2-00ae1849-gb": "/audio/a2/00ae1849-gb.mp3",
+  "a2-00f56575-us": "/audio/a2/00f56575-us.mp3",
+  "a2-016d353e-gb": "/audio/a2/016d353e-gb.mp3",
+  "a2-07b1e3e0-gb": "/audio/a2/07b1e3e0-gb.mp3",
+  "a2-0805514f-gb": "/audio/a2/0805514f-gb.mp3",
+  "a2-0805514f-us": "/audio/a2/0805514f-us.mp3",
+  "a2-093d11c9-gb": "/audio/a2/093d11c9-gb.mp3",
+  "a2-09d215d5-gb": "/audio/a2/09d215d5-gb.mp3",
+  "a2-09d215d5-us": "/audio/a2/09d215d5-us.mp3",
+  "a2-0b660ffe-us": "/audio/a2/0b660ffe-us.mp3",
+  "a2-0d747d34-gb": "/audio/a2/0d747d34-gb.mp3",
+  "a2-0e57331a-gb": "/audio/a2/0e57331a-gb.mp3",
+  "a2-0e57331a-us": "/audio/a2/0e57331a-us.mp3",
+  "a2-0ea26ea8-gb": "/audio/a2/0ea26ea8-gb.mp3",
+  "a2-0ea26ea8-us": "/audio/a2/0ea26ea8-us.mp3",
+  "a2-0ea85410-gb": "/audio/a2/0ea85410-gb.mp3",
+  "a2-119c2435-gb": "/audio/a2/119c2435-gb.mp3",
+  "a2-121fa7d9-gb": "/audio/a2/121fa7d9-gb.mp3",
+  "a2-121fa7d9-us": "/audio/a2/121fa7d9-us.mp3",
+  "a2-12c28721-gb": "/audio/a2/12c28721-gb.mp3",
+  "a2-12d3123d-us": "/audio/a2/12d3123d-us.mp3",
+  "a2-1460a7f7-us": "/audio/a2/1460a7f7-us.mp3",
+  "a2-16e2c1f2-us": "/audio/a2/16e2c1f2-us.mp3",
+  "a2-1723dafc-gb": "/audio/a2/1723dafc-gb.mp3",
+  "a2-1724d160-gb": "/audio/a2/1724d160-gb.mp3",
+  "a2-1724d160-us": "/audio/a2/1724d160-us.mp3",
+  "a2-1a8066bc-gb": "/audio/a2/1a8066bc-gb.mp3",
+  "a2-1a8066bc-us": "/audio/a2/1a8066bc-us.mp3",
+  "a2-1ac2693d-us": "/audio/a2/1ac2693d-us.mp3",
+  "a2-1aeb3086-gb": "/audio/a2/1aeb3086-gb.mp3",
+  "a2-1b3b9963-gb": "/audio/a2/1b3b9963-gb.mp3",
+  "a2-1b3b9963-us": "/audio/a2/1b3b9963-us.mp3",
+  "a2-1b9d0f66-gb": "/audio/a2/1b9d0f66-gb.mp3",
+  "a2-1b9d0f66-us": "/audio/a2/1b9d0f66-us.mp3",
+  "a2-1baa8cc1-gb": "/audio/a2/1baa8cc1-gb.mp3",
+  "a2-1e4f9a9f-gb": "/audio/a2/1e4f9a9f-gb.mp3",
+  "a2-1e6212a6-gb": "/audio/a2/1e6212a6-gb.mp3",
+  "a2-1e73e594-gb": "/audio/a2/1e73e594-gb.mp3",
+  "a2-1f15daf4-gb": "/audio/a2/1f15daf4-gb.mp3",
+  "a2-1f15daf4-us": "/audio/a2/1f15daf4-us.mp3",
+  "a2-1f62aaae-us": "/audio/a2/1f62aaae-us.mp3",
+  "a2-1fd675e5-gb": "/audio/a2/1fd675e5-gb.mp3",
+  "a2-215c52f9-gb": "/audio/a2/215c52f9-gb.mp3",
+  "a2-215c52f9-us": "/audio/a2/215c52f9-us.mp3",
+  "a2-218d289c-gb": "/audio/a2/218d289c-gb.mp3",
+  "a2-222136b8-gb": "/audio/a2/222136b8-gb.mp3",
+  "a2-226ec2a8-gb": "/audio/a2/226ec2a8-gb.mp3",
+  "a2-2409d88e-gb": "/audio/a2/2409d88e-gb.mp3",
+  "a2-24a1a8c9-gb": "/audio/a2/24a1a8c9-gb.mp3",
+  "a2-24cc49ff-gb": "/audio/a2/24cc49ff-gb.mp3",
+  "a2-24cc49ff-us": "/audio/a2/24cc49ff-us.mp3",
+  "a2-24d5f952-gb": "/audio/a2/24d5f952-gb.mp3",
+  "a2-24d5f952-us": "/audio/a2/24d5f952-us.mp3",
+  "a2-258516fe-gb": "/audio/a2/258516fe-gb.mp3",
+  "a2-29d03076-gb": "/audio/a2/29d03076-gb.mp3",
+  "a2-29d03076-us": "/audio/a2/29d03076-us.mp3",
+  "a2-2a1a0b43-gb": "/audio/a2/2a1a0b43-gb.mp3",
+  "a2-2a1a0b43-us": "/audio/a2/2a1a0b43-us.mp3",
+  "a2-2ac62745-gb": "/audio/a2/2ac62745-gb.mp3",
+  "a2-2ac62745-us": "/audio/a2/2ac62745-us.mp3",
+  "a2-2b12a8ae-gb": "/audio/a2/2b12a8ae-gb.mp3",
+  "a2-2b12a8ae-us": "/audio/a2/2b12a8ae-us.mp3",
+  "a2-2b15a8d2-gb": "/audio/a2/2b15a8d2-gb.mp3",
+  "a2-2e0037e9-gb": "/audio/a2/2e0037e9-gb.mp3",
+  "a2-2e77a06b-gb": "/audio/a2/2e77a06b-gb.mp3",
+  "a2-2e77a06b-us": "/audio/a2/2e77a06b-us.mp3",
+  "a2-304bd407-gb": "/audio/a2/304bd407-gb.mp3",
+  "a2-304bd407-us": "/audio/a2/304bd407-us.mp3",
+  "a2-3091b1fe-gb": "/audio/a2/3091b1fe-gb.mp3",
+  "a2-3220dd26-gb": "/audio/a2/3220dd26-gb.mp3",
+  "a2-3256cf20-gb": "/audio/a2/3256cf20-gb.mp3",
+  "a2-34d03e9c-us": "/audio/a2/34d03e9c-us.mp3",
+  "a2-38b26ac9-us": "/audio/a2/38b26ac9-us.mp3",
+  "a2-399316ad-gb": "/audio/a2/399316ad-gb.mp3",
+  "a2-39a72c0a-us": "/audio/a2/39a72c0a-us.mp3",
+  "a2-39cedf65-gb": "/audio/a2/39cedf65-gb.mp3",
+  "a2-39cedf65-us": "/audio/a2/39cedf65-us.mp3",
+  "a2-3abe9c4c-gb": "/audio/a2/3abe9c4c-gb.mp3",
+  "a2-3abe9c4c-us": "/audio/a2/3abe9c4c-us.mp3",
+  "a2-3b7a61c7-gb": "/audio/a2/3b7a61c7-gb.mp3",
+  "a2-3b7a61c7-us": "/audio/a2/3b7a61c7-us.mp3",
+  "a2-3c54c2ff-gb": "/audio/a2/3c54c2ff-gb.mp3",
+  "a2-3c6928de-us": "/audio/a2/3c6928de-us.mp3",
+  "a2-3dbb78fa-gb": "/audio/a2/3dbb78fa-gb.mp3",
+  "a2-3dbb78fa-us": "/audio/a2/3dbb78fa-us.mp3",
+  "a2-3e707dd7-gb": "/audio/a2/3e707dd7-gb.mp3",
+  "a2-3e965a67-gb": "/audio/a2/3e965a67-gb.mp3",
+  "a2-3ea847ee-gb": "/audio/a2/3ea847ee-gb.mp3",
+  "a2-3ea847ee-us": "/audio/a2/3ea847ee-us.mp3",
+  "a2-3f2902ef-gb": "/audio/a2/3f2902ef-gb.mp3",
+  "a2-40069ae8-gb": "/audio/a2/40069ae8-gb.mp3",
+  "a2-40069ae8-us": "/audio/a2/40069ae8-us.mp3",
+  "a2-418af74d-gb": "/audio/a2/418af74d-gb.mp3",
+  "a2-41d0c56b-us": "/audio/a2/41d0c56b-us.mp3",
+  "a2-4299e5a2-us": "/audio/a2/4299e5a2-us.mp3",
+  "a2-442a53c4-gb": "/audio/a2/442a53c4-gb.mp3",
+  "a2-44e65827-gb": "/audio/a2/44e65827-gb.mp3",
+  "a2-45499632-us": "/audio/a2/45499632-us.mp3",
+  "a2-46676a40-us": "/audio/a2/46676a40-us.mp3",
+  "a2-48179d4c-us": "/audio/a2/48179d4c-us.mp3",
+  "a2-4a54dcc2-gb": "/audio/a2/4a54dcc2-gb.mp3",
+  "a2-4a54dcc2-us": "/audio/a2/4a54dcc2-us.mp3",
+  "a2-4ca98d84-gb": "/audio/a2/4ca98d84-gb.mp3",
+  "a2-4d9511f7-gb": "/audio/a2/4d9511f7-gb.mp3",
+  "a2-4d9511f7-us": "/audio/a2/4d9511f7-us.mp3",
+  "a2-4e750a0e-us": "/audio/a2/4e750a0e-us.mp3",
+  "a2-50023a31-gb": "/audio/a2/50023a31-gb.mp3",
+  "a2-5063c45f-gb": "/audio/a2/5063c45f-gb.mp3",
+  "a2-5063c45f-us": "/audio/a2/5063c45f-us.mp3",
+  "a2-506dff3e-us": "/audio/a2/506dff3e-us.mp3",
+  "a2-51157d8f-gb": "/audio/a2/51157d8f-gb.mp3",
+  "a2-51157d8f-us": "/audio/a2/51157d8f-us.mp3",
+  "a2-5140bffa-gb": "/audio/a2/5140bffa-gb.mp3",
+  "a2-5145be59-gb": "/audio/a2/5145be59-gb.mp3",
+  "a2-545911b7-gb": "/audio/a2/545911b7-gb.mp3",
+  "a2-548b16df-gb": "/audio/a2/548b16df-gb.mp3",
+  "a2-548b16df-us": "/audio/a2/548b16df-us.mp3",
+  "a2-58b91d1a-gb": "/audio/a2/58b91d1a-gb.mp3",
+  "a2-58e61b43-us": "/audio/a2/58e61b43-us.mp3",
+  "a2-58fdc702-gb": "/audio/a2/58fdc702-gb.mp3",
+  "a2-58fdc702-us": "/audio/a2/58fdc702-us.mp3",
+  "a2-5a45cc6a-us": "/audio/a2/5a45cc6a-us.mp3",
+  "a2-5aaacd6e-gb": "/audio/a2/5aaacd6e-gb.mp3",
+  "a2-5c52217e-us": "/audio/a2/5c52217e-us.mp3",
+  "a2-5f7ce9c1-gb": "/audio/a2/5f7ce9c1-gb.mp3",
+  "a2-5fa8f182-us": "/audio/a2/5fa8f182-us.mp3",
+  "a2-6005c73e-gb": "/audio/a2/6005c73e-gb.mp3",
+  "a2-6030b625-gb": "/audio/a2/6030b625-gb.mp3",
+  "a2-609478ec-gb": "/audio/a2/609478ec-gb.mp3",
+  "a2-60ff3d19-gb": "/audio/a2/60ff3d19-gb.mp3",
+  "a2-6105ea12-gb": "/audio/a2/6105ea12-gb.mp3",
+  "a2-63ea0393-us": "/audio/a2/63ea0393-us.mp3",
+  "a2-6472bca4-gb": "/audio/a2/6472bca4-gb.mp3",
+  "a2-64dea0ae-gb": "/audio/a2/64dea0ae-gb.mp3",
+  "a2-6712464d-gb": "/audio/a2/6712464d-gb.mp3",
+  "a2-67d8317a-gb": "/audio/a2/67d8317a-gb.mp3",
+  "a2-67d8317a-us": "/audio/a2/67d8317a-us.mp3",
+  "a2-6a4b4596-gb": "/audio/a2/6a4b4596-gb.mp3",
+  "a2-6a4b4596-us": "/audio/a2/6a4b4596-us.mp3",
+  "a2-6d23cf65-gb": "/audio/a2/6d23cf65-gb.mp3",
+  "a2-6d2cea38-gb": "/audio/a2/6d2cea38-gb.mp3",
+  "a2-6d2cea38-us": "/audio/a2/6d2cea38-us.mp3",
+  "a2-6e4659d9-gb": "/audio/a2/6e4659d9-gb.mp3",
+  "a2-6ef6e45e-us": "/audio/a2/6ef6e45e-us.mp3",
+  "a2-6f6a7549-us": "/audio/a2/6f6a7549-us.mp3",
+  "a2-7214c3e2-gb": "/audio/a2/7214c3e2-gb.mp3",
+  "a2-7632bf40-gb": "/audio/a2/7632bf40-gb.mp3",
+  "a2-76c55440-us": "/audio/a2/76c55440-us.mp3",
+  "a2-7932f0ca-gb": "/audio/a2/7932f0ca-gb.mp3",
+  "a2-7960faa3-gb": "/audio/a2/7960faa3-gb.mp3",
+  "a2-796eec92-us": "/audio/a2/796eec92-us.mp3",
+  "a2-7b41ecdc-gb": "/audio/a2/7b41ecdc-gb.mp3",
+  "a2-7b4cc88f-gb": "/audio/a2/7b4cc88f-gb.mp3",
+  "a2-7c51d07a-gb": "/audio/a2/7c51d07a-gb.mp3",
+  "a2-7c51d07a-us": "/audio/a2/7c51d07a-us.mp3",
+  "a2-7ddde7a8-gb": "/audio/a2/7ddde7a8-gb.mp3",
+  "a2-7ddde7a8-us": "/audio/a2/7ddde7a8-us.mp3",
+  "a2-80387159-us": "/audio/a2/80387159-us.mp3",
+  "a2-814f7e68-us": "/audio/a2/814f7e68-us.mp3",
+  "a2-831d02f4-gb": "/audio/a2/831d02f4-gb.mp3",
+  "a2-838915a3-gb": "/audio/a2/838915a3-gb.mp3",
+  "a2-88f55846-gb": "/audio/a2/88f55846-gb.mp3",
+  "a2-8d8d4283-gb": "/audio/a2/8d8d4283-gb.mp3",
+  "a2-8d8d4283-us": "/audio/a2/8d8d4283-us.mp3",
+  "a2-8e9dd366-gb": "/audio/a2/8e9dd366-gb.mp3",
+  "a2-93089312-gb": "/audio/a2/93089312-gb.mp3",
+  "a2-93089312-us": "/audio/a2/93089312-us.mp3",
+  "a2-93ae68c7-us": "/audio/a2/93ae68c7-us.mp3",
+  "a2-9443c5d9-gb": "/audio/a2/9443c5d9-gb.mp3",
+  "a2-94bea947-gb": "/audio/a2/94bea947-gb.mp3",
+  "a2-95bdca78-gb": "/audio/a2/95bdca78-gb.mp3",
+  "a2-969b5133-gb": "/audio/a2/969b5133-gb.mp3",
+  "a2-969b5133-us": "/audio/a2/969b5133-us.mp3",
+  "a2-9842c0e4-gb": "/audio/a2/9842c0e4-gb.mp3",
+  "a2-9842c0e4-us": "/audio/a2/9842c0e4-us.mp3",
+  "a2-98c12679-gb": "/audio/a2/98c12679-gb.mp3",
+  "a2-98c12679-us": "/audio/a2/98c12679-us.mp3",
+  "a2-98cbf0fa-us": "/audio/a2/98cbf0fa-us.mp3",
+  "a2-99744262-gb": "/audio/a2/99744262-gb.mp3",
+  "a2-99744262-us": "/audio/a2/99744262-us.mp3",
+  "a2-99d85f05-gb": "/audio/a2/99d85f05-gb.mp3",
+  "a2-99d85f05-us": "/audio/a2/99d85f05-us.mp3",
+  "a2-9d624f72-gb": "/audio/a2/9d624f72-gb.mp3",
+  "a2-9d624f72-us": "/audio/a2/9d624f72-us.mp3",
+  "a2-9e5c22da-gb": "/audio/a2/9e5c22da-gb.mp3",
+  "a2-9e5e715c-gb": "/audio/a2/9e5e715c-gb.mp3",
+  "a2-9e5e715c-us": "/audio/a2/9e5e715c-us.mp3",
+  "a2-9f635557-gb": "/audio/a2/9f635557-gb.mp3",
+  "a2-9f635557-us": "/audio/a2/9f635557-us.mp3",
+  "a2-a01e36e0-gb": "/audio/a2/a01e36e0-gb.mp3",
+  "a2-a01e36e0-us": "/audio/a2/a01e36e0-us.mp3",
+  "a2-a1465fe9-gb": "/audio/a2/a1465fe9-gb.mp3",
+  "a2-a1a8d20a-gb": "/audio/a2/a1a8d20a-gb.mp3",
+  "a2-a1a8d20a-us": "/audio/a2/a1a8d20a-us.mp3",
+  "a2-a341fd16-us": "/audio/a2/a341fd16-us.mp3",
+  "a2-a640232f-gb": "/audio/a2/a640232f-gb.mp3",
+  "a2-a6b21c32-gb": "/audio/a2/a6b21c32-gb.mp3",
+  "a2-a6e857bf-us": "/audio/a2/a6e857bf-us.mp3",
+  "a2-a716180c-gb": "/audio/a2/a716180c-gb.mp3",
+  "a2-a8575ee0-gb": "/audio/a2/a8575ee0-gb.mp3",
+  "a2-a8575ee0-us": "/audio/a2/a8575ee0-us.mp3",
+  "a2-a8aa5380-gb": "/audio/a2/a8aa5380-gb.mp3",
+  "a2-a9577fe9-gb": "/audio/a2/a9577fe9-gb.mp3",
+  "a2-a9bd7689-gb": "/audio/a2/a9bd7689-gb.mp3",
+  "a2-ada762e7-gb": "/audio/a2/ada762e7-gb.mp3",
+  "a2-adf1379e-gb": "/audio/a2/adf1379e-gb.mp3",
+  "a2-b027c10c-gb": "/audio/a2/b027c10c-gb.mp3",
+  "a2-b027c10c-us": "/audio/a2/b027c10c-us.mp3",
+  "a2-b5089cbf-gb": "/audio/a2/b5089cbf-gb.mp3",
+  "a2-b526ec40-us": "/audio/a2/b526ec40-us.mp3",
+  "a2-b7f39c53-gb": "/audio/a2/b7f39c53-gb.mp3",
+  "a2-b8762f22-gb": "/audio/a2/b8762f22-gb.mp3",
+  "a2-b8ae1983-gb": "/audio/a2/b8ae1983-gb.mp3",
+  "a2-b93f3e00-gb": "/audio/a2/b93f3e00-gb.mp3",
+  "a2-b93f3e00-us": "/audio/a2/b93f3e00-us.mp3",
+  "a2-b966a964-gb": "/audio/a2/b966a964-gb.mp3",
+  "a2-b9d0c29b-gb": "/audio/a2/b9d0c29b-gb.mp3",
+  "a2-b9df330c-gb": "/audio/a2/b9df330c-gb.mp3",
+  "a2-b9df330c-us": "/audio/a2/b9df330c-us.mp3",
+  "a2-bb2376f2-us": "/audio/a2/bb2376f2-us.mp3",
+  "a2-bbeaffa9-us": "/audio/a2/bbeaffa9-us.mp3",
+  "a2-bc42a21e-gb": "/audio/a2/bc42a21e-gb.mp3",
+  "a2-bc45c87a-gb": "/audio/a2/bc45c87a-gb.mp3",
+  "a2-bc45c87a-us": "/audio/a2/bc45c87a-us.mp3",
+  "a2-be04f220-gb": "/audio/a2/be04f220-gb.mp3",
+  "a2-be04f220-us": "/audio/a2/be04f220-us.mp3",
+  "a2-bf79e618-gb": "/audio/a2/bf79e618-gb.mp3",
+  "a2-bf79e618-us": "/audio/a2/bf79e618-us.mp3",
+  "a2-bfba4877-gb": "/audio/a2/bfba4877-gb.mp3",
+  "a2-c16a8be6-gb": "/audio/a2/c16a8be6-gb.mp3",
+  "a2-c16a8be6-us": "/audio/a2/c16a8be6-us.mp3",
+  "a2-c2f4d296-gb": "/audio/a2/c2f4d296-gb.mp3",
+  "a2-c3289b97-gb": "/audio/a2/c3289b97-gb.mp3",
+  "a2-c3289b97-us": "/audio/a2/c3289b97-us.mp3",
+  "a2-c3b9643c-us": "/audio/a2/c3b9643c-us.mp3",
+  "a2-c3dc8aa0-us": "/audio/a2/c3dc8aa0-us.mp3",
+  "a2-c7eb512c-us": "/audio/a2/c7eb512c-us.mp3",
+  "a2-c9b354a6-gb": "/audio/a2/c9b354a6-gb.mp3",
+  "a2-cb4213a6-gb": "/audio/a2/cb4213a6-gb.mp3",
+  "a2-cb4213a6-us": "/audio/a2/cb4213a6-us.mp3",
+  "a2-cc8f1f3b-gb": "/audio/a2/cc8f1f3b-gb.mp3",
+  "a2-ccf41d6b-gb": "/audio/a2/ccf41d6b-gb.mp3",
+  "a2-cd84ee3f-us": "/audio/a2/cd84ee3f-us.mp3",
+  "a2-cdf5c974-gb": "/audio/a2/cdf5c974-gb.mp3",
+  "a2-cdf5c974-us": "/audio/a2/cdf5c974-us.mp3",
+  "a2-ceac9572-gb": "/audio/a2/ceac9572-gb.mp3",
+  "a2-d104c0e5-gb": "/audio/a2/d104c0e5-gb.mp3",
+  "a2-d19e8df9-gb": "/audio/a2/d19e8df9-gb.mp3",
+  "a2-d19e8df9-us": "/audio/a2/d19e8df9-us.mp3",
+  "a2-d1c6316b-gb": "/audio/a2/d1c6316b-gb.mp3",
+  "a2-d1cc3611-gb": "/audio/a2/d1cc3611-gb.mp3",
+  "a2-d47ffbb1-gb": "/audio/a2/d47ffbb1-gb.mp3",
+  "a2-d5ac60ed-gb": "/audio/a2/d5ac60ed-gb.mp3",
+  "a2-d5ac60ed-us": "/audio/a2/d5ac60ed-us.mp3",
+  "a2-d71c946a-us": "/audio/a2/d71c946a-us.mp3",
+  "a2-d762953e-us": "/audio/a2/d762953e-us.mp3",
+  "a2-d8b9cf23-us": "/audio/a2/d8b9cf23-us.mp3",
+  "a2-d95d12e6-gb": "/audio/a2/d95d12e6-gb.mp3",
+  "a2-dd1007bd-gb": "/audio/a2/dd1007bd-gb.mp3",
+  "a2-dd72e651-gb": "/audio/a2/dd72e651-gb.mp3",
+  "a2-de69d69b-gb": "/audio/a2/de69d69b-gb.mp3",
+  "a2-de69d69b-us": "/audio/a2/de69d69b-us.mp3",
+  "a2-deb9ec98-gb": "/audio/a2/deb9ec98-gb.mp3",
+  "a2-def1398b-gb": "/audio/a2/def1398b-gb.mp3",
+  "a2-df497389-gb": "/audio/a2/df497389-gb.mp3",
+  "a2-df497389-us": "/audio/a2/df497389-us.mp3",
+  "a2-e1be37b2-gb": "/audio/a2/e1be37b2-gb.mp3",
+  "a2-e1be37b2-us": "/audio/a2/e1be37b2-us.mp3",
+  "a2-e1c8f05f-gb": "/audio/a2/e1c8f05f-gb.mp3",
+  "a2-e2a61acc-us": "/audio/a2/e2a61acc-us.mp3",
+  "a2-e41aae5d-gb": "/audio/a2/e41aae5d-gb.mp3",
+  "a2-e545f2d4-gb": "/audio/a2/e545f2d4-gb.mp3",
+  "a2-e63fb602-gb": "/audio/a2/e63fb602-gb.mp3",
+  "a2-e79d3c35-gb": "/audio/a2/e79d3c35-gb.mp3",
+  "a2-e97545cd-gb": "/audio/a2/e97545cd-gb.mp3",
+  "a2-e97545cd-us": "/audio/a2/e97545cd-us.mp3",
+  "a2-e9e34730-gb": "/audio/a2/e9e34730-gb.mp3",
+  "a2-ea28e637-us": "/audio/a2/ea28e637-us.mp3",
+  "a2-ef2ae077-gb": "/audio/a2/ef2ae077-gb.mp3",
+  "a2-ef3e2929-us": "/audio/a2/ef3e2929-us.mp3",
+  "a2-efb4a376-us": "/audio/a2/efb4a376-us.mp3",
+  "a2-f1f7196d-gb": "/audio/a2/f1f7196d-gb.mp3",
+  "a2-f1f7196d-us": "/audio/a2/f1f7196d-us.mp3",
+  "a2-f33bb199-gb": "/audio/a2/f33bb199-gb.mp3",
+  "a2-f33bb199-us": "/audio/a2/f33bb199-us.mp3",
+  "a2-f4212dd3-gb": "/audio/a2/f4212dd3-gb.mp3",
+  "a2-f4212dd3-us": "/audio/a2/f4212dd3-us.mp3",
+  "a2-f74bc818-gb": "/audio/a2/f74bc818-gb.mp3",
+  "a2-f74bc818-us": "/audio/a2/f74bc818-us.mp3",
+  "a2-f7cc1709-gb": "/audio/a2/f7cc1709-gb.mp3",
+  "a2-f7cc1709-us": "/audio/a2/f7cc1709-us.mp3",
+  "a2-f85a2759-gb": "/audio/a2/f85a2759-gb.mp3",
+  "a2-f8a56cde-us": "/audio/a2/f8a56cde-us.mp3",
+  "a2-f8be90ab-gb": "/audio/a2/f8be90ab-gb.mp3",
+  "a2-f8db18ae-us": "/audio/a2/f8db18ae-us.mp3",
+  "a2-f936c57b-gb": "/audio/a2/f936c57b-gb.mp3",
+  "a2-fa0270f1-gb": "/audio/a2/fa0270f1-gb.mp3",
+  "a2-fa2ed837-gb": "/audio/a2/fa2ed837-gb.mp3",
+  "a2-fa66e011-gb": "/audio/a2/fa66e011-gb.mp3",
+  "a2-fadc0a04-gb": "/audio/a2/fadc0a04-gb.mp3",
+  "a2-fadc0a04-us": "/audio/a2/fadc0a04-us.mp3",
+  "a2-fc0f3992-us": "/audio/a2/fc0f3992-us.mp3",
+  "a2-fc11403f-gb": "/audio/a2/fc11403f-gb.mp3",
+  "a2-fc792e18-gb": "/audio/a2/fc792e18-gb.mp3",
+  "a2-fd19a794-gb": "/audio/a2/fd19a794-gb.mp3",
+  "a2-fe241618-gb": "/audio/a2/fe241618-gb.mp3",
+  "a2-fe783d0a-us": "/audio/a2/fe783d0a-us.mp3",
+  "a2-ff5ded4d-us": "/audio/a2/ff5ded4d-us.mp3"
+ },
+ "clips": {
+  "003ee3f2": {
+   "nova": {
+    "gb": [
+     "a2-003ee3f2-gb",
+     0,
+     2.089796
+    ]
+   }
+  },
+  "00ae1849": {
+   "nova": {
+    "gb": [
+     "a2-00ae1849-gb",
+     0,
+     2.089796
+    ]
+   }
+  },
+  "00f56575": {
+   "nova": {
+    "us": [
+     "a2-00f56575-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "016d353e": {
+   "nova": {
+    "gb": [
+     "a2-016d353e-gb",
+     0,
+     2.037551
+    ]
+   }
+  },
+  "07b1e3e0": {
+   "nova": {
+    "gb": [
+     "a2-07b1e3e0-gb",
+     0,
+     2.638367
+    ]
+   }
+  },
+  "0805514f": {
+   "nova": {
+    "gb": [
+     "a2-0805514f-gb",
+     0,
+     2.037551
+    ],
+    "us": [
+     "a2-0805514f-us",
+     0,
+     1.933061
+    ]
+   }
+  },
+  "093d11c9": {
+   "nova": {
+    "gb": [
+     "a2-093d11c9-gb",
+     0,
+     1.697959
+    ]
+   }
+  },
+  "09d215d5": {
+   "nova": {
+    "gb": [
+     "a2-09d215d5-gb",
+     0,
+     1.906939
+    ],
+    "us": [
+     "a2-09d215d5-us",
+     0,
+     1.619592
+    ]
+   }
+  },
+  "0b660ffe": {
+   "nova": {
+    "us": [
+     "a2-0b660ffe-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "0d747d34": {
+   "nova": {
+    "gb": [
+     "a2-0d747d34-gb",
+     0,
+     1.802449
+    ]
+   }
+  },
+  "0e57331a": {
+   "nova": {
+    "gb": [
+     "a2-0e57331a-gb",
+     0,
+     1.697959
+    ],
+    "us": [
+     "a2-0e57331a-us",
+     0,
+     1.906939
+    ]
+   }
+  },
+  "0ea26ea8": {
+   "nova": {
+    "gb": [
+     "a2-0ea26ea8-gb",
+     0,
+     1.332245
+    ],
+    "us": [
+     "a2-0ea26ea8-us",
+     0,
+     1.253878
+    ]
+   }
+  },
+  "0ea85410": {
+   "nova": {
+    "gb": [
+     "a2-0ea85410-gb",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "119c2435": {
+   "nova": {
+    "gb": [
+     "a2-119c2435-gb",
+     0,
+     2.037551
+    ]
+   }
+  },
+  "121fa7d9": {
+   "nova": {
+    "gb": [
+     "a2-121fa7d9-gb",
+     0,
+     1.671837
+    ],
+    "us": [
+     "a2-121fa7d9-us",
+     0,
+     1.48898
+    ]
+   }
+  },
+  "12c28721": {
+   "nova": {
+    "gb": [
+     "a2-12c28721-gb",
+     0,
+     1.985306
+    ]
+   }
+  },
+  "12d3123d": {
+   "nova": {
+    "us": [
+     "a2-12d3123d-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "1460a7f7": {
+   "nova": {
+    "us": [
+     "a2-1460a7f7-us",
+     0,
+     1.201633
+    ]
+   }
+  },
+  "16e2c1f2": {
+   "nova": {
+    "us": [
+     "a2-16e2c1f2-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "1723dafc": {
+   "nova": {
+    "gb": [
+     "a2-1723dafc-gb",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "1724d160": {
+   "nova": {
+    "gb": [
+     "a2-1724d160-gb",
+     0,
+     1.906939
+    ],
+    "us": [
+     "a2-1724d160-us",
+     0,
+     1.933061
+    ]
+   }
+  },
+  "1a8066bc": {
+   "nova": {
+    "gb": [
+     "a2-1a8066bc-gb",
+     0,
+     1.906939
+    ],
+    "us": [
+     "a2-1a8066bc-us",
+     0,
+     1.671837
+    ]
+   }
+  },
+  "1ac2693d": {
+   "nova": {
+    "us": [
+     "a2-1ac2693d-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "1aeb3086": {
+   "nova": {
+    "gb": [
+     "a2-1aeb3086-gb",
+     0,
+     2.742857
+    ]
+   }
+  },
+  "1b3b9963": {
+   "nova": {
+    "gb": [
+     "a2-1b3b9963-gb",
+     0,
+     1.854694
+    ],
+    "us": [
+     "a2-1b3b9963-us",
+     0,
+     1.671837
+    ]
+   }
+  },
+  "1b9d0f66": {
+   "nova": {
+    "gb": [
+     "a2-1b9d0f66-gb",
+     0,
+     1.933061
+    ],
+    "us": [
+     "a2-1b9d0f66-us",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "1baa8cc1": {
+   "nova": {
+    "gb": [
+     "a2-1baa8cc1-gb",
+     0,
+     2.638367
+    ]
+   }
+  },
+  "1e4f9a9f": {
+   "nova": {
+    "gb": [
+     "a2-1e4f9a9f-gb",
+     0,
+     2.272653
+    ]
+   }
+  },
+  "1e6212a6": {
+   "nova": {
+    "gb": [
+     "a2-1e6212a6-gb",
+     0,
+     2.115918
+    ]
+   }
+  },
+  "1e73e594": {
+   "nova": {
+    "gb": [
+     "a2-1e73e594-gb",
+     0,
+     2.220408
+    ]
+   }
+  },
+  "1f15daf4": {
+   "nova": {
+    "gb": [
+     "a2-1f15daf4-gb",
+     0,
+     1.750204
+    ],
+    "us": [
+     "a2-1f15daf4-us",
+     0,
+     1.38449
+    ]
+   }
+  },
+  "1f62aaae": {
+   "nova": {
+    "us": [
+     "a2-1f62aaae-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "1fd675e5": {
+   "nova": {
+    "gb": [
+     "a2-1fd675e5-gb",
+     0,
+     2.690612
+    ]
+   }
+  },
+  "215c52f9": {
+   "nova": {
+    "gb": [
+     "a2-215c52f9-gb",
+     0,
+     1.985306
+    ],
+    "us": [
+     "a2-215c52f9-us",
+     0,
+     1.802449
+    ]
+   }
+  },
+  "218d289c": {
+   "nova": {
+    "gb": [
+     "a2-218d289c-gb",
+     0,
+     1.436735
+    ]
+   }
+  },
+  "222136b8": {
+   "nova": {
+    "gb": [
+     "a2-222136b8-gb",
+     0,
+     3.108571
+    ]
+   }
+  },
+  "226ec2a8": {
+   "nova": {
+    "gb": [
+     "a2-226ec2a8-gb",
+     0,
+     2.324898
+    ]
+   }
+  },
+  "2409d88e": {
+   "nova": {
+    "gb": [
+     "a2-2409d88e-gb",
+     0,
+     2.089796
+    ]
+   }
+  },
+  "24a1a8c9": {
+   "nova": {
+    "gb": [
+     "a2-24a1a8c9-gb",
+     0,
+     2.403265
+    ]
+   }
+  },
+  "24cc49ff": {
+   "nova": {
+    "gb": [
+     "a2-24cc49ff-gb",
+     0,
+     1.750204
+    ],
+    "us": [
+     "a2-24cc49ff-us",
+     0,
+     1.671837
+    ]
+   }
+  },
+  "24d5f952": {
+   "nova": {
+    "gb": [
+     "a2-24d5f952-gb",
+     0,
+     2.037551
+    ],
+    "us": [
+     "a2-24d5f952-us",
+     0,
+     1.906939
+    ]
+   }
+  },
+  "258516fe": {
+   "nova": {
+    "gb": [
+     "a2-258516fe-gb",
+     0,
+     1.515102
+    ]
+   }
+  },
+  "29d03076": {
+   "nova": {
+    "gb": [
+     "a2-29d03076-gb",
+     0,
+     1.906939
+    ],
+    "us": [
+     "a2-29d03076-us",
+     0,
+     1.671837
+    ]
+   }
+  },
+  "2a1a0b43": {
+   "nova": {
+    "gb": [
+     "a2-2a1a0b43-gb",
+     0,
+     1.619592
+    ],
+    "us": [
+     "a2-2a1a0b43-us",
+     0,
+     1.436735
+    ]
+   }
+  },
+  "2ac62745": {
+   "nova": {
+    "gb": [
+     "a2-2ac62745-gb",
+     0,
+     1.750204
+    ],
+    "us": [
+     "a2-2ac62745-us",
+     0,
+     1.515102
+    ]
+   }
+  },
+  "2b12a8ae": {
+   "nova": {
+    "gb": [
+     "a2-2b12a8ae-gb",
+     0,
+     2.403265
+    ],
+    "us": [
+     "a2-2b12a8ae-us",
+     0,
+     2.45551
+    ]
+   }
+  },
+  "2b15a8d2": {
+   "nova": {
+    "gb": [
+     "a2-2b15a8d2-gb",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "2e0037e9": {
+   "nova": {
+    "gb": [
+     "a2-2e0037e9-gb",
+     0,
+     2.35102
+    ]
+   }
+  },
+  "2e77a06b": {
+   "nova": {
+    "gb": [
+     "a2-2e77a06b-gb",
+     0,
+     3.94449
+    ],
+    "us": [
+     "a2-2e77a06b-us",
+     0,
+     4.127347
+    ]
+   }
+  },
+  "304bd407": {
+   "nova": {
+    "gb": [
+     "a2-304bd407-gb",
+     0,
+     3.291429
+    ],
+    "us": [
+     "a2-304bd407-us",
+     0,
+     3.892245
+    ]
+   }
+  },
+  "3091b1fe": {
+   "nova": {
+    "gb": [
+     "a2-3091b1fe-gb",
+     0,
+     2.586122
+    ]
+   }
+  },
+  "3220dd26": {
+   "nova": {
+    "gb": [
+     "a2-3220dd26-gb",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "3256cf20": {
+   "nova": {
+    "gb": [
+     "a2-3256cf20-gb",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "34d03e9c": {
+   "nova": {
+    "us": [
+     "a2-34d03e9c-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "38b26ac9": {
+   "nova": {
+    "us": [
+     "a2-38b26ac9-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "399316ad": {
+   "nova": {
+    "gb": [
+     "a2-399316ad-gb",
+     0,
+     2.272653
+    ]
+   }
+  },
+  "39a72c0a": {
+   "nova": {
+    "us": [
+     "a2-39a72c0a-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "39cedf65": {
+   "nova": {
+    "gb": [
+     "a2-39cedf65-gb",
+     0,
+     1.802449
+    ],
+    "us": [
+     "a2-39cedf65-us",
+     0,
+     1.854694
+    ]
+   }
+  },
+  "3abe9c4c": {
+   "nova": {
+    "gb": [
+     "a2-3abe9c4c-gb",
+     0,
+     1.750204
+    ],
+    "us": [
+     "a2-3abe9c4c-us",
+     0,
+     1.567347
+    ]
+   }
+  },
+  "3b7a61c7": {
+   "nova": {
+    "gb": [
+     "a2-3b7a61c7-gb",
+     0,
+     1.567347
+    ],
+    "us": [
+     "a2-3b7a61c7-us",
+     0,
+     1.567347
+    ]
+   }
+  },
+  "3c54c2ff": {
+   "nova": {
+    "gb": [
+     "a2-3c54c2ff-gb",
+     0,
+     1.567347
+    ]
+   }
+  },
+  "3c6928de": {
+   "nova": {
+    "us": [
+     "a2-3c6928de-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "3dbb78fa": {
+   "nova": {
+    "gb": [
+     "a2-3dbb78fa-gb",
+     0,
+     2.45551
+    ],
+    "us": [
+     "a2-3dbb78fa-us",
+     0,
+     2.272653
+    ]
+   }
+  },
+  "3e707dd7": {
+   "nova": {
+    "gb": [
+     "a2-3e707dd7-gb",
+     0,
+     1.985306
+    ]
+   }
+  },
+  "3e965a67": {
+   "nova": {
+    "gb": [
+     "a2-3e965a67-gb",
+     0,
+     2.35102
+    ]
+   }
+  },
+  "3ea847ee": {
+   "nova": {
+    "gb": [
+     "a2-3ea847ee-gb",
+     0,
+     2.037551
+    ],
+    "us": [
+     "a2-3ea847ee-us",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "3f2902ef": {
+   "nova": {
+    "gb": [
+     "a2-3f2902ef-gb",
+     0,
+     1.906939
+    ]
+   }
+  },
+  "40069ae8": {
+   "nova": {
+    "gb": [
+     "a2-40069ae8-gb",
+     0,
+     2.089796
+    ],
+    "us": [
+     "a2-40069ae8-us",
+     0,
+     1.985306
+    ]
+   }
+  },
+  "418af74d": {
+   "nova": {
+    "gb": [
+     "a2-418af74d-gb",
+     0,
+     2.533878
+    ]
+   }
+  },
+  "41d0c56b": {
+   "nova": {
+    "us": [
+     "a2-41d0c56b-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "4299e5a2": {
+   "nova": {
+    "us": [
+     "a2-4299e5a2-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "442a53c4": {
+   "nova": {
+    "gb": [
+     "a2-442a53c4-gb",
+     0,
+     1.619592
+    ]
+   }
+  },
+  "44e65827": {
+   "nova": {
+    "gb": [
+     "a2-44e65827-gb",
+     0,
+     2.533878
+    ]
+   }
+  },
+  "45499632": {
+   "nova": {
+    "us": [
+     "a2-45499632-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "46676a40": {
+   "nova": {
+    "us": [
+     "a2-46676a40-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "48179d4c": {
+   "nova": {
+    "us": [
+     "a2-48179d4c-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "4a54dcc2": {
+   "nova": {
+    "gb": [
+     "a2-4a54dcc2-gb",
+     0,
+     2.115918
+    ],
+    "us": [
+     "a2-4a54dcc2-us",
+     0,
+     1.697959
+    ]
+   }
+  },
+  "4ca98d84": {
+   "nova": {
+    "gb": [
+     "a2-4ca98d84-gb",
+     0,
+     2.037551
+    ]
+   }
+  },
+  "4d9511f7": {
+   "nova": {
+    "gb": [
+     "a2-4d9511f7-gb",
+     0,
+     1.985306
+    ],
+    "us": [
+     "a2-4d9511f7-us",
+     0,
+     1.697959
+    ]
+   }
+  },
+  "4e750a0e": {
+   "nova": {
+    "us": [
+     "a2-4e750a0e-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "50023a31": {
+   "nova": {
+    "gb": [
+     "a2-50023a31-gb",
+     0,
+     1.567347
+    ]
+   }
+  },
+  "5063c45f": {
+   "nova": {
+    "gb": [
+     "a2-5063c45f-gb",
+     0,
+     2.507755
+    ],
+    "us": [
+     "a2-5063c45f-us",
+     0,
+     2.324898
+    ]
+   }
+  },
+  "506dff3e": {
+   "nova": {
+    "us": [
+     "a2-506dff3e-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "51157d8f": {
+   "nova": {
+    "gb": [
+     "a2-51157d8f-gb",
+     0,
+     1.933061
+    ],
+    "us": [
+     "a2-51157d8f-us",
+     0,
+     1.48898
+    ]
+   }
+  },
+  "5140bffa": {
+   "nova": {
+    "gb": [
+     "a2-5140bffa-gb",
+     0,
+     1.985306
+    ]
+   }
+  },
+  "5145be59": {
+   "nova": {
+    "gb": [
+     "a2-5145be59-gb",
+     0,
+     1.567347
+    ]
+   }
+  },
+  "545911b7": {
+   "nova": {
+    "gb": [
+     "a2-545911b7-gb",
+     0,
+     1.28
+    ]
+   }
+  },
+  "548b16df": {
+   "nova": {
+    "gb": [
+     "a2-548b16df-gb",
+     0,
+     1.985306
+    ],
+    "us": [
+     "a2-548b16df-us",
+     0,
+     2.089796
+    ]
+   }
+  },
+  "58b91d1a": {
+   "nova": {
+    "gb": [
+     "a2-58b91d1a-gb",
+     0,
+     1.802449
+    ]
+   }
+  },
+  "58e61b43": {
+   "nova": {
+    "us": [
+     "a2-58e61b43-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "58fdc702": {
+   "nova": {
+    "gb": [
+     "a2-58fdc702-gb",
+     0,
+     2.089796
+    ],
+    "us": [
+     "a2-58fdc702-us",
+     0,
+     2.115918
+    ]
+   }
+  },
+  "5a45cc6a": {
+   "nova": {
+    "us": [
+     "a2-5a45cc6a-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "5aaacd6e": {
+   "nova": {
+    "gb": [
+     "a2-5aaacd6e-gb",
+     0,
+     1.48898
+    ]
+   }
+  },
+  "5c52217e": {
+   "nova": {
+    "us": [
+     "a2-5c52217e-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "5f7ce9c1": {
+   "nova": {
+    "gb": [
+     "a2-5f7ce9c1-gb",
+     0,
+     2.272653
+    ]
+   }
+  },
+  "5fa8f182": {
+   "nova": {
+    "us": [
+     "a2-5fa8f182-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "6005c73e": {
+   "nova": {
+    "gb": [
+     "a2-6005c73e-gb",
+     0,
+     2.742857
+    ]
+   }
+  },
+  "6030b625": {
+   "nova": {
+    "gb": [
+     "a2-6030b625-gb",
+     0,
+     1.802449
+    ]
+   }
+  },
+  "609478ec": {
+   "nova": {
+    "gb": [
+     "a2-609478ec-gb",
+     0,
+     1.332245
+    ]
+   }
+  },
+  "60ff3d19": {
+   "nova": {
+    "gb": [
+     "a2-60ff3d19-gb",
+     0,
+     2.507755
+    ]
+   }
+  },
+  "6105ea12": {
+   "nova": {
+    "gb": [
+     "a2-6105ea12-gb",
+     0,
+     2.115918
+    ]
+   }
+  },
+  "63ea0393": {
+   "nova": {
+    "us": [
+     "a2-63ea0393-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "6472bca4": {
+   "nova": {
+    "gb": [
+     "a2-6472bca4-gb",
+     0,
+     2.089796
+    ]
+   }
+  },
+  "64dea0ae": {
+   "nova": {
+    "gb": [
+     "a2-64dea0ae-gb",
+     0,
+     2.533878
+    ]
+   }
+  },
+  "6712464d": {
+   "nova": {
+    "gb": [
+     "a2-6712464d-gb",
+     0,
+     12.355918
+    ]
+   }
+  },
+  "67d8317a": {
+   "nova": {
+    "gb": [
+     "a2-67d8317a-gb",
+     0,
+     1.253878
+    ],
+    "us": [
+     "a2-67d8317a-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "6a4b4596": {
+   "nova": {
+    "gb": [
+     "a2-6a4b4596-gb",
+     0,
+     1.697959
+    ],
+    "us": [
+     "a2-6a4b4596-us",
+     0,
+     1.48898
+    ]
+   }
+  },
+  "6d23cf65": {
+   "nova": {
+    "gb": [
+     "a2-6d23cf65-gb",
+     0,
+     33.880816
+    ]
+   }
+  },
+  "6d2cea38": {
+   "nova": {
+    "gb": [
+     "a2-6d2cea38-gb",
+     0,
+     1.854694
+    ],
+    "us": [
+     "a2-6d2cea38-us",
+     0,
+     1.567347
+    ]
+   }
+  },
+  "6e4659d9": {
+   "nova": {
+    "gb": [
+     "a2-6e4659d9-gb",
+     0,
+     2.690612
+    ]
+   }
+  },
+  "6ef6e45e": {
+   "nova": {
+    "us": [
+     "a2-6ef6e45e-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "6f6a7549": {
+   "nova": {
+    "us": [
+     "a2-6f6a7549-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "7214c3e2": {
+   "nova": {
+    "gb": [
+     "a2-7214c3e2-gb",
+     0,
+     2.35102
+    ]
+   }
+  },
+  "7632bf40": {
+   "nova": {
+    "gb": [
+     "a2-7632bf40-gb",
+     0,
+     1.854694
+    ]
+   }
+  },
+  "76c55440": {
+   "nova": {
+    "us": [
+     "a2-76c55440-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "7932f0ca": {
+   "nova": {
+    "gb": [
+     "a2-7932f0ca-gb",
+     0,
+     2.220408
+    ]
+   }
+  },
+  "7960faa3": {
+   "nova": {
+    "gb": [
+     "a2-7960faa3-gb",
+     0,
+     2.272653
+    ]
+   }
+  },
+  "796eec92": {
+   "nova": {
+    "us": [
+     "a2-796eec92-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "7b41ecdc": {
+   "nova": {
+    "gb": [
+     "a2-7b41ecdc-gb",
+     0,
+     1.906939
+    ]
+   }
+  },
+  "7b4cc88f": {
+   "nova": {
+    "gb": [
+     "a2-7b4cc88f-gb",
+     0,
+     2.115918
+    ]
+   }
+  },
+  "7c51d07a": {
+   "nova": {
+    "gb": [
+     "a2-7c51d07a-gb",
+     0,
+     1.854694
+    ],
+    "us": [
+     "a2-7c51d07a-us",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "7ddde7a8": {
+   "nova": {
+    "gb": [
+     "a2-7ddde7a8-gb",
+     0,
+     2.037551
+    ],
+    "us": [
+     "a2-7ddde7a8-us",
+     0,
+     1.985306
+    ]
+   }
+  },
+  "80387159": {
+   "nova": {
+    "us": [
+     "a2-80387159-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "814f7e68": {
+   "nova": {
+    "us": [
+     "a2-814f7e68-us",
+     0,
+     1.201633
+    ]
+   }
+  },
+  "831d02f4": {
+   "nova": {
+    "gb": [
+     "a2-831d02f4-gb",
+     0,
+     20.140408
+    ]
+   }
+  },
+  "838915a3": {
+   "nova": {
+    "gb": [
+     "a2-838915a3-gb",
+     0,
+     2.168163
+    ]
+   }
+  },
+  "88f55846": {
+   "nova": {
+    "gb": [
+     "a2-88f55846-gb",
+     0,
+     2.089796
+    ]
+   }
+  },
+  "8d8d4283": {
+   "nova": {
+    "gb": [
+     "a2-8d8d4283-gb",
+     0,
+     1.671837
+    ],
+    "us": [
+     "a2-8d8d4283-us",
+     0,
+     1.515102
+    ]
+   }
+  },
+  "8e9dd366": {
+   "nova": {
+    "gb": [
+     "a2-8e9dd366-gb",
+     0,
+     3.056327
+    ]
+   }
+  },
+  "93089312": {
+   "nova": {
+    "gb": [
+     "a2-93089312-gb",
+     0,
+     1.750204
+    ],
+    "us": [
+     "a2-93089312-us",
+     0,
+     2.089796
+    ]
+   }
+  },
+  "93ae68c7": {
+   "nova": {
+    "us": [
+     "a2-93ae68c7-us",
+     0,
+     1.28
+    ]
+   }
+  },
+  "9443c5d9": {
+   "nova": {
+    "gb": [
+     "a2-9443c5d9-gb",
+     0,
+     1.906939
+    ]
+   }
+  },
+  "94bea947": {
+   "nova": {
+    "gb": [
+     "a2-94bea947-gb",
+     0,
+     1.933061
+    ]
+   }
+  },
+  "95bdca78": {
+   "nova": {
+    "gb": [
+     "a2-95bdca78-gb",
+     0,
+     2.403265
+    ]
+   }
+  },
+  "969b5133": {
+   "nova": {
+    "gb": [
+     "a2-969b5133-gb",
+     0,
+     1.906939
+    ],
+    "us": [
+     "a2-969b5133-us",
+     0,
+     1.567347
+    ]
+   }
+  },
+  "9842c0e4": {
+   "nova": {
+    "gb": [
+     "a2-9842c0e4-gb",
+     0,
+     1.567347
+    ],
+    "us": [
+     "a2-9842c0e4-us",
+     0,
+     1.38449
+    ]
+   }
+  },
+  "98c12679": {
+   "nova": {
+    "gb": [
+     "a2-98c12679-gb",
+     0,
+     1.436735
+    ],
+    "us": [
+     "a2-98c12679-us",
+     0,
+     1.28
+    ]
+   }
+  },
+  "98cbf0fa": {
+   "nova": {
+    "us": [
+     "a2-98cbf0fa-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "99744262": {
+   "nova": {
+    "gb": [
+     "a2-99744262-gb",
+     0,
+     1.671837
+    ],
+    "us": [
+     "a2-99744262-us",
+     0,
+     1.515102
+    ]
+   }
+  },
+  "99d85f05": {
+   "nova": {
+    "gb": [
+     "a2-99d85f05-gb",
+     0,
+     1.985306
+    ],
+    "us": [
+     "a2-99d85f05-us",
+     0,
+     1.567347
+    ]
+   }
+  },
+  "9d624f72": {
+   "nova": {
+    "gb": [
+     "a2-9d624f72-gb",
+     0,
+     1.906939
+    ],
+    "us": [
+     "a2-9d624f72-us",
+     0,
+     1.436735
+    ]
+   }
+  },
+  "9e5c22da": {
+   "nova": {
+    "gb": [
+     "a2-9e5c22da-gb",
+     0,
+     1.697959
+    ]
+   }
+  },
+  "9e5e715c": {
+   "nova": {
+    "gb": [
+     "a2-9e5e715c-gb",
+     0,
+     1.802449
+    ],
+    "us": [
+     "a2-9e5e715c-us",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "9f635557": {
+   "nova": {
+    "gb": [
+     "a2-9f635557-gb",
+     0,
+     2.089796
+    ],
+    "us": [
+     "a2-9f635557-us",
+     0,
+     1.802449
+    ]
+   }
+  },
+  "a01e36e0": {
+   "nova": {
+    "gb": [
+     "a2-a01e36e0-gb",
+     0,
+     1.906939
+    ],
+    "us": [
+     "a2-a01e36e0-us",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "a1465fe9": {
+   "nova": {
+    "gb": [
+     "a2-a1465fe9-gb",
+     0,
+     1.697959
+    ]
+   }
+  },
+  "a1a8d20a": {
+   "nova": {
+    "gb": [
+     "a2-a1a8d20a-gb",
+     0,
+     1.933061
+    ],
+    "us": [
+     "a2-a1a8d20a-us",
+     0,
+     1.671837
+    ]
+   }
+  },
+  "a341fd16": {
+   "nova": {
+    "us": [
+     "a2-a341fd16-us",
+     0,
+     1.619592
+    ]
+   }
+  },
+  "a640232f": {
+   "nova": {
+    "gb": [
+     "a2-a640232f-gb",
+     0,
+     2.168163
+    ]
+   }
+  },
+  "a6b21c32": {
+   "nova": {
+    "gb": [
+     "a2-a6b21c32-gb",
+     0,
+     1.802449
+    ]
+   }
+  },
+  "a6e857bf": {
+   "nova": {
+    "us": [
+     "a2-a6e857bf-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "a716180c": {
+   "nova": {
+    "gb": [
+     "a2-a716180c-gb",
+     0,
+     1.671837
+    ]
+   }
+  },
+  "a8575ee0": {
+   "nova": {
+    "gb": [
+     "a2-a8575ee0-gb",
+     0,
+     2.115918
+    ],
+    "us": [
+     "a2-a8575ee0-us",
+     0,
+     2.220408
+    ]
+   }
+  },
+  "a8aa5380": {
+   "nova": {
+    "gb": [
+     "a2-a8aa5380-gb",
+     0,
+     2.272653
+    ]
+   }
+  },
+  "a9577fe9": {
+   "nova": {
+    "gb": [
+     "a2-a9577fe9-gb",
+     0,
+     1.985306
+    ]
+   }
+  },
+  "a9bd7689": {
+   "nova": {
+    "gb": [
+     "a2-a9bd7689-gb",
+     0,
+     2.925714
+    ]
+   }
+  },
+  "ada762e7": {
+   "nova": {
+    "gb": [
+     "a2-ada762e7-gb",
+     0,
+     2.45551
+    ]
+   }
+  },
+  "adf1379e": {
+   "nova": {
+    "gb": [
+     "a2-adf1379e-gb",
+     0,
+     2.272653
+    ]
+   }
+  },
+  "b027c10c": {
+   "nova": {
+    "gb": [
+     "a2-b027c10c-gb",
+     0,
+     1.567347
+    ],
+    "us": [
+     "a2-b027c10c-us",
+     0,
+     1.38449
+    ]
+   }
+  },
+  "b5089cbf": {
+   "nova": {
+    "gb": [
+     "a2-b5089cbf-gb",
+     0,
+     2.272653
+    ]
+   }
+  },
+  "b526ec40": {
+   "nova": {
+    "us": [
+     "a2-b526ec40-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "b7f39c53": {
+   "nova": {
+    "gb": [
+     "a2-b7f39c53-gb",
+     0,
+     2.690612
+    ]
+   }
+  },
+  "b8762f22": {
+   "nova": {
+    "gb": [
+     "a2-b8762f22-gb",
+     0,
+     2.925714
+    ]
+   }
+  },
+  "b8ae1983": {
+   "nova": {
+    "gb": [
+     "a2-b8ae1983-gb",
+     0,
+     2.76898
+    ]
+   }
+  },
+  "b93f3e00": {
+   "nova": {
+    "gb": [
+     "a2-b93f3e00-gb",
+     0,
+     2.037551
+    ],
+    "us": [
+     "a2-b93f3e00-us",
+     0,
+     1.802449
+    ]
+   }
+  },
+  "b966a964": {
+   "nova": {
+    "gb": [
+     "a2-b966a964-gb",
+     0,
+     2.533878
+    ]
+   }
+  },
+  "b9d0c29b": {
+   "nova": {
+    "gb": [
+     "a2-b9d0c29b-gb",
+     0,
+     2.925714
+    ]
+   }
+  },
+  "b9df330c": {
+   "nova": {
+    "gb": [
+     "a2-b9df330c-gb",
+     0,
+     2.037551
+    ],
+    "us": [
+     "a2-b9df330c-us",
+     0,
+     2.115918
+    ]
+   }
+  },
+  "bb2376f2": {
+   "nova": {
+    "us": [
+     "a2-bb2376f2-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "bbeaffa9": {
+   "nova": {
+    "us": [
+     "a2-bbeaffa9-us",
+     0,
+     1.018776
+    ]
+   }
+  },
+  "bc42a21e": {
+   "nova": {
+    "gb": [
+     "a2-bc42a21e-gb",
+     0,
+     1.436735
+    ]
+   }
+  },
+  "bc45c87a": {
+   "nova": {
+    "gb": [
+     "a2-bc45c87a-gb",
+     0,
+     2.76898
+    ],
+    "us": [
+     "a2-bc45c87a-us",
+     0,
+     3.239184
+    ]
+   }
+  },
+  "be04f220": {
+   "nova": {
+    "gb": [
+     "a2-be04f220-gb",
+     0,
+     2.168163
+    ],
+    "us": [
+     "a2-be04f220-us",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "bf79e618": {
+   "nova": {
+    "gb": [
+     "a2-bf79e618-gb",
+     0,
+     1.201633
+    ],
+    "us": [
+     "a2-bf79e618-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "bfba4877": {
+   "nova": {
+    "gb": [
+     "a2-bfba4877-gb",
+     0,
+     1.332245
+    ]
+   }
+  },
+  "c16a8be6": {
+   "nova": {
+    "gb": [
+     "a2-c16a8be6-gb",
+     0,
+     1.802449
+    ],
+    "us": [
+     "a2-c16a8be6-us",
+     0,
+     1.515102
+    ]
+   }
+  },
+  "c2f4d296": {
+   "nova": {
+    "gb": [
+     "a2-c2f4d296-gb",
+     0,
+     2.089796
+    ]
+   }
+  },
+  "c3289b97": {
+   "nova": {
+    "gb": [
+     "a2-c3289b97-gb",
+     0,
+     1.802449
+    ],
+    "us": [
+     "a2-c3289b97-us",
+     0,
+     1.619592
+    ]
+   }
+  },
+  "c3b9643c": {
+   "nova": {
+    "us": [
+     "a2-c3b9643c-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "c3dc8aa0": {
+   "nova": {
+    "us": [
+     "a2-c3dc8aa0-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "c7eb512c": {
+   "nova": {
+    "us": [
+     "a2-c7eb512c-us",
+     0,
+     0.914286
+    ]
+   }
+  },
+  "c9b354a6": {
+   "nova": {
+    "gb": [
+     "a2-c9b354a6-gb",
+     0,
+     2.220408
+    ]
+   }
+  },
+  "cb4213a6": {
+   "nova": {
+    "gb": [
+     "a2-cb4213a6-gb",
+     0,
+     1.933061
+    ],
+    "us": [
+     "a2-cb4213a6-us",
+     0,
+     1.515102
+    ]
+   }
+  },
+  "cc8f1f3b": {
+   "nova": {
+    "gb": [
+     "a2-cc8f1f3b-gb",
+     0,
+     3.108571
+    ]
+   }
+  },
+  "ccf41d6b": {
+   "nova": {
+    "gb": [
+     "a2-ccf41d6b-gb",
+     0,
+     2.951837
+    ]
+   }
+  },
+  "cd84ee3f": {
+   "nova": {
+    "us": [
+     "a2-cd84ee3f-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "cdf5c974": {
+   "nova": {
+    "gb": [
+     "a2-cdf5c974-gb",
+     0,
+     1.906939
+    ],
+    "us": [
+     "a2-cdf5c974-us",
+     0,
+     1.697959
+    ]
+   }
+  },
+  "ceac9572": {
+   "nova": {
+    "gb": [
+     "a2-ceac9572-gb",
+     0,
+     1.619592
+    ]
+   }
+  },
+  "d104c0e5": {
+   "nova": {
+    "gb": [
+     "a2-d104c0e5-gb",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "d19e8df9": {
+   "nova": {
+    "gb": [
+     "a2-d19e8df9-gb",
+     0,
+     1.697959
+    ],
+    "us": [
+     "a2-d19e8df9-us",
+     0,
+     1.515102
+    ]
+   }
+  },
+  "d1c6316b": {
+   "nova": {
+    "gb": [
+     "a2-d1c6316b-gb",
+     0,
+     3.94449
+    ]
+   }
+  },
+  "d1cc3611": {
+   "nova": {
+    "gb": [
+     "a2-d1cc3611-gb",
+     0,
+     1.854694
+    ]
+   }
+  },
+  "d47ffbb1": {
+   "nova": {
+    "gb": [
+     "a2-d47ffbb1-gb",
+     0,
+     1.697959
+    ]
+   }
+  },
+  "d5ac60ed": {
+   "nova": {
+    "gb": [
+     "a2-d5ac60ed-gb",
+     0,
+     1.802449
+    ],
+    "us": [
+     "a2-d5ac60ed-us",
+     0,
+     1.750204
+    ]
+   }
+  },
+  "d71c946a": {
+   "nova": {
+    "us": [
+     "a2-d71c946a-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "d762953e": {
+   "nova": {
+    "us": [
+     "a2-d762953e-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "d8b9cf23": {
+   "nova": {
+    "us": [
+     "a2-d8b9cf23-us",
+     0,
+     0.835918
+    ]
+   }
+  },
+  "d95d12e6": {
+   "nova": {
+    "gb": [
+     "a2-d95d12e6-gb",
+     0,
+     2.089796
+    ]
+   }
+  },
+  "dd1007bd": {
+   "nova": {
+    "gb": [
+     "a2-dd1007bd-gb",
+     0,
+     1.48898
+    ]
+   }
+  },
+  "dd72e651": {
+   "nova": {
+    "gb": [
+     "a2-dd72e651-gb",
+     0,
+     1.671837
+    ]
+   }
+  },
+  "de69d69b": {
+   "nova": {
+    "gb": [
+     "a2-de69d69b-gb",
+     0,
+     1.933061
+    ],
+    "us": [
+     "a2-de69d69b-us",
+     0,
+     1.697959
+    ]
+   }
+  },
+  "deb9ec98": {
+   "nova": {
+    "gb": [
+     "a2-deb9ec98-gb",
+     0,
+     2.037551
+    ]
+   }
+  },
+  "def1398b": {
+   "nova": {
+    "gb": [
+     "a2-def1398b-gb",
+     0,
+     2.76898
+    ]
+   }
+  },
+  "df497389": {
+   "nova": {
+    "gb": [
+     "a2-df497389-gb",
+     0,
+     1.906939
+    ],
+    "us": [
+     "a2-df497389-us",
+     0,
+     1.697959
+    ]
+   }
+  },
+  "e1be37b2": {
+   "nova": {
+    "gb": [
+     "a2-e1be37b2-gb",
+     0,
+     2.220408
+    ],
+    "us": [
+     "a2-e1be37b2-us",
+     0,
+     1.933061
+    ]
+   }
+  },
+  "e1c8f05f": {
+   "nova": {
+    "gb": [
+     "a2-e1c8f05f-gb",
+     0,
+     2.403265
+    ]
+   }
+  },
+  "e2a61acc": {
+   "nova": {
+    "us": [
+     "a2-e2a61acc-us",
+     0,
+     1.07102
+    ]
+   }
+  },
+  "e41aae5d": {
+   "nova": {
+    "gb": [
+     "a2-e41aae5d-gb",
+     0,
+     2.272653
+    ]
+   }
+  },
+  "e545f2d4": {
+   "nova": {
+    "gb": [
+     "a2-e545f2d4-gb",
+     0,
+     2.586122
+    ]
+   }
+  },
+  "e63fb602": {
+   "nova": {
+    "gb": [
+     "a2-e63fb602-gb",
+     0,
+     2.690612
+    ]
+   }
+  },
+  "e79d3c35": {
+   "nova": {
+    "gb": [
+     "a2-e79d3c35-gb",
+     0,
+     2.35102
+    ]
+   }
+  },
+  "e97545cd": {
+   "nova": {
+    "gb": [
+     "a2-e97545cd-gb",
+     0,
+     1.567347
+    ],
+    "us": [
+     "a2-e97545cd-us",
+     0,
+     1.48898
+    ]
+   }
+  },
+  "e9e34730": {
+   "nova": {
+    "gb": [
+     "a2-e9e34730-gb",
+     0,
+     33.097143
+    ]
+   }
+  },
+  "ea28e637": {
+   "nova": {
+    "us": [
+     "a2-ea28e637-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "ef2ae077": {
+   "nova": {
+    "gb": [
+     "a2-ef2ae077-gb",
+     0,
+     3.526531
+    ]
+   }
+  },
+  "ef3e2929": {
+   "nova": {
+    "us": [
+     "a2-ef3e2929-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "efb4a376": {
+   "nova": {
+    "us": [
+     "a2-efb4a376-us",
+     0,
+     0.783673
+    ]
+   }
+  },
+  "f1f7196d": {
+   "nova": {
+    "gb": [
+     "a2-f1f7196d-gb",
+     0,
+     2.586122
+    ],
+    "us": [
+     "a2-f1f7196d-us",
+     0,
+     2.403265
+    ]
+   }
+  },
+  "f33bb199": {
+   "nova": {
+    "gb": [
+     "a2-f33bb199-gb",
+     0,
+     2.168163
+    ],
+    "us": [
+     "a2-f33bb199-us",
+     0,
+     2.089796
+    ]
+   }
+  },
+  "f4212dd3": {
+   "nova": {
+    "gb": [
+     "a2-f4212dd3-gb",
+     0,
+     1.28
+    ],
+    "us": [
+     "a2-f4212dd3-us",
+     0,
+     1.149388
+    ]
+   }
+  },
+  "f74bc818": {
+   "nova": {
+    "gb": [
+     "a2-f74bc818-gb",
+     0,
+     1.332245
+    ],
+    "us": [
+     "a2-f74bc818-us",
+     0,
+     1.38449
+    ]
+   }
+  },
+  "f7cc1709": {
+   "nova": {
+    "gb": [
+     "a2-f7cc1709-gb",
+     0,
+     2.272653
+    ],
+    "us": [
+     "a2-f7cc1709-us",
+     0,
+     2.272653
+    ]
+   }
+  },
+  "f85a2759": {
+   "nova": {
+    "gb": [
+     "a2-f85a2759-gb",
+     0,
+     1.854694
+    ]
+   }
+  },
+  "f8a56cde": {
+   "nova": {
+    "us": [
+     "a2-f8a56cde-us",
+     0,
+     0.966531
+    ]
+   }
+  },
+  "f8be90ab": {
+   "nova": {
+    "gb": [
+     "a2-f8be90ab-gb",
+     0,
+     1.567347
+    ]
+   }
+  },
+  "f8db18ae": {
+   "nova": {
+    "us": [
+     "a2-f8db18ae-us",
+     0,
+     0.862041
+    ]
+   }
+  },
+  "f936c57b": {
+   "nova": {
+    "gb": [
+     "a2-f936c57b-gb",
+     0,
+     3.343673
+    ]
+   }
+  },
+  "fa0270f1": {
+   "nova": {
+    "gb": [
+     "a2-fa0270f1-gb",
+     0,
+     1.48898
+    ]
+   }
+  },
+  "fa2ed837": {
+   "nova": {
+    "gb": [
+     "a2-fa2ed837-gb",
+     0,
+     2.821224
+    ]
+   }
+  },
+  "fa66e011": {
+   "nova": {
+    "gb": [
+     "a2-fa66e011-gb",
+     0,
+     2.037551
+    ]
+   }
+  },
+  "fadc0a04": {
+   "nova": {
+    "gb": [
+     "a2-fadc0a04-gb",
+     0,
+     1.933061
+    ],
+    "us": [
+     "a2-fadc0a04-us",
+     0,
+     1.985306
+    ]
+   }
+  },
+  "fc0f3992": {
+   "nova": {
+    "us": [
+     "a2-fc0f3992-us",
+     0,
+     1.097143
+    ]
+   }
+  },
+  "fc11403f": {
+   "nova": {
+    "gb": [
+     "a2-fc11403f-gb",
+     0,
+     3.186939
+    ]
+   }
+  },
+  "fc792e18": {
+   "nova": {
+    "gb": [
+     "a2-fc792e18-gb",
+     0,
+     1.985306
+    ]
+   }
+  },
+  "fd19a794": {
+   "nova": {
+    "gb": [
+     "a2-fd19a794-gb",
+     0,
+     2.742857
+    ]
+   }
+  },
+  "fe241618": {
+   "nova": {
+    "gb": [
+     "a2-fe241618-gb",
+     0,
+     2.089796
+    ]
+   }
+  },
+  "fe783d0a": {
+   "nova": {
+    "us": [
+     "a2-fe783d0a-us",
+     0,
+     1.332245
+    ]
+   }
+  },
+  "ff5ded4d": {
+   "nova": {
+    "us": [
+     "a2-ff5ded4d-us",
+     0,
+     1.018776
+    ]
+   }
+  }
+ },
+ "generatedAt": "2026-11-28T00:29:28-05:00"
+}

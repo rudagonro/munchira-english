@@ -92,10 +92,10 @@ test('la Unidad 0 en el revisor: respuestas visibles, Unidad 1 abierta y sin gua
 test('en el modo revisor ninguna escritura se ejecuta', () => {
   const lesson = src('public/ModelLesson.jsx')
   // noSave = revisor o cuenta del personal (useNoSave).
-  assert.match(lesson, /if \(noSave \|\| !user \|\| reported\.current\.has\(idx\)\) return/, 'tarjetas: no van al Repaso')
-  assert.match(lesson, /if \(noSave \|\| !user\) return\n\s+void recordA1Text/, 'ejercicios: no van al Repaso')
-  assert.match(lesson, /enabled=\{!noSave\}/, 'sin borrador guardado')
-  assert.match(src('public/UnitCompletion.jsx'), /const review = useNoSave\(\)/)
+  assert.match(lesson, /if \(noSave \|\| !user \|\| !isA1Lesson\(lesson\) \|\| reported\.current\.has\(idx\)\) return/, 'tarjetas: no van al Repaso')
+  assert.match(lesson, /if \(noSave \|\| !user \|\| !isA1Lesson\(lesson\)\) return\n\s+void recordA1Text/, 'ejercicios: no van al Repaso')
+  assert.match(lesson, /enabled=\{!noSave && isA1Lesson\(lesson\)\}/, 'sin borrador guardado')
+  assert.match(src('public/UnitCompletion.jsx'), /const noSave = useNoSave\(\)[^\n]*\n\s+const review = noSave \|\| localOnly/)
   assert.match(src('public/StarterUnit.jsx'), /const review = useNoSave\(\) \/\/ revisor o cuenta del personal/)
   const quiz = src('public/UnitCompletion.jsx')
   assert.match(quiz, /if \(!user \|\| review\) \{\n\s+setReviewed\(selected\)/, 'cuestionario: se corrige aquí, sin RPC')

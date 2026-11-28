@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url'
 import { validateCycleFile, summarize } from '../content/lib/validate.js'
 import { buildCycleSql } from '../content/lib/sql.js'
 import { validateUnit0 } from '../content/lib/starter.js'
+import { validateRepositoryUnits } from '../content/lib/units.js'
 import { audioKey } from '../src/public/speechText.js'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
@@ -41,6 +42,11 @@ if (command === 'validate') {
     const errors = validateUnit0(unit0, bank, { publicDir: join(root, 'public'), audio, audioKey })
     if (errors.length) { failed = true; console.error('✗ content/a1/unit0.json + card-bank.json'); errors.forEach((e) => console.error(`    - ${e}`)) }
     else console.log(`✓ A1 Unidad 0: ${bank.sets.reduce((n, s) => n + s.cards.length, 0)} tarjetas en ${bank.sets.length} grupos, ${unit0.quiz.length} preguntas, audio US/UK completo`)
+    // Unidades A2 por pasos (repositorio, vista previa del personal). content/cycles/A2.json sigue siendo el archivo antiguo.
+    const a2 = load(join(root, 'content', 'a2', 'units.json'))
+    const a2Errors = validateRepositoryUnits(a2, 'A2')
+    if (a2Errors.length) { failed = true; console.error('✗ content/a2/units.json'); a2Errors.forEach((e) => console.error(`    - ${e}`)) }
+    else console.log(`✓ A2 unidades por pasos: ${a2.modules.map((m) => m.order).join(', ')} (${a2.modules.reduce((n, m) => n + m.quiz.length, 0)} preguntas de cuestionario)`)
   }
   process.exit(failed ? 1 : 0)
 } else if (command === 'sql') {

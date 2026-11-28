@@ -7,7 +7,33 @@ import ModelLesson from '../public/ModelLesson'
 import StarterUnit from '../public/StarterUnit'
 import { registerLessonRecordings } from '../public/lessonRecordings'
 import { stopLessonAudio } from '../public/lessonSpeech'
+import { A2_UNITS, A2_REVIEW_PATH, getA2Unit, loadA2Lesson } from '../data/modelLessons/a2-units'
 
+/** Barra del revisor para A2 (vista previa: los alumnos A2 siguen en lista de espera). */
+function A2ReviewBar({ number }) {
+  return <div className="rv-bar rv-unit-bar" role="note">
+    <div className="rv-bar-top">
+      <span><strong>Modo revisor · A2 · Unidad {number}.</strong> Vista previa: los alumnos A2 siguen en lista de espera. Respuestas a la vista. Nada se guarda.</span>
+      <Link to="/revisor">← Volver al revisor</Link>
+    </div>
+    <nav className="rv-chips" aria-label="Unidades A2">
+      {A2_UNITS.map(unit => <Link key={unit.number} className={`rv-chip${unit.number === number ? ' active' : ''}`} aria-current={unit.number === number ? 'page' : undefined} to={A2_REVIEW_PATH(unit.number)} title={unit.title}>{unit.number}</Link>)}
+    </nav>
+  </div>
+}
+
+function A2UnitPreview({ number }) {
+  const [lesson, setLesson] = useState(null)
+  useEffect(() => {
+    let active = true
+    Promise.resolve(loadA2Lesson(number)).then(found => {
+      if (active && found) { registerLessonRecordings(found.audio); setLesson(found) }
+    })
+    return () => { active = false; stopLessonAudio(); registerLessonRecordings(null) }
+  }, [number])
+  if (lesson) return <ModelLesson key={lesson.slug} lesson={lesson} />
+  return <div className="page-shell"><p role="status">Cargando la unidad…</p></div>
+}
 
 /** Barra fija del revisor: recuerda que nada se guarda y permite saltar entre unidades. */
 function ReviewBar({ number }) {
@@ -42,10 +68,11 @@ function UnitPreview({ unit }) {
  * Revisor: la unidad tal como la ve el alumno, pero sin la puerta de la Unidad 0, con todos los pasos abiertos,
  * sin guardar nada (ni borrador, ni Repaso, ni cuestionario) y con las respuestas visibles.
  */
-export default function ReviewerUnit() {
+export default function ReviewerUnit({ level = 'A1' }) {
   const { number } = useParams()
-  const starter = number === '0'
-  const unit = starter ? null : getA1Unit(number)
+  const a2 = level === 'A2'
+  const starter = !a2 && number === '0'
+  const unit = a2 ? getA2Unit(number) : starter ? null : getA1Unit(number)
   // La barra queda fija bajo la navegación de la app (también fija). Sus alturas reales (cambian al envolver en
   // varias filas o al abrir el menú en el celular) desplazan el menú de pasos y los destinos de las secciones.
   const bar = useRef(null)
@@ -64,8 +91,8 @@ export default function ReviewerUnit() {
   const current = starter ? 0 : unit.number
   return <ReviewModeContext.Provider value={true}>
     <div className="rv-review" style={{ '--rv-nav-h': `${offsets.nav}px`, '--rv-bar-h': `${offsets.bar}px` }}>
-      <div className="rv-unit-wrap rv-unit-sticky" ref={bar}><ReviewBar number={current} /></div>
-      {starter ? <StarterUnit /> : <UnitPreview key={unit.number} unit={unit} />}
+      <div className="rv-unit-wrap rv-unit-sticky" ref={bar}>{a2 ? <A2ReviewBar number={current} /> : <ReviewBar number={current} />}</div>
+      {a2 ? <A2UnitPreview key={unit.number} number={unit.number} /> : starter ? <StarterUnit /> : <UnitPreview key={unit.number} unit={unit} />}
     </div>
   </ReviewModeContext.Provider>
 }
