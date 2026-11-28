@@ -12,6 +12,7 @@ import Seo from './Seo'
 import { QuestionFeedback } from './UnitCompletion'
 import { stopLessonAudio } from './lessonSpeech'
 import AccentSpeakers, { OptionRow, QuizLegend } from './AccentSpeakers'
+import { unit0FeedbackWords } from './unit0Speech'
 import { useLocalUnit0Pass } from './useLocalUnit0Pass'
 import { useNoSave, useReviewMode } from '../contexts/review-mode-context'
 import ReviewAnswer from '../components/ReviewAnswer'
@@ -232,7 +233,7 @@ function StarterQuiz({ onPassed }) {
         <QuizLegend index={index} question={question} />
         {question.options.map((option, value) => <OptionRow key={value} option={option}><label className="ml-quiz-opt"><input type="radio" name={`u0-question-${index}`} value={value} checked={answers[index] === value} onChange={() => { setReviewed(null); setResult(null); setAnswers(previous => ({ ...previous, [index]: value })) }} disabled={busy} required /><span>{option}</span></label></OptionRow>)}
         <ReviewAnswer>{question.options[question.correct_idx]}</ReviewAnswer>
-        {reviewed && <QuestionFeedback question={question} answer={reviewed[index]} />}
+        {reviewed && <QuestionFeedback question={question} answer={reviewed[index]} words={unit0FeedbackWords(index)} />}
       </fieldset>)}
       <button type="submit" className="mp-button mp-button-dark" disabled={busy || loading || Object.keys(answers).length !== questions.length}>{busy ? 'Guardando…' : review ? 'Comprobar (no se guarda)' : user ? 'Comprobar y guardar mi resultado' : 'Comprobar mis respuestas'}</button>
     </form>
