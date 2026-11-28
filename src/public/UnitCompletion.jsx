@@ -24,12 +24,17 @@ export function QuestionFeedback({ question, answer, words = [] }) {
   </p>
 }
 
-export default function UnitCompletion({ number, onPassed }) {
+/**
+ * `questions` y `localOnly`: cuestionario de otro nivel (A2) que se corrige aquí y no se guarda, porque su
+ * calificación en el servidor aún no existe. Sin ellos, el cuestionario A1 calificado por la RPC.
+ */
+export default function UnitCompletion({ number, onPassed, questions: questionsProp = null, localOnly = false }) {
   const passedCallback = useRef(onPassed)
   useEffect(() => { passedCallback.current = onPassed }, [onPassed])
   const { user, loading } = useAuth()
-  const review = useNoSave() // revisor o cuenta del personal: se corrige aquí y no se guarda nada
-  const questions = cycle.modules.find(unit => unit.order === number)?.quiz ?? []
+  const noSave = useNoSave() // revisor o cuenta del personal: se corrige aquí y no se guarda nada
+  const review = noSave || localOnly
+  const questions = questionsProp ?? cycle.modules.find(unit => unit.order === number)?.quiz ?? []
   const [answers, setAnswers] = useDraftState('quizV2.answers', {}) // «quiz.answers» era el cuestionario anterior: sus índices no valen aquí
   const [progress, setProgress] = useState(null)
   const [error, setError] = useState('')
@@ -80,7 +85,7 @@ export default function UnitCompletion({ number, onPassed }) {
       <button type="submit" className="mp-button mp-button-dark" disabled={busy || loading || Object.keys(answers).length !== questions.length}>{busy ? 'Guardando…' : review ? 'Comprobar (no se guarda)' : user ? 'Comprobar y guardar mi avance' : 'Comprobar mi práctica'}</button>
     </form>
     {progress?.last_score !== undefined && <p role="status">Resultado: {progress.last_score}%. {progress.last_score >= 70 ? '¡Bien hecho!' : progress.completed_at ? 'Puedes seguir practicando: tu aprobado se conserva.' : 'Escucha y repasa; puedes intentarlo otra vez.'}</p>}
-    {localScore !== null && <p role="status">Resultado de práctica: {localScore}%. Crea una cuenta o inicia sesión para guardar tu avance.</p>}
+    {localScore !== null && <p role="status">Resultado de práctica: {localScore}%. {localOnly ? 'Vista previa: este resultado no se guarda.' : 'Crea una cuenta o inicia sesión para guardar tu avance.'}</p>}
     {error && <p className="ml-feedback ml-bad" role="alert">{error}</p>}
   </section>
 }

@@ -1,0 +1,1831 @@
+{
+ "level": "A2",
+ "title": "Elemental · Unidades 0–8 (piloto: 0 y 1)",
+ "delivery": "repository-only",
+ "status": "reviewer-preview",
+ "note": "Curso A2 por unidades sobre la plantilla de A1. Mientras A2 no esté en OPEN_LEVELS solo lo ve el personal en /revisor/A2/unidad/:n; los alumnos A2 siguen en lista de espera. content/cycles/A2.json (módulos antiguos) no cambia.",
+ "modules": [
+  {
+   "order": 0,
+   "title": "Punto de partida",
+   "skill_type": "grammar",
+   "status": "ready",
+   "outline": {
+    "topics": [
+     "Repaso de to be y presente simple",
+     "Preguntas con Wh-",
+     "Frecuencia y gustos",
+     "Cuestionario de entrada"
+    ]
+   },
+   "practice": {
+    "number": 0,
+    "slug": "a2-unidad-0",
+    "level": "A2",
+    "module": "Unidad 0",
+    "title": "Punto de partida",
+    "minutes": 35,
+    "goal": "Al terminar habrás repasado lo esencial de A1: to be, el presente simple con do y does, las preguntas con where, what y when, there is y there are, y cómo decir con qué frecuencia haces algo y qué te gusta.",
+    "why": "A2 se construye sobre estas bases. Si las tienes firmes, el pasado y los planes de las próximas unidades serán mucho más fáciles. El cuestionario final es obligatorio para todos: con 70% o más se abre la Unidad 1.",
+    "vocab": [
+     {
+      "en": "Neighbourhood",
+      "es": "barrio",
+      "say": "néiborjud"
+     },
+     {
+      "en": "Job",
+      "es": "trabajo | empleo",
+      "say": "yob"
+     },
+     {
+      "en": "Usually",
+      "es": "normalmente | por lo general",
+      "say": "iúshuali"
+     },
+     {
+      "en": "Sometimes",
+      "es": "a veces",
+      "say": "sámtaims"
+     },
+     {
+      "en": "Never",
+      "es": "nunca",
+      "say": "néver"
+     },
+     {
+      "en": "Early",
+      "es": "temprano",
+      "say": "érli"
+     },
+     {
+      "en": "Late",
+      "es": "tarde",
+      "say": "léit"
+     },
+     {
+      "en": "Busy",
+      "es": "ocupado | ocupada",
+      "say": "bísi"
+     },
+     {
+      "en": "Tired",
+      "es": "cansado | cansada",
+      "say": "táierd"
+     },
+     {
+      "en": "Bakery",
+      "es": "panadería",
+      "say": "béikeri"
+     },
+     {
+      "en": "Bus stop",
+      "es": "parada de bus",
+      "say": "bas stop"
+     },
+     {
+      "en": "Get up",
+      "es": "levantarse",
+      "say": "guet ap"
+     },
+     {
+      "en": "Go to bed",
+      "es": "acostarse",
+      "say": "góu tu bed"
+     },
+     {
+      "en": "Enjoy",
+      "es": "disfrutar",
+      "say": "enyói"
+     },
+     {
+      "en": "Hate",
+      "es": "odiar",
+      "say": "jéit"
+     },
+     {
+      "en": "Classmate",
+      "es": "compañero de clase | compañera de clase",
+      "say": "klásmeit"
+     }
+    ],
+    "cardWords": [
+     "Neighbourhood",
+     "Job",
+     "Usually",
+     "Never",
+     "Early",
+     "Late",
+     "Busy",
+     "Tired",
+     "Bakery",
+     "Get up",
+     "Enjoy",
+     "Classmate"
+    ],
+    "explanation": [
+     {
+      "title": "1. To be: am, is, are",
+      "text": "To be sirve para decir quién eres, cómo estás, de dónde eres y dónde está algo. Va con I am, he, she o it is, y you, we o they are. Para negar añade not; para preguntar, pon el verbo antes del sujeto.",
+      "example": "I'm tired. Are you busy?"
+     },
+     {
+      "title": "2. Presente simple: lo que haces siempre",
+      "text": "Para rutinas y hechos generales usa el verbo en su forma base. Con he, she e it añade -s. Para negar y preguntar necesitas el auxiliar do o does, y el verbo vuelve a su forma base.",
+      "example": "She works in a bakery. Does she work on Sunday?"
+     },
+     {
+      "title": "3. No mezcles to be con otro verbo",
+      "text": "En español decimos «yo trabajo», nunca «yo soy trabajo». En inglés pasa lo mismo: si ya hay un verbo como work, live o like, no añadas am, is ni are.",
+      "example": "I live in Cali."
+     },
+     {
+      "title": "4. There is y there are",
+      "text": "Para decir qué hay en un lugar usa there is con una cosa y there are con varias. En la pregunta se invierte: Is there…? Are there…?",
+      "example": "There's a bakery near my house."
+     },
+     {
+      "title": "5. Frecuencia y gustos",
+      "text": "Always, usually, sometimes y never van antes del verbo principal, pero después de to be. Con like, love, enjoy y hate, la actividad va con -ing.",
+      "example": "I usually get up early. I love dancing."
+     }
+    ],
+    "examples": [
+     {
+      "en": "My name is Camila and I'm from Medellín.",
+      "es": "Me llamo Camila y soy de Medellín.",
+      "focus": "I'm"
+     },
+     {
+      "en": "I work in a bakery near my house.",
+      "es": "Trabajo en una panadería cerca de mi casa.",
+      "focus": "work"
+     },
+     {
+      "en": "My brother doesn't work on Sunday.",
+      "es": "Mi hermano no trabaja los domingos.",
+      "focus": "doesn't"
+     },
+     {
+      "en": "Where do you live?",
+      "es": "¿Dónde vives?",
+      "focus": "do"
+     },
+     {
+      "en": "There are two parks in my neighbourhood.",
+      "es": "Hay dos parques en mi barrio.",
+      "focus": "There are"
+     },
+     {
+      "en": "We never go to bed late.",
+      "es": "Nunca nos acostamos tarde.",
+      "focus": "never"
+     }
+    ],
+    "table": {
+     "caption": "Lo esencial de A1 en una tabla",
+     "head": [
+      "Para…",
+      "Estructura",
+      "Ejemplo"
+     ],
+     "rows": [
+      [
+       "Decir quién eres o cómo estás",
+       "verbo to be",
+       "I'm a student."
+      ],
+      [
+       "Contar tu rutina",
+       "verbo en presente simple",
+       "She gets up at six."
+      ],
+      [
+       "Negar una rutina",
+       "don't o doesn't + verbo",
+       "He doesn't eat meat."
+      ],
+      [
+       "Preguntar por información",
+       "Wh- + do o does + sujeto + verbo",
+       "What time do you start work?"
+      ],
+      [
+       "Decir qué hay",
+       "there is o there are",
+       "There's a bus stop on my street."
+      ],
+      [
+       "Decir con qué frecuencia",
+       "adverbio + verbo",
+       "I sometimes cook dinner."
+      ]
+     ]
+    },
+    "tableIntro": "Lee cada fila y piensa en un ejemplo tuyo antes de pasar a los errores típicos.",
+    "tableTip": "Antes de hablar pregúntate: ¿mi frase ya tiene un verbo? Si lo tiene, no añadas am, is ni are.",
+    "mistakes": [
+     {
+      "wrong": "I am live in Bogotá.",
+      "right": "I live in Bogotá.",
+      "why": "Ya hay un verbo (live): no añadas am."
+     },
+     {
+      "wrong": "She don't like coffee.",
+      "right": "She doesn't like coffee.",
+      "why": "Con she, he e it el auxiliar es doesn't."
+     },
+     {
+      "wrong": "I go always to the gym.",
+      "right": "I always go to the gym.",
+      "why": "El adverbio de frecuencia va antes del verbo principal."
+     }
+    ],
+    "theory": [
+     {
+      "title": "To be o presente simple",
+      "rule": "To be (am, is, are) describe: quién eres, cómo estás, de dónde eres. Los demás verbos (work, live, study, like) cuentan lo que haces. Cada frase lleva un solo verbo conjugado: o to be, o el otro verbo.",
+      "form": "Sujeto + am / is / are + descripción  ·  Sujeto + verbo (+ -s con he / she / it)",
+      "steps": [
+       "Pregúntate si describes (to be) o cuentas una acción (otro verbo).",
+       "Con to be: I am, he / she / it is, you / we / they are.",
+       "Con otro verbo: forma base, y -s con he, she e it.",
+       "Nunca juntes los dos: «I am work» está mal."
+      ],
+      "forms": [
+       {
+        "label": "Afirmativa",
+        "en": "She is a nurse. She works at night.",
+        "es": "Ella es enfermera. Trabaja de noche."
+       },
+       {
+        "label": "Negativa",
+        "en": "She isn't tired. She doesn't work today.",
+        "es": "No está cansada. Hoy no trabaja."
+       },
+       {
+        "label": "Pregunta",
+        "en": "Is she a nurse? Does she work at night?",
+        "es": "¿Es enfermera? ¿Trabaja de noche?"
+       }
+      ],
+      "examples": [
+       {
+        "en": "I'm a student.",
+        "es": "Soy estudiante."
+       },
+       {
+        "en": "I study at night.",
+        "es": "Estudio de noche."
+       },
+       {
+        "en": "My parents are from Cali.",
+        "es": "Mis papás son de Cali."
+       }
+      ],
+      "apply": {
+       "words": [
+        "works",
+        "my",
+        "sister",
+        "hospital",
+        "in",
+        "a"
+       ],
+       "answer": "My sister works in a hospital.",
+       "es": "Mi hermana trabaja en un hospital."
+      },
+      "mistake": {
+       "wrong": "He is work in an office.",
+       "right": "He works in an office.",
+       "why": "Work ya es el verbo: quita is y añade -s."
+      }
+     },
+     {
+      "title": "Preguntas con Wh- y do o does",
+      "rule": "Para pedir información empieza con la palabra interrogativa (what, where, when, what time, who) y después usa do o does, el sujeto y el verbo en forma base. Con to be no hay auxiliar: Where are you from?",
+      "form": "Wh- + do / does + sujeto + verbo base … ?",
+      "steps": [
+       "Elige la palabra interrogativa: where (dónde), what (qué), when (cuándo), what time (a qué hora).",
+       "Añade do (I, you, we, they) o does (he, she, it).",
+       "Pon el sujeto y el verbo sin -s.",
+       "Con to be, invierte: Where is the bakery?"
+      ],
+      "forms": [
+       {
+        "label": "Con do",
+        "en": "Where do you work?",
+        "es": "¿Dónde trabajas?"
+       },
+       {
+        "label": "Con does",
+        "en": "What time does he get up?",
+        "es": "¿A qué hora se levanta él?"
+       },
+       {
+        "label": "Con to be",
+        "en": "Where are you from?",
+        "es": "¿De dónde eres?"
+       }
+      ],
+      "examples": [
+       {
+        "en": "What do you do?",
+        "es": "¿A qué te dedicas?"
+       },
+       {
+        "en": "When does the class start?",
+        "es": "¿Cuándo empieza la clase?"
+       },
+       {
+        "en": "Who is your teacher?",
+        "es": "¿Quién es tu profesor?"
+       }
+      ],
+      "apply": {
+       "words": [
+        "does",
+        "where",
+        "live",
+        "she"
+       ],
+       "answer": "Where does she live?",
+       "es": "¿Dónde vive ella?"
+      },
+      "mistake": {
+       "wrong": "Where you live?",
+       "right": "Where do you live?",
+       "why": "Con un verbo que no es to be la pregunta necesita do o does."
+      }
+     },
+     {
+      "title": "Frecuencia y gustos",
+      "rule": "Los adverbios de frecuencia (always, usually, often, sometimes, never) van antes del verbo principal y después de to be. Para hablar de gustos usa like, love, enjoy o hate + verbo con -ing.",
+      "form": "Sujeto + adverbio + verbo  ·  Sujeto + to be + adverbio  ·  like / love / enjoy / hate + verbo-ing",
+      "steps": [
+       "Elige el adverbio: always (siempre), usually (normalmente), sometimes (a veces), never (nunca).",
+       "Ponlo antes del verbo: I usually walk.",
+       "Con to be va después: I'm always busy.",
+       "Para gustos: I enjoy cooking, I hate waiting."
+      ],
+      "forms": [
+       {
+        "label": "Antes del verbo",
+        "en": "I usually walk to work.",
+        "es": "Normalmente camino al trabajo."
+       },
+       {
+        "label": "Después de to be",
+        "en": "He's never late.",
+        "es": "Él nunca llega tarde."
+       },
+       {
+        "label": "Gusto + -ing",
+        "en": "We enjoy cooking together.",
+        "es": "Disfrutamos cocinar juntos."
+       }
+      ],
+      "examples": [
+       {
+        "en": "She always has breakfast at home.",
+        "es": "Ella siempre desayuna en casa."
+       },
+       {
+        "en": "I'm sometimes tired on Monday.",
+        "es": "A veces estoy cansado el lunes."
+       },
+       {
+        "en": "They hate waiting for the bus.",
+        "es": "Odian esperar el bus."
+       }
+      ],
+      "apply": {
+       "words": [
+        "often",
+        "we",
+        "football",
+        "play"
+       ],
+       "answer": "We often play football.",
+       "es": "A menudo jugamos fútbol."
+      },
+      "mistake": {
+       "wrong": "I like cook.",
+       "right": "I like cooking.",
+       "why": "Después de like, la actividad va con -ing (o con to + verbo)."
+      }
+     }
+    ],
+    "guided": [
+     {
+      "type": "choice",
+      "q": "My mother ___ a teacher.",
+      "opts": [
+       "is",
+       "are",
+       "works"
+      ],
+      "correct": 0,
+      "why": "Describe quién es: to be con she es is."
+     },
+     {
+      "type": "choice",
+      "q": "My father ___ in a bank.",
+      "opts": [
+       "is work",
+       "works",
+       "work"
+      ],
+      "correct": 1,
+      "why": "Es una acción con he: verbo + s, sin is."
+     },
+     {
+      "type": "choice",
+      "q": "___ you from Cartagena?",
+      "opts": [
+       "Do",
+       "Are",
+       "Is"
+      ],
+      "correct": 1,
+      "why": "Con to be y you, la pregunta empieza con Are."
+     },
+     {
+      "type": "choice",
+      "q": "What time ___ she get up?",
+      "opts": [
+       "do",
+       "is",
+       "does"
+      ],
+      "correct": 2,
+      "why": "Con she, el auxiliar es does y el verbo queda sin -s."
+     },
+     {
+      "type": "choice",
+      "q": "There ___ two bakeries on my street.",
+      "opts": [
+       "is",
+       "are",
+       "have"
+      ],
+      "correct": 1,
+      "why": "Con varias cosas se usa there are."
+     },
+     {
+      "type": "choice",
+      "q": "Elige la frase correcta.",
+      "opts": [
+       "I go always to work by bus.",
+       "I always go to work by bus.",
+       "Always I go to work by bus."
+      ],
+      "correct": 1,
+      "why": "El adverbio va antes del verbo principal."
+     },
+     {
+      "type": "choice",
+      "q": "He ___ like football.",
+      "opts": [
+       "doesn't",
+       "don't",
+       "isn't"
+      ],
+      "correct": 0,
+      "why": "Para negar con he se usa doesn't + verbo base."
+     },
+     {
+      "type": "choice",
+      "q": "I enjoy ___ to music.",
+      "opts": [
+       "listen",
+       "listening",
+       "listens"
+      ],
+      "correct": 1,
+      "why": "Después de enjoy la actividad va con -ing."
+     },
+     {
+      "type": "fill",
+      "sentence": "We ___ students at the university.",
+      "answer": "are|'re",
+      "hint": "To be con we."
+     },
+     {
+      "type": "fill",
+      "sentence": "She ___ (live) near the park.",
+      "answer": "lives",
+      "hint": "Con she, el verbo añade -s."
+     },
+     {
+      "type": "fill",
+      "sentence": "___ do you work? — In a hospital.",
+      "answer": "Where",
+      "hint": "La respuesta es un lugar."
+     },
+     {
+      "type": "fill",
+      "sentence": "___ there a bus stop near here?",
+      "answer": "Is",
+      "hint": "Pregunta por una sola cosa."
+     },
+     {
+      "type": "fill",
+      "sentence": "I ___ eat meat. I'm vegetarian.",
+      "answer": "don't|do not",
+      "hint": "Negativa con I."
+     },
+     {
+      "type": "fill",
+      "sentence": "My brother is ___ late. He hates waiting.",
+      "answer": "never",
+      "hint": "Nunca."
+     },
+     {
+      "type": "order",
+      "instruction": "Ordena las palabras para formar la pregunta.",
+      "words": [
+       "does",
+       "What",
+       "do",
+       "your",
+       "sister"
+      ],
+      "answer": "What does your sister do",
+      "hint": "Wh- + does + sujeto + verbo."
+     },
+     {
+      "type": "order",
+      "instruction": "Ordena las palabras para formar la frase.",
+      "words": [
+       "usually",
+       "I",
+       "early",
+       "get",
+       "up"
+      ],
+      "answer": "I usually get up early",
+      "hint": "Sujeto + adverbio + verbo."
+     }
+    ],
+    "translations": [
+     {
+      "es": "Soy de Medellín y vivo en Bogotá.",
+      "en": "I'm from Medellín and I live in Bogotá. | I am from Medellín and I live in Bogotá. | I'm from Medellin and I live in Bogota. | I am from Medellin and I live in Bogota."
+     },
+     {
+      "es": "¿Dónde trabaja tu hermana?",
+      "en": "Where does your sister work?"
+     },
+     {
+      "es": "Mi papá no toma café.",
+      "en": "My dad doesn't drink coffee. | My father doesn't drink coffee. | My dad does not drink coffee. | My father does not drink coffee."
+     },
+     {
+      "es": "Hay una panadería cerca de mi casa.",
+      "en": "There's a bakery near my house. | There is a bakery near my house. | There's a bakery near my home. | There is a bakery near my home."
+     },
+     {
+      "es": "Normalmente me levanto temprano.",
+      "en": "I usually get up early."
+     }
+    ],
+    "dictation": [
+     "Where do you live?",
+     "She works in a bakery near my house.",
+     "There are two parks in my neighbourhood.",
+     "I usually get up early.",
+     "My brother doesn't work on Sunday."
+    ],
+    "reading": {
+     "title": "El perfil de Camila",
+     "text": "Hi! My name is Camila. I'm twenty-four and I'm from Medellín, but now I live in Bogotá. I work in a bakery near my house. I usually get up at five because the bakery opens at six. I'm always busy in the morning. In the afternoon I study English at a language school. My classmates are very friendly. I don't work on Sunday. I sometimes visit my family, and I always enjoy cooking with my mother. There are two parks in my neighbourhood, so I often go running there.",
+     "translation": "¡Hola! Me llamo Camila. Tengo veinticuatro años y soy de Medellín, pero ahora vivo en Bogotá. Trabajo en una panadería cerca de mi casa. Normalmente me levanto a las cinco porque la panadería abre a las seis. Siempre estoy ocupada por la mañana. Por la tarde estudio inglés en una escuela de idiomas. Mis compañeros de clase son muy amables. Los domingos no trabajo. A veces visito a mi familia y siempre disfruto cocinar con mi mamá. Hay dos parques en mi barrio, así que a menudo voy a correr allí.",
+     "questions": [
+      {
+       "q": "¿Dónde vive Camila ahora?",
+       "opts": [
+        "En Medellín",
+        "En Bogotá",
+        "En Cali"
+       ],
+       "correct": 1,
+       "why": "Dice: now I live in Bogotá."
+      },
+      {
+       "q": "¿Por qué se levanta a las cinco?",
+       "opts": [
+        "Porque estudia temprano",
+        "Porque la panadería abre a las seis",
+        "Porque va a correr"
+       ],
+       "correct": 1,
+       "why": "Dice: because the bakery opens at six."
+      },
+      {
+       "q": "¿Qué hace por la tarde?",
+       "opts": [
+        "Estudia inglés",
+        "Trabaja en la panadería",
+        "Visita a su familia"
+       ],
+       "correct": 0,
+       "why": "Dice: In the afternoon I study English."
+      },
+      {
+       "q": "¿Qué hace los domingos?",
+       "opts": [
+        "Trabaja todo el día",
+        "No trabaja y a veces visita a su familia",
+        "Siempre va al cine"
+       ],
+       "correct": 1,
+       "why": "Dice: I don't work on Sunday. I sometimes visit my family."
+      },
+      {
+       "q": "¿Qué disfruta hacer con su mamá?",
+       "opts": [
+        "Salir a correr",
+        "Cocinar con ella",
+        "Estudiar inglés"
+       ],
+       "correct": 1,
+       "why": "Dice: I always enjoy cooking with my mother."
+      }
+     ]
+    },
+    "dialogues": [
+     {
+      "title": "A2 · Diálogo 1 · Camila y Andrés",
+      "lines": [
+       {
+        "speaker": "Andrés",
+        "text": "Hi, I'm Andrés. Are you new in the class?",
+        "es": "Hola, soy Andrés. ¿Eres nueva en la clase?",
+        "voice": "onyx"
+       },
+       {
+        "speaker": "Camila",
+        "text": "Yes, I am. I'm Camila. Nice to meet you.",
+        "es": "Sí. Soy Camila. Mucho gusto.",
+        "voice": "nova"
+       },
+       {
+        "speaker": "Andrés",
+        "text": "Nice to meet you too. Where are you from?",
+        "es": "Igualmente. ¿De dónde eres?",
+        "voice": "onyx"
+       },
+       {
+        "speaker": "Camila",
+        "text": "I'm from Medellín, but I live in Bogotá now.",
+        "es": "Soy de Medellín, pero ahora vivo en Bogotá.",
+        "voice": "nova"
+       }
+      ]
+     },
+     {
+      "title": "A2 · Diálogo 2 · Andrés y Laura",
+      "lines": [
+       {
+        "speaker": "Laura",
+        "text": "What do you do, Andrés?",
+        "es": "¿A qué te dedicas, Andrés?",
+        "voice": "nova"
+       },
+       {
+        "speaker": "Andrés",
+        "text": "I'm a nurse. I work at night.",
+        "es": "Soy enfermero. Trabajo de noche.",
+        "voice": "onyx"
+       },
+       {
+        "speaker": "Laura",
+        "text": "Wow! What time do you go to bed?",
+        "es": "¡Uy! ¿A qué hora te acuestas?",
+        "voice": "nova"
+       },
+       {
+        "speaker": "Andrés",
+        "text": "I usually go to bed at eight in the morning.",
+        "es": "Normalmente me acuesto a las ocho de la mañana.",
+        "voice": "onyx"
+       }
+      ]
+     },
+     {
+      "title": "A2 · Diálogo 3 · Laura y Tom en el café",
+      "lines": [
+       {
+        "speaker": "Tom",
+        "text": "Good morning. What would you like?",
+        "es": "Buenos días. ¿Qué desea?",
+        "voice": "onyx"
+       },
+       {
+        "speaker": "Laura",
+        "text": "I'd like a coffee with milk, please.",
+        "es": "Quisiera un café con leche, por favor.",
+        "voice": "nova"
+       },
+       {
+        "speaker": "Tom",
+        "text": "Do you want something to eat?",
+        "es": "¿Quiere algo de comer?",
+        "voice": "onyx"
+       },
+       {
+        "speaker": "Laura",
+        "text": "Yes. Is there any cheese bread?",
+        "es": "Sí. ¿Hay pan de queso?",
+        "voice": "nova"
+       }
+      ]
+     }
+    ],
+    "pronunciation": [
+     {
+      "en": "Where do you live?",
+      "say": "uér du iu liv",
+      "tip": "«do you» se une y suena casi «diu»."
+     },
+     {
+      "en": "She works in a bakery near my house.",
+      "say": "shi uérks in a béikeri níer mai jáus",
+      "tip": "La -s de «works» se oye; no la pierdas."
+     },
+     {
+      "en": "I usually get up early.",
+      "say": "ái iúshuali guet ap érli",
+      "tip": "«usually» tiene el sonido «sh» suave: «IÚ-shua-li»."
+     },
+     {
+      "en": "There are two parks in my neighbourhood.",
+      "say": "zer ar tu parks in mai néiborjud",
+      "tip": "«there» empieza con la lengua entre los dientes."
+     },
+     {
+      "en": "I'm always busy in the morning.",
+      "say": "áim ólueis bísi in de mórnin",
+      "tip": "«busy» suena «bísi», con s sonora como una z."
+     }
+    ],
+    "freeTask": "Escribe un perfil corto (5 o 6 frases) como el de Camila: quién eres, de dónde eres, qué haces, tu rutina con un adverbio de frecuencia, qué hay en tu barrio y algo que disfrutas hacer.",
+    "freeModel": "I'm Daniel and I'm from Cali. I'm a student and I work in a shop on Saturday. I usually get up at six. There's a big park in my neighbourhood. I enjoy playing football with my friends.",
+    "freeChecklist": [
+     "¿Usé to be para describirme y otros verbos para mi rutina, sin mezclarlos?",
+     "¿Puse la -s con he, she o it?",
+     "¿Puse el adverbio de frecuencia antes del verbo?",
+     "¿Usé there is o there are?",
+     "¿Usé enjoy, like o love + -ing?"
+    ],
+    "summary": [
+     "To be para describir: I'm tired, She's a nurse.",
+     "Presente simple para rutinas: She works, He doesn't work.",
+     "Preguntas: Where do you live? What time does she get up?",
+     "There is para una cosa, there are para varias.",
+     "Always, usually, sometimes, never antes del verbo; enjoy + -ing."
+    ]
+   },
+   "quiz": [
+    {
+     "question": "My sister ___ a doctor.",
+     "options": [
+      "is",
+      "are",
+      "works",
+      "does"
+     ],
+     "correct_idx": 0,
+     "why": "Describe su profesión: to be con she."
+    },
+    {
+     "question": "My sister ___ in a hospital.",
+     "options": [
+      "is work",
+      "work",
+      "works",
+      "working"
+     ],
+     "correct_idx": 2,
+     "why": "Acción con she: verbo + s, sin is."
+    },
+    {
+     "question": "Where ___ your parents live?",
+     "options": [
+      "does",
+      "are",
+      "do",
+      "is"
+     ],
+     "correct_idx": 2,
+     "why": "Con they (your parents) el auxiliar es do."
+    },
+    {
+     "question": "What time ___ the class start?",
+     "options": [
+      "does",
+      "do",
+      "is",
+      "are"
+     ],
+     "correct_idx": 0,
+     "why": "The class es it: does + verbo base."
+    },
+    {
+     "question": "He ___ eat meat. He's vegetarian.",
+     "options": [
+      "isn't",
+      "don't",
+      "doesn't",
+      "not"
+     ],
+     "correct_idx": 2,
+     "why": "Negativa con he: doesn't + verbo base."
+    },
+    {
+     "question": "___ there a bakery near here?",
+     "options": [
+      "Are",
+      "Is",
+      "Do",
+      "Has"
+     ],
+     "correct_idx": 1,
+     "why": "Una sola cosa: Is there…?"
+    },
+    {
+     "question": "Elige la frase correcta.",
+     "options": [
+      "I go never to the gym.",
+      "I never go to the gym.",
+      "Never I go to the gym.",
+      "I go to the gym never."
+     ],
+     "correct_idx": 1,
+     "why": "Never va antes del verbo principal."
+    },
+    {
+     "question": "Elige la frase correcta.",
+     "options": [
+      "She is always busy.",
+      "She always is busy.",
+      "Always she is busy.",
+      "She busy is always."
+     ],
+     "correct_idx": 0,
+     "why": "Con to be el adverbio va después: She is always busy."
+    },
+    {
+     "question": "We love ___ together.",
+     "options": [
+      "cook",
+      "cooks",
+      "cooking",
+      "to cooking"
+     ],
+     "correct_idx": 2,
+     "why": "Después de love la actividad va con -ing."
+    },
+    {
+     "question": "A: What do you do? B: ___",
+     "options": [
+      "I'm fine, thanks.",
+      "I'm a teacher.",
+      "I do my homework.",
+      "Yes, I do."
+     ],
+     "correct_idx": 1,
+     "why": "What do you do? pregunta por tu trabajo o profesión."
+    }
+   ]
+  },
+  {
+   "order": 1,
+   "title": "Last weekend: el pasado simple",
+   "skill_type": "grammar",
+   "status": "ready",
+   "outline": {
+    "topics": [
+     "Was y were",
+     "Pasado simple: regulares e irregulares",
+     "Negativas y preguntas con did",
+     "Relato de un fin de semana"
+    ]
+   },
+   "practice": {
+    "number": 1,
+    "slug": "a2-unidad-1",
+    "level": "A2",
+    "module": "Unidad 1",
+    "title": "Last weekend: el pasado simple",
+    "minutes": 45,
+    "goal": "Al terminar podrás contar qué hiciste el fin de semana pasado, decir dónde estuviste y cómo te fue, y preguntarle a otra persona por su fin de semana con did.",
+    "why": "«What did you do last weekend?» es una de las preguntas más comunes en cualquier conversación. Con el pasado simple puedes contar experiencias, no solo rutinas.",
+    "vocab": [
+     {
+      "en": "Yesterday",
+      "es": "ayer",
+      "say": "iésterdei"
+     },
+     {
+      "en": "Last weekend",
+      "es": "el fin de semana pasado",
+      "say": "last uíkend"
+     },
+     {
+      "en": "Ago",
+      "es": "hace (tiempo)",
+      "say": "agóu"
+     },
+     {
+      "en": "Visit",
+      "es": "visitar",
+      "say": "vísit"
+     },
+     {
+      "en": "Stay",
+      "es": "quedarse",
+      "say": "stéi"
+     },
+     {
+      "en": "Cook",
+      "es": "cocinar",
+      "say": "kuk"
+     },
+     {
+      "en": "Clean",
+      "es": "limpiar",
+      "say": "klin"
+     },
+     {
+      "en": "Go",
+      "es": "ir",
+      "say": "góu"
+     },
+     {
+      "en": "Went",
+      "es": "fue | fui | fuimos (pasado de go)",
+      "say": "uént"
+     },
+     {
+      "en": "Have",
+      "es": "tener | comer",
+      "say": "jav"
+     },
+     {
+      "en": "Had",
+      "es": "tuve | comí (pasado de have)",
+      "say": "jad"
+     },
+     {
+      "en": "See",
+      "es": "ver",
+      "say": "si"
+     },
+     {
+      "en": "Saw",
+      "es": "vi | vio (pasado de see)",
+      "say": "so"
+     },
+     {
+      "en": "Buy",
+      "es": "comprar",
+      "say": "bái"
+     },
+     {
+      "en": "Bought",
+      "es": "compré | compró (pasado de buy)",
+      "say": "bot"
+     },
+     {
+      "en": "Meet",
+      "es": "encontrarse con | conocer",
+      "say": "mit"
+     },
+     {
+      "en": "Met",
+      "es": "me encontré | conocí (pasado de meet)",
+      "say": "met"
+     },
+     {
+      "en": "Trip",
+      "es": "viaje | paseo",
+      "say": "trip"
+     },
+     {
+      "en": "Farm",
+      "es": "finca",
+      "say": "farm"
+     },
+     {
+      "en": "Fun",
+      "es": "divertido | diversión",
+      "say": "fan"
+     }
+    ],
+    "cardWords": [
+     "Yesterday",
+     "Last weekend",
+     "Ago",
+     "Visit",
+     "Stay",
+     "Went",
+     "Had",
+     "Saw",
+     "Bought",
+     "Met",
+     "Trip",
+     "Farm"
+    ],
+    "explanation": [
+     {
+      "title": "1. Para qué sirve el pasado simple",
+      "text": "Lo usamos para acciones terminadas en un momento del pasado. Casi siempre va con una expresión de tiempo: yesterday, last weekend, last Saturday, two days ago, in 2020.",
+      "example": "I visited my grandmother last weekend."
+     },
+     {
+      "title": "2. Last y ago",
+      "text": "Last va antes: last night, last week, last year (sin the). Ago va después del tiempo: three days ago es «hace tres días».",
+      "example": "We went to Cartagena two years ago."
+     },
+     {
+      "title": "3. Una sola forma para todos",
+      "text": "En pasado el verbo no cambia con la persona: I worked, she worked, they worked. No hay -s para he, she ni it.",
+      "example": "She cooked dinner yesterday."
+     },
+     {
+      "title": "4. La -ed suena de tres maneras",
+      "text": "Después de sonidos como p, k, s, ch o sh suena «t»: cooked, watched. Después de t o d se añade una sílaba «id»: visited, needed. En los demás casos suena «d»: stayed, cleaned. Nunca digas «cook-ed».",
+      "example": "I cooked. I visited. I stayed."
+     },
+     {
+      "title": "5. Did en negativas y preguntas",
+      "text": "Para negar y preguntar usamos did (o didn't) y el verbo vuelve a su forma base. El pasado ya está en did, así que no lo repitas en el verbo.",
+      "example": "Did you go out? No, I didn't go out."
+     }
+    ],
+    "examples": [
+     {
+      "en": "I stayed at home last Saturday.",
+      "es": "Me quedé en casa el sábado pasado.",
+      "focus": "stayed"
+     },
+     {
+      "en": "We went to a farm near Villa de Leyva.",
+      "es": "Fuimos a una finca cerca de Villa de Leyva.",
+      "focus": "went"
+     },
+     {
+      "en": "The weather was great.",
+      "es": "El clima estuvo muy bueno.",
+      "focus": "was"
+     },
+     {
+      "en": "My cousins were very happy.",
+      "es": "Mis primos estaban muy contentos.",
+      "focus": "were"
+     },
+     {
+      "en": "I didn't watch TV yesterday.",
+      "es": "Ayer no vi televisión.",
+      "focus": "didn't"
+     },
+     {
+      "en": "What did you do last weekend?",
+      "es": "¿Qué hiciste el fin de semana pasado?",
+      "focus": "did"
+     }
+    ],
+    "table": {
+     "caption": "El pasado simple de un vistazo",
+     "head": [
+      "Tipo de frase",
+      "Estructura",
+      "Ejemplo"
+     ],
+     "rows": [
+      [
+       "To be afirmativa",
+       "sujeto + was (I, he, she, it) o were (you, we, they)",
+       "It was a fun trip."
+      ],
+      [
+       "To be negativa",
+       "sujeto + wasn't o weren't",
+       "We weren't at home."
+      ],
+      [
+       "Verbo regular",
+       "verbo + -ed",
+       "She cleaned her room."
+      ],
+      [
+       "Verbo irregular",
+       "forma propia",
+       "They saw a movie."
+      ],
+      [
+       "Negativa",
+       "didn't + verbo base",
+       "He didn't buy anything."
+      ],
+      [
+       "Pregunta",
+       "Did + sujeto + verbo base",
+       "Did you have a good weekend?"
+      ],
+      [
+       "Respuesta corta",
+       "Yes o No + sujeto + did o didn't",
+       "Yes, I did."
+      ]
+     ]
+    },
+    "tableIntro": "Fíjate en que solo to be tiene dos formas (was, were). Para todos los demás verbos, did hace el trabajo en negativas y preguntas.",
+    "tableTip": "Si ves did o didn't, el verbo que sigue va siempre en forma base: did go, didn't see.",
+    "mistakes": [
+     {
+      "wrong": "I didn't went to the party.",
+      "right": "I didn't go to the party.",
+      "why": "Con didn't el verbo va en forma base."
+     },
+     {
+      "wrong": "Did you saw the game?",
+      "right": "Did you see the game?",
+      "why": "Did ya marca el pasado: el verbo queda en forma base."
+     },
+     {
+      "wrong": "We was at the beach.",
+      "right": "We were at the beach.",
+      "why": "Con we, you y they se usa were."
+     }
+    ],
+    "theory": [
+     {
+      "title": "Was y were: el pasado de to be",
+      "rule": "To be tiene dos formas en pasado: was con I, he, she e it, y were con you, we y they. Sirve para decir dónde estabas, cómo estaba algo o cómo te sentías. Para negar añade not (wasn't, weren't); para preguntar, pon was o were antes del sujeto.",
+      "form": "Sujeto + was / were + lugar o descripción",
+      "steps": [
+       "Elige la forma: was (I, he, she, it) o were (you, we, they).",
+       "Añade dónde o cómo: at home, tired, fun.",
+       "Negativa: wasn't o weren't.",
+       "Pregunta: Was it…? Were you…? — Yes, it was. No, I wasn't."
+      ],
+      "forms": [
+       {
+        "label": "Afirmativa",
+        "en": "I was at the beach.",
+        "es": "Estaba en la playa."
+       },
+       {
+        "label": "Negativa",
+        "en": "It wasn't cold.",
+        "es": "No hacía frío."
+       },
+       {
+        "label": "Pregunta",
+        "en": "Were you tired?",
+        "es": "¿Estabas cansado?"
+       }
+      ],
+      "examples": [
+       {
+        "en": "The food was delicious.",
+        "es": "La comida estaba deliciosa."
+       },
+       {
+        "en": "We were in Santa Marta in June.",
+        "es": "Estuvimos en Santa Marta en junio."
+       },
+       {
+        "en": "Was the concert good?",
+        "es": "¿Estuvo bueno el concierto?"
+       }
+      ],
+      "apply": {
+       "words": [
+        "were",
+        "my",
+        "at",
+        "home",
+        "parents"
+       ],
+       "answer": "My parents were at home.",
+       "es": "Mis papás estaban en casa."
+      },
+      "mistake": {
+       "wrong": "I were very tired.",
+       "right": "I was very tired.",
+       "why": "Con I la forma es was."
+      }
+     },
+     {
+      "title": "Pasado afirmativo: regulares e irregulares",
+      "rule": "Los verbos regulares añaden -ed: work, worked. Ortografía: si terminan en -e solo añaden -d (dance, danced); consonante + y cambia a -ied (study, studied); algunos verbos cortos doblan la consonante (stop, stopped). Los irregulares tienen su propia forma y hay que aprenderla: go, went; have, had; see, saw; buy, bought; meet, met.",
+      "form": "Sujeto + verbo en pasado (-ed o forma irregular) + complemento",
+      "steps": [
+       "Busca si el verbo es regular o irregular.",
+       "Regular: añade -ed, -d o -ied según la ortografía.",
+       "Irregular: usa su forma de pasado (went, had, saw…).",
+       "La forma es igual para todos: I went, she went."
+      ],
+      "forms": [
+       {
+        "label": "Regular",
+        "en": "We danced all night.",
+        "es": "Bailamos toda la noche."
+       },
+       {
+        "label": "Ortografía -ied",
+        "en": "She studied for her exam.",
+        "es": "Ella estudió para su examen."
+       },
+       {
+        "label": "Irregular",
+        "en": "I had lunch with my aunt.",
+        "es": "Almorcé con mi tía."
+       }
+      ],
+      "examples": [
+       {
+        "en": "He played football on Sunday morning.",
+        "es": "Él jugó fútbol el domingo por la mañana."
+       },
+       {
+        "en": "I bought a new shirt.",
+        "es": "Compré una camisa nueva."
+       },
+       {
+        "en": "They met their friends at the mall.",
+        "es": "Se encontraron con sus amigos en el centro comercial."
+       }
+      ],
+      "apply": {
+       "words": [
+        "saw",
+        "we",
+        "movie",
+        "a",
+        "funny"
+       ],
+       "answer": "We saw a funny movie.",
+       "es": "Vimos una película chistosa."
+      },
+      "mistake": {
+       "wrong": "She goed to the market.",
+       "right": "She went to the market.",
+       "why": "Go es irregular: su pasado es went."
+      }
+     },
+     {
+      "title": "Negativas y preguntas con did",
+      "rule": "Para negar usa didn't + verbo base. Para preguntar usa Did + sujeto + verbo base; con palabra interrogativa: What did you do? Where did you go? Las respuestas cortas repiten did: Yes, I did. No, I didn't. Con was y were no se usa did.",
+      "form": "Sujeto + didn't + verbo base  ·  (Wh-) + did + sujeto + verbo base … ?",
+      "steps": [
+       "Negativa: pon didn't antes del verbo y quita el pasado del verbo.",
+       "Pregunta de sí o no: Did + sujeto + verbo base.",
+       "Pregunta de información: What, Where, Who + did + sujeto + verbo base.",
+       "Responde corto: Yes, I did. / No, she didn't."
+      ],
+      "forms": [
+       {
+        "label": "Negativa",
+        "en": "I didn't go out on Friday.",
+        "es": "No salí el viernes."
+       },
+       {
+        "label": "Pregunta",
+        "en": "Did you have fun?",
+        "es": "¿Te divertiste?"
+       },
+       {
+        "label": "Con Wh-",
+        "en": "Where did you go?",
+        "es": "¿A dónde fuiste?"
+       }
+      ],
+      "examples": [
+       {
+        "en": "She didn't cook last night.",
+        "es": "Ella no cocinó anoche."
+       },
+       {
+        "en": "Did they visit the museum?",
+        "es": "¿Visitaron el museo?"
+       },
+       {
+        "en": "Who did you meet at the party?",
+        "es": "¿A quién conociste en la fiesta?"
+       }
+      ],
+      "apply": {
+       "words": [
+        "did",
+        "what",
+        "buy",
+        "you"
+       ],
+       "answer": "What did you buy?",
+       "es": "¿Qué compraste?"
+      },
+      "mistake": {
+       "wrong": "Where you went yesterday?",
+       "right": "Where did you go yesterday?",
+       "why": "La pregunta necesita did y el verbo en forma base."
+      }
+     }
+    ],
+    "guided": [
+     {
+      "type": "choice",
+      "q": "I ___ at home last night.",
+      "opts": [
+       "was",
+       "were",
+       "did"
+      ],
+      "correct": 0,
+      "why": "To be en pasado con I: was."
+     },
+     {
+      "type": "choice",
+      "q": "My friends ___ at the party.",
+      "opts": [
+       "was",
+       "were",
+       "did"
+      ],
+      "correct": 1,
+      "why": "Con they (my friends): were."
+     },
+     {
+      "type": "choice",
+      "q": "She ___ her grandmother on Sunday.",
+      "opts": [
+       "visit",
+       "visits",
+       "visited"
+      ],
+      "correct": 2,
+      "why": "On Sunday (pasado): verbo regular + -ed."
+     },
+     {
+      "type": "choice",
+      "q": "We ___ to the beach last summer.",
+      "opts": [
+       "go",
+       "went",
+       "goed"
+      ],
+      "correct": 1,
+      "why": "Go es irregular: went."
+     },
+     {
+      "type": "choice",
+      "q": "He didn't ___ the movie.",
+      "opts": [
+       "saw",
+       "see",
+       "seen"
+      ],
+      "correct": 1,
+      "why": "Después de didn't, verbo base."
+     },
+     {
+      "type": "choice",
+      "q": "___ you have a good weekend?",
+      "opts": [
+       "Do",
+       "Were",
+       "Did"
+      ],
+      "correct": 2,
+      "why": "Pregunta en pasado con have: Did."
+     },
+     {
+      "type": "choice",
+      "q": "Where ___ you yesterday?",
+      "opts": [
+       "was",
+       "were",
+       "did"
+      ],
+      "correct": 1,
+      "why": "Con you y to be: were. No se usa did con to be."
+     },
+     {
+      "type": "choice",
+      "q": "Elige la expresión correcta para «hace tres días».",
+      "opts": [
+       "three days ago",
+       "ago three days",
+       "last three days"
+      ],
+      "correct": 0,
+      "why": "Ago va después del tiempo."
+     },
+     {
+      "type": "fill",
+      "sentence": "They ___ (study) for the exam yesterday.",
+      "answer": "studied",
+      "hint": "Consonante + y → -ied."
+     },
+     {
+      "type": "fill",
+      "sentence": "I ___ (buy) a new phone last week.",
+      "answer": "bought",
+      "hint": "Buy es irregular."
+     },
+     {
+      "type": "fill",
+      "sentence": "We ___ (dance) all night at the wedding.",
+      "answer": "danced",
+      "hint": "Termina en -e: solo añade -d."
+     },
+     {
+      "type": "fill",
+      "sentence": "She ___ go out on Friday. She was tired.",
+      "answer": "didn't|did not",
+      "hint": "Negativa en pasado + verbo base."
+     },
+     {
+      "type": "fill",
+      "sentence": "What ___ you do last weekend?",
+      "answer": "did",
+      "hint": "Pregunta en pasado con un verbo que no es to be."
+     },
+     {
+      "type": "fill",
+      "sentence": "The food ___ delicious. I loved it!",
+      "answer": "was",
+      "hint": "To be en pasado con it."
+     },
+     {
+      "type": "order",
+      "instruction": "Ordena las palabras para formar la pregunta.",
+      "words": [
+       "did",
+       "Where",
+       "go",
+       "you",
+       "yesterday"
+      ],
+      "answer": "Where did you go yesterday",
+      "hint": "Wh- + did + sujeto + verbo base."
+     },
+     {
+      "type": "order",
+      "instruction": "Ordena las palabras para formar la frase.",
+      "words": [
+       "met",
+       "I",
+       "friends",
+       "my",
+       "Saturday",
+       "on"
+      ],
+      "answer": "I met my friends on Saturday",
+      "hint": "Sujeto + verbo en pasado + resto."
+     }
+    ],
+    "translations": [
+     {
+      "es": "Ayer me quedé en casa.",
+      "en": "I stayed at home yesterday. | Yesterday I stayed at home. | I stayed home yesterday. | Yesterday I stayed home."
+     },
+     {
+      "es": "Fuimos a la playa el sábado pasado.",
+      "en": "We went to the beach last Saturday. | Last Saturday we went to the beach."
+     },
+     {
+      "es": "No vi el partido.",
+      "en": "I didn't see the game. | I did not see the game. | I didn't see the match. | I did not see the match."
+     },
+     {
+      "es": "¿Qué hiciste el fin de semana pasado?",
+      "en": "What did you do last weekend?"
+     },
+     {
+      "es": "La fiesta estuvo muy divertida.",
+      "en": "The party was a lot of fun. | The party was really fun. | The party was very fun."
+     }
+    ],
+    "dictation": [
+     "I stayed at home last Saturday.",
+     "We went to a farm near Villa de Leyva.",
+     "I didn't watch TV yesterday.",
+     "What did you do last weekend?",
+     "My cousins were very happy."
+    ],
+    "reading": {
+     "title": "Un fin de semana en la finca",
+     "text": "Last weekend I went to my uncle's farm near Villa de Leyva with my family. We left Bogotá early on Saturday morning and we arrived at ten. The weather was great. In the afternoon my cousins and I rode horses and my mother cooked a big lunch. In the evening we sat outside and talked for hours. On Sunday it rained, so we didn't go for a walk. We stayed inside and played cards. I was a little sad when we left, but it was a fun trip.",
+     "translation": "El fin de semana pasado fui a la finca de mi tío cerca de Villa de Leyva con mi familia. Salimos de Bogotá temprano el sábado por la mañana y llegamos a las diez. El clima estuvo muy bueno. Por la tarde mis primos y yo montamos a caballo y mi mamá cocinó un gran almuerzo. Por la noche nos sentamos afuera y hablamos durante horas. El domingo llovió, así que no salimos a caminar. Nos quedamos adentro y jugamos cartas. Estaba un poco triste cuando nos fuimos, pero fue un paseo divertido.",
+     "questions": [
+      {
+       "q": "¿A dónde fue el fin de semana pasado?",
+       "opts": [
+        "A la playa",
+        "A la finca de su tío",
+        "A un hotel en Bogotá"
+       ],
+       "correct": 1,
+       "why": "Dice: I went to my uncle's farm."
+      },
+      {
+       "q": "¿A qué hora llegaron?",
+       "opts": [
+        "A las diez",
+        "Por la noche",
+        "El domingo"
+       ],
+       "correct": 0,
+       "why": "Dice: we arrived at ten."
+      },
+      {
+       "q": "¿Qué hicieron el sábado por la tarde?",
+       "opts": [
+        "Jugaron a las cartas",
+        "Se montaron a caballo",
+        "Salieron a caminar"
+       ],
+       "correct": 1,
+       "why": "Dice: my cousins and I rode horses."
+      },
+      {
+       "q": "¿Por qué no salieron a caminar el domingo?",
+       "opts": [
+        "Porque llovió",
+        "Porque estaban cansados",
+        "Porque volvieron temprano"
+       ],
+       "correct": 0,
+       "why": "Dice: On Sunday it rained, so we didn't go for a walk."
+      },
+      {
+       "q": "¿Cómo fue el paseo?",
+       "opts": [
+        "Muy aburrido",
+        "Muy divertido",
+        "Muy largo"
+       ],
+       "correct": 1,
+       "why": "Dice: it was a fun trip."
+      }
+     ]
+    },
+    "dialogues": [
+     {
+      "title": "A2 · Diálogo 1 · Valentina y Santiago",
+      "lines": [
+       {
+        "speaker": "Valentina",
+        "text": "Hi, Santiago! Did you have a good weekend?",
+        "es": "¡Hola, Santiago! ¿Tuviste un buen fin de semana?",
+        "voice": "nova"
+       },
+       {
+        "speaker": "Santiago",
+        "text": "Yes, I did. I went to a concert on Saturday.",
+        "es": "Sí. Fui a un concierto el sábado.",
+        "voice": "onyx"
+       },
+       {
+        "speaker": "Valentina",
+        "text": "Cool! Was it good?",
+        "es": "¡Qué chévere! ¿Estuvo bueno?",
+        "voice": "nova"
+       },
+       {
+        "speaker": "Santiago",
+        "text": "It was amazing. What did you do?",
+        "es": "Estuvo increíble. ¿Y tú qué hiciste?",
+        "voice": "onyx"
+       },
+       {
+        "speaker": "Valentina",
+        "text": "Nothing special. I stayed at home and watched a series.",
+        "es": "Nada especial. Me quedé en casa y vi una serie.",
+        "voice": "nova"
+       }
+      ]
+     },
+     {
+      "title": "A2 · Diálogo 2 · Mateo y Laura",
+      "lines": [
+       {
+        "speaker": "Laura",
+        "text": "Where were you yesterday, Mateo?",
+        "es": "¿Dónde estabas ayer, Mateo?",
+        "voice": "nova"
+       },
+       {
+        "speaker": "Mateo",
+        "text": "I was at my grandparents' house in Tunja.",
+        "es": "Estaba en la casa de mis abuelos en Tunja.",
+        "voice": "onyx"
+       },
+       {
+        "speaker": "Laura",
+        "text": "Did you stay there all day?",
+        "es": "¿Te quedaste allá todo el día?",
+        "voice": "nova"
+       },
+       {
+        "speaker": "Mateo",
+        "text": "No, I didn't. I came back at night.",
+        "es": "No. Volví por la noche.",
+        "voice": "onyx"
+       }
+      ]
+     },
+     {
+      "title": "A2 · Diálogo 3 · Sofía y Andrés",
+      "lines": [
+       {
+        "speaker": "Andrés",
+        "text": "What did you buy at the market?",
+        "es": "¿Qué compraste en el mercado?",
+        "voice": "onyx"
+       },
+       {
+        "speaker": "Sofía",
+        "text": "I bought some fruit and a bag of coffee.",
+        "es": "Compré algo de fruta y una bolsa de café.",
+        "voice": "nova"
+       },
+       {
+        "speaker": "Andrés",
+        "text": "Did you see Carlos there?",
+        "es": "¿Viste a Carlos allá?",
+        "voice": "onyx"
+       },
+       {
+        "speaker": "Sofía",
+        "text": "Yes! We had a juice together.",
+        "es": "¡Sí! Nos tomamos un jugo juntos.",
+        "voice": "nova"
+       }
+      ]
+     }
+    ],
+    "pronunciation": [
+     {
+      "en": "I stayed at home last Saturday.",
+      "say": "ái stéid at jóum last sáturdei",
+      "tip": "«stayed» termina en sonido «d»: una sola sílaba, «stéid»."
+     },
+     {
+      "en": "I visited my grandmother last weekend.",
+      "say": "ái vísitid mai granmáder last uíkend",
+      "tip": "Después de t, la -ed suena «id»: «VÍ-si-tid»."
+     },
+     {
+      "en": "She cooked dinner yesterday.",
+      "say": "shi kukt díner iésterdei",
+      "tip": "«cooked» suena «kukt»: no digas «kú-ked»."
+     },
+     {
+      "en": "What did you do last weekend?",
+      "say": "uát did iu du last uíkend",
+      "tip": "«did you» se une y suena casi «díyu»."
+     },
+     {
+      "en": "I didn't watch TV yesterday.",
+      "say": "ái dídent uách tiví iésterdei",
+      "tip": "«didn't» tiene dos sílabas: «DÍ-dent»."
+     }
+    ],
+    "freeTask": "Proyecto de la unidad: escribe un relato de 6 a 8 frases sobre tu último fin de semana. Di dónde estuviste, qué hiciste (con al menos dos verbos regulares y dos irregulares), algo que no hiciste y cómo te fue.",
+    "freeModel": "Last weekend was great. On Saturday I went to the ciclovía with my sister. We rode our bikes for two hours. In the afternoon I cleaned my room and I cooked pasta. On Sunday I visited my grandparents. We had lunch together. I didn't study, but I was happy.",
+    "freeChecklist": [
+     "¿Usé una expresión de tiempo (last, yesterday, ago)?",
+     "¿Usé was o were para decir dónde estuve o cómo me fue?",
+     "¿Escribí al menos dos verbos regulares con -ed y dos irregulares?",
+     "¿Escribí una negativa con didn't + verbo base?",
+     "¿Revisé que después de did o didn't el verbo esté en forma base?"
+    ],
+    "summary": [
+     "Pasado simple para acciones terminadas: I visited, We went.",
+     "Was con I, he, she, it; were con you, we, they.",
+     "Regulares con -ed (tres sonidos); irregulares con su propia forma.",
+     "Negativa: didn't + verbo base. Pregunta: Did you…? What did you…?",
+     "Tiempo: yesterday, last weekend, two days ago."
+    ]
+   },
+   "quiz": [
+    {
+     "question": "I ___ very tired yesterday.",
+     "options": [
+      "were",
+      "was",
+      "did",
+      "am"
+     ],
+     "correct_idx": 1,
+     "why": "Pasado de to be con I: was."
+    },
+    {
+     "question": "Where ___ you last night?",
+     "options": [
+      "was",
+      "did",
+      "were",
+      "are"
+     ],
+     "correct_idx": 2,
+     "why": "Con you y to be en pasado: were."
+    },
+    {
+     "question": "She ___ her room on Saturday.",
+     "options": [
+      "clean",
+      "cleans",
+      "cleaned",
+      "cleaning"
+     ],
+     "correct_idx": 2,
+     "why": "Regular en pasado: + -ed."
+    },
+    {
+     "question": "We ___ to Cartagena last year.",
+     "options": [
+      "go",
+      "went",
+      "goed",
+      "gone"
+     ],
+     "correct_idx": 1,
+     "why": "Go es irregular: went."
+    },
+    {
+     "question": "They didn't ___ the bus.",
+     "options": [
+      "took",
+      "take",
+      "takes",
+      "taking"
+     ],
+     "correct_idx": 1,
+     "why": "Después de didn't, verbo base."
+    },
+    {
+     "question": "___ you see the game?",
+     "options": [
+      "Do",
+      "Were",
+      "Did",
+      "Was"
+     ],
+     "correct_idx": 2,
+     "why": "Pregunta en pasado con see: Did + verbo base."
+    },
+    {
+     "question": "A: Did you have fun? B: ___",
+     "options": [
+      "Yes, I had.",
+      "Yes, I did.",
+      "Yes, I was.",
+      "Yes, I do."
+     ],
+     "correct_idx": 1,
+     "why": "La respuesta corta repite el auxiliar: Yes, I did."
+    },
+    {
+     "question": "Elige la frase correcta.",
+     "options": [
+      "I bought a shirt two days ago.",
+      "I bought a shirt ago two days.",
+      "I buyed a shirt two days ago.",
+      "I did buy a shirt ago two days."
+     ],
+     "correct_idx": 0,
+     "why": "Buy es irregular (bought) y ago va después del tiempo."
+    },
+    {
+     "question": "¿En qué verbo la -ed suena «id»?",
+     "options": [
+      "played",
+      "visited",
+      "cooked",
+      "watched"
+     ],
+     "correct_idx": 1,
+     "why": "Después de t o d la -ed añade la sílaba «id»: visited."
+    },
+    {
+     "question": "A: What did you do on Sunday? B: ___",
+     "options": [
+      "I visit my aunt.",
+      "I visited my aunt.",
+      "I was visit my aunt.",
+      "I did visited my aunt."
+     ],
+     "correct_idx": 1,
+     "why": "Respuesta en pasado afirmativo: visited."
+    }
+   ]
+  }
+ ]
+}

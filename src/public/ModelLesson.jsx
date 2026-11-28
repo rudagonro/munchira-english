@@ -22,6 +22,11 @@ import StaffNoSaveNote from '../components/StaffNoSaveNote'
 import { ExtraGuided, ExtraTables, ExtraVocab, FreeChallenge, RescuedDialogues } from './RescuedPractice'
 import './model-lesson.css'
 
+/** A1 guarda borradores, Repaso y aprobados; las unidades A2 (vista previa del personal) no guardan nada todavía. */
+const isA1Lesson = lesson => (lesson.level ?? 'A1') === 'A1'
+/** Unidad numerada (A1 1–8, A2 0–8); la lección modelo antigua no tiene número. */
+const isUnit = lesson => Number.isInteger(lesson.number)
+
 /** Bocinas 🇺🇸 (por defecto) y 🇬🇧 y «Despacio». Solo MP3 de ElevenLabs: sin grabación, la bocina se deshabilita. */
 function ListenButtons({ text, voice }) {
   return <AccentSpeakers text={text} voice={voice} slow className="ml-listen" />
@@ -51,7 +56,7 @@ function TwoWayCards({ lesson, onComplete }) {
   const [saveError, setSaveError] = useState('')
   const reported = useRef(new Set())
   const saveWord = (known) => {
-    if (noSave || !user || reported.current.has(idx)) return
+    if (noSave || !user || !isA1Lesson(lesson) || reported.current.has(idx)) return
     reported.current.add(idx)
     void recordA1Word(lesson.number ?? 1, cards[idx].word, known).then(({ error }) => { if (error) { reported.current.delete(idx); setSaveError('No pudimos guardar esta palabra en Repaso. Comprueba tu conexión y vuelve a practicarla.') } else setSaveError('') })
   }
@@ -125,10 +130,10 @@ function WriteCheck({ items, onComplete, onAttempt, draftKey }) {
       <input value={value} onChange={e => setValue(e.target.value)} disabled={finished} autoComplete="off" autoCapitalize="none" spellCheck={false} lang="en" />
     </label>
     <ReviewAnswer>{quoteForm(shown)}</ReviewAnswer>
-    {result === 'ok' && <p className="ml-feedback ml-ok" role="status">{tries === 0 ? '¡Correcto!' : '¡Muy bien! Lo lograste.'} {item.listen ? '' : <>{shown} <ListenButtons text={item.answer} /></>}</p>}
+    {result === 'ok' && <p className="ml-feedback ml-ok" role="status">{tries === 0 ? '¡Correcto!' : '¡Muy bien! Lo lograste.'} {item.listen ? '' : <>{shown} <ListenButtons text={item.say ?? item.answer} /></>}</p>}
     {result === 'ok' && contractionTip(value, item.answer) && <p className="ml-feedback ml-ok">💡 En inglés hablado es más común la contracción: <strong>{quoteForm(contractionTip(value, item.answer))}</strong>.</p>}
     {result === 'retry' && <p className="ml-feedback ml-bad" role="status">Casi. Revisa la frase e inténtalo otra vez — tú puedes.</p>}
-    {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{quoteForm(shown)}</strong>{!item.listen && <> <ListenButtons text={item.answer} /></>}. Corrígela y comprueba de nuevo.</p>}
+    {result === 'bad' && <p className="ml-feedback ml-bad" role="status">La respuesta es <strong>{quoteForm(shown)}</strong>{!item.listen && <> <ListenButtons text={item.say ?? item.answer} /></>}. Corrígela y comprueba de nuevo.</p>}
     <button className="mp-button mp-button-dark" type="submit" disabled={!finished && !value.trim()}>{finished ? 'Siguiente →' : result === 'retry' || result === 'bad' ? 'Comprobar de nuevo' : 'Comprobar'}</button>
     {result === 'retry' && <button type="button" className="mp-button" onClick={() => setResult('bad')}>Ver respuesta</button>}
   </form>
@@ -174,7 +179,7 @@ function StepContent({ id, lesson, onComplete, legacyRules = [], legacy = false 
   const noSave = useNoSave()
   const [saveError, setSaveError] = useState('')
   const attempt = (text, known) => {
-    if (noSave || !user) return
+    if (noSave || !user || !isA1Lesson(lesson)) return
     void recordA1Text(lesson, text, known).then(({ error }) => setSaveError(error ? 'No pudimos guardar estas palabras en Repaso. Comprueba tu conexión y vuelve a practicar.' : ''))
   }
   const exerciseAttempt = (ex, known) => attempt(ex.type === 'choice' ? `${ex.q} ${ex.opts[ex.correct]}` : ex.sentence?.replace('___', displayForm(ex.answer)) ?? ex.answer, known)
@@ -234,7 +239,7 @@ function StepContent({ id, lesson, onComplete, legacyRules = [], legacy = false 
       {lesson.dialogues.map(d => <DialogueBlock key={d.title} dialogue={d} />)}
       <RescuedDialogues lesson={lesson} />
     </>
-    case 'translate': return <><h2>Traducción</h2><p>Escribe cada frase en inglés. Si te equivocas, corrige e inténtalo otra vez.</p><WriteCheck draftKey="translate" items={lesson.translations.map(t => ({ prompt: t.es, answer: t.en }))} onComplete={onComplete} onAttempt={attempt} />{warning}</>
+    case 'translate': return <><h2>Traducción</h2><p>Escribe cada frase en inglés. Si te equivocas, corrige e inténtalo otra vez.</p><WriteCheck draftKey="translate" items={lesson.translations.map(t => ({ prompt: t.es, answer: t.en, ...(isA1Lesson(lesson) ? {} : { say: displayForm(t.en) }) }))} onComplete={onComplete} onAttempt={attempt} />{warning}</>
     case 'dictation': return <><h2>Dictado</h2><p>Escucha la frase (puedes repetirla y ponerla despacio) y escríbela en inglés.</p><WriteCheck draftKey="dictation" items={lesson.dictation.map(t => ({ answer: t, listen: true }))} onComplete={onComplete} onAttempt={attempt} />{warning}</>
     case 'speak': return <><h2>Escucha y repite</h2><p>Escucha cada frase, repítela igual (shadowing) y compara con tu voz. Munchira no guarda tus grabaciones.</p><ul className="ml-speak-list">{lesson.pronunciation.map(p => <SpeakPractice key={p.en} item={p} />)}</ul></>
     case 'free': return <FreeTask lesson={lesson} onComplete={onComplete} />
@@ -251,10 +256,10 @@ function FreeTask({ lesson, onComplete }) {
   const [shown, setShown] = useDraftState('free.shown', false)
   const [review, setReview] = useDraftState('free.review', null)
   return <>
-    <h2>{lesson.number ? 'Ponlo en práctica' : 'Tu presentación'}</h2><p>{lesson.freeTask}</p>
+    <h2>{isUnit(lesson) ? 'Ponlo en práctica' : 'Tu presentación'}</h2><p>{lesson.freeTask}</p>
     <label className="ml-free">Escribe aquí<textarea rows={4} value={text} maxLength={1000} lang="en" spellCheck onChange={e => { setText(e.target.value); setReview(null); onComplete?.(false) }} /></label>
     <div className="ml-row">
-      {lesson.number <= 1 && <button type="button" className="mp-button mp-button-dark" disabled={!text.trim()} onClick={() => { const result = checkPresentation(text); setReview(result); onComplete?.(result.ok) }}>✓ Revisar mi presentación</button>}
+      {isA1Lesson(lesson) && !(lesson.number > 1) && <button type="button" className="mp-button mp-button-dark" disabled={!text.trim()} onClick={() => { const result = checkPresentation(text); setReview(result); onComplete?.(result.ok) }}>✓ Revisar mi presentación</button>}
       <button type="button" className="mp-button" onClick={() => setShown(true)}>Ver un modelo</button>
     </div>
     {lesson.freeChecklist && <><h3>Revisa tu texto</h3><ul className="ml-summary">{lesson.freeChecklist.map(item => <li key={item}>{item}</li>)}</ul><p>Compara con el modelo. Esta tarea no recibe una nota ni una corrección automática completa.</p></>}
@@ -264,7 +269,7 @@ function FreeTask({ lesson, onComplete }) {
       <p className="ml-tip">Revisión de estructuras A1; no comprueba todos los errores de ortografía ni los nombres propios.</p>
     </div>}
     {shown && <p className="ml-example">{lesson.freeModel} <ListenButtons text={lesson.freeModel} /></p>}
-    {lesson.number > 1 && <button type="button" className="mp-button mp-button-dark" disabled={!text.trim()} onClick={() => onComplete?.(true)}>He escrito mi texto y revisado los puntos</button>}
+    {(lesson.number > 1 || !isA1Lesson(lesson)) && <button type="button" className="mp-button mp-button-dark" disabled={!text.trim()} onClick={() => onComplete?.(true)}>He escrito mi texto y revisado los puntos</button>}
     <FreeChallenge lesson={lesson} />
   </>
 }
@@ -306,13 +311,13 @@ function TheoryRule({ rule, index, recognised = false, showLegacy = false }) {
 
 export default function ModelLesson({ lesson = defaultLesson, legacyTheory = false, legacyRules = [] }) {
   const noSave = useNoSave()
-  return <A1DraftProvider lessonKey={`unit:${lesson.number ?? 1}`} enabled={!noSave}><ModelLessonContent lesson={lesson} legacyTheory={legacyTheory} legacyRules={legacyRules} /></A1DraftProvider>
+  return <A1DraftProvider lessonKey={isA1Lesson(lesson) ? `unit:${lesson.number ?? 1}` : `${lesson.level}-unit:${lesson.number}`} enabled={!noSave && isA1Lesson(lesson)}><ModelLessonContent lesson={lesson} legacyTheory={legacyTheory} legacyRules={legacyRules} /></A1DraftProvider>
 }
 
 function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
   const [savedStep, setStep] = useDraftState('step', 0)
   const [completedIds, setCompletedIds] = useDraftState('step.completed', [])
-  const steps = LESSON_STEPS.map(s => s.id === 'free' && lesson.number ? { ...s, label: 'Ponlo en práctica' } : s)
+  const steps = LESSON_STEPS.map(s => s.id === 'free' && isUnit(lesson) ? { ...s, label: 'Ponlo en práctica' } : s)
   const fields = useDraftFields()
   const review = useReviewMode()
   // En el modo revisor todos los pasos están abiertos (cuentan como hechos solo en esta vista; no se guarda nada).
@@ -330,18 +335,18 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
   const go = (i) => { if (!canOpenStep(i, steps, completed)) return; stopLessonAudio(); setVisited(previous => new Set(previous).add(i)); setPicked(true); setStep(i); window.scrollTo?.({ top: 0 }) }
   const next = () => { if (isPracticeStep(current.id) && !completed.has(current.id)) return; mark(current.id); setVisited(previous => new Set(previous).add(step + 1)); setPicked(true); setStep(step + 1); stopLessonAudio(); window.scrollTo?.({ top: 0 }) }
   return <PublicShell>
-    <Seo title={`${lesson.number ? `A1 · Unidad ${lesson.number}` : 'A1 · Unidad 1'}: ${lesson.title}`} description={`Inglés A1: ${lesson.title.toLowerCase()} con vocabulario, explicación, ejercicios, lectura, diálogos, dictado y pronunciación.`} path={lesson.path ?? '/cursos/A1/unidad/1'} noindex />
+    <Seo title={`${isUnit(lesson) ? `${lesson.level ?? 'A1'} · Unidad ${lesson.number}` : 'A1 · Unidad 1'}: ${lesson.title}`} description={`Inglés ${lesson.level ?? 'A1'}: ${lesson.title.toLowerCase()} con vocabulario, explicación, ejercicios, lectura, diálogos, dictado y pronunciación.`} path={lesson.path ?? '/cursos/A1/unidad/1'} noindex />
     <div className="mp-wrap ml-page">
       <header className="ml-head">
         <p className="mp-eyebrow">{lesson.number ? `Curso ${lesson.level} · ${lesson.module}` : `Curso ${lesson.level} · ${lesson.module}`}</p>
-        <h1>{lesson.number ? `Unidad ${lesson.number}: ${lesson.title}` : lesson.title}</h1>
+        <h1>{isUnit(lesson) ? `Unidad ${lesson.number}: ${lesson.title}` : lesson.title}</h1>
         {!legacyTheory && legacyRules.length > 0 && <p className="ml-tip" role="status">Reconocimos {legacyRules.length} de {lesson.theory?.length ?? 0} reglas de teoría por tu avance anterior (marcadas con ✓ en «Explicación»). Completa el resto de la unidad y su cuestionario final.</p>}
         {legacyTheory && <p className="ml-tip" role="status">Teoría reconocida de tu avance anterior: para completar la unidad aprueba su cuestionario final (70%). Puedes ir directo o repasar cualquier paso.</p>}
         <div className="ml-progress" role="progressbar" aria-valuemin={0} aria-valuemax={steps.length} aria-valuenow={completed.size} aria-label="Avance de la unidad"><span style={{ width: `${(completed.size / steps.length) * 100}%` }} /></div>
         <div className="ml-head-row">
           <p>Paso {step + 1} de {steps.length}: <strong>{current.label}</strong></p>
         </div>
-      <LessonBackLinks />
+      <LessonBackLinks lesson={lesson} />
       <StaffNoSaveNote />
       </header>
       <div className="ml-layout">
@@ -359,8 +364,9 @@ function ModelLessonContent({ lesson, legacyTheory, legacyRules }) {
 }
 
 /** Enlaces de salida de la unidad: temario siempre; panel cuando hay sesión. */
-function LessonBackLinks() {
+function LessonBackLinks({ lesson }) {
   const { session } = useAuth()
+  if (!isA1Lesson(lesson)) return <p className="ml-tip"><Link to="/revisor">← Volver al revisor</Link>{' · Vista previa del curso '}{lesson.level}{': nada se guarda.'}</p>
   return (
     <p className="ml-tip">
       <Link to="/cursos/A1">← Temario A1</Link>
@@ -375,6 +381,15 @@ function SummaryNextStep({ lesson, onComplete }) {
   const { session, user } = useAuth()
   const review = useReviewMode()
   const [passed, setPassed] = useState(false)
+  if (isUnit(lesson) && !isA1Lesson(lesson)) {
+    const nextPath = lesson.nextPath ?? null
+    return <>
+      <p>{lesson.number === 0 ? 'Este es el cuestionario de entrada de A2, obligatorio para todos: con 70% o más se abre la Unidad 1.' : 'Repasa lo aprendido y responde el cuestionario de la unidad.'}</p>
+      <UnitCompletion key={`${lesson.level}-${lesson.number}`} number={lesson.number} questions={lesson.quiz} localOnly onPassed={() => { setPassed(true); onComplete?.() }} />
+      {(passed || review) && nextPath && <Link className="mp-button mp-button-dark" to={nextPath}>Unidad {lesson.number + 1} →</Link>}
+      <Link className="mp-text-link" to="/revisor">Volver al revisor</Link>
+    </>
+  }
   if (lesson.number) return <>
     <p>Repasa lo aprendido y completa el cuestionario para guardar el avance de esta unidad.</p>
     <UnitCompletion key={`${user?.id ?? 'visitor'}-${lesson.number}`} number={lesson.number} onPassed={() => { setPassed(true); onComplete?.() }} />

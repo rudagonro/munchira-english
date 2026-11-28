@@ -1,4 +1,4 @@
-// Lista los textos en inglés de A1 (y del diagnóstico) que aún no tienen MP3 de ElevenLabs, por acento.
+// Lista los textos en inglés de A1, de las unidades A2 (y del diagnóstico) que aún no tienen MP3 de ElevenLabs, por acento.
 // Munchira ya no usa la voz del dispositivo: lo que salga aquí aparece con la bocina deshabilitada.
 // Uso: npm run audio:check [-- --list] [-- --json ruta.json] [-- --strict]
 //   --list    imprime cada texto faltante (acento, voz, zona, texto)
@@ -16,6 +16,9 @@ import { quizSpokenTexts, spokenTableCell } from '../src/public/quizSpeech.js'
 import { UNIT0_FEEDBACK_WORDS, unit0ExplanationSpokenAll } from '../src/public/unit0Speech.js'
 import { registerLessonRecordings } from '../src/public/lessonRecordings.js'
 import { recordedAudioUrl } from '../src/public/lessonSpeech.js'
+import a2Course from '../content/a2/units.json' with { type: 'json' }
+import { A2_LESSON_AUDIO } from '../src/data/modelLessons/a2-units.js'
+import { displayForm } from '../src/public/model-lesson.js'
 
 const args = process.argv.slice(2)
 const ACCENTS = { 'en-US': 'us', 'en-GB': 'uk' }
@@ -117,6 +120,41 @@ for (const module of cycle.modules) {
   }
 }
 
+// Unidades A2 (piloto): los mismos pasos que A1, más la frase que suena en Traducción, las explicaciones de los
+// errores y el cuestionario. Zonas «a2-leccion» y «a2-cuestionario»; cada unidad consulta el manifiesto A2 combinado.
+for (const module of a2Course.modules) {
+  const l = module.practice
+  const unit = `A2-${module.order}`
+  unitSources.set(unit, A2_LESSON_AUDIO)
+  const ctx = { area: 'a2-leccion', unit, source: unit }
+  l.vocab.forEach(v => add(v.en, ctx))
+  if (l.freeModel) add(l.freeModel, ctx)
+  collectTable(l.table, ctx)
+  ;(l.explanation ?? []).forEach(p => add(p.example, ctx))
+  ;(l.examples ?? []).forEach(e => add(e.en, ctx))
+  const mistakes = [...(l.mistakes ?? []), ...(l.theory ?? []).flatMap(rule => rule.mistake ? [rule.mistake] : [])]
+  mistakes.forEach(m => { add(m.right, ctx); spoken(m.why, ctx) })
+  ;(l.theory ?? []).forEach(rule => {
+    rule.forms?.forEach(form => add(form.en.split(' / ')[0], ctx))
+    rule.examples?.forEach(example => add(example.en, ctx))
+    if (rule.apply?.answer) add(rule.apply.answer, ctx)
+  })
+  lessonCards(l).forEach(card => add(card.audio, ctx))
+  collectExercises(l.guided, ctx)
+  ;(l.translations ?? []).forEach(t => add(displayForm(t.en), ctx))
+  if (l.reading) add(l.reading.text, { ...ctx, voice: l.reading.voice ?? 'nova' })
+  options((l.reading?.questions ?? []).flatMap(q => q.opts ?? []), ctx)
+  ;(l.dialogues ?? []).forEach(d => d.lines.forEach(t => add(t.text, { ...ctx, voice: t.voice ?? 'nova' })))
+  ;(l.dictation ?? []).forEach(t => add(t, ctx))
+  ;(l.pronunciation ?? []).forEach(p => add(p.en, ctx))
+  for (const q of module.quiz ?? []) {
+    const quizCtx = { area: 'a2-cuestionario', unit, source: unit }
+    spoken(q, quizCtx)
+    options(q.options, quizCtx)
+    if (q.why) spoken(q.why, quizCtx)
+  }
+}
+
 // Examen final A1: enunciados en inglés, textos de lectura, audios de escucha y opciones en inglés.
 for (const passage of Object.values(A1_FINAL_EXAM.passages ?? {})) {
   add(passage.text, { area: 'examen', unit: passage.unit ?? 'examen', source: passage.unit ?? null })
@@ -138,7 +176,7 @@ for (const item of bankGV.A1 ?? []) {
 
 // Comprobación: el mismo buscador que usa la app. Cada zona consulta lo que esa pantalla tiene cargado:
 // la lección y el examen, el manifiesto de su unidad; Repaso, todos los de A1; Unidad 0 y diagnóstico, los generales.
-const ALL_UNITS = [...unitSources.values()].filter(Boolean)
+const ALL_UNITS = cycle.modules.map(module => module.practice?.audio).filter(Boolean)
 const lookup = { repaso: ALL_UNITS }
 const found = (entry, area, accent) => (area === 'repaso' ? [null] : entry.contexts[area]).every(unit => {
   registerLessonRecordings(unit === null ? null : unitSources.get(unit))
