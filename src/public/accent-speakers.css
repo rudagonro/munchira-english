@@ -43,3 +43,7 @@
 /* Enunciado del cuestionario: las bocinas van junto al trozo en inglés. */
 .as-prompt-bit { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .ml-quiz-q legend .as-speakers { margin-left: 2px; }
+
+/* Fila «Escucha:» tras corregir el cuestionario de la Unidad 0: palabras en inglés citadas en la explicación. */
+.as-listen-words { display: block; margin-top: 6px; }
+.as-listen-words .as-prompt-bit { margin: 0 14px 4px 0; }

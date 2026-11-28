@@ -13,6 +13,7 @@ import { lessonCards } from '../src/public/model-lesson.js'
 import { audioKey } from '../src/public/speechText.js'
 import { isEnglishOption } from '../src/public/optionLanguage.js'
 import { quizSpokenTexts, spokenTableCell } from '../src/public/quizSpeech.js'
+import { UNIT0_FEEDBACK_WORDS, unit0ExplanationSpokenAll } from '../src/public/unit0Speech.js'
 import { registerLessonRecordings } from '../src/public/lessonRecordings.js'
 import { recordedAudioUrl } from '../src/public/lessonSpeech.js'
 
@@ -67,6 +68,10 @@ UNIT0.quiz.forEach(q => {
   options(q.options, { area: 'cuestionario', unit: 0 })
   if (q.why) spoken(q.why, { area: 'cuestionario', unit: 0 })
 })
+// Fila «Escucha:» de la corrección: palabras en inglés citadas dentro de la explicación en español.
+Object.values(UNIT0_FEEDBACK_WORDS).forEach(words => words.forEach(word => add(word, { area: 'cuestionario', unit: 0 })))
+// Ejemplos en inglés dentro de las explicaciones en español de la Unidad 0.
+unit0ExplanationSpokenAll().forEach(text => add(text, { area: 'unidad0', unit: 0 }))
 
 // Unidades 1–8: cada paso con audio, opciones en inglés, cuestionario y lo que llega a Repaso.
 const unitSources = new Map()

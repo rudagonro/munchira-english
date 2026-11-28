@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { hasRecording, reportMissingAudio, sayEnglish } from './lessonSpeech'
 import { isEnglishOption } from './optionLanguage'
 import { splitQuestionForSpeech, spokenTableCell } from './quizSpeech.js'
+import { splitUnit0Explanation } from './unit0Speech.js'
 import './accent-speakers.css'
 
 const ACCENT_INFO = {
@@ -82,4 +83,14 @@ export function OptionRow({ option, voice, source, children }) {
 /** Enunciado del cuestionario: bocinas US/UK junto a cada trozo en inglés (no junto a las guías fonéticas ni al español). */
 export function QuizLegend({ index, question, voice, source }) {
   return <legend>{index + 1}. <SpokenBits text={question.question} voice={voice} source={source} /></legend>
+}
+
+/** Párrafo de explicación de la Unidad 0: bocinas US/UK junto a cada ejemplo en inglés. El español y las guías fonéticas quedan sin audio. */
+export function SpokenUnit0Explain({ text, className }) {
+  const value = String(text ?? '')
+  const parts = splitUnit0Explanation(value)
+  if (!parts.some(part => part.listen)) return value
+  return <span className={className}>{parts.map((part, i) => part.listen
+    ? <span key={i} className="as-prompt-bit" lang="en">{part.display}<AccentSpeakers text={part.listen} /></span>
+    : <span key={i}>{part.display}</span>)}</span>
 }

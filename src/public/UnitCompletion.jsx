@@ -15,11 +15,12 @@ function progressError(error) {
 }
 
 /** Corrección de una pregunta después de enviar: qué era correcto y por qué. */
-export function QuestionFeedback({ question, answer }) {
+export function QuestionFeedback({ question, answer, words = [] }) {
   const ok = answer === question.correct_idx
   const correct = question.options[question.correct_idx]
   return <p className={`ml-feedback ${ok ? 'ml-ok' : 'ml-bad'}`}>
     {ok ? '✓ Correcto.' : <>✗ La respuesta correcta es «{correct}»{isEnglishOption(correct) && <AccentSpeakers text={correct} />}.</>}{question.why && <> <SpokenBits text={question.why} /></>}
+    {words.length > 0 && <span className="as-listen-words"> Escucha: {words.map(word => <span key={word} className="as-prompt-bit" lang="en"><strong>{word}</strong><AccentSpeakers text={word} /></span>)}</span>}
   </p>
 }
 
